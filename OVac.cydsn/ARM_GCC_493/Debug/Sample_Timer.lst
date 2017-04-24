@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
   23:Generated_Source\PSoC5/Sample_Timer.c **** 
   24:Generated_Source\PSoC5/Sample_Timer.c **** #include "Sample_Timer.h"
   25:Generated_Source\PSoC5/Sample_Timer.c **** 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 2
 
 
   26:Generated_Source\PSoC5/Sample_Timer.c **** uint8 Sample_Timer_initVar = 0u;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
   52 0014 1D4A     		ldr	r2, .L2+4
   53 0016 1D4B     		ldr	r3, .L2+4
   54 0018 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 3
 
 
   55 001a DBB2     		uxtb	r3, r3
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
   63 002a DBB2     		uxtb	r3, r3
   64 002c 23F03003 		bic	r3, r3, #48
   65 0030 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 4
 
 
   66 0032 1370     		strb	r3, [r2]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  122:Generated_Source\PSoC5/Sample_Timer.c ****         Sample_Timer_CAPTURE_COUNT_CTRL |= Sample_Timer_CNTR_ENABLE;
  123:Generated_Source\PSoC5/Sample_Timer.c ****         Sample_Timer_SetCaptureCount(Sample_Timer_INIT_CAPTURE_COUNT);
  124:Generated_Source\PSoC5/Sample_Timer.c ****     #endif /* Configure capture counter value */
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 5
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 5
 
 
  125:Generated_Source\PSoC5/Sample_Timer.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  120              		.section	.text.Sample_Timer_Enable,"ax",%progbits
  121              		.align	2
  122              		.global	Sample_Timer_Enable
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 6
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 6
 
 
  123              		.thumb
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  187:Generated_Source\PSoC5/Sample_Timer.c **** 
  188:Generated_Source\PSoC5/Sample_Timer.c ****     /* Remove assignment if control register is removed */
  189:Generated_Source\PSoC5/Sample_Timer.c ****     #if (!Sample_Timer_UDB_CONTROL_REG_REMOVED || Sample_Timer_UsingFixedFunction)
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 7
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 7
 
 
  190:Generated_Source\PSoC5/Sample_Timer.c ****         Sample_Timer_CONTROL |= Sample_Timer_CTRL_ENABLE;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  211:Generated_Source\PSoC5/Sample_Timer.c **** *  Sample_Timer_initVar: Is modified when this function is called for the
  212:Generated_Source\PSoC5/Sample_Timer.c **** *   first time. Is used to ensure that initialization happens only once.
  213:Generated_Source\PSoC5/Sample_Timer.c **** *
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 8
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 8
 
 
  214:Generated_Source\PSoC5/Sample_Timer.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  227:Generated_Source\PSoC5/Sample_Timer.c **** 
  228:Generated_Source\PSoC5/Sample_Timer.c **** 
  229:Generated_Source\PSoC5/Sample_Timer.c **** /*******************************************************************************
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 9
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 9
 
 
  230:Generated_Source\PSoC5/Sample_Timer.c **** * Function Name: Sample_Timer_Stop
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  254              		.loc 1 257 0
  255 0024 074A     		ldr	r2, .L12+8
  256 0026 074B     		ldr	r3, .L12+8
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 10
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 10
 
 
  257 0028 1B78     		ldrb	r3, [r3]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  288              		.cfi_startproc
  289              		@ args = 0, pretend = 0, frame = 8
  290              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 11
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 11
 
 
  291              		@ link register save eliminated.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  296:Generated_Source\PSoC5/Sample_Timer.c **** *  void
  297:Generated_Source\PSoC5/Sample_Timer.c **** *
  298:Generated_Source\PSoC5/Sample_Timer.c **** * Side Effects:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 12
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 12
 
 
  299:Generated_Source\PSoC5/Sample_Timer.c **** *  An existing hardware capture could be overwritten.
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  317:Generated_Source\PSoC5/Sample_Timer.c **** *
  318:Generated_Source\PSoC5/Sample_Timer.c **** * Summary:
  319:Generated_Source\PSoC5/Sample_Timer.c **** *  Reads the status register and returns it's state. This function should use
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 13
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 13
 
 
  320:Generated_Source\PSoC5/Sample_Timer.c **** *  defined types for the bit-field information as the bits in this register may
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  403              	.LFB7:
  337:Generated_Source\PSoC5/Sample_Timer.c **** 
  338:Generated_Source\PSoC5/Sample_Timer.c **** 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 14
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 14
 
 
  339:Generated_Source\PSoC5/Sample_Timer.c **** #if (!Sample_Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  433              		.size	Sample_Timer_ReadControlRegister, .-Sample_Timer_ReadControlRegister
  434              		.section	.text.Sample_Timer_WriteControlRegister,"ax",%progbits
  435              		.align	2
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 15
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 15
 
 
  436              		.global	Sample_Timer_WriteControlRegister
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  467              		.cfi_restore 7
  468              		.cfi_def_cfa_offset 0
  469 0018 7047     		bx	lr
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 16
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 16
 
 
  470              	.L30:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  412:Generated_Source\PSoC5/Sample_Timer.c **** }
  499              		.loc 1 412 0
  500 000a 1846     		mov	r0, r3
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 17
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 17
 
 
  501 000c BD46     		mov	sp, r7
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  535 0006 0346     		mov	r3, r0
  536 0008 FB80     		strh	r3, [r7, #6]	@ movhi
  433:Generated_Source\PSoC5/Sample_Timer.c ****     #if(Sample_Timer_UsingFixedFunction)
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 18
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 18
 
 
  434:Generated_Source\PSoC5/Sample_Timer.c ****         uint16 period_temp = (uint16)period;
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  456:Generated_Source\PSoC5/Sample_Timer.c **** uint16 Sample_Timer_ReadCapture(void) 
  457:Generated_Source\PSoC5/Sample_Timer.c **** {
  569              		.loc 1 457 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 19
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 19
 
 
  570              		.cfi_startproc
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  475:Generated_Source\PSoC5/Sample_Timer.c **** *
  476:Generated_Source\PSoC5/Sample_Timer.c **** * Return:
  477:Generated_Source\PSoC5/Sample_Timer.c **** *  void
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 20
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 20
 
 
  478:Generated_Source\PSoC5/Sample_Timer.c **** *
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  647              		.type	Sample_Timer_ReadCounter, %function
  648              	Sample_Timer_ReadCounter:
  649              	.LFB13:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 21
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 21
 
 
  492:Generated_Source\PSoC5/Sample_Timer.c **** 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  670              		.cfi_def_cfa_register 13
  671              		@ sp needed
  672 0012 5DF8047B 		ldr	r7, [sp], #4
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 22
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 22
 
 
  673              		.cfi_restore 7
@@ -1282,25 +1282,25 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  691 0006 00000000 		.4byte	.Ldebug_abbrev0
  692 000a 04       		.byte	0x4
  693 000b 01       		.uleb128 0x1
- 694 000c 43020000 		.4byte	.LASF35
+ 694 000c 16020000 		.4byte	.LASF35
  695 0010 01       		.byte	0x1
  696 0011 90000000 		.4byte	.LASF36
- 697 0015 8F010000 		.4byte	.LASF37
+ 697 0015 AE020000 		.4byte	.LASF37
  698 0019 00000000 		.4byte	.Ldebug_ranges0+0
  699 001d 00000000 		.4byte	0
  700 0021 00000000 		.4byte	.Ldebug_line0
  701 0025 02       		.uleb128 0x2
  702 0026 01       		.byte	0x1
  703 0027 06       		.byte	0x6
- 704 0028 FB020000 		.4byte	.LASF0
+ 704 0028 09030000 		.4byte	.LASF0
  705 002c 02       		.uleb128 0x2
  706 002d 01       		.byte	0x1
  707 002e 08       		.byte	0x8
- 708 002f 23010000 		.4byte	.LASF1
+ 708 002f 1C010000 		.4byte	.LASF1
  709 0033 02       		.uleb128 0x2
  710 0034 02       		.byte	0x2
  711 0035 05       		.byte	0x5
- 712 0036 D1020000 		.4byte	.LASF2
+ 712 0036 A4020000 		.4byte	.LASF2
  713 003a 02       		.uleb128 0x2
  714 003b 02       		.byte	0x2
  715 003c 07       		.byte	0x7
@@ -1308,22 +1308,22 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  717 0041 02       		.uleb128 0x2
  718 0042 04       		.byte	0x4
  719 0043 05       		.byte	0x5
- 720 0044 ED020000 		.4byte	.LASF4
+ 720 0044 FB020000 		.4byte	.LASF4
  721 0048 02       		.uleb128 0x2
  722 0049 04       		.byte	0x4
  723 004a 07       		.byte	0x7
- 724 004b DC010000 		.4byte	.LASF5
+ 724 004b AF010000 		.4byte	.LASF5
  725 004f 02       		.uleb128 0x2
  726 0050 08       		.byte	0x8
  727 0051 05       		.byte	0x5
- 728 0052 27020000 		.4byte	.LASF6
+ 728 0052 FA010000 		.4byte	.LASF6
  729 0056 02       		.uleb128 0x2
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 23
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 23
 
 
  730 0057 08       		.byte	0x8
  731 0058 07       		.byte	0x7
- 732 0059 FB010000 		.4byte	.LASF7
+ 732 0059 CE010000 		.4byte	.LASF7
  733 005d 03       		.uleb128 0x3
  734 005e 04       		.byte	0x4
  735 005f 05       		.byte	0x5
@@ -1331,31 +1331,31 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  737 0064 02       		.uleb128 0x2
  738 0065 04       		.byte	0x4
  739 0066 07       		.byte	0x7
- 740 0067 EE010000 		.4byte	.LASF8
+ 740 0067 C1010000 		.4byte	.LASF8
  741 006b 04       		.uleb128 0x4
- 742 006c 67010000 		.4byte	.LASF9
+ 742 006c 60010000 		.4byte	.LASF9
  743 0070 02       		.byte	0x2
  744 0071 9201     		.2byte	0x192
  745 0073 2C000000 		.4byte	0x2c
  746 0077 04       		.uleb128 0x4
- 747 0078 BC010000 		.4byte	.LASF10
+ 747 0078 8F010000 		.4byte	.LASF10
  748 007c 02       		.byte	0x2
  749 007d 9301     		.2byte	0x193
  750 007f 3A000000 		.4byte	0x3a
  751 0083 02       		.uleb128 0x2
  752 0084 04       		.byte	0x4
  753 0085 04       		.byte	0x4
- 754 0086 00010000 		.4byte	.LASF11
+ 754 0086 F9000000 		.4byte	.LASF11
  755 008a 02       		.uleb128 0x2
  756 008b 08       		.byte	0x8
  757 008c 04       		.byte	0x4
- 758 008d DB000000 		.4byte	.LASF12
+ 758 008d 88010000 		.4byte	.LASF12
  759 0091 02       		.uleb128 0x2
  760 0092 01       		.byte	0x1
  761 0093 08       		.byte	0x8
- 762 0094 F6020000 		.4byte	.LASF13
+ 762 0094 04030000 		.4byte	.LASF13
  763 0098 04       		.uleb128 0x4
- 764 0099 31010000 		.4byte	.LASF14
+ 764 0099 2A010000 		.4byte	.LASF14
  765 009d 02       		.byte	0x2
  766 009e 3C02     		.2byte	0x23c
  767 00a0 A4000000 		.4byte	0xa4
@@ -1371,14 +1371,14 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  777 00ba 02       		.uleb128 0x2
  778 00bb 04       		.byte	0x4
  779 00bc 07       		.byte	0x7
- 780 00bd 1E020000 		.4byte	.LASF16
+ 780 00bd F1010000 		.4byte	.LASF16
  781 00c1 06       		.uleb128 0x6
  782 00c2 C9000000 		.4byte	.LASF17
  783 00c6 01       		.byte	0x1
  784 00c7 2B       		.byte	0x2b
  785 00c8 00000000 		.4byte	.LFB0
  786 00cc 98000000 		.4byte	.LFE0-.LFB0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 24
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 24
 
 
  787 00d0 01       		.uleb128 0x1
@@ -1400,7 +1400,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  803 00f2 01       		.uleb128 0x1
  804 00f3 9C       		.byte	0x9c
  805 00f4 07       		.uleb128 0x7
- 806 00f5 DB020000 		.4byte	.LASF20
+ 806 00f5 E9020000 		.4byte	.LASF20
  807 00f9 01       		.byte	0x1
  808 00fa F7       		.byte	0xf7
  809 00fb 00000000 		.4byte	.LFB3
@@ -1408,7 +1408,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  811 0103 01       		.uleb128 0x1
  812 0104 9C       		.byte	0x9c
  813 0105 08       		.uleb128 0x8
- 814 0106 E2000000 		.4byte	.LASF24
+ 814 0106 DB000000 		.4byte	.LASF24
  815 010a 01       		.byte	0x1
  816 010b 1701     		.2byte	0x117
  817 010d 00000000 		.4byte	.LFB4
@@ -1417,7 +1417,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  820 0116 9C       		.byte	0x9c
  821 0117 2B010000 		.4byte	0x12b
  822 011b 09       		.uleb128 0x9
- 823 011c 35020000 		.4byte	.LASF26
+ 823 011c 08020000 		.4byte	.LASF26
  824 0120 01       		.byte	0x1
  825 0121 1701     		.2byte	0x117
  826 0123 6B000000 		.4byte	0x6b
@@ -1426,7 +1426,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  829 0129 77       		.sleb128 -9
  830 012a 00       		.byte	0
  831 012b 0A       		.uleb128 0xa
- 832 012c 27030000 		.4byte	.LASF21
+ 832 012c 35030000 		.4byte	.LASF21
  833 0130 01       		.byte	0x1
  834 0131 2E01     		.2byte	0x12e
  835 0133 00000000 		.4byte	.LFB5
@@ -1434,11 +1434,11 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  837 013b 01       		.uleb128 0x1
  838 013c 9C       		.byte	0x9c
  839 013d 0B       		.uleb128 0xb
- 840 013e 07030000 		.4byte	.LASF22
+ 840 013e 15030000 		.4byte	.LASF22
  841 0142 01       		.byte	0x1
  842 0143 4D01     		.2byte	0x14d
  843 0145 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 25
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 25
 
 
  844 0149 00000000 		.4byte	.LFB6
@@ -1464,7 +1464,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  864 017a 9C       		.byte	0x9c
  865 017b 8F010000 		.4byte	0x18f
  866 017f 09       		.uleb128 0x9
- 867 0180 6D010000 		.4byte	.LASF27
+ 867 0180 66010000 		.4byte	.LASF27
  868 0184 01       		.byte	0x1
  869 0185 7B01     		.2byte	0x17b
  870 0187 6B000000 		.4byte	0x6b
@@ -1473,7 +1473,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  873 018d 77       		.sleb128 -9
  874 018e 00       		.byte	0
  875 018f 0B       		.uleb128 0xb
- 876 0190 4F010000 		.4byte	.LASF28
+ 876 0190 48010000 		.4byte	.LASF28
  877 0194 01       		.byte	0x1
  878 0195 9501     		.2byte	0x195
  879 0197 77000000 		.4byte	0x77
@@ -1482,7 +1482,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  882 01a3 01       		.uleb128 0x1
  883 01a4 9C       		.byte	0x9c
  884 01a5 08       		.uleb128 0x8
- 885 01a6 C3010000 		.4byte	.LASF29
+ 885 01a6 96010000 		.4byte	.LASF29
  886 01aa 01       		.byte	0x1
  887 01ab AF01     		.2byte	0x1af
  888 01ad 00000000 		.4byte	.LFB10
@@ -1498,11 +1498,11 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  898 01c7 02       		.uleb128 0x2
  899 01c8 91       		.byte	0x91
  900 01c9 6E       		.sleb128 -18
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 26
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 26
 
 
  901 01ca 0C       		.uleb128 0xc
- 902 01cb 12020000 		.4byte	.LASF38
+ 902 01cb E5010000 		.4byte	.LASF38
  903 01cf 01       		.byte	0x1
  904 01d0 B201     		.2byte	0x1b2
  905 01d2 77000000 		.4byte	0x77
@@ -1520,7 +1520,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  917 01ee 01       		.uleb128 0x1
  918 01ef 9C       		.byte	0x9c
  919 01f0 08       		.uleb128 0x8
- 920 01f1 75010000 		.4byte	.LASF32
+ 920 01f1 6E010000 		.4byte	.LASF32
  921 01f5 01       		.byte	0x1
  922 01f6 E001     		.2byte	0x1e0
  923 01f8 00000000 		.4byte	.LFB12
@@ -1529,7 +1529,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  926 0201 9C       		.byte	0x9c
  927 0202 16020000 		.4byte	0x216
  928 0206 09       		.uleb128 0x9
- 929 0207 06010000 		.4byte	.LASF33
+ 929 0207 FF000000 		.4byte	.LASF33
  930 020b 01       		.byte	0x1
  931 020c E001     		.2byte	0x1e0
  932 020e 77000000 		.4byte	0x77
@@ -1538,7 +1538,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  935 0214 76       		.sleb128 -10
  936 0215 00       		.byte	0
  937 0216 0B       		.uleb128 0xb
- 938 0217 36010000 		.4byte	.LASF34
+ 938 0217 2F010000 		.4byte	.LASF34
  939 021b 01       		.byte	0x1
  940 021c FC01     		.2byte	0x1fc
  941 021e 77000000 		.4byte	0x77
@@ -1547,7 +1547,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  944 022a 01       		.uleb128 0x1
  945 022b 9C       		.byte	0x9c
  946 022c 0D       		.uleb128 0xd
- 947 022d 0E010000 		.4byte	.LASF39
+ 947 022d 07010000 		.4byte	.LASF39
  948 0231 01       		.byte	0x1
  949 0232 1A       		.byte	0x1a
  950 0233 6B000000 		.4byte	0x6b
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  955              		.section	.debug_abbrev,"",%progbits
  956              	.Ldebug_abbrev0:
  957 0000 01       		.uleb128 0x1
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 27
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 27
 
 
  958 0001 11       		.uleb128 0x11
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1012 0037 35       		.uleb128 0x35
  1013 0038 00       		.byte	0
  1014 0039 49       		.uleb128 0x49
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 28
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 28
 
 
  1015 003a 13       		.uleb128 0x13
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1069 0072 03       		.uleb128 0x3
  1070 0073 0E       		.uleb128 0xe
  1071 0074 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 29
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 29
 
 
  1072 0075 0B       		.uleb128 0xb
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1126 00ad 00       		.byte	0
  1127 00ae 0B       		.uleb128 0xb
  1128 00af 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 30
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 30
 
 
  1129 00b0 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1183 00e7 00       		.byte	0
  1184 00e8 00       		.byte	0
  1185              		.section	.debug_aranges,"",%progbits
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 31
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 31
 
 
  1186 0000 84000000 		.4byte	0x84
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1240 003c 18000000 		.4byte	.LFE7
  1241 0040 00000000 		.4byte	.LFB8
  1242 0044 20000000 		.4byte	.LFE8
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 32
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 32
 
 
  1243 0048 00000000 		.4byte	.LFB9
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1271      6F6400
  1272              	.LASF36:
  1273 0090 47656E65 		.ascii	"Generated_Source\\PSoC5\\Sample_Timer.c\000"
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 33
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 33
 
 
  1273      72617465 
@@ -1937,162 +1937,169 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 1
  1277      696D6572 
  1277      5F496E69 
  1277      7400
- 1278              	.LASF12:
- 1279 00db 646F7562 		.ascii	"double\000"
- 1279      6C6500
- 1280              	.LASF24:
- 1281 00e2 53616D70 		.ascii	"Sample_Timer_SetInterruptMode\000"
- 1281      6C655F54 
- 1281      696D6572 
- 1281      5F536574 
- 1281      496E7465 
- 1282              	.LASF11:
- 1283 0100 666C6F61 		.ascii	"float\000"
- 1283      7400
- 1284              	.LASF33:
- 1285 0106 636F756E 		.ascii	"counter\000"
- 1285      74657200 
- 1286              	.LASF39:
- 1287 010e 53616D70 		.ascii	"Sample_Timer_initVar\000"
- 1287      6C655F54 
- 1287      696D6572 
- 1287      5F696E69 
- 1287      74566172 
- 1288              	.LASF1:
- 1289 0123 756E7369 		.ascii	"unsigned char\000"
- 1289      676E6564 
- 1289      20636861 
- 1289      7200
- 1290              	.LASF14:
- 1291 0131 72656738 		.ascii	"reg8\000"
- 1291      00
- 1292              	.LASF34:
- 1293 0136 53616D70 		.ascii	"Sample_Timer_ReadCounter\000"
+ 1278              	.LASF24:
+ 1279 00db 53616D70 		.ascii	"Sample_Timer_SetInterruptMode\000"
+ 1279      6C655F54 
+ 1279      696D6572 
+ 1279      5F536574 
+ 1279      496E7465 
+ 1280              	.LASF11:
+ 1281 00f9 666C6F61 		.ascii	"float\000"
+ 1281      7400
+ 1282              	.LASF33:
+ 1283 00ff 636F756E 		.ascii	"counter\000"
+ 1283      74657200 
+ 1284              	.LASF39:
+ 1285 0107 53616D70 		.ascii	"Sample_Timer_initVar\000"
+ 1285      6C655F54 
+ 1285      696D6572 
+ 1285      5F696E69 
+ 1285      74566172 
+ 1286              	.LASF1:
+ 1287 011c 756E7369 		.ascii	"unsigned char\000"
+ 1287      676E6564 
+ 1287      20636861 
+ 1287      7200
+ 1288              	.LASF14:
+ 1289 012a 72656738 		.ascii	"reg8\000"
+ 1289      00
+ 1290              	.LASF34:
+ 1291 012f 53616D70 		.ascii	"Sample_Timer_ReadCounter\000"
+ 1291      6C655F54 
+ 1291      696D6572 
+ 1291      5F526561 
+ 1291      64436F75 
+ 1292              	.LASF28:
+ 1293 0148 53616D70 		.ascii	"Sample_Timer_ReadPeriod\000"
  1293      6C655F54 
  1293      696D6572 
  1293      5F526561 
- 1293      64436F75 
- 1294              	.LASF28:
- 1295 014f 53616D70 		.ascii	"Sample_Timer_ReadPeriod\000"
- 1295      6C655F54 
- 1295      696D6572 
- 1295      5F526561 
- 1295      64506572 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 34
+ 1293      64506572 
+ 1294              	.LASF9:
+ 1295 0160 75696E74 		.ascii	"uint8\000"
+ 1295      3800
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 34
 
 
- 1296              	.LASF9:
- 1297 0167 75696E74 		.ascii	"uint8\000"
- 1297      3800
- 1298              	.LASF27:
- 1299 016d 636F6E74 		.ascii	"control\000"
- 1299      726F6C00 
- 1300              	.LASF32:
- 1301 0175 53616D70 		.ascii	"Sample_Timer_WriteCounter\000"
- 1301      6C655F54 
- 1301      696D6572 
- 1301      5F577269 
- 1301      7465436F 
- 1302              	.LASF37:
- 1303 018f 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\OVac.cydsn\000"
- 1303      73657273 
- 1303      5C6A7767 
- 1303      75747465 
- 1303      725C446F 
- 1304              	.LASF10:
- 1305 01bc 75696E74 		.ascii	"uint16\000"
- 1305      313600
- 1306              	.LASF29:
- 1307 01c3 53616D70 		.ascii	"Sample_Timer_WritePeriod\000"
- 1307      6C655F54 
- 1307      696D6572 
- 1307      5F577269 
- 1307      74655065 
- 1308              	.LASF5:
- 1309 01dc 6C6F6E67 		.ascii	"long unsigned int\000"
- 1309      20756E73 
- 1309      69676E65 
- 1309      6420696E 
- 1309      7400
- 1310              	.LASF8:
- 1311 01ee 756E7369 		.ascii	"unsigned int\000"
- 1311      676E6564 
- 1311      20696E74 
- 1311      00
- 1312              	.LASF7:
- 1313 01fb 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1313      206C6F6E 
- 1313      6720756E 
- 1313      7369676E 
- 1313      65642069 
- 1314              	.LASF38:
- 1315 0212 70657269 		.ascii	"period_temp\000"
- 1315      6F645F74 
- 1315      656D7000 
- 1316              	.LASF16:
- 1317 021e 73697A65 		.ascii	"sizetype\000"
- 1317      74797065 
- 1317      00
- 1318              	.LASF6:
- 1319 0227 6C6F6E67 		.ascii	"long long int\000"
- 1319      206C6F6E 
- 1319      6720696E 
- 1319      7400
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccTijC66.s 			page 35
+ 1296              	.LASF27:
+ 1297 0166 636F6E74 		.ascii	"control\000"
+ 1297      726F6C00 
+ 1298              	.LASF32:
+ 1299 016e 53616D70 		.ascii	"Sample_Timer_WriteCounter\000"
+ 1299      6C655F54 
+ 1299      696D6572 
+ 1299      5F577269 
+ 1299      7465436F 
+ 1300              	.LASF12:
+ 1301 0188 646F7562 		.ascii	"double\000"
+ 1301      6C6500
+ 1302              	.LASF10:
+ 1303 018f 75696E74 		.ascii	"uint16\000"
+ 1303      313600
+ 1304              	.LASF29:
+ 1305 0196 53616D70 		.ascii	"Sample_Timer_WritePeriod\000"
+ 1305      6C655F54 
+ 1305      696D6572 
+ 1305      5F577269 
+ 1305      74655065 
+ 1306              	.LASF5:
+ 1307 01af 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1307      20756E73 
+ 1307      69676E65 
+ 1307      6420696E 
+ 1307      7400
+ 1308              	.LASF8:
+ 1309 01c1 756E7369 		.ascii	"unsigned int\000"
+ 1309      676E6564 
+ 1309      20696E74 
+ 1309      00
+ 1310              	.LASF7:
+ 1311 01ce 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1311      206C6F6E 
+ 1311      6720756E 
+ 1311      7369676E 
+ 1311      65642069 
+ 1312              	.LASF38:
+ 1313 01e5 70657269 		.ascii	"period_temp\000"
+ 1313      6F645F74 
+ 1313      656D7000 
+ 1314              	.LASF16:
+ 1315 01f1 73697A65 		.ascii	"sizetype\000"
+ 1315      74797065 
+ 1315      00
+ 1316              	.LASF6:
+ 1317 01fa 6C6F6E67 		.ascii	"long long int\000"
+ 1317      206C6F6E 
+ 1317      6720696E 
+ 1317      7400
+ 1318              	.LASF26:
+ 1319 0208 696E7465 		.ascii	"interruptMode\000"
+ 1319      72727570 
+ 1319      744D6F64 
+ 1319      6500
+ 1320              	.LASF35:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 35
 
 
- 1320              	.LASF26:
- 1321 0235 696E7465 		.ascii	"interruptMode\000"
- 1321      72727570 
- 1321      744D6F64 
- 1321      6500
- 1322              	.LASF35:
- 1323 0243 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1323      4320342E 
- 1323      392E3320 
- 1323      32303135 
- 1323      30333033 
- 1324 0276 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1324      20726576 
- 1324      6973696F 
- 1324      6E203232 
- 1324      31323230 
- 1325 02a9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1325      66756E63 
- 1325      74696F6E 
- 1325      2D736563 
- 1325      74696F6E 
- 1326              	.LASF2:
- 1327 02d1 73686F72 		.ascii	"short int\000"
- 1327      7420696E 
- 1327      7400
- 1328              	.LASF20:
- 1329 02db 53616D70 		.ascii	"Sample_Timer_Stop\000"
- 1329      6C655F54 
- 1329      696D6572 
- 1329      5F53746F 
- 1329      7000
- 1330              	.LASF4:
- 1331 02ed 6C6F6E67 		.ascii	"long int\000"
- 1331      20696E74 
- 1331      00
- 1332              	.LASF13:
- 1333 02f6 63686172 		.ascii	"char\000"
- 1333      00
- 1334              	.LASF0:
- 1335 02fb 7369676E 		.ascii	"signed char\000"
- 1335      65642063 
- 1335      68617200 
- 1336              	.LASF22:
- 1337 0307 53616D70 		.ascii	"Sample_Timer_ReadStatusRegister\000"
- 1337      6C655F54 
- 1337      696D6572 
- 1337      5F526561 
- 1337      64537461 
- 1338              	.LASF21:
- 1339 0327 53616D70 		.ascii	"Sample_Timer_SoftwareCapture\000"
- 1339      6C655F54 
- 1339      696D6572 
- 1339      5F536F66 
- 1339      74776172 
- 1340              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1321 0216 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1321      4320342E 
+ 1321      392E3320 
+ 1321      32303135 
+ 1321      30333033 
+ 1322 0249 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1322      20726576 
+ 1322      6973696F 
+ 1322      6E203232 
+ 1322      31323230 
+ 1323 027c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1323      66756E63 
+ 1323      74696F6E 
+ 1323      2D736563 
+ 1323      74696F6E 
+ 1324              	.LASF2:
+ 1325 02a4 73686F72 		.ascii	"short int\000"
+ 1325      7420696E 
+ 1325      7400
+ 1326              	.LASF37:
+ 1327 02ae 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\Project_O-Va"
+ 1327      73657273 
+ 1327      5C6A7767 
+ 1327      75747465 
+ 1327      725C446F 
+ 1328 02dc 635C4F56 		.ascii	"c\\OVac.cydsn\000"
+ 1328      61632E63 
+ 1328      7964736E 
+ 1328      00
+ 1329              	.LASF20:
+ 1330 02e9 53616D70 		.ascii	"Sample_Timer_Stop\000"
+ 1330      6C655F54 
+ 1330      696D6572 
+ 1330      5F53746F 
+ 1330      7000
+ 1331              	.LASF4:
+ 1332 02fb 6C6F6E67 		.ascii	"long int\000"
+ 1332      20696E74 
+ 1332      00
+ 1333              	.LASF13:
+ 1334 0304 63686172 		.ascii	"char\000"
+ 1334      00
+ 1335              	.LASF0:
+ 1336 0309 7369676E 		.ascii	"signed char\000"
+ 1336      65642063 
+ 1336      68617200 
+ 1337              	.LASF22:
+ 1338 0315 53616D70 		.ascii	"Sample_Timer_ReadStatusRegister\000"
+ 1338      6C655F54 
+ 1338      696D6572 
+ 1338      5F526561 
+ 1338      64537461 
+ 1339              	.LASF21:
+ 1340 0335 53616D70 		.ascii	"Sample_Timer_SoftwareCapture\000"
+ 1340      6C655F54 
+ 1340      696D6572 
+ 1340      5F536F66 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccQQZYTV.s 			page 36
+
+
+ 1340      74776172 
+ 1341              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

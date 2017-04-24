@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
   24:Generated_Source\PSoC5/ADC_AMux.c **** * Function Name: ADC_AMux_Start
   25:Generated_Source\PSoC5/ADC_AMux.c **** ********************************************************************************
   26:Generated_Source\PSoC5/ADC_AMux.c **** * Summary:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 2
 
 
   27:Generated_Source\PSoC5/ADC_AMux.c **** *  Disconnect all channels.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
   49:Generated_Source\PSoC5/ADC_AMux.c **** 
   50:Generated_Source\PSoC5/ADC_AMux.c ****     ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
   62              		.loc 1 50 0 is_stmt 1
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 3
 
 
   63 0020 024B     		ldr	r3, .L4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
   97              		.cfi_def_cfa_offset 16
   98 0004 00AF     		add	r7, sp, #0
   99              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 4
 
 
  100 0006 0346     		mov	r3, r0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
   91:Generated_Source\PSoC5/ADC_AMux.c **** *  void
   92:Generated_Source\PSoC5/ADC_AMux.c **** *
   93:Generated_Source\PSoC5/ADC_AMux.c **** *******************************************************************************/
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 5
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 5
 
 
   94:Generated_Source\PSoC5/ADC_AMux.c **** void ADC_AMux_FastSelect(uint8 channel) 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  169              		.cfi_def_cfa_offset 8
  170 002c BD46     		mov	sp, r7
  171              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 6
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 6
 
 
  172              		@ sp needed
@@ -322,46 +322,46 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  190 000b 01       		.uleb128 0x1
  191 000c 08000000 		.4byte	.LASF18
  192 0010 01       		.byte	0x1
- 193 0011 AC010000 		.4byte	.LASF19
- 194 0015 E5000000 		.4byte	.LASF20
+ 193 0011 7F010000 		.4byte	.LASF19
+ 194 0015 A1010000 		.4byte	.LASF20
  195 0019 00000000 		.4byte	.Ldebug_ranges0+0
  196 001d 00000000 		.4byte	0
  197 0021 00000000 		.4byte	.Ldebug_line0
  198 0025 02       		.uleb128 0x2
  199 0026 01       		.byte	0x1
  200 0027 06       		.byte	0x6
- 201 0028 A0010000 		.4byte	.LASF0
+ 201 0028 73010000 		.4byte	.LASF0
  202 002c 02       		.uleb128 0x2
  203 002d 01       		.byte	0x1
  204 002e 08       		.byte	0x8
- 205 002f B2000000 		.4byte	.LASF1
+ 205 002f C0000000 		.4byte	.LASF1
  206 0033 02       		.uleb128 0x2
  207 0034 02       		.byte	0x2
  208 0035 05       		.byte	0x5
- 209 0036 77010000 		.4byte	.LASF2
+ 209 0036 4A010000 		.4byte	.LASF2
  210 003a 02       		.uleb128 0x2
  211 003b 02       		.byte	0x2
  212 003c 07       		.byte	0x7
- 213 003d D2000000 		.4byte	.LASF3
+ 213 003d E0000000 		.4byte	.LASF3
  214 0041 02       		.uleb128 0x2
  215 0042 04       		.byte	0x4
  216 0043 05       		.byte	0x5
- 217 0044 87010000 		.4byte	.LASF4
+ 217 0044 5A010000 		.4byte	.LASF4
  218 0048 02       		.uleb128 0x2
  219 0049 04       		.byte	0x4
  220 004a 07       		.byte	0x7
- 221 004b C0000000 		.4byte	.LASF5
+ 221 004b CE000000 		.4byte	.LASF5
  222 004f 02       		.uleb128 0x2
  223 0050 08       		.byte	0x8
  224 0051 05       		.byte	0x5
- 225 0052 64010000 		.4byte	.LASF6
+ 225 0052 37010000 		.4byte	.LASF6
  226 0056 02       		.uleb128 0x2
  227 0057 08       		.byte	0x8
  228 0058 07       		.byte	0x7
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 7
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 7
 
 
- 229 0059 48010000 		.4byte	.LASF7
+ 229 0059 1B010000 		.4byte	.LASF7
  230 005d 03       		.uleb128 0x3
  231 005e 04       		.byte	0x4
  232 005f 05       		.byte	0x5
@@ -369,24 +369,24 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  234 0064 02       		.uleb128 0x2
  235 0065 04       		.byte	0x4
  236 0066 07       		.byte	0x7
- 237 0067 3B010000 		.4byte	.LASF8
+ 237 0067 0E010000 		.4byte	.LASF8
  238 006b 04       		.uleb128 0x4
- 239 006c 81010000 		.4byte	.LASF21
+ 239 006c 54010000 		.4byte	.LASF21
  240 0070 02       		.byte	0x2
  241 0071 9201     		.2byte	0x192
  242 0073 2C000000 		.4byte	0x2c
  243 0077 02       		.uleb128 0x2
  244 0078 04       		.byte	0x4
  245 0079 04       		.byte	0x4
- 246 007a AC000000 		.4byte	.LASF9
+ 246 007a BA000000 		.4byte	.LASF9
  247 007e 02       		.uleb128 0x2
  248 007f 08       		.byte	0x8
  249 0080 04       		.byte	0x4
- 250 0081 A5000000 		.4byte	.LASF10
+ 250 0081 F3000000 		.4byte	.LASF10
  251 0085 02       		.uleb128 0x2
  252 0086 01       		.byte	0x1
  253 0087 08       		.byte	0x8
- 254 0088 72010000 		.4byte	.LASF11
+ 254 0088 45010000 		.4byte	.LASF11
  255 008c 05       		.uleb128 0x5
  256 008d 96000000 		.4byte	.LASF12
  257 0091 01       		.byte	0x1
@@ -397,7 +397,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  262 009c 9C       		.byte	0x9c
  263 009d B0000000 		.4byte	0xb0
  264 00a1 06       		.uleb128 0x6
- 265 00a2 5F010000 		.4byte	.LASF16
+ 265 00a2 32010000 		.4byte	.LASF16
  266 00a6 01       		.byte	0x1
  267 00a7 26       		.byte	0x26
  268 00a8 6B000000 		.4byte	0x6b
@@ -406,7 +406,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  271 00ae 77       		.sleb128 -9
  272 00af 00       		.byte	0
  273 00b0 05       		.uleb128 0x5
- 274 00b1 90010000 		.4byte	.LASF13
+ 274 00b1 63010000 		.4byte	.LASF13
  275 00b5 01       		.byte	0x1
  276 00b6 45       		.byte	0x45
  277 00b7 00000000 		.4byte	.LFB1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  283 00c6 00000000 		.4byte	.LASF15
  284 00ca 01       		.byte	0x1
  285 00cb 45       		.byte	0x45
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 8
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 8
 
 
  286 00cc 6B000000 		.4byte	0x6b
@@ -427,7 +427,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  289 00d2 77       		.sleb128 -9
  290 00d3 00       		.byte	0
  291 00d4 05       		.uleb128 0x5
- 292 00d5 12010000 		.4byte	.LASF14
+ 292 00d5 FA000000 		.4byte	.LASF14
  293 00d9 01       		.byte	0x1
  294 00da 5E       		.byte	0x5e
  295 00db 00000000 		.4byte	.LFB2
@@ -445,7 +445,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  307 00f6 77       		.sleb128 -9
  308 00f7 00       		.byte	0
  309 00f8 06       		.uleb128 0x6
- 310 00f9 26010000 		.4byte	.LASF17
+ 310 00f9 A5000000 		.4byte	.LASF17
  311 00fd 01       		.byte	0x1
  312 00fe 14       		.byte	0x14
  313 00ff 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  340 0014 24       		.uleb128 0x24
  341 0015 00       		.byte	0
  342 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 9
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 9
 
 
  343 0017 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  397 004e 00       		.byte	0
  398 004f 00       		.byte	0
  399 0050 06       		.uleb128 0x6
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 10
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 10
 
 
  400 0051 34       		.uleb128 0x34
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  454 0018 00000000 		.4byte	0
  455 001c 00000000 		.4byte	0
  456              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 11
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 11
 
 
  457              	.Ldebug_line0:
@@ -631,99 +631,103 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 1
  466      414D7578 
  466      5F537461 
  466      727400
- 467              	.LASF10:
- 468 00a5 646F7562 		.ascii	"double\000"
- 468      6C6500
+ 467              	.LASF17:
+ 468 00a5 4144435F 		.ascii	"ADC_AMux_lastChannel\000"
+ 468      414D7578 
+ 468      5F6C6173 
+ 468      74436861 
+ 468      6E6E656C 
  469              	.LASF9:
- 470 00ac 666C6F61 		.ascii	"float\000"
+ 470 00ba 666C6F61 		.ascii	"float\000"
  470      7400
  471              	.LASF1:
- 472 00b2 756E7369 		.ascii	"unsigned char\000"
+ 472 00c0 756E7369 		.ascii	"unsigned char\000"
  472      676E6564 
  472      20636861 
  472      7200
  473              	.LASF5:
- 474 00c0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 474 00ce 6C6F6E67 		.ascii	"long unsigned int\000"
  474      20756E73 
  474      69676E65 
  474      6420696E 
  474      7400
  475              	.LASF3:
- 476 00d2 73686F72 		.ascii	"short unsigned int\000"
+ 476 00e0 73686F72 		.ascii	"short unsigned int\000"
  476      7420756E 
  476      7369676E 
  476      65642069 
  476      6E7400
- 477              	.LASF20:
- 478 00e5 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\OVac.cydsn\000"
- 478      73657273 
- 478      5C6A7767 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 12
+ 477              	.LASF10:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 12
 
 
- 478      75747465 
- 478      725C446F 
+ 478 00f3 646F7562 		.ascii	"double\000"
+ 478      6C6500
  479              	.LASF14:
- 480 0112 4144435F 		.ascii	"ADC_AMux_FastSelect\000"
+ 480 00fa 4144435F 		.ascii	"ADC_AMux_FastSelect\000"
  480      414D7578 
  480      5F466173 
  480      7453656C 
  480      65637400 
- 481              	.LASF17:
- 482 0126 4144435F 		.ascii	"ADC_AMux_lastChannel\000"
- 482      414D7578 
- 482      5F6C6173 
- 482      74436861 
- 482      6E6E656C 
- 483              	.LASF8:
- 484 013b 756E7369 		.ascii	"unsigned int\000"
- 484      676E6564 
- 484      20696E74 
- 484      00
- 485              	.LASF7:
- 486 0148 6C6F6E67 		.ascii	"long long unsigned int\000"
- 486      206C6F6E 
- 486      6720756E 
- 486      7369676E 
- 486      65642069 
- 487              	.LASF16:
- 488 015f 6368616E 		.ascii	"chan\000"
- 488      00
- 489              	.LASF6:
- 490 0164 6C6F6E67 		.ascii	"long long int\000"
- 490      206C6F6E 
- 490      6720696E 
- 490      7400
- 491              	.LASF11:
- 492 0172 63686172 		.ascii	"char\000"
- 492      00
- 493              	.LASF2:
- 494 0177 73686F72 		.ascii	"short int\000"
- 494      7420696E 
- 494      7400
- 495              	.LASF21:
- 496 0181 75696E74 		.ascii	"uint8\000"
- 496      3800
- 497              	.LASF4:
- 498 0187 6C6F6E67 		.ascii	"long int\000"
- 498      20696E74 
- 498      00
- 499              	.LASF13:
- 500 0190 4144435F 		.ascii	"ADC_AMux_Select\000"
- 500      414D7578 
- 500      5F53656C 
- 500      65637400 
- 501              	.LASF0:
- 502 01a0 7369676E 		.ascii	"signed char\000"
- 502      65642063 
- 502      68617200 
- 503              	.LASF19:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccvHogUl.s 			page 13
+ 481              	.LASF8:
+ 482 010e 756E7369 		.ascii	"unsigned int\000"
+ 482      676E6564 
+ 482      20696E74 
+ 482      00
+ 483              	.LASF7:
+ 484 011b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 484      206C6F6E 
+ 484      6720756E 
+ 484      7369676E 
+ 484      65642069 
+ 485              	.LASF16:
+ 486 0132 6368616E 		.ascii	"chan\000"
+ 486      00
+ 487              	.LASF6:
+ 488 0137 6C6F6E67 		.ascii	"long long int\000"
+ 488      206C6F6E 
+ 488      6720696E 
+ 488      7400
+ 489              	.LASF11:
+ 490 0145 63686172 		.ascii	"char\000"
+ 490      00
+ 491              	.LASF2:
+ 492 014a 73686F72 		.ascii	"short int\000"
+ 492      7420696E 
+ 492      7400
+ 493              	.LASF21:
+ 494 0154 75696E74 		.ascii	"uint8\000"
+ 494      3800
+ 495              	.LASF4:
+ 496 015a 6C6F6E67 		.ascii	"long int\000"
+ 496      20696E74 
+ 496      00
+ 497              	.LASF13:
+ 498 0163 4144435F 		.ascii	"ADC_AMux_Select\000"
+ 498      414D7578 
+ 498      5F53656C 
+ 498      65637400 
+ 499              	.LASF0:
+ 500 0173 7369676E 		.ascii	"signed char\000"
+ 500      65642063 
+ 500      68617200 
+ 501              	.LASF19:
+ 502 017f 47656E65 		.ascii	"Generated_Source\\PSoC5\\ADC_AMux.c\000"
+ 502      72617465 
+ 502      645F536F 
+ 502      75726365 
+ 502      5C50536F 
+ 503              	.LASF20:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccEVGTxe.s 			page 13
 
 
- 504 01ac 47656E65 		.ascii	"Generated_Source\\PSoC5\\ADC_AMux.c\000"
- 504      72617465 
- 504      645F536F 
- 504      75726365 
- 504      5C50536F 
- 505              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 504 01a1 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\Project_O-Va"
+ 504      73657273 
+ 504      5C6A7767 
+ 504      75747465 
+ 504      725C446F 
+ 505 01cf 635C4F56 		.ascii	"c\\OVac.cydsn\000"
+ 505      61632E63 
+ 505      7964736E 
+ 505      00
+ 506              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
   55              	collect_flag:
   56 000a 00       		.space	1
   57              		.global	wait_flag
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 2
 
 
   58              		.type	wait_flag, %object
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
    6:main.c        **** * Description:
    7:main.c        **** *   This is a source code for example project of ADC single ended mode.
    8:main.c        **** *
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 3
 
 
    9:main.c        **** *   Variable resistor(pot) is connected to +ve input of ADC using the I/O pin.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
   63:main.c        **** 
   64:main.c        **** long sum = 0;                               // Sum of accelerometer values. 
   65:main.c        **** int16_t average = 0;                        // Moving average variable.
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 4
 
 
   66:main.c        **** bool collect_flag = 0;                      // flag indicating when to record acceleration sample.
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  102:main.c        ****         collect_flag = 1;
  121              		.loc 1 102 0
  122 0010 074B     		ldr	r3, .L3+8
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 5
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 5
 
 
  123 0012 0122     		movs	r2, #1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  170 0006 1B78     		ldrb	r3, [r3]
  110:main.c        ****     if (STATE == WAIT_TO_LAUNCH){ 
  171              		.loc 1 110 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 6
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 6
 
 
  172 0008 0D4B     		ldr	r3, .L8+4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  219              	.LC1:
  220 0000 50536F43 		.ascii	"PSoC 5LP: O-Vac\000"
  220      20354C50 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 7
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 7
 
 
  220      3A204F2D 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  250      6F207772 
  250      69746500 
  251              		.align	2
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 8
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 8
 
 
  252              	.LC12:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  281      3A202564 
  281      2E253034 
  281      642C2025 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 9
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 9
 
 
  282 012f 00       		.align	2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  311              		.type	main, %function
  312              	main:
  313              	.LFB65:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 10
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 10
 
 
  118:main.c        **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  135:main.c        ****     Sample_ISR_StartEx(Sample_ISR_Handler);     //reference ISR function
  351              		.loc 1 135 0
  352 002c BB48     		ldr	r0, .L39+12
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 11
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 11
 
 
  353 002e FFF7FEFF 		bl	Sample_ISR_StartEx
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  159:main.c        ****     
  160:main.c        ****     /* Start the ADC conversion */
  161:main.c        ****     ADC_StartConvert();
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 12
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 12
 
 
  384              		.loc 1 161 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  422 00ba 02E0     		b	.L14
  423              	.L13:
  178:main.c        ****             else
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 13
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 13
 
 
  179:main.c        ****                 LCD_print("format Failed");
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  462 0108 2046     		mov	r0, r4
  463 010a 8D49     		ldr	r1, .L39+48
  464 010c 1A46     		mov	r2, r3
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 14
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 14
 
 
  465 010e FFF7FEFF 		bl	FS_Write
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  502 0154 1846     		mov	r0, r3
  503 0156 FFF7FEFF 		bl	LCD_print
  212:main.c        ****     #endif
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 15
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 15
 
 
  213:main.c        ****     
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  541 01ae 0246     		mov	r2, r0
  542 01b0 0B46     		mov	r3, r1
  543 01b2 1046     		mov	r0, r2
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 16
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 16
 
 
  544 01b4 1946     		mov	r1, r3
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  244:main.c        ****         /* State Machine */
  245:main.c        ****         switch (STATE){
  584              		.loc 1 245 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 17
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 17
 
 
  585 021c 534B     		ldr	r3, .L39+92
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  627 0278 3E4B     		ldr	r3, .L39+100
  628 027a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  629 027c 3C2B     		cmp	r3, #60
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 18
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 18
 
 
  630 027e 17D1     		bne	.L28
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  273:main.c        ****             case DESCENDING:
  274:main.c        ****     
  275:main.c        ****                 if(collect_flag == 1){
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 19
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 19
 
 
  669              		.loc 1 275 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  716 0310 8FC2F528 		.word	687194767
  717 0314 5C8F4A3F 		.word	1061850972
  718 0318 C8010000 		.word	.LC0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 20
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 20
 
 
  719 031c 00000000 		.word	Sample_ISR_Handler
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  291:main.c        ****                     
  292:main.c        ****                     if(average > BOT_THRESHOLD){
  765              		.loc 1 292 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 21
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 21
 
 
  766 03b4 AF4B     		ldr	r3, .L41
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  808 0406 0234     		adds	r4, r4, #2
  809 0408 130C     		lsrs	r3, r2, #16
  810 040a 2370     		strb	r3, [r4]
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 22
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 22
 
 
  305:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  853 0452 0020     		movs	r0, #0
  854 0454 FFF7FEFF 		bl	LED2_Write
  317:main.c        ****                                                             
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 23
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 23
 
 
  318:main.c        ****                         STATE = WAIT_TO_LAUNCH;                                //Switch to Waiting 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  894 0494 002B     		cmp	r3, #0
  895 0496 26D0     		beq	.L36
  896              	.LBB5:
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 24
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 24
 
 
  333:main.c        ****                        char sdbuf[60] = {};
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  940 04ec FFF7FEFF 		bl	CyDelay
  344:main.c        ****                     Solenoid_1_Write(1); //turn on solenoid 1
  941              		.loc 1 344 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 25
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 25
 
 
  942 04f0 0120     		movs	r0, #1
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  355:main.c        ****                     #endif
  356:main.c        ****                     CyDelay(7000u);
  986              		.loc 1 356 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 26
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 26
 
 
  987 054c 41F65830 		movw	r0, #7000
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1029 05a6 0246     		mov	r2, r0
  1030 05a8 3B46     		mov	r3, r7
  1031 05aa 2046     		mov	r0, r4
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 27
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 27
 
 
  1032 05ac 1946     		mov	r1, r3
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  387:main.c        ****                             sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
  1068              		.loc 1 387 0
  1069 05f4 3B46     		mov	r3, r7
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 28
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 28
 
 
  1070 05f6 304A     		ldr	r2, .L41+68
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1115 064e FFF7FEFF 		bl	sprintf
  397:main.c        ****                     fsfile = FS_FOpen(file, "w");
  1116              		.loc 1 397 0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 29
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 29
 
 
  1117 0652 1B48     		ldr	r0, .L41+76
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1144 067c E0000000 		.word	.LC16
  1145 0680 F0000000 		.word	.LC17
  1146 0684 00000000 		.word	fsfile
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 30
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 30
 
 
  1147 0688 00000000 		.word	id
@@ -1776,29 +1776,29 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1179 0006 00000000 		.4byte	.Ldebug_abbrev0
  1180 000a 04       		.byte	0x4
  1181 000b 01       		.uleb128 0x1
- 1182 000c AC000000 		.4byte	.LASF58
+ 1182 000c E7000000 		.4byte	.LASF58
  1183 0010 01       		.byte	0x1
- 1184 0011 78020000 		.4byte	.LASF59
- 1185 0015 08020000 		.4byte	.LASF60
+ 1184 0011 86020000 		.4byte	.LASF59
+ 1185 0015 0A000000 		.4byte	.LASF60
  1186 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1187 001d 00000000 		.4byte	0
  1188 0021 00000000 		.4byte	.Ldebug_line0
  1189 0025 02       		.uleb128 0x2
  1190 0026 01       		.byte	0x1
  1191 0027 06       		.byte	0x6
- 1192 0028 94010000 		.4byte	.LASF0
+ 1192 0028 CF010000 		.4byte	.LASF0
  1193 002c 03       		.uleb128 0x3
- 1194 002d 49010000 		.4byte	.LASF2
+ 1194 002d 84010000 		.4byte	.LASF2
  1195 0031 02       		.byte	0x2
  1196 0032 1D       		.byte	0x1d
  1197 0033 37000000 		.4byte	0x37
  1198 0037 02       		.uleb128 0x2
  1199 0038 01       		.byte	0x1
  1200 0039 08       		.byte	0x8
- 1201 003a 74010000 		.4byte	.LASF1
+ 1201 003a AF010000 		.4byte	.LASF1
  1202 003e 03       		.uleb128 0x3
- 1203 003f A7020000 		.4byte	.LASF3
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 31
+ 1203 003f B5020000 		.4byte	.LASF3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 31
 
 
  1204 0043 02       		.byte	0x2
@@ -1807,37 +1807,37 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1207 0049 02       		.uleb128 0x2
  1208 004a 02       		.byte	0x2
  1209 004b 05       		.byte	0x5
- 1210 004c 58000000 		.4byte	.LASF4
+ 1210 004c 93000000 		.4byte	.LASF4
  1211 0050 02       		.uleb128 0x2
  1212 0051 02       		.byte	0x2
  1213 0052 07       		.byte	0x7
- 1214 0053 DF010000 		.4byte	.LASF5
+ 1214 0053 1A020000 		.4byte	.LASF5
  1215 0057 03       		.uleb128 0x3
- 1216 0058 9D020000 		.4byte	.LASF6
+ 1216 0058 AB020000 		.4byte	.LASF6
  1217 005c 02       		.byte	0x2
  1218 005d 3F       		.byte	0x3f
  1219 005e 62000000 		.4byte	0x62
  1220 0062 02       		.uleb128 0x2
  1221 0063 04       		.byte	0x4
  1222 0064 05       		.byte	0x5
- 1223 0065 F7010000 		.4byte	.LASF7
+ 1223 0065 32020000 		.4byte	.LASF7
  1224 0069 03       		.uleb128 0x3
- 1225 006a 48000000 		.4byte	.LASF8
+ 1225 006a 83000000 		.4byte	.LASF8
  1226 006e 02       		.byte	0x2
  1227 006f 41       		.byte	0x41
  1228 0070 74000000 		.4byte	0x74
  1229 0074 02       		.uleb128 0x2
  1230 0075 04       		.byte	0x4
  1231 0076 07       		.byte	0x7
- 1232 0077 84020000 		.4byte	.LASF9
+ 1232 0077 92020000 		.4byte	.LASF9
  1233 007b 02       		.uleb128 0x2
  1234 007c 08       		.byte	0x8
  1235 007d 05       		.byte	0x5
- 1236 007e 95000000 		.4byte	.LASF10
+ 1236 007e D0000000 		.4byte	.LASF10
  1237 0082 02       		.uleb128 0x2
  1238 0083 08       		.byte	0x8
  1239 0084 07       		.byte	0x7
- 1240 0085 A0010000 		.4byte	.LASF11
+ 1240 0085 DB010000 		.4byte	.LASF11
  1241 0089 04       		.uleb128 0x4
  1242 008a 04       		.byte	0x4
  1243 008b 05       		.byte	0x5
@@ -1845,54 +1845,54 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1245 0090 02       		.uleb128 0x2
  1246 0091 04       		.byte	0x4
  1247 0092 07       		.byte	0x7
- 1248 0093 CA010000 		.4byte	.LASF12
+ 1248 0093 05020000 		.4byte	.LASF12
  1249 0097 03       		.uleb128 0x3
- 1250 0098 6A000000 		.4byte	.LASF13
+ 1250 0098 A5000000 		.4byte	.LASF13
  1251 009c 03       		.byte	0x3
  1252 009d 15       		.byte	0x15
  1253 009e 2C000000 		.4byte	0x2c
  1254 00a2 03       		.uleb128 0x3
- 1255 00a3 35020000 		.4byte	.LASF14
+ 1255 00a3 43020000 		.4byte	.LASF14
  1256 00a7 03       		.byte	0x3
  1257 00a8 20       		.byte	0x20
  1258 00a9 3E000000 		.4byte	0x3e
  1259 00ad 03       		.uleb128 0x3
- 1260 00ae 00020000 		.4byte	.LASF15
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 32
+ 1260 00ae 3B020000 		.4byte	.LASF15
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 32
 
 
  1261 00b2 03       		.byte	0x3
  1262 00b3 2C       		.byte	0x2c
  1263 00b4 57000000 		.4byte	0x57
  1264 00b8 03       		.uleb128 0x3
- 1265 00b9 B7010000 		.4byte	.LASF16
+ 1265 00b9 F2010000 		.4byte	.LASF16
  1266 00bd 03       		.byte	0x3
  1267 00be 2D       		.byte	0x2d
  1268 00bf 69000000 		.4byte	0x69
  1269 00c3 05       		.uleb128 0x5
- 1270 00c4 3D020000 		.4byte	.LASF17
+ 1270 00c4 4B020000 		.4byte	.LASF17
  1271 00c8 04       		.byte	0x4
  1272 00c9 9201     		.2byte	0x192
  1273 00cb 37000000 		.4byte	0x37
  1274 00cf 05       		.uleb128 0x5
- 1275 00d0 72000000 		.4byte	.LASF18
+ 1275 00d0 AD000000 		.4byte	.LASF18
  1276 00d4 04       		.byte	0x4
  1277 00d5 9601     		.2byte	0x196
  1278 00d7 49000000 		.4byte	0x49
  1279 00db 02       		.uleb128 0x2
  1280 00dc 04       		.byte	0x4
  1281 00dd 04       		.byte	0x4
- 1282 00de 8A000000 		.4byte	.LASF19
+ 1282 00de C5000000 		.4byte	.LASF19
  1283 00e2 02       		.uleb128 0x2
  1284 00e3 08       		.byte	0x8
  1285 00e4 04       		.byte	0x4
- 1286 00e5 96020000 		.4byte	.LASF20
+ 1286 00e5 A4020000 		.4byte	.LASF20
  1287 00e9 02       		.uleb128 0x2
  1288 00ea 01       		.byte	0x1
  1289 00eb 08       		.byte	0x8
- 1290 00ec F2010000 		.4byte	.LASF21
+ 1290 00ec 2D020000 		.4byte	.LASF21
  1291 00f0 05       		.uleb128 0x5
- 1292 00f1 7F020000 		.4byte	.LASF22
+ 1292 00f1 8D020000 		.4byte	.LASF22
  1293 00f5 04       		.byte	0x4
  1294 00f6 3C02     		.2byte	0x23c
  1295 00f8 FC000000 		.4byte	0xfc
@@ -1901,24 +1901,24 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1298 0101 02       		.uleb128 0x2
  1299 0102 04       		.byte	0x4
  1300 0103 07       		.byte	0x7
- 1301 0104 B1020000 		.4byte	.LASF23
+ 1301 0104 BF020000 		.4byte	.LASF23
  1302 0108 03       		.uleb128 0x3
- 1303 0109 82010000 		.4byte	.LASF24
+ 1303 0109 BD010000 		.4byte	.LASF24
  1304 010d 05       		.byte	0x5
  1305 010e 7E       		.byte	0x7e
  1306 010f 13010000 		.4byte	0x113
  1307 0113 07       		.uleb128 0x7
- 1308 0114 82010000 		.4byte	.LASF24
+ 1308 0114 BD010000 		.4byte	.LASF24
  1309 0118 08       		.uleb128 0x8
  1310 0119 04       		.byte	0x4
  1311 011a 08010000 		.4byte	0x108
  1312 011e 02       		.uleb128 0x2
  1313 011f 08       		.byte	0x8
  1314 0120 04       		.byte	0x4
- 1315 0121 59010000 		.4byte	.LASF25
+ 1315 0121 94010000 		.4byte	.LASF25
  1316 0125 09       		.uleb128 0x9
- 1317 0126 22000000 		.4byte	.LASF61
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 33
+ 1317 0126 5D000000 		.4byte	.LASF61
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 33
 
 
  1318 012a 01       		.byte	0x1
@@ -1926,29 +1926,29 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1320 012c 31       		.byte	0x31
  1321 012d 5C010000 		.4byte	0x15c
  1322 0131 0A       		.uleb128 0xa
- 1323 0132 15000000 		.4byte	.LASF26
+ 1323 0132 50000000 		.4byte	.LASF26
  1324 0136 00       		.sleb128 0
  1325 0137 0A       		.uleb128 0xa
- 1326 0138 65010000 		.4byte	.LASF27
+ 1326 0138 A0010000 		.4byte	.LASF27
  1327 013c 01       		.sleb128 1
  1328 013d 0A       		.uleb128 0xa
- 1329 013e 0A000000 		.4byte	.LASF28
+ 1329 013e 45000000 		.4byte	.LASF28
  1330 0142 02       		.sleb128 2
  1331 0143 0A       		.uleb128 0xa
- 1332 0144 3C000000 		.4byte	.LASF29
+ 1332 0144 77000000 		.4byte	.LASF29
  1333 0148 03       		.sleb128 3
  1334 0149 0A       		.uleb128 0xa
  1335 014a 00000000 		.4byte	.LASF30
  1336 014e 04       		.sleb128 4
  1337 014f 0A       		.uleb128 0xa
- 1338 0150 A3000000 		.4byte	.LASF31
+ 1338 0150 DE000000 		.4byte	.LASF31
  1339 0154 05       		.sleb128 5
  1340 0155 0A       		.uleb128 0xa
- 1341 0156 53010000 		.4byte	.LASF32
+ 1341 0156 8E010000 		.4byte	.LASF32
  1342 015a 06       		.sleb128 6
  1343 015b 00       		.byte	0
  1344 015c 0B       		.uleb128 0xb
- 1345 015d EB020000 		.4byte	.LASF33
+ 1345 015d F9020000 		.4byte	.LASF33
  1346 0161 01       		.byte	0x1
  1347 0162 62       		.byte	0x62
  1348 0163 00000000 		.4byte	.LFB63
@@ -1956,7 +1956,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1350 016b 01       		.uleb128 0x1
  1351 016c 9C       		.byte	0x9c
  1352 016d 0B       		.uleb128 0xb
- 1353 016e 62020000 		.4byte	.LASF34
+ 1353 016e 70020000 		.4byte	.LASF34
  1354 0172 01       		.byte	0x1
  1355 0173 6B       		.byte	0x6b
  1356 0174 00000000 		.4byte	.LFB64
@@ -1964,7 +1964,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1358 017c 01       		.uleb128 0x1
  1359 017d 9C       		.byte	0x9c
  1360 017e 0C       		.uleb128 0xc
- 1361 017f 43000000 		.4byte	.LASF62
+ 1361 017f 7E000000 		.4byte	.LASF62
  1362 0183 01       		.byte	0x1
  1363 0184 77       		.byte	0x77
  1364 0185 89000000 		.4byte	0x89
@@ -1974,11 +1974,11 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1368 0192 9C       		.byte	0x9c
  1369 0193 A3020000 		.4byte	0x2a3
  1370 0197 0D       		.uleb128 0xd
- 1371 0198 C0020000 		.4byte	.LASF35
+ 1371 0198 CE020000 		.4byte	.LASF35
  1372 019c 01       		.byte	0x1
  1373 019d 7A       		.byte	0x7a
  1374 019e DB000000 		.4byte	0xdb
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 34
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 34
 
 
  1375 01a2 02       		.uleb128 0x2
@@ -1993,7 +1993,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1384 01b1 91       		.byte	0x91
  1385 01b2 A47F     		.sleb128 -92
  1386 01b4 0D       		.uleb128 0xd
- 1387 01b5 49020000 		.4byte	.LASF36
+ 1387 01b5 57020000 		.4byte	.LASF36
  1388 01b9 01       		.byte	0x1
  1389 01ba 7D       		.byte	0x7d
  1390 01bb B3020000 		.4byte	0x2b3
@@ -2024,7 +2024,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1415 01e8 7E       		.byte	0x7e
  1416 01e9 A2000000 		.4byte	0xa2
  1417 01ed 0D       		.uleb128 0xd
- 1418 01ee 52020000 		.4byte	.LASF37
+ 1418 01ee 60020000 		.4byte	.LASF37
  1419 01f2 01       		.byte	0x1
  1420 01f3 80       		.byte	0x80
  1421 01f4 A2000000 		.4byte	0xa2
@@ -2038,12 +2038,12 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1429 0202 89000000 		.4byte	0x89
  1430 0206 02       		.uleb128 0x2
  1431 0207 91       		.byte	0x91
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 35
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 35
 
 
  1432 0208 68       		.sleb128 -24
  1433 0209 0D       		.uleb128 0xd
- 1434 020a 81000000 		.4byte	.LASF38
+ 1434 020a BC000000 		.4byte	.LASF38
  1435 020e 01       		.byte	0x1
  1436 020f D9       		.byte	0xd9
  1437 0210 89000000 		.4byte	0x89
@@ -2051,7 +2051,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1439 0215 91       		.byte	0x91
  1440 0216 64       		.sleb128 -28
  1441 0217 0D       		.uleb128 0xd
- 1442 0218 3A010000 		.4byte	.LASF39
+ 1442 0218 75010000 		.4byte	.LASF39
  1443 021c 01       		.byte	0x1
  1444 021d DA       		.byte	0xda
  1445 021e DB000000 		.4byte	0xdb
@@ -2059,7 +2059,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1447 0223 91       		.byte	0x91
  1448 0224 5C       		.sleb128 -36
  1449 0225 0D       		.uleb128 0xd
- 1450 0226 90000000 		.4byte	.LASF40
+ 1450 0226 CB000000 		.4byte	.LASF40
  1451 022a 01       		.byte	0x1
  1452 022b DA       		.byte	0xda
  1453 022c DB000000 		.4byte	0xdb
@@ -2071,7 +2071,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1459 0238 86000000 		.4byte	.LBE2-.LBB2
  1460 023c 50020000 		.4byte	0x250
  1461 0240 0D       		.uleb128 0xd
- 1462 0241 78000000 		.4byte	.LASF41
+ 1462 0241 B3000000 		.4byte	.LASF41
  1463 0245 01       		.byte	0x1
  1464 0246 E1       		.byte	0xe1
  1465 0247 A3020000 		.4byte	0x2a3
@@ -2083,7 +2083,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1471 0251 44020000 		.4byte	.LBB3
  1472 0255 2E040000 		.4byte	.LBE3-.LBB3
  1473 0259 12       		.uleb128 0x12
- 1474 025a 29000000 		.4byte	.LASF42
+ 1474 025a 64000000 		.4byte	.LASF42
  1475 025e 01       		.byte	0x1
  1476 025f 5E01     		.2byte	0x15e
  1477 0261 C3020000 		.4byte	0x2c3
@@ -2095,10 +2095,10 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1483 026e 7A000000 		.4byte	.LBE4-.LBB4
  1484 0272 87020000 		.4byte	0x287
  1485 0276 12       		.uleb128 0x12
- 1486 0277 29000000 		.4byte	.LASF42
+ 1486 0277 64000000 		.4byte	.LASF42
  1487 027b 01       		.byte	0x1
  1488 027c 2E01     		.2byte	0x12e
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 36
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 36
 
 
  1489 027e C3020000 		.4byte	0x2c3
@@ -2110,7 +2110,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1495 0288 98040000 		.4byte	.LBB5
  1496 028c 4C000000 		.4byte	.LBE5-.LBB5
  1497 0290 12       		.uleb128 0x12
- 1498 0291 29000000 		.4byte	.LASF42
+ 1498 0291 64000000 		.4byte	.LASF42
  1499 0295 01       		.byte	0x1
  1500 0296 4D01     		.2byte	0x14d
  1501 0298 C3020000 		.4byte	0x2c3
@@ -2142,14 +2142,14 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1527 02d1 3B       		.byte	0x3b
  1528 02d2 00       		.byte	0
  1529 02d3 15       		.uleb128 0x15
- 1530 02d4 D4020000 		.4byte	.LASF43
+ 1530 02d4 E2020000 		.4byte	.LASF43
  1531 02d8 06       		.byte	0x6
  1532 02d9 9606     		.2byte	0x696
  1533 02db DF020000 		.4byte	0x2df
  1534 02df 06       		.uleb128 0x6
  1535 02e0 AD000000 		.4byte	0xad
  1536 02e4 16       		.uleb128 0x16
- 1537 02e5 34000000 		.4byte	.LASF44
+ 1537 02e5 6F000000 		.4byte	.LASF44
  1538 02e9 07       		.byte	0x7
  1539 02ea 9101     		.2byte	0x191
  1540 02ec 97000000 		.4byte	0x97
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1543 02f2 00000000 		.4byte	devAddr
  1544 02f6 13       		.uleb128 0x13
  1545 02f7 97000000 		.4byte	0x97
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 37
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 37
 
 
  1546 02fb 06030000 		.4byte	0x306
@@ -2167,7 +2167,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1549 0304 15       		.byte	0x15
  1550 0305 00       		.byte	0
  1551 0306 16       		.uleb128 0x16
- 1552 0307 5B020000 		.4byte	.LASF45
+ 1552 0307 69020000 		.4byte	.LASF45
  1553 030b 07       		.byte	0x7
  1554 030c 9201     		.2byte	0x192
  1555 030e F6020000 		.4byte	0x2f6
@@ -2175,7 +2175,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1557 0313 03       		.byte	0x3
  1558 0314 00000000 		.4byte	buffer
  1559 0318 17       		.uleb128 0x17
- 1560 0319 2F000000 		.4byte	.LASF46
+ 1560 0319 6A000000 		.4byte	.LASF46
  1561 031d 01       		.byte	0x1
  1562 031e 3C       		.byte	0x3c
  1563 031f B8000000 		.4byte	0xb8
@@ -2191,7 +2191,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1573 0334 03       		.byte	0x3
  1574 0335 00000000 		.4byte	id
  1575 0339 17       		.uleb128 0x17
- 1576 033a C0010000 		.4byte	.LASF47
+ 1576 033a FB010000 		.4byte	.LASF47
  1577 033e 01       		.byte	0x1
  1578 033f 3E       		.byte	0x3e
  1579 0340 62000000 		.4byte	0x62
@@ -2207,7 +2207,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1589 0356 03       		.byte	0x3
  1590 0357 00000000 		.4byte	sum
  1591 035b 17       		.uleb128 0x17
- 1592 035c 62000000 		.4byte	.LASF48
+ 1592 035c 9D000000 		.4byte	.LASF48
  1593 0360 01       		.byte	0x1
  1594 0361 41       		.byte	0x41
  1595 0362 A2000000 		.4byte	0xa2
@@ -2215,10 +2215,10 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1597 0367 03       		.byte	0x3
  1598 0368 00000000 		.4byte	average
  1599 036c 17       		.uleb128 0x17
- 1600 036d C7020000 		.4byte	.LASF49
+ 1600 036d D5020000 		.4byte	.LASF49
  1601 0371 01       		.byte	0x1
  1602 0372 42       		.byte	0x42
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 38
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 38
 
 
  1603 0373 7D030000 		.4byte	0x37d
@@ -2228,9 +2228,9 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1607 037d 02       		.uleb128 0x2
  1608 037e 01       		.byte	0x1
  1609 037f 02       		.byte	0x2
- 1610 0380 43020000 		.4byte	.LASF50
+ 1610 0380 51020000 		.4byte	.LASF50
  1611 0384 17       		.uleb128 0x17
- 1612 0385 E1020000 		.4byte	.LASF51
+ 1612 0385 EF020000 		.4byte	.LASF51
  1613 0389 01       		.byte	0x1
  1614 038a 43       		.byte	0x43
  1615 038b 7D030000 		.4byte	0x37d
@@ -2238,7 +2238,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1617 0390 03       		.byte	0x3
  1618 0391 00000000 		.4byte	wait_flag
  1619 0395 17       		.uleb128 0x17
- 1620 0396 BA020000 		.4byte	.LASF52
+ 1620 0396 C8020000 		.4byte	.LASF52
  1621 039a 01       		.byte	0x1
  1622 039b 45       		.byte	0x45
  1623 039c 25010000 		.4byte	0x125
@@ -2246,7 +2246,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1625 03a1 03       		.byte	0x3
  1626 03a2 00000000 		.4byte	STATE
  1627 03a6 17       		.uleb128 0x17
- 1628 03a7 D7010000 		.4byte	.LASF53
+ 1628 03a7 12020000 		.4byte	.LASF53
  1629 03ab 01       		.byte	0x1
  1630 03ac 46       		.byte	0x46
  1631 03ad 97000000 		.4byte	0x97
@@ -2254,7 +2254,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1633 03b2 03       		.byte	0x3
  1634 03b3 00000000 		.4byte	testnum
  1635 03b7 17       		.uleb128 0x17
- 1636 03b8 8A010000 		.4byte	.LASF54
+ 1636 03b8 C5010000 		.4byte	.LASF54
  1637 03bc 01       		.byte	0x1
  1638 03bd 46       		.byte	0x46
  1639 03be 97000000 		.4byte	0x97
@@ -2269,7 +2269,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1648 03d6 0A       		.byte	0xa
  1649 03d7 00       		.byte	0
  1650 03d8 17       		.uleb128 0x17
- 1651 03d9 53000000 		.4byte	.LASF55
+ 1651 03d9 8E000000 		.4byte	.LASF55
  1652 03dd 01       		.byte	0x1
  1653 03de 47       		.byte	0x47
  1654 03df C8030000 		.4byte	0x3c8
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1657 03e5 00000000 		.4byte	file
  1658 03e9 13       		.uleb128 0x13
  1659 03ea E9000000 		.4byte	0xe9
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 39
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 39
 
 
  1660 03ee F9030000 		.4byte	0x3f9
@@ -2287,7 +2287,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1663 03f7 09       		.byte	0x9
  1664 03f8 00       		.byte	0
  1665 03f9 17       		.uleb128 0x17
- 1666 03fa 42010000 		.4byte	.LASF56
+ 1666 03fa 7D010000 		.4byte	.LASF56
  1667 03fe 01       		.byte	0x1
  1668 03ff 48       		.byte	0x48
  1669 0400 E9030000 		.4byte	0x3e9
@@ -2295,7 +2295,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1671 0405 03       		.byte	0x3
  1672 0406 00000000 		.4byte	volume
  1673 040a 17       		.uleb128 0x17
- 1674 040b FE020000 		.4byte	.LASF57
+ 1674 040b 0C030000 		.4byte	.LASF57
  1675 040f 01       		.byte	0x1
  1676 0410 49       		.byte	0x49
  1677 0411 18010000 		.4byte	0x118
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1714 001e 03       		.uleb128 0x3
  1715 001f 16       		.uleb128 0x16
  1716 0020 00       		.byte	0
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 40
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 40
 
 
  1717 0021 03       		.uleb128 0x3
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1771 0057 0B       		.uleb128 0xb
  1772 0058 49       		.uleb128 0x49
  1773 0059 13       		.uleb128 0x13
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 41
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 41
 
 
  1774 005a 00       		.byte	0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1828 0091 03       		.uleb128 0x3
  1829 0092 0E       		.uleb128 0xe
  1830 0093 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 42
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 42
 
 
  1831 0094 0B       		.uleb128 0xb
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1885 00cb 3B       		.uleb128 0x3b
  1886 00cc 0B       		.uleb128 0xb
  1887 00cd 49       		.uleb128 0x49
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 43
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 43
 
 
  1888 00ce 13       		.uleb128 0x13
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1942 0104 00       		.byte	0
  1943 0105 00       		.byte	0
  1944 0106 15       		.uleb128 0x15
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 44
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 44
 
 
  1945 0107 34       		.uleb128 0x34
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  1999 013d 08       		.uleb128 0x8
  2000 013e 3A       		.uleb128 0x3a
  2001 013f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 45
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 45
 
 
  2002 0140 3B       		.uleb128 0x3b
@@ -2689,269 +2689,273 @@ ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
  2043 0000 52455355 		.ascii	"RESURFACE\000"
  2043      52464143 
  2043      4500
- 2044              	.LASF28:
- 2045 000a 44455343 		.ascii	"DESCENDING\000"
- 2045      454E4449 
- 2045      4E4700
- 2046              	.LASF26:
- 2047 0015 53595354 		.ascii	"SYSTEM_CHECK\000"
- 2047      454D5F43 
- 2047      4845434B 
- 2047      00
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 46
+ 2044              	.LASF60:
+ 2045 000a 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\Project_O-Va"
+ 2045      73657273 
+ 2045      5C6A7767 
+ 2045      75747465 
+ 2045      725C446F 
+ 2046 0038 635C4F56 		.ascii	"c\\OVac.cydsn\000"
+ 2046      61632E63 
+ 2046      7964736E 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 46
 
 
- 2048              	.LASF61:
- 2049 0022 53544154 		.ascii	"STATES\000"
- 2049      455300
- 2050              	.LASF42:
- 2051 0029 73646275 		.ascii	"sdbuf\000"
- 2051      6600
- 2052              	.LASF46:
- 2053 002f 41646472 		.ascii	"Addr\000"
- 2053      00
- 2054              	.LASF44:
- 2055 0034 64657641 		.ascii	"devAddr\000"
- 2055      64647200 
- 2056              	.LASF29:
- 2057 003c 4C414E44 		.ascii	"LANDED\000"
- 2057      454400
- 2058              	.LASF62:
- 2059 0043 6D61696E 		.ascii	"main\000"
- 2059      00
- 2060              	.LASF8:
- 2061 0048 5F5F7569 		.ascii	"__uint32_t\000"
- 2061      6E743332 
- 2061      5F7400
- 2062              	.LASF55:
- 2063 0053 66696C65 		.ascii	"file\000"
- 2063      00
- 2064              	.LASF4:
- 2065 0058 73686F72 		.ascii	"short int\000"
- 2065      7420696E 
- 2065      7400
- 2066              	.LASF48:
- 2067 0062 61766572 		.ascii	"average\000"
- 2067      61676500 
- 2068              	.LASF13:
- 2069 006a 75696E74 		.ascii	"uint8_t\000"
- 2069      385F7400 
- 2070              	.LASF18:
- 2071 0072 696E7431 		.ascii	"int16\000"
- 2071      3600
- 2072              	.LASF41:
- 2073 0078 70726573 		.ascii	"pressure\000"
- 2073      73757265 
- 2073      00
- 2074              	.LASF38:
- 2075 0081 64656369 		.ascii	"decimals\000"
- 2075      6D616C73 
- 2075      00
- 2076              	.LASF19:
- 2077 008a 666C6F61 		.ascii	"float\000"
- 2077      7400
- 2078              	.LASF40:
- 2079 0090 74656D70 		.ascii	"temp\000"
- 2079      00
- 2080              	.LASF10:
- 2081 0095 6C6F6E67 		.ascii	"long long int\000"
- 2081      206C6F6E 
- 2081      6720696E 
- 2081      7400
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 47
+ 2046      00
+ 2047              	.LASF28:
+ 2048 0045 44455343 		.ascii	"DESCENDING\000"
+ 2048      454E4449 
+ 2048      4E4700
+ 2049              	.LASF26:
+ 2050 0050 53595354 		.ascii	"SYSTEM_CHECK\000"
+ 2050      454D5F43 
+ 2050      4845434B 
+ 2050      00
+ 2051              	.LASF61:
+ 2052 005d 53544154 		.ascii	"STATES\000"
+ 2052      455300
+ 2053              	.LASF42:
+ 2054 0064 73646275 		.ascii	"sdbuf\000"
+ 2054      6600
+ 2055              	.LASF46:
+ 2056 006a 41646472 		.ascii	"Addr\000"
+ 2056      00
+ 2057              	.LASF44:
+ 2058 006f 64657641 		.ascii	"devAddr\000"
+ 2058      64647200 
+ 2059              	.LASF29:
+ 2060 0077 4C414E44 		.ascii	"LANDED\000"
+ 2060      454400
+ 2061              	.LASF62:
+ 2062 007e 6D61696E 		.ascii	"main\000"
+ 2062      00
+ 2063              	.LASF8:
+ 2064 0083 5F5F7569 		.ascii	"__uint32_t\000"
+ 2064      6E743332 
+ 2064      5F7400
+ 2065              	.LASF55:
+ 2066 008e 66696C65 		.ascii	"file\000"
+ 2066      00
+ 2067              	.LASF4:
+ 2068 0093 73686F72 		.ascii	"short int\000"
+ 2068      7420696E 
+ 2068      7400
+ 2069              	.LASF48:
+ 2070 009d 61766572 		.ascii	"average\000"
+ 2070      61676500 
+ 2071              	.LASF13:
+ 2072 00a5 75696E74 		.ascii	"uint8_t\000"
+ 2072      385F7400 
+ 2073              	.LASF18:
+ 2074 00ad 696E7431 		.ascii	"int16\000"
+ 2074      3600
+ 2075              	.LASF41:
+ 2076 00b3 70726573 		.ascii	"pressure\000"
+ 2076      73757265 
+ 2076      00
+ 2077              	.LASF38:
+ 2078 00bc 64656369 		.ascii	"decimals\000"
+ 2078      6D616C73 
+ 2078      00
+ 2079              	.LASF19:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 47
 
 
- 2082              	.LASF31:
- 2083 00a3 5452414E 		.ascii	"TRANSMIT\000"
- 2083      534D4954 
- 2083      00
- 2084              	.LASF58:
- 2085 00ac 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 2085      4320342E 
- 2085      392E3320 
- 2085      32303135 
- 2085      30333033 
- 2086 00df 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 2086      20726576 
- 2086      6973696F 
- 2086      6E203232 
- 2086      31323230 
- 2087 0112 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 2087      66756E63 
- 2087      74696F6E 
- 2087      2D736563 
- 2087      74696F6E 
- 2088              	.LASF39:
- 2089 013a 766F6C74 		.ascii	"voltage\000"
- 2089      61676500 
- 2090              	.LASF56:
- 2091 0142 766F6C75 		.ascii	"volume\000"
- 2091      6D6500
- 2092              	.LASF2:
- 2093 0149 5F5F7569 		.ascii	"__uint8_t\000"
- 2093      6E74385F 
- 2093      7400
- 2094              	.LASF32:
- 2095 0153 4552524F 		.ascii	"ERROR\000"
- 2095      5200
- 2096              	.LASF25:
- 2097 0159 6C6F6E67 		.ascii	"long double\000"
- 2097      20646F75 
- 2097      626C6500 
- 2098              	.LASF27:
- 2099 0165 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
- 2099      5F544F5F 
- 2099      4C41554E 
- 2099      434800
- 2100              	.LASF1:
- 2101 0174 756E7369 		.ascii	"unsigned char\000"
- 2101      676E6564 
- 2101      20636861 
- 2101      7200
- 2102              	.LASF24:
- 2103 0182 46535F46 		.ascii	"FS_FILE\000"
- 2103      494C4500 
- 2104              	.LASF54:
- 2105 018a 636F756E 		.ascii	"countdown\000"
- 2105      74646F77 
- 2105      6E00
- 2106              	.LASF0:
- 2107 0194 7369676E 		.ascii	"signed char\000"
- 2107      65642063 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 48
+ 2080 00c5 666C6F61 		.ascii	"float\000"
+ 2080      7400
+ 2081              	.LASF40:
+ 2082 00cb 74656D70 		.ascii	"temp\000"
+ 2082      00
+ 2083              	.LASF10:
+ 2084 00d0 6C6F6E67 		.ascii	"long long int\000"
+ 2084      206C6F6E 
+ 2084      6720696E 
+ 2084      7400
+ 2085              	.LASF31:
+ 2086 00de 5452414E 		.ascii	"TRANSMIT\000"
+ 2086      534D4954 
+ 2086      00
+ 2087              	.LASF58:
+ 2088 00e7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2088      4320342E 
+ 2088      392E3320 
+ 2088      32303135 
+ 2088      30333033 
+ 2089 011a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2089      20726576 
+ 2089      6973696F 
+ 2089      6E203232 
+ 2089      31323230 
+ 2090 014d 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2090      66756E63 
+ 2090      74696F6E 
+ 2090      2D736563 
+ 2090      74696F6E 
+ 2091              	.LASF39:
+ 2092 0175 766F6C74 		.ascii	"voltage\000"
+ 2092      61676500 
+ 2093              	.LASF56:
+ 2094 017d 766F6C75 		.ascii	"volume\000"
+ 2094      6D6500
+ 2095              	.LASF2:
+ 2096 0184 5F5F7569 		.ascii	"__uint8_t\000"
+ 2096      6E74385F 
+ 2096      7400
+ 2097              	.LASF32:
+ 2098 018e 4552524F 		.ascii	"ERROR\000"
+ 2098      5200
+ 2099              	.LASF25:
+ 2100 0194 6C6F6E67 		.ascii	"long double\000"
+ 2100      20646F75 
+ 2100      626C6500 
+ 2101              	.LASF27:
+ 2102 01a0 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
+ 2102      5F544F5F 
+ 2102      4C41554E 
+ 2102      434800
+ 2103              	.LASF1:
+ 2104 01af 756E7369 		.ascii	"unsigned char\000"
+ 2104      676E6564 
+ 2104      20636861 
+ 2104      7200
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 48
 
 
- 2107      68617200 
- 2108              	.LASF11:
- 2109 01a0 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2109      206C6F6E 
- 2109      6720756E 
- 2109      7369676E 
- 2109      65642069 
- 2110              	.LASF16:
- 2111 01b7 75696E74 		.ascii	"uint32_t\000"
- 2111      33325F74 
- 2111      00
- 2112              	.LASF47:
- 2113 01c0 64617461 		.ascii	"data_time\000"
- 2113      5F74696D 
- 2113      6500
- 2114              	.LASF12:
- 2115 01ca 756E7369 		.ascii	"unsigned int\000"
- 2115      676E6564 
- 2115      20696E74 
- 2115      00
- 2116              	.LASF53:
- 2117 01d7 74657374 		.ascii	"testnum\000"
- 2117      6E756D00 
- 2118              	.LASF5:
- 2119 01df 73686F72 		.ascii	"short unsigned int\000"
- 2119      7420756E 
- 2119      7369676E 
- 2119      65642069 
- 2119      6E7400
- 2120              	.LASF21:
- 2121 01f2 63686172 		.ascii	"char\000"
- 2121      00
- 2122              	.LASF7:
- 2123 01f7 6C6F6E67 		.ascii	"long int\000"
- 2123      20696E74 
- 2123      00
- 2124              	.LASF15:
- 2125 0200 696E7433 		.ascii	"int32_t\000"
- 2125      325F7400 
- 2126              	.LASF60:
- 2127 0208 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\OVac.cydsn\000"
- 2127      73657273 
- 2127      5C6A7767 
- 2127      75747465 
- 2127      725C446F 
- 2128              	.LASF14:
- 2129 0235 696E7431 		.ascii	"int16_t\000"
- 2129      365F7400 
- 2130              	.LASF17:
- 2131 023d 75696E74 		.ascii	"uint8\000"
- 2131      3800
- 2132              	.LASF50:
- 2133 0243 5F426F6F 		.ascii	"_Bool\000"
- 2133      6C00
- 2134              	.LASF36:
- 2135 0249 63757253 		.ascii	"curState\000"
- 2135      74617465 
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 49
+ 2105              	.LASF24:
+ 2106 01bd 46535F46 		.ascii	"FS_FILE\000"
+ 2106      494C4500 
+ 2107              	.LASF54:
+ 2108 01c5 636F756E 		.ascii	"countdown\000"
+ 2108      74646F77 
+ 2108      6E00
+ 2109              	.LASF0:
+ 2110 01cf 7369676E 		.ascii	"signed char\000"
+ 2110      65642063 
+ 2110      68617200 
+ 2111              	.LASF11:
+ 2112 01db 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2112      206C6F6E 
+ 2112      6720756E 
+ 2112      7369676E 
+ 2112      65642069 
+ 2113              	.LASF16:
+ 2114 01f2 75696E74 		.ascii	"uint32_t\000"
+ 2114      33325F74 
+ 2114      00
+ 2115              	.LASF47:
+ 2116 01fb 64617461 		.ascii	"data_time\000"
+ 2116      5F74696D 
+ 2116      6500
+ 2117              	.LASF12:
+ 2118 0205 756E7369 		.ascii	"unsigned int\000"
+ 2118      676E6564 
+ 2118      20696E74 
+ 2118      00
+ 2119              	.LASF53:
+ 2120 0212 74657374 		.ascii	"testnum\000"
+ 2120      6E756D00 
+ 2121              	.LASF5:
+ 2122 021a 73686F72 		.ascii	"short unsigned int\000"
+ 2122      7420756E 
+ 2122      7369676E 
+ 2122      65642069 
+ 2122      6E7400
+ 2123              	.LASF21:
+ 2124 022d 63686172 		.ascii	"char\000"
+ 2124      00
+ 2125              	.LASF7:
+ 2126 0232 6C6F6E67 		.ascii	"long int\000"
+ 2126      20696E74 
+ 2126      00
+ 2127              	.LASF15:
+ 2128 023b 696E7433 		.ascii	"int32_t\000"
+ 2128      325F7400 
+ 2129              	.LASF14:
+ 2130 0243 696E7431 		.ascii	"int16_t\000"
+ 2130      365F7400 
+ 2131              	.LASF17:
+ 2132 024b 75696E74 		.ascii	"uint8\000"
+ 2132      3800
+ 2133              	.LASF50:
+ 2134 0251 5F426F6F 		.ascii	"_Bool\000"
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 49
 
 
- 2135      00
- 2136              	.LASF37:
- 2137 0252 7A5F6F66 		.ascii	"z_offset\000"
- 2137      66736574 
- 2137      00
- 2138              	.LASF45:
- 2139 025b 62756666 		.ascii	"buffer\000"
- 2139      657200
- 2140              	.LASF34:
- 2141 0262 436F756E 		.ascii	"Countdown_ISR_Handler\000"
- 2141      74646F77 
- 2141      6E5F4953 
- 2141      525F4861 
- 2141      6E646C65 
- 2142              	.LASF59:
- 2143 0278 6D61696E 		.ascii	"main.c\000"
- 2143      2E6300
- 2144              	.LASF22:
- 2145 027f 72656738 		.ascii	"reg8\000"
- 2145      00
- 2146              	.LASF9:
- 2147 0284 6C6F6E67 		.ascii	"long unsigned int\000"
- 2147      20756E73 
- 2147      69676E65 
- 2147      6420696E 
- 2147      7400
- 2148              	.LASF20:
- 2149 0296 646F7562 		.ascii	"double\000"
- 2149      6C6500
- 2150              	.LASF6:
- 2151 029d 5F5F696E 		.ascii	"__int32_t\000"
- 2151      7433325F 
- 2151      7400
- 2152              	.LASF3:
- 2153 02a7 5F5F696E 		.ascii	"__int16_t\000"
- 2153      7431365F 
- 2153      7400
- 2154              	.LASF23:
- 2155 02b1 73697A65 		.ascii	"sizetype\000"
- 2155      74797065 
- 2155      00
- 2156              	.LASF52:
- 2157 02ba 53544154 		.ascii	"STATE\000"
- 2157      4500
- 2158              	.LASF35:
- 2159 02c0 6F757470 		.ascii	"output\000"
- 2159      757400
- 2160              	.LASF49:
- 2161 02c7 636F6C6C 		.ascii	"collect_flag\000"
- 2161      6563745F 
- 2161      666C6167 
- 2161      00
- 2162              	.LASF43:
- 2163 02d4 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 2163      52784275 
- 2163      66666572 
- 2163      00
-ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 50
+ 2134      6C00
+ 2135              	.LASF36:
+ 2136 0257 63757253 		.ascii	"curState\000"
+ 2136      74617465 
+ 2136      00
+ 2137              	.LASF37:
+ 2138 0260 7A5F6F66 		.ascii	"z_offset\000"
+ 2138      66736574 
+ 2138      00
+ 2139              	.LASF45:
+ 2140 0269 62756666 		.ascii	"buffer\000"
+ 2140      657200
+ 2141              	.LASF34:
+ 2142 0270 436F756E 		.ascii	"Countdown_ISR_Handler\000"
+ 2142      74646F77 
+ 2142      6E5F4953 
+ 2142      525F4861 
+ 2142      6E646C65 
+ 2143              	.LASF59:
+ 2144 0286 6D61696E 		.ascii	"main.c\000"
+ 2144      2E6300
+ 2145              	.LASF22:
+ 2146 028d 72656738 		.ascii	"reg8\000"
+ 2146      00
+ 2147              	.LASF9:
+ 2148 0292 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2148      20756E73 
+ 2148      69676E65 
+ 2148      6420696E 
+ 2148      7400
+ 2149              	.LASF20:
+ 2150 02a4 646F7562 		.ascii	"double\000"
+ 2150      6C6500
+ 2151              	.LASF6:
+ 2152 02ab 5F5F696E 		.ascii	"__int32_t\000"
+ 2152      7433325F 
+ 2152      7400
+ 2153              	.LASF3:
+ 2154 02b5 5F5F696E 		.ascii	"__int16_t\000"
+ 2154      7431365F 
+ 2154      7400
+ 2155              	.LASF23:
+ 2156 02bf 73697A65 		.ascii	"sizetype\000"
+ 2156      74797065 
+ 2156      00
+ 2157              	.LASF52:
+ 2158 02c8 53544154 		.ascii	"STATE\000"
+ 2158      4500
+ 2159              	.LASF35:
+ 2160 02ce 6F757470 		.ascii	"output\000"
+ 2160      757400
+ 2161              	.LASF49:
+ 2162 02d5 636F6C6C 		.ascii	"collect_flag\000"
+ 2162      6563745F 
+ 2162      666C6167 
+ 2162      00
+ 2163              	.LASF43:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\cc0WAZM8.s 			page 50
 
 
- 2164              	.LASF51:
- 2165 02e1 77616974 		.ascii	"wait_flag\000"
- 2165      5F666C61 
- 2165      6700
- 2166              	.LASF33:
- 2167 02eb 53616D70 		.ascii	"Sample_ISR_Handler\000"
- 2167      6C655F49 
- 2167      53525F48 
- 2167      616E646C 
- 2167      657200
- 2168              	.LASF57:
- 2169 02fe 66736669 		.ascii	"fsfile\000"
- 2169      6C6500
- 2170              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 2164 02e2 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2164      52784275 
+ 2164      66666572 
+ 2164      00
+ 2165              	.LASF51:
+ 2166 02ef 77616974 		.ascii	"wait_flag\000"
+ 2166      5F666C61 
+ 2166      6700
+ 2167              	.LASF33:
+ 2168 02f9 53616D70 		.ascii	"Sample_ISR_Handler\000"
+ 2168      6C655F49 
+ 2168      53525F48 
+ 2168      616E646C 
+ 2168      657200
+ 2169              	.LASF57:
+ 2170 030c 66736669 		.ascii	"fsfile\000"
+ 2170      6C6500
+ 2171              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
