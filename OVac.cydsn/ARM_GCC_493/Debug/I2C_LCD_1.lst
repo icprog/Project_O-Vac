@@ -1,0 +1,3982 @@
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"I2C_LCD_1.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	I2C_LCD_1_initVar
+  19              		.bss
+  20              		.type	I2C_LCD_1_initVar, %object
+  21              		.size	I2C_LCD_1_initVar, 1
+  22              	I2C_LCD_1_initVar:
+  23 0000 00       		.space	1
+  24 0001 000000   		.align	2
+  25              	I2C_LCD_1_buff:
+  26 0004 00000000 		.space	256
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  27              	I2C_LCD_1_buffIndex:
+  28 0104 00       		.space	1
+  29 0105 000000   		.data
+  30              		.type	I2C_LCD_1_address, %object
+  31              		.size	I2C_LCD_1_address, 1
+  32              	I2C_LCD_1_address:
+  33 0000 20       		.byte	32
+  34              		.section	.rodata
+  35              		.align	2
+  36              		.type	I2C_LCD_1_cmdPatt, %object
+  37              		.size	I2C_LCD_1_cmdPatt, 48
+  38              	I2C_LCD_1_cmdPatt:
+  39 0000 01       		.byte	1
+  40 0001 40       		.byte	64
+  41 0002 00       		.byte	0
+  42 0003 02       		.byte	2
+  43 0004 00       		.byte	0
+  44 0005 0C       		.byte	12
+  45 0006 02       		.byte	2
+  46 0007 00       		.byte	0
+  47 0008 08       		.byte	8
+  48 0009 01       		.byte	1
+  49 000a 00       		.byte	0
+  50 000b 80       		.byte	-128
+  51 000c 02       		.byte	2
+  52 000d 00       		.byte	0
+  53 000e 02       		.byte	2
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 2
+
+
+  54 000f 02       		.byte	2
+  55 0010 00       		.byte	0
+  56 0011 03       		.byte	3
+  57 0012 02       		.byte	2
+  58 0013 00       		.byte	0
+  59 0014 10       		.byte	16
+  60 0015 02       		.byte	2
+  61 0016 00       		.byte	0
+  62 0017 14       		.byte	20
+  63 0018 02       		.byte	2
+  64 0019 00       		.byte	0
+  65 001a 0E       		.byte	14
+  66 001b 02       		.byte	2
+  67 001c 00       		.byte	0
+  68 001d 0D       		.byte	13
+  69 001e 02       		.byte	2
+  70 001f 00       		.byte	0
+  71 0020 0F       		.byte	15
+  72 0021 02       		.byte	2
+  73 0022 00       		.byte	0
+  74 0023 01       		.byte	1
+  75 0024 02       		.byte	2
+  76 0025 00       		.byte	0
+  77 0026 40       		.byte	64
+  78 0027 02       		.byte	2
+  79 0028 00       		.byte	0
+  80 0029 24       		.byte	36
+  81 002a 02       		.byte	2
+  82 002b 00       		.byte	0
+  83 002c 06       		.byte	6
+  84 002d 02       		.byte	2
+  85 002e 00       		.byte	0
+  86 002f 04       		.byte	4
+  87              		.section	.text.I2C_LCD_1_Init,"ax",%progbits
+  88              		.align	2
+  89              		.global	I2C_LCD_1_Init
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	I2C_LCD_1_Init, %function
+  93              	I2C_LCD_1_Init:
+  94              	.LFB0:
+  95              		.file 1 "Generated_Source\\PSoC5\\I2C_LCD_1.c"
+   1:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/I2C_LCD_1.c **** * File Name: I2C_LCD_1.c
+   3:Generated_Source\PSoC5/I2C_LCD_1.c **** * Version 1.20
+   4:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+   5:Generated_Source\PSoC5/I2C_LCD_1.c **** * Description:
+   6:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This file provides source code for the I2C LCD component's API.
+   7:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+   8:Generated_Source\PSoC5/I2C_LCD_1.c **** * Note:
+   9:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+  10:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/I2C_LCD_1.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/I2C_LCD_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:Generated_Source\PSoC5/I2C_LCD_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:Generated_Source\PSoC5/I2C_LCD_1.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 3
+
+
+  16:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  17:Generated_Source\PSoC5/I2C_LCD_1.c **** #include "I2C_LCD_1.h"
+  18:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  19:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  20:Generated_Source\PSoC5/I2C_LCD_1.c **** /* Internal function ptototypes */
+  21:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_WrDataToBuff(uint8 dByte) CYREENTRANT;
+  22:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_WrCntrlPatt(uint8 cmdIndex) CYREENTRANT;
+  23:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_SendSequence(void) CYREENTRANT;
+  24:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  25:Generated_Source\PSoC5/I2C_LCD_1.c **** #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+  26:Generated_Source\PSoC5/I2C_LCD_1.c ****     static void I2C_LCD_1_SendCmd(uint8 cmd) CYREENTRANT;
+  27:Generated_Source\PSoC5/I2C_LCD_1.c **** #endif /* I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X */
+  28:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  29:Generated_Source\PSoC5/I2C_LCD_1.c **** uint8 I2C_LCD_1_initVar = 0u;
+  30:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  31:Generated_Source\PSoC5/I2C_LCD_1.c **** /* Buffer that holds data to be send to LCD slave */
+  32:Generated_Source\PSoC5/I2C_LCD_1.c **** static uint8 I2C_LCD_1_buff[I2C_LCD_1_BUFF_SIZE];
+  33:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  34:Generated_Source\PSoC5/I2C_LCD_1.c **** /* Need to have I2C_LCD_1_buffIndex of different size to avoid MISRA
+  35:Generated_Source\PSoC5/I2C_LCD_1.c **** * warning when SCB based I2C Master is used. 
+  36:Generated_Source\PSoC5/I2C_LCD_1.c **** */
+  37:Generated_Source\PSoC5/I2C_LCD_1.c **** #if(I2C_LCD_1_IS_SCB_MASTER_USED)
+  38:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Variable used for buffer indexing */
+  39:Generated_Source\PSoC5/I2C_LCD_1.c ****     static uint32 I2C_LCD_1_buffIndex = 0u;
+  40:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Variable stores the I2C address */
+  41:Generated_Source\PSoC5/I2C_LCD_1.c ****     static uint32 I2C_LCD_1_address = I2C_LCD_1_DEFAULT_I2C_ADDRESS;
+  42:Generated_Source\PSoC5/I2C_LCD_1.c **** #else
+  43:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Variable used for buffer indexing */
+  44:Generated_Source\PSoC5/I2C_LCD_1.c ****     static uint8 I2C_LCD_1_buffIndex = 0u;
+  45:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Variable stores the I2C address */
+  46:Generated_Source\PSoC5/I2C_LCD_1.c ****     static uint8 I2C_LCD_1_address = I2C_LCD_1_DEFAULT_I2C_ADDRESS;
+  47:Generated_Source\PSoC5/I2C_LCD_1.c **** #endif /* (I2C_LCD_1_IS_SCB_MASTER_USED) */
+  48:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  49:Generated_Source\PSoC5/I2C_LCD_1.c **** /********************
+  50:Generated_Source\PSoC5/I2C_LCD_1.c **** * Generated Code
+  51:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************/
+  52:Generated_Source\PSoC5/I2C_LCD_1.c **** /* Array with command patterns */
+  53:Generated_Source\PSoC5/I2C_LCD_1.c **** static const uint8 CYCODE I2C_LCD_1_cmdPatt[16u][3u] =
+  54:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+  55:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Command pattern for writing data */
+  56:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x01u, 0x40u, 0x00u},
+  57:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Display on, cursor off */
+  58:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x0Cu},
+  59:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Display and cursor off */
+  60:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x08u},
+  61:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Set cursor position */
+  62:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x01u, 0x00u, 0x80u},
+  63:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Cursor home */
+  64:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x02u},
+  65:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Reset cursor position */
+  66:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x03u},
+  67:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Move cursor left one place */
+  68:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x10u},
+  69:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Move cursor right one place */
+  70:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x14u},
+  71:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Underline cursor on */
+  72:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x0Eu},
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 4
+
+
+  73:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Display - on, cursor - off, set cursor wink */
+  74:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x0Du},
+  75:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Display - on, cursor - off, set cursor blink */
+  76:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x0Fu},
+  77:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Clear screen */
+  78:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x01u},
+  79:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Load custom character */
+  80:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x40u},
+  81:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Set display for 2 lines and 16 characters */
+  82:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x24u},
+  83:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Move cursor/shift display right (cursor position auto increment) */
+  84:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x06u},
+  85:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Move cursor/shift display right (cursor position auto decrement) */
+  86:Generated_Source\PSoC5/I2C_LCD_1.c ****     {0x02u, 0x00u, 0x04u}
+  87:Generated_Source\PSoC5/I2C_LCD_1.c **** };
+  88:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  89:Generated_Source\PSoC5/I2C_LCD_1.c **** /********************
+  90:Generated_Source\PSoC5/I2C_LCD_1.c **** * Generated Code 
+  91:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************/
+  92:Generated_Source\PSoC5/I2C_LCD_1.c **** /* Optional: Array with custom character set */
+  93:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  94:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  95:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+  96:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+  97:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_Init
+  98:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+  99:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 100:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 101:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Performs initialization required for the component's normal work.
+ 102:Generated_Source\PSoC5/I2C_LCD_1.c **** *  I2C_LCD_Init() also loads the custom character set if it was defined in the
+ 103:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Configure dialog.
+ 104:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 105:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 106:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 107:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 108:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 109:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 110:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 111:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 112:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 113:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 114:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 115:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_Init(void) 
+ 116:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+  96              		.loc 1 116 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 1, uses_anonymous_args = 0
+ 100 0000 80B5     		push	{r7, lr}
+ 101              		.cfi_def_cfa_offset 8
+ 102              		.cfi_offset 7, -8
+ 103              		.cfi_offset 14, -4
+ 104 0002 00AF     		add	r7, sp, #0
+ 105              		.cfi_def_cfa_register 7
+ 117:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Following part of code is only applicable for NXP LCDs */
+ 118:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 119:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Select Extended Instruction set, 2x16 display */
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 5
+
+
+ 120:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_SET_EXTENDED_FUNC);
+ 106              		.loc 1 120 0
+ 107 0004 3520     		movs	r0, #53
+ 108 0006 FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 121:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Split screen configuration  */
+ 122:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_SPLIT_SCREEN);
+ 109              		.loc 1 122 0
+ 110 000a 0220     		movs	r0, #2
+ 111 000c FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 123:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* LCD Module format: left to right column, and top to bottom rows  */
+ 124:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_DISP_CONF);
+ 112              		.loc 1 124 0
+ 113 0010 0420     		movs	r0, #4
+ 114 0012 FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 125:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Icon mode not supported. Disable all icon enable settings */
+ 126:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_ICON_CTL);
+ 115              		.loc 1 126 0
+ 116 0016 0820     		movs	r0, #8
+ 117 0018 FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 127:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Set LCD bias voltage to 4.38 V since LCD module datasheet recommends 4.4 V */
+ 128:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_VLCD_SET);
+ 118              		.loc 1 128 0
+ 119 001c A020     		movs	r0, #160
+ 120 001e FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 129:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Select Standard Instruction set, 2x16 display */
+ 130:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendCmd(I2C_LCD_1_FUNCTION_SET_STANDARD);
+ 121              		.loc 1 130 0
+ 122 0022 3420     		movs	r0, #52
+ 123 0024 FFF7FEFF 		bl	I2C_LCD_1_SendCmd
+ 131:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X) */
+ 132:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ 133:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Configure LCD for 2 lines and 16 characters */
+ 134:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WriteControl(I2C_LCD_1_DISPLAY_2_LINES_5x10);
+ 124              		.loc 1 134 0
+ 125 0028 2420     		movs	r0, #36
+ 126 002a FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 135:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Turn on both display and cursor */
+ 136:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WriteControl(I2C_LCD_1_DISPLAY_CURSOR_ON);
+ 127              		.loc 1 136 0
+ 128 002e 0E20     		movs	r0, #14
+ 129 0030 FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 137:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Turn on cursor auto incrementing */
+ 138:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WriteControl(I2C_LCD_1_CURSOR_AUTO_INCR_ON);
+ 130              		.loc 1 138 0
+ 131 0034 0620     		movs	r0, #6
+ 132 0036 FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 139:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Turn off cursor underlining */
+ 140:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WriteControl(I2C_LCD_1_DISPLAY_ON_CURSOR_OFF);
+ 133              		.loc 1 140 0
+ 134 003a 0C20     		movs	r0, #12
+ 135 003c FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 141:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Clear the Display */
+ 142:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_ClearDisplay();
+ 136              		.loc 1 142 0
+ 137 0040 0120     		movs	r0, #1
+ 138 0042 FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 143:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 6
+
+
+ 144:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Load custom character set */
+ 145:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if(I2C_LCD_1_CUSTOM_CHAR_SET != I2C_LCD_1_NONE)
+ 146:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_LoadCustomFonts(I2C_LCD_1_customFonts);
+ 147:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* I2C_LCD_1_CUSTOM_CHAR_SET != I2C_LCD_1_NONE */
+ 148:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 139              		.loc 1 148 0
+ 140 0046 80BD     		pop	{r7, pc}
+ 141              		.cfi_endproc
+ 142              	.LFE0:
+ 143              		.size	I2C_LCD_1_Init, .-I2C_LCD_1_Init
+ 144              		.section	.text.I2C_LCD_1_Enable,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	I2C_LCD_1_Enable
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.type	I2C_LCD_1_Enable, %function
+ 150              	I2C_LCD_1_Enable:
+ 151              	.LFB1:
+ 149:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 150:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 151:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 152:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_Enable
+ 153:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 154:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 155:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 156:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Turns on the display.
+ 157:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 158:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 159:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 160:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 161:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 162:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 163:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 164:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 165:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 166:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 167:Generated_Source\PSoC5/I2C_LCD_1.c **** * Theory:
+ 168:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This function has no effect when it called first time as
+ 169:Generated_Source\PSoC5/I2C_LCD_1.c **** *  I2C_LCD_1_Init() turns on the LCD.
+ 170:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 171:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 172:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_Enable(void) 
+ 173:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 152              		.loc 1 173 0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 1, uses_anonymous_args = 0
+ 156 0000 80B5     		push	{r7, lr}
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 00AF     		add	r7, sp, #0
+ 161              		.cfi_def_cfa_register 7
+ 174:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_DisplayOn();
+ 162              		.loc 1 174 0
+ 163 0004 0C20     		movs	r0, #12
+ 164 0006 FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 7
+
+
+ 175:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 165              		.loc 1 175 0
+ 166 000a 80BD     		pop	{r7, pc}
+ 167              		.cfi_endproc
+ 168              	.LFE1:
+ 169              		.size	I2C_LCD_1_Enable, .-I2C_LCD_1_Enable
+ 170              		.section	.text.I2C_LCD_1_Start,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	I2C_LCD_1_Start
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	I2C_LCD_1_Start, %function
+ 176              	I2C_LCD_1_Start:
+ 177              	.LFB2:
+ 176:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 177:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 178:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 179:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_Start
+ 180:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 181:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 182:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 183:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This function initializes the LCD hardware module as follows:
+ 184:Generated_Source\PSoC5/I2C_LCD_1.c **** *       Initialize the I2C bus if it hasn't already been
+ 185:Generated_Source\PSoC5/I2C_LCD_1.c **** *       Clears the display;
+ 186:Generated_Source\PSoC5/I2C_LCD_1.c **** *       Enables auto cursor increment;
+ 187:Generated_Source\PSoC5/I2C_LCD_1.c **** *       Resets the cursor to start position;
+ 188:Generated_Source\PSoC5/I2C_LCD_1.c **** *       It also loads a custom character set to LCD if it was defined in the
+ 189:Generated_Source\PSoC5/I2C_LCD_1.c **** *  customizer's GUI.
+ 190:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 191:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 192:Generated_Source\PSoC5/I2C_LCD_1.c **** *  I2C_LCD_1_initVar - global variable.
+ 193:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 194:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 195:Generated_Source\PSoC5/I2C_LCD_1.c **** *  I2C_LCD_1_initVar - global variable.
+ 196:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 197:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 198:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 199:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 200:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 201:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_Start(void) 
+ 202:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 178              		.loc 1 202 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 1, uses_anonymous_args = 0
+ 182 0000 80B5     		push	{r7, lr}
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 7, -8
+ 185              		.cfi_offset 14, -4
+ 186 0002 00AF     		add	r7, sp, #0
+ 187              		.cfi_def_cfa_register 7
+ 203:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* If not initialized then perform initialization */
+ 204:Generated_Source\PSoC5/I2C_LCD_1.c ****     if(I2C_LCD_1_initVar == 0u)
+ 188              		.loc 1 204 0
+ 189 0004 054B     		ldr	r3, .L5
+ 190 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 191 0008 002B     		cmp	r3, #0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 8
+
+
+ 192 000a 04D1     		bne	.L4
+ 205:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 206:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_Init();
+ 193              		.loc 1 206 0
+ 194 000c FFF7FEFF 		bl	I2C_LCD_1_Init
+ 207:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_initVar = 1u;
+ 195              		.loc 1 207 0
+ 196 0010 024B     		ldr	r3, .L5
+ 197 0012 0122     		movs	r2, #1
+ 198 0014 1A70     		strb	r2, [r3]
+ 199              	.L4:
+ 208:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 209:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 210:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Turn on the LCD */
+ 211:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_Enable();
+ 200              		.loc 1 211 0
+ 201 0016 FFF7FEFF 		bl	I2C_LCD_1_Enable
+ 212:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 202              		.loc 1 212 0
+ 203 001a 80BD     		pop	{r7, pc}
+ 204              	.L6:
+ 205              		.align	2
+ 206              	.L5:
+ 207 001c 00000000 		.word	I2C_LCD_1_initVar
+ 208              		.cfi_endproc
+ 209              	.LFE2:
+ 210              		.size	I2C_LCD_1_Start, .-I2C_LCD_1_Start
+ 211              		.section	.text.I2C_LCD_1_Stop,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	I2C_LCD_1_Stop
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.type	I2C_LCD_1_Stop, %function
+ 217              	I2C_LCD_1_Stop:
+ 218              	.LFB3:
+ 213:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 214:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 215:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 216:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_Stop
+ 217:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 218:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 219:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 220:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Turns off the display of the LCD screen but does not stop the I2C Master
+ 221:Generated_Source\PSoC5/I2C_LCD_1.c **** *  component.
+ 222:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 223:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 224:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 225:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 226:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 227:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 228:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 229:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 230:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 231:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 232:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 233:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_Stop(void) 
+ 234:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 9
+
+
+ 219              		.loc 1 234 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 1, uses_anonymous_args = 0
+ 223 0000 80B5     		push	{r7, lr}
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 7, -8
+ 226              		.cfi_offset 14, -4
+ 227 0002 00AF     		add	r7, sp, #0
+ 228              		.cfi_def_cfa_register 7
+ 235:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_DisplayOff();
+ 229              		.loc 1 235 0
+ 230 0004 0820     		movs	r0, #8
+ 231 0006 FFF7FEFF 		bl	I2C_LCD_1_WriteControl
+ 236:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 232              		.loc 1 236 0
+ 233 000a 80BD     		pop	{r7, pc}
+ 234              		.cfi_endproc
+ 235              	.LFE3:
+ 236              		.size	I2C_LCD_1_Stop, .-I2C_LCD_1_Stop
+ 237              		.section	.text.I2C_LCD_1_Position,"ax",%progbits
+ 238              		.align	2
+ 239              		.global	I2C_LCD_1_Position
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	I2C_LCD_1_Position, %function
+ 243              	I2C_LCD_1_Position:
+ 244              	.LFB4:
+ 237:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 238:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 239:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 240:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_Position
+ 241:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 242:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 243:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 244:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Moves the cursor to the location specified by arguments row and column.
+ 245:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 246:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 247:Generated_Source\PSoC5/I2C_LCD_1.c **** *  row:     The row number at which to position the cursor. Minimum value is
+ 248:Generated_Source\PSoC5/I2C_LCD_1.c **** *           zero.
+ 249:Generated_Source\PSoC5/I2C_LCD_1.c **** *  column:  The column number at which to position the cursor. Minimum value is
+ 250:Generated_Source\PSoC5/I2C_LCD_1.c **** *           zero.
+ 251:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 252:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 253:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 254:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 255:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 256:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 257:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 258:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 259:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_Position(uint8 row, uint8 column) 
+ 260:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 245              		.loc 1 260 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 8
+ 248              		@ frame_needed = 1, uses_anonymous_args = 0
+ 249 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 10
+
+
+ 250              		.cfi_def_cfa_offset 8
+ 251              		.cfi_offset 7, -8
+ 252              		.cfi_offset 14, -4
+ 253 0002 82B0     		sub	sp, sp, #8
+ 254              		.cfi_def_cfa_offset 16
+ 255 0004 00AF     		add	r7, sp, #0
+ 256              		.cfi_def_cfa_register 7
+ 257 0006 0346     		mov	r3, r0
+ 258 0008 0A46     		mov	r2, r1
+ 259 000a FB71     		strb	r3, [r7, #7]
+ 260 000c 1346     		mov	r3, r2
+ 261 000e BB71     		strb	r3, [r7, #6]
+ 261:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Write command pattern for "Set cursor position" to buffer */
+ 262:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_DDRAM_0_IDX);
+ 262              		.loc 1 262 0
+ 263 0010 0320     		movs	r0, #3
+ 264 0012 FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 263:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 264:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if(I2C_LCD_1_LENGTH_2_BYTES == I2C_LCD_1_DDRAM_0_DATA_LEN)
+ 265:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* In case when there two bytes of data for "Set cursor position" it is
+ 266:Generated_Source\PSoC5/I2C_LCD_1.c ****         * required to send both row and column. The numeration of rows and 
+ 267:Generated_Source\PSoC5/I2C_LCD_1.c ****         * columns starts from '1' so the row and column should be incremented.
+ 268:Generated_Source\PSoC5/I2C_LCD_1.c ****         */
+ 269:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff(column + 1u);
+ 270:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff(row + 1u);
+ 271:Generated_Source\PSoC5/I2C_LCD_1.c ****     #else
+ 272:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Position is sent as one byte so it is required to calculate the position */
+ 273:Generated_Source\PSoC5/I2C_LCD_1.c ****         switch (row)
+ 265              		.loc 1 273 0
+ 266 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 267 0018 032B     		cmp	r3, #3
+ 268 001a 27D8     		bhi	.L16
+ 269 001c 01A2     		adr	r2, .L11
+ 270 001e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 271 0022 00BF     		.p2align 2
+ 272              	.L11:
+ 273 0024 35000000 		.word	.L10+1
+ 274 0028 43000000 		.word	.L12+1
+ 275 002c 51000000 		.word	.L13+1
+ 276 0030 5F000000 		.word	.L14+1
+ 277              		.p2align 1
+ 278              	.L10:
+ 274:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 275:Generated_Source\PSoC5/I2C_LCD_1.c ****             case (uint8) 0u:
+ 276:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* To avoid MISRA warnig */
+ 277:Generated_Source\PSoC5/I2C_LCD_1.c ****                 #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 278:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_WrDataToBuff(I2C_LCD_1_ROW_0_START + column);
+ 279              		.loc 1 278 0
+ 280 0034 BB79     		ldrb	r3, [r7, #6]
+ 281 0036 803B     		subs	r3, r3, #128
+ 282 0038 DBB2     		uxtb	r3, r3
+ 283 003a 1846     		mov	r0, r3
+ 284 003c FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 279:Generated_Source\PSoC5/I2C_LCD_1.c ****                 #else
+ 280:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_WrDataToBuff(column);
+ 281:Generated_Source\PSoC5/I2C_LCD_1.c ****                 #endif /* (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X) */
+ 282:Generated_Source\PSoC5/I2C_LCD_1.c ****                 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 11
+
+
+ 283:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+ 285              		.loc 1 283 0
+ 286 0040 15E0     		b	.L15
+ 287              	.L12:
+ 284:Generated_Source\PSoC5/I2C_LCD_1.c ****             
+ 285:Generated_Source\PSoC5/I2C_LCD_1.c ****             case (uint8) 1u:
+ 286:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(I2C_LCD_1_ROW_1_START + column);
+ 288              		.loc 1 286 0
+ 289 0042 BB79     		ldrb	r3, [r7, #6]
+ 290 0044 403B     		subs	r3, r3, #64
+ 291 0046 DBB2     		uxtb	r3, r3
+ 292 0048 1846     		mov	r0, r3
+ 293 004a FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 287:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+ 294              		.loc 1 287 0
+ 295 004e 0EE0     		b	.L15
+ 296              	.L13:
+ 288:Generated_Source\PSoC5/I2C_LCD_1.c ****             
+ 289:Generated_Source\PSoC5/I2C_LCD_1.c ****             case (uint8) 2u:
+ 290:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(I2C_LCD_1_ROW_2_START + column);
+ 297              		.loc 1 290 0
+ 298 0050 BB79     		ldrb	r3, [r7, #6]
+ 299 0052 6C3B     		subs	r3, r3, #108
+ 300 0054 DBB2     		uxtb	r3, r3
+ 301 0056 1846     		mov	r0, r3
+ 302 0058 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 291:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+ 303              		.loc 1 291 0
+ 304 005c 07E0     		b	.L15
+ 305              	.L14:
+ 292:Generated_Source\PSoC5/I2C_LCD_1.c ****             
+ 293:Generated_Source\PSoC5/I2C_LCD_1.c ****             case (uint8) 3u:
+ 294:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(I2C_LCD_1_ROW_3_START + column);
+ 306              		.loc 1 294 0
+ 307 005e BB79     		ldrb	r3, [r7, #6]
+ 308 0060 2C3B     		subs	r3, r3, #44
+ 309 0062 DBB2     		uxtb	r3, r3
+ 310 0064 1846     		mov	r0, r3
+ 311 0066 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 295:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+ 312              		.loc 1 295 0
+ 313 006a 00E0     		b	.L15
+ 314              	.L16:
+ 296:Generated_Source\PSoC5/I2C_LCD_1.c ****             
+ 297:Generated_Source\PSoC5/I2C_LCD_1.c ****             default:
+ 298:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* if default case is hit, invalid row argument was passed.*/
+ 299:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+ 315              		.loc 1 299 0
+ 316 006c 00BF     		nop
+ 317              	.L15:
+ 300:Generated_Source\PSoC5/I2C_LCD_1.c ****         }        
+ 301:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_LENGTH_2_BYTES == I2C_LCD_1_SET_POS_DATA_LEN) */
+ 302:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 303:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send data to LCD and wait when transaction complete */
+ 304:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_SendSequence();
+ 318              		.loc 1 304 0
+ 319 006e FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 12
+
+
+ 305:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 320              		.loc 1 305 0
+ 321 0072 0837     		adds	r7, r7, #8
+ 322              		.cfi_def_cfa_offset 8
+ 323 0074 BD46     		mov	sp, r7
+ 324              		.cfi_def_cfa_register 13
+ 325              		@ sp needed
+ 326 0076 80BD     		pop	{r7, pc}
+ 327              		.cfi_endproc
+ 328              	.LFE4:
+ 329              		.size	I2C_LCD_1_Position, .-I2C_LCD_1_Position
+ 330              		.section	.text.I2C_LCD_1_WriteData,"ax",%progbits
+ 331              		.align	2
+ 332              		.global	I2C_LCD_1_WriteData
+ 333              		.thumb
+ 334              		.thumb_func
+ 335              		.type	I2C_LCD_1_WriteData, %function
+ 336              	I2C_LCD_1_WriteData:
+ 337              	.LFB5:
+ 306:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 307:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 308:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 309:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_WriteData
+ 310:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 311:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 312:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 313:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Writes data to the LCD RAM in the current position. Upon write completion,
+ 314:Generated_Source\PSoC5/I2C_LCD_1.c **** *  the position is incremented or decremented depending on the entry mode
+ 315:Generated_Source\PSoC5/I2C_LCD_1.c **** *  specified.
+ 316:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 317:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 318:Generated_Source\PSoC5/I2C_LCD_1.c **** *  dByte:  The byte to be written to the LCD module.
+ 319:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 320:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 321:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None.
+ 322:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 323:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 324:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 325:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 326:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 327:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_WriteData(uint8 dByte) 
+ 328:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 338              		.loc 1 328 0
+ 339              		.cfi_startproc
+ 340              		@ args = 0, pretend = 0, frame = 8
+ 341              		@ frame_needed = 1, uses_anonymous_args = 0
+ 342 0000 80B5     		push	{r7, lr}
+ 343              		.cfi_def_cfa_offset 8
+ 344              		.cfi_offset 7, -8
+ 345              		.cfi_offset 14, -4
+ 346 0002 82B0     		sub	sp, sp, #8
+ 347              		.cfi_def_cfa_offset 16
+ 348 0004 00AF     		add	r7, sp, #0
+ 349              		.cfi_def_cfa_register 7
+ 350 0006 0346     		mov	r3, r0
+ 351 0008 FB71     		strb	r3, [r7, #7]
+ 329:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send required control byte value to address data register */
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 13
+
+
+ 330:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_WRITE_DATA_IDX);
+ 352              		.loc 1 330 0
+ 353 000a 0020     		movs	r0, #0
+ 354 000c FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 331:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 332:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Add byte of data to buffer */
+ 333:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WrDataToBuff(dByte);
+ 355              		.loc 1 333 0
+ 356 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 357 0012 1846     		mov	r0, r3
+ 358 0014 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 334:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 335:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send data to LCD and wait when transaction complete */
+ 336:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_SendSequence();
+ 359              		.loc 1 336 0
+ 360 0018 FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ 337:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 361              		.loc 1 337 0
+ 362 001c 0837     		adds	r7, r7, #8
+ 363              		.cfi_def_cfa_offset 8
+ 364 001e BD46     		mov	sp, r7
+ 365              		.cfi_def_cfa_register 13
+ 366              		@ sp needed
+ 367 0020 80BD     		pop	{r7, pc}
+ 368              		.cfi_endproc
+ 369              	.LFE5:
+ 370              		.size	I2C_LCD_1_WriteData, .-I2C_LCD_1_WriteData
+ 371 0022 00BF     		.section	.text.I2C_LCD_1_WrDataToBuff,"ax",%progbits
+ 372              		.align	2
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.type	I2C_LCD_1_WrDataToBuff, %function
+ 376              	I2C_LCD_1_WrDataToBuff:
+ 377              	.LFB6:
+ 338:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 339:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 340:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 341:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_WrDataToBuff
+ 342:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 343:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 344:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 345:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Writes a byte of data to the display buffer.
+ 346:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 347:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 348:Generated_Source\PSoC5/I2C_LCD_1.c **** *  nibble:  the byte containing nibble in least significant nibble to be written
+ 349:Generated_Source\PSoC5/I2C_LCD_1.c **** *           to the LCD module.
+ 350:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 351:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 352:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 353:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 354:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 355:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 356:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 357:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 358:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_WrDataToBuff(uint8 dByte) CYREENTRANT
+ 359:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 378              		.loc 1 359 0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 14
+
+
+ 379              		.cfi_startproc
+ 380              		@ args = 0, pretend = 0, frame = 8
+ 381              		@ frame_needed = 1, uses_anonymous_args = 0
+ 382              		@ link register save eliminated.
+ 383 0000 80B4     		push	{r7}
+ 384              		.cfi_def_cfa_offset 4
+ 385              		.cfi_offset 7, -4
+ 386 0002 83B0     		sub	sp, sp, #12
+ 387              		.cfi_def_cfa_offset 16
+ 388 0004 00AF     		add	r7, sp, #0
+ 389              		.cfi_def_cfa_register 7
+ 390 0006 0346     		mov	r3, r0
+ 391 0008 FB71     		strb	r3, [r7, #7]
+ 360:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Put one byte of data to buffer at location of I2C_LCD_1_buffIndex */
+ 361:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_buff[I2C_LCD_1_buffIndex] = dByte;
+ 392              		.loc 1 361 0
+ 393 000a 084B     		ldr	r3, .L19
+ 394 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 395 000e 1946     		mov	r1, r3
+ 396 0010 074A     		ldr	r2, .L19+4
+ 397 0012 FB79     		ldrb	r3, [r7, #7]
+ 398 0014 5354     		strb	r3, [r2, r1]
+ 362:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Increment I2C_LCD_1_buffIndex to point to next free position */
+ 363:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_buffIndex++;
+ 399              		.loc 1 363 0
+ 400 0016 054B     		ldr	r3, .L19
+ 401 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 402 001a 0133     		adds	r3, r3, #1
+ 403 001c DAB2     		uxtb	r2, r3
+ 404 001e 034B     		ldr	r3, .L19
+ 405 0020 1A70     		strb	r2, [r3]
+ 364:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 406              		.loc 1 364 0
+ 407 0022 0C37     		adds	r7, r7, #12
+ 408              		.cfi_def_cfa_offset 4
+ 409 0024 BD46     		mov	sp, r7
+ 410              		.cfi_def_cfa_register 13
+ 411              		@ sp needed
+ 412 0026 5DF8047B 		ldr	r7, [sp], #4
+ 413              		.cfi_restore 7
+ 414              		.cfi_def_cfa_offset 0
+ 415 002a 7047     		bx	lr
+ 416              	.L20:
+ 417              		.align	2
+ 418              	.L19:
+ 419 002c 04010000 		.word	I2C_LCD_1_buffIndex
+ 420 0030 04000000 		.word	I2C_LCD_1_buff
+ 421              		.cfi_endproc
+ 422              	.LFE6:
+ 423              		.size	I2C_LCD_1_WrDataToBuff, .-I2C_LCD_1_WrDataToBuff
+ 424              		.section	.text.I2C_LCD_1_WriteControl,"ax",%progbits
+ 425              		.align	2
+ 426              		.global	I2C_LCD_1_WriteControl
+ 427              		.thumb
+ 428              		.thumb_func
+ 429              		.type	I2C_LCD_1_WriteControl, %function
+ 430              	I2C_LCD_1_WriteControl:
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 15
+
+
+ 431              	.LFB7:
+ 365:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 366:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 367:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 368:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_WriteControl
+ 369:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 370:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 371:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 372:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Writes a command byte to the LCD module. Different LCD models can have their
+ 373:Generated_Source\PSoC5/I2C_LCD_1.c **** *  own commands. Review the specific LCD datasheet for commands valid for that
+ 374:Generated_Source\PSoC5/I2C_LCD_1.c **** *  model.
+ 375:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 376:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 377:Generated_Source\PSoC5/I2C_LCD_1.c **** *  cByte:   An 8-bit value representing the command to be loaded into the command
+ 378:Generated_Source\PSoC5/I2C_LCD_1.c **** *  register of the LCD module. Valid command parameters are specified in the
+ 379:Generated_Source\PSoC5/I2C_LCD_1.c **** *  table below:
+ 380:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_CLEAR_DISPLAY          Clear display.
+ 381:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_CURSOR_HOME            Return cursor and LCD to home
+ 382:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           position.
+ 383:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_SET_CURSOR_POSITION    Set position of cursor.
+ 384:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_DISPLAY_CURSOR_OFF     Disable display and cursor.
+ 385:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_DISPLAY_CURSOR_ON      Enable display and cursor.
+ 386:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_DISPLAY_ON_CURSOR_OFF
+ 387:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_DISPLAY_ON             Enable display, cursor off.
+ 388:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_CURSOR_BLINKING_ON     Enable display, cursor on, set
+ 389:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           cursor blink.
+ 390:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_CURSOR_BLINKING_OFF    Enable display, cursor on, cursor
+ 391:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           blinking off.
+ 392:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_SET_CGRAM_ADDR         Set position to the specific
+ 393:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           address in CGRAM (used for loading
+ 394:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           custom characters).
+ 395:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_CURSOR_AUTO_INCR_ON    Enable auto increment of cursor
+ 396:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           position.
+ 397:Generated_Source\PSoC5/I2C_LCD_1.c **** *   I2C_LCD_1_DISPLAY_2_LINES_16     Set display to be 2 lines 16
+ 398:Generated_Source\PSoC5/I2C_LCD_1.c **** *                                           characters.
+ 399:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 400:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 401:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 402:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 403:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 404:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 405:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 406:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 407:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_WriteControl(uint8 cByte) 
+ 408:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 432              		.loc 1 408 0
+ 433              		.cfi_startproc
+ 434              		@ args = 0, pretend = 0, frame = 16
+ 435              		@ frame_needed = 1, uses_anonymous_args = 0
+ 436 0000 80B5     		push	{r7, lr}
+ 437              		.cfi_def_cfa_offset 8
+ 438              		.cfi_offset 7, -8
+ 439              		.cfi_offset 14, -4
+ 440 0002 84B0     		sub	sp, sp, #16
+ 441              		.cfi_def_cfa_offset 24
+ 442 0004 00AF     		add	r7, sp, #0
+ 443              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 16
+
+
+ 444 0006 0346     		mov	r3, r0
+ 445 0008 FB71     		strb	r3, [r7, #7]
+ 409:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 cmdIndx = 0u;
+ 446              		.loc 1 409 0
+ 447 000a 0023     		movs	r3, #0
+ 448 000c FB73     		strb	r3, [r7, #15]
+ 410:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ 411:Generated_Source\PSoC5/I2C_LCD_1.c ****     while(cmdIndx < I2C_LCD_1_NUM_COMMANDS)
+ 449              		.loc 1 411 0
+ 450 000e 3DE0     		b	.L22
+ 451              	.L29:
+ 412:Generated_Source\PSoC5/I2C_LCD_1.c ****     {   
+ 413:Generated_Source\PSoC5/I2C_LCD_1.c ****         if (cByte == I2C_LCD_1_cmdPatt[cmdIndx][I2C_LCD_1_COMMAND_BYTE_INDEX])
+ 452              		.loc 1 413 0
+ 453 0010 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 454 0012 2149     		ldr	r1, .L31
+ 455 0014 1346     		mov	r3, r2
+ 456 0016 5B00     		lsls	r3, r3, #1
+ 457 0018 1344     		add	r3, r3, r2
+ 458 001a 0B44     		add	r3, r3, r1
+ 459 001c 0233     		adds	r3, r3, #2
+ 460 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 461 0020 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 462 0022 9A42     		cmp	r2, r3
+ 463 0024 2FD1     		bne	.L23
+ 414:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 415:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Fill control pattern based on found index */
+ 416:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrCntrlPatt(cmdIndx);
+ 464              		.loc 1 416 0
+ 465 0026 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 466 0028 1846     		mov	r0, r3
+ 467 002a FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 417:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 418:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Send data to LCD and wait when transaction complete */
+ 419:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_SendSequence();
+ 468              		.loc 1 419 0
+ 469 002e FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ 420:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 421:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Following commands require 1.5 ms delay to execute */
+ 422:Generated_Source\PSoC5/I2C_LCD_1.c ****             switch(cByte)
+ 470              		.loc 1 422 0
+ 471 0032 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 472 0034 013B     		subs	r3, r3, #1
+ 473 0036 0D2B     		cmp	r3, #13
+ 474 0038 23D8     		bhi	.L30
+ 475 003a 01A2     		adr	r2, .L26
+ 476 003c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 477              		.p2align 2
+ 478              	.L26:
+ 479 0040 79000000 		.word	.L25+1
+ 480 0044 79000000 		.word	.L25+1
+ 481 0048 83000000 		.word	.L30+1
+ 482 004c 83000000 		.word	.L30+1
+ 483 0050 83000000 		.word	.L30+1
+ 484 0054 83000000 		.word	.L30+1
+ 485 0058 83000000 		.word	.L30+1
+ 486 005c 79000000 		.word	.L25+1
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 17
+
+
+ 487 0060 83000000 		.word	.L30+1
+ 488 0064 83000000 		.word	.L30+1
+ 489 0068 83000000 		.word	.L30+1
+ 490 006c 83000000 		.word	.L30+1
+ 491 0070 83000000 		.word	.L30+1
+ 492 0074 79000000 		.word	.L25+1
+ 493              		.p2align 1
+ 494              	.L25:
+ 423:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 424:Generated_Source\PSoC5/I2C_LCD_1.c ****                 case I2C_LCD_1_CLEAR_DISPLAY :
+ 425:Generated_Source\PSoC5/I2C_LCD_1.c ****                 case I2C_LCD_1_CURSOR_HOME :
+ 426:Generated_Source\PSoC5/I2C_LCD_1.c ****                 case I2C_LCD_1_DISPLAY_CURSOR_ON :
+ 427:Generated_Source\PSoC5/I2C_LCD_1.c ****                 case I2C_LCD_1_DISPLAY_CURSOR_OFF :
+ 428:Generated_Source\PSoC5/I2C_LCD_1.c ****                     CyDelayUs(I2C_LCD_1_CMOMMAND_DELAY);
+ 495              		.loc 1 428 0
+ 496 0078 40F2DC50 		movw	r0, #1500
+ 497 007c FFF7FEFF 		bl	CyDelayUs
+ 429:Generated_Source\PSoC5/I2C_LCD_1.c ****                     break;
+ 498              		.loc 1 429 0
+ 499 0080 00E0     		b	.L27
+ 500              	.L30:
+ 430:Generated_Source\PSoC5/I2C_LCD_1.c ****                 default:
+ 431:Generated_Source\PSoC5/I2C_LCD_1.c ****                     break;
+ 501              		.loc 1 431 0
+ 502 0082 00BF     		nop
+ 503              	.L27:
+ 432:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 433:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Command index was found - break while() loop */
+ 434:Generated_Source\PSoC5/I2C_LCD_1.c ****             break;
+ 504              		.loc 1 434 0 discriminator 1
+ 505 0084 05E0     		b	.L21
+ 506              	.L23:
+ 435:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+ 436:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Increment command pattern index */
+ 437:Generated_Source\PSoC5/I2C_LCD_1.c ****         cmdIndx++;
+ 507              		.loc 1 437 0
+ 508 0086 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 509 0088 0133     		adds	r3, r3, #1
+ 510 008a FB73     		strb	r3, [r7, #15]
+ 511              	.L22:
+ 411:Generated_Source\PSoC5/I2C_LCD_1.c ****     {   
+ 512              		.loc 1 411 0
+ 513 008c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 514 008e 0F2B     		cmp	r3, #15
+ 515 0090 BED9     		bls	.L29
+ 516              	.L21:
+ 438:Generated_Source\PSoC5/I2C_LCD_1.c ****     } 
+ 439:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 517              		.loc 1 439 0
+ 518 0092 1037     		adds	r7, r7, #16
+ 519              		.cfi_def_cfa_offset 8
+ 520 0094 BD46     		mov	sp, r7
+ 521              		.cfi_def_cfa_register 13
+ 522              		@ sp needed
+ 523 0096 80BD     		pop	{r7, pc}
+ 524              	.L32:
+ 525              		.align	2
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 18
+
+
+ 526              	.L31:
+ 527 0098 00000000 		.word	I2C_LCD_1_cmdPatt
+ 528              		.cfi_endproc
+ 529              	.LFE7:
+ 530              		.size	I2C_LCD_1_WriteControl, .-I2C_LCD_1_WriteControl
+ 531              		.section	.text.I2C_LCD_1_WrCntrlPatt,"ax",%progbits
+ 532              		.align	2
+ 533              		.thumb
+ 534              		.thumb_func
+ 535              		.type	I2C_LCD_1_WrCntrlPatt, %function
+ 536              	I2C_LCD_1_WrCntrlPatt:
+ 537              	.LFB8:
+ 440:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 441:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 442:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 443:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_WrCntrlPatt
+ 444:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 445:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 446:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 447:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Writes a control pattern to the buffer that will be later send to the LCD
+ 448:Generated_Source\PSoC5/I2C_LCD_1.c **** *  module.
+ 449:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 450:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 451:Generated_Source\PSoC5/I2C_LCD_1.c **** *  cmdIndex: Index of the command pattern in the look-up array.
+ 452:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 453:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 454:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 455:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 456:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 457:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 458:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 459:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 460:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_WrCntrlPatt(uint8 cmdIndex) CYREENTRANT
+ 461:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 538              		.loc 1 461 0
+ 539              		.cfi_startproc
+ 540              		@ args = 0, pretend = 0, frame = 16
+ 541              		@ frame_needed = 1, uses_anonymous_args = 0
+ 542              		@ link register save eliminated.
+ 543 0000 90B4     		push	{r4, r7}
+ 544              		.cfi_def_cfa_offset 8
+ 545              		.cfi_offset 4, -8
+ 546              		.cfi_offset 7, -4
+ 547 0002 84B0     		sub	sp, sp, #16
+ 548              		.cfi_def_cfa_offset 24
+ 549 0004 00AF     		add	r7, sp, #0
+ 550              		.cfi_def_cfa_register 7
+ 551 0006 0346     		mov	r3, r0
+ 552 0008 FB71     		strb	r3, [r7, #7]
+ 462:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Need to have index 'i' of different size to avoid MISRA
+ 463:Generated_Source\PSoC5/I2C_LCD_1.c ****     * warning when SCB based I2C Master is used. 
+ 464:Generated_Source\PSoC5/I2C_LCD_1.c ****     */
+ 465:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if(I2C_LCD_1_IS_SCB_MASTER_USED)
+ 466:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint32 i;
+ 467:Generated_Source\PSoC5/I2C_LCD_1.c ****     #else
+ 468:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 i;
+ 469:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_IS_SCB_MASTER_USED) */
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 19
+
+
+ 470:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 471:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Fill buffer with command pattern */
+ 472:Generated_Source\PSoC5/I2C_LCD_1.c ****     for(i = 1u; i <= I2C_LCD_1_cmdPatt[cmdIndex][0u]; i++)
+ 553              		.loc 1 472 0
+ 554 000a 0123     		movs	r3, #1
+ 555 000c FB73     		strb	r3, [r7, #15]
+ 556 000e 0FE0     		b	.L34
+ 557              	.L35:
+ 473:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 474:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_buff[i - 1u] =  I2C_LCD_1_cmdPatt[cmdIndex][i];
+ 558              		.loc 1 474 0 discriminator 3
+ 559 0010 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 560 0012 591E     		subs	r1, r3, #1
+ 561 0014 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 562 0016 F87B     		ldrb	r0, [r7, #15]	@ zero_extendqisi2
+ 563 0018 0F4C     		ldr	r4, .L36
+ 564 001a 1346     		mov	r3, r2
+ 565 001c 5B00     		lsls	r3, r3, #1
+ 566 001e 1344     		add	r3, r3, r2
+ 567 0020 0344     		add	r3, r3, r0
+ 568 0022 2344     		add	r3, r3, r4
+ 569 0024 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 570 0026 0D4B     		ldr	r3, .L36+4
+ 571 0028 5A54     		strb	r2, [r3, r1]
+ 472:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 572              		.loc 1 472 0 discriminator 3
+ 573 002a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 574 002c 0133     		adds	r3, r3, #1
+ 575 002e FB73     		strb	r3, [r7, #15]
+ 576              	.L34:
+ 472:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 577              		.loc 1 472 0 is_stmt 0 discriminator 1
+ 578 0030 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 579 0032 0949     		ldr	r1, .L36
+ 580 0034 1346     		mov	r3, r2
+ 581 0036 5B00     		lsls	r3, r3, #1
+ 582 0038 1344     		add	r3, r3, r2
+ 583 003a 0B44     		add	r3, r3, r1
+ 584 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 585 003e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 586 0040 9A42     		cmp	r2, r3
+ 587 0042 E5D9     		bls	.L35
+ 475:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 476:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 477:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Set index to point on next free position in buffer */
+ 478:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_buffIndex = i - 1u;
+ 588              		.loc 1 478 0 is_stmt 1
+ 589 0044 FB7B     		ldrb	r3, [r7, #15]
+ 590 0046 013B     		subs	r3, r3, #1
+ 591 0048 DAB2     		uxtb	r2, r3
+ 592 004a 054B     		ldr	r3, .L36+8
+ 593 004c 1A70     		strb	r2, [r3]
+ 479:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 594              		.loc 1 479 0
+ 595 004e 1037     		adds	r7, r7, #16
+ 596              		.cfi_def_cfa_offset 8
+ 597 0050 BD46     		mov	sp, r7
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 20
+
+
+ 598              		.cfi_def_cfa_register 13
+ 599              		@ sp needed
+ 600 0052 90BC     		pop	{r4, r7}
+ 601              		.cfi_restore 7
+ 602              		.cfi_restore 4
+ 603              		.cfi_def_cfa_offset 0
+ 604 0054 7047     		bx	lr
+ 605              	.L37:
+ 606 0056 00BF     		.align	2
+ 607              	.L36:
+ 608 0058 00000000 		.word	I2C_LCD_1_cmdPatt
+ 609 005c 04000000 		.word	I2C_LCD_1_buff
+ 610 0060 04010000 		.word	I2C_LCD_1_buffIndex
+ 611              		.cfi_endproc
+ 612              	.LFE8:
+ 613              		.size	I2C_LCD_1_WrCntrlPatt, .-I2C_LCD_1_WrCntrlPatt
+ 614              		.section	.text.I2C_LCD_1_SendSequence,"ax",%progbits
+ 615              		.align	2
+ 616              		.thumb
+ 617              		.thumb_func
+ 618              		.type	I2C_LCD_1_SendSequence, %function
+ 619              	I2C_LCD_1_SendSequence:
+ 620              	.LFB9:
+ 480:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 481:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 482:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 483:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_SendSequence
+ 484:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 485:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 486:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 487:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Sends the content of the buffer to the LCD module and waits while transaction
+ 488:Generated_Source\PSoC5/I2C_LCD_1.c **** *  completes. In the end resets index to point to the start of the buffer.
+ 489:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 490:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 491:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 492:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 493:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 494:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 495:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 496:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 497:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 498:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 499:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 500:Generated_Source\PSoC5/I2C_LCD_1.c **** static void I2C_LCD_1_SendSequence(void) CYREENTRANT
+ 501:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 621              		.loc 1 501 0
+ 622              		.cfi_startproc
+ 623              		@ args = 0, pretend = 0, frame = 0
+ 624              		@ frame_needed = 1, uses_anonymous_args = 0
+ 625 0000 80B5     		push	{r7, lr}
+ 626              		.cfi_def_cfa_offset 8
+ 627              		.cfi_offset 7, -8
+ 628              		.cfi_offset 14, -4
+ 629 0002 00AF     		add	r7, sp, #0
+ 630              		.cfi_def_cfa_register 7
+ 502:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send command pattern to LCD */
+ 503:Generated_Source\PSoC5/I2C_LCD_1.c ****     (void) I2C_LCD_1_MasterWriteBuf(I2C_LCD_1_address,
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 21
+
+
+ 631              		.loc 1 503 0
+ 632 0004 0A4B     		ldr	r3, .L40
+ 633 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 634 0008 0A4B     		ldr	r3, .L40+4
+ 635 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 636 000c 1046     		mov	r0, r2
+ 637 000e 0A49     		ldr	r1, .L40+8
+ 638 0010 1A46     		mov	r2, r3
+ 639 0012 0023     		movs	r3, #0
+ 640 0014 FFF7FEFF 		bl	I2C_1_MasterWriteBuf
+ 504:Generated_Source\PSoC5/I2C_LCD_1.c ****                                            I2C_LCD_1_buff,
+ 505:Generated_Source\PSoC5/I2C_LCD_1.c ****                                            I2C_LCD_1_buffIndex,
+ 506:Generated_Source\PSoC5/I2C_LCD_1.c ****                                            I2C_LCD_1_MODE_COMPLETE_XFER);
+ 507:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 508:Generated_Source\PSoC5/I2C_LCD_1.c ****     while(0u == (I2C_LCD_1_MasterReadStatus() & I2C_LCD_1_WRITE_COMPLETE))
+ 641              		.loc 1 508 0
+ 642 0018 00BF     		nop
+ 643              	.L39:
+ 644              		.loc 1 508 0 is_stmt 0 discriminator 1
+ 645 001a FFF7FEFF 		bl	I2C_1_MasterStatus
+ 646 001e 0346     		mov	r3, r0
+ 647 0020 03F00203 		and	r3, r3, #2
+ 648 0024 002B     		cmp	r3, #0
+ 649 0026 F8D0     		beq	.L39
+ 509:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 510:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Wait until I2C Master finishes transaction */
+ 511:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 512:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 513:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Reset buffer index */
+ 514:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_buffIndex = 0u;
+ 650              		.loc 1 514 0 is_stmt 1
+ 651 0028 024B     		ldr	r3, .L40+4
+ 652 002a 0022     		movs	r2, #0
+ 653 002c 1A70     		strb	r2, [r3]
+ 515:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 654              		.loc 1 515 0
+ 655 002e 80BD     		pop	{r7, pc}
+ 656              	.L41:
+ 657              		.align	2
+ 658              	.L40:
+ 659 0030 00000000 		.word	I2C_LCD_1_address
+ 660 0034 04010000 		.word	I2C_LCD_1_buffIndex
+ 661 0038 04000000 		.word	I2C_LCD_1_buff
+ 662              		.cfi_endproc
+ 663              	.LFE9:
+ 664              		.size	I2C_LCD_1_SendSequence, .-I2C_LCD_1_SendSequence
+ 665              		.section	.text.I2C_LCD_1_HandleCustomCommand,"ax",%progbits
+ 666              		.align	2
+ 667              		.global	I2C_LCD_1_HandleCustomCommand
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.type	I2C_LCD_1_HandleCustomCommand, %function
+ 671              	I2C_LCD_1_HandleCustomCommand:
+ 672              	.LFB10:
+ 516:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 517:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 518:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 22
+
+
+ 519:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_HandleCustomCommand
+ 520:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 521:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 522:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 523:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This command adds a support of sending custom commands with parameters.
+ 524:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 525:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 526:Generated_Source\PSoC5/I2C_LCD_1.c **** *  uint8 cmdId: Command code.
+ 527:Generated_Source\PSoC5/I2C_LCD_1.c **** *  uint8 dataLength: The length of data to be send for this command.
+ 528:Generated_Source\PSoC5/I2C_LCD_1.c **** *  uint8 cmdData[]: The data to be send to I2C LCD.
+ 529:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 530:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 531:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 532:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 533:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 534:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 535:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 536:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 537:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_HandleCustomCommand(uint8 cmdId, uint8 dataLength, uint8 const cmdData[])
+ 538:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                         
+ 539:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 673              		.loc 1 539 0
+ 674              		.cfi_startproc
+ 675              		@ args = 0, pretend = 0, frame = 16
+ 676              		@ frame_needed = 1, uses_anonymous_args = 0
+ 677 0000 80B5     		push	{r7, lr}
+ 678              		.cfi_def_cfa_offset 8
+ 679              		.cfi_offset 7, -8
+ 680              		.cfi_offset 14, -4
+ 681 0002 84B0     		sub	sp, sp, #16
+ 682              		.cfi_def_cfa_offset 24
+ 683 0004 00AF     		add	r7, sp, #0
+ 684              		.cfi_def_cfa_register 7
+ 685 0006 0346     		mov	r3, r0
+ 686 0008 3A60     		str	r2, [r7]
+ 687 000a FB71     		strb	r3, [r7, #7]
+ 688 000c 0B46     		mov	r3, r1
+ 689 000e BB71     		strb	r3, [r7, #6]
+ 540:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 i;
+ 541:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 ch;
+ 542:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 cmdIndx = 0u;
+ 690              		.loc 1 542 0
+ 691 0010 0023     		movs	r3, #0
+ 692 0012 BB73     		strb	r3, [r7, #14]
+ 543:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ 544:Generated_Source\PSoC5/I2C_LCD_1.c ****     while(cmdIndx < I2C_LCD_1_NUM_COMMANDS)
+ 693              		.loc 1 544 0
+ 694 0014 27E0     		b	.L43
+ 695              	.L48:
+ 545:Generated_Source\PSoC5/I2C_LCD_1.c ****     {   
+ 546:Generated_Source\PSoC5/I2C_LCD_1.c ****         if (cmdId == I2C_LCD_1_cmdPatt[cmdIndx][I2C_LCD_1_COMMAND_BYTE_INDEX])
+ 696              		.loc 1 546 0
+ 697 0016 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 698 0018 1649     		ldr	r1, .L49
+ 699 001a 1346     		mov	r3, r2
+ 700 001c 5B00     		lsls	r3, r3, #1
+ 701 001e 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 23
+
+
+ 702 0020 0B44     		add	r3, r3, r1
+ 703 0022 0233     		adds	r3, r3, #2
+ 704 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 705 0026 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 706 0028 9A42     		cmp	r2, r3
+ 707 002a 19D1     		bne	.L44
+ 547:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 548:Generated_Source\PSoC5/I2C_LCD_1.c ****              /* Write control pattern for specific command */
+ 549:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrCntrlPatt(cmdIndx);
+ 708              		.loc 1 549 0
+ 709 002c BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 710 002e 1846     		mov	r0, r3
+ 711 0030 FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 550:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 551:Generated_Source\PSoC5/I2C_LCD_1.c ****             for(i = 0u; i < dataLength; i++)
+ 712              		.loc 1 551 0
+ 713 0034 0023     		movs	r3, #0
+ 714 0036 FB73     		strb	r3, [r7, #15]
+ 715 0038 0BE0     		b	.L45
+ 716              	.L46:
+ 552:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 553:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Get next byte from array of data */
+ 554:Generated_Source\PSoC5/I2C_LCD_1.c ****                 ch = cmdData[i];
+ 717              		.loc 1 554 0 discriminator 3
+ 718 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 719 003c 3A68     		ldr	r2, [r7]
+ 720 003e 1344     		add	r3, r3, r2
+ 721 0040 1B78     		ldrb	r3, [r3]
+ 722 0042 7B73     		strb	r3, [r7, #13]
+ 555:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 556:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Add current byte to buffer */
+ 557:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff((uint8) ch);
+ 723              		.loc 1 557 0 discriminator 3
+ 724 0044 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 725 0046 1846     		mov	r0, r3
+ 726 0048 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 551:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 727              		.loc 1 551 0 discriminator 3
+ 728 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 729 004e 0133     		adds	r3, r3, #1
+ 730 0050 FB73     		strb	r3, [r7, #15]
+ 731              	.L45:
+ 551:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 732              		.loc 1 551 0 is_stmt 0 discriminator 1
+ 733 0052 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 734 0054 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 735 0056 9A42     		cmp	r2, r3
+ 736 0058 EFD3     		bcc	.L46
+ 558:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 559:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 560:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Send data to LCD and wait when transaction completes */
+ 561:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_SendSequence();
+ 737              		.loc 1 561 0 is_stmt 1
+ 738 005a FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ 562:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* The command index was found - break while() loop */
+ 563:Generated_Source\PSoC5/I2C_LCD_1.c ****             break;
+ 739              		.loc 1 563 0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 24
+
+
+ 740 005e 05E0     		b	.L42
+ 741              	.L44:
+ 564:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+ 565:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Increment command pattern index */
+ 566:Generated_Source\PSoC5/I2C_LCD_1.c ****         cmdIndx++;
+ 742              		.loc 1 566 0
+ 743 0060 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 744 0062 0133     		adds	r3, r3, #1
+ 745 0064 BB73     		strb	r3, [r7, #14]
+ 746              	.L43:
+ 544:Generated_Source\PSoC5/I2C_LCD_1.c ****     {   
+ 747              		.loc 1 544 0
+ 748 0066 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 749 0068 0F2B     		cmp	r3, #15
+ 750 006a D4D9     		bls	.L48
+ 751              	.L42:
+ 567:Generated_Source\PSoC5/I2C_LCD_1.c ****     } 
+ 568:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 752              		.loc 1 568 0
+ 753 006c 1037     		adds	r7, r7, #16
+ 754              		.cfi_def_cfa_offset 8
+ 755 006e BD46     		mov	sp, r7
+ 756              		.cfi_def_cfa_register 13
+ 757              		@ sp needed
+ 758 0070 80BD     		pop	{r7, pc}
+ 759              	.L50:
+ 760 0072 00BF     		.align	2
+ 761              	.L49:
+ 762 0074 00000000 		.word	I2C_LCD_1_cmdPatt
+ 763              		.cfi_endproc
+ 764              	.LFE10:
+ 765              		.size	I2C_LCD_1_HandleCustomCommand, .-I2C_LCD_1_HandleCustomCommand
+ 766              		.section	.text.I2C_LCD_1_HandleOneByteCommand,"ax",%progbits
+ 767              		.align	2
+ 768              		.global	I2C_LCD_1_HandleOneByteCommand
+ 769              		.thumb
+ 770              		.thumb_func
+ 771              		.type	I2C_LCD_1_HandleOneByteCommand, %function
+ 772              	I2C_LCD_1_HandleOneByteCommand:
+ 773              	.LFB11:
+ 569:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 570:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 571:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 572:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_HandleOneByteCommand
+ 573:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 574:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 575:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 576:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This command adds a support of sending custom commands with 1 byte parameter.
+ 577:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 578:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 579:Generated_Source\PSoC5/I2C_LCD_1.c **** *  uint8 cmdId: Command code.
+ 580:Generated_Source\PSoC5/I2C_LCD_1.c **** *  uint8 cmdByte: One byte of data to be send to I2C LCD.
+ 581:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 582:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 583:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 584:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 585:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 25
+
+
+ 586:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 587:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 588:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 589:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_HandleOneByteCommand(uint8 cmdId, uint8 cmdByte)
+ 590:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                         
+ 591:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 774              		.loc 1 591 0
+ 775              		.cfi_startproc
+ 776              		@ args = 0, pretend = 0, frame = 16
+ 777              		@ frame_needed = 1, uses_anonymous_args = 0
+ 778 0000 80B5     		push	{r7, lr}
+ 779              		.cfi_def_cfa_offset 8
+ 780              		.cfi_offset 7, -8
+ 781              		.cfi_offset 14, -4
+ 782 0002 84B0     		sub	sp, sp, #16
+ 783              		.cfi_def_cfa_offset 24
+ 784 0004 00AF     		add	r7, sp, #0
+ 785              		.cfi_def_cfa_register 7
+ 786 0006 0346     		mov	r3, r0
+ 787 0008 0A46     		mov	r2, r1
+ 788 000a FB71     		strb	r3, [r7, #7]
+ 789 000c 1346     		mov	r3, r2
+ 790 000e BB71     		strb	r3, [r7, #6]
+ 592:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 oneByteArray[I2C_LCD_1_ONE_BYTE_LEN];
+ 593:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ 594:Generated_Source\PSoC5/I2C_LCD_1.c ****     oneByteArray[0u] = cmdByte;
+ 791              		.loc 1 594 0
+ 792 0010 BB79     		ldrb	r3, [r7, #6]
+ 793 0012 3B73     		strb	r3, [r7, #12]
+ 595:Generated_Source\PSoC5/I2C_LCD_1.c ****     
+ 596:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_HandleCustomCommand(cmdId, I2C_LCD_1_ONE_BYTE_LEN, oneByteArray);
+ 794              		.loc 1 596 0
+ 795 0014 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 796 0016 07F10C03 		add	r3, r7, #12
+ 797 001a 1046     		mov	r0, r2
+ 798 001c 0121     		movs	r1, #1
+ 799 001e 1A46     		mov	r2, r3
+ 800 0020 FFF7FEFF 		bl	I2C_LCD_1_HandleCustomCommand
+ 597:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 801              		.loc 1 597 0
+ 802 0024 1037     		adds	r7, r7, #16
+ 803              		.cfi_def_cfa_offset 8
+ 804 0026 BD46     		mov	sp, r7
+ 805              		.cfi_def_cfa_register 13
+ 806              		@ sp needed
+ 807 0028 80BD     		pop	{r7, pc}
+ 808              		.cfi_endproc
+ 809              	.LFE11:
+ 810              		.size	I2C_LCD_1_HandleOneByteCommand, .-I2C_LCD_1_HandleOneByteCommand
+ 811 002a 00BF     		.section	.text.I2C_LCD_1_PrintString,"ax",%progbits
+ 812              		.align	2
+ 813              		.global	I2C_LCD_1_PrintString
+ 814              		.thumb
+ 815              		.thumb_func
+ 816              		.type	I2C_LCD_1_PrintString, %function
+ 817              	I2C_LCD_1_PrintString:
+ 818              	.LFB12:
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 26
+
+
+ 598:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 599:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 600:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 601:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_PrintString
+ 602:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 603:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 604:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 605:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Write a null-terminated string of characters to the screen beginning at the
+ 606:Generated_Source\PSoC5/I2C_LCD_1.c **** *  current cursor location.
+ 607:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 608:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 609:Generated_Source\PSoC5/I2C_LCD_1.c **** *  string:  Null-terminated array of ASCII characters to be displayed on the LCD
+ 610:Generated_Source\PSoC5/I2C_LCD_1.c **** *           module's screen.
+ 611:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 612:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 613:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 614:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 615:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 616:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 617:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 618:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 619:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_PrintString(char8 const string[]) 
+ 620:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 819              		.loc 1 620 0
+ 820              		.cfi_startproc
+ 821              		@ args = 0, pretend = 0, frame = 16
+ 822              		@ frame_needed = 1, uses_anonymous_args = 0
+ 823 0000 80B5     		push	{r7, lr}
+ 824              		.cfi_def_cfa_offset 8
+ 825              		.cfi_offset 7, -8
+ 826              		.cfi_offset 14, -4
+ 827 0002 84B0     		sub	sp, sp, #16
+ 828              		.cfi_def_cfa_offset 24
+ 829 0004 00AF     		add	r7, sp, #0
+ 830              		.cfi_def_cfa_register 7
+ 831 0006 7860     		str	r0, [r7, #4]
+ 621:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 chIdx = 1u;
+ 832              		.loc 1 621 0
+ 833 0008 0123     		movs	r3, #1
+ 834 000a FB73     		strb	r3, [r7, #15]
+ 622:Generated_Source\PSoC5/I2C_LCD_1.c ****     char8 current = *string;
+ 835              		.loc 1 622 0
+ 836 000c 7B68     		ldr	r3, [r7, #4]
+ 837 000e 1B78     		ldrb	r3, [r3]
+ 838 0010 BB73     		strb	r3, [r7, #14]
+ 623:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 624:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send required control byte value to address data register */
+ 625:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_WRITE_DATA_IDX);
+ 839              		.loc 1 625 0
+ 840 0012 0020     		movs	r0, #0
+ 841 0014 FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 626:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 627:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Until null is reached, put next character into buffer */
+ 628:Generated_Source\PSoC5/I2C_LCD_1.c ****     while((char8) '\0' != current)
+ 842              		.loc 1 628 0
+ 843 0018 17E0     		b	.L53
+ 844              	.L56:
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 27
+
+
+ 629:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 630:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Add current byte to buffer */
+ 631:Generated_Source\PSoC5/I2C_LCD_1.c ****         #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 632:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* In case of NXP PCF2119x, LCD modules use character set "S"
+ 633:Generated_Source\PSoC5/I2C_LCD_1.c ****             * (see LCD's module datasheet) that has English letters located in
+ 634:Generated_Source\PSoC5/I2C_LCD_1.c ****             * "extended" area (ASCII code > 128) so it is required to handle
+ 635:Generated_Source\PSoC5/I2C_LCD_1.c ****             * that. But the first eight generated character are exceptions.
+ 636:Generated_Source\PSoC5/I2C_LCD_1.c ****             */
+ 637:Generated_Source\PSoC5/I2C_LCD_1.c ****             if(((char8)(I2C_LCD_1_CUSTOM_CHAR_NUM)) > current)
+ 845              		.loc 1 637 0
+ 846 001a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 847 001c 072B     		cmp	r3, #7
+ 848 001e 04D8     		bhi	.L54
+ 638:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 639:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff((uint8) current);
+ 849              		.loc 1 639 0
+ 850 0020 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 851 0022 1846     		mov	r0, r3
+ 852 0024 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 853 0028 07E0     		b	.L55
+ 854              	.L54:
+ 640:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 641:Generated_Source\PSoC5/I2C_LCD_1.c ****             else
+ 642:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 643:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(((uint8) current) ^ I2C_LCD_1_CHARACTER_SET_S_MASK);
+ 855              		.loc 1 643 0
+ 856 002a BB7B     		ldrb	r3, [r7, #14]
+ 857 002c 83F07F03 		eor	r3, r3, #127
+ 858 0030 DB43     		mvns	r3, r3
+ 859 0032 DBB2     		uxtb	r3, r3
+ 860 0034 1846     		mov	r0, r3
+ 861 0036 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 862              	.L55:
+ 644:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 645:Generated_Source\PSoC5/I2C_LCD_1.c ****         #else
+ 646:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrDataToBuff((uint8) current);
+ 647:Generated_Source\PSoC5/I2C_LCD_1.c ****         #endif /* ((I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X) && \
+ 648:Generated_Source\PSoC5/I2C_LCD_1.c ****                * (I2C_LCD_1_CUSTOM_CHAR_SET != I2C_LCD_1_NONE))
+ 649:Generated_Source\PSoC5/I2C_LCD_1.c ****                */
+ 650:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 651:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Get next byte from string */
+ 652:Generated_Source\PSoC5/I2C_LCD_1.c ****         current = string[chIdx];
+ 863              		.loc 1 652 0
+ 864 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 865 003c 7A68     		ldr	r2, [r7, #4]
+ 866 003e 1344     		add	r3, r3, r2
+ 867 0040 1B78     		ldrb	r3, [r3]
+ 868 0042 BB73     		strb	r3, [r7, #14]
+ 653:Generated_Source\PSoC5/I2C_LCD_1.c ****         chIdx++;
+ 869              		.loc 1 653 0
+ 870 0044 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 871 0046 0133     		adds	r3, r3, #1
+ 872 0048 FB73     		strb	r3, [r7, #15]
+ 873              	.L53:
+ 628:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 874              		.loc 1 628 0
+ 875 004a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 28
+
+
+ 876 004c 002B     		cmp	r3, #0
+ 877 004e E4D1     		bne	.L56
+ 654:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 655:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 656:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send data to LCD and wait when transaction completes */
+ 657:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_SendSequence();
+ 878              		.loc 1 657 0
+ 879 0050 FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ 658:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 880              		.loc 1 658 0
+ 881 0054 1037     		adds	r7, r7, #16
+ 882              		.cfi_def_cfa_offset 8
+ 883 0056 BD46     		mov	sp, r7
+ 884              		.cfi_def_cfa_register 13
+ 885              		@ sp needed
+ 886 0058 80BD     		pop	{r7, pc}
+ 887              		.cfi_endproc
+ 888              	.LFE12:
+ 889              		.size	I2C_LCD_1_PrintString, .-I2C_LCD_1_PrintString
+ 890 005a 00BF     		.section	.text.I2C_LCD_1_PutChar,"ax",%progbits
+ 891              		.align	2
+ 892              		.global	I2C_LCD_1_PutChar
+ 893              		.thumb
+ 894              		.thumb_func
+ 895              		.type	I2C_LCD_1_PutChar, %function
+ 896              	I2C_LCD_1_PutChar:
+ 897              	.LFB13:
+ 659:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 660:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 661:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 662:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_PutChar
+ 663:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 664:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 665:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 666:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Writes an individual character to the screen at the current cursor location.
+ 667:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Used to display custom characters through their named values.
+ 668:Generated_Source\PSoC5/I2C_LCD_1.c **** *  (I2C_LCD_CUSTOM_0 through I2C_LCD_CUSTOM_7).
+ 669:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 670:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 671:Generated_Source\PSoC5/I2C_LCD_1.c **** *  character:  An ASCII character to be displayed on the LCD module's screen.
+ 672:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 673:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 674:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 675:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 676:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 677:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 678:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 679:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 680:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_PutChar(char8 character) 
+ 681:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 898              		.loc 1 681 0
+ 899              		.cfi_startproc
+ 900              		@ args = 0, pretend = 0, frame = 8
+ 901              		@ frame_needed = 1, uses_anonymous_args = 0
+ 902 0000 80B5     		push	{r7, lr}
+ 903              		.cfi_def_cfa_offset 8
+ 904              		.cfi_offset 7, -8
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 29
+
+
+ 905              		.cfi_offset 14, -4
+ 906 0002 82B0     		sub	sp, sp, #8
+ 907              		.cfi_def_cfa_offset 16
+ 908 0004 00AF     		add	r7, sp, #0
+ 909              		.cfi_def_cfa_register 7
+ 910 0006 0346     		mov	r3, r0
+ 911 0008 FB71     		strb	r3, [r7, #7]
+ 682:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send one byte of data with I2C_LCD_WriteData() */
+ 683:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 684:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* In case of NXP PCF2119x, the LCD modules use character set "S"
+ 685:Generated_Source\PSoC5/I2C_LCD_1.c ****         * (see LCD's module datasheet) that has English letters located in
+ 686:Generated_Source\PSoC5/I2C_LCD_1.c ****         * "extended" area (ASCII code > 128) so it is required to handle
+ 687:Generated_Source\PSoC5/I2C_LCD_1.c ****         * that. But the first eight generated character are exceptions.
+ 688:Generated_Source\PSoC5/I2C_LCD_1.c ****         */
+ 689:Generated_Source\PSoC5/I2C_LCD_1.c ****         if(((char8) (I2C_LCD_1_CUSTOM_CHAR_NUM)) >  character)
+ 912              		.loc 1 689 0
+ 913 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 914 000c 072B     		cmp	r3, #7
+ 915 000e 04D8     		bhi	.L58
+ 690:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 691:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WriteData((uint8) character);
+ 916              		.loc 1 691 0
+ 917 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 918 0012 1846     		mov	r0, r3
+ 919 0014 FFF7FEFF 		bl	I2C_LCD_1_WriteData
+ 920 0018 07E0     		b	.L57
+ 921              	.L58:
+ 692:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+ 693:Generated_Source\PSoC5/I2C_LCD_1.c ****         else
+ 694:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 695:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WriteData(((uint8) character) ^ I2C_LCD_1_CHARACTER_SET_S_MASK);
+ 922              		.loc 1 695 0
+ 923 001a FB79     		ldrb	r3, [r7, #7]
+ 924 001c 83F07F03 		eor	r3, r3, #127
+ 925 0020 DB43     		mvns	r3, r3
+ 926 0022 DBB2     		uxtb	r3, r3
+ 927 0024 1846     		mov	r0, r3
+ 928 0026 FFF7FEFF 		bl	I2C_LCD_1_WriteData
+ 929              	.L57:
+ 696:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+ 697:Generated_Source\PSoC5/I2C_LCD_1.c ****     #else
+ 698:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WriteData((uint8) character);
+ 699:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X) */
+ 700:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 930              		.loc 1 700 0
+ 931 002a 0837     		adds	r7, r7, #8
+ 932              		.cfi_def_cfa_offset 8
+ 933 002c BD46     		mov	sp, r7
+ 934              		.cfi_def_cfa_register 13
+ 935              		@ sp needed
+ 936 002e 80BD     		pop	{r7, pc}
+ 937              		.cfi_endproc
+ 938              	.LFE13:
+ 939              		.size	I2C_LCD_1_PutChar, .-I2C_LCD_1_PutChar
+ 940              		.section	.text.I2C_LCD_1_PrintInt8,"ax",%progbits
+ 941              		.align	2
+ 942              		.global	I2C_LCD_1_PrintInt8
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 30
+
+
+ 943              		.thumb
+ 944              		.thumb_func
+ 945              		.type	I2C_LCD_1_PrintInt8, %function
+ 946              	I2C_LCD_1_PrintInt8:
+ 947              	.LFB14:
+ 701:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 702:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 703:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 704:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_PrintInt8
+ 705:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 706:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 707:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 708:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Print a byte as two ASCII characters.
+ 709:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 710:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 711:Generated_Source\PSoC5/I2C_LCD_1.c **** *  value: The byte to be printed out as ASCII characters.
+ 712:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 713:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 714:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 715:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 716:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 717:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 718:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 719:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 720:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_PrintInt8(uint8 value) 
+ 721:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 948              		.loc 1 721 0
+ 949              		.cfi_startproc
+ 950              		@ args = 0, pretend = 0, frame = 8
+ 951              		@ frame_needed = 1, uses_anonymous_args = 0
+ 952 0000 80B5     		push	{r7, lr}
+ 953              		.cfi_def_cfa_offset 8
+ 954              		.cfi_offset 7, -8
+ 955              		.cfi_offset 14, -4
+ 956 0002 82B0     		sub	sp, sp, #8
+ 957              		.cfi_def_cfa_offset 16
+ 958 0004 00AF     		add	r7, sp, #0
+ 959              		.cfi_def_cfa_register 7
+ 960 0006 0346     		mov	r3, r0
+ 961 0008 FB71     		strb	r3, [r7, #7]
+ 722:Generated_Source\PSoC5/I2C_LCD_1.c ****     static char8 const CYCODE I2C_LCD_1_hex[16u] = "0123456789ABCDEF";
+ 723:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 724:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send required control byte value to address data register */
+ 725:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_WRITE_DATA_IDX);
+ 962              		.loc 1 725 0
+ 963 000a 0020     		movs	r0, #0
+ 964 000c FFF7FEFF 		bl	I2C_LCD_1_WrCntrlPatt
+ 726:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 727:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Add current byte to buffer */
+ 728:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 729:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* In case of NXP PCF2119x, LCD modules use character set "S"
+ 730:Generated_Source\PSoC5/I2C_LCD_1.c ****         * (see LCD's module datasheet) that has English letters located in
+ 731:Generated_Source\PSoC5/I2C_LCD_1.c ****         * "extended" area (ASCII code > 128) so it is required to handle
+ 732:Generated_Source\PSoC5/I2C_LCD_1.c ****         * that.
+ 733:Generated_Source\PSoC5/I2C_LCD_1.c ****         */
+ 734:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff(((uint8) I2C_LCD_1_hex[value >> I2C_LCD_1_BYTE_UPPER_NIBBLE_SHIFT])
+ 965              		.loc 1 734 0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 31
+
+
+ 966 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 967 0012 1B09     		lsrs	r3, r3, #4
+ 968 0014 DBB2     		uxtb	r3, r3
+ 969 0016 1A46     		mov	r2, r3
+ 970 0018 0C4B     		ldr	r3, .L61
+ 971 001a 9B5C     		ldrb	r3, [r3, r2]	@ zero_extendqisi2
+ 972 001c 83F07F03 		eor	r3, r3, #127
+ 973 0020 DB43     		mvns	r3, r3
+ 974 0022 DBB2     		uxtb	r3, r3
+ 975 0024 1846     		mov	r0, r3
+ 976 0026 FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 735:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                ^ I2C_LCD_1_CHARACTER_SET_S_MASK );
+ 736:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff(((uint8) I2C_LCD_1_hex[value & I2C_LCD_1_BYTE_LOWER_NIBBLE_MASK]) ^
+ 977              		.loc 1 736 0
+ 978 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 979 002c 03F00F03 		and	r3, r3, #15
+ 980 0030 064A     		ldr	r2, .L61
+ 981 0032 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 982 0034 83F07F03 		eor	r3, r3, #127
+ 983 0038 DB43     		mvns	r3, r3
+ 984 003a DBB2     		uxtb	r3, r3
+ 985 003c 1846     		mov	r0, r3
+ 986 003e FFF7FEFF 		bl	I2C_LCD_1_WrDataToBuff
+ 737:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                I2C_LCD_1_CHARACTER_SET_S_MASK);
+ 738:Generated_Source\PSoC5/I2C_LCD_1.c ****     #else
+ 739:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff((uint8) I2C_LCD_1_hex[value >> I2C_LCD_1_BYTE_UPPER_NIBBLE_SHIFT]);
+ 740:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrDataToBuff((uint8) I2C_LCD_1_hex[value & I2C_LCD_1_BYTE_LOWER_NIBBLE_MASK]);
+ 741:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X) */
+ 742:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 743:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Send data to LCD and wait when transaction complete */
+ 744:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_SendSequence();
+ 987              		.loc 1 744 0
+ 988 0042 FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+ 745:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 989              		.loc 1 745 0
+ 990 0046 0837     		adds	r7, r7, #8
+ 991              		.cfi_def_cfa_offset 8
+ 992 0048 BD46     		mov	sp, r7
+ 993              		.cfi_def_cfa_register 13
+ 994              		@ sp needed
+ 995 004a 80BD     		pop	{r7, pc}
+ 996              	.L62:
+ 997              		.align	2
+ 998              	.L61:
+ 999 004c 30000000 		.word	I2C_LCD_1_hex.4996
+ 1000              		.cfi_endproc
+ 1001              	.LFE14:
+ 1002              		.size	I2C_LCD_1_PrintInt8, .-I2C_LCD_1_PrintInt8
+ 1003              		.section	.text.I2C_LCD_1_PrintInt16,"ax",%progbits
+ 1004              		.align	2
+ 1005              		.global	I2C_LCD_1_PrintInt16
+ 1006              		.thumb
+ 1007              		.thumb_func
+ 1008              		.type	I2C_LCD_1_PrintInt16, %function
+ 1009              	I2C_LCD_1_PrintInt16:
+ 1010              	.LFB15:
+ 746:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 32
+
+
+ 747:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 748:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 749:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_PrintInt16
+ 750:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 751:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 752:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 753:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Print a uint16 as four ASCII characters.
+ 754:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 755:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 756:Generated_Source\PSoC5/I2C_LCD_1.c **** *  value:   The uint16 to be printed out as ASCII characters.
+ 757:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 758:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 759:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 760:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 761:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 762:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 763:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 764:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 765:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_PrintInt16(uint16 value) 
+ 766:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 1011              		.loc 1 766 0
+ 1012              		.cfi_startproc
+ 1013              		@ args = 0, pretend = 0, frame = 8
+ 1014              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1015 0000 80B5     		push	{r7, lr}
+ 1016              		.cfi_def_cfa_offset 8
+ 1017              		.cfi_offset 7, -8
+ 1018              		.cfi_offset 14, -4
+ 1019 0002 82B0     		sub	sp, sp, #8
+ 1020              		.cfi_def_cfa_offset 16
+ 1021 0004 00AF     		add	r7, sp, #0
+ 1022              		.cfi_def_cfa_register 7
+ 1023 0006 0346     		mov	r3, r0
+ 1024 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 767:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_PrintInt8((uint8)(value >> I2C_LCD_1_U16_UPPER_BYTE_SHIFT));
+ 1025              		.loc 1 767 0
+ 1026 000a FB88     		ldrh	r3, [r7, #6]
+ 1027 000c 1B0A     		lsrs	r3, r3, #8
+ 1028 000e 9BB2     		uxth	r3, r3
+ 1029 0010 DBB2     		uxtb	r3, r3
+ 1030 0012 1846     		mov	r0, r3
+ 1031 0014 FFF7FEFF 		bl	I2C_LCD_1_PrintInt8
+ 768:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_PrintInt8((uint8)(value & I2C_LCD_1_U16_LOWER_BYTE_MASK));
+ 1032              		.loc 1 768 0
+ 1033 0018 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 1034 001a DBB2     		uxtb	r3, r3
+ 1035 001c 1846     		mov	r0, r3
+ 1036 001e FFF7FEFF 		bl	I2C_LCD_1_PrintInt8
+ 769:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 1037              		.loc 1 769 0
+ 1038 0022 0837     		adds	r7, r7, #8
+ 1039              		.cfi_def_cfa_offset 8
+ 1040 0024 BD46     		mov	sp, r7
+ 1041              		.cfi_def_cfa_register 13
+ 1042              		@ sp needed
+ 1043 0026 80BD     		pop	{r7, pc}
+ 1044              		.cfi_endproc
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 33
+
+
+ 1045              	.LFE15:
+ 1046              		.size	I2C_LCD_1_PrintInt16, .-I2C_LCD_1_PrintInt16
+ 1047              		.section	.text.I2C_LCD_1_PrintNumber,"ax",%progbits
+ 1048              		.align	2
+ 1049              		.global	I2C_LCD_1_PrintNumber
+ 1050              		.thumb
+ 1051              		.thumb_func
+ 1052              		.type	I2C_LCD_1_PrintNumber, %function
+ 1053              	I2C_LCD_1_PrintNumber:
+ 1054              	.LFB16:
+ 770:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 771:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 772:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 773:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Function Name: I2C_LCD_1_PrintNumber
+ 774:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 775:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 776:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 777:Generated_Source\PSoC5/I2C_LCD_1.c **** *  Print a uint16 value as a left-justified decimal value.
+ 778:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 779:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 780:Generated_Source\PSoC5/I2C_LCD_1.c **** *  value:  The byte to be printed out as ASCII characters.
+ 781:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 782:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 783:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 784:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 785:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 786:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 787:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 788:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ 789:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_PrintNumber(uint16 value) 
+ 790:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 1055              		.loc 1 790 0
+ 1056              		.cfi_startproc
+ 1057              		@ args = 0, pretend = 0, frame = 24
+ 1058              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1059 0000 80B5     		push	{r7, lr}
+ 1060              		.cfi_def_cfa_offset 8
+ 1061              		.cfi_offset 7, -8
+ 1062              		.cfi_offset 14, -4
+ 1063 0002 86B0     		sub	sp, sp, #24
+ 1064              		.cfi_def_cfa_offset 32
+ 1065 0004 00AF     		add	r7, sp, #0
+ 1066              		.cfi_def_cfa_register 7
+ 1067 0006 0346     		mov	r3, r0
+ 1068 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 791:Generated_Source\PSoC5/I2C_LCD_1.c ****     char8 number[I2C_LCD_1_NUMBER_OF_REMAINDERS];
+ 792:Generated_Source\PSoC5/I2C_LCD_1.c ****     char8 temp[I2C_LCD_1_NUMBER_OF_REMAINDERS];
+ 793:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 794:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 digIndex = 0u;
+ 1069              		.loc 1 794 0
+ 1070 000a 0023     		movs	r3, #0
+ 1071 000c FB75     		strb	r3, [r7, #23]
+ 795:Generated_Source\PSoC5/I2C_LCD_1.c ****     uint8 numDigits;
+ 796:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 797:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Load these in reverse order */
+ 798:Generated_Source\PSoC5/I2C_LCD_1.c ****     while(value >= I2C_LCD_1_TEN)
+ 1072              		.loc 1 798 0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 34
+
+
+ 1073 000e 1CE0     		b	.L65
+ 1074              	.L66:
+ 799:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 800:Generated_Source\PSoC5/I2C_LCD_1.c ****         temp[digIndex] = (value % I2C_LCD_1_TEN) + '0';
+ 1075              		.loc 1 800 0
+ 1076 0010 F87D     		ldrb	r0, [r7, #23]	@ zero_extendqisi2
+ 1077 0012 FA88     		ldrh	r2, [r7, #6]
+ 1078 0014 2F4B     		ldr	r3, .L69
+ 1079 0016 A3FB0213 		umull	r1, r3, r3, r2
+ 1080 001a D908     		lsrs	r1, r3, #3
+ 1081 001c 0B46     		mov	r3, r1
+ 1082 001e 9B00     		lsls	r3, r3, #2
+ 1083 0020 0B44     		add	r3, r3, r1
+ 1084 0022 5B00     		lsls	r3, r3, #1
+ 1085 0024 D31A     		subs	r3, r2, r3
+ 1086 0026 9BB2     		uxth	r3, r3
+ 1087 0028 DBB2     		uxtb	r3, r3
+ 1088 002a 3033     		adds	r3, r3, #48
+ 1089 002c DAB2     		uxtb	r2, r3
+ 1090 002e 07F11803 		add	r3, r7, #24
+ 1091 0032 0344     		add	r3, r3, r0
+ 1092 0034 03F8102C 		strb	r2, [r3, #-16]
+ 801:Generated_Source\PSoC5/I2C_LCD_1.c ****         value /= I2C_LCD_1_TEN;
+ 1093              		.loc 1 801 0
+ 1094 0038 FB88     		ldrh	r3, [r7, #6]
+ 1095 003a 264A     		ldr	r2, .L69
+ 1096 003c A2FB0323 		umull	r2, r3, r2, r3
+ 1097 0040 DB08     		lsrs	r3, r3, #3
+ 1098 0042 FB80     		strh	r3, [r7, #6]	@ movhi
+ 802:Generated_Source\PSoC5/I2C_LCD_1.c ****         digIndex++;
+ 1099              		.loc 1 802 0
+ 1100 0044 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 1101 0046 0133     		adds	r3, r3, #1
+ 1102 0048 FB75     		strb	r3, [r7, #23]
+ 1103              	.L65:
+ 798:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 1104              		.loc 1 798 0
+ 1105 004a FB88     		ldrh	r3, [r7, #6]
+ 1106 004c 092B     		cmp	r3, #9
+ 1107 004e DFD8     		bhi	.L66
+ 803:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 804:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 805:Generated_Source\PSoC5/I2C_LCD_1.c ****     temp[digIndex] = (value % I2C_LCD_1_TEN) + '0';
+ 1108              		.loc 1 805 0
+ 1109 0050 F87D     		ldrb	r0, [r7, #23]	@ zero_extendqisi2
+ 1110 0052 FA88     		ldrh	r2, [r7, #6]
+ 1111 0054 1F4B     		ldr	r3, .L69
+ 1112 0056 A3FB0213 		umull	r1, r3, r3, r2
+ 1113 005a D908     		lsrs	r1, r3, #3
+ 1114 005c 0B46     		mov	r3, r1
+ 1115 005e 9B00     		lsls	r3, r3, #2
+ 1116 0060 0B44     		add	r3, r3, r1
+ 1117 0062 5B00     		lsls	r3, r3, #1
+ 1118 0064 D31A     		subs	r3, r2, r3
+ 1119 0066 9BB2     		uxth	r3, r3
+ 1120 0068 DBB2     		uxtb	r3, r3
+ 1121 006a 3033     		adds	r3, r3, #48
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 35
+
+
+ 1122 006c DAB2     		uxtb	r2, r3
+ 1123 006e 07F11803 		add	r3, r7, #24
+ 1124 0072 0344     		add	r3, r3, r0
+ 1125 0074 03F8102C 		strb	r2, [r3, #-16]
+ 806:Generated_Source\PSoC5/I2C_LCD_1.c ****     numDigits = digIndex;
+ 1126              		.loc 1 806 0
+ 1127 0078 FB7D     		ldrb	r3, [r7, #23]
+ 1128 007a BB75     		strb	r3, [r7, #22]
+ 807:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 808:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* While index is greater than or equal to zero copy number
+ 809:Generated_Source\PSoC5/I2C_LCD_1.c ****     * from temporary array to number[].
+ 810:Generated_Source\PSoC5/I2C_LCD_1.c ****     */
+ 811:Generated_Source\PSoC5/I2C_LCD_1.c ****     while (digIndex != 0u)
+ 1129              		.loc 1 811 0
+ 1130 007c 10E0     		b	.L67
+ 1131              	.L68:
+ 812:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 813:Generated_Source\PSoC5/I2C_LCD_1.c ****         number[numDigits - digIndex] = temp[digIndex];
+ 1132              		.loc 1 813 0
+ 1133 007e BA7D     		ldrb	r2, [r7, #22]	@ zero_extendqisi2
+ 1134 0080 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 1135 0082 D31A     		subs	r3, r2, r3
+ 1136 0084 FA7D     		ldrb	r2, [r7, #23]	@ zero_extendqisi2
+ 1137 0086 07F11801 		add	r1, r7, #24
+ 1138 008a 0A44     		add	r2, r2, r1
+ 1139 008c 12F8102C 		ldrb	r2, [r2, #-16]	@ zero_extendqisi2
+ 1140 0090 07F11801 		add	r1, r7, #24
+ 1141 0094 0B44     		add	r3, r3, r1
+ 1142 0096 03F8082C 		strb	r2, [r3, #-8]
+ 814:Generated_Source\PSoC5/I2C_LCD_1.c ****         digIndex--;
+ 1143              		.loc 1 814 0
+ 1144 009a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 1145 009c 013B     		subs	r3, r3, #1
+ 1146 009e FB75     		strb	r3, [r7, #23]
+ 1147              	.L67:
+ 811:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 1148              		.loc 1 811 0
+ 1149 00a0 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 1150 00a2 002B     		cmp	r3, #0
+ 1151 00a4 EBD1     		bne	.L68
+ 815:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 816:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 817:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Copy last digit */
+ 818:Generated_Source\PSoC5/I2C_LCD_1.c ****     number[numDigits] = temp[0u];
+ 1152              		.loc 1 818 0
+ 1153 00a6 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 1154 00a8 3A7A     		ldrb	r2, [r7, #8]	@ zero_extendqisi2
+ 1155 00aa 07F11801 		add	r1, r7, #24
+ 1156 00ae 0B44     		add	r3, r3, r1
+ 1157 00b0 03F8082C 		strb	r2, [r3, #-8]
+ 819:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 820:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Null Termination */
+ 821:Generated_Source\PSoC5/I2C_LCD_1.c ****     number[numDigits + 1u] = (char8) '\0';
+ 1158              		.loc 1 821 0
+ 1159 00b4 BB7D     		ldrb	r3, [r7, #22]	@ zero_extendqisi2
+ 1160 00b6 0133     		adds	r3, r3, #1
+ 1161 00b8 07F11802 		add	r2, r7, #24
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 36
+
+
+ 1162 00bc 1344     		add	r3, r3, r2
+ 1163 00be 0022     		movs	r2, #0
+ 1164 00c0 03F8082C 		strb	r2, [r3, #-8]
+ 822:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 823:Generated_Source\PSoC5/I2C_LCD_1.c ****     /* Print out number */
+ 824:Generated_Source\PSoC5/I2C_LCD_1.c ****     I2C_LCD_1_PrintString(&number[0u]);
+ 1165              		.loc 1 824 0
+ 1166 00c4 07F11003 		add	r3, r7, #16
+ 1167 00c8 1846     		mov	r0, r3
+ 1168 00ca FFF7FEFF 		bl	I2C_LCD_1_PrintString
+ 825:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 1169              		.loc 1 825 0
+ 1170 00ce 1837     		adds	r7, r7, #24
+ 1171              		.cfi_def_cfa_offset 8
+ 1172 00d0 BD46     		mov	sp, r7
+ 1173              		.cfi_def_cfa_register 13
+ 1174              		@ sp needed
+ 1175 00d2 80BD     		pop	{r7, pc}
+ 1176              	.L70:
+ 1177              		.align	2
+ 1178              	.L69:
+ 1179 00d4 CDCCCCCC 		.word	-858993459
+ 1180              		.cfi_endproc
+ 1181              	.LFE16:
+ 1182              		.size	I2C_LCD_1_PrintNumber, .-I2C_LCD_1_PrintNumber
+ 1183              		.section	.text.I2C_LCD_1_SetAddr,"ax",%progbits
+ 1184              		.align	2
+ 1185              		.global	I2C_LCD_1_SetAddr
+ 1186              		.thumb
+ 1187              		.thumb_func
+ 1188              		.type	I2C_LCD_1_SetAddr, %function
+ 1189              	I2C_LCD_1_SetAddr:
+ 1190              	.LFB17:
+ 826:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 827:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 828:Generated_Source\PSoC5/I2C_LCD_1.c **** /*******************************************************************************
+ 829:Generated_Source\PSoC5/I2C_LCD_1.c **** * Function Name: I2C_LCD_1_SetAddr
+ 830:Generated_Source\PSoC5/I2C_LCD_1.c **** ********************************************************************************
+ 831:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 832:Generated_Source\PSoC5/I2C_LCD_1.c **** * Summary:
+ 833:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This function allows the user to change the default I2C address of the LCD.
+ 834:Generated_Source\PSoC5/I2C_LCD_1.c **** *  This function is not used for designs with a single LCD. Systems that have 2
+ 835:Generated_Source\PSoC5/I2C_LCD_1.c **** *  or more LCDs on a single I2C bus, use this function to select which LCD to
+ 836:Generated_Source\PSoC5/I2C_LCD_1.c **** *  communicate. A uint8 variable I2C_LCD_1_address, will be will be set
+ 837:Generated_Source\PSoC5/I2C_LCD_1.c **** *  to the "address" parameter and be used for all further communication until
+ 838:Generated_Source\PSoC5/I2C_LCD_1.c **** *  it is changed to a new address.
+ 839:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 840:Generated_Source\PSoC5/I2C_LCD_1.c **** * Parameters:
+ 841:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 842:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 843:Generated_Source\PSoC5/I2C_LCD_1.c **** * Return:
+ 844:Generated_Source\PSoC5/I2C_LCD_1.c **** *  None
+ 845:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 846:Generated_Source\PSoC5/I2C_LCD_1.c **** * Reentrant:
+ 847:Generated_Source\PSoC5/I2C_LCD_1.c **** *  No
+ 848:Generated_Source\PSoC5/I2C_LCD_1.c **** *
+ 849:Generated_Source\PSoC5/I2C_LCD_1.c **** *******************************************************************************/
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 37
+
+
+ 850:Generated_Source\PSoC5/I2C_LCD_1.c **** void I2C_LCD_1_SetAddr(uint8 address) 
+ 851:Generated_Source\PSoC5/I2C_LCD_1.c **** {
+ 1191              		.loc 1 851 0
+ 1192              		.cfi_startproc
+ 1193              		@ args = 0, pretend = 0, frame = 8
+ 1194              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1195              		@ link register save eliminated.
+ 1196 0000 80B4     		push	{r7}
+ 1197              		.cfi_def_cfa_offset 4
+ 1198              		.cfi_offset 7, -4
+ 1199 0002 83B0     		sub	sp, sp, #12
+ 1200              		.cfi_def_cfa_offset 16
+ 1201 0004 00AF     		add	r7, sp, #0
+ 1202              		.cfi_def_cfa_register 7
+ 1203 0006 0346     		mov	r3, r0
+ 1204 0008 FB71     		strb	r3, [r7, #7]
+ 852:Generated_Source\PSoC5/I2C_LCD_1.c ****     #if(I2C_LCD_1_IS_SCB_MASTER_USED)
+ 853:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_address = ((uint32) address >> I2C_LCD_1_ADDRESS_SHIFT);
+ 854:Generated_Source\PSoC5/I2C_LCD_1.c ****     #else
+ 855:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_address = ((uint8) address >> I2C_LCD_1_ADDRESS_SHIFT);
+ 1205              		.loc 1 855 0
+ 1206 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1207 000c 5B08     		lsrs	r3, r3, #1
+ 1208 000e DAB2     		uxtb	r2, r3
+ 1209 0010 034B     		ldr	r3, .L72
+ 1210 0012 1A70     		strb	r2, [r3]
+ 856:Generated_Source\PSoC5/I2C_LCD_1.c ****     #endif /* (I2C_LCD_1_IS_SCB_MASTER_USED) */
+ 857:Generated_Source\PSoC5/I2C_LCD_1.c **** }
+ 1211              		.loc 1 857 0
+ 1212 0014 0C37     		adds	r7, r7, #12
+ 1213              		.cfi_def_cfa_offset 4
+ 1214 0016 BD46     		mov	sp, r7
+ 1215              		.cfi_def_cfa_register 13
+ 1216              		@ sp needed
+ 1217 0018 5DF8047B 		ldr	r7, [sp], #4
+ 1218              		.cfi_restore 7
+ 1219              		.cfi_def_cfa_offset 0
+ 1220 001c 7047     		bx	lr
+ 1221              	.L73:
+ 1222 001e 00BF     		.align	2
+ 1223              	.L72:
+ 1224 0020 00000000 		.word	I2C_LCD_1_address
+ 1225              		.cfi_endproc
+ 1226              	.LFE17:
+ 1227              		.size	I2C_LCD_1_SetAddr, .-I2C_LCD_1_SetAddr
+ 1228              		.section	.text.I2C_LCD_1_SendCmd,"ax",%progbits
+ 1229              		.align	2
+ 1230              		.thumb
+ 1231              		.thumb_func
+ 1232              		.type	I2C_LCD_1_SendCmd, %function
+ 1233              	I2C_LCD_1_SendCmd:
+ 1234              	.LFB18:
+ 858:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 859:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 860:Generated_Source\PSoC5/I2C_LCD_1.c **** #if (I2C_LCD_1_CUSTOM_CHAR_SET != I2C_LCD_1_NONE)
+ 861:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 862:Generated_Source\PSoC5/I2C_LCD_1.c ****     /*******************************************************************************
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 38
+
+
+ 863:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Function Name: I2C_LCD_1_LoadCustomFonts
+ 864:Generated_Source\PSoC5/I2C_LCD_1.c ****     ********************************************************************************
+ 865:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 866:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Summary:
+ 867:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  Loads 8 custom font characters into the LCD Module for use.  Cannot use
+ 868:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  characters from two different font sets at once, but font sets can be
+ 869:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  switched out during runtime.
+ 870:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 871:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Parameters:
+ 872:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  customData:  The pointer to a constant array of 64 bytes representing 
+ 873:Generated_Source\PSoC5/I2C_LCD_1.c ****     *               8 custom font characters.
+ 874:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Return:
+ 875:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  None
+ 876:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 877:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Reentrant:
+ 878:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  No
+ 879:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 880:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Theory:
+ 881:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  Prior to using this function user need to import the pointer to custom
+ 882:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  font array to your project by writing the following in the source code file
+ 883:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  where custom font will be used:
+ 884:Generated_Source\PSoC5/I2C_LCD_1.c ****     *       extern uint8 const CYCODE LCD_Char_customFonts[];
+ 885:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  This function is not automatically called by the Start() routine and must be
+ 886:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  called manually by the user.
+ 887:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 888:Generated_Source\PSoC5/I2C_LCD_1.c ****     *******************************************************************************/
+ 889:Generated_Source\PSoC5/I2C_LCD_1.c ****     void I2C_LCD_1_LoadCustomFonts(uint8 const customData[])
+ 890:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                             
+ 891:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 892:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 i;
+ 893:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 894:Generated_Source\PSoC5/I2C_LCD_1.c ****         #if (I2C_LCD_1_COMMAND_FORMAT != I2C_LCD_1_NXP_PCF2119X)
+ 895:Generated_Source\PSoC5/I2C_LCD_1.c ****             uint8 addrOffset = 0u;
+ 896:Generated_Source\PSoC5/I2C_LCD_1.c ****             uint8 count = 0u;
+ 897:Generated_Source\PSoC5/I2C_LCD_1.c ****         #endif /* (I2C_LCD_1_COMMAND_FORMAT != I2C_LCD_1_NXP_PCF2119X) */
+ 898:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 899:Generated_Source\PSoC5/I2C_LCD_1.c ****         #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+ 900:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Set starting address in LCD Module as it is location of CGRAM */
+ 901:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WriteControl(I2C_LCD_1_CGRAM_0);
+ 902:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 903:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Set Control pattern for data writing */
+ 904:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_WRITE_DATA_IDX);
+ 905:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 906:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Load in 64 bytes of CustomChar Data */
+ 907:Generated_Source\PSoC5/I2C_LCD_1.c ****             for(i = 0u; i < I2C_LCD_1_CUSTOM_CHAR_SET_LEN; i++)
+ 908:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 909:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Variable 'i' defines character ID (character address) */
+ 910:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(customData[i]);
+ 911:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 912:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 913:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Send data to LCD and wait when transaction completes */
+ 914:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_SendSequence();
+ 915:Generated_Source\PSoC5/I2C_LCD_1.c ****             
+ 916:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Set the LCD modules address register back to the start of the data RAM */
+ 917:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_Position(0u ,0u);
+ 918:Generated_Source\PSoC5/I2C_LCD_1.c ****         #else
+ 919:Generated_Source\PSoC5/I2C_LCD_1.c ****             while(addrOffset < I2C_LCD_1_CUSTOM_CHAR_SET_LEN)
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 39
+
+
+ 920:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+ 921:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Set starting address in LCD Module as it is location of CGRAM. */
+ 922:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_CGRAM_0_IDX);
+ 923:Generated_Source\PSoC5/I2C_LCD_1.c ****                 
+ 924:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Variable 'i' defines character ID (character address) */
+ 925:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WrDataToBuff(count);
+ 926:Generated_Source\PSoC5/I2C_LCD_1.c ****                 
+ 927:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Increment count (actually means to increment custom character address) */
+ 928:Generated_Source\PSoC5/I2C_LCD_1.c ****                 count++;
+ 929:Generated_Source\PSoC5/I2C_LCD_1.c ****                 
+ 930:Generated_Source\PSoC5/I2C_LCD_1.c ****                 for(i = 0u; i < I2C_LCD_1_CHARACTER_HEIGHT; i++)
+ 931:Generated_Source\PSoC5/I2C_LCD_1.c ****                 {
+ 932:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_WrDataToBuff(customData[addrOffset + i]);
+ 933:Generated_Source\PSoC5/I2C_LCD_1.c ****                 }
+ 934:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 935:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Send data to LCD and wait when transaction complete */
+ 936:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_SendSequence();
+ 937:Generated_Source\PSoC5/I2C_LCD_1.c ****                 
+ 938:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Calculate next offset value */
+ 939:Generated_Source\PSoC5/I2C_LCD_1.c ****                 addrOffset += I2C_LCD_1_CHARACTER_HEIGHT;
+ 940:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+ 941:Generated_Source\PSoC5/I2C_LCD_1.c ****         #endif /* (I2C_LCD_1_COMMAND_FORMAT != I2C_LCD_1_NXP_PCF2119X) */
+ 942:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 943:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 944:Generated_Source\PSoC5/I2C_LCD_1.c **** #endif /* I2C_LCD_1_CUSTOM_CHAR_SET == I2C_LCD_1_NONE */
+ 945:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 946:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 947:Generated_Source\PSoC5/I2C_LCD_1.c **** #if((I2C_LCD_1_CUSTOM_CHAR_SET == I2C_LCD_1_VERTICAL_BG) || \
+ 948:Generated_Source\PSoC5/I2C_LCD_1.c ****                 (I2C_LCD_1_CUSTOM_CHAR_SET == I2C_LCD_1_HORIZONTAL_BG))
+ 949:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 950:Generated_Source\PSoC5/I2C_LCD_1.c ****     /*******************************************************************************
+ 951:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Function Name: I2C_LCD_1_DrawHorizontalBG
+ 952:Generated_Source\PSoC5/I2C_LCD_1.c ****     ********************************************************************************
+ 953:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 954:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Summary:
+ 955:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  Draws the horizontal bargraph.
+ 956:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 957:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Parameters:
+ 958:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  row:            The row in which the bar graph starts.
+ 959:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  column:         The column in which the bar graph starts.
+ 960:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  maxCharacters:  The max length of the graph in whole characters.
+ 961:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  value:          The current length or height of the graph in pixels.
+ 962:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 963:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Return:
+ 964:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  None
+ 965:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 966:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Reentrant:
+ 967:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  No
+ 968:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+ 969:Generated_Source\PSoC5/I2C_LCD_1.c ****     *******************************************************************************/
+ 970:Generated_Source\PSoC5/I2C_LCD_1.c ****     void I2C_LCD_1_DrawHorizontalBG(uint8 row, uint8 column, uint8 maxCharacters, uint8 value) \
+ 971:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                             
+ 972:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 973:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* 8-bit Counter */
+ 974:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 count8;
+ 975:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 fullChars;
+ 976:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 remainingPixels;
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 40
+
+
+ 977:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 978:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Number of full characters to draw */
+ 979:Generated_Source\PSoC5/I2C_LCD_1.c ****         fullChars = value / I2C_LCD_1_CHARACTER_WIDTH;
+ 980:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 981:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Number of remaining pixels to draw */
+ 982:Generated_Source\PSoC5/I2C_LCD_1.c ****         remainingPixels = value % I2C_LCD_1_CHARACTER_WIDTH;
+ 983:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 984:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Ensure that maximum character limit is followed. */
+ 985:Generated_Source\PSoC5/I2C_LCD_1.c ****         if(fullChars >= maxCharacters)
+ 986:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 987:Generated_Source\PSoC5/I2C_LCD_1.c ****             fullChars = maxCharacters;
+ 988:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+ 989:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 990:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Put Cursor at start position */
+ 991:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_Position(row, column);
+ 992:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 993:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Set Control pattern for data writing */
+ 994:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_WrCntrlPatt(I2C_LCD_1_WRITE_DATA_IDX);
+ 995:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+ 996:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Write full characters */
+ 997:Generated_Source\PSoC5/I2C_LCD_1.c ****         for(count8 = 0u; count8 < fullChars; count8++)
+ 998:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+ 999:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrDataToBuff(I2C_LCD_1_CUSTOM_5);
+1000:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+1001:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1002:Generated_Source\PSoC5/I2C_LCD_1.c ****         if(fullChars < maxCharacters)
+1003:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+1004:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Write remaining pixels */
+1005:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WrDataToBuff(remainingPixels);
+1006:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1007:Generated_Source\PSoC5/I2C_LCD_1.c ****             if(fullChars < (maxCharacters - 1u))
+1008:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1009:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Fill with whitespace to end of bar graph */
+1010:Generated_Source\PSoC5/I2C_LCD_1.c ****                 for(count8 = 0u; count8 < (maxCharacters - fullChars - 1u); count8++)
+1011:Generated_Source\PSoC5/I2C_LCD_1.c ****                 {
+1012:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_WrDataToBuff(I2C_LCD_1_CUSTOM_0);
+1013:Generated_Source\PSoC5/I2C_LCD_1.c ****                 }
+1014:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1015:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+1016:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1017:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Send data to LCD and wait when transaction complete */
+1018:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendSequence();
+1019:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+1020:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1021:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1022:Generated_Source\PSoC5/I2C_LCD_1.c ****     /*******************************************************************************
+1023:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  Function Name: I2C_LCD_1_DrawVerticalBG
+1024:Generated_Source\PSoC5/I2C_LCD_1.c ****     ********************************************************************************
+1025:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1026:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Summary:
+1027:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  Draws the vertical bargraph.
+1028:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1029:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Parameters:
+1030:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  row:            The row in which the bar graph starts.
+1031:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  column:         The column in which the bar graph starts.
+1032:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  maxCharacters:  The max height of the graph in whole characters.
+1033:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  value:          The current length or height of the graph in pixels.
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 41
+
+
+1034:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1035:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Return:
+1036:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  None
+1037:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1038:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Reentrant:
+1039:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  No
+1040:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1041:Generated_Source\PSoC5/I2C_LCD_1.c ****     *******************************************************************************/
+1042:Generated_Source\PSoC5/I2C_LCD_1.c ****     void I2C_LCD_1_DrawVerticalBG(uint8 row, uint8 column, uint8 maxCharacters, uint8 value)
+1043:Generated_Source\PSoC5/I2C_LCD_1.c ****                                                             
+1044:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+1045:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* 8-bit Counter */
+1046:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 count8 = 0u;
+1047:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Current Row Tracker */
+1048:Generated_Source\PSoC5/I2C_LCD_1.c ****         int8 currentRow;
+1049:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 fullChars;
+1050:Generated_Source\PSoC5/I2C_LCD_1.c ****         uint8 remainingPixels;
+1051:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1052:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Number of full characters to draw */
+1053:Generated_Source\PSoC5/I2C_LCD_1.c ****         fullChars = value / I2C_LCD_1_CHARACTER_HEIGHT;
+1054:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1055:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Number of remaining pixels to draw */
+1056:Generated_Source\PSoC5/I2C_LCD_1.c ****         remainingPixels = value % I2C_LCD_1_CHARACTER_HEIGHT;
+1057:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1058:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Put Cursor at start position */
+1059:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_Position(row, column);
+1060:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1061:Generated_Source\PSoC5/I2C_LCD_1.c ****         /* Make sure the bar graph fits inside the space allotted */
+1062:Generated_Source\PSoC5/I2C_LCD_1.c ****         if(fullChars >= maxCharacters)
+1063:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+1064:Generated_Source\PSoC5/I2C_LCD_1.c ****             fullChars = maxCharacters;
+1065:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+1066:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1067:Generated_Source\PSoC5/I2C_LCD_1.c ****         /*  Write full characters */
+1068:Generated_Source\PSoC5/I2C_LCD_1.c ****         while(count8 < fullChars)
+1069:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+1070:Generated_Source\PSoC5/I2C_LCD_1.c ****             I2C_LCD_1_WriteData(I2C_LCD_1_CUSTOM_7);
+1071:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1072:Generated_Source\PSoC5/I2C_LCD_1.c ****             count8++;
+1073:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1074:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Each pass through, move one row higher */
+1075:Generated_Source\PSoC5/I2C_LCD_1.c ****             if((((int8) row) - ((int8) count8)) >= 0)
+1076:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1077:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_Position(row - count8, column);
+1078:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1079:Generated_Source\PSoC5/I2C_LCD_1.c ****             else
+1080:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1081:Generated_Source\PSoC5/I2C_LCD_1.c ****                 break;
+1082:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1083:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+1084:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1085:Generated_Source\PSoC5/I2C_LCD_1.c ****         if(((((int8) row) - ((int8) count8)) >= 0) && (fullChars < maxCharacters))
+1086:Generated_Source\PSoC5/I2C_LCD_1.c ****         {
+1087:Generated_Source\PSoC5/I2C_LCD_1.c ****             /* Write remaining pixels */
+1088:Generated_Source\PSoC5/I2C_LCD_1.c ****             if(remainingPixels == 0u)
+1089:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1090:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WriteData((uint8) ' ');
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 42
+
+
+1091:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1092:Generated_Source\PSoC5/I2C_LCD_1.c ****             else
+1093:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1094:Generated_Source\PSoC5/I2C_LCD_1.c ****                 I2C_LCD_1_WriteData(remainingPixels - 1u);
+1095:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1096:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1097:Generated_Source\PSoC5/I2C_LCD_1.c ****             currentRow = ((int8) row) - ((int8) count8) - 1;
+1098:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1099:Generated_Source\PSoC5/I2C_LCD_1.c ****             if(currentRow >= 0)
+1100:Generated_Source\PSoC5/I2C_LCD_1.c ****             {
+1101:Generated_Source\PSoC5/I2C_LCD_1.c ****                 /* Move up one row and fill with white space till top of bar graph */
+1102:Generated_Source\PSoC5/I2C_LCD_1.c ****                 for(count8 = 0u; count8 < (maxCharacters - fullChars - 1u); count8++)
+1103:Generated_Source\PSoC5/I2C_LCD_1.c ****                 {
+1104:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_Position((uint8)currentRow, column);
+1105:Generated_Source\PSoC5/I2C_LCD_1.c ****                     I2C_LCD_1_WriteData((uint8) ' ');
+1106:Generated_Source\PSoC5/I2C_LCD_1.c ****                     currentRow --;
+1107:Generated_Source\PSoC5/I2C_LCD_1.c ****                 }
+1108:Generated_Source\PSoC5/I2C_LCD_1.c ****             }
+1109:Generated_Source\PSoC5/I2C_LCD_1.c ****         }
+1110:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+1111:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1112:Generated_Source\PSoC5/I2C_LCD_1.c **** #endif /* ((I2C_LCD_1_CUSTOM_CHAR_SET == I2C_LCD_1_VERTICAL_BG) || \
+1113:Generated_Source\PSoC5/I2C_LCD_1.c ****                 (I2C_LCD_1_CUSTOM_CHAR_SET == I2C_LCD_1_HORIZONTAL_BG)) */
+1114:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1115:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1116:Generated_Source\PSoC5/I2C_LCD_1.c **** #if (I2C_LCD_1_COMMAND_FORMAT == I2C_LCD_1_NXP_PCF2119X)
+1117:Generated_Source\PSoC5/I2C_LCD_1.c **** 
+1118:Generated_Source\PSoC5/I2C_LCD_1.c ****     /*******************************************************************************
+1119:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Function Name: I2C_LCD_1_SendCmd
+1120:Generated_Source\PSoC5/I2C_LCD_1.c ****     ********************************************************************************
+1121:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1122:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Summary:
+1123:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  This function used to send the specific for NXP PCF2119X commands that are 
+1124:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  used to configure the LCD panel.
+1125:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1126:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Parameters:
+1127:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  None
+1128:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1129:Generated_Source\PSoC5/I2C_LCD_1.c ****     * Return:
+1130:Generated_Source\PSoC5/I2C_LCD_1.c ****     *  None
+1131:Generated_Source\PSoC5/I2C_LCD_1.c ****     *
+1132:Generated_Source\PSoC5/I2C_LCD_1.c ****     *******************************************************************************/
+1133:Generated_Source\PSoC5/I2C_LCD_1.c ****     static void I2C_LCD_1_SendCmd(uint8 cmd) CYREENTRANT
+1134:Generated_Source\PSoC5/I2C_LCD_1.c ****     {
+ 1235              		.loc 1 1134 0
+ 1236              		.cfi_startproc
+ 1237              		@ args = 0, pretend = 0, frame = 8
+ 1238              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1239 0000 80B5     		push	{r7, lr}
+ 1240              		.cfi_def_cfa_offset 8
+ 1241              		.cfi_offset 7, -8
+ 1242              		.cfi_offset 14, -4
+ 1243 0002 82B0     		sub	sp, sp, #8
+ 1244              		.cfi_def_cfa_offset 16
+ 1245 0004 00AF     		add	r7, sp, #0
+ 1246              		.cfi_def_cfa_register 7
+ 1247 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 43
+
+
+ 1248 0008 FB71     		strb	r3, [r7, #7]
+1135:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_buff[0u] = I2C_LCD_1_COMMAND_SEND;
+ 1249              		.loc 1 1135 0
+ 1250 000a 074B     		ldr	r3, .L75
+ 1251 000c 0022     		movs	r2, #0
+ 1252 000e 1A70     		strb	r2, [r3]
+1136:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_buff[1u] = cmd;
+ 1253              		.loc 1 1136 0
+ 1254 0010 054A     		ldr	r2, .L75
+ 1255 0012 FB79     		ldrb	r3, [r7, #7]
+ 1256 0014 5370     		strb	r3, [r2, #1]
+1137:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_buffIndex = I2C_LCD_1_LENGTH_2_BYTES;
+ 1257              		.loc 1 1137 0
+ 1258 0016 054B     		ldr	r3, .L75+4
+ 1259 0018 0222     		movs	r2, #2
+ 1260 001a 1A70     		strb	r2, [r3]
+1138:Generated_Source\PSoC5/I2C_LCD_1.c ****         
+1139:Generated_Source\PSoC5/I2C_LCD_1.c ****         I2C_LCD_1_SendSequence();
+ 1261              		.loc 1 1139 0
+ 1262 001c FFF7FEFF 		bl	I2C_LCD_1_SendSequence
+1140:Generated_Source\PSoC5/I2C_LCD_1.c ****     }
+ 1263              		.loc 1 1140 0
+ 1264 0020 0837     		adds	r7, r7, #8
+ 1265              		.cfi_def_cfa_offset 8
+ 1266 0022 BD46     		mov	sp, r7
+ 1267              		.cfi_def_cfa_register 13
+ 1268              		@ sp needed
+ 1269 0024 80BD     		pop	{r7, pc}
+ 1270              	.L76:
+ 1271 0026 00BF     		.align	2
+ 1272              	.L75:
+ 1273 0028 04000000 		.word	I2C_LCD_1_buff
+ 1274 002c 04010000 		.word	I2C_LCD_1_buffIndex
+ 1275              		.cfi_endproc
+ 1276              	.LFE18:
+ 1277              		.size	I2C_LCD_1_SendCmd, .-I2C_LCD_1_SendCmd
+ 1278              		.section	.rodata
+ 1279              		.align	2
+ 1280              		.type	I2C_LCD_1_hex.4996, %object
+ 1281              		.size	I2C_LCD_1_hex.4996, 16
+ 1282              	I2C_LCD_1_hex.4996:
+ 1283 0030 30313233 		.ascii	"0123456789ABCDEF"
+ 1283      34353637 
+ 1283      38394142 
+ 1283      43444546 
+ 1284              		.text
+ 1285              	.Letext0:
+ 1286              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 1287              		.section	.debug_info,"",%progbits
+ 1288              	.Ldebug_info0:
+ 1289 0000 DA040000 		.4byte	0x4da
+ 1290 0004 0400     		.2byte	0x4
+ 1291 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1292 000a 04       		.byte	0x4
+ 1293 000b 01       		.uleb128 0x1
+ 1294 000c 98020000 		.4byte	.LASF59
+ 1295 0010 01       		.byte	0x1
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 44
+
+
+ 1296 0011 1B010000 		.4byte	.LASF60
+ 1297 0015 2E030000 		.4byte	.LASF61
+ 1298 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1299 001d 00000000 		.4byte	0
+ 1300 0021 00000000 		.4byte	.Ldebug_line0
+ 1301 0025 02       		.uleb128 0x2
+ 1302 0026 01       		.byte	0x1
+ 1303 0027 06       		.byte	0x6
+ 1304 0028 98000000 		.4byte	.LASF0
+ 1305 002c 02       		.uleb128 0x2
+ 1306 002d 01       		.byte	0x1
+ 1307 002e 08       		.byte	0x8
+ 1308 002f 8E030000 		.4byte	.LASF1
+ 1309 0033 02       		.uleb128 0x2
+ 1310 0034 02       		.byte	0x2
+ 1311 0035 05       		.byte	0x5
+ 1312 0036 9C030000 		.4byte	.LASF2
+ 1313 003a 02       		.uleb128 0x2
+ 1314 003b 02       		.byte	0x2
+ 1315 003c 07       		.byte	0x7
+ 1316 003d 93010000 		.4byte	.LASF3
+ 1317 0041 02       		.uleb128 0x2
+ 1318 0042 04       		.byte	0x4
+ 1319 0043 05       		.byte	0x5
+ 1320 0044 BB000000 		.4byte	.LASF4
+ 1321 0048 02       		.uleb128 0x2
+ 1322 0049 04       		.byte	0x4
+ 1323 004a 07       		.byte	0x7
+ 1324 004b 59010000 		.4byte	.LASF5
+ 1325 004f 02       		.uleb128 0x2
+ 1326 0050 08       		.byte	0x8
+ 1327 0051 05       		.byte	0x5
+ 1328 0052 8A000000 		.4byte	.LASF6
+ 1329 0056 02       		.uleb128 0x2
+ 1330 0057 08       		.byte	0x8
+ 1331 0058 07       		.byte	0x7
+ 1332 0059 4D000000 		.4byte	.LASF7
+ 1333 005d 03       		.uleb128 0x3
+ 1334 005e 04       		.byte	0x4
+ 1335 005f 05       		.byte	0x5
+ 1336 0060 696E7400 		.ascii	"int\000"
+ 1337 0064 02       		.uleb128 0x2
+ 1338 0065 04       		.byte	0x4
+ 1339 0066 07       		.byte	0x7
+ 1340 0067 4C010000 		.4byte	.LASF8
+ 1341 006b 04       		.uleb128 0x4
+ 1342 006c E3000000 		.4byte	.LASF9
+ 1343 0070 02       		.byte	0x2
+ 1344 0071 9201     		.2byte	0x192
+ 1345 0073 2C000000 		.4byte	0x2c
+ 1346 0077 04       		.uleb128 0x4
+ 1347 0078 00000000 		.4byte	.LASF10
+ 1348 007c 02       		.byte	0x2
+ 1349 007d 9301     		.2byte	0x193
+ 1350 007f 3A000000 		.4byte	0x3a
+ 1351 0083 02       		.uleb128 0x2
+ 1352 0084 04       		.byte	0x4
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 45
+
+
+ 1353 0085 04       		.byte	0x4
+ 1354 0086 82030000 		.4byte	.LASF11
+ 1355 008a 02       		.uleb128 0x2
+ 1356 008b 08       		.byte	0x8
+ 1357 008c 04       		.byte	0x4
+ 1358 008d FF000000 		.4byte	.LASF12
+ 1359 0091 04       		.uleb128 0x4
+ 1360 0092 C3030000 		.4byte	.LASF13
+ 1361 0096 02       		.byte	0x2
+ 1362 0097 A301     		.2byte	0x1a3
+ 1363 0099 9D000000 		.4byte	0x9d
+ 1364 009d 02       		.uleb128 0x2
+ 1365 009e 01       		.byte	0x1
+ 1366 009f 08       		.byte	0x8
+ 1367 00a0 AF030000 		.4byte	.LASF14
+ 1368 00a4 02       		.uleb128 0x2
+ 1369 00a5 04       		.byte	0x4
+ 1370 00a6 07       		.byte	0x7
+ 1371 00a7 4A020000 		.4byte	.LASF15
+ 1372 00ab 05       		.uleb128 0x5
+ 1373 00ac 3B020000 		.4byte	.LASF16
+ 1374 00b0 01       		.byte	0x1
+ 1375 00b1 73       		.byte	0x73
+ 1376 00b2 00000000 		.4byte	.LFB0
+ 1377 00b6 48000000 		.4byte	.LFE0-.LFB0
+ 1378 00ba 01       		.uleb128 0x1
+ 1379 00bb 9C       		.byte	0x9c
+ 1380 00bc 05       		.uleb128 0x5
+ 1381 00bd C9030000 		.4byte	.LASF17
+ 1382 00c1 01       		.byte	0x1
+ 1383 00c2 AC       		.byte	0xac
+ 1384 00c3 00000000 		.4byte	.LFB1
+ 1385 00c7 0C000000 		.4byte	.LFE1-.LFB1
+ 1386 00cb 01       		.uleb128 0x1
+ 1387 00cc 9C       		.byte	0x9c
+ 1388 00cd 05       		.uleb128 0x5
+ 1389 00ce 72030000 		.4byte	.LASF18
+ 1390 00d2 01       		.byte	0x1
+ 1391 00d3 C9       		.byte	0xc9
+ 1392 00d4 00000000 		.4byte	.LFB2
+ 1393 00d8 20000000 		.4byte	.LFE2-.LFB2
+ 1394 00dc 01       		.uleb128 0x1
+ 1395 00dd 9C       		.byte	0x9c
+ 1396 00de 05       		.uleb128 0x5
+ 1397 00df 64000000 		.4byte	.LASF19
+ 1398 00e3 01       		.byte	0x1
+ 1399 00e4 E9       		.byte	0xe9
+ 1400 00e5 00000000 		.4byte	.LFB3
+ 1401 00e9 0C000000 		.4byte	.LFE3-.LFB3
+ 1402 00ed 01       		.uleb128 0x1
+ 1403 00ee 9C       		.byte	0x9c
+ 1404 00ef 06       		.uleb128 0x6
+ 1405 00f0 0A040000 		.4byte	.LASF21
+ 1406 00f4 01       		.byte	0x1
+ 1407 00f5 0301     		.2byte	0x103
+ 1408 00f7 00000000 		.4byte	.LFB4
+ 1409 00fb 78000000 		.4byte	.LFE4-.LFB4
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 46
+
+
+ 1410 00ff 01       		.uleb128 0x1
+ 1411 0100 9C       		.byte	0x9c
+ 1412 0101 24010000 		.4byte	0x124
+ 1413 0105 07       		.uleb128 0x7
+ 1414 0106 726F7700 		.ascii	"row\000"
+ 1415 010a 01       		.byte	0x1
+ 1416 010b 0301     		.2byte	0x103
+ 1417 010d 6B000000 		.4byte	0x6b
+ 1418 0111 02       		.uleb128 0x2
+ 1419 0112 91       		.byte	0x91
+ 1420 0113 77       		.sleb128 -9
+ 1421 0114 08       		.uleb128 0x8
+ 1422 0115 DA030000 		.4byte	.LASF20
+ 1423 0119 01       		.byte	0x1
+ 1424 011a 0301     		.2byte	0x103
+ 1425 011c 6B000000 		.4byte	0x6b
+ 1426 0120 02       		.uleb128 0x2
+ 1427 0121 91       		.byte	0x91
+ 1428 0122 76       		.sleb128 -10
+ 1429 0123 00       		.byte	0
+ 1430 0124 06       		.uleb128 0x6
+ 1431 0125 F2010000 		.4byte	.LASF22
+ 1432 0129 01       		.byte	0x1
+ 1433 012a 4701     		.2byte	0x147
+ 1434 012c 00000000 		.4byte	.LFB5
+ 1435 0130 22000000 		.4byte	.LFE5-.LFB5
+ 1436 0134 01       		.uleb128 0x1
+ 1437 0135 9C       		.byte	0x9c
+ 1438 0136 4A010000 		.4byte	0x14a
+ 1439 013a 08       		.uleb128 0x8
+ 1440 013b 88030000 		.4byte	.LASF23
+ 1441 013f 01       		.byte	0x1
+ 1442 0140 4701     		.2byte	0x147
+ 1443 0142 6B000000 		.4byte	0x6b
+ 1444 0146 02       		.uleb128 0x2
+ 1445 0147 91       		.byte	0x91
+ 1446 0148 77       		.sleb128 -9
+ 1447 0149 00       		.byte	0
+ 1448 014a 09       		.uleb128 0x9
+ 1449 014b 6D020000 		.4byte	.LASF26
+ 1450 014f 01       		.byte	0x1
+ 1451 0150 6601     		.2byte	0x166
+ 1452 0152 00000000 		.4byte	.LFB6
+ 1453 0156 34000000 		.4byte	.LFE6-.LFB6
+ 1454 015a 01       		.uleb128 0x1
+ 1455 015b 9C       		.byte	0x9c
+ 1456 015c 70010000 		.4byte	0x170
+ 1457 0160 08       		.uleb128 0x8
+ 1458 0161 88030000 		.4byte	.LASF23
+ 1459 0165 01       		.byte	0x1
+ 1460 0166 6601     		.2byte	0x166
+ 1461 0168 6B000000 		.4byte	0x6b
+ 1462 016c 02       		.uleb128 0x2
+ 1463 016d 91       		.byte	0x91
+ 1464 016e 77       		.sleb128 -9
+ 1465 016f 00       		.byte	0
+ 1466 0170 06       		.uleb128 0x6
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 47
+
+
+ 1467 0171 73000000 		.4byte	.LASF24
+ 1468 0175 01       		.byte	0x1
+ 1469 0176 9701     		.2byte	0x197
+ 1470 0178 00000000 		.4byte	.LFB7
+ 1471 017c 9C000000 		.4byte	.LFE7-.LFB7
+ 1472 0180 01       		.uleb128 0x1
+ 1473 0181 9C       		.byte	0x9c
+ 1474 0182 A5010000 		.4byte	0x1a5
+ 1475 0186 08       		.uleb128 0x8
+ 1476 0187 2F040000 		.4byte	.LASF25
+ 1477 018b 01       		.byte	0x1
+ 1478 018c 9701     		.2byte	0x197
+ 1479 018e 6B000000 		.4byte	0x6b
+ 1480 0192 02       		.uleb128 0x2
+ 1481 0193 91       		.byte	0x91
+ 1482 0194 6F       		.sleb128 -17
+ 1483 0195 0A       		.uleb128 0xa
+ 1484 0196 14020000 		.4byte	.LASF29
+ 1485 019a 01       		.byte	0x1
+ 1486 019b 9901     		.2byte	0x199
+ 1487 019d 6B000000 		.4byte	0x6b
+ 1488 01a1 02       		.uleb128 0x2
+ 1489 01a2 91       		.byte	0x91
+ 1490 01a3 77       		.sleb128 -9
+ 1491 01a4 00       		.byte	0
+ 1492 01a5 09       		.uleb128 0x9
+ 1493 01a6 E9000000 		.4byte	.LASF27
+ 1494 01aa 01       		.byte	0x1
+ 1495 01ab CC01     		.2byte	0x1cc
+ 1496 01ad 00000000 		.4byte	.LFB8
+ 1497 01b1 64000000 		.4byte	.LFE8-.LFB8
+ 1498 01b5 01       		.uleb128 0x1
+ 1499 01b6 9C       		.byte	0x9c
+ 1500 01b7 D8010000 		.4byte	0x1d8
+ 1501 01bb 08       		.uleb128 0x8
+ 1502 01bc D3010000 		.4byte	.LASF28
+ 1503 01c0 01       		.byte	0x1
+ 1504 01c1 CC01     		.2byte	0x1cc
+ 1505 01c3 6B000000 		.4byte	0x6b
+ 1506 01c7 02       		.uleb128 0x2
+ 1507 01c8 91       		.byte	0x91
+ 1508 01c9 6F       		.sleb128 -17
+ 1509 01ca 0B       		.uleb128 0xb
+ 1510 01cb 6900     		.ascii	"i\000"
+ 1511 01cd 01       		.byte	0x1
+ 1512 01ce D401     		.2byte	0x1d4
+ 1513 01d0 6B000000 		.4byte	0x6b
+ 1514 01d4 02       		.uleb128 0x2
+ 1515 01d5 91       		.byte	0x91
+ 1516 01d6 77       		.sleb128 -9
+ 1517 01d7 00       		.byte	0
+ 1518 01d8 0C       		.uleb128 0xc
+ 1519 01d9 E1030000 		.4byte	.LASF62
+ 1520 01dd 01       		.byte	0x1
+ 1521 01de F401     		.2byte	0x1f4
+ 1522 01e0 00000000 		.4byte	.LFB9
+ 1523 01e4 3C000000 		.4byte	.LFE9-.LFB9
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 48
+
+
+ 1524 01e8 01       		.uleb128 0x1
+ 1525 01e9 9C       		.byte	0x9c
+ 1526 01ea 06       		.uleb128 0x6
+ 1527 01eb 2F000000 		.4byte	.LASF30
+ 1528 01ef 01       		.byte	0x1
+ 1529 01f0 1902     		.2byte	0x219
+ 1530 01f2 00000000 		.4byte	.LFB10
+ 1531 01f6 78000000 		.4byte	.LFE10-.LFB10
+ 1532 01fa 01       		.uleb128 0x1
+ 1533 01fb 9C       		.byte	0x9c
+ 1534 01fc 58020000 		.4byte	0x258
+ 1535 0200 08       		.uleb128 0x8
+ 1536 0201 A6010000 		.4byte	.LASF31
+ 1537 0205 01       		.byte	0x1
+ 1538 0206 1902     		.2byte	0x219
+ 1539 0208 6B000000 		.4byte	0x6b
+ 1540 020c 02       		.uleb128 0x2
+ 1541 020d 91       		.byte	0x91
+ 1542 020e 6F       		.sleb128 -17
+ 1543 020f 08       		.uleb128 0x8
+ 1544 0210 06010000 		.4byte	.LASF32
+ 1545 0214 01       		.byte	0x1
+ 1546 0215 1902     		.2byte	0x219
+ 1547 0217 6B000000 		.4byte	0x6b
+ 1548 021b 02       		.uleb128 0x2
+ 1549 021c 91       		.byte	0x91
+ 1550 021d 6E       		.sleb128 -18
+ 1551 021e 08       		.uleb128 0x8
+ 1552 021f CB010000 		.4byte	.LASF33
+ 1553 0223 01       		.byte	0x1
+ 1554 0224 1902     		.2byte	0x219
+ 1555 0226 58020000 		.4byte	0x258
+ 1556 022a 02       		.uleb128 0x2
+ 1557 022b 91       		.byte	0x91
+ 1558 022c 68       		.sleb128 -24
+ 1559 022d 0B       		.uleb128 0xb
+ 1560 022e 6900     		.ascii	"i\000"
+ 1561 0230 01       		.byte	0x1
+ 1562 0231 1C02     		.2byte	0x21c
+ 1563 0233 6B000000 		.4byte	0x6b
+ 1564 0237 02       		.uleb128 0x2
+ 1565 0238 91       		.byte	0x91
+ 1566 0239 77       		.sleb128 -9
+ 1567 023a 0B       		.uleb128 0xb
+ 1568 023b 636800   		.ascii	"ch\000"
+ 1569 023e 01       		.byte	0x1
+ 1570 023f 1D02     		.2byte	0x21d
+ 1571 0241 6B000000 		.4byte	0x6b
+ 1572 0245 02       		.uleb128 0x2
+ 1573 0246 91       		.byte	0x91
+ 1574 0247 75       		.sleb128 -11
+ 1575 0248 0A       		.uleb128 0xa
+ 1576 0249 14020000 		.4byte	.LASF29
+ 1577 024d 01       		.byte	0x1
+ 1578 024e 1E02     		.2byte	0x21e
+ 1579 0250 6B000000 		.4byte	0x6b
+ 1580 0254 02       		.uleb128 0x2
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 49
+
+
+ 1581 0255 91       		.byte	0x91
+ 1582 0256 76       		.sleb128 -10
+ 1583 0257 00       		.byte	0
+ 1584 0258 0D       		.uleb128 0xd
+ 1585 0259 04       		.byte	0x4
+ 1586 025a 5E020000 		.4byte	0x25e
+ 1587 025e 0E       		.uleb128 0xe
+ 1588 025f 6B000000 		.4byte	0x6b
+ 1589 0263 06       		.uleb128 0x6
+ 1590 0264 C4000000 		.4byte	.LASF34
+ 1591 0268 01       		.byte	0x1
+ 1592 0269 4D02     		.2byte	0x24d
+ 1593 026b 00000000 		.4byte	.LFB11
+ 1594 026f 2A000000 		.4byte	.LFE11-.LFB11
+ 1595 0273 01       		.uleb128 0x1
+ 1596 0274 9C       		.byte	0x9c
+ 1597 0275 A7020000 		.4byte	0x2a7
+ 1598 0279 08       		.uleb128 0x8
+ 1599 027a A6010000 		.4byte	.LASF31
+ 1600 027e 01       		.byte	0x1
+ 1601 027f 4D02     		.2byte	0x24d
+ 1602 0281 6B000000 		.4byte	0x6b
+ 1603 0285 02       		.uleb128 0x2
+ 1604 0286 91       		.byte	0x91
+ 1605 0287 6F       		.sleb128 -17
+ 1606 0288 08       		.uleb128 0x8
+ 1607 0289 44010000 		.4byte	.LASF35
+ 1608 028d 01       		.byte	0x1
+ 1609 028e 4D02     		.2byte	0x24d
+ 1610 0290 6B000000 		.4byte	0x6b
+ 1611 0294 02       		.uleb128 0x2
+ 1612 0295 91       		.byte	0x91
+ 1613 0296 6E       		.sleb128 -18
+ 1614 0297 0A       		.uleb128 0xa
+ 1615 0298 22000000 		.4byte	.LASF36
+ 1616 029c 01       		.byte	0x1
+ 1617 029d 5002     		.2byte	0x250
+ 1618 029f A7020000 		.4byte	0x2a7
+ 1619 02a3 02       		.uleb128 0x2
+ 1620 02a4 91       		.byte	0x91
+ 1621 02a5 74       		.sleb128 -12
+ 1622 02a6 00       		.byte	0
+ 1623 02a7 0F       		.uleb128 0xf
+ 1624 02a8 6B000000 		.4byte	0x6b
+ 1625 02ac B7020000 		.4byte	0x2b7
+ 1626 02b0 10       		.uleb128 0x10
+ 1627 02b1 A4000000 		.4byte	0xa4
+ 1628 02b5 00       		.byte	0
+ 1629 02b6 00       		.byte	0
+ 1630 02b7 06       		.uleb128 0x6
+ 1631 02b8 7D010000 		.4byte	.LASF37
+ 1632 02bc 01       		.byte	0x1
+ 1633 02bd 6B02     		.2byte	0x26b
+ 1634 02bf 00000000 		.4byte	.LFB12
+ 1635 02c3 5A000000 		.4byte	.LFE12-.LFB12
+ 1636 02c7 01       		.uleb128 0x1
+ 1637 02c8 9C       		.byte	0x9c
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 50
+
+
+ 1638 02c9 FB020000 		.4byte	0x2fb
+ 1639 02cd 08       		.uleb128 0x8
+ 1640 02ce 1B000000 		.4byte	.LASF38
+ 1641 02d2 01       		.byte	0x1
+ 1642 02d3 6B02     		.2byte	0x26b
+ 1643 02d5 FB020000 		.4byte	0x2fb
+ 1644 02d9 02       		.uleb128 0x2
+ 1645 02da 91       		.byte	0x91
+ 1646 02db 6C       		.sleb128 -20
+ 1647 02dc 0A       		.uleb128 0xa
+ 1648 02dd AC010000 		.4byte	.LASF39
+ 1649 02e1 01       		.byte	0x1
+ 1650 02e2 6D02     		.2byte	0x26d
+ 1651 02e4 6B000000 		.4byte	0x6b
+ 1652 02e8 02       		.uleb128 0x2
+ 1653 02e9 91       		.byte	0x91
+ 1654 02ea 77       		.sleb128 -9
+ 1655 02eb 0A       		.uleb128 0xa
+ 1656 02ec 26030000 		.4byte	.LASF40
+ 1657 02f0 01       		.byte	0x1
+ 1658 02f1 6E02     		.2byte	0x26e
+ 1659 02f3 91000000 		.4byte	0x91
+ 1660 02f7 02       		.uleb128 0x2
+ 1661 02f8 91       		.byte	0x91
+ 1662 02f9 76       		.sleb128 -10
+ 1663 02fa 00       		.byte	0
+ 1664 02fb 0D       		.uleb128 0xd
+ 1665 02fc 04       		.byte	0x4
+ 1666 02fd 01030000 		.4byte	0x301
+ 1667 0301 0E       		.uleb128 0xe
+ 1668 0302 91000000 		.4byte	0x91
+ 1669 0306 06       		.uleb128 0x6
+ 1670 0307 53020000 		.4byte	.LASF41
+ 1671 030b 01       		.byte	0x1
+ 1672 030c A802     		.2byte	0x2a8
+ 1673 030e 00000000 		.4byte	.LFB13
+ 1674 0312 30000000 		.4byte	.LFE13-.LFB13
+ 1675 0316 01       		.uleb128 0x1
+ 1676 0317 9C       		.byte	0x9c
+ 1677 0318 2C030000 		.4byte	0x32c
+ 1678 031c 08       		.uleb128 0x8
+ 1679 031d 11010000 		.4byte	.LASF42
+ 1680 0321 01       		.byte	0x1
+ 1681 0322 A802     		.2byte	0x2a8
+ 1682 0324 91000000 		.4byte	0x91
+ 1683 0328 02       		.uleb128 0x2
+ 1684 0329 91       		.byte	0x91
+ 1685 032a 77       		.sleb128 -9
+ 1686 032b 00       		.byte	0
+ 1687 032c 06       		.uleb128 0x6
+ 1688 032d 84020000 		.4byte	.LASF43
+ 1689 0331 01       		.byte	0x1
+ 1690 0332 D002     		.2byte	0x2d0
+ 1691 0334 00000000 		.4byte	.LFB14
+ 1692 0338 50000000 		.4byte	.LFE14-.LFB14
+ 1693 033c 01       		.uleb128 0x1
+ 1694 033d 9C       		.byte	0x9c
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 51
+
+
+ 1695 033e 64030000 		.4byte	0x364
+ 1696 0342 08       		.uleb128 0x8
+ 1697 0343 3E010000 		.4byte	.LASF44
+ 1698 0347 01       		.byte	0x1
+ 1699 0348 D002     		.2byte	0x2d0
+ 1700 034a 6B000000 		.4byte	0x6b
+ 1701 034e 02       		.uleb128 0x2
+ 1702 034f 91       		.byte	0x91
+ 1703 0350 77       		.sleb128 -9
+ 1704 0351 0A       		.uleb128 0xa
+ 1705 0352 06020000 		.4byte	.LASF45
+ 1706 0356 01       		.byte	0x1
+ 1707 0357 D202     		.2byte	0x2d2
+ 1708 0359 74030000 		.4byte	0x374
+ 1709 035d 05       		.uleb128 0x5
+ 1710 035e 03       		.byte	0x3
+ 1711 035f 30000000 		.4byte	I2C_LCD_1_hex.4996
+ 1712 0363 00       		.byte	0
+ 1713 0364 0F       		.uleb128 0xf
+ 1714 0365 91000000 		.4byte	0x91
+ 1715 0369 74030000 		.4byte	0x374
+ 1716 036d 10       		.uleb128 0x10
+ 1717 036e A4000000 		.4byte	0xa4
+ 1718 0372 0F       		.byte	0xf
+ 1719 0373 00       		.byte	0
+ 1720 0374 0E       		.uleb128 0xe
+ 1721 0375 64030000 		.4byte	0x364
+ 1722 0379 06       		.uleb128 0x6
+ 1723 037a 1C020000 		.4byte	.LASF46
+ 1724 037e 01       		.byte	0x1
+ 1725 037f FD02     		.2byte	0x2fd
+ 1726 0381 00000000 		.4byte	.LFB15
+ 1727 0385 28000000 		.4byte	.LFE15-.LFB15
+ 1728 0389 01       		.uleb128 0x1
+ 1729 038a 9C       		.byte	0x9c
+ 1730 038b 9F030000 		.4byte	0x39f
+ 1731 038f 08       		.uleb128 0x8
+ 1732 0390 3E010000 		.4byte	.LASF44
+ 1733 0394 01       		.byte	0x1
+ 1734 0395 FD02     		.2byte	0x2fd
+ 1735 0397 77000000 		.4byte	0x77
+ 1736 039b 02       		.uleb128 0x2
+ 1737 039c 91       		.byte	0x91
+ 1738 039d 76       		.sleb128 -10
+ 1739 039e 00       		.byte	0
+ 1740 039f 06       		.uleb128 0x6
+ 1741 03a0 DC010000 		.4byte	.LASF47
+ 1742 03a4 01       		.byte	0x1
+ 1743 03a5 1503     		.2byte	0x315
+ 1744 03a7 00000000 		.4byte	.LFB16
+ 1745 03ab D8000000 		.4byte	.LFE16-.LFB16
+ 1746 03af 01       		.uleb128 0x1
+ 1747 03b0 9C       		.byte	0x9c
+ 1748 03b1 01040000 		.4byte	0x401
+ 1749 03b5 08       		.uleb128 0x8
+ 1750 03b6 3E010000 		.4byte	.LASF44
+ 1751 03ba 01       		.byte	0x1
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 52
+
+
+ 1752 03bb 1503     		.2byte	0x315
+ 1753 03bd 77000000 		.4byte	0x77
+ 1754 03c1 02       		.uleb128 0x2
+ 1755 03c2 91       		.byte	0x91
+ 1756 03c3 66       		.sleb128 -26
+ 1757 03c4 0A       		.uleb128 0xa
+ 1758 03c5 B2010000 		.4byte	.LASF48
+ 1759 03c9 01       		.byte	0x1
+ 1760 03ca 1703     		.2byte	0x317
+ 1761 03cc 01040000 		.4byte	0x401
+ 1762 03d0 02       		.uleb128 0x2
+ 1763 03d1 91       		.byte	0x91
+ 1764 03d2 70       		.sleb128 -16
+ 1765 03d3 0A       		.uleb128 0xa
+ 1766 03d4 B6000000 		.4byte	.LASF49
+ 1767 03d8 01       		.byte	0x1
+ 1768 03d9 1803     		.2byte	0x318
+ 1769 03db 01040000 		.4byte	0x401
+ 1770 03df 02       		.uleb128 0x2
+ 1771 03e0 91       		.byte	0x91
+ 1772 03e1 68       		.sleb128 -24
+ 1773 03e2 0A       		.uleb128 0xa
+ 1774 03e3 A6030000 		.4byte	.LASF50
+ 1775 03e7 01       		.byte	0x1
+ 1776 03e8 1A03     		.2byte	0x31a
+ 1777 03ea 6B000000 		.4byte	0x6b
+ 1778 03ee 02       		.uleb128 0x2
+ 1779 03ef 91       		.byte	0x91
+ 1780 03f0 77       		.sleb128 -9
+ 1781 03f1 0A       		.uleb128 0xa
+ 1782 03f2 31020000 		.4byte	.LASF51
+ 1783 03f6 01       		.byte	0x1
+ 1784 03f7 1B03     		.2byte	0x31b
+ 1785 03f9 6B000000 		.4byte	0x6b
+ 1786 03fd 02       		.uleb128 0x2
+ 1787 03fe 91       		.byte	0x91
+ 1788 03ff 76       		.sleb128 -10
+ 1789 0400 00       		.byte	0
+ 1790 0401 0F       		.uleb128 0xf
+ 1791 0402 91000000 		.4byte	0x91
+ 1792 0406 11040000 		.4byte	0x411
+ 1793 040a 10       		.uleb128 0x10
+ 1794 040b A4000000 		.4byte	0xa4
+ 1795 040f 04       		.byte	0x4
+ 1796 0410 00       		.byte	0
+ 1797 0411 11       		.uleb128 0x11
+ 1798 0412 F8030000 		.4byte	.LASF52
+ 1799 0416 01       		.byte	0x1
+ 1800 0417 5203     		.2byte	0x352
+ 1801 0419 00000000 		.4byte	.LFB17
+ 1802 041d 24000000 		.4byte	.LFE17-.LFB17
+ 1803 0421 01       		.uleb128 0x1
+ 1804 0422 9C       		.byte	0x9c
+ 1805 0423 37040000 		.4byte	0x437
+ 1806 0427 08       		.uleb128 0x8
+ 1807 0428 65020000 		.4byte	.LASF53
+ 1808 042c 01       		.byte	0x1
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 53
+
+
+ 1809 042d 5203     		.2byte	0x352
+ 1810 042f 6B000000 		.4byte	0x6b
+ 1811 0433 02       		.uleb128 0x2
+ 1812 0434 91       		.byte	0x91
+ 1813 0435 77       		.sleb128 -9
+ 1814 0436 00       		.byte	0
+ 1815 0437 12       		.uleb128 0x12
+ 1816 0438 B9010000 		.4byte	.LASF54
+ 1817 043c 01       		.byte	0x1
+ 1818 043d 6D04     		.2byte	0x46d
+ 1819 043f 00000000 		.4byte	.LFB18
+ 1820 0443 30000000 		.4byte	.LFE18-.LFB18
+ 1821 0447 01       		.uleb128 0x1
+ 1822 0448 9C       		.byte	0x9c
+ 1823 0449 5D040000 		.4byte	0x45d
+ 1824 044d 07       		.uleb128 0x7
+ 1825 044e 636D6400 		.ascii	"cmd\000"
+ 1826 0452 01       		.byte	0x1
+ 1827 0453 6D04     		.2byte	0x46d
+ 1828 0455 6B000000 		.4byte	0x6b
+ 1829 0459 02       		.uleb128 0x2
+ 1830 045a 91       		.byte	0x91
+ 1831 045b 77       		.sleb128 -9
+ 1832 045c 00       		.byte	0
+ 1833 045d 0F       		.uleb128 0xf
+ 1834 045e 6B000000 		.4byte	0x6b
+ 1835 0462 6D040000 		.4byte	0x46d
+ 1836 0466 10       		.uleb128 0x10
+ 1837 0467 A4000000 		.4byte	0xa4
+ 1838 046b FF       		.byte	0xff
+ 1839 046c 00       		.byte	0
+ 1840 046d 13       		.uleb128 0x13
+ 1841 046e B4030000 		.4byte	.LASF55
+ 1842 0472 01       		.byte	0x1
+ 1843 0473 20       		.byte	0x20
+ 1844 0474 5D040000 		.4byte	0x45d
+ 1845 0478 05       		.uleb128 0x5
+ 1846 0479 03       		.byte	0x3
+ 1847 047a 04000000 		.4byte	I2C_LCD_1_buff
+ 1848 047e 13       		.uleb128 0x13
+ 1849 047f 07000000 		.4byte	.LASF56
+ 1850 0483 01       		.byte	0x1
+ 1851 0484 2C       		.byte	0x2c
+ 1852 0485 6B000000 		.4byte	0x6b
+ 1853 0489 05       		.uleb128 0x5
+ 1854 048a 03       		.byte	0x3
+ 1855 048b 04010000 		.4byte	I2C_LCD_1_buffIndex
+ 1856 048f 13       		.uleb128 0x13
+ 1857 0490 6B010000 		.4byte	.LASF57
+ 1858 0494 01       		.byte	0x1
+ 1859 0495 2E       		.byte	0x2e
+ 1860 0496 6B000000 		.4byte	0x6b
+ 1861 049a 05       		.uleb128 0x5
+ 1862 049b 03       		.byte	0x3
+ 1863 049c 00000000 		.4byte	I2C_LCD_1_address
+ 1864 04a0 0F       		.uleb128 0xf
+ 1865 04a1 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 54
+
+
+ 1866 04a5 B6040000 		.4byte	0x4b6
+ 1867 04a9 10       		.uleb128 0x10
+ 1868 04aa A4000000 		.4byte	0xa4
+ 1869 04ae 0F       		.byte	0xf
+ 1870 04af 10       		.uleb128 0x10
+ 1871 04b0 A4000000 		.4byte	0xa4
+ 1872 04b4 02       		.byte	0x2
+ 1873 04b5 00       		.byte	0
+ 1874 04b6 13       		.uleb128 0x13
+ 1875 04b7 1D040000 		.4byte	.LASF58
+ 1876 04bb 01       		.byte	0x1
+ 1877 04bc 35       		.byte	0x35
+ 1878 04bd C7040000 		.4byte	0x4c7
+ 1879 04c1 05       		.uleb128 0x5
+ 1880 04c2 03       		.byte	0x3
+ 1881 04c3 00000000 		.4byte	I2C_LCD_1_cmdPatt
+ 1882 04c7 0E       		.uleb128 0xe
+ 1883 04c8 A0040000 		.4byte	0x4a0
+ 1884 04cc 14       		.uleb128 0x14
+ 1885 04cd A4000000 		.4byte	.LASF63
+ 1886 04d1 01       		.byte	0x1
+ 1887 04d2 1D       		.byte	0x1d
+ 1888 04d3 6B000000 		.4byte	0x6b
+ 1889 04d7 05       		.uleb128 0x5
+ 1890 04d8 03       		.byte	0x3
+ 1891 04d9 00000000 		.4byte	I2C_LCD_1_initVar
+ 1892 04dd 00       		.byte	0
+ 1893              		.section	.debug_abbrev,"",%progbits
+ 1894              	.Ldebug_abbrev0:
+ 1895 0000 01       		.uleb128 0x1
+ 1896 0001 11       		.uleb128 0x11
+ 1897 0002 01       		.byte	0x1
+ 1898 0003 25       		.uleb128 0x25
+ 1899 0004 0E       		.uleb128 0xe
+ 1900 0005 13       		.uleb128 0x13
+ 1901 0006 0B       		.uleb128 0xb
+ 1902 0007 03       		.uleb128 0x3
+ 1903 0008 0E       		.uleb128 0xe
+ 1904 0009 1B       		.uleb128 0x1b
+ 1905 000a 0E       		.uleb128 0xe
+ 1906 000b 55       		.uleb128 0x55
+ 1907 000c 17       		.uleb128 0x17
+ 1908 000d 11       		.uleb128 0x11
+ 1909 000e 01       		.uleb128 0x1
+ 1910 000f 10       		.uleb128 0x10
+ 1911 0010 17       		.uleb128 0x17
+ 1912 0011 00       		.byte	0
+ 1913 0012 00       		.byte	0
+ 1914 0013 02       		.uleb128 0x2
+ 1915 0014 24       		.uleb128 0x24
+ 1916 0015 00       		.byte	0
+ 1917 0016 0B       		.uleb128 0xb
+ 1918 0017 0B       		.uleb128 0xb
+ 1919 0018 3E       		.uleb128 0x3e
+ 1920 0019 0B       		.uleb128 0xb
+ 1921 001a 03       		.uleb128 0x3
+ 1922 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 55
+
+
+ 1923 001c 00       		.byte	0
+ 1924 001d 00       		.byte	0
+ 1925 001e 03       		.uleb128 0x3
+ 1926 001f 24       		.uleb128 0x24
+ 1927 0020 00       		.byte	0
+ 1928 0021 0B       		.uleb128 0xb
+ 1929 0022 0B       		.uleb128 0xb
+ 1930 0023 3E       		.uleb128 0x3e
+ 1931 0024 0B       		.uleb128 0xb
+ 1932 0025 03       		.uleb128 0x3
+ 1933 0026 08       		.uleb128 0x8
+ 1934 0027 00       		.byte	0
+ 1935 0028 00       		.byte	0
+ 1936 0029 04       		.uleb128 0x4
+ 1937 002a 16       		.uleb128 0x16
+ 1938 002b 00       		.byte	0
+ 1939 002c 03       		.uleb128 0x3
+ 1940 002d 0E       		.uleb128 0xe
+ 1941 002e 3A       		.uleb128 0x3a
+ 1942 002f 0B       		.uleb128 0xb
+ 1943 0030 3B       		.uleb128 0x3b
+ 1944 0031 05       		.uleb128 0x5
+ 1945 0032 49       		.uleb128 0x49
+ 1946 0033 13       		.uleb128 0x13
+ 1947 0034 00       		.byte	0
+ 1948 0035 00       		.byte	0
+ 1949 0036 05       		.uleb128 0x5
+ 1950 0037 2E       		.uleb128 0x2e
+ 1951 0038 00       		.byte	0
+ 1952 0039 3F       		.uleb128 0x3f
+ 1953 003a 19       		.uleb128 0x19
+ 1954 003b 03       		.uleb128 0x3
+ 1955 003c 0E       		.uleb128 0xe
+ 1956 003d 3A       		.uleb128 0x3a
+ 1957 003e 0B       		.uleb128 0xb
+ 1958 003f 3B       		.uleb128 0x3b
+ 1959 0040 0B       		.uleb128 0xb
+ 1960 0041 27       		.uleb128 0x27
+ 1961 0042 19       		.uleb128 0x19
+ 1962 0043 11       		.uleb128 0x11
+ 1963 0044 01       		.uleb128 0x1
+ 1964 0045 12       		.uleb128 0x12
+ 1965 0046 06       		.uleb128 0x6
+ 1966 0047 40       		.uleb128 0x40
+ 1967 0048 18       		.uleb128 0x18
+ 1968 0049 9642     		.uleb128 0x2116
+ 1969 004b 19       		.uleb128 0x19
+ 1970 004c 00       		.byte	0
+ 1971 004d 00       		.byte	0
+ 1972 004e 06       		.uleb128 0x6
+ 1973 004f 2E       		.uleb128 0x2e
+ 1974 0050 01       		.byte	0x1
+ 1975 0051 3F       		.uleb128 0x3f
+ 1976 0052 19       		.uleb128 0x19
+ 1977 0053 03       		.uleb128 0x3
+ 1978 0054 0E       		.uleb128 0xe
+ 1979 0055 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 56
+
+
+ 1980 0056 0B       		.uleb128 0xb
+ 1981 0057 3B       		.uleb128 0x3b
+ 1982 0058 05       		.uleb128 0x5
+ 1983 0059 27       		.uleb128 0x27
+ 1984 005a 19       		.uleb128 0x19
+ 1985 005b 11       		.uleb128 0x11
+ 1986 005c 01       		.uleb128 0x1
+ 1987 005d 12       		.uleb128 0x12
+ 1988 005e 06       		.uleb128 0x6
+ 1989 005f 40       		.uleb128 0x40
+ 1990 0060 18       		.uleb128 0x18
+ 1991 0061 9642     		.uleb128 0x2116
+ 1992 0063 19       		.uleb128 0x19
+ 1993 0064 01       		.uleb128 0x1
+ 1994 0065 13       		.uleb128 0x13
+ 1995 0066 00       		.byte	0
+ 1996 0067 00       		.byte	0
+ 1997 0068 07       		.uleb128 0x7
+ 1998 0069 05       		.uleb128 0x5
+ 1999 006a 00       		.byte	0
+ 2000 006b 03       		.uleb128 0x3
+ 2001 006c 08       		.uleb128 0x8
+ 2002 006d 3A       		.uleb128 0x3a
+ 2003 006e 0B       		.uleb128 0xb
+ 2004 006f 3B       		.uleb128 0x3b
+ 2005 0070 05       		.uleb128 0x5
+ 2006 0071 49       		.uleb128 0x49
+ 2007 0072 13       		.uleb128 0x13
+ 2008 0073 02       		.uleb128 0x2
+ 2009 0074 18       		.uleb128 0x18
+ 2010 0075 00       		.byte	0
+ 2011 0076 00       		.byte	0
+ 2012 0077 08       		.uleb128 0x8
+ 2013 0078 05       		.uleb128 0x5
+ 2014 0079 00       		.byte	0
+ 2015 007a 03       		.uleb128 0x3
+ 2016 007b 0E       		.uleb128 0xe
+ 2017 007c 3A       		.uleb128 0x3a
+ 2018 007d 0B       		.uleb128 0xb
+ 2019 007e 3B       		.uleb128 0x3b
+ 2020 007f 05       		.uleb128 0x5
+ 2021 0080 49       		.uleb128 0x49
+ 2022 0081 13       		.uleb128 0x13
+ 2023 0082 02       		.uleb128 0x2
+ 2024 0083 18       		.uleb128 0x18
+ 2025 0084 00       		.byte	0
+ 2026 0085 00       		.byte	0
+ 2027 0086 09       		.uleb128 0x9
+ 2028 0087 2E       		.uleb128 0x2e
+ 2029 0088 01       		.byte	0x1
+ 2030 0089 03       		.uleb128 0x3
+ 2031 008a 0E       		.uleb128 0xe
+ 2032 008b 3A       		.uleb128 0x3a
+ 2033 008c 0B       		.uleb128 0xb
+ 2034 008d 3B       		.uleb128 0x3b
+ 2035 008e 05       		.uleb128 0x5
+ 2036 008f 27       		.uleb128 0x27
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 57
+
+
+ 2037 0090 19       		.uleb128 0x19
+ 2038 0091 11       		.uleb128 0x11
+ 2039 0092 01       		.uleb128 0x1
+ 2040 0093 12       		.uleb128 0x12
+ 2041 0094 06       		.uleb128 0x6
+ 2042 0095 40       		.uleb128 0x40
+ 2043 0096 18       		.uleb128 0x18
+ 2044 0097 9742     		.uleb128 0x2117
+ 2045 0099 19       		.uleb128 0x19
+ 2046 009a 01       		.uleb128 0x1
+ 2047 009b 13       		.uleb128 0x13
+ 2048 009c 00       		.byte	0
+ 2049 009d 00       		.byte	0
+ 2050 009e 0A       		.uleb128 0xa
+ 2051 009f 34       		.uleb128 0x34
+ 2052 00a0 00       		.byte	0
+ 2053 00a1 03       		.uleb128 0x3
+ 2054 00a2 0E       		.uleb128 0xe
+ 2055 00a3 3A       		.uleb128 0x3a
+ 2056 00a4 0B       		.uleb128 0xb
+ 2057 00a5 3B       		.uleb128 0x3b
+ 2058 00a6 05       		.uleb128 0x5
+ 2059 00a7 49       		.uleb128 0x49
+ 2060 00a8 13       		.uleb128 0x13
+ 2061 00a9 02       		.uleb128 0x2
+ 2062 00aa 18       		.uleb128 0x18
+ 2063 00ab 00       		.byte	0
+ 2064 00ac 00       		.byte	0
+ 2065 00ad 0B       		.uleb128 0xb
+ 2066 00ae 34       		.uleb128 0x34
+ 2067 00af 00       		.byte	0
+ 2068 00b0 03       		.uleb128 0x3
+ 2069 00b1 08       		.uleb128 0x8
+ 2070 00b2 3A       		.uleb128 0x3a
+ 2071 00b3 0B       		.uleb128 0xb
+ 2072 00b4 3B       		.uleb128 0x3b
+ 2073 00b5 05       		.uleb128 0x5
+ 2074 00b6 49       		.uleb128 0x49
+ 2075 00b7 13       		.uleb128 0x13
+ 2076 00b8 02       		.uleb128 0x2
+ 2077 00b9 18       		.uleb128 0x18
+ 2078 00ba 00       		.byte	0
+ 2079 00bb 00       		.byte	0
+ 2080 00bc 0C       		.uleb128 0xc
+ 2081 00bd 2E       		.uleb128 0x2e
+ 2082 00be 00       		.byte	0
+ 2083 00bf 03       		.uleb128 0x3
+ 2084 00c0 0E       		.uleb128 0xe
+ 2085 00c1 3A       		.uleb128 0x3a
+ 2086 00c2 0B       		.uleb128 0xb
+ 2087 00c3 3B       		.uleb128 0x3b
+ 2088 00c4 05       		.uleb128 0x5
+ 2089 00c5 27       		.uleb128 0x27
+ 2090 00c6 19       		.uleb128 0x19
+ 2091 00c7 11       		.uleb128 0x11
+ 2092 00c8 01       		.uleb128 0x1
+ 2093 00c9 12       		.uleb128 0x12
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 58
+
+
+ 2094 00ca 06       		.uleb128 0x6
+ 2095 00cb 40       		.uleb128 0x40
+ 2096 00cc 18       		.uleb128 0x18
+ 2097 00cd 9642     		.uleb128 0x2116
+ 2098 00cf 19       		.uleb128 0x19
+ 2099 00d0 00       		.byte	0
+ 2100 00d1 00       		.byte	0
+ 2101 00d2 0D       		.uleb128 0xd
+ 2102 00d3 0F       		.uleb128 0xf
+ 2103 00d4 00       		.byte	0
+ 2104 00d5 0B       		.uleb128 0xb
+ 2105 00d6 0B       		.uleb128 0xb
+ 2106 00d7 49       		.uleb128 0x49
+ 2107 00d8 13       		.uleb128 0x13
+ 2108 00d9 00       		.byte	0
+ 2109 00da 00       		.byte	0
+ 2110 00db 0E       		.uleb128 0xe
+ 2111 00dc 26       		.uleb128 0x26
+ 2112 00dd 00       		.byte	0
+ 2113 00de 49       		.uleb128 0x49
+ 2114 00df 13       		.uleb128 0x13
+ 2115 00e0 00       		.byte	0
+ 2116 00e1 00       		.byte	0
+ 2117 00e2 0F       		.uleb128 0xf
+ 2118 00e3 01       		.uleb128 0x1
+ 2119 00e4 01       		.byte	0x1
+ 2120 00e5 49       		.uleb128 0x49
+ 2121 00e6 13       		.uleb128 0x13
+ 2122 00e7 01       		.uleb128 0x1
+ 2123 00e8 13       		.uleb128 0x13
+ 2124 00e9 00       		.byte	0
+ 2125 00ea 00       		.byte	0
+ 2126 00eb 10       		.uleb128 0x10
+ 2127 00ec 21       		.uleb128 0x21
+ 2128 00ed 00       		.byte	0
+ 2129 00ee 49       		.uleb128 0x49
+ 2130 00ef 13       		.uleb128 0x13
+ 2131 00f0 2F       		.uleb128 0x2f
+ 2132 00f1 0B       		.uleb128 0xb
+ 2133 00f2 00       		.byte	0
+ 2134 00f3 00       		.byte	0
+ 2135 00f4 11       		.uleb128 0x11
+ 2136 00f5 2E       		.uleb128 0x2e
+ 2137 00f6 01       		.byte	0x1
+ 2138 00f7 3F       		.uleb128 0x3f
+ 2139 00f8 19       		.uleb128 0x19
+ 2140 00f9 03       		.uleb128 0x3
+ 2141 00fa 0E       		.uleb128 0xe
+ 2142 00fb 3A       		.uleb128 0x3a
+ 2143 00fc 0B       		.uleb128 0xb
+ 2144 00fd 3B       		.uleb128 0x3b
+ 2145 00fe 05       		.uleb128 0x5
+ 2146 00ff 27       		.uleb128 0x27
+ 2147 0100 19       		.uleb128 0x19
+ 2148 0101 11       		.uleb128 0x11
+ 2149 0102 01       		.uleb128 0x1
+ 2150 0103 12       		.uleb128 0x12
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 59
+
+
+ 2151 0104 06       		.uleb128 0x6
+ 2152 0105 40       		.uleb128 0x40
+ 2153 0106 18       		.uleb128 0x18
+ 2154 0107 9742     		.uleb128 0x2117
+ 2155 0109 19       		.uleb128 0x19
+ 2156 010a 01       		.uleb128 0x1
+ 2157 010b 13       		.uleb128 0x13
+ 2158 010c 00       		.byte	0
+ 2159 010d 00       		.byte	0
+ 2160 010e 12       		.uleb128 0x12
+ 2161 010f 2E       		.uleb128 0x2e
+ 2162 0110 01       		.byte	0x1
+ 2163 0111 03       		.uleb128 0x3
+ 2164 0112 0E       		.uleb128 0xe
+ 2165 0113 3A       		.uleb128 0x3a
+ 2166 0114 0B       		.uleb128 0xb
+ 2167 0115 3B       		.uleb128 0x3b
+ 2168 0116 05       		.uleb128 0x5
+ 2169 0117 27       		.uleb128 0x27
+ 2170 0118 19       		.uleb128 0x19
+ 2171 0119 11       		.uleb128 0x11
+ 2172 011a 01       		.uleb128 0x1
+ 2173 011b 12       		.uleb128 0x12
+ 2174 011c 06       		.uleb128 0x6
+ 2175 011d 40       		.uleb128 0x40
+ 2176 011e 18       		.uleb128 0x18
+ 2177 011f 9642     		.uleb128 0x2116
+ 2178 0121 19       		.uleb128 0x19
+ 2179 0122 01       		.uleb128 0x1
+ 2180 0123 13       		.uleb128 0x13
+ 2181 0124 00       		.byte	0
+ 2182 0125 00       		.byte	0
+ 2183 0126 13       		.uleb128 0x13
+ 2184 0127 34       		.uleb128 0x34
+ 2185 0128 00       		.byte	0
+ 2186 0129 03       		.uleb128 0x3
+ 2187 012a 0E       		.uleb128 0xe
+ 2188 012b 3A       		.uleb128 0x3a
+ 2189 012c 0B       		.uleb128 0xb
+ 2190 012d 3B       		.uleb128 0x3b
+ 2191 012e 0B       		.uleb128 0xb
+ 2192 012f 49       		.uleb128 0x49
+ 2193 0130 13       		.uleb128 0x13
+ 2194 0131 02       		.uleb128 0x2
+ 2195 0132 18       		.uleb128 0x18
+ 2196 0133 00       		.byte	0
+ 2197 0134 00       		.byte	0
+ 2198 0135 14       		.uleb128 0x14
+ 2199 0136 34       		.uleb128 0x34
+ 2200 0137 00       		.byte	0
+ 2201 0138 03       		.uleb128 0x3
+ 2202 0139 0E       		.uleb128 0xe
+ 2203 013a 3A       		.uleb128 0x3a
+ 2204 013b 0B       		.uleb128 0xb
+ 2205 013c 3B       		.uleb128 0x3b
+ 2206 013d 0B       		.uleb128 0xb
+ 2207 013e 49       		.uleb128 0x49
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 60
+
+
+ 2208 013f 13       		.uleb128 0x13
+ 2209 0140 3F       		.uleb128 0x3f
+ 2210 0141 19       		.uleb128 0x19
+ 2211 0142 02       		.uleb128 0x2
+ 2212 0143 18       		.uleb128 0x18
+ 2213 0144 00       		.byte	0
+ 2214 0145 00       		.byte	0
+ 2215 0146 00       		.byte	0
+ 2216              		.section	.debug_aranges,"",%progbits
+ 2217 0000 AC000000 		.4byte	0xac
+ 2218 0004 0200     		.2byte	0x2
+ 2219 0006 00000000 		.4byte	.Ldebug_info0
+ 2220 000a 04       		.byte	0x4
+ 2221 000b 00       		.byte	0
+ 2222 000c 0000     		.2byte	0
+ 2223 000e 0000     		.2byte	0
+ 2224 0010 00000000 		.4byte	.LFB0
+ 2225 0014 48000000 		.4byte	.LFE0-.LFB0
+ 2226 0018 00000000 		.4byte	.LFB1
+ 2227 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 2228 0020 00000000 		.4byte	.LFB2
+ 2229 0024 20000000 		.4byte	.LFE2-.LFB2
+ 2230 0028 00000000 		.4byte	.LFB3
+ 2231 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 2232 0030 00000000 		.4byte	.LFB4
+ 2233 0034 78000000 		.4byte	.LFE4-.LFB4
+ 2234 0038 00000000 		.4byte	.LFB5
+ 2235 003c 22000000 		.4byte	.LFE5-.LFB5
+ 2236 0040 00000000 		.4byte	.LFB6
+ 2237 0044 34000000 		.4byte	.LFE6-.LFB6
+ 2238 0048 00000000 		.4byte	.LFB7
+ 2239 004c 9C000000 		.4byte	.LFE7-.LFB7
+ 2240 0050 00000000 		.4byte	.LFB8
+ 2241 0054 64000000 		.4byte	.LFE8-.LFB8
+ 2242 0058 00000000 		.4byte	.LFB9
+ 2243 005c 3C000000 		.4byte	.LFE9-.LFB9
+ 2244 0060 00000000 		.4byte	.LFB10
+ 2245 0064 78000000 		.4byte	.LFE10-.LFB10
+ 2246 0068 00000000 		.4byte	.LFB11
+ 2247 006c 2A000000 		.4byte	.LFE11-.LFB11
+ 2248 0070 00000000 		.4byte	.LFB12
+ 2249 0074 5A000000 		.4byte	.LFE12-.LFB12
+ 2250 0078 00000000 		.4byte	.LFB13
+ 2251 007c 30000000 		.4byte	.LFE13-.LFB13
+ 2252 0080 00000000 		.4byte	.LFB14
+ 2253 0084 50000000 		.4byte	.LFE14-.LFB14
+ 2254 0088 00000000 		.4byte	.LFB15
+ 2255 008c 28000000 		.4byte	.LFE15-.LFB15
+ 2256 0090 00000000 		.4byte	.LFB16
+ 2257 0094 D8000000 		.4byte	.LFE16-.LFB16
+ 2258 0098 00000000 		.4byte	.LFB17
+ 2259 009c 24000000 		.4byte	.LFE17-.LFB17
+ 2260 00a0 00000000 		.4byte	.LFB18
+ 2261 00a4 30000000 		.4byte	.LFE18-.LFB18
+ 2262 00a8 00000000 		.4byte	0
+ 2263 00ac 00000000 		.4byte	0
+ 2264              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 61
+
+
+ 2265              	.Ldebug_ranges0:
+ 2266 0000 00000000 		.4byte	.LFB0
+ 2267 0004 48000000 		.4byte	.LFE0
+ 2268 0008 00000000 		.4byte	.LFB1
+ 2269 000c 0C000000 		.4byte	.LFE1
+ 2270 0010 00000000 		.4byte	.LFB2
+ 2271 0014 20000000 		.4byte	.LFE2
+ 2272 0018 00000000 		.4byte	.LFB3
+ 2273 001c 0C000000 		.4byte	.LFE3
+ 2274 0020 00000000 		.4byte	.LFB4
+ 2275 0024 78000000 		.4byte	.LFE4
+ 2276 0028 00000000 		.4byte	.LFB5
+ 2277 002c 22000000 		.4byte	.LFE5
+ 2278 0030 00000000 		.4byte	.LFB6
+ 2279 0034 34000000 		.4byte	.LFE6
+ 2280 0038 00000000 		.4byte	.LFB7
+ 2281 003c 9C000000 		.4byte	.LFE7
+ 2282 0040 00000000 		.4byte	.LFB8
+ 2283 0044 64000000 		.4byte	.LFE8
+ 2284 0048 00000000 		.4byte	.LFB9
+ 2285 004c 3C000000 		.4byte	.LFE9
+ 2286 0050 00000000 		.4byte	.LFB10
+ 2287 0054 78000000 		.4byte	.LFE10
+ 2288 0058 00000000 		.4byte	.LFB11
+ 2289 005c 2A000000 		.4byte	.LFE11
+ 2290 0060 00000000 		.4byte	.LFB12
+ 2291 0064 5A000000 		.4byte	.LFE12
+ 2292 0068 00000000 		.4byte	.LFB13
+ 2293 006c 30000000 		.4byte	.LFE13
+ 2294 0070 00000000 		.4byte	.LFB14
+ 2295 0074 50000000 		.4byte	.LFE14
+ 2296 0078 00000000 		.4byte	.LFB15
+ 2297 007c 28000000 		.4byte	.LFE15
+ 2298 0080 00000000 		.4byte	.LFB16
+ 2299 0084 D8000000 		.4byte	.LFE16
+ 2300 0088 00000000 		.4byte	.LFB17
+ 2301 008c 24000000 		.4byte	.LFE17
+ 2302 0090 00000000 		.4byte	.LFB18
+ 2303 0094 30000000 		.4byte	.LFE18
+ 2304 0098 00000000 		.4byte	0
+ 2305 009c 00000000 		.4byte	0
+ 2306              		.section	.debug_line,"",%progbits
+ 2307              	.Ldebug_line0:
+ 2308 0000 45020000 		.section	.debug_str,"MS",%progbits,1
+ 2308      02004600 
+ 2308      00000201 
+ 2308      FB0E0D00 
+ 2308      01010101 
+ 2309              	.LASF10:
+ 2310 0000 75696E74 		.ascii	"uint16\000"
+ 2310      313600
+ 2311              	.LASF56:
+ 2312 0007 4932435F 		.ascii	"I2C_LCD_1_buffIndex\000"
+ 2312      4C43445F 
+ 2312      315F6275 
+ 2312      6666496E 
+ 2312      64657800 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 62
+
+
+ 2313              	.LASF38:
+ 2314 001b 73747269 		.ascii	"string\000"
+ 2314      6E6700
+ 2315              	.LASF36:
+ 2316 0022 6F6E6542 		.ascii	"oneByteArray\000"
+ 2316      79746541 
+ 2316      72726179 
+ 2316      00
+ 2317              	.LASF30:
+ 2318 002f 4932435F 		.ascii	"I2C_LCD_1_HandleCustomCommand\000"
+ 2318      4C43445F 
+ 2318      315F4861 
+ 2318      6E646C65 
+ 2318      43757374 
+ 2319              	.LASF7:
+ 2320 004d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2320      206C6F6E 
+ 2320      6720756E 
+ 2320      7369676E 
+ 2320      65642069 
+ 2321              	.LASF19:
+ 2322 0064 4932435F 		.ascii	"I2C_LCD_1_Stop\000"
+ 2322      4C43445F 
+ 2322      315F5374 
+ 2322      6F7000
+ 2323              	.LASF24:
+ 2324 0073 4932435F 		.ascii	"I2C_LCD_1_WriteControl\000"
+ 2324      4C43445F 
+ 2324      315F5772 
+ 2324      69746543 
+ 2324      6F6E7472 
+ 2325              	.LASF6:
+ 2326 008a 6C6F6E67 		.ascii	"long long int\000"
+ 2326      206C6F6E 
+ 2326      6720696E 
+ 2326      7400
+ 2327              	.LASF0:
+ 2328 0098 7369676E 		.ascii	"signed char\000"
+ 2328      65642063 
+ 2328      68617200 
+ 2329              	.LASF63:
+ 2330 00a4 4932435F 		.ascii	"I2C_LCD_1_initVar\000"
+ 2330      4C43445F 
+ 2330      315F696E 
+ 2330      69745661 
+ 2330      7200
+ 2331              	.LASF49:
+ 2332 00b6 74656D70 		.ascii	"temp\000"
+ 2332      00
+ 2333              	.LASF4:
+ 2334 00bb 6C6F6E67 		.ascii	"long int\000"
+ 2334      20696E74 
+ 2334      00
+ 2335              	.LASF34:
+ 2336 00c4 4932435F 		.ascii	"I2C_LCD_1_HandleOneByteCommand\000"
+ 2336      4C43445F 
+ 2336      315F4861 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 63
+
+
+ 2336      6E646C65 
+ 2336      4F6E6542 
+ 2337              	.LASF9:
+ 2338 00e3 75696E74 		.ascii	"uint8\000"
+ 2338      3800
+ 2339              	.LASF27:
+ 2340 00e9 4932435F 		.ascii	"I2C_LCD_1_WrCntrlPatt\000"
+ 2340      4C43445F 
+ 2340      315F5772 
+ 2340      436E7472 
+ 2340      6C506174 
+ 2341              	.LASF12:
+ 2342 00ff 646F7562 		.ascii	"double\000"
+ 2342      6C6500
+ 2343              	.LASF32:
+ 2344 0106 64617461 		.ascii	"dataLength\000"
+ 2344      4C656E67 
+ 2344      746800
+ 2345              	.LASF42:
+ 2346 0111 63686172 		.ascii	"character\000"
+ 2346      61637465 
+ 2346      7200
+ 2347              	.LASF60:
+ 2348 011b 47656E65 		.ascii	"Generated_Source\\PSoC5\\I2C_LCD_1.c\000"
+ 2348      72617465 
+ 2348      645F536F 
+ 2348      75726365 
+ 2348      5C50536F 
+ 2349              	.LASF44:
+ 2350 013e 76616C75 		.ascii	"value\000"
+ 2350      6500
+ 2351              	.LASF35:
+ 2352 0144 636D6442 		.ascii	"cmdByte\000"
+ 2352      79746500 
+ 2353              	.LASF8:
+ 2354 014c 756E7369 		.ascii	"unsigned int\000"
+ 2354      676E6564 
+ 2354      20696E74 
+ 2354      00
+ 2355              	.LASF5:
+ 2356 0159 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2356      20756E73 
+ 2356      69676E65 
+ 2356      6420696E 
+ 2356      7400
+ 2357              	.LASF57:
+ 2358 016b 4932435F 		.ascii	"I2C_LCD_1_address\000"
+ 2358      4C43445F 
+ 2358      315F6164 
+ 2358      64726573 
+ 2358      7300
+ 2359              	.LASF37:
+ 2360 017d 4932435F 		.ascii	"I2C_LCD_1_PrintString\000"
+ 2360      4C43445F 
+ 2360      315F5072 
+ 2360      696E7453 
+ 2360      7472696E 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 64
+
+
+ 2361              	.LASF3:
+ 2362 0193 73686F72 		.ascii	"short unsigned int\000"
+ 2362      7420756E 
+ 2362      7369676E 
+ 2362      65642069 
+ 2362      6E7400
+ 2363              	.LASF31:
+ 2364 01a6 636D6449 		.ascii	"cmdId\000"
+ 2364      6400
+ 2365              	.LASF39:
+ 2366 01ac 63684964 		.ascii	"chIdx\000"
+ 2366      7800
+ 2367              	.LASF48:
+ 2368 01b2 6E756D62 		.ascii	"number\000"
+ 2368      657200
+ 2369              	.LASF54:
+ 2370 01b9 4932435F 		.ascii	"I2C_LCD_1_SendCmd\000"
+ 2370      4C43445F 
+ 2370      315F5365 
+ 2370      6E64436D 
+ 2370      6400
+ 2371              	.LASF33:
+ 2372 01cb 636D6444 		.ascii	"cmdData\000"
+ 2372      61746100 
+ 2373              	.LASF28:
+ 2374 01d3 636D6449 		.ascii	"cmdIndex\000"
+ 2374      6E646578 
+ 2374      00
+ 2375              	.LASF47:
+ 2376 01dc 4932435F 		.ascii	"I2C_LCD_1_PrintNumber\000"
+ 2376      4C43445F 
+ 2376      315F5072 
+ 2376      696E744E 
+ 2376      756D6265 
+ 2377              	.LASF22:
+ 2378 01f2 4932435F 		.ascii	"I2C_LCD_1_WriteData\000"
+ 2378      4C43445F 
+ 2378      315F5772 
+ 2378      69746544 
+ 2378      61746100 
+ 2379              	.LASF45:
+ 2380 0206 4932435F 		.ascii	"I2C_LCD_1_hex\000"
+ 2380      4C43445F 
+ 2380      315F6865 
+ 2380      7800
+ 2381              	.LASF29:
+ 2382 0214 636D6449 		.ascii	"cmdIndx\000"
+ 2382      6E647800 
+ 2383              	.LASF46:
+ 2384 021c 4932435F 		.ascii	"I2C_LCD_1_PrintInt16\000"
+ 2384      4C43445F 
+ 2384      315F5072 
+ 2384      696E7449 
+ 2384      6E743136 
+ 2385              	.LASF51:
+ 2386 0231 6E756D44 		.ascii	"numDigits\000"
+ 2386      69676974 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 65
+
+
+ 2386      7300
+ 2387              	.LASF16:
+ 2388 023b 4932435F 		.ascii	"I2C_LCD_1_Init\000"
+ 2388      4C43445F 
+ 2388      315F496E 
+ 2388      697400
+ 2389              	.LASF15:
+ 2390 024a 73697A65 		.ascii	"sizetype\000"
+ 2390      74797065 
+ 2390      00
+ 2391              	.LASF41:
+ 2392 0253 4932435F 		.ascii	"I2C_LCD_1_PutChar\000"
+ 2392      4C43445F 
+ 2392      315F5075 
+ 2392      74436861 
+ 2392      7200
+ 2393              	.LASF53:
+ 2394 0265 61646472 		.ascii	"address\000"
+ 2394      65737300 
+ 2395              	.LASF26:
+ 2396 026d 4932435F 		.ascii	"I2C_LCD_1_WrDataToBuff\000"
+ 2396      4C43445F 
+ 2396      315F5772 
+ 2396      44617461 
+ 2396      546F4275 
+ 2397              	.LASF43:
+ 2398 0284 4932435F 		.ascii	"I2C_LCD_1_PrintInt8\000"
+ 2398      4C43445F 
+ 2398      315F5072 
+ 2398      696E7449 
+ 2398      6E743800 
+ 2399              	.LASF59:
+ 2400 0298 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2400      4320342E 
+ 2400      392E3320 
+ 2400      32303135 
+ 2400      30333033 
+ 2401 02cb 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2401      20726576 
+ 2401      6973696F 
+ 2401      6E203232 
+ 2401      31323230 
+ 2402 02fe 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2402      66756E63 
+ 2402      74696F6E 
+ 2402      2D736563 
+ 2402      74696F6E 
+ 2403              	.LASF40:
+ 2404 0326 63757272 		.ascii	"current\000"
+ 2404      656E7400 
+ 2405              	.LASF61:
+ 2406 032e 433A5C55 		.ascii	"C:\\Users\\airamire\\Documents\\PSoC Creator\\ADC t"
+ 2406      73657273 
+ 2406      5C616972 
+ 2406      616D6972 
+ 2406      655C446F 
+ 2407 035c 6573745C 		.ascii	"est\\ADC_ReadPot.cydsn\000"
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 66
+
+
+ 2407      4144435F 
+ 2407      52656164 
+ 2407      506F742E 
+ 2407      63796473 
+ 2408              	.LASF18:
+ 2409 0372 4932435F 		.ascii	"I2C_LCD_1_Start\000"
+ 2409      4C43445F 
+ 2409      315F5374 
+ 2409      61727400 
+ 2410              	.LASF11:
+ 2411 0382 666C6F61 		.ascii	"float\000"
+ 2411      7400
+ 2412              	.LASF23:
+ 2413 0388 64427974 		.ascii	"dByte\000"
+ 2413      6500
+ 2414              	.LASF1:
+ 2415 038e 756E7369 		.ascii	"unsigned char\000"
+ 2415      676E6564 
+ 2415      20636861 
+ 2415      7200
+ 2416              	.LASF2:
+ 2417 039c 73686F72 		.ascii	"short int\000"
+ 2417      7420696E 
+ 2417      7400
+ 2418              	.LASF50:
+ 2419 03a6 64696749 		.ascii	"digIndex\000"
+ 2419      6E646578 
+ 2419      00
+ 2420              	.LASF14:
+ 2421 03af 63686172 		.ascii	"char\000"
+ 2421      00
+ 2422              	.LASF55:
+ 2423 03b4 4932435F 		.ascii	"I2C_LCD_1_buff\000"
+ 2423      4C43445F 
+ 2423      315F6275 
+ 2423      666600
+ 2424              	.LASF13:
+ 2425 03c3 63686172 		.ascii	"char8\000"
+ 2425      3800
+ 2426              	.LASF17:
+ 2427 03c9 4932435F 		.ascii	"I2C_LCD_1_Enable\000"
+ 2427      4C43445F 
+ 2427      315F456E 
+ 2427      61626C65 
+ 2427      00
+ 2428              	.LASF20:
+ 2429 03da 636F6C75 		.ascii	"column\000"
+ 2429      6D6E00
+ 2430              	.LASF62:
+ 2431 03e1 4932435F 		.ascii	"I2C_LCD_1_SendSequence\000"
+ 2431      4C43445F 
+ 2431      315F5365 
+ 2431      6E645365 
+ 2431      7175656E 
+ 2432              	.LASF52:
+ 2433 03f8 4932435F 		.ascii	"I2C_LCD_1_SetAddr\000"
+ 2433      4C43445F 
+ARM GAS  C:\Users\airamire\AppData\Local\Temp\ccGAAfrN.s 			page 67
+
+
+ 2433      315F5365 
+ 2433      74416464 
+ 2433      7200
+ 2434              	.LASF21:
+ 2435 040a 4932435F 		.ascii	"I2C_LCD_1_Position\000"
+ 2435      4C43445F 
+ 2435      315F506F 
+ 2435      73697469 
+ 2435      6F6E00
+ 2436              	.LASF58:
+ 2437 041d 4932435F 		.ascii	"I2C_LCD_1_cmdPatt\000"
+ 2437      4C43445F 
+ 2437      315F636D 
+ 2437      64506174 
+ 2437      7400
+ 2438              	.LASF25:
+ 2439 042f 63427974 		.ascii	"cByte\000"
+ 2439      6500
+ 2440              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

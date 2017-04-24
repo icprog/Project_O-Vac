@@ -1,0 +1,1888 @@
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"i2cFunctions.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.I2CReadBytes,"ax",%progbits
+  19              		.align	2
+  20              		.global	I2CReadBytes
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	I2CReadBytes, %function
+  24              	I2CReadBytes:
+  25              	.LFB63:
+  26              		.file 1 "i2cFunctions.c"
+   1:i2cFunctions.c **** /* ========================================
+   2:i2cFunctions.c ****  *
+   3:i2cFunctions.c ****  * Copyright Samuel Walsh, 2014
+   4:i2cFunctions.c ****  * All Rights Reserved
+   5:i2cFunctions.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:i2cFunctions.c ****  *
+   7:i2cFunctions.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:i2cFunctions.c ****  * WHICH IS THE PROPERTY OF Samuel Walsh.
+   9:i2cFunctions.c ****  *
+  10:i2cFunctions.c ****  * ========================================
+  11:i2cFunctions.c **** */
+  12:i2cFunctions.c **** 
+  13:i2cFunctions.c **** /* [] END OF FILE */
+  14:i2cFunctions.c **** 
+  15:i2cFunctions.c **** #include <project.h>
+  16:i2cFunctions.c **** 
+  17:i2cFunctions.c **** 
+  18:i2cFunctions.c **** void I2CReadBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *value) {
+  27              		.loc 1 18 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 90B5     		push	{r4, r7, lr}
+  32              		.cfi_def_cfa_offset 12
+  33              		.cfi_offset 4, -12
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              		.cfi_def_cfa_offset 32
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 2
+
+
+  40 0006 3B60     		str	r3, [r7]
+  41 0008 0346     		mov	r3, r0
+  42 000a FB71     		strb	r3, [r7, #7]
+  43 000c 0B46     		mov	r3, r1
+  44 000e BB71     		strb	r3, [r7, #6]
+  45 0010 1346     		mov	r3, r2
+  46 0012 7B71     		strb	r3, [r7, #5]
+  19:i2cFunctions.c **** 	uint8_t i=0;
+  47              		.loc 1 19 0
+  48 0014 0023     		movs	r3, #0
+  49 0016 FB73     		strb	r3, [r7, #15]
+  20:i2cFunctions.c **** 	I2C_Master_MasterSendStart(devAddr, I2C_Master_WRITE_XFER_MODE);
+  50              		.loc 1 20 0
+  51 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  52 001a 1846     		mov	r0, r3
+  53 001c 0021     		movs	r1, #0
+  54 001e FFF7FEFF 		bl	I2C_Master_MasterSendStart
+  21:i2cFunctions.c **** 	I2C_Master_MasterWriteByte(regAddr);
+  55              		.loc 1 21 0
+  56 0022 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+  57 0024 1846     		mov	r0, r3
+  58 0026 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+  22:i2cFunctions.c **** 	I2C_Master_MasterSendRestart(devAddr, I2C_Master_READ_XFER_MODE);
+  59              		.loc 1 22 0
+  60 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  61 002c 1846     		mov	r0, r3
+  62 002e 0121     		movs	r1, #1
+  63 0030 FFF7FEFF 		bl	I2C_Master_MasterSendRestart
+  23:i2cFunctions.c **** 	while (i++ < (length-1)) {
+  64              		.loc 1 23 0
+  65 0034 07E0     		b	.L2
+  66              	.L3:
+  24:i2cFunctions.c **** 		*value++ = I2C_Master_MasterReadByte(I2C_Master_ACK_DATA);
+  67              		.loc 1 24 0
+  68 0036 3C68     		ldr	r4, [r7]
+  69 0038 631C     		adds	r3, r4, #1
+  70 003a 3B60     		str	r3, [r7]
+  71 003c 0120     		movs	r0, #1
+  72 003e FFF7FEFF 		bl	I2C_Master_MasterReadByte
+  73 0042 0346     		mov	r3, r0
+  74 0044 2370     		strb	r3, [r4]
+  75              	.L2:
+  23:i2cFunctions.c **** 	while (i++ < (length-1)) {
+  76              		.loc 1 23 0
+  77 0046 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  78 0048 5A1C     		adds	r2, r3, #1
+  79 004a FA73     		strb	r2, [r7, #15]
+  80 004c 1A46     		mov	r2, r3
+  81 004e 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+  82 0050 013B     		subs	r3, r3, #1
+  83 0052 9A42     		cmp	r2, r3
+  84 0054 EFDB     		blt	.L3
+  25:i2cFunctions.c **** 	}
+  26:i2cFunctions.c **** 	*value = I2C_Master_MasterReadByte(I2C_Master_NAK_DATA);
+  85              		.loc 1 26 0
+  86 0056 0020     		movs	r0, #0
+  87 0058 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 3
+
+
+  88 005c 0346     		mov	r3, r0
+  89 005e 1A46     		mov	r2, r3
+  90 0060 3B68     		ldr	r3, [r7]
+  91 0062 1A70     		strb	r2, [r3]
+  27:i2cFunctions.c **** 	I2C_Master_MasterSendStop();	
+  92              		.loc 1 27 0
+  93 0064 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+  28:i2cFunctions.c **** }
+  94              		.loc 1 28 0
+  95 0068 1437     		adds	r7, r7, #20
+  96              		.cfi_def_cfa_offset 12
+  97 006a BD46     		mov	sp, r7
+  98              		.cfi_def_cfa_register 13
+  99              		@ sp needed
+ 100 006c 90BD     		pop	{r4, r7, pc}
+ 101              		.cfi_endproc
+ 102              	.LFE63:
+ 103              		.size	I2CReadBytes, .-I2CReadBytes
+ 104 006e 00BF     		.section	.text.I2CReadByte,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	I2CReadByte
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	I2CReadByte, %function
+ 110              	I2CReadByte:
+ 111              	.LFB64:
+  29:i2cFunctions.c **** 
+  30:i2cFunctions.c **** void I2CReadByte(uint8_t devAddr, uint8_t regAddr, uint8_t *value) {
+ 112              		.loc 1 30 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 8
+ 115              		@ frame_needed = 1, uses_anonymous_args = 0
+ 116 0000 80B5     		push	{r7, lr}
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 7, -8
+ 119              		.cfi_offset 14, -4
+ 120 0002 82B0     		sub	sp, sp, #8
+ 121              		.cfi_def_cfa_offset 16
+ 122 0004 00AF     		add	r7, sp, #0
+ 123              		.cfi_def_cfa_register 7
+ 124 0006 0346     		mov	r3, r0
+ 125 0008 3A60     		str	r2, [r7]
+ 126 000a FB71     		strb	r3, [r7, #7]
+ 127 000c 0B46     		mov	r3, r1
+ 128 000e BB71     		strb	r3, [r7, #6]
+  31:i2cFunctions.c **** 	I2CReadBytes(devAddr, regAddr, 1, value);
+ 129              		.loc 1 31 0
+ 130 0010 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 131 0012 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 132 0014 1046     		mov	r0, r2
+ 133 0016 1946     		mov	r1, r3
+ 134 0018 0122     		movs	r2, #1
+ 135 001a 3B68     		ldr	r3, [r7]
+ 136 001c FFF7FEFF 		bl	I2CReadBytes
+  32:i2cFunctions.c **** }
+ 137              		.loc 1 32 0
+ 138 0020 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 4
+
+
+ 139              		.cfi_def_cfa_offset 8
+ 140 0022 BD46     		mov	sp, r7
+ 141              		.cfi_def_cfa_register 13
+ 142              		@ sp needed
+ 143 0024 80BD     		pop	{r7, pc}
+ 144              		.cfi_endproc
+ 145              	.LFE64:
+ 146              		.size	I2CReadByte, .-I2CReadByte
+ 147 0026 00BF     		.section	.text.I2CReadBits,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	I2CReadBits
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.type	I2CReadBits, %function
+ 153              	I2CReadBits:
+ 154              	.LFB65:
+  33:i2cFunctions.c **** 
+  34:i2cFunctions.c **** void I2CReadBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint8_t *value
+ 155              		.loc 1 34 0
+ 156              		.cfi_startproc
+ 157              		@ args = 4, pretend = 0, frame = 16
+ 158              		@ frame_needed = 1, uses_anonymous_args = 0
+ 159 0000 90B5     		push	{r4, r7, lr}
+ 160              		.cfi_def_cfa_offset 12
+ 161              		.cfi_offset 4, -12
+ 162              		.cfi_offset 7, -8
+ 163              		.cfi_offset 14, -4
+ 164 0002 85B0     		sub	sp, sp, #20
+ 165              		.cfi_def_cfa_offset 32
+ 166 0004 00AF     		add	r7, sp, #0
+ 167              		.cfi_def_cfa_register 7
+ 168 0006 0446     		mov	r4, r0
+ 169 0008 0846     		mov	r0, r1
+ 170 000a 1146     		mov	r1, r2
+ 171 000c 1A46     		mov	r2, r3
+ 172 000e 2346     		mov	r3, r4
+ 173 0010 FB71     		strb	r3, [r7, #7]
+ 174 0012 0346     		mov	r3, r0
+ 175 0014 BB71     		strb	r3, [r7, #6]
+ 176 0016 0B46     		mov	r3, r1
+ 177 0018 7B71     		strb	r3, [r7, #5]
+ 178 001a 1346     		mov	r3, r2
+ 179 001c 3B71     		strb	r3, [r7, #4]
+  35:i2cFunctions.c ****    	uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
+ 180              		.loc 1 35 0
+ 181 001e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 182 0020 0122     		movs	r2, #1
+ 183 0022 02FA03F3 		lsl	r3, r2, r3
+ 184 0026 5A1E     		subs	r2, r3, #1
+ 185 0028 7979     		ldrb	r1, [r7, #5]	@ zero_extendqisi2
+ 186 002a 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 187 002c CB1A     		subs	r3, r1, r3
+ 188 002e 0133     		adds	r3, r3, #1
+ 189 0030 02FA03F3 		lsl	r3, r2, r3
+ 190 0034 FB73     		strb	r3, [r7, #15]
+  36:i2cFunctions.c ****     I2CReadByte(devAddr, regAddr, value);
+ 191              		.loc 1 36 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 5
+
+
+ 192 0036 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 193 0038 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 194 003a 1046     		mov	r0, r2
+ 195 003c 1946     		mov	r1, r3
+ 196 003e 3A6A     		ldr	r2, [r7, #32]
+ 197 0040 FFF7FEFF 		bl	I2CReadByte
+  37:i2cFunctions.c ****     *value &= mask;
+ 198              		.loc 1 37 0
+ 199 0044 3B6A     		ldr	r3, [r7, #32]
+ 200 0046 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 201 0048 FB7B     		ldrb	r3, [r7, #15]
+ 202 004a 1340     		ands	r3, r3, r2
+ 203 004c DAB2     		uxtb	r2, r3
+ 204 004e 3B6A     		ldr	r3, [r7, #32]
+ 205 0050 1A70     		strb	r2, [r3]
+  38:i2cFunctions.c ****     *value >>= (bitStart - length + 1);
+ 206              		.loc 1 38 0
+ 207 0052 3B6A     		ldr	r3, [r7, #32]
+ 208 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 209 0056 1946     		mov	r1, r3
+ 210 0058 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 211 005a 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 212 005c D31A     		subs	r3, r2, r3
+ 213 005e 0133     		adds	r3, r3, #1
+ 214 0060 41FA03F3 		asr	r3, r1, r3
+ 215 0064 DAB2     		uxtb	r2, r3
+ 216 0066 3B6A     		ldr	r3, [r7, #32]
+ 217 0068 1A70     		strb	r2, [r3]
+  39:i2cFunctions.c **** }
+ 218              		.loc 1 39 0
+ 219 006a 1437     		adds	r7, r7, #20
+ 220              		.cfi_def_cfa_offset 12
+ 221 006c BD46     		mov	sp, r7
+ 222              		.cfi_def_cfa_register 13
+ 223              		@ sp needed
+ 224 006e 90BD     		pop	{r4, r7, pc}
+ 225              		.cfi_endproc
+ 226              	.LFE65:
+ 227              		.size	I2CReadBits, .-I2CReadBits
+ 228              		.section	.text.I2CReadBit,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	I2CReadBit
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	I2CReadBit, %function
+ 234              	I2CReadBit:
+ 235              	.LFB66:
+  40:i2cFunctions.c **** 
+  41:i2cFunctions.c **** void I2CReadBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t *value) {
+ 236              		.loc 1 41 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 8
+ 239              		@ frame_needed = 1, uses_anonymous_args = 0
+ 240 0000 80B5     		push	{r7, lr}
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 7, -8
+ 243              		.cfi_offset 14, -4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 6
+
+
+ 244 0002 82B0     		sub	sp, sp, #8
+ 245              		.cfi_def_cfa_offset 16
+ 246 0004 00AF     		add	r7, sp, #0
+ 247              		.cfi_def_cfa_register 7
+ 248 0006 3B60     		str	r3, [r7]
+ 249 0008 0346     		mov	r3, r0
+ 250 000a FB71     		strb	r3, [r7, #7]
+ 251 000c 0B46     		mov	r3, r1
+ 252 000e BB71     		strb	r3, [r7, #6]
+ 253 0010 1346     		mov	r3, r2
+ 254 0012 7B71     		strb	r3, [r7, #5]
+  42:i2cFunctions.c **** 	I2CReadByte(devAddr, regAddr, value);
+ 255              		.loc 1 42 0
+ 256 0014 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 257 0016 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 258 0018 1046     		mov	r0, r2
+ 259 001a 1946     		mov	r1, r3
+ 260 001c 3A68     		ldr	r2, [r7]
+ 261 001e FFF7FEFF 		bl	I2CReadByte
+  43:i2cFunctions.c **** 	*value = *value & (1 << bitNum);
+ 262              		.loc 1 43 0
+ 263 0022 3B68     		ldr	r3, [r7]
+ 264 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 265 0026 D9B2     		uxtb	r1, r3
+ 266 0028 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 267 002a 0122     		movs	r2, #1
+ 268 002c 02FA03F3 		lsl	r3, r2, r3
+ 269 0030 DBB2     		uxtb	r3, r3
+ 270 0032 0A46     		mov	r2, r1
+ 271 0034 1340     		ands	r3, r3, r2
+ 272 0036 DBB2     		uxtb	r3, r3
+ 273 0038 DAB2     		uxtb	r2, r3
+ 274 003a 3B68     		ldr	r3, [r7]
+ 275 003c 1A70     		strb	r2, [r3]
+  44:i2cFunctions.c **** }
+ 276              		.loc 1 44 0
+ 277 003e 0837     		adds	r7, r7, #8
+ 278              		.cfi_def_cfa_offset 8
+ 279 0040 BD46     		mov	sp, r7
+ 280              		.cfi_def_cfa_register 13
+ 281              		@ sp needed
+ 282 0042 80BD     		pop	{r7, pc}
+ 283              		.cfi_endproc
+ 284              	.LFE66:
+ 285              		.size	I2CReadBit, .-I2CReadBit
+ 286              		.section	.text.I2CWriteBytes,"ax",%progbits
+ 287              		.align	2
+ 288              		.global	I2CWriteBytes
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.type	I2CWriteBytes, %function
+ 292              	I2CWriteBytes:
+ 293              	.LFB67:
+  45:i2cFunctions.c **** 	
+  46:i2cFunctions.c **** void I2CWriteBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *value) {
+ 294              		.loc 1 46 0
+ 295              		.cfi_startproc
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 7
+
+
+ 296              		@ args = 0, pretend = 0, frame = 16
+ 297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 298 0000 80B5     		push	{r7, lr}
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 7, -8
+ 301              		.cfi_offset 14, -4
+ 302 0002 84B0     		sub	sp, sp, #16
+ 303              		.cfi_def_cfa_offset 24
+ 304 0004 00AF     		add	r7, sp, #0
+ 305              		.cfi_def_cfa_register 7
+ 306 0006 3B60     		str	r3, [r7]
+ 307 0008 0346     		mov	r3, r0
+ 308 000a FB71     		strb	r3, [r7, #7]
+ 309 000c 0B46     		mov	r3, r1
+ 310 000e BB71     		strb	r3, [r7, #6]
+ 311 0010 1346     		mov	r3, r2
+ 312 0012 7B71     		strb	r3, [r7, #5]
+  47:i2cFunctions.c **** 	uint8_t i=0;
+ 313              		.loc 1 47 0
+ 314 0014 0023     		movs	r3, #0
+ 315 0016 FB73     		strb	r3, [r7, #15]
+  48:i2cFunctions.c **** 	I2C_Master_MasterSendStart(devAddr, I2C_Master_WRITE_XFER_MODE);
+ 316              		.loc 1 48 0
+ 317 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 318 001a 1846     		mov	r0, r3
+ 319 001c 0021     		movs	r1, #0
+ 320 001e FFF7FEFF 		bl	I2C_Master_MasterSendStart
+  49:i2cFunctions.c **** 	I2C_Master_MasterWriteByte(regAddr);
+ 321              		.loc 1 49 0
+ 322 0022 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 323 0024 1846     		mov	r0, r3
+ 324 0026 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+  50:i2cFunctions.c **** 	while (i++ < length) {
+ 325              		.loc 1 50 0
+ 326 002a 06E0     		b	.L8
+ 327              	.L9:
+  51:i2cFunctions.c **** 		I2C_Master_MasterWriteByte(*value++);
+ 328              		.loc 1 51 0
+ 329 002c 3B68     		ldr	r3, [r7]
+ 330 002e 5A1C     		adds	r2, r3, #1
+ 331 0030 3A60     		str	r2, [r7]
+ 332 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 333 0034 1846     		mov	r0, r3
+ 334 0036 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 335              	.L8:
+  50:i2cFunctions.c **** 	while (i++ < length) {
+ 336              		.loc 1 50 0
+ 337 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 338 003c 5A1C     		adds	r2, r3, #1
+ 339 003e FA73     		strb	r2, [r7, #15]
+ 340 0040 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 341 0042 9A42     		cmp	r2, r3
+ 342 0044 F2D8     		bhi	.L9
+  52:i2cFunctions.c **** 	}
+  53:i2cFunctions.c **** 	I2C_Master_MasterSendStop();	
+ 343              		.loc 1 53 0
+ 344 0046 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 8
+
+
+  54:i2cFunctions.c **** }
+ 345              		.loc 1 54 0
+ 346 004a 1037     		adds	r7, r7, #16
+ 347              		.cfi_def_cfa_offset 8
+ 348 004c BD46     		mov	sp, r7
+ 349              		.cfi_def_cfa_register 13
+ 350              		@ sp needed
+ 351 004e 80BD     		pop	{r7, pc}
+ 352              		.cfi_endproc
+ 353              	.LFE67:
+ 354              		.size	I2CWriteBytes, .-I2CWriteBytes
+ 355              		.section	.text.I2CWriteByte,"ax",%progbits
+ 356              		.align	2
+ 357              		.global	I2CWriteByte
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.type	I2CWriteByte, %function
+ 361              	I2CWriteByte:
+ 362              	.LFB68:
+  55:i2cFunctions.c **** 
+  56:i2cFunctions.c **** void I2CWriteByte(uint8_t devAddr, uint8_t regAddr, uint8_t value) {
+ 363              		.loc 1 56 0
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 8
+ 366              		@ frame_needed = 1, uses_anonymous_args = 0
+ 367 0000 80B5     		push	{r7, lr}
+ 368              		.cfi_def_cfa_offset 8
+ 369              		.cfi_offset 7, -8
+ 370              		.cfi_offset 14, -4
+ 371 0002 82B0     		sub	sp, sp, #8
+ 372              		.cfi_def_cfa_offset 16
+ 373 0004 00AF     		add	r7, sp, #0
+ 374              		.cfi_def_cfa_register 7
+ 375 0006 0346     		mov	r3, r0
+ 376 0008 FB71     		strb	r3, [r7, #7]
+ 377 000a 0B46     		mov	r3, r1
+ 378 000c BB71     		strb	r3, [r7, #6]
+ 379 000e 1346     		mov	r3, r2
+ 380 0010 7B71     		strb	r3, [r7, #5]
+  57:i2cFunctions.c **** 	I2CWriteBytes(devAddr, regAddr, 1, &value);
+ 381              		.loc 1 57 0
+ 382 0012 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 383 0014 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 384 0016 7B1D     		adds	r3, r7, #5
+ 385 0018 0846     		mov	r0, r1
+ 386 001a 1146     		mov	r1, r2
+ 387 001c 0122     		movs	r2, #1
+ 388 001e FFF7FEFF 		bl	I2CWriteBytes
+  58:i2cFunctions.c **** }
+ 389              		.loc 1 58 0
+ 390 0022 0837     		adds	r7, r7, #8
+ 391              		.cfi_def_cfa_offset 8
+ 392 0024 BD46     		mov	sp, r7
+ 393              		.cfi_def_cfa_register 13
+ 394              		@ sp needed
+ 395 0026 80BD     		pop	{r7, pc}
+ 396              		.cfi_endproc
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 9
+
+
+ 397              	.LFE68:
+ 398              		.size	I2CWriteByte, .-I2CWriteByte
+ 399              		.section	.text.I2CWriteBits,"ax",%progbits
+ 400              		.align	2
+ 401              		.global	I2CWriteBits
+ 402              		.thumb
+ 403              		.thumb_func
+ 404              		.type	I2CWriteBits, %function
+ 405              	I2CWriteBits:
+ 406              	.LFB69:
+  59:i2cFunctions.c **** 
+  60:i2cFunctions.c **** void I2CWriteBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint8_t value
+ 407              		.loc 1 60 0
+ 408              		.cfi_startproc
+ 409              		@ args = 4, pretend = 0, frame = 16
+ 410              		@ frame_needed = 1, uses_anonymous_args = 0
+ 411 0000 90B5     		push	{r4, r7, lr}
+ 412              		.cfi_def_cfa_offset 12
+ 413              		.cfi_offset 4, -12
+ 414              		.cfi_offset 7, -8
+ 415              		.cfi_offset 14, -4
+ 416 0002 85B0     		sub	sp, sp, #20
+ 417              		.cfi_def_cfa_offset 32
+ 418 0004 00AF     		add	r7, sp, #0
+ 419              		.cfi_def_cfa_register 7
+ 420 0006 0446     		mov	r4, r0
+ 421 0008 0846     		mov	r0, r1
+ 422 000a 1146     		mov	r1, r2
+ 423 000c 1A46     		mov	r2, r3
+ 424 000e 2346     		mov	r3, r4
+ 425 0010 FB71     		strb	r3, [r7, #7]
+ 426 0012 0346     		mov	r3, r0
+ 427 0014 BB71     		strb	r3, [r7, #6]
+ 428 0016 0B46     		mov	r3, r1
+ 429 0018 7B71     		strb	r3, [r7, #5]
+ 430 001a 1346     		mov	r3, r2
+ 431 001c 3B71     		strb	r3, [r7, #4]
+  61:i2cFunctions.c **** 	uint8_t b;
+  62:i2cFunctions.c **** 	uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
+ 432              		.loc 1 62 0
+ 433 001e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 434 0020 0122     		movs	r2, #1
+ 435 0022 02FA03F3 		lsl	r3, r2, r3
+ 436 0026 5A1E     		subs	r2, r3, #1
+ 437 0028 7979     		ldrb	r1, [r7, #5]	@ zero_extendqisi2
+ 438 002a 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 439 002c CB1A     		subs	r3, r1, r3
+ 440 002e 0133     		adds	r3, r3, #1
+ 441 0030 02FA03F3 		lsl	r3, r2, r3
+ 442 0034 FB73     		strb	r3, [r7, #15]
+  63:i2cFunctions.c **** 	I2CReadByte(devAddr, regAddr, &b);
+ 443              		.loc 1 63 0
+ 444 0036 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 445 0038 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 446 003a 07F10E03 		add	r3, r7, #14
+ 447 003e 0846     		mov	r0, r1
+ 448 0040 1146     		mov	r1, r2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 10
+
+
+ 449 0042 1A46     		mov	r2, r3
+ 450 0044 FFF7FEFF 		bl	I2CReadByte
+  64:i2cFunctions.c **** 	value <<= (bitStart - length + 1);
+ 451              		.loc 1 64 0
+ 452 0048 97F82020 		ldrb	r2, [r7, #32]	@ zero_extendqisi2
+ 453 004c 7979     		ldrb	r1, [r7, #5]	@ zero_extendqisi2
+ 454 004e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 455 0050 CB1A     		subs	r3, r1, r3
+ 456 0052 0133     		adds	r3, r3, #1
+ 457 0054 02FA03F3 		lsl	r3, r2, r3
+ 458 0058 87F82030 		strb	r3, [r7, #32]
+  65:i2cFunctions.c **** 	value &= mask;
+ 459              		.loc 1 65 0
+ 460 005c 97F82020 		ldrb	r2, [r7, #32]
+ 461 0060 FB7B     		ldrb	r3, [r7, #15]
+ 462 0062 1340     		ands	r3, r3, r2
+ 463 0064 87F82030 		strb	r3, [r7, #32]
+  66:i2cFunctions.c **** 	b &= ~(mask);
+ 464              		.loc 1 66 0
+ 465 0068 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 466 006a DB43     		mvns	r3, r3
+ 467 006c DAB2     		uxtb	r2, r3
+ 468 006e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 469 0070 DBB2     		uxtb	r3, r3
+ 470 0072 1340     		ands	r3, r3, r2
+ 471 0074 DBB2     		uxtb	r3, r3
+ 472 0076 DBB2     		uxtb	r3, r3
+ 473 0078 BB73     		strb	r3, [r7, #14]
+  67:i2cFunctions.c **** 	b |= value;
+ 474              		.loc 1 67 0
+ 475 007a BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 476 007c 97F82030 		ldrb	r3, [r7, #32]
+ 477 0080 1343     		orrs	r3, r3, r2
+ 478 0082 DBB2     		uxtb	r3, r3
+ 479 0084 BB73     		strb	r3, [r7, #14]
+  68:i2cFunctions.c **** 	I2CWriteByte(devAddr, regAddr, b);	
+ 480              		.loc 1 68 0
+ 481 0086 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 482 0088 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 483 008a BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 484 008c 0846     		mov	r0, r1
+ 485 008e 1146     		mov	r1, r2
+ 486 0090 1A46     		mov	r2, r3
+ 487 0092 FFF7FEFF 		bl	I2CWriteByte
+  69:i2cFunctions.c **** }
+ 488              		.loc 1 69 0
+ 489 0096 1437     		adds	r7, r7, #20
+ 490              		.cfi_def_cfa_offset 12
+ 491 0098 BD46     		mov	sp, r7
+ 492              		.cfi_def_cfa_register 13
+ 493              		@ sp needed
+ 494 009a 90BD     		pop	{r4, r7, pc}
+ 495              		.cfi_endproc
+ 496              	.LFE69:
+ 497              		.size	I2CWriteBits, .-I2CWriteBits
+ 498              		.section	.text.I2CWriteBit,"ax",%progbits
+ 499              		.align	2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 11
+
+
+ 500              		.global	I2CWriteBit
+ 501              		.thumb
+ 502              		.thumb_func
+ 503              		.type	I2CWriteBit, %function
+ 504              	I2CWriteBit:
+ 505              	.LFB70:
+  70:i2cFunctions.c **** 
+  71:i2cFunctions.c **** void I2CWriteBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t value) {
+ 506              		.loc 1 71 0
+ 507              		.cfi_startproc
+ 508              		@ args = 0, pretend = 0, frame = 16
+ 509              		@ frame_needed = 1, uses_anonymous_args = 0
+ 510 0000 90B5     		push	{r4, r7, lr}
+ 511              		.cfi_def_cfa_offset 12
+ 512              		.cfi_offset 4, -12
+ 513              		.cfi_offset 7, -8
+ 514              		.cfi_offset 14, -4
+ 515 0002 85B0     		sub	sp, sp, #20
+ 516              		.cfi_def_cfa_offset 32
+ 517 0004 00AF     		add	r7, sp, #0
+ 518              		.cfi_def_cfa_register 7
+ 519 0006 0446     		mov	r4, r0
+ 520 0008 0846     		mov	r0, r1
+ 521 000a 1146     		mov	r1, r2
+ 522 000c 1A46     		mov	r2, r3
+ 523 000e 2346     		mov	r3, r4
+ 524 0010 FB71     		strb	r3, [r7, #7]
+ 525 0012 0346     		mov	r3, r0
+ 526 0014 BB71     		strb	r3, [r7, #6]
+ 527 0016 0B46     		mov	r3, r1
+ 528 0018 7B71     		strb	r3, [r7, #5]
+ 529 001a 1346     		mov	r3, r2
+ 530 001c 3B71     		strb	r3, [r7, #4]
+  72:i2cFunctions.c **** 	uint8_t b;
+  73:i2cFunctions.c **** 	I2CReadByte(devAddr, regAddr, &b);
+ 531              		.loc 1 73 0
+ 532 001e F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 533 0020 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 534 0022 07F10F03 		add	r3, r7, #15
+ 535 0026 0846     		mov	r0, r1
+ 536 0028 1146     		mov	r1, r2
+ 537 002a 1A46     		mov	r2, r3
+ 538 002c FFF7FEFF 		bl	I2CReadByte
+  74:i2cFunctions.c **** 	b = (value != 0) ? (b | (1 << bitNum)) : (b & ~(1 << bitNum));
+ 539              		.loc 1 74 0
+ 540 0030 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 541 0032 002B     		cmp	r3, #0
+ 542 0034 0AD0     		beq	.L13
+ 543              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 544 0036 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 545 0038 0122     		movs	r2, #1
+ 546 003a 02FA03F3 		lsl	r3, r2, r3
+ 547 003e DAB2     		uxtb	r2, r3
+ 548 0040 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 549 0042 DBB2     		uxtb	r3, r3
+ 550 0044 1343     		orrs	r3, r3, r2
+ 551 0046 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 12
+
+
+ 552 0048 DBB2     		uxtb	r3, r3
+ 553 004a 0BE0     		b	.L14
+ 554              	.L13:
+ 555              		.loc 1 74 0 discriminator 2
+ 556 004c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 557 004e 0122     		movs	r2, #1
+ 558 0050 02FA03F3 		lsl	r3, r2, r3
+ 559 0054 DBB2     		uxtb	r3, r3
+ 560 0056 DB43     		mvns	r3, r3
+ 561 0058 DAB2     		uxtb	r2, r3
+ 562 005a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 563 005c DBB2     		uxtb	r3, r3
+ 564 005e 1340     		ands	r3, r3, r2
+ 565 0060 DBB2     		uxtb	r3, r3
+ 566 0062 DBB2     		uxtb	r3, r3
+ 567              	.L14:
+ 568              		.loc 1 74 0 discriminator 4
+ 569 0064 FB73     		strb	r3, [r7, #15]
+  75:i2cFunctions.c **** 	I2CWriteByte(devAddr, regAddr, b);
+ 570              		.loc 1 75 0 is_stmt 1 discriminator 4
+ 571 0066 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 572 0068 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 573 006a BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 574 006c 0846     		mov	r0, r1
+ 575 006e 1146     		mov	r1, r2
+ 576 0070 1A46     		mov	r2, r3
+ 577 0072 FFF7FEFF 		bl	I2CWriteByte
+  76:i2cFunctions.c **** }
+ 578              		.loc 1 76 0 discriminator 4
+ 579 0076 1437     		adds	r7, r7, #20
+ 580              		.cfi_def_cfa_offset 12
+ 581 0078 BD46     		mov	sp, r7
+ 582              		.cfi_def_cfa_register 13
+ 583              		@ sp needed
+ 584 007a 90BD     		pop	{r4, r7, pc}
+ 585              		.cfi_endproc
+ 586              	.LFE70:
+ 587              		.size	I2CWriteBit, .-I2CWriteBit
+ 588              		.section	.text.I2CWriteWords,"ax",%progbits
+ 589              		.align	2
+ 590              		.global	I2CWriteWords
+ 591              		.thumb
+ 592              		.thumb_func
+ 593              		.type	I2CWriteWords, %function
+ 594              	I2CWriteWords:
+ 595              	.LFB71:
+  77:i2cFunctions.c **** 
+  78:i2cFunctions.c **** void I2CWriteWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16_t *value) {
+ 596              		.loc 1 78 0
+ 597              		.cfi_startproc
+ 598              		@ args = 0, pretend = 0, frame = 16
+ 599              		@ frame_needed = 1, uses_anonymous_args = 0
+ 600 0000 80B5     		push	{r7, lr}
+ 601              		.cfi_def_cfa_offset 8
+ 602              		.cfi_offset 7, -8
+ 603              		.cfi_offset 14, -4
+ 604 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 13
+
+
+ 605              		.cfi_def_cfa_offset 24
+ 606 0004 00AF     		add	r7, sp, #0
+ 607              		.cfi_def_cfa_register 7
+ 608 0006 3B60     		str	r3, [r7]
+ 609 0008 0346     		mov	r3, r0
+ 610 000a FB71     		strb	r3, [r7, #7]
+ 611 000c 0B46     		mov	r3, r1
+ 612 000e BB71     		strb	r3, [r7, #6]
+ 613 0010 1346     		mov	r3, r2
+ 614 0012 7B71     		strb	r3, [r7, #5]
+  79:i2cFunctions.c **** 	uint8_t i=0;
+ 615              		.loc 1 79 0
+ 616 0014 0023     		movs	r3, #0
+ 617 0016 FB73     		strb	r3, [r7, #15]
+  80:i2cFunctions.c **** 	I2C_Master_MasterSendStart(devAddr, I2C_Master_WRITE_XFER_MODE);
+ 618              		.loc 1 80 0
+ 619 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 620 001a 1846     		mov	r0, r3
+ 621 001c 0021     		movs	r1, #0
+ 622 001e FFF7FEFF 		bl	I2C_Master_MasterSendStart
+  81:i2cFunctions.c **** 	I2C_Master_MasterWriteByte(regAddr);
+ 623              		.loc 1 81 0
+ 624 0022 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 625 0024 1846     		mov	r0, r3
+ 626 0026 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+  82:i2cFunctions.c **** 	while (i++ < length) {
+ 627              		.loc 1 82 0
+ 628 002a 0FE0     		b	.L16
+ 629              	.L17:
+  83:i2cFunctions.c **** 		I2C_Master_MasterWriteByte(((uint8_t)*value) >> 8);
+ 630              		.loc 1 83 0
+ 631 002c 3B68     		ldr	r3, [r7]
+ 632 002e 1B88     		ldrh	r3, [r3]
+ 633 0030 DBB2     		uxtb	r3, r3
+ 634 0032 1B12     		asrs	r3, r3, #8
+ 635 0034 DBB2     		uxtb	r3, r3
+ 636 0036 1846     		mov	r0, r3
+ 637 0038 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+  84:i2cFunctions.c **** 		I2C_Master_MasterWriteByte((uint8_t)*value++);
+ 638              		.loc 1 84 0
+ 639 003c 3B68     		ldr	r3, [r7]
+ 640 003e 9A1C     		adds	r2, r3, #2
+ 641 0040 3A60     		str	r2, [r7]
+ 642 0042 1B88     		ldrh	r3, [r3]
+ 643 0044 DBB2     		uxtb	r3, r3
+ 644 0046 1846     		mov	r0, r3
+ 645 0048 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 646              	.L16:
+  82:i2cFunctions.c **** 	while (i++ < length) {
+ 647              		.loc 1 82 0
+ 648 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 649 004e 5A1C     		adds	r2, r3, #1
+ 650 0050 FA73     		strb	r2, [r7, #15]
+ 651 0052 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 652 0054 9A42     		cmp	r2, r3
+ 653 0056 E9D8     		bhi	.L17
+  85:i2cFunctions.c **** 	}
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 14
+
+
+  86:i2cFunctions.c **** 	I2C_Master_MasterSendStop();		
+ 654              		.loc 1 86 0
+ 655 0058 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+  87:i2cFunctions.c **** }
+ 656              		.loc 1 87 0
+ 657 005c 1037     		adds	r7, r7, #16
+ 658              		.cfi_def_cfa_offset 8
+ 659 005e BD46     		mov	sp, r7
+ 660              		.cfi_def_cfa_register 13
+ 661              		@ sp needed
+ 662 0060 80BD     		pop	{r7, pc}
+ 663              		.cfi_endproc
+ 664              	.LFE71:
+ 665              		.size	I2CWriteWords, .-I2CWriteWords
+ 666 0062 00BF     		.section	.text.I2CWriteWord,"ax",%progbits
+ 667              		.align	2
+ 668              		.global	I2CWriteWord
+ 669              		.thumb
+ 670              		.thumb_func
+ 671              		.type	I2CWriteWord, %function
+ 672              	I2CWriteWord:
+ 673              	.LFB72:
+  88:i2cFunctions.c **** 
+  89:i2cFunctions.c **** void I2CWriteWord(uint8_t devAddr, uint8_t regAddr, uint16_t value) {
+ 674              		.loc 1 89 0
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 8
+ 677              		@ frame_needed = 1, uses_anonymous_args = 0
+ 678 0000 80B5     		push	{r7, lr}
+ 679              		.cfi_def_cfa_offset 8
+ 680              		.cfi_offset 7, -8
+ 681              		.cfi_offset 14, -4
+ 682 0002 82B0     		sub	sp, sp, #8
+ 683              		.cfi_def_cfa_offset 16
+ 684 0004 00AF     		add	r7, sp, #0
+ 685              		.cfi_def_cfa_register 7
+ 686 0006 0346     		mov	r3, r0
+ 687 0008 FB71     		strb	r3, [r7, #7]
+ 688 000a 0B46     		mov	r3, r1
+ 689 000c BB71     		strb	r3, [r7, #6]
+ 690 000e 1346     		mov	r3, r2	@ movhi
+ 691 0010 BB80     		strh	r3, [r7, #4]	@ movhi
+  90:i2cFunctions.c **** 	I2CWriteWords(devAddr, regAddr, 1, &value);
+ 692              		.loc 1 90 0
+ 693 0012 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 694 0014 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 695 0016 3B1D     		adds	r3, r7, #4
+ 696 0018 0846     		mov	r0, r1
+ 697 001a 1146     		mov	r1, r2
+ 698 001c 0122     		movs	r2, #1
+ 699 001e FFF7FEFF 		bl	I2CWriteWords
+  91:i2cFunctions.c **** }...
+ 700              		.loc 1 91 0
+ 701 0022 0837     		adds	r7, r7, #8
+ 702              		.cfi_def_cfa_offset 8
+ 703 0024 BD46     		mov	sp, r7
+ 704              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 15
+
+
+ 705              		@ sp needed
+ 706 0026 80BD     		pop	{r7, pc}
+ 707              		.cfi_endproc
+ 708              	.LFE72:
+ 709              		.size	I2CWriteWord, .-I2CWriteWord
+ 710              		.text
+ 711              	.Letext0:
+ 712              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 713              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 714              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 715              		.section	.debug_info,"",%progbits
+ 716              	.Ldebug_info0:
+ 717 0000 39040000 		.4byte	0x439
+ 718 0004 0400     		.2byte	0x4
+ 719 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 720 000a 04       		.byte	0x4
+ 721 000b 01       		.uleb128 0x1
+ 722 000c 2D000000 		.4byte	.LASF36
+ 723 0010 01       		.byte	0x1
+ 724 0011 C4010000 		.4byte	.LASF37
+ 725 0015 45010000 		.4byte	.LASF38
+ 726 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 727 001d 00000000 		.4byte	0
+ 728 0021 00000000 		.4byte	.Ldebug_line0
+ 729 0025 02       		.uleb128 0x2
+ 730 0026 01       		.byte	0x1
+ 731 0027 06       		.byte	0x6
+ 732 0028 31020000 		.4byte	.LASF0
+ 733 002c 03       		.uleb128 0x3
+ 734 002d 00000000 		.4byte	.LASF3
+ 735 0031 02       		.byte	0x2
+ 736 0032 1D       		.byte	0x1d
+ 737 0033 37000000 		.4byte	0x37
+ 738 0037 02       		.uleb128 0x2
+ 739 0038 01       		.byte	0x1
+ 740 0039 08       		.byte	0x8
+ 741 003a CD000000 		.4byte	.LASF1
+ 742 003e 02       		.uleb128 0x2
+ 743 003f 02       		.byte	0x2
+ 744 0040 05       		.byte	0x5
+ 745 0041 F2010000 		.4byte	.LASF2
+ 746 0045 03       		.uleb128 0x3
+ 747 0046 3A010000 		.4byte	.LASF4
+ 748 004a 02       		.byte	0x2
+ 749 004b 2B       		.byte	0x2b
+ 750 004c 50000000 		.4byte	0x50
+ 751 0050 02       		.uleb128 0x2
+ 752 0051 02       		.byte	0x2
+ 753 0052 07       		.byte	0x7
+ 754 0053 0D010000 		.4byte	.LASF5
+ 755 0057 03       		.uleb128 0x3
+ 756 0058 1E000000 		.4byte	.LASF6
+ 757 005c 02       		.byte	0x2
+ 758 005d 3F       		.byte	0x3f
+ 759 005e 62000000 		.4byte	0x62
+ 760 0062 02       		.uleb128 0x2
+ 761 0063 04       		.byte	0x4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 16
+
+
+ 762 0064 05       		.byte	0x5
+ 763 0065 1B020000 		.4byte	.LASF7
+ 764 0069 02       		.uleb128 0x2
+ 765 006a 04       		.byte	0x4
+ 766 006b 07       		.byte	0x7
+ 767 006c FB000000 		.4byte	.LASF8
+ 768 0070 02       		.uleb128 0x2
+ 769 0071 08       		.byte	0x8
+ 770 0072 05       		.byte	0x5
+ 771 0073 D3010000 		.4byte	.LASF9
+ 772 0077 02       		.uleb128 0x2
+ 773 0078 08       		.byte	0x8
+ 774 0079 07       		.byte	0x7
+ 775 007a 94010000 		.4byte	.LASF10
+ 776 007e 04       		.uleb128 0x4
+ 777 007f 04       		.byte	0x4
+ 778 0080 05       		.byte	0x5
+ 779 0081 696E7400 		.ascii	"int\000"
+ 780 0085 02       		.uleb128 0x2
+ 781 0086 04       		.byte	0x4
+ 782 0087 07       		.byte	0x7
+ 783 0088 87010000 		.4byte	.LASF11
+ 784 008c 03       		.uleb128 0x3
+ 785 008d AB010000 		.4byte	.LASF12
+ 786 0091 03       		.byte	0x3
+ 787 0092 15       		.byte	0x15
+ 788 0093 2C000000 		.4byte	0x2c
+ 789 0097 03       		.uleb128 0x3
+ 790 0098 04020000 		.4byte	.LASF13
+ 791 009c 03       		.byte	0x3
+ 792 009d 21       		.byte	0x21
+ 793 009e 45000000 		.4byte	0x45
+ 794 00a2 03       		.uleb128 0x3
+ 795 00a3 B3010000 		.4byte	.LASF14
+ 796 00a7 03       		.byte	0x3
+ 797 00a8 2C       		.byte	0x2c
+ 798 00a9 57000000 		.4byte	0x57
+ 799 00ad 02       		.uleb128 0x2
+ 800 00ae 04       		.byte	0x4
+ 801 00af 04       		.byte	0x4
+ 802 00b0 C7000000 		.4byte	.LASF15
+ 803 00b4 02       		.uleb128 0x2
+ 804 00b5 08       		.byte	0x8
+ 805 00b6 04       		.byte	0x4
+ 806 00b7 3D020000 		.4byte	.LASF16
+ 807 00bb 02       		.uleb128 0x2
+ 808 00bc 01       		.byte	0x1
+ 809 00bd 08       		.byte	0x8
+ 810 00be E1010000 		.4byte	.LASF17
+ 811 00c2 02       		.uleb128 0x2
+ 812 00c3 04       		.byte	0x4
+ 813 00c4 07       		.byte	0x7
+ 814 00c5 BB010000 		.4byte	.LASF18
+ 815 00c9 05       		.uleb128 0x5
+ 816 00ca 24020000 		.4byte	.LASF23
+ 817 00ce 01       		.byte	0x1
+ 818 00cf 12       		.byte	0x12
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 17
+
+
+ 819 00d0 00000000 		.4byte	.LFB63
+ 820 00d4 6E000000 		.4byte	.LFE63-.LFB63
+ 821 00d8 01       		.uleb128 0x1
+ 822 00d9 9C       		.byte	0x9c
+ 823 00da 23010000 		.4byte	0x123
+ 824 00de 06       		.uleb128 0x6
+ 825 00df FC010000 		.4byte	.LASF19
+ 826 00e3 01       		.byte	0x1
+ 827 00e4 12       		.byte	0x12
+ 828 00e5 8C000000 		.4byte	0x8c
+ 829 00e9 02       		.uleb128 0x2
+ 830 00ea 91       		.byte	0x91
+ 831 00eb 67       		.sleb128 -25
+ 832 00ec 06       		.uleb128 0x6
+ 833 00ed F3000000 		.4byte	.LASF20
+ 834 00f1 01       		.byte	0x1
+ 835 00f2 12       		.byte	0x12
+ 836 00f3 8C000000 		.4byte	0x8c
+ 837 00f7 02       		.uleb128 0x2
+ 838 00f8 91       		.byte	0x91
+ 839 00f9 66       		.sleb128 -26
+ 840 00fa 06       		.uleb128 0x6
+ 841 00fb 58020000 		.4byte	.LASF21
+ 842 00ff 01       		.byte	0x1
+ 843 0100 12       		.byte	0x12
+ 844 0101 8C000000 		.4byte	0x8c
+ 845 0105 02       		.uleb128 0x2
+ 846 0106 91       		.byte	0x91
+ 847 0107 65       		.sleb128 -27
+ 848 0108 06       		.uleb128 0x6
+ 849 0109 18000000 		.4byte	.LASF22
+ 850 010d 01       		.byte	0x1
+ 851 010e 12       		.byte	0x12
+ 852 010f 23010000 		.4byte	0x123
+ 853 0113 02       		.uleb128 0x2
+ 854 0114 91       		.byte	0x91
+ 855 0115 60       		.sleb128 -32
+ 856 0116 07       		.uleb128 0x7
+ 857 0117 6900     		.ascii	"i\000"
+ 858 0119 01       		.byte	0x1
+ 859 011a 13       		.byte	0x13
+ 860 011b 8C000000 		.4byte	0x8c
+ 861 011f 02       		.uleb128 0x2
+ 862 0120 91       		.byte	0x91
+ 863 0121 6F       		.sleb128 -17
+ 864 0122 00       		.byte	0
+ 865 0123 08       		.uleb128 0x8
+ 866 0124 04       		.byte	0x4
+ 867 0125 8C000000 		.4byte	0x8c
+ 868 0129 05       		.uleb128 0x5
+ 869 012a BB000000 		.4byte	.LASF24
+ 870 012e 01       		.byte	0x1
+ 871 012f 1E       		.byte	0x1e
+ 872 0130 00000000 		.4byte	.LFB64
+ 873 0134 26000000 		.4byte	.LFE64-.LFB64
+ 874 0138 01       		.uleb128 0x1
+ 875 0139 9C       		.byte	0x9c
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 18
+
+
+ 876 013a 69010000 		.4byte	0x169
+ 877 013e 06       		.uleb128 0x6
+ 878 013f FC010000 		.4byte	.LASF19
+ 879 0143 01       		.byte	0x1
+ 880 0144 1E       		.byte	0x1e
+ 881 0145 8C000000 		.4byte	0x8c
+ 882 0149 02       		.uleb128 0x2
+ 883 014a 91       		.byte	0x91
+ 884 014b 77       		.sleb128 -9
+ 885 014c 06       		.uleb128 0x6
+ 886 014d F3000000 		.4byte	.LASF20
+ 887 0151 01       		.byte	0x1
+ 888 0152 1E       		.byte	0x1e
+ 889 0153 8C000000 		.4byte	0x8c
+ 890 0157 02       		.uleb128 0x2
+ 891 0158 91       		.byte	0x91
+ 892 0159 76       		.sleb128 -10
+ 893 015a 06       		.uleb128 0x6
+ 894 015b 18000000 		.4byte	.LASF22
+ 895 015f 01       		.byte	0x1
+ 896 0160 1E       		.byte	0x1e
+ 897 0161 23010000 		.4byte	0x123
+ 898 0165 02       		.uleb128 0x2
+ 899 0166 91       		.byte	0x91
+ 900 0167 70       		.sleb128 -16
+ 901 0168 00       		.byte	0
+ 902 0169 05       		.uleb128 0x5
+ 903 016a E6010000 		.4byte	.LASF25
+ 904 016e 01       		.byte	0x1
+ 905 016f 22       		.byte	0x22
+ 906 0170 00000000 		.4byte	.LFB65
+ 907 0174 70000000 		.4byte	.LFE65-.LFB65
+ 908 0178 01       		.uleb128 0x1
+ 909 0179 9C       		.byte	0x9c
+ 910 017a D3010000 		.4byte	0x1d3
+ 911 017e 06       		.uleb128 0x6
+ 912 017f FC010000 		.4byte	.LASF19
+ 913 0183 01       		.byte	0x1
+ 914 0184 22       		.byte	0x22
+ 915 0185 8C000000 		.4byte	0x8c
+ 916 0189 02       		.uleb128 0x2
+ 917 018a 91       		.byte	0x91
+ 918 018b 67       		.sleb128 -25
+ 919 018c 06       		.uleb128 0x6
+ 920 018d F3000000 		.4byte	.LASF20
+ 921 0191 01       		.byte	0x1
+ 922 0192 22       		.byte	0x22
+ 923 0193 8C000000 		.4byte	0x8c
+ 924 0197 02       		.uleb128 0x2
+ 925 0198 91       		.byte	0x91
+ 926 0199 66       		.sleb128 -26
+ 927 019a 06       		.uleb128 0x6
+ 928 019b 72010000 		.4byte	.LASF26
+ 929 019f 01       		.byte	0x1
+ 930 01a0 22       		.byte	0x22
+ 931 01a1 8C000000 		.4byte	0x8c
+ 932 01a5 02       		.uleb128 0x2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 19
+
+
+ 933 01a6 91       		.byte	0x91
+ 934 01a7 65       		.sleb128 -27
+ 935 01a8 06       		.uleb128 0x6
+ 936 01a9 58020000 		.4byte	.LASF21
+ 937 01ad 01       		.byte	0x1
+ 938 01ae 22       		.byte	0x22
+ 939 01af 8C000000 		.4byte	0x8c
+ 940 01b3 02       		.uleb128 0x2
+ 941 01b4 91       		.byte	0x91
+ 942 01b5 64       		.sleb128 -28
+ 943 01b6 06       		.uleb128 0x6
+ 944 01b7 18000000 		.4byte	.LASF22
+ 945 01bb 01       		.byte	0x1
+ 946 01bc 22       		.byte	0x22
+ 947 01bd 23010000 		.4byte	0x123
+ 948 01c1 02       		.uleb128 0x2
+ 949 01c2 91       		.byte	0x91
+ 950 01c3 00       		.sleb128 0
+ 951 01c4 09       		.uleb128 0x9
+ 952 01c5 28000000 		.4byte	.LASF27
+ 953 01c9 01       		.byte	0x1
+ 954 01ca 23       		.byte	0x23
+ 955 01cb 8C000000 		.4byte	0x8c
+ 956 01cf 02       		.uleb128 0x2
+ 957 01d0 91       		.byte	0x91
+ 958 01d1 6F       		.sleb128 -17
+ 959 01d2 00       		.byte	0
+ 960 01d3 05       		.uleb128 0x5
+ 961 01d4 E8000000 		.4byte	.LASF28
+ 962 01d8 01       		.byte	0x1
+ 963 01d9 29       		.byte	0x29
+ 964 01da 00000000 		.4byte	.LFB66
+ 965 01de 44000000 		.4byte	.LFE66-.LFB66
+ 966 01e2 01       		.uleb128 0x1
+ 967 01e3 9C       		.byte	0x9c
+ 968 01e4 21020000 		.4byte	0x221
+ 969 01e8 06       		.uleb128 0x6
+ 970 01e9 FC010000 		.4byte	.LASF19
+ 971 01ed 01       		.byte	0x1
+ 972 01ee 29       		.byte	0x29
+ 973 01ef 8C000000 		.4byte	0x8c
+ 974 01f3 02       		.uleb128 0x2
+ 975 01f4 91       		.byte	0x91
+ 976 01f5 77       		.sleb128 -9
+ 977 01f6 06       		.uleb128 0x6
+ 978 01f7 F3000000 		.4byte	.LASF20
+ 979 01fb 01       		.byte	0x1
+ 980 01fc 29       		.byte	0x29
+ 981 01fd 8C000000 		.4byte	0x8c
+ 982 0201 02       		.uleb128 0x2
+ 983 0202 91       		.byte	0x91
+ 984 0203 76       		.sleb128 -10
+ 985 0204 06       		.uleb128 0x6
+ 986 0205 51020000 		.4byte	.LASF29
+ 987 0209 01       		.byte	0x1
+ 988 020a 29       		.byte	0x29
+ 989 020b 8C000000 		.4byte	0x8c
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 20
+
+
+ 990 020f 02       		.uleb128 0x2
+ 991 0210 91       		.byte	0x91
+ 992 0211 75       		.sleb128 -11
+ 993 0212 06       		.uleb128 0x6
+ 994 0213 18000000 		.4byte	.LASF22
+ 995 0217 01       		.byte	0x1
+ 996 0218 29       		.byte	0x29
+ 997 0219 23010000 		.4byte	0x123
+ 998 021d 02       		.uleb128 0x2
+ 999 021e 91       		.byte	0x91
+ 1000 021f 70       		.sleb128 -16
+ 1001 0220 00       		.byte	0
+ 1002 0221 05       		.uleb128 0x5
+ 1003 0222 0A000000 		.4byte	.LASF30
+ 1004 0226 01       		.byte	0x1
+ 1005 0227 2E       		.byte	0x2e
+ 1006 0228 00000000 		.4byte	.LFB67
+ 1007 022c 50000000 		.4byte	.LFE67-.LFB67
+ 1008 0230 01       		.uleb128 0x1
+ 1009 0231 9C       		.byte	0x9c
+ 1010 0232 7B020000 		.4byte	0x27b
+ 1011 0236 06       		.uleb128 0x6
+ 1012 0237 FC010000 		.4byte	.LASF19
+ 1013 023b 01       		.byte	0x1
+ 1014 023c 2E       		.byte	0x2e
+ 1015 023d 8C000000 		.4byte	0x8c
+ 1016 0241 02       		.uleb128 0x2
+ 1017 0242 91       		.byte	0x91
+ 1018 0243 6F       		.sleb128 -17
+ 1019 0244 06       		.uleb128 0x6
+ 1020 0245 F3000000 		.4byte	.LASF20
+ 1021 0249 01       		.byte	0x1
+ 1022 024a 2E       		.byte	0x2e
+ 1023 024b 8C000000 		.4byte	0x8c
+ 1024 024f 02       		.uleb128 0x2
+ 1025 0250 91       		.byte	0x91
+ 1026 0251 6E       		.sleb128 -18
+ 1027 0252 06       		.uleb128 0x6
+ 1028 0253 58020000 		.4byte	.LASF21
+ 1029 0257 01       		.byte	0x1
+ 1030 0258 2E       		.byte	0x2e
+ 1031 0259 8C000000 		.4byte	0x8c
+ 1032 025d 02       		.uleb128 0x2
+ 1033 025e 91       		.byte	0x91
+ 1034 025f 6D       		.sleb128 -19
+ 1035 0260 06       		.uleb128 0x6
+ 1036 0261 18000000 		.4byte	.LASF22
+ 1037 0265 01       		.byte	0x1
+ 1038 0266 2E       		.byte	0x2e
+ 1039 0267 23010000 		.4byte	0x123
+ 1040 026b 02       		.uleb128 0x2
+ 1041 026c 91       		.byte	0x91
+ 1042 026d 68       		.sleb128 -24
+ 1043 026e 07       		.uleb128 0x7
+ 1044 026f 6900     		.ascii	"i\000"
+ 1045 0271 01       		.byte	0x1
+ 1046 0272 2F       		.byte	0x2f
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 21
+
+
+ 1047 0273 8C000000 		.4byte	0x8c
+ 1048 0277 02       		.uleb128 0x2
+ 1049 0278 91       		.byte	0x91
+ 1050 0279 77       		.sleb128 -9
+ 1051 027a 00       		.byte	0
+ 1052 027b 05       		.uleb128 0x5
+ 1053 027c 20010000 		.4byte	.LASF31
+ 1054 0280 01       		.byte	0x1
+ 1055 0281 38       		.byte	0x38
+ 1056 0282 00000000 		.4byte	.LFB68
+ 1057 0286 28000000 		.4byte	.LFE68-.LFB68
+ 1058 028a 01       		.uleb128 0x1
+ 1059 028b 9C       		.byte	0x9c
+ 1060 028c BB020000 		.4byte	0x2bb
+ 1061 0290 06       		.uleb128 0x6
+ 1062 0291 FC010000 		.4byte	.LASF19
+ 1063 0295 01       		.byte	0x1
+ 1064 0296 38       		.byte	0x38
+ 1065 0297 8C000000 		.4byte	0x8c
+ 1066 029b 02       		.uleb128 0x2
+ 1067 029c 91       		.byte	0x91
+ 1068 029d 77       		.sleb128 -9
+ 1069 029e 06       		.uleb128 0x6
+ 1070 029f F3000000 		.4byte	.LASF20
+ 1071 02a3 01       		.byte	0x1
+ 1072 02a4 38       		.byte	0x38
+ 1073 02a5 8C000000 		.4byte	0x8c
+ 1074 02a9 02       		.uleb128 0x2
+ 1075 02aa 91       		.byte	0x91
+ 1076 02ab 76       		.sleb128 -10
+ 1077 02ac 06       		.uleb128 0x6
+ 1078 02ad 18000000 		.4byte	.LASF22
+ 1079 02b1 01       		.byte	0x1
+ 1080 02b2 38       		.byte	0x38
+ 1081 02b3 8C000000 		.4byte	0x8c
+ 1082 02b7 02       		.uleb128 0x2
+ 1083 02b8 91       		.byte	0x91
+ 1084 02b9 75       		.sleb128 -11
+ 1085 02ba 00       		.byte	0
+ 1086 02bb 05       		.uleb128 0x5
+ 1087 02bc 44020000 		.4byte	.LASF32
+ 1088 02c0 01       		.byte	0x1
+ 1089 02c1 3C       		.byte	0x3c
+ 1090 02c2 00000000 		.4byte	.LFB69
+ 1091 02c6 9C000000 		.4byte	.LFE69-.LFB69
+ 1092 02ca 01       		.uleb128 0x1
+ 1093 02cb 9C       		.byte	0x9c
+ 1094 02cc 31030000 		.4byte	0x331
+ 1095 02d0 06       		.uleb128 0x6
+ 1096 02d1 FC010000 		.4byte	.LASF19
+ 1097 02d5 01       		.byte	0x1
+ 1098 02d6 3C       		.byte	0x3c
+ 1099 02d7 8C000000 		.4byte	0x8c
+ 1100 02db 02       		.uleb128 0x2
+ 1101 02dc 91       		.byte	0x91
+ 1102 02dd 67       		.sleb128 -25
+ 1103 02de 06       		.uleb128 0x6
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 22
+
+
+ 1104 02df F3000000 		.4byte	.LASF20
+ 1105 02e3 01       		.byte	0x1
+ 1106 02e4 3C       		.byte	0x3c
+ 1107 02e5 8C000000 		.4byte	0x8c
+ 1108 02e9 02       		.uleb128 0x2
+ 1109 02ea 91       		.byte	0x91
+ 1110 02eb 66       		.sleb128 -26
+ 1111 02ec 06       		.uleb128 0x6
+ 1112 02ed 72010000 		.4byte	.LASF26
+ 1113 02f1 01       		.byte	0x1
+ 1114 02f2 3C       		.byte	0x3c
+ 1115 02f3 8C000000 		.4byte	0x8c
+ 1116 02f7 02       		.uleb128 0x2
+ 1117 02f8 91       		.byte	0x91
+ 1118 02f9 65       		.sleb128 -27
+ 1119 02fa 06       		.uleb128 0x6
+ 1120 02fb 58020000 		.4byte	.LASF21
+ 1121 02ff 01       		.byte	0x1
+ 1122 0300 3C       		.byte	0x3c
+ 1123 0301 8C000000 		.4byte	0x8c
+ 1124 0305 02       		.uleb128 0x2
+ 1125 0306 91       		.byte	0x91
+ 1126 0307 64       		.sleb128 -28
+ 1127 0308 06       		.uleb128 0x6
+ 1128 0309 18000000 		.4byte	.LASF22
+ 1129 030d 01       		.byte	0x1
+ 1130 030e 3C       		.byte	0x3c
+ 1131 030f 8C000000 		.4byte	0x8c
+ 1132 0313 02       		.uleb128 0x2
+ 1133 0314 91       		.byte	0x91
+ 1134 0315 00       		.sleb128 0
+ 1135 0316 07       		.uleb128 0x7
+ 1136 0317 6200     		.ascii	"b\000"
+ 1137 0319 01       		.byte	0x1
+ 1138 031a 3D       		.byte	0x3d
+ 1139 031b 8C000000 		.4byte	0x8c
+ 1140 031f 02       		.uleb128 0x2
+ 1141 0320 91       		.byte	0x91
+ 1142 0321 6E       		.sleb128 -18
+ 1143 0322 09       		.uleb128 0x9
+ 1144 0323 28000000 		.4byte	.LASF27
+ 1145 0327 01       		.byte	0x1
+ 1146 0328 3E       		.byte	0x3e
+ 1147 0329 8C000000 		.4byte	0x8c
+ 1148 032d 02       		.uleb128 0x2
+ 1149 032e 91       		.byte	0x91
+ 1150 032f 6F       		.sleb128 -17
+ 1151 0330 00       		.byte	0
+ 1152 0331 05       		.uleb128 0x5
+ 1153 0332 7B010000 		.4byte	.LASF33
+ 1154 0336 01       		.byte	0x1
+ 1155 0337 47       		.byte	0x47
+ 1156 0338 00000000 		.4byte	.LFB70
+ 1157 033c 7C000000 		.4byte	.LFE70-.LFB70
+ 1158 0340 01       		.uleb128 0x1
+ 1159 0341 9C       		.byte	0x9c
+ 1160 0342 8B030000 		.4byte	0x38b
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 23
+
+
+ 1161 0346 06       		.uleb128 0x6
+ 1162 0347 FC010000 		.4byte	.LASF19
+ 1163 034b 01       		.byte	0x1
+ 1164 034c 47       		.byte	0x47
+ 1165 034d 8C000000 		.4byte	0x8c
+ 1166 0351 02       		.uleb128 0x2
+ 1167 0352 91       		.byte	0x91
+ 1168 0353 67       		.sleb128 -25
+ 1169 0354 06       		.uleb128 0x6
+ 1170 0355 F3000000 		.4byte	.LASF20
+ 1171 0359 01       		.byte	0x1
+ 1172 035a 47       		.byte	0x47
+ 1173 035b 8C000000 		.4byte	0x8c
+ 1174 035f 02       		.uleb128 0x2
+ 1175 0360 91       		.byte	0x91
+ 1176 0361 66       		.sleb128 -26
+ 1177 0362 06       		.uleb128 0x6
+ 1178 0363 51020000 		.4byte	.LASF29
+ 1179 0367 01       		.byte	0x1
+ 1180 0368 47       		.byte	0x47
+ 1181 0369 8C000000 		.4byte	0x8c
+ 1182 036d 02       		.uleb128 0x2
+ 1183 036e 91       		.byte	0x91
+ 1184 036f 65       		.sleb128 -27
+ 1185 0370 06       		.uleb128 0x6
+ 1186 0371 18000000 		.4byte	.LASF22
+ 1187 0375 01       		.byte	0x1
+ 1188 0376 47       		.byte	0x47
+ 1189 0377 8C000000 		.4byte	0x8c
+ 1190 037b 02       		.uleb128 0x2
+ 1191 037c 91       		.byte	0x91
+ 1192 037d 64       		.sleb128 -28
+ 1193 037e 07       		.uleb128 0x7
+ 1194 037f 6200     		.ascii	"b\000"
+ 1195 0381 01       		.byte	0x1
+ 1196 0382 48       		.byte	0x48
+ 1197 0383 8C000000 		.4byte	0x8c
+ 1198 0387 02       		.uleb128 0x2
+ 1199 0388 91       		.byte	0x91
+ 1200 0389 6F       		.sleb128 -17
+ 1201 038a 00       		.byte	0
+ 1202 038b 05       		.uleb128 0x5
+ 1203 038c 0D020000 		.4byte	.LASF34
+ 1204 0390 01       		.byte	0x1
+ 1205 0391 4E       		.byte	0x4e
+ 1206 0392 00000000 		.4byte	.LFB71
+ 1207 0396 62000000 		.4byte	.LFE71-.LFB71
+ 1208 039a 01       		.uleb128 0x1
+ 1209 039b 9C       		.byte	0x9c
+ 1210 039c E5030000 		.4byte	0x3e5
+ 1211 03a0 06       		.uleb128 0x6
+ 1212 03a1 FC010000 		.4byte	.LASF19
+ 1213 03a5 01       		.byte	0x1
+ 1214 03a6 4E       		.byte	0x4e
+ 1215 03a7 8C000000 		.4byte	0x8c
+ 1216 03ab 02       		.uleb128 0x2
+ 1217 03ac 91       		.byte	0x91
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 24
+
+
+ 1218 03ad 6F       		.sleb128 -17
+ 1219 03ae 06       		.uleb128 0x6
+ 1220 03af F3000000 		.4byte	.LASF20
+ 1221 03b3 01       		.byte	0x1
+ 1222 03b4 4E       		.byte	0x4e
+ 1223 03b5 8C000000 		.4byte	0x8c
+ 1224 03b9 02       		.uleb128 0x2
+ 1225 03ba 91       		.byte	0x91
+ 1226 03bb 6E       		.sleb128 -18
+ 1227 03bc 06       		.uleb128 0x6
+ 1228 03bd 58020000 		.4byte	.LASF21
+ 1229 03c1 01       		.byte	0x1
+ 1230 03c2 4E       		.byte	0x4e
+ 1231 03c3 8C000000 		.4byte	0x8c
+ 1232 03c7 02       		.uleb128 0x2
+ 1233 03c8 91       		.byte	0x91
+ 1234 03c9 6D       		.sleb128 -19
+ 1235 03ca 06       		.uleb128 0x6
+ 1236 03cb 18000000 		.4byte	.LASF22
+ 1237 03cf 01       		.byte	0x1
+ 1238 03d0 4E       		.byte	0x4e
+ 1239 03d1 E5030000 		.4byte	0x3e5
+ 1240 03d5 02       		.uleb128 0x2
+ 1241 03d6 91       		.byte	0x91
+ 1242 03d7 68       		.sleb128 -24
+ 1243 03d8 07       		.uleb128 0x7
+ 1244 03d9 6900     		.ascii	"i\000"
+ 1245 03db 01       		.byte	0x1
+ 1246 03dc 4F       		.byte	0x4f
+ 1247 03dd 8C000000 		.4byte	0x8c
+ 1248 03e1 02       		.uleb128 0x2
+ 1249 03e2 91       		.byte	0x91
+ 1250 03e3 77       		.sleb128 -9
+ 1251 03e4 00       		.byte	0
+ 1252 03e5 08       		.uleb128 0x8
+ 1253 03e6 04       		.byte	0x4
+ 1254 03e7 97000000 		.4byte	0x97
+ 1255 03eb 05       		.uleb128 0x5
+ 1256 03ec DB000000 		.4byte	.LASF35
+ 1257 03f0 01       		.byte	0x1
+ 1258 03f1 59       		.byte	0x59
+ 1259 03f2 00000000 		.4byte	.LFB72
+ 1260 03f6 28000000 		.4byte	.LFE72-.LFB72
+ 1261 03fa 01       		.uleb128 0x1
+ 1262 03fb 9C       		.byte	0x9c
+ 1263 03fc 2B040000 		.4byte	0x42b
+ 1264 0400 06       		.uleb128 0x6
+ 1265 0401 FC010000 		.4byte	.LASF19
+ 1266 0405 01       		.byte	0x1
+ 1267 0406 59       		.byte	0x59
+ 1268 0407 8C000000 		.4byte	0x8c
+ 1269 040b 02       		.uleb128 0x2
+ 1270 040c 91       		.byte	0x91
+ 1271 040d 77       		.sleb128 -9
+ 1272 040e 06       		.uleb128 0x6
+ 1273 040f F3000000 		.4byte	.LASF20
+ 1274 0413 01       		.byte	0x1
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 25
+
+
+ 1275 0414 59       		.byte	0x59
+ 1276 0415 8C000000 		.4byte	0x8c
+ 1277 0419 02       		.uleb128 0x2
+ 1278 041a 91       		.byte	0x91
+ 1279 041b 76       		.sleb128 -10
+ 1280 041c 06       		.uleb128 0x6
+ 1281 041d 18000000 		.4byte	.LASF22
+ 1282 0421 01       		.byte	0x1
+ 1283 0422 59       		.byte	0x59
+ 1284 0423 97000000 		.4byte	0x97
+ 1285 0427 02       		.uleb128 0x2
+ 1286 0428 91       		.byte	0x91
+ 1287 0429 74       		.sleb128 -12
+ 1288 042a 00       		.byte	0
+ 1289 042b 0A       		.uleb128 0xa
+ 1290 042c 2D010000 		.4byte	.LASF39
+ 1291 0430 04       		.byte	0x4
+ 1292 0431 9606     		.2byte	0x696
+ 1293 0433 37040000 		.4byte	0x437
+ 1294 0437 0B       		.uleb128 0xb
+ 1295 0438 A2000000 		.4byte	0xa2
+ 1296 043c 00       		.byte	0
+ 1297              		.section	.debug_abbrev,"",%progbits
+ 1298              	.Ldebug_abbrev0:
+ 1299 0000 01       		.uleb128 0x1
+ 1300 0001 11       		.uleb128 0x11
+ 1301 0002 01       		.byte	0x1
+ 1302 0003 25       		.uleb128 0x25
+ 1303 0004 0E       		.uleb128 0xe
+ 1304 0005 13       		.uleb128 0x13
+ 1305 0006 0B       		.uleb128 0xb
+ 1306 0007 03       		.uleb128 0x3
+ 1307 0008 0E       		.uleb128 0xe
+ 1308 0009 1B       		.uleb128 0x1b
+ 1309 000a 0E       		.uleb128 0xe
+ 1310 000b 55       		.uleb128 0x55
+ 1311 000c 17       		.uleb128 0x17
+ 1312 000d 11       		.uleb128 0x11
+ 1313 000e 01       		.uleb128 0x1
+ 1314 000f 10       		.uleb128 0x10
+ 1315 0010 17       		.uleb128 0x17
+ 1316 0011 00       		.byte	0
+ 1317 0012 00       		.byte	0
+ 1318 0013 02       		.uleb128 0x2
+ 1319 0014 24       		.uleb128 0x24
+ 1320 0015 00       		.byte	0
+ 1321 0016 0B       		.uleb128 0xb
+ 1322 0017 0B       		.uleb128 0xb
+ 1323 0018 3E       		.uleb128 0x3e
+ 1324 0019 0B       		.uleb128 0xb
+ 1325 001a 03       		.uleb128 0x3
+ 1326 001b 0E       		.uleb128 0xe
+ 1327 001c 00       		.byte	0
+ 1328 001d 00       		.byte	0
+ 1329 001e 03       		.uleb128 0x3
+ 1330 001f 16       		.uleb128 0x16
+ 1331 0020 00       		.byte	0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 26
+
+
+ 1332 0021 03       		.uleb128 0x3
+ 1333 0022 0E       		.uleb128 0xe
+ 1334 0023 3A       		.uleb128 0x3a
+ 1335 0024 0B       		.uleb128 0xb
+ 1336 0025 3B       		.uleb128 0x3b
+ 1337 0026 0B       		.uleb128 0xb
+ 1338 0027 49       		.uleb128 0x49
+ 1339 0028 13       		.uleb128 0x13
+ 1340 0029 00       		.byte	0
+ 1341 002a 00       		.byte	0
+ 1342 002b 04       		.uleb128 0x4
+ 1343 002c 24       		.uleb128 0x24
+ 1344 002d 00       		.byte	0
+ 1345 002e 0B       		.uleb128 0xb
+ 1346 002f 0B       		.uleb128 0xb
+ 1347 0030 3E       		.uleb128 0x3e
+ 1348 0031 0B       		.uleb128 0xb
+ 1349 0032 03       		.uleb128 0x3
+ 1350 0033 08       		.uleb128 0x8
+ 1351 0034 00       		.byte	0
+ 1352 0035 00       		.byte	0
+ 1353 0036 05       		.uleb128 0x5
+ 1354 0037 2E       		.uleb128 0x2e
+ 1355 0038 01       		.byte	0x1
+ 1356 0039 3F       		.uleb128 0x3f
+ 1357 003a 19       		.uleb128 0x19
+ 1358 003b 03       		.uleb128 0x3
+ 1359 003c 0E       		.uleb128 0xe
+ 1360 003d 3A       		.uleb128 0x3a
+ 1361 003e 0B       		.uleb128 0xb
+ 1362 003f 3B       		.uleb128 0x3b
+ 1363 0040 0B       		.uleb128 0xb
+ 1364 0041 27       		.uleb128 0x27
+ 1365 0042 19       		.uleb128 0x19
+ 1366 0043 11       		.uleb128 0x11
+ 1367 0044 01       		.uleb128 0x1
+ 1368 0045 12       		.uleb128 0x12
+ 1369 0046 06       		.uleb128 0x6
+ 1370 0047 40       		.uleb128 0x40
+ 1371 0048 18       		.uleb128 0x18
+ 1372 0049 9642     		.uleb128 0x2116
+ 1373 004b 19       		.uleb128 0x19
+ 1374 004c 01       		.uleb128 0x1
+ 1375 004d 13       		.uleb128 0x13
+ 1376 004e 00       		.byte	0
+ 1377 004f 00       		.byte	0
+ 1378 0050 06       		.uleb128 0x6
+ 1379 0051 05       		.uleb128 0x5
+ 1380 0052 00       		.byte	0
+ 1381 0053 03       		.uleb128 0x3
+ 1382 0054 0E       		.uleb128 0xe
+ 1383 0055 3A       		.uleb128 0x3a
+ 1384 0056 0B       		.uleb128 0xb
+ 1385 0057 3B       		.uleb128 0x3b
+ 1386 0058 0B       		.uleb128 0xb
+ 1387 0059 49       		.uleb128 0x49
+ 1388 005a 13       		.uleb128 0x13
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 27
+
+
+ 1389 005b 02       		.uleb128 0x2
+ 1390 005c 18       		.uleb128 0x18
+ 1391 005d 00       		.byte	0
+ 1392 005e 00       		.byte	0
+ 1393 005f 07       		.uleb128 0x7
+ 1394 0060 34       		.uleb128 0x34
+ 1395 0061 00       		.byte	0
+ 1396 0062 03       		.uleb128 0x3
+ 1397 0063 08       		.uleb128 0x8
+ 1398 0064 3A       		.uleb128 0x3a
+ 1399 0065 0B       		.uleb128 0xb
+ 1400 0066 3B       		.uleb128 0x3b
+ 1401 0067 0B       		.uleb128 0xb
+ 1402 0068 49       		.uleb128 0x49
+ 1403 0069 13       		.uleb128 0x13
+ 1404 006a 02       		.uleb128 0x2
+ 1405 006b 18       		.uleb128 0x18
+ 1406 006c 00       		.byte	0
+ 1407 006d 00       		.byte	0
+ 1408 006e 08       		.uleb128 0x8
+ 1409 006f 0F       		.uleb128 0xf
+ 1410 0070 00       		.byte	0
+ 1411 0071 0B       		.uleb128 0xb
+ 1412 0072 0B       		.uleb128 0xb
+ 1413 0073 49       		.uleb128 0x49
+ 1414 0074 13       		.uleb128 0x13
+ 1415 0075 00       		.byte	0
+ 1416 0076 00       		.byte	0
+ 1417 0077 09       		.uleb128 0x9
+ 1418 0078 34       		.uleb128 0x34
+ 1419 0079 00       		.byte	0
+ 1420 007a 03       		.uleb128 0x3
+ 1421 007b 0E       		.uleb128 0xe
+ 1422 007c 3A       		.uleb128 0x3a
+ 1423 007d 0B       		.uleb128 0xb
+ 1424 007e 3B       		.uleb128 0x3b
+ 1425 007f 0B       		.uleb128 0xb
+ 1426 0080 49       		.uleb128 0x49
+ 1427 0081 13       		.uleb128 0x13
+ 1428 0082 02       		.uleb128 0x2
+ 1429 0083 18       		.uleb128 0x18
+ 1430 0084 00       		.byte	0
+ 1431 0085 00       		.byte	0
+ 1432 0086 0A       		.uleb128 0xa
+ 1433 0087 34       		.uleb128 0x34
+ 1434 0088 00       		.byte	0
+ 1435 0089 03       		.uleb128 0x3
+ 1436 008a 0E       		.uleb128 0xe
+ 1437 008b 3A       		.uleb128 0x3a
+ 1438 008c 0B       		.uleb128 0xb
+ 1439 008d 3B       		.uleb128 0x3b
+ 1440 008e 05       		.uleb128 0x5
+ 1441 008f 49       		.uleb128 0x49
+ 1442 0090 13       		.uleb128 0x13
+ 1443 0091 3F       		.uleb128 0x3f
+ 1444 0092 19       		.uleb128 0x19
+ 1445 0093 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 28
+
+
+ 1446 0094 19       		.uleb128 0x19
+ 1447 0095 00       		.byte	0
+ 1448 0096 00       		.byte	0
+ 1449 0097 0B       		.uleb128 0xb
+ 1450 0098 35       		.uleb128 0x35
+ 1451 0099 00       		.byte	0
+ 1452 009a 49       		.uleb128 0x49
+ 1453 009b 13       		.uleb128 0x13
+ 1454 009c 00       		.byte	0
+ 1455 009d 00       		.byte	0
+ 1456 009e 00       		.byte	0
+ 1457              		.section	.debug_aranges,"",%progbits
+ 1458 0000 64000000 		.4byte	0x64
+ 1459 0004 0200     		.2byte	0x2
+ 1460 0006 00000000 		.4byte	.Ldebug_info0
+ 1461 000a 04       		.byte	0x4
+ 1462 000b 00       		.byte	0
+ 1463 000c 0000     		.2byte	0
+ 1464 000e 0000     		.2byte	0
+ 1465 0010 00000000 		.4byte	.LFB63
+ 1466 0014 6E000000 		.4byte	.LFE63-.LFB63
+ 1467 0018 00000000 		.4byte	.LFB64
+ 1468 001c 26000000 		.4byte	.LFE64-.LFB64
+ 1469 0020 00000000 		.4byte	.LFB65
+ 1470 0024 70000000 		.4byte	.LFE65-.LFB65
+ 1471 0028 00000000 		.4byte	.LFB66
+ 1472 002c 44000000 		.4byte	.LFE66-.LFB66
+ 1473 0030 00000000 		.4byte	.LFB67
+ 1474 0034 50000000 		.4byte	.LFE67-.LFB67
+ 1475 0038 00000000 		.4byte	.LFB68
+ 1476 003c 28000000 		.4byte	.LFE68-.LFB68
+ 1477 0040 00000000 		.4byte	.LFB69
+ 1478 0044 9C000000 		.4byte	.LFE69-.LFB69
+ 1479 0048 00000000 		.4byte	.LFB70
+ 1480 004c 7C000000 		.4byte	.LFE70-.LFB70
+ 1481 0050 00000000 		.4byte	.LFB71
+ 1482 0054 62000000 		.4byte	.LFE71-.LFB71
+ 1483 0058 00000000 		.4byte	.LFB72
+ 1484 005c 28000000 		.4byte	.LFE72-.LFB72
+ 1485 0060 00000000 		.4byte	0
+ 1486 0064 00000000 		.4byte	0
+ 1487              		.section	.debug_ranges,"",%progbits
+ 1488              	.Ldebug_ranges0:
+ 1489 0000 00000000 		.4byte	.LFB63
+ 1490 0004 6E000000 		.4byte	.LFE63
+ 1491 0008 00000000 		.4byte	.LFB64
+ 1492 000c 26000000 		.4byte	.LFE64
+ 1493 0010 00000000 		.4byte	.LFB65
+ 1494 0014 70000000 		.4byte	.LFE65
+ 1495 0018 00000000 		.4byte	.LFB66
+ 1496 001c 44000000 		.4byte	.LFE66
+ 1497 0020 00000000 		.4byte	.LFB67
+ 1498 0024 50000000 		.4byte	.LFE67
+ 1499 0028 00000000 		.4byte	.LFB68
+ 1500 002c 28000000 		.4byte	.LFE68
+ 1501 0030 00000000 		.4byte	.LFB69
+ 1502 0034 9C000000 		.4byte	.LFE69
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 29
+
+
+ 1503 0038 00000000 		.4byte	.LFB70
+ 1504 003c 7C000000 		.4byte	.LFE70
+ 1505 0040 00000000 		.4byte	.LFB71
+ 1506 0044 62000000 		.4byte	.LFE71
+ 1507 0048 00000000 		.4byte	.LFB72
+ 1508 004c 28000000 		.4byte	.LFE72
+ 1509 0050 00000000 		.4byte	0
+ 1510 0054 00000000 		.4byte	0
+ 1511              		.section	.debug_line,"",%progbits
+ 1512              	.Ldebug_line0:
+ 1513 0000 2F020000 		.section	.debug_str,"MS",%progbits,1
+ 1513      02004201 
+ 1513      00000201 
+ 1513      FB0E0D00 
+ 1513      01010101 
+ 1514              	.LASF3:
+ 1515 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1515      6E74385F 
+ 1515      7400
+ 1516              	.LASF30:
+ 1517 000a 49324357 		.ascii	"I2CWriteBytes\000"
+ 1517      72697465 
+ 1517      42797465 
+ 1517      7300
+ 1518              	.LASF22:
+ 1519 0018 76616C75 		.ascii	"value\000"
+ 1519      6500
+ 1520              	.LASF6:
+ 1521 001e 5F5F696E 		.ascii	"__int32_t\000"
+ 1521      7433325F 
+ 1521      7400
+ 1522              	.LASF27:
+ 1523 0028 6D61736B 		.ascii	"mask\000"
+ 1523      00
+ 1524              	.LASF36:
+ 1525 002d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1525      4320342E 
+ 1525      392E3320 
+ 1525      32303135 
+ 1525      30333033 
+ 1526 0060 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1526      20726576 
+ 1526      6973696F 
+ 1526      6E203232 
+ 1526      31323230 
+ 1527 0093 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1527      66756E63 
+ 1527      74696F6E 
+ 1527      2D736563 
+ 1527      74696F6E 
+ 1528              	.LASF24:
+ 1529 00bb 49324352 		.ascii	"I2CReadByte\000"
+ 1529      65616442 
+ 1529      79746500 
+ 1530              	.LASF15:
+ 1531 00c7 666C6F61 		.ascii	"float\000"
+ 1531      7400
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 30
+
+
+ 1532              	.LASF1:
+ 1533 00cd 756E7369 		.ascii	"unsigned char\000"
+ 1533      676E6564 
+ 1533      20636861 
+ 1533      7200
+ 1534              	.LASF35:
+ 1535 00db 49324357 		.ascii	"I2CWriteWord\000"
+ 1535      72697465 
+ 1535      576F7264 
+ 1535      00
+ 1536              	.LASF28:
+ 1537 00e8 49324352 		.ascii	"I2CReadBit\000"
+ 1537      65616442 
+ 1537      697400
+ 1538              	.LASF20:
+ 1539 00f3 72656741 		.ascii	"regAddr\000"
+ 1539      64647200 
+ 1540              	.LASF8:
+ 1541 00fb 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1541      20756E73 
+ 1541      69676E65 
+ 1541      6420696E 
+ 1541      7400
+ 1542              	.LASF5:
+ 1543 010d 73686F72 		.ascii	"short unsigned int\000"
+ 1543      7420756E 
+ 1543      7369676E 
+ 1543      65642069 
+ 1543      6E7400
+ 1544              	.LASF31:
+ 1545 0120 49324357 		.ascii	"I2CWriteByte\000"
+ 1545      72697465 
+ 1545      42797465 
+ 1545      00
+ 1546              	.LASF39:
+ 1547 012d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1547      52784275 
+ 1547      66666572 
+ 1547      00
+ 1548              	.LASF4:
+ 1549 013a 5F5F7569 		.ascii	"__uint16_t\000"
+ 1549      6E743136 
+ 1549      5F7400
+ 1550              	.LASF38:
+ 1551 0145 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\OVac.cydsn\000"
+ 1551      73657273 
+ 1551      5C6A7767 
+ 1551      75747465 
+ 1551      725C446F 
+ 1552              	.LASF26:
+ 1553 0172 62697453 		.ascii	"bitStart\000"
+ 1553      74617274 
+ 1553      00
+ 1554              	.LASF33:
+ 1555 017b 49324357 		.ascii	"I2CWriteBit\000"
+ 1555      72697465 
+ 1555      42697400 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 31
+
+
+ 1556              	.LASF11:
+ 1557 0187 756E7369 		.ascii	"unsigned int\000"
+ 1557      676E6564 
+ 1557      20696E74 
+ 1557      00
+ 1558              	.LASF10:
+ 1559 0194 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1559      206C6F6E 
+ 1559      6720756E 
+ 1559      7369676E 
+ 1559      65642069 
+ 1560              	.LASF12:
+ 1561 01ab 75696E74 		.ascii	"uint8_t\000"
+ 1561      385F7400 
+ 1562              	.LASF14:
+ 1563 01b3 696E7433 		.ascii	"int32_t\000"
+ 1563      325F7400 
+ 1564              	.LASF18:
+ 1565 01bb 73697A65 		.ascii	"sizetype\000"
+ 1565      74797065 
+ 1565      00
+ 1566              	.LASF37:
+ 1567 01c4 69326346 		.ascii	"i2cFunctions.c\000"
+ 1567      756E6374 
+ 1567      696F6E73 
+ 1567      2E6300
+ 1568              	.LASF9:
+ 1569 01d3 6C6F6E67 		.ascii	"long long int\000"
+ 1569      206C6F6E 
+ 1569      6720696E 
+ 1569      7400
+ 1570              	.LASF17:
+ 1571 01e1 63686172 		.ascii	"char\000"
+ 1571      00
+ 1572              	.LASF25:
+ 1573 01e6 49324352 		.ascii	"I2CReadBits\000"
+ 1573      65616442 
+ 1573      69747300 
+ 1574              	.LASF2:
+ 1575 01f2 73686F72 		.ascii	"short int\000"
+ 1575      7420696E 
+ 1575      7400
+ 1576              	.LASF19:
+ 1577 01fc 64657641 		.ascii	"devAddr\000"
+ 1577      64647200 
+ 1578              	.LASF13:
+ 1579 0204 75696E74 		.ascii	"uint16_t\000"
+ 1579      31365F74 
+ 1579      00
+ 1580              	.LASF34:
+ 1581 020d 49324357 		.ascii	"I2CWriteWords\000"
+ 1581      72697465 
+ 1581      576F7264 
+ 1581      7300
+ 1582              	.LASF7:
+ 1583 021b 6C6F6E67 		.ascii	"long int\000"
+ 1583      20696E74 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccCcoZFg.s 			page 32
+
+
+ 1583      00
+ 1584              	.LASF23:
+ 1585 0224 49324352 		.ascii	"I2CReadBytes\000"
+ 1585      65616442 
+ 1585      79746573 
+ 1585      00
+ 1586              	.LASF0:
+ 1587 0231 7369676E 		.ascii	"signed char\000"
+ 1587      65642063 
+ 1587      68617200 
+ 1588              	.LASF16:
+ 1589 023d 646F7562 		.ascii	"double\000"
+ 1589      6C6500
+ 1590              	.LASF32:
+ 1591 0244 49324357 		.ascii	"I2CWriteBits\000"
+ 1591      72697465 
+ 1591      42697473 
+ 1591      00
+ 1592              	.LASF29:
+ 1593 0251 6269744E 		.ascii	"bitNum\000"
+ 1593      756D00
+ 1594              	.LASF21:
+ 1595 0258 6C656E67 		.ascii	"length\000"
+ 1595      746800
+ 1596              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

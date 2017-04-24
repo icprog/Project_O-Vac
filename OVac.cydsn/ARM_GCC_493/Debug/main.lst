@@ -1,0 +1,2957 @@
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	devAddr,1,1
+  19              		.comm	buffer,22,4
+  20              		.global	Addr
+  21              		.data
+  22              		.align	2
+  23              		.type	Addr, %object
+  24              		.size	Addr, 4
+  25              	Addr:
+  26 0000 3F000000 		.word	63
+  27              		.global	id
+  28              		.align	2
+  29              		.type	id, %object
+  30              		.size	id, 4
+  31              	id:
+  32 0004 01000000 		.word	1
+  33              		.global	data_time
+  34              		.bss
+  35              		.align	2
+  36              		.type	data_time, %object
+  37              		.size	data_time, 4
+  38              	data_time:
+  39 0000 00000000 		.space	4
+  40              		.global	sum
+  41              		.align	2
+  42              		.type	sum, %object
+  43              		.size	sum, 4
+  44              	sum:
+  45 0004 00000000 		.space	4
+  46              		.global	average
+  47              		.align	1
+  48              		.type	average, %object
+  49              		.size	average, 2
+  50              	average:
+  51 0008 0000     		.space	2
+  52              		.global	collect_flag
+  53              		.type	collect_flag, %object
+  54              		.size	collect_flag, 1
+  55              	collect_flag:
+  56 000a 00       		.space	1
+  57              		.global	wait_flag
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 2
+
+
+  58              		.type	wait_flag, %object
+  59              		.size	wait_flag, 1
+  60              	wait_flag:
+  61 000b 00       		.space	1
+  62              		.global	STATE
+  63              		.data
+  64              		.type	STATE, %object
+  65              		.size	STATE, 1
+  66              	STATE:
+  67 0008 01       		.byte	1
+  68              		.global	testnum
+  69              		.type	testnum, %object
+  70              		.size	testnum, 1
+  71              	testnum:
+  72 0009 01       		.byte	1
+  73              		.global	countdown
+  74              		.bss
+  75              		.type	countdown, %object
+  76              		.size	countdown, 1
+  77              	countdown:
+  78 000c 00       		.space	1
+  79              		.global	file
+  80              		.data
+  81 000a 0000     		.align	2
+  82              		.type	file, %object
+  83              		.size	file, 11
+  84              	file:
+  85 000c 74657374 		.ascii	"test_1.txt\000"
+  85      5F312E74 
+  85      787400
+  86              		.global	volume
+  87 0017 00       		.bss
+  88 000d 000000   		.align	2
+  89              		.type	volume, %object
+  90              		.size	volume, 10
+  91              	volume:
+  92 0010 00000000 		.space	10
+  92      00000000 
+  92      0000
+  93              		.comm	fsfile,4,4
+  94 001a 0000     		.section	.text.Sample_ISR_Handler,"ax",%progbits
+  95              		.align	2
+  96              		.global	Sample_ISR_Handler
+  97              		.thumb
+  98              		.thumb_func
+  99              		.type	Sample_ISR_Handler, %function
+ 100              	Sample_ISR_Handler:
+ 101              	.LFB63:
+ 102              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 2.20
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *   This is a source code for example project of ADC single ended mode.
+   8:main.c        **** *
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 3
+
+
+   9:main.c        **** *   Variable resistor(pot) is connected to +ve input of ADC using the I/O pin.
+  10:main.c        **** *   P0.0. When voltage to positive terminal of ADC is 0, the output displayed
+  11:main.c        **** *   on the LCD pannel is 0x0000. As voltage on positive terminal goes on
+  12:main.c        **** *   increasing, the  converted value goes on increasing from 0x0000 and reaches
+  13:main.c        **** *   0xFFFF when voltage becomes 1.024V. Futher increase in voltage value,
+  14:main.c        **** *   doesn't cause any changes to values displayed in the LCD.
+  15:main.c        **** *
+  16:main.c        **** * Hardware Connections: 
+  17:main.c        **** *  Connect analog input from Variable resistor to port P0[0] of DVK1 board.
+  18:main.c        **** *
+  19:main.c        **** ********************************************************************************
+  20:main.c        **** * Copyright 2012-2015, Cypress Semiconductor Corporation. All rights reserved.
+  21:main.c        **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  22:main.c        **** * by and subject to worldwide patent and copyright laws and treaties.
+  23:main.c        **** * Therefore, you may use this software only as provided in the license agreement
+  24:main.c        **** * accompanying the software package from which you obtained this software.
+  25:main.c        **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  26:main.c        **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  27:main.c        **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:main.c        **** *******************************************************************************/
+  29:main.c        **** 
+  30:main.c        **** #include <project.h>
+  31:main.c        **** #include <mpu6050.h>
+  32:main.c        **** #include <stdio.h>
+  33:main.c        **** #include <string.h>
+  34:main.c        **** #include <FS.h>
+  35:main.c        **** #include "LiquidCrystal_I2C.h"
+  36:main.c        **** #include "functions.h"
+  37:main.c        **** 
+  38:main.c        **** #define MPU6050 
+  39:main.c        **** #define LCD
+  40:main.c        **** #define SD
+  41:main.c        **** 
+  42:main.c        **** #define MA_WINDOW 15                    // Number of samples in the moving average window.
+  43:main.c        **** #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED sta
+  44:main.c        **** #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING sta
+  45:main.c        **** #define DATA_TIME 5000                  // Number of ISR calls until transition into WAIT_TO_LAUNCH
+  46:main.c        **** 
+  47:main.c        **** 
+  48:main.c        **** /*State Declarations*/
+  49:main.c        **** enum STATES{
+  50:main.c        **** SYSTEM_CHECK, 
+  51:main.c        **** WAIT_TO_LAUNCH,
+  52:main.c        **** DESCENDING,
+  53:main.c        **** LANDED,
+  54:main.c        **** RESURFACE,
+  55:main.c        **** TRANSMIT,
+  56:main.c        **** ERROR
+  57:main.c        **** };
+  58:main.c        **** 
+  59:main.c        **** 
+  60:main.c        **** uint32_t Addr = 0x3F;                       // I2C address of LCD.
+  61:main.c        **** long id = 1;                                // Interrupt count.
+  62:main.c        **** long data_time = 0;                        // data point num
+  63:main.c        **** 
+  64:main.c        **** long sum = 0;                               // Sum of accelerometer values. 
+  65:main.c        **** int16_t average = 0;                        // Moving average variable.
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 4
+
+
+  66:main.c        **** bool collect_flag = 0;                      // flag indicating when to record acceleration sample.
+  67:main.c        **** bool wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+  68:main.c        **** //bool first_test = 1;                        // flag indicating first test(longer countdown)
+  69:main.c        **** enum STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
+  70:main.c        **** uint8_t testnum = 1, countdown = 0;
+  71:main.c        **** char file[11] = "test_1.txt";
+  72:main.c        **** char volume[10] = {};
+  73:main.c        **** FS_FILE *fsfile;
+  74:main.c        **** 
+  75:main.c        **** /*******************************************************************************
+  76:main.c        **** * Function Name: main
+  77:main.c        **** ********************************************************************************
+  78:main.c        **** *
+  79:main.c        **** * Summary:
+  80:main.c        **** *  main() performs following functions:
+  81:main.c        **** *  1: Initializes the LCD.
+  82:main.c        **** *  2: Initializes timer module and sampling interrupt.
+  83:main.c        **** *  3: Initializes MPU6050 Accelerometer/Gyroscope module.
+  84:main.c        **** *  4: Samples Z-axis acceleration data from module @ 500hz.
+  85:main.c        **** *  5: Computes moving average of Z-axis acceleration values.
+  86:main.c        **** *  6: Transitions from DESCENDING to LANDED state when sudden acceleration occurs
+  87:main.c        **** *     (ie. moving average > 200000).
+  88:main.c        **** *
+  89:main.c        **** * Parameters:
+  90:main.c        **** *  None.
+  91:main.c        **** *
+  92:main.c        **** * Return:
+  93:main.c        **** *  None.
+  94:main.c        **** *
+  95:main.c        **** *******************************************************************************/
+  96:main.c        **** 
+  97:main.c        **** /* Sampling ISR */
+  98:main.c        **** CY_ISR (Sample_ISR_Handler){
+ 103              		.loc 1 98 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 1, uses_anonymous_args = 0
+ 107              		@ link register save eliminated.
+ 108 0000 80B4     		push	{r7}
+ 109              		.cfi_def_cfa_offset 4
+ 110              		.cfi_offset 7, -4
+ 111 0002 00AF     		add	r7, sp, #0
+ 112              		.cfi_def_cfa_register 7
+  99:main.c        ****     
+ 100:main.c        ****     Sample_Timer_STATUS;                        //Clears interrupt by accessing timer status regist
+ 113              		.loc 1 100 0
+ 114 0004 084B     		ldr	r3, .L3
+ 115 0006 1B78     		ldrb	r3, [r3]
+ 101:main.c        ****     if (STATE == DESCENDING){ 
+ 116              		.loc 1 101 0
+ 117 0008 084B     		ldr	r3, .L3+4
+ 118 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 119 000c 022B     		cmp	r3, #2
+ 120 000e 07D1     		bne	.L1
+ 102:main.c        ****         collect_flag = 1;
+ 121              		.loc 1 102 0
+ 122 0010 074B     		ldr	r3, .L3+8
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 5
+
+
+ 123 0012 0122     		movs	r2, #1
+ 124 0014 1A70     		strb	r2, [r3]
+ 103:main.c        ****         data_time++;
+ 125              		.loc 1 103 0
+ 126 0016 074B     		ldr	r3, .L3+12
+ 127 0018 1B68     		ldr	r3, [r3]
+ 128 001a 0133     		adds	r3, r3, #1
+ 129 001c 054A     		ldr	r2, .L3+12
+ 130 001e 1360     		str	r3, [r2]
+ 131              	.L1:
+ 104:main.c        ****     }
+ 105:main.c        **** }
+ 132              		.loc 1 105 0
+ 133 0020 BD46     		mov	sp, r7
+ 134              		.cfi_def_cfa_register 13
+ 135              		@ sp needed
+ 136 0022 5DF8047B 		ldr	r7, [sp], #4
+ 137              		.cfi_restore 7
+ 138              		.cfi_def_cfa_offset 0
+ 139 0026 7047     		bx	lr
+ 140              	.L4:
+ 141              		.align	2
+ 142              	.L3:
+ 143 0028 034F0040 		.word	1073762051
+ 144 002c 00000000 		.word	STATE
+ 145 0030 00000000 		.word	collect_flag
+ 146 0034 00000000 		.word	data_time
+ 147              		.cfi_endproc
+ 148              	.LFE63:
+ 149              		.size	Sample_ISR_Handler, .-Sample_ISR_Handler
+ 150              		.section	.text.Countdown_ISR_Handler,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	Countdown_ISR_Handler
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.type	Countdown_ISR_Handler, %function
+ 156              	Countdown_ISR_Handler:
+ 157              	.LFB64:
+ 106:main.c        **** 
+ 107:main.c        **** CY_ISR (Countdown_ISR_Handler){
+ 158              		.loc 1 107 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 1, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163 0000 80B4     		push	{r7}
+ 164              		.cfi_def_cfa_offset 4
+ 165              		.cfi_offset 7, -4
+ 166 0002 00AF     		add	r7, sp, #0
+ 167              		.cfi_def_cfa_register 7
+ 108:main.c        ****     
+ 109:main.c        ****     Countdown_timer_STATUS;                        //Clears interrupt by accessing timer status reg
+ 168              		.loc 1 109 0
+ 169 0004 0D4B     		ldr	r3, .L8
+ 170 0006 1B78     		ldrb	r3, [r3]
+ 110:main.c        ****     if (STATE == WAIT_TO_LAUNCH){ 
+ 171              		.loc 1 110 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 6
+
+
+ 172 0008 0D4B     		ldr	r3, .L8+4
+ 173 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 174 000c 012B     		cmp	r3, #1
+ 175 000e 09D1     		bne	.L6
+ 111:main.c        ****         wait_flag = 1;
+ 176              		.loc 1 111 0
+ 177 0010 0C4B     		ldr	r3, .L8+8
+ 178 0012 0122     		movs	r2, #1
+ 179 0014 1A70     		strb	r2, [r3]
+ 112:main.c        ****         countdown++;
+ 180              		.loc 1 112 0
+ 181 0016 0C4B     		ldr	r3, .L8+12
+ 182 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 183 001a 0133     		adds	r3, r3, #1
+ 184 001c DAB2     		uxtb	r2, r3
+ 185 001e 0A4B     		ldr	r3, .L8+12
+ 186 0020 1A70     		strb	r2, [r3]
+ 187 0022 06E0     		b	.L5
+ 188              	.L6:
+ 113:main.c        ****     }
+ 114:main.c        ****     else  if (STATE == DESCENDING){
+ 189              		.loc 1 114 0
+ 190 0024 064B     		ldr	r3, .L8+4
+ 191 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 192 0028 022B     		cmp	r3, #2
+ 193 002a 02D1     		bne	.L5
+ 115:main.c        ****         wait_flag = 1;
+ 194              		.loc 1 115 0
+ 195 002c 054B     		ldr	r3, .L8+8
+ 196 002e 0122     		movs	r2, #1
+ 197 0030 1A70     		strb	r2, [r3]
+ 198              	.L5:
+ 116:main.c        ****     }
+ 117:main.c        **** }
+ 199              		.loc 1 117 0
+ 200 0032 BD46     		mov	sp, r7
+ 201              		.cfi_def_cfa_register 13
+ 202              		@ sp needed
+ 203 0034 5DF8047B 		ldr	r7, [sp], #4
+ 204              		.cfi_restore 7
+ 205              		.cfi_def_cfa_offset 0
+ 206 0038 7047     		bx	lr
+ 207              	.L9:
+ 208 003a 00BF     		.align	2
+ 209              	.L8:
+ 210 003c 63640040 		.word	1073767523
+ 211 0040 00000000 		.word	STATE
+ 212 0044 00000000 		.word	wait_flag
+ 213 0048 00000000 		.word	countdown
+ 214              		.cfi_endproc
+ 215              	.LFE64:
+ 216              		.size	Countdown_ISR_Handler, .-Countdown_ISR_Handler
+ 217              		.section	.rodata
+ 218              		.align	2
+ 219              	.LC1:
+ 220 0000 50536F43 		.ascii	"PSoC 5LP: O-Vac\000"
+ 220      20354C50 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 7
+
+
+ 220      3A204F2D 
+ 220      56616300 
+ 221              		.align	2
+ 222              	.LC2:
+ 223 0010 49324320 		.ascii	"I2C Working\000"
+ 223      576F726B 
+ 223      696E6700 
+ 224              		.align	2
+ 225              	.LC3:
+ 226 001c 53642076 		.ascii	"Sd vol succeed\000"
+ 226      6F6C2073 
+ 226      75636365 
+ 226      656400
+ 227 002b 00       		.align	2
+ 228              	.LC4:
+ 229 002c 53642076 		.ascii	"Sd vol failed\000"
+ 229      6F6C2066 
+ 229      61696C65 
+ 229      6400
+ 230 003a 0000     		.align	2
+ 231              	.LC5:
+ 232 003c 666F726D 		.ascii	"format Succeeded\000"
+ 232      61742053 
+ 232      75636365 
+ 232      65646564 
+ 232      00
+ 233 004d 000000   		.align	2
+ 234              	.LC6:
+ 235 0050 666F726D 		.ascii	"format Failed\000"
+ 235      61742046 
+ 235      61696C65 
+ 235      6400
+ 236 005e 0000     		.align	2
+ 237              	.LC7:
+ 238 0060 7700     		.ascii	"w\000"
+ 239 0062 0000     		.align	2
+ 240              	.LC8:
+ 241 0064 46696C65 		.ascii	"File \000"
+ 241      2000
+ 242 006a 0000     		.align	2
+ 243              	.LC9:
+ 244 006c 77617320 		.ascii	"was opened\000"
+ 244      6F70656E 
+ 244      656400
+ 245 0077 00       		.align	2
+ 246              	.LC10:
+ 247 0078 77726974 		.ascii	"written to file\000"
+ 247      74656E20 
+ 247      746F2066 
+ 247      696C6500 
+ 248              		.align	2
+ 249              	.LC11:
+ 250 0088 4661696C 		.ascii	"Failed to write\000"
+ 250      65642074 
+ 250      6F207772 
+ 250      69746500 
+ 251              		.align	2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 8
+
+
+ 252              	.LC12:
+ 253 0098 66696C65 		.ascii	"file not created\000"
+ 253      206E6F74 
+ 253      20637265 
+ 253      61746564 
+ 253      00
+ 254 00a9 000000   		.align	2
+ 255              	.LC13:
+ 256 00ac 0A2D2D2D 		.ascii	"\012------------\012\000"
+ 256      2D2D2D2D 
+ 256      2D2D2D2D 
+ 256      2D0A00
+ 257              		.global	__aeabi_i2f
+ 258              		.global	__aeabi_f2d
+ 259              		.global	__aeabi_dmul
+ 260              		.global	__aeabi_d2f
+ 261              		.global	__aeabi_f2iz
+ 262              		.global	__aeabi_fsub
+ 263              		.global	__aeabi_fmul
+ 264 00bb 00       		.align	2
+ 265              	.LC14:
+ 266 00bc 542D6D69 		.ascii	"T-minus %d seconds\012\000"
+ 266      6E757320 
+ 266      25642073 
+ 266      65636F6E 
+ 266      64730A00 
+ 267              		.align	2
+ 268              	.LC15:
+ 269 00d0 53544154 		.ascii	"STATE: DESCENT\000"
+ 269      453A2044 
+ 269      45534345 
+ 269      4E5400
+ 270 00df 00       		.align	2
+ 271              	.LC16:
+ 272 00e0 53544154 		.ascii	"STATE: LANDED\000"
+ 272      453A204C 
+ 272      414E4445 
+ 272      4400
+ 273 00ee 0000     		.align	2
+ 274              	.LC17:
+ 275 00f0 53544154 		.ascii	"STATE: LANDED ***********\012\000"
+ 275      453A204C 
+ 275      414E4445 
+ 275      44202A2A 
+ 275      2A2A2A2A 
+ 276 010b 00       		.align	2
+ 277              	.LC18:
+ 278 010c 53544154 		.ascii	"STATE: WAIT\000"
+ 278      453A2057 
+ 278      41495400 
+ 279              		.align	2
+ 280              	.LC19:
+ 281 0118 70726573 		.ascii	"pressure: %d.%04d, %d\012\000"
+ 281      73757265 
+ 281      3A202564 
+ 281      2E253034 
+ 281      642C2025 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 9
+
+
+ 282 012f 00       		.align	2
+ 283              	.LC20:
+ 284 0130 56414355 		.ascii	"VACUUMING\000"
+ 284      554D494E 
+ 284      4700
+ 285 013a 0000     		.align	2
+ 286              	.LC21:
+ 287 013c 53544154 		.ascii	"STATE: VACUUMING ***********\012\000"
+ 287      453A2056 
+ 287      41435555 
+ 287      4D494E47 
+ 287      202A2A2A 
+ 288 015a 0000     		.align	2
+ 289              	.LC22:
+ 290 015c 53544154 		.ascii	"STATE: RESURFACING\000"
+ 290      453A2052 
+ 290      45535552 
+ 290      46414349 
+ 290      4E4700
+ 291 016f 00       		.align	2
+ 292              	.LC23:
+ 293 0170 53544154 		.ascii	"STATE: RESURFACING ***********\012\000"
+ 293      453A2052 
+ 293      45535552 
+ 293      46414349 
+ 293      4E47202A 
+ 294              		.align	2
+ 295              	.LC24:
+ 296 0190 5452414E 		.ascii	"TRANSMIT\000"
+ 296      534D4954 
+ 296      00
+ 297 0199 000000   		.align	2
+ 298              	.LC25:
+ 299 019c 53544154 		.ascii	"STATE: TRANSMIT ***********\012\000"
+ 299      453A2054 
+ 299      52414E53 
+ 299      4D495420 
+ 299      2A2A2A2A 
+ 300 01b9 000000   		.align	2
+ 301              	.LC26:
+ 302 01bc 74657374 		.ascii	"test%d.txt\000"
+ 302      25642E74 
+ 302      787400
+ 303 01c7 00       		.align	2
+ 304              	.LC0:
+ 305 01c8 53595354 		.ascii	"SYSTEM_CHECK  \000"
+ 305      454D5F43 
+ 305      4845434B 
+ 305      202000
+ 306 01d7 00       		.section	.text.main,"ax",%progbits
+ 307              		.align	2
+ 308              		.global	main
+ 309              		.thumb
+ 310              		.thumb_func
+ 311              		.type	main, %function
+ 312              	main:
+ 313              	.LFB65:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 10
+
+
+ 118:main.c        **** 
+ 119:main.c        **** int main()
+ 120:main.c        **** {
+ 314              		.loc 1 120 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 152
+ 317              		@ frame_needed = 1, uses_anonymous_args = 0
+ 318 0000 B0B5     		push	{r4, r5, r7, lr}
+ 319              		.cfi_def_cfa_offset 16
+ 320              		.cfi_offset 4, -16
+ 321              		.cfi_offset 5, -12
+ 322              		.cfi_offset 7, -8
+ 323              		.cfi_offset 14, -4
+ 324 0002 A8B0     		sub	sp, sp, #160
+ 325              		.cfi_def_cfa_offset 176
+ 326 0004 02AF     		add	r7, sp, #8
+ 327              		.cfi_def_cfa 7, 168
+ 121:main.c        ****     LED2_1_Write(1); 
+ 328              		.loc 1 121 0
+ 329 0006 0120     		movs	r0, #1
+ 330 0008 FFF7FEFF 		bl	LED2_1_Write
+ 122:main.c        ****     float output;
+ 123:main.c        ****     char buf[50];                               //just to hold text values in for writing to UART
+ 124:main.c        ****     
+ 125:main.c        ****     char curState[14] = "SYSTEM_CHECK  ";
+ 331              		.loc 1 125 0
+ 332 000c C24B     		ldr	r3, .L39+8
+ 333 000e 07F13C04 		add	r4, r7, #60
+ 334 0012 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 335 0014 07C4     		stmia	r4!, {r0, r1, r2}
+ 336 0016 2380     		strh	r3, [r4]	@ movhi
+ 126:main.c        ****     int16_t ax, ay, az, i;
+ 127:main.c        ****     //int16_t gx, gy, gz;
+ 128:main.c        ****     int16_t z_offset = 0;
+ 337              		.loc 1 128 0
+ 338 0018 0023     		movs	r3, #0
+ 339 001a A7F88A30 		strh	r3, [r7, #138]	@ movhi
+ 129:main.c        ****     
+ 130:main.c        ****     /* Start the components */
+ 131:main.c        ****     CYGlobalIntEnable;                          //enable global interrupts
+ 340              		.loc 1 131 0
+ 341              	@ 131 "main.c" 1
+ 342 001e 62B6     		CPSIE   i
+ 343              	@ 0 "" 2
+ 132:main.c        ****     I2C_Master_Start(); 
+ 344              		.loc 1 132 0
+ 345              		.thumb
+ 346 0020 FFF7FEFF 		bl	I2C_Master_Start
+ 133:main.c        ****     ADC_Start();
+ 347              		.loc 1 133 0
+ 348 0024 FFF7FEFF 		bl	ADC_Start
+ 134:main.c        ****     Sample_Timer_Start();                       //start timer module
+ 349              		.loc 1 134 0
+ 350 0028 FFF7FEFF 		bl	Sample_Timer_Start
+ 135:main.c        ****     Sample_ISR_StartEx(Sample_ISR_Handler);     //reference ISR function
+ 351              		.loc 1 135 0
+ 352 002c BB48     		ldr	r0, .L39+12
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 11
+
+
+ 353 002e FFF7FEFF 		bl	Sample_ISR_StartEx
+ 136:main.c        ****     
+ 137:main.c        ****     
+ 138:main.c        ****     #ifdef LCD
+ 139:main.c        ****     LiquidCrystal_I2C_init(Addr,16,2,0);        //initialize I2C communication with LCD
+ 354              		.loc 1 139 0
+ 355 0032 BB4B     		ldr	r3, .L39+16
+ 356 0034 1B68     		ldr	r3, [r3]
+ 357 0036 DBB2     		uxtb	r3, r3
+ 358 0038 1846     		mov	r0, r3
+ 359 003a 1021     		movs	r1, #16
+ 360 003c 0222     		movs	r2, #2
+ 361 003e 0023     		movs	r3, #0
+ 362 0040 FFF7FEFF 		bl	LiquidCrystal_I2C_init
+ 140:main.c        ****     begin(); 
+ 363              		.loc 1 140 0
+ 364 0044 FFF7FEFF 		bl	begin
+ 141:main.c        ****     
+ 142:main.c        ****     #endif
+ 143:main.c        ****    
+ 144:main.c        ****     /* initialize MPU6050 */
+ 145:main.c        ****     #ifdef MPU6050
+ 146:main.c        ****     MPU6050_init();    
+ 365              		.loc 1 146 0
+ 366 0048 FFF7FEFF 		bl	MPU6050_init
+ 147:main.c        **** 	MPU6050_initialize(); 
+ 367              		.loc 1 147 0
+ 368 004c FFF7FEFF 		bl	MPU6050_initialize
+ 148:main.c        ****     #endif
+ 149:main.c        ****         
+ 150:main.c        ****     #ifdef LCD
+ 151:main.c        ****     /* Startup Display */
+ 152:main.c        ****     LCD_print("PSoC 5LP: O-Vac");
+ 369              		.loc 1 152 0
+ 370 0050 B448     		ldr	r0, .L39+20
+ 371 0052 FFF7FEFF 		bl	LCD_print
+ 153:main.c        ****     setCursor(0,1);
+ 372              		.loc 1 153 0
+ 373 0056 0020     		movs	r0, #0
+ 374 0058 0121     		movs	r1, #1
+ 375 005a FFF7FEFF 		bl	setCursor
+ 154:main.c        ****     LCD_print("I2C Working");
+ 376              		.loc 1 154 0
+ 377 005e B248     		ldr	r0, .L39+24
+ 378 0060 FFF7FEFF 		bl	LCD_print
+ 155:main.c        ****     
+ 156:main.c        ****     CyDelay(1000u);   
+ 379              		.loc 1 156 0
+ 380 0064 4FF47A70 		mov	r0, #1000
+ 381 0068 FFF7FEFF 		bl	CyDelay
+ 157:main.c        ****     clear();
+ 382              		.loc 1 157 0
+ 383 006c FFF7FEFF 		bl	clear
+ 158:main.c        ****     #endif
+ 159:main.c        ****     
+ 160:main.c        ****     /* Start the ADC conversion */
+ 161:main.c        ****     ADC_StartConvert();
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 12
+
+
+ 384              		.loc 1 161 0
+ 385 0070 FFF7FEFF 		bl	ADC_StartConvert
+ 162:main.c        **** 
+ 163:main.c        ****     /* Start SD card*/
+ 164:main.c        ****     #ifdef SD
+ 165:main.c        ****         {
+ 166:main.c        ****             FS_Init();
+ 386              		.loc 1 166 0
+ 387 0074 FFF7FEFF 		bl	FS_Init
+ 167:main.c        ****             FS_Mount(volume);
+ 388              		.loc 1 167 0
+ 389 0078 AC48     		ldr	r0, .L39+28
+ 390 007a FFF7FEFF 		bl	FS_Mount
+ 168:main.c        ****             if(0 != FS_GetVolumeName(0u, volume, 9u))
+ 391              		.loc 1 168 0
+ 392 007e 0020     		movs	r0, #0
+ 393 0080 AA49     		ldr	r1, .L39+28
+ 394 0082 0922     		movs	r2, #9
+ 395 0084 FFF7FEFF 		bl	FS_GetVolumeName
+ 396 0088 0346     		mov	r3, r0
+ 397 008a 002B     		cmp	r3, #0
+ 398 008c 03D0     		beq	.L11
+ 169:main.c        ****                 /* Getting volume name succeeded so prompt it on the LCD */
+ 170:main.c        ****                 LCD_print("Sd vol succeed");
+ 399              		.loc 1 170 0
+ 400 008e A848     		ldr	r0, .L39+32
+ 401 0090 FFF7FEFF 		bl	LCD_print
+ 402 0094 02E0     		b	.L12
+ 403              	.L11:
+ 171:main.c        ****             else
+ 172:main.c        ****                 LCD_print("Sd vol failed");
+ 404              		.loc 1 172 0
+ 405 0096 A748     		ldr	r0, .L39+36
+ 406 0098 FFF7FEFF 		bl	LCD_print
+ 407              	.L12:
+ 173:main.c        ****                 
+ 174:main.c        ****             CyDelay(500u);
+ 408              		.loc 1 174 0
+ 409 009c 4FF4FA70 		mov	r0, #500
+ 410 00a0 FFF7FEFF 		bl	CyDelay
+ 175:main.c        ****             clear();
+ 411              		.loc 1 175 0
+ 412 00a4 FFF7FEFF 		bl	clear
+ 176:main.c        ****             if(0 == FS_FormatSD(volume))
+ 413              		.loc 1 176 0
+ 414 00a8 A048     		ldr	r0, .L39+28
+ 415 00aa FFF7FEFF 		bl	FS_FormatSD
+ 416 00ae 0346     		mov	r3, r0
+ 417 00b0 002B     		cmp	r3, #0
+ 418 00b2 03D1     		bne	.L13
+ 177:main.c        ****                 LCD_print("format Succeeded");
+ 419              		.loc 1 177 0
+ 420 00b4 A048     		ldr	r0, .L39+40
+ 421 00b6 FFF7FEFF 		bl	LCD_print
+ 422 00ba 02E0     		b	.L14
+ 423              	.L13:
+ 178:main.c        ****             else
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 13
+
+
+ 179:main.c        ****                 LCD_print("format Failed");
+ 424              		.loc 1 179 0
+ 425 00bc 9F48     		ldr	r0, .L39+44
+ 426 00be FFF7FEFF 		bl	LCD_print
+ 427              	.L14:
+ 180:main.c        ****           
+ 181:main.c        ****             CyDelay(500u);
+ 428              		.loc 1 181 0
+ 429 00c2 4FF4FA70 		mov	r0, #500
+ 430 00c6 FFF7FEFF 		bl	CyDelay
+ 182:main.c        ****             clear();
+ 431              		.loc 1 182 0
+ 432 00ca FFF7FEFF 		bl	clear
+ 183:main.c        ****             
+ 184:main.c        ****             fsfile = FS_FOpen(file, "w");
+ 433              		.loc 1 184 0
+ 434 00ce 9C48     		ldr	r0, .L39+48
+ 435 00d0 9C49     		ldr	r1, .L39+52
+ 436 00d2 FFF7FEFF 		bl	FS_FOpen
+ 437 00d6 0246     		mov	r2, r0
+ 438 00d8 9B4B     		ldr	r3, .L39+56
+ 439 00da 1A60     		str	r2, [r3]
+ 185:main.c        ****             if(fsfile)
+ 440              		.loc 1 185 0
+ 441 00dc 9A4B     		ldr	r3, .L39+56
+ 442 00de 1B68     		ldr	r3, [r3]
+ 443 00e0 002B     		cmp	r3, #0
+ 444 00e2 27D0     		beq	.L15
+ 186:main.c        ****             {
+ 187:main.c        ****                 /* Indicate successful file creation message */
+ 188:main.c        ****                 LCD_print("File ");
+ 445              		.loc 1 188 0
+ 446 00e4 9948     		ldr	r0, .L39+60
+ 447 00e6 FFF7FEFF 		bl	LCD_print
+ 189:main.c        ****                 LCD_print("was opened");
+ 448              		.loc 1 189 0
+ 449 00ea 9948     		ldr	r0, .L39+64
+ 450 00ec FFF7FEFF 		bl	LCD_print
+ 190:main.c        ****                 /* Need some delay to indicate output on the LCD */
+ 191:main.c        ****                 CyDelay(500u);
+ 451              		.loc 1 191 0
+ 452 00f0 4FF4FA70 		mov	r0, #500
+ 453 00f4 FFF7FEFF 		bl	CyDelay
+ 192:main.c        ****                 clear();
+ 454              		.loc 1 192 0
+ 455 00f8 FFF7FEFF 		bl	clear
+ 193:main.c        ****                 
+ 194:main.c        ****                 if(0 != FS_Write(fsfile, file, strlen(file))) 
+ 456              		.loc 1 194 0
+ 457 00fc 924B     		ldr	r3, .L39+56
+ 458 00fe 1C68     		ldr	r4, [r3]
+ 459 0100 8F48     		ldr	r0, .L39+48
+ 460 0102 FFF7FEFF 		bl	strlen
+ 461 0106 0346     		mov	r3, r0
+ 462 0108 2046     		mov	r0, r4
+ 463 010a 8D49     		ldr	r1, .L39+48
+ 464 010c 1A46     		mov	r2, r3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 14
+
+
+ 465 010e FFF7FEFF 		bl	FS_Write
+ 466 0112 0346     		mov	r3, r0
+ 467 0114 002B     		cmp	r3, #0
+ 468 0116 03D0     		beq	.L16
+ 195:main.c        ****                     /* Inditate that data was written to a file */
+ 196:main.c        ****                     LCD_print("written to file");
+ 469              		.loc 1 196 0
+ 470 0118 8E48     		ldr	r0, .L39+68
+ 471 011a FFF7FEFF 		bl	LCD_print
+ 472 011e 02E0     		b	.L17
+ 473              	.L16:
+ 197:main.c        ****                 else
+ 198:main.c        ****                     LCD_print("Failed to write");
+ 474              		.loc 1 198 0
+ 475 0120 8D48     		ldr	r0, .L39+72
+ 476 0122 FFF7FEFF 		bl	LCD_print
+ 477              	.L17:
+ 199:main.c        ****                     clear();
+ 478              		.loc 1 199 0
+ 479 0126 FFF7FEFF 		bl	clear
+ 200:main.c        ****                 CyDelay(500u);
+ 480              		.loc 1 200 0
+ 481 012a 4FF4FA70 		mov	r0, #500
+ 482 012e FFF7FEFF 		bl	CyDelay
+ 483 0132 02E0     		b	.L18
+ 484              	.L15:
+ 201:main.c        ****             }
+ 202:main.c        ****             else
+ 203:main.c        ****                 LCD_print("file not created");
+ 485              		.loc 1 203 0
+ 486 0134 8948     		ldr	r0, .L39+76
+ 487 0136 FFF7FEFF 		bl	LCD_print
+ 488              	.L18:
+ 204:main.c        ****         }
+ 205:main.c        ****         FS_Write(fsfile, "\n------------\n", 14);
+ 489              		.loc 1 205 0
+ 490 013a 834B     		ldr	r3, .L39+56
+ 491 013c 1B68     		ldr	r3, [r3]
+ 492 013e 1846     		mov	r0, r3
+ 493 0140 8749     		ldr	r1, .L39+80
+ 494 0142 0E22     		movs	r2, #14
+ 495 0144 FFF7FEFF 		bl	FS_Write
+ 206:main.c        ****     #endif
+ 207:main.c        ****     
+ 208:main.c        ****     #ifdef LCD
+ 209:main.c        ****     /* Display the current State */
+ 210:main.c        ****     setCursor(0,0);    
+ 496              		.loc 1 210 0
+ 497 0148 0020     		movs	r0, #0
+ 498 014a 0021     		movs	r1, #0
+ 499 014c FFF7FEFF 		bl	setCursor
+ 211:main.c        ****     LCD_print(curState);
+ 500              		.loc 1 211 0
+ 501 0150 07F13C03 		add	r3, r7, #60
+ 502 0154 1846     		mov	r0, r3
+ 503 0156 FFF7FEFF 		bl	LCD_print
+ 212:main.c        ****     #endif
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 15
+
+
+ 213:main.c        ****     
+ 214:main.c        ****     
+ 215:main.c        ****     Countdown_timer_Start();
+ 504              		.loc 1 215 0
+ 505 015a FFF7FEFF 		bl	Countdown_timer_Start
+ 216:main.c        ****     countdown_StartEx(Countdown_ISR_Handler);
+ 506              		.loc 1 216 0
+ 507 015e 8148     		ldr	r0, .L39+84
+ 508 0160 FFF7FEFF 		bl	countdown_StartEx
+ 217:main.c        ****     int num = 0, decimals = 0;
+ 509              		.loc 1 217 0
+ 510 0164 0023     		movs	r3, #0
+ 511 0166 C7F89030 		str	r3, [r7, #144]
+ 512 016a 0023     		movs	r3, #0
+ 513 016c C7F88C30 		str	r3, [r7, #140]
+ 218:main.c        ****     float voltage = 0, temp = 0;
+ 514              		.loc 1 218 0
+ 515 0170 4FF00003 		mov	r3, #0
+ 516 0174 C7F88430 		str	r3, [r7, #132]	@ float
+ 517 0178 4FF00003 		mov	r3, #0
+ 518 017c C7F88030 		str	r3, [r7, #128]	@ float
+ 519              	.L37:
+ 219:main.c        ****     
+ 220:main.c        ****     
+ 221:main.c        ****     for(;;)
+ 222:main.c        ****     {       
+ 223:main.c        ****         if(ADC_IsEndConversion(ADC_RETURN_STATUS))
+ 520              		.loc 1 223 0
+ 521 0180 0120     		movs	r0, #1
+ 522 0182 FFF7FEFF 		bl	ADC_IsEndConversion
+ 523 0186 0346     		mov	r3, r0
+ 524 0188 002B     		cmp	r3, #0
+ 525 018a 42D0     		beq	.L19
+ 526              	.LBB2:
+ 224:main.c        ****         {
+ 225:main.c        ****             char pressure[50];
+ 226:main.c        ****             output = ADC_GetResult32();
+ 527              		.loc 1 226 0
+ 528 018c FFF7FEFF 		bl	ADC_GetResult32
+ 529 0190 0346     		mov	r3, r0
+ 530 0192 1846     		mov	r0, r3
+ 531 0194 FFF7FEFF 		bl	__aeabi_i2f
+ 532 0198 0346     		mov	r3, r0
+ 533 019a C7F89430 		str	r3, [r7, #148]	@ float
+ 227:main.c        ****             
+ 228:main.c        ****             setCursor(0, 1);
+ 534              		.loc 1 228 0
+ 535 019e 0020     		movs	r0, #0
+ 536 01a0 0121     		movs	r1, #1
+ 537 01a2 FFF7FEFF 		bl	setCursor
+ 229:main.c        ****             voltage = output * (3.32 / 4096);
+ 538              		.loc 1 229 0
+ 539 01a6 D7F89400 		ldr	r0, [r7, #148]	@ float
+ 540 01aa FFF7FEFF 		bl	__aeabi_f2d
+ 541 01ae 0246     		mov	r2, r0
+ 542 01b0 0B46     		mov	r3, r1
+ 543 01b2 1046     		mov	r0, r2
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 16
+
+
+ 544 01b4 1946     		mov	r1, r3
+ 545 01b6 56A3     		adr	r3, .L39
+ 546 01b8 D3E90023 		ldrd	r2, [r3]
+ 547 01bc FFF7FEFF 		bl	__aeabi_dmul
+ 548 01c0 0246     		mov	r2, r0
+ 549 01c2 0B46     		mov	r3, r1
+ 550 01c4 1046     		mov	r0, r2
+ 551 01c6 1946     		mov	r1, r3
+ 552 01c8 FFF7FEFF 		bl	__aeabi_d2f
+ 553 01cc 0346     		mov	r3, r0
+ 554 01ce C7F88430 		str	r3, [r7, #132]	@ float
+ 230:main.c        ****             num = voltage;
+ 555              		.loc 1 230 0
+ 556 01d2 D7F88400 		ldr	r0, [r7, #132]	@ float
+ 557 01d6 FFF7FEFF 		bl	__aeabi_f2iz
+ 558 01da 0346     		mov	r3, r0
+ 559 01dc C7F89030 		str	r3, [r7, #144]
+ 231:main.c        ****             temp = voltage - num;
+ 560              		.loc 1 231 0
+ 561 01e0 D7F89000 		ldr	r0, [r7, #144]
+ 562 01e4 FFF7FEFF 		bl	__aeabi_i2f
+ 563 01e8 0346     		mov	r3, r0
+ 564 01ea D7F88400 		ldr	r0, [r7, #132]	@ float
+ 565 01ee 1946     		mov	r1, r3
+ 566 01f0 FFF7FEFF 		bl	__aeabi_fsub
+ 567 01f4 0346     		mov	r3, r0
+ 568 01f6 C7F88030 		str	r3, [r7, #128]	@ float
+ 232:main.c        ****             decimals = temp * 10000;
+ 569              		.loc 1 232 0
+ 570 01fa D7F88000 		ldr	r0, [r7, #128]	@ float
+ 571 01fe 5A49     		ldr	r1, .L39+88
+ 572 0200 FFF7FEFF 		bl	__aeabi_fmul
+ 573 0204 0346     		mov	r3, r0
+ 574 0206 1846     		mov	r0, r3
+ 575 0208 FFF7FEFF 		bl	__aeabi_f2iz
+ 576 020c 0346     		mov	r3, r0
+ 577 020e C7F88C30 		str	r3, [r7, #140]
+ 578              	.L19:
+ 579              	.LBE2:
+ 233:main.c        ****             #ifdef SD
+ 234:main.c        **** //                
+ 235:main.c        ****             #endif
+ 236:main.c        ****             
+ 237:main.c        ****         }
+ 238:main.c        ****         
+ 239:main.c        ****         /* Display Z-Acceleration */
+ 240:main.c        ****         //clear();
+ 241:main.c        ****         az = MPU6050_getAccelerationZ();
+ 580              		.loc 1 241 0
+ 581 0212 FFF7FEFF 		bl	MPU6050_getAccelerationZ
+ 582 0216 0346     		mov	r3, r0
+ 583 0218 A7F87E30 		strh	r3, [r7, #126]	@ movhi
+ 242:main.c        ****        // I2C_LCD_print(1,0, id ,0,average);                                //print Interrupt count
+ 243:main.c        ****         
+ 244:main.c        ****         /* State Machine */
+ 245:main.c        ****         switch (STATE){
+ 584              		.loc 1 245 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 17
+
+
+ 585 021c 534B     		ldr	r3, .L39+92
+ 586 021e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 587 0220 013B     		subs	r3, r3, #1
+ 588 0222 042B     		cmp	r3, #4
+ 589 0224 00F22482 		bhi	.L38
+ 590 0228 01A2     		adr	r2, .L22
+ 591 022a 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 592 022e 00BF     		.p2align 2
+ 593              	.L22:
+ 594 0230 45020000 		.word	.L21+1
+ 595 0234 BB020000 		.word	.L23+1
+ 596 0238 E9040000 		.word	.L24+1
+ 597 023c B5050000 		.word	.L25+1
+ 598 0240 23060000 		.word	.L26+1
+ 599              		.p2align 1
+ 600              	.L21:
+ 601              	.LBB3:
+ 246:main.c        ****     
+ 247:main.c        ****             case WAIT_TO_LAUNCH:
+ 248:main.c        ****                 
+ 249:main.c        **** 
+ 250:main.c        ****                 if(wait_flag == 1){
+ 602              		.loc 1 250 0
+ 603 0244 4A4B     		ldr	r3, .L39+96
+ 604 0246 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 605 0248 002B     		cmp	r3, #0
+ 606 024a 35D0     		beq	.L27
+ 251:main.c        ****                     #ifdef LCD
+ 252:main.c        ****                         setCursor(0,0);
+ 607              		.loc 1 252 0
+ 608 024c 0020     		movs	r0, #0
+ 609 024e 0021     		movs	r1, #0
+ 610 0250 FFF7FEFF 		bl	setCursor
+ 253:main.c        ****                         clear();
+ 611              		.loc 1 253 0
+ 612 0254 FFF7FEFF 		bl	clear
+ 254:main.c        ****                         sprintf(buf, "T-minus %d seconds\n", (60 - countdown)); // countdown
+ 613              		.loc 1 254 0
+ 614 0258 464B     		ldr	r3, .L39+100
+ 615 025a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 616 025c C3F13C03 		rsb	r3, r3, #60
+ 617 0260 07F14C02 		add	r2, r7, #76
+ 618 0264 1046     		mov	r0, r2
+ 619 0266 4449     		ldr	r1, .L39+104
+ 620 0268 1A46     		mov	r2, r3
+ 621 026a FFF7FEFF 		bl	sprintf
+ 255:main.c        ****                         LCD_print(buf);
+ 622              		.loc 1 255 0
+ 623 026e 07F14C03 		add	r3, r7, #76
+ 624 0272 1846     		mov	r0, r3
+ 625 0274 FFF7FEFF 		bl	LCD_print
+ 256:main.c        ****                     #endif
+ 257:main.c        ****                     if(countdown == 60){
+ 626              		.loc 1 257 0
+ 627 0278 3E4B     		ldr	r3, .L39+100
+ 628 027a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 629 027c 3C2B     		cmp	r3, #60
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 18
+
+
+ 630 027e 17D1     		bne	.L28
+ 258:main.c        ****                         STATE = DESCENDING;
+ 631              		.loc 1 258 0
+ 632 0280 3A4B     		ldr	r3, .L39+92
+ 633 0282 0222     		movs	r2, #2
+ 634 0284 1A70     		strb	r2, [r3]
+ 259:main.c        ****                         #ifdef LCD
+ 260:main.c        ****                             setCursor(0,0);
+ 635              		.loc 1 260 0
+ 636 0286 0020     		movs	r0, #0
+ 637 0288 0021     		movs	r1, #0
+ 638 028a FFF7FEFF 		bl	setCursor
+ 261:main.c        ****                             clear();
+ 639              		.loc 1 261 0
+ 640 028e FFF7FEFF 		bl	clear
+ 262:main.c        ****                             LCD_print("STATE: DESCENT");
+ 641              		.loc 1 262 0
+ 642 0292 3A48     		ldr	r0, .L39+108
+ 643 0294 FFF7FEFF 		bl	LCD_print
+ 263:main.c        ****                         #endif           
+ 264:main.c        ****                         id=0;
+ 644              		.loc 1 264 0
+ 645 0298 394B     		ldr	r3, .L39+112
+ 646 029a 0022     		movs	r2, #0
+ 647 029c 1A60     		str	r2, [r3]
+ 265:main.c        ****                         data_time = 0;
+ 648              		.loc 1 265 0
+ 649 029e 394B     		ldr	r3, .L39+116
+ 650 02a0 0022     		movs	r2, #0
+ 651 02a2 1A60     		str	r2, [r3]
+ 266:main.c        ****                         countdown = 9;
+ 652              		.loc 1 266 0
+ 653 02a4 334B     		ldr	r3, .L39+100
+ 654 02a6 0922     		movs	r2, #9
+ 655 02a8 1A70     		strb	r2, [r3]
+ 267:main.c        ****                         LED2_Write(1);                                      // turn the LED off 
+ 656              		.loc 1 267 0
+ 657 02aa 0120     		movs	r0, #1
+ 658 02ac FFF7FEFF 		bl	LED2_Write
+ 659              	.L28:
+ 268:main.c        ****                     }
+ 269:main.c        ****                     wait_flag = 0; 
+ 660              		.loc 1 269 0
+ 661 02b0 2F4B     		ldr	r3, .L39+96
+ 662 02b2 0022     		movs	r2, #0
+ 663 02b4 1A70     		strb	r2, [r3]
+ 270:main.c        ****                 }
+ 271:main.c        ****                 break;
+ 664              		.loc 1 271 0
+ 665 02b6 DCE1     		b	.L29
+ 666              	.L27:
+ 667 02b8 DBE1     		b	.L29
+ 668              	.L23:
+ 272:main.c        ****                 
+ 273:main.c        ****             case DESCENDING:
+ 274:main.c        ****     
+ 275:main.c        ****                 if(collect_flag == 1){
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 19
+
+
+ 669              		.loc 1 275 0
+ 670 02ba 334B     		ldr	r3, .L39+120
+ 671 02bc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 672 02be 002B     		cmp	r3, #0
+ 673 02c0 00F0E680 		beq	.L30
+ 276:main.c        ****                     
+ 277:main.c        ****                     if (id<MA_WINDOW){
+ 674              		.loc 1 277 0
+ 675 02c4 2E4B     		ldr	r3, .L39+112
+ 676 02c6 1B68     		ldr	r3, [r3]
+ 677 02c8 0E2B     		cmp	r3, #14
+ 678 02ca 07DC     		bgt	.L31
+ 278:main.c        ****                         sum += az;     
+ 679              		.loc 1 278 0
+ 680 02cc B7F97E20 		ldrsh	r2, [r7, #126]
+ 681 02d0 2E4B     		ldr	r3, .L39+124
+ 682 02d2 1B68     		ldr	r3, [r3]
+ 683 02d4 1344     		add	r3, r3, r2
+ 684 02d6 2D4A     		ldr	r2, .L39+124
+ 685 02d8 1360     		str	r3, [r2]
+ 686 02da 6BE0     		b	.L32
+ 687              	.L31:
+ 279:main.c        ****                     }
+ 280:main.c        ****                     else if(id == MA_WINDOW){
+ 688              		.loc 1 280 0
+ 689 02dc 284B     		ldr	r3, .L39+112
+ 690 02de 1B68     		ldr	r3, [r3]
+ 691 02e0 0F2B     		cmp	r3, #15
+ 692 02e2 59D1     		bne	.L33
+ 281:main.c        ****                         sum += az;
+ 693              		.loc 1 281 0
+ 694 02e4 B7F97E20 		ldrsh	r2, [r7, #126]
+ 695 02e8 284B     		ldr	r3, .L39+124
+ 696 02ea 1B68     		ldr	r3, [r3]
+ 697 02ec 1344     		add	r3, r3, r2
+ 698 02ee 274A     		ldr	r2, .L39+124
+ 699 02f0 1360     		str	r3, [r2]
+ 282:main.c        ****                         average = sum/MA_WINDOW;                            //compute baseline aver
+ 700              		.loc 1 282 0
+ 701 02f2 264B     		ldr	r3, .L39+124
+ 702 02f4 1B68     		ldr	r3, [r3]
+ 703 02f6 264A     		ldr	r2, .L39+128
+ 704 02f8 82FB0312 		smull	r1, r2, r2, r3
+ 705 02fc 1A44     		add	r2, r2, r3
+ 706 02fe D210     		asrs	r2, r2, #3
+ 707 0300 DB17     		asrs	r3, r3, #31
+ 708 0302 D31A     		subs	r3, r2, r3
+ 709 0304 9AB2     		uxth	r2, r3
+ 710 0306 234B     		ldr	r3, .L39+132
+ 711 0308 1A80     		strh	r2, [r3]	@ movhi
+ 712 030a 53E0     		b	.L32
+ 713              	.L40:
+ 714 030c AFF30080 		.align	3
+ 715              	.L39:
+ 716 0310 8FC2F528 		.word	687194767
+ 717 0314 5C8F4A3F 		.word	1061850972
+ 718 0318 C8010000 		.word	.LC0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 20
+
+
+ 719 031c 00000000 		.word	Sample_ISR_Handler
+ 720 0320 00000000 		.word	Addr
+ 721 0324 00000000 		.word	.LC1
+ 722 0328 10000000 		.word	.LC2
+ 723 032c 00000000 		.word	volume
+ 724 0330 1C000000 		.word	.LC3
+ 725 0334 2C000000 		.word	.LC4
+ 726 0338 3C000000 		.word	.LC5
+ 727 033c 50000000 		.word	.LC6
+ 728 0340 00000000 		.word	file
+ 729 0344 60000000 		.word	.LC7
+ 730 0348 00000000 		.word	fsfile
+ 731 034c 64000000 		.word	.LC8
+ 732 0350 6C000000 		.word	.LC9
+ 733 0354 78000000 		.word	.LC10
+ 734 0358 88000000 		.word	.LC11
+ 735 035c 98000000 		.word	.LC12
+ 736 0360 AC000000 		.word	.LC13
+ 737 0364 00000000 		.word	Countdown_ISR_Handler
+ 738 0368 00401C46 		.word	1176256512
+ 739 036c 00000000 		.word	STATE
+ 740 0370 00000000 		.word	wait_flag
+ 741 0374 00000000 		.word	countdown
+ 742 0378 BC000000 		.word	.LC14
+ 743 037c D0000000 		.word	.LC15
+ 744 0380 00000000 		.word	id
+ 745 0384 00000000 		.word	data_time
+ 746 0388 00000000 		.word	collect_flag
+ 747 038c 00000000 		.word	sum
+ 748 0390 89888888 		.word	-2004318071
+ 749 0394 00000000 		.word	average
+ 750              	.L33:
+ 283:main.c        ****                     }
+ 284:main.c        ****                     else{
+ 285:main.c        ****                         average = ComputeMA(average, MA_WINDOW, az);
+ 751              		.loc 1 285 0
+ 752 0398 B64B     		ldr	r3, .L41
+ 753 039a 1B88     		ldrh	r3, [r3]
+ 754 039c 1AB2     		sxth	r2, r3
+ 755 039e B7F97E30 		ldrsh	r3, [r7, #126]
+ 756 03a2 1046     		mov	r0, r2
+ 757 03a4 0F21     		movs	r1, #15
+ 758 03a6 1A46     		mov	r2, r3
+ 759 03a8 FFF7FEFF 		bl	ComputeMA
+ 760 03ac 0346     		mov	r3, r0
+ 761 03ae 1A46     		mov	r2, r3
+ 762 03b0 B04B     		ldr	r3, .L41
+ 763 03b2 1A80     		strh	r2, [r3]	@ movhi
+ 764              	.L32:
+ 286:main.c        ****                         /*sprintf(buf, "%d", average);
+ 287:main.c        ****                         setCursor(0,1);
+ 288:main.c        ****                         LCD_print(buf);*/
+ 289:main.c        ****                         
+ 290:main.c        ****                     }
+ 291:main.c        ****                     
+ 292:main.c        ****                     if(average > BOT_THRESHOLD){
+ 765              		.loc 1 292 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 21
+
+
+ 766 03b4 AF4B     		ldr	r3, .L41
+ 767 03b6 1B88     		ldrh	r3, [r3]
+ 768 03b8 1BB2     		sxth	r3, r3
+ 769 03ba 44F62062 		movw	r2, #20000
+ 770 03be 9342     		cmp	r3, r2
+ 771 03c0 3CDD     		ble	.L34
+ 772              	.LBB4:
+ 293:main.c        ****                         LED2_Write(0);
+ 773              		.loc 1 293 0
+ 774 03c2 0020     		movs	r0, #0
+ 775 03c4 FFF7FEFF 		bl	LED2_Write
+ 294:main.c        ****                         LED7_Write(1);                                          //turn LED on      
+ 776              		.loc 1 294 0
+ 777 03c8 0120     		movs	r0, #1
+ 778 03ca FFF7FEFF 		bl	LED7_Write
+ 295:main.c        ****                         STATE = LANDED;                                     //Switch to LANDED stat
+ 779              		.loc 1 295 0
+ 780 03ce AA4B     		ldr	r3, .L41+4
+ 781 03d0 0322     		movs	r2, #3
+ 782 03d2 1A70     		strb	r2, [r3]
+ 296:main.c        ****                         #ifdef LCD
+ 297:main.c        ****                             setCursor(0,0);
+ 783              		.loc 1 297 0
+ 784 03d4 0020     		movs	r0, #0
+ 785 03d6 0021     		movs	r1, #0
+ 786 03d8 FFF7FEFF 		bl	setCursor
+ 298:main.c        ****                             clear();
+ 787              		.loc 1 298 0
+ 788 03dc FFF7FEFF 		bl	clear
+ 299:main.c        ****                             LCD_print("STATE: LANDED");  
+ 789              		.loc 1 299 0
+ 790 03e0 A648     		ldr	r0, .L41+8
+ 791 03e2 FFF7FEFF 		bl	LCD_print
+ 300:main.c        ****                         //I2C_LCD_print(1,0, id ,0,average);
+ 301:main.c        ****                         #endif
+ 302:main.c        ****                         char sdbuf[60] = {};
+ 792              		.loc 1 302 0
+ 793 03e6 3B46     		mov	r3, r7
+ 794 03e8 3C22     		movs	r2, #60
+ 795 03ea 1846     		mov	r0, r3
+ 796 03ec 0021     		movs	r1, #0
+ 797 03ee FFF7FEFF 		bl	memset
+ 303:main.c        ****                         #ifdef SD
+ 304:main.c        ****                             sprintf(sdbuf, "STATE: LANDED ***********\n");
+ 798              		.loc 1 304 0
+ 799 03f2 3B46     		mov	r3, r7
+ 800 03f4 A24A     		ldr	r2, .L41+12
+ 801 03f6 1C46     		mov	r4, r3
+ 802 03f8 1546     		mov	r5, r2
+ 803 03fa 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 804 03fc 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 805 03fe 95E80700 		ldmia	r5, {r0, r1, r2}
+ 806 0402 03C4     		stmia	r4!, {r0, r1}
+ 807 0404 2280     		strh	r2, [r4]	@ movhi
+ 808 0406 0234     		adds	r4, r4, #2
+ 809 0408 130C     		lsrs	r3, r2, #16
+ 810 040a 2370     		strb	r3, [r4]
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 22
+
+
+ 305:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
+ 811              		.loc 1 305 0
+ 812 040c 9D4B     		ldr	r3, .L41+16
+ 813 040e 1C68     		ldr	r4, [r3]
+ 814 0410 3B46     		mov	r3, r7
+ 815 0412 1846     		mov	r0, r3
+ 816 0414 FFF7FEFF 		bl	strlen
+ 817 0418 0246     		mov	r2, r0
+ 818 041a 3B46     		mov	r3, r7
+ 819 041c 2046     		mov	r0, r4
+ 820 041e 1946     		mov	r1, r3
+ 821 0420 FFF7FEFF 		bl	FS_Write
+ 306:main.c        ****                         #endif
+ 307:main.c        ****                         id=0;                                                   //reset sample coun
+ 822              		.loc 1 307 0
+ 823 0424 984B     		ldr	r3, .L41+20
+ 824 0426 0022     		movs	r2, #0
+ 825 0428 1A60     		str	r2, [r3]
+ 308:main.c        ****                         data_time = 0;
+ 826              		.loc 1 308 0
+ 827 042a 984B     		ldr	r3, .L41+24
+ 828 042c 0022     		movs	r2, #0
+ 829 042e 1A60     		str	r2, [r3]
+ 309:main.c        ****                         sum = 0;
+ 830              		.loc 1 309 0
+ 831 0430 974B     		ldr	r3, .L41+28
+ 832 0432 0022     		movs	r2, #0
+ 833 0434 1A60     		str	r2, [r3]
+ 310:main.c        ****                         average = 0;                
+ 834              		.loc 1 310 0
+ 835 0436 8F4B     		ldr	r3, .L41
+ 836 0438 0022     		movs	r2, #0
+ 837 043a 1A80     		strh	r2, [r3]	@ movhi
+ 838              	.L34:
+ 839              	.LBE4:
+ 311:main.c        ****                     }
+ 312:main.c        ****                     id++;     
+ 840              		.loc 1 312 0
+ 841 043c 924B     		ldr	r3, .L41+20
+ 842 043e 1B68     		ldr	r3, [r3]
+ 843 0440 0133     		adds	r3, r3, #1
+ 844 0442 914A     		ldr	r2, .L41+20
+ 845 0444 1360     		str	r3, [r2]
+ 313:main.c        ****                     
+ 314:main.c        ****                     /*if desired amount of samples have been collected, switch states*/
+ 315:main.c        ****                     if(data_time >= DATA_TIME){
+ 846              		.loc 1 315 0
+ 847 0446 914B     		ldr	r3, .L41+24
+ 848 0448 1B68     		ldr	r3, [r3]
+ 849 044a 41F28732 		movw	r2, #4999
+ 850 044e 9342     		cmp	r3, r2
+ 851 0450 1ADD     		ble	.L35
+ 316:main.c        ****                         LED2_Write(0);                                          //turn LED off
+ 852              		.loc 1 316 0
+ 853 0452 0020     		movs	r0, #0
+ 854 0454 FFF7FEFF 		bl	LED2_Write
+ 317:main.c        ****                                                             
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 23
+
+
+ 318:main.c        ****                         STATE = WAIT_TO_LAUNCH;                                //Switch to Waiting 
+ 855              		.loc 1 318 0
+ 856 0458 874B     		ldr	r3, .L41+4
+ 857 045a 0122     		movs	r2, #1
+ 858 045c 1A70     		strb	r2, [r3]
+ 319:main.c        ****                         #ifdef LCD
+ 320:main.c        ****                             setCursor(0,0);
+ 859              		.loc 1 320 0
+ 860 045e 0020     		movs	r0, #0
+ 861 0460 0021     		movs	r1, #0
+ 862 0462 FFF7FEFF 		bl	setCursor
+ 321:main.c        ****                             clear();
+ 863              		.loc 1 321 0
+ 864 0466 FFF7FEFF 		bl	clear
+ 322:main.c        ****                             LCD_print("STATE: WAIT");  
+ 865              		.loc 1 322 0
+ 866 046a 8A48     		ldr	r0, .L41+32
+ 867 046c FFF7FEFF 		bl	LCD_print
+ 323:main.c        ****                         #endif
+ 324:main.c        ****                         id=0;                                                  //reset sample count
+ 868              		.loc 1 324 0
+ 869 0470 854B     		ldr	r3, .L41+20
+ 870 0472 0022     		movs	r2, #0
+ 871 0474 1A60     		str	r2, [r3]
+ 325:main.c        ****                         data_time = 0;
+ 872              		.loc 1 325 0
+ 873 0476 854B     		ldr	r3, .L41+24
+ 874 0478 0022     		movs	r2, #0
+ 875 047a 1A60     		str	r2, [r3]
+ 326:main.c        ****                         sum = 0;                                               //reset sum 
+ 876              		.loc 1 326 0
+ 877 047c 844B     		ldr	r3, .L41+28
+ 878 047e 0022     		movs	r2, #0
+ 879 0480 1A60     		str	r2, [r3]
+ 327:main.c        ****                         average = 0;
+ 880              		.loc 1 327 0
+ 881 0482 7C4B     		ldr	r3, .L41
+ 882 0484 0022     		movs	r2, #0
+ 883 0486 1A80     		strh	r2, [r3]	@ movhi
+ 884              	.L35:
+ 328:main.c        ****                        
+ 329:main.c        ****                     }
+ 330:main.c        ****                     collect_flag = 0;
+ 885              		.loc 1 330 0
+ 886 0488 834B     		ldr	r3, .L41+36
+ 887 048a 0022     		movs	r2, #0
+ 888 048c 1A70     		strb	r2, [r3]
+ 889 048e 2AE0     		b	.L36
+ 890              	.L30:
+ 331:main.c        ****                 }
+ 332:main.c        ****                 else if(wait_flag == 1){
+ 891              		.loc 1 332 0
+ 892 0490 824B     		ldr	r3, .L41+40
+ 893 0492 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 894 0494 002B     		cmp	r3, #0
+ 895 0496 26D0     		beq	.L36
+ 896              	.LBB5:
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 24
+
+
+ 333:main.c        ****                        char sdbuf[60] = {};
+ 897              		.loc 1 333 0
+ 898 0498 3B46     		mov	r3, r7
+ 899 049a 3C22     		movs	r2, #60
+ 900 049c 1846     		mov	r0, r3
+ 901 049e 0021     		movs	r1, #0
+ 902 04a0 FFF7FEFF 		bl	memset
+ 334:main.c        ****                         #ifdef SD
+ 335:main.c        ****                             sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output)
+ 903              		.loc 1 335 0
+ 904 04a4 D7F89400 		ldr	r0, [r7, #148]	@ float
+ 905 04a8 FFF7FEFF 		bl	__aeabi_f2iz
+ 906 04ac 0346     		mov	r3, r0
+ 907 04ae 9BB2     		uxth	r3, r3
+ 908 04b0 1BB2     		sxth	r3, r3
+ 909 04b2 3A46     		mov	r2, r7
+ 910 04b4 0093     		str	r3, [sp]
+ 911 04b6 1046     		mov	r0, r2
+ 912 04b8 7949     		ldr	r1, .L41+44
+ 913 04ba D7F89020 		ldr	r2, [r7, #144]
+ 914 04be D7F88C30 		ldr	r3, [r7, #140]
+ 915 04c2 FFF7FEFF 		bl	sprintf
+ 336:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
+ 916              		.loc 1 336 0
+ 917 04c6 6F4B     		ldr	r3, .L41+16
+ 918 04c8 1C68     		ldr	r4, [r3]
+ 919 04ca 3B46     		mov	r3, r7
+ 920 04cc 1846     		mov	r0, r3
+ 921 04ce FFF7FEFF 		bl	strlen
+ 922 04d2 0246     		mov	r2, r0
+ 923 04d4 3B46     		mov	r3, r7
+ 924 04d6 2046     		mov	r0, r4
+ 925 04d8 1946     		mov	r1, r3
+ 926 04da FFF7FEFF 		bl	FS_Write
+ 337:main.c        ****                         #endif 
+ 338:main.c        ****                         wait_flag = 0;
+ 927              		.loc 1 338 0
+ 928 04de 6F4B     		ldr	r3, .L41+40
+ 929 04e0 0022     		movs	r2, #0
+ 930 04e2 1A70     		strb	r2, [r3]
+ 931              	.LBE5:
+ 339:main.c        ****                 }
+ 340:main.c        ****                 break;
+ 932              		.loc 1 340 0
+ 933 04e4 C5E0     		b	.L29
+ 934              	.L36:
+ 935              		.loc 1 340 0 is_stmt 0 discriminator 2
+ 936 04e6 C4E0     		b	.L29
+ 937              	.L24:
+ 341:main.c        ****                 
+ 342:main.c        ****                 case LANDED:
+ 343:main.c        ****                     CyDelay(5000u);
+ 938              		.loc 1 343 0 is_stmt 1
+ 939 04e8 41F28830 		movw	r0, #5000
+ 940 04ec FFF7FEFF 		bl	CyDelay
+ 344:main.c        ****                     Solenoid_1_Write(1); //turn on solenoid 1
+ 941              		.loc 1 344 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 25
+
+
+ 942 04f0 0120     		movs	r0, #1
+ 943 04f2 FFF7FEFF 		bl	Solenoid_1_Write
+ 345:main.c        ****                     #ifdef LCD
+ 346:main.c        ****                         setCursor(0,0);
+ 944              		.loc 1 346 0
+ 945 04f6 0020     		movs	r0, #0
+ 946 04f8 0021     		movs	r1, #0
+ 947 04fa FFF7FEFF 		bl	setCursor
+ 347:main.c        ****                         clear();
+ 948              		.loc 1 347 0
+ 949 04fe FFF7FEFF 		bl	clear
+ 348:main.c        ****                         LCD_print("VACUUMING");  
+ 950              		.loc 1 348 0
+ 951 0502 6848     		ldr	r0, .L41+48
+ 952 0504 FFF7FEFF 		bl	LCD_print
+ 349:main.c        ****                     #endif
+ 350:main.c        ****                     char sdbuf[60] = {};
+ 953              		.loc 1 350 0
+ 954 0508 3B46     		mov	r3, r7
+ 955 050a 3C22     		movs	r2, #60
+ 956 050c 1846     		mov	r0, r3
+ 957 050e 0021     		movs	r1, #0
+ 958 0510 FFF7FEFF 		bl	memset
+ 351:main.c        ****                     #ifdef SD
+ 352:main.c        ****                             memset(sdbuf, 0, 40);
+ 959              		.loc 1 352 0
+ 960 0514 3B46     		mov	r3, r7
+ 961 0516 1846     		mov	r0, r3
+ 962 0518 0021     		movs	r1, #0
+ 963 051a 2822     		movs	r2, #40
+ 964 051c FFF7FEFF 		bl	memset
+ 353:main.c        ****                             sprintf(sdbuf, "STATE: VACUUMING ***********\n");
+ 965              		.loc 1 353 0
+ 966 0520 3B46     		mov	r3, r7
+ 967 0522 614A     		ldr	r2, .L41+52
+ 968 0524 1C46     		mov	r4, r3
+ 969 0526 1546     		mov	r5, r2
+ 970 0528 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 971 052a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 972 052c 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ 973 0530 07C4     		stmia	r4!, {r0, r1, r2}
+ 974 0532 2380     		strh	r3, [r4]	@ movhi
+ 354:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
+ 975              		.loc 1 354 0
+ 976 0534 534B     		ldr	r3, .L41+16
+ 977 0536 1C68     		ldr	r4, [r3]
+ 978 0538 3B46     		mov	r3, r7
+ 979 053a 1846     		mov	r0, r3
+ 980 053c FFF7FEFF 		bl	strlen
+ 981 0540 0246     		mov	r2, r0
+ 982 0542 3B46     		mov	r3, r7
+ 983 0544 2046     		mov	r0, r4
+ 984 0546 1946     		mov	r1, r3
+ 985 0548 FFF7FEFF 		bl	FS_Write
+ 355:main.c        ****                     #endif
+ 356:main.c        ****                     CyDelay(7000u);
+ 986              		.loc 1 356 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 26
+
+
+ 987 054c 41F65830 		movw	r0, #7000
+ 988 0550 FFF7FEFF 		bl	CyDelay
+ 357:main.c        ****                     Solenoid_1_Write(0); //turn off soleniod 1
+ 989              		.loc 1 357 0
+ 990 0554 0020     		movs	r0, #0
+ 991 0556 FFF7FEFF 		bl	Solenoid_1_Write
+ 358:main.c        ****                     CyDelay(5000u);
+ 992              		.loc 1 358 0
+ 993 055a 41F28830 		movw	r0, #5000
+ 994 055e FFF7FEFF 		bl	CyDelay
+ 359:main.c        ****                     STATE = RESURFACE;
+ 995              		.loc 1 359 0
+ 996 0562 454B     		ldr	r3, .L41+4
+ 997 0564 0422     		movs	r2, #4
+ 998 0566 1A70     		strb	r2, [r3]
+ 360:main.c        ****                     #ifdef LCD
+ 361:main.c        ****                         setCursor(0,0);
+ 999              		.loc 1 361 0
+ 1000 0568 0020     		movs	r0, #0
+ 1001 056a 0021     		movs	r1, #0
+ 1002 056c FFF7FEFF 		bl	setCursor
+ 362:main.c        ****                         clear();
+ 1003              		.loc 1 362 0
+ 1004 0570 FFF7FEFF 		bl	clear
+ 363:main.c        ****                         LCD_print("STATE: RESURFACING");  
+ 1005              		.loc 1 363 0
+ 1006 0574 4D48     		ldr	r0, .L41+56
+ 1007 0576 FFF7FEFF 		bl	LCD_print
+ 364:main.c        ****                     #endif
+ 365:main.c        ****                     #ifdef SD
+ 366:main.c        ****                             memset(sdbuf, 0, 40);
+ 1008              		.loc 1 366 0
+ 1009 057a 3B46     		mov	r3, r7
+ 1010 057c 1846     		mov	r0, r3
+ 1011 057e 0021     		movs	r1, #0
+ 1012 0580 2822     		movs	r2, #40
+ 1013 0582 FFF7FEFF 		bl	memset
+ 367:main.c        ****                             sprintf(sdbuf, "STATE: RESURFACING ***********\n");
+ 1014              		.loc 1 367 0
+ 1015 0586 3B46     		mov	r3, r7
+ 1016 0588 494A     		ldr	r2, .L41+60
+ 1017 058a 1C46     		mov	r4, r3
+ 1018 058c 1546     		mov	r5, r2
+ 1019 058e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1020 0590 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1021 0592 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ 1022 0596 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+ 368:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
+ 1023              		.loc 1 368 0
+ 1024 059a 3A4B     		ldr	r3, .L41+16
+ 1025 059c 1C68     		ldr	r4, [r3]
+ 1026 059e 3B46     		mov	r3, r7
+ 1027 05a0 1846     		mov	r0, r3
+ 1028 05a2 FFF7FEFF 		bl	strlen
+ 1029 05a6 0246     		mov	r2, r0
+ 1030 05a8 3B46     		mov	r3, r7
+ 1031 05aa 2046     		mov	r0, r4
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 27
+
+
+ 1032 05ac 1946     		mov	r1, r3
+ 1033 05ae FFF7FEFF 		bl	FS_Write
+ 369:main.c        ****                     #endif
+ 370:main.c        ****                 break;
+ 1034              		.loc 1 370 0
+ 1035 05b2 5EE0     		b	.L29
+ 1036              	.L25:
+ 371:main.c        ****                 
+ 372:main.c        ****             case RESURFACE:
+ 373:main.c        ****                 //CyDelay(4000u);
+ 374:main.c        ****                 Solenoid_2_Write(1); //turn on solendiod 2
+ 1037              		.loc 1 374 0
+ 1038 05b4 0120     		movs	r0, #1
+ 1039 05b6 FFF7FEFF 		bl	Solenoid_2_Write
+ 375:main.c        ****                 CyDelay(15000u);
+ 1040              		.loc 1 375 0
+ 1041 05ba 43F69820 		movw	r0, #15000
+ 1042 05be FFF7FEFF 		bl	CyDelay
+ 376:main.c        ****                 Solenoid_2_Write(0); //turn off solenoid 2
+ 1043              		.loc 1 376 0
+ 1044 05c2 0020     		movs	r0, #0
+ 1045 05c4 FFF7FEFF 		bl	Solenoid_2_Write
+ 377:main.c        ****                 //check pressure sensor to confirm we are at the surface
+ 378:main.c        ****                 CyDelay(10000u);                                //wait 10 seconds to lift, for test
+ 1046              		.loc 1 378 0
+ 1047 05c8 42F21070 		movw	r0, #10000
+ 1048 05cc FFF7FEFF 		bl	CyDelay
+ 379:main.c        ****                 STATE = TRANSMIT;
+ 1049              		.loc 1 379 0
+ 1050 05d0 294B     		ldr	r3, .L41+4
+ 1051 05d2 0522     		movs	r2, #5
+ 1052 05d4 1A70     		strb	r2, [r3]
+ 380:main.c        ****                 #ifdef LCD
+ 381:main.c        ****                     setCursor(0,0);
+ 1053              		.loc 1 381 0
+ 1054 05d6 0020     		movs	r0, #0
+ 1055 05d8 0021     		movs	r1, #0
+ 1056 05da FFF7FEFF 		bl	setCursor
+ 382:main.c        ****                     clear();
+ 1057              		.loc 1 382 0
+ 1058 05de FFF7FEFF 		bl	clear
+ 383:main.c        ****                     LCD_print("TRANSMIT");  
+ 1059              		.loc 1 383 0
+ 1060 05e2 3448     		ldr	r0, .L41+64
+ 1061 05e4 FFF7FEFF 		bl	LCD_print
+ 384:main.c        ****                 #endif
+ 385:main.c        ****                 #ifdef SD
+ 386:main.c        ****                             memset(sdbuf, 0, 40);
+ 1062              		.loc 1 386 0
+ 1063 05e8 3B46     		mov	r3, r7
+ 1064 05ea 1846     		mov	r0, r3
+ 1065 05ec 0021     		movs	r1, #0
+ 1066 05ee 2822     		movs	r2, #40
+ 1067 05f0 FFF7FEFF 		bl	memset
+ 387:main.c        ****                             sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
+ 1068              		.loc 1 387 0
+ 1069 05f4 3B46     		mov	r3, r7
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 28
+
+
+ 1070 05f6 304A     		ldr	r2, .L41+68
+ 1071 05f8 1C46     		mov	r4, r3
+ 1072 05fa 1546     		mov	r5, r2
+ 1073 05fc 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1074 05fe 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1075 0600 95E80F00 		ldmia	r5, {r0, r1, r2, r3}
+ 1076 0604 07C4     		stmia	r4!, {r0, r1, r2}
+ 1077 0606 2370     		strb	r3, [r4]
+ 388:main.c        ****                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
+ 1078              		.loc 1 388 0
+ 1079 0608 1E4B     		ldr	r3, .L41+16
+ 1080 060a 1C68     		ldr	r4, [r3]
+ 1081 060c 3B46     		mov	r3, r7
+ 1082 060e 1846     		mov	r0, r3
+ 1083 0610 FFF7FEFF 		bl	strlen
+ 1084 0614 0246     		mov	r2, r0
+ 1085 0616 3B46     		mov	r3, r7
+ 1086 0618 2046     		mov	r0, r4
+ 1087 061a 1946     		mov	r1, r3
+ 1088 061c FFF7FEFF 		bl	FS_Write
+ 389:main.c        ****                     #endif
+ 390:main.c        ****                 break;
+ 1089              		.loc 1 390 0
+ 1090 0620 27E0     		b	.L29
+ 1091              	.L26:
+ 391:main.c        ****             case TRANSMIT:
+ 392:main.c        ****                 LED2_Write(1);
+ 1092              		.loc 1 392 0
+ 1093 0622 0120     		movs	r0, #1
+ 1094 0624 FFF7FEFF 		bl	LED2_Write
+ 393:main.c        ****                 LED7_Write(1);
+ 1095              		.loc 1 393 0
+ 1096 0628 0120     		movs	r0, #1
+ 1097 062a FFF7FEFF 		bl	LED7_Write
+ 394:main.c        ****                 #ifdef SD                                   //close old file, open new one
+ 395:main.c        ****                     FS_FClose(fsfile);
+ 1098              		.loc 1 395 0
+ 1099 062e 154B     		ldr	r3, .L41+16
+ 1100 0630 1B68     		ldr	r3, [r3]
+ 1101 0632 1846     		mov	r0, r3
+ 1102 0634 FFF7FEFF 		bl	FS_FClose
+ 396:main.c        ****                     sprintf(file, "test%d.txt", ++testnum);
+ 1103              		.loc 1 396 0
+ 1104 0638 204B     		ldr	r3, .L41+72
+ 1105 063a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1106 063c 0133     		adds	r3, r3, #1
+ 1107 063e DAB2     		uxtb	r2, r3
+ 1108 0640 1E4B     		ldr	r3, .L41+72
+ 1109 0642 1A70     		strb	r2, [r3]
+ 1110 0644 1D4B     		ldr	r3, .L41+72
+ 1111 0646 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1112 0648 1D48     		ldr	r0, .L41+76
+ 1113 064a 1E49     		ldr	r1, .L41+80
+ 1114 064c 1A46     		mov	r2, r3
+ 1115 064e FFF7FEFF 		bl	sprintf
+ 397:main.c        ****                     fsfile = FS_FOpen(file, "w");
+ 1116              		.loc 1 397 0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 29
+
+
+ 1117 0652 1B48     		ldr	r0, .L41+76
+ 1118 0654 1C49     		ldr	r1, .L41+84
+ 1119 0656 FFF7FEFF 		bl	FS_FOpen
+ 1120 065a 0246     		mov	r2, r0
+ 1121 065c 094B     		ldr	r3, .L41+16
+ 1122 065e 1A60     		str	r2, [r3]
+ 398:main.c        ****                 #endif 
+ 399:main.c        ****                 CyDelay(15000u);
+ 1123              		.loc 1 399 0
+ 1124 0660 43F69820 		movw	r0, #15000
+ 1125 0664 FFF7FEFF 		bl	CyDelay
+ 400:main.c        ****                 STATE = WAIT_TO_LAUNCH;
+ 1126              		.loc 1 400 0
+ 1127 0668 034B     		ldr	r3, .L41+4
+ 1128 066a 0122     		movs	r2, #1
+ 1129 066c 1A70     		strb	r2, [r3]
+ 401:main.c        ****                 
+ 402:main.c        **** //            case LANDED:
+ 403:main.c        **** //                CyDelay(1000u);                             // delay a bit
+ 404:main.c        **** //                LED2_Write(1);                              // turn on other LED to indicate land
+ 405:main.c        **** //                STATE = WAIT_TO_LAUNCH;
+ 406:main.c        **** //                #ifdef LCD
+ 407:main.c        **** //                    setCursor(0,0);
+ 408:main.c        **** //                    clear();
+ 409:main.c        **** //                    LCD_print("STATE: WAIT");
+ 410:main.c        **** //                #endif 
+ 411:main.c        **** //                #ifdef SD                                   // close old file, open new one
+ 412:main.c        **** //                    FS_FClose(fsfile);
+ 413:main.c        **** //                    sprintf(file, "test%d.txt", ++testnum);
+ 414:main.c        **** //                    fsfile = FS_FOpen(file, "w");
+ 415:main.c        **** //                #endif 
+ 416:main.c        ****                 break;
+ 1130              		.loc 1 416 0
+ 1131 066e 00E0     		b	.L29
+ 1132              	.L38:
+ 417:main.c        ****                 
+ 418:main.c        ****             default:
+ 419:main.c        ****                 break;
+ 1133              		.loc 1 419 0
+ 1134 0670 00BF     		nop
+ 1135              	.L29:
+ 1136              	.LBE3:
+ 420:main.c        ****         
+ 421:main.c        ****         
+ 422:main.c        ****         }
+ 423:main.c        ****         
+ 424:main.c        ****     }
+ 1137              		.loc 1 424 0 discriminator 3
+ 1138 0672 85E5     		b	.L37
+ 1139              	.L42:
+ 1140              		.align	2
+ 1141              	.L41:
+ 1142 0674 00000000 		.word	average
+ 1143 0678 00000000 		.word	STATE
+ 1144 067c E0000000 		.word	.LC16
+ 1145 0680 F0000000 		.word	.LC17
+ 1146 0684 00000000 		.word	fsfile
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 30
+
+
+ 1147 0688 00000000 		.word	id
+ 1148 068c 00000000 		.word	data_time
+ 1149 0690 00000000 		.word	sum
+ 1150 0694 0C010000 		.word	.LC18
+ 1151 0698 00000000 		.word	collect_flag
+ 1152 069c 00000000 		.word	wait_flag
+ 1153 06a0 18010000 		.word	.LC19
+ 1154 06a4 30010000 		.word	.LC20
+ 1155 06a8 3C010000 		.word	.LC21
+ 1156 06ac 5C010000 		.word	.LC22
+ 1157 06b0 70010000 		.word	.LC23
+ 1158 06b4 90010000 		.word	.LC24
+ 1159 06b8 9C010000 		.word	.LC25
+ 1160 06bc 00000000 		.word	testnum
+ 1161 06c0 00000000 		.word	file
+ 1162 06c4 BC010000 		.word	.LC26
+ 1163 06c8 60000000 		.word	.LC7
+ 1164              		.cfi_endproc
+ 1165              	.LFE65:
+ 1166              		.size	main, .-main
+ 1167 06cc AFF30080 		.text
+ 1168              	.Letext0:
+ 1169              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1170              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1171              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 1172              		.file 5 ".\\emFile_V322c\\Code\\Include\\PSoC5/FS_Types.h"
+ 1173              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 1174              		.file 7 "./mpu6050.h"
+ 1175              		.section	.debug_info,"",%progbits
+ 1176              	.Ldebug_info0:
+ 1177 0000 18040000 		.4byte	0x418
+ 1178 0004 0400     		.2byte	0x4
+ 1179 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1180 000a 04       		.byte	0x4
+ 1181 000b 01       		.uleb128 0x1
+ 1182 000c AC000000 		.4byte	.LASF58
+ 1183 0010 01       		.byte	0x1
+ 1184 0011 78020000 		.4byte	.LASF59
+ 1185 0015 08020000 		.4byte	.LASF60
+ 1186 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1187 001d 00000000 		.4byte	0
+ 1188 0021 00000000 		.4byte	.Ldebug_line0
+ 1189 0025 02       		.uleb128 0x2
+ 1190 0026 01       		.byte	0x1
+ 1191 0027 06       		.byte	0x6
+ 1192 0028 94010000 		.4byte	.LASF0
+ 1193 002c 03       		.uleb128 0x3
+ 1194 002d 49010000 		.4byte	.LASF2
+ 1195 0031 02       		.byte	0x2
+ 1196 0032 1D       		.byte	0x1d
+ 1197 0033 37000000 		.4byte	0x37
+ 1198 0037 02       		.uleb128 0x2
+ 1199 0038 01       		.byte	0x1
+ 1200 0039 08       		.byte	0x8
+ 1201 003a 74010000 		.4byte	.LASF1
+ 1202 003e 03       		.uleb128 0x3
+ 1203 003f A7020000 		.4byte	.LASF3
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 31
+
+
+ 1204 0043 02       		.byte	0x2
+ 1205 0044 29       		.byte	0x29
+ 1206 0045 49000000 		.4byte	0x49
+ 1207 0049 02       		.uleb128 0x2
+ 1208 004a 02       		.byte	0x2
+ 1209 004b 05       		.byte	0x5
+ 1210 004c 58000000 		.4byte	.LASF4
+ 1211 0050 02       		.uleb128 0x2
+ 1212 0051 02       		.byte	0x2
+ 1213 0052 07       		.byte	0x7
+ 1214 0053 DF010000 		.4byte	.LASF5
+ 1215 0057 03       		.uleb128 0x3
+ 1216 0058 9D020000 		.4byte	.LASF6
+ 1217 005c 02       		.byte	0x2
+ 1218 005d 3F       		.byte	0x3f
+ 1219 005e 62000000 		.4byte	0x62
+ 1220 0062 02       		.uleb128 0x2
+ 1221 0063 04       		.byte	0x4
+ 1222 0064 05       		.byte	0x5
+ 1223 0065 F7010000 		.4byte	.LASF7
+ 1224 0069 03       		.uleb128 0x3
+ 1225 006a 48000000 		.4byte	.LASF8
+ 1226 006e 02       		.byte	0x2
+ 1227 006f 41       		.byte	0x41
+ 1228 0070 74000000 		.4byte	0x74
+ 1229 0074 02       		.uleb128 0x2
+ 1230 0075 04       		.byte	0x4
+ 1231 0076 07       		.byte	0x7
+ 1232 0077 84020000 		.4byte	.LASF9
+ 1233 007b 02       		.uleb128 0x2
+ 1234 007c 08       		.byte	0x8
+ 1235 007d 05       		.byte	0x5
+ 1236 007e 95000000 		.4byte	.LASF10
+ 1237 0082 02       		.uleb128 0x2
+ 1238 0083 08       		.byte	0x8
+ 1239 0084 07       		.byte	0x7
+ 1240 0085 A0010000 		.4byte	.LASF11
+ 1241 0089 04       		.uleb128 0x4
+ 1242 008a 04       		.byte	0x4
+ 1243 008b 05       		.byte	0x5
+ 1244 008c 696E7400 		.ascii	"int\000"
+ 1245 0090 02       		.uleb128 0x2
+ 1246 0091 04       		.byte	0x4
+ 1247 0092 07       		.byte	0x7
+ 1248 0093 CA010000 		.4byte	.LASF12
+ 1249 0097 03       		.uleb128 0x3
+ 1250 0098 6A000000 		.4byte	.LASF13
+ 1251 009c 03       		.byte	0x3
+ 1252 009d 15       		.byte	0x15
+ 1253 009e 2C000000 		.4byte	0x2c
+ 1254 00a2 03       		.uleb128 0x3
+ 1255 00a3 35020000 		.4byte	.LASF14
+ 1256 00a7 03       		.byte	0x3
+ 1257 00a8 20       		.byte	0x20
+ 1258 00a9 3E000000 		.4byte	0x3e
+ 1259 00ad 03       		.uleb128 0x3
+ 1260 00ae 00020000 		.4byte	.LASF15
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 32
+
+
+ 1261 00b2 03       		.byte	0x3
+ 1262 00b3 2C       		.byte	0x2c
+ 1263 00b4 57000000 		.4byte	0x57
+ 1264 00b8 03       		.uleb128 0x3
+ 1265 00b9 B7010000 		.4byte	.LASF16
+ 1266 00bd 03       		.byte	0x3
+ 1267 00be 2D       		.byte	0x2d
+ 1268 00bf 69000000 		.4byte	0x69
+ 1269 00c3 05       		.uleb128 0x5
+ 1270 00c4 3D020000 		.4byte	.LASF17
+ 1271 00c8 04       		.byte	0x4
+ 1272 00c9 9201     		.2byte	0x192
+ 1273 00cb 37000000 		.4byte	0x37
+ 1274 00cf 05       		.uleb128 0x5
+ 1275 00d0 72000000 		.4byte	.LASF18
+ 1276 00d4 04       		.byte	0x4
+ 1277 00d5 9601     		.2byte	0x196
+ 1278 00d7 49000000 		.4byte	0x49
+ 1279 00db 02       		.uleb128 0x2
+ 1280 00dc 04       		.byte	0x4
+ 1281 00dd 04       		.byte	0x4
+ 1282 00de 8A000000 		.4byte	.LASF19
+ 1283 00e2 02       		.uleb128 0x2
+ 1284 00e3 08       		.byte	0x8
+ 1285 00e4 04       		.byte	0x4
+ 1286 00e5 96020000 		.4byte	.LASF20
+ 1287 00e9 02       		.uleb128 0x2
+ 1288 00ea 01       		.byte	0x1
+ 1289 00eb 08       		.byte	0x8
+ 1290 00ec F2010000 		.4byte	.LASF21
+ 1291 00f0 05       		.uleb128 0x5
+ 1292 00f1 7F020000 		.4byte	.LASF22
+ 1293 00f5 04       		.byte	0x4
+ 1294 00f6 3C02     		.2byte	0x23c
+ 1295 00f8 FC000000 		.4byte	0xfc
+ 1296 00fc 06       		.uleb128 0x6
+ 1297 00fd C3000000 		.4byte	0xc3
+ 1298 0101 02       		.uleb128 0x2
+ 1299 0102 04       		.byte	0x4
+ 1300 0103 07       		.byte	0x7
+ 1301 0104 B1020000 		.4byte	.LASF23
+ 1302 0108 03       		.uleb128 0x3
+ 1303 0109 82010000 		.4byte	.LASF24
+ 1304 010d 05       		.byte	0x5
+ 1305 010e 7E       		.byte	0x7e
+ 1306 010f 13010000 		.4byte	0x113
+ 1307 0113 07       		.uleb128 0x7
+ 1308 0114 82010000 		.4byte	.LASF24
+ 1309 0118 08       		.uleb128 0x8
+ 1310 0119 04       		.byte	0x4
+ 1311 011a 08010000 		.4byte	0x108
+ 1312 011e 02       		.uleb128 0x2
+ 1313 011f 08       		.byte	0x8
+ 1314 0120 04       		.byte	0x4
+ 1315 0121 59010000 		.4byte	.LASF25
+ 1316 0125 09       		.uleb128 0x9
+ 1317 0126 22000000 		.4byte	.LASF61
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 33
+
+
+ 1318 012a 01       		.byte	0x1
+ 1319 012b 01       		.byte	0x1
+ 1320 012c 31       		.byte	0x31
+ 1321 012d 5C010000 		.4byte	0x15c
+ 1322 0131 0A       		.uleb128 0xa
+ 1323 0132 15000000 		.4byte	.LASF26
+ 1324 0136 00       		.sleb128 0
+ 1325 0137 0A       		.uleb128 0xa
+ 1326 0138 65010000 		.4byte	.LASF27
+ 1327 013c 01       		.sleb128 1
+ 1328 013d 0A       		.uleb128 0xa
+ 1329 013e 0A000000 		.4byte	.LASF28
+ 1330 0142 02       		.sleb128 2
+ 1331 0143 0A       		.uleb128 0xa
+ 1332 0144 3C000000 		.4byte	.LASF29
+ 1333 0148 03       		.sleb128 3
+ 1334 0149 0A       		.uleb128 0xa
+ 1335 014a 00000000 		.4byte	.LASF30
+ 1336 014e 04       		.sleb128 4
+ 1337 014f 0A       		.uleb128 0xa
+ 1338 0150 A3000000 		.4byte	.LASF31
+ 1339 0154 05       		.sleb128 5
+ 1340 0155 0A       		.uleb128 0xa
+ 1341 0156 53010000 		.4byte	.LASF32
+ 1342 015a 06       		.sleb128 6
+ 1343 015b 00       		.byte	0
+ 1344 015c 0B       		.uleb128 0xb
+ 1345 015d EB020000 		.4byte	.LASF33
+ 1346 0161 01       		.byte	0x1
+ 1347 0162 62       		.byte	0x62
+ 1348 0163 00000000 		.4byte	.LFB63
+ 1349 0167 38000000 		.4byte	.LFE63-.LFB63
+ 1350 016b 01       		.uleb128 0x1
+ 1351 016c 9C       		.byte	0x9c
+ 1352 016d 0B       		.uleb128 0xb
+ 1353 016e 62020000 		.4byte	.LASF34
+ 1354 0172 01       		.byte	0x1
+ 1355 0173 6B       		.byte	0x6b
+ 1356 0174 00000000 		.4byte	.LFB64
+ 1357 0178 4C000000 		.4byte	.LFE64-.LFB64
+ 1358 017c 01       		.uleb128 0x1
+ 1359 017d 9C       		.byte	0x9c
+ 1360 017e 0C       		.uleb128 0xc
+ 1361 017f 43000000 		.4byte	.LASF62
+ 1362 0183 01       		.byte	0x1
+ 1363 0184 77       		.byte	0x77
+ 1364 0185 89000000 		.4byte	0x89
+ 1365 0189 00000000 		.4byte	.LFB65
+ 1366 018d CC060000 		.4byte	.LFE65-.LFB65
+ 1367 0191 01       		.uleb128 0x1
+ 1368 0192 9C       		.byte	0x9c
+ 1369 0193 A3020000 		.4byte	0x2a3
+ 1370 0197 0D       		.uleb128 0xd
+ 1371 0198 C0020000 		.4byte	.LASF35
+ 1372 019c 01       		.byte	0x1
+ 1373 019d 7A       		.byte	0x7a
+ 1374 019e DB000000 		.4byte	0xdb
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 34
+
+
+ 1375 01a2 02       		.uleb128 0x2
+ 1376 01a3 91       		.byte	0x91
+ 1377 01a4 6C       		.sleb128 -20
+ 1378 01a5 0E       		.uleb128 0xe
+ 1379 01a6 62756600 		.ascii	"buf\000"
+ 1380 01aa 01       		.byte	0x1
+ 1381 01ab 7B       		.byte	0x7b
+ 1382 01ac A3020000 		.4byte	0x2a3
+ 1383 01b0 03       		.uleb128 0x3
+ 1384 01b1 91       		.byte	0x91
+ 1385 01b2 A47F     		.sleb128 -92
+ 1386 01b4 0D       		.uleb128 0xd
+ 1387 01b5 49020000 		.4byte	.LASF36
+ 1388 01b9 01       		.byte	0x1
+ 1389 01ba 7D       		.byte	0x7d
+ 1390 01bb B3020000 		.4byte	0x2b3
+ 1391 01bf 03       		.uleb128 0x3
+ 1392 01c0 91       		.byte	0x91
+ 1393 01c1 947F     		.sleb128 -108
+ 1394 01c3 0F       		.uleb128 0xf
+ 1395 01c4 617800   		.ascii	"ax\000"
+ 1396 01c7 01       		.byte	0x1
+ 1397 01c8 7E       		.byte	0x7e
+ 1398 01c9 A2000000 		.4byte	0xa2
+ 1399 01cd 0F       		.uleb128 0xf
+ 1400 01ce 617900   		.ascii	"ay\000"
+ 1401 01d1 01       		.byte	0x1
+ 1402 01d2 7E       		.byte	0x7e
+ 1403 01d3 A2000000 		.4byte	0xa2
+ 1404 01d7 0E       		.uleb128 0xe
+ 1405 01d8 617A00   		.ascii	"az\000"
+ 1406 01db 01       		.byte	0x1
+ 1407 01dc 7E       		.byte	0x7e
+ 1408 01dd A2000000 		.4byte	0xa2
+ 1409 01e1 02       		.uleb128 0x2
+ 1410 01e2 91       		.byte	0x91
+ 1411 01e3 56       		.sleb128 -42
+ 1412 01e4 0F       		.uleb128 0xf
+ 1413 01e5 6900     		.ascii	"i\000"
+ 1414 01e7 01       		.byte	0x1
+ 1415 01e8 7E       		.byte	0x7e
+ 1416 01e9 A2000000 		.4byte	0xa2
+ 1417 01ed 0D       		.uleb128 0xd
+ 1418 01ee 52020000 		.4byte	.LASF37
+ 1419 01f2 01       		.byte	0x1
+ 1420 01f3 80       		.byte	0x80
+ 1421 01f4 A2000000 		.4byte	0xa2
+ 1422 01f8 02       		.uleb128 0x2
+ 1423 01f9 91       		.byte	0x91
+ 1424 01fa 62       		.sleb128 -30
+ 1425 01fb 0E       		.uleb128 0xe
+ 1426 01fc 6E756D00 		.ascii	"num\000"
+ 1427 0200 01       		.byte	0x1
+ 1428 0201 D9       		.byte	0xd9
+ 1429 0202 89000000 		.4byte	0x89
+ 1430 0206 02       		.uleb128 0x2
+ 1431 0207 91       		.byte	0x91
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 35
+
+
+ 1432 0208 68       		.sleb128 -24
+ 1433 0209 0D       		.uleb128 0xd
+ 1434 020a 81000000 		.4byte	.LASF38
+ 1435 020e 01       		.byte	0x1
+ 1436 020f D9       		.byte	0xd9
+ 1437 0210 89000000 		.4byte	0x89
+ 1438 0214 02       		.uleb128 0x2
+ 1439 0215 91       		.byte	0x91
+ 1440 0216 64       		.sleb128 -28
+ 1441 0217 0D       		.uleb128 0xd
+ 1442 0218 3A010000 		.4byte	.LASF39
+ 1443 021c 01       		.byte	0x1
+ 1444 021d DA       		.byte	0xda
+ 1445 021e DB000000 		.4byte	0xdb
+ 1446 0222 02       		.uleb128 0x2
+ 1447 0223 91       		.byte	0x91
+ 1448 0224 5C       		.sleb128 -36
+ 1449 0225 0D       		.uleb128 0xd
+ 1450 0226 90000000 		.4byte	.LASF40
+ 1451 022a 01       		.byte	0x1
+ 1452 022b DA       		.byte	0xda
+ 1453 022c DB000000 		.4byte	0xdb
+ 1454 0230 02       		.uleb128 0x2
+ 1455 0231 91       		.byte	0x91
+ 1456 0232 58       		.sleb128 -40
+ 1457 0233 10       		.uleb128 0x10
+ 1458 0234 8C010000 		.4byte	.LBB2
+ 1459 0238 86000000 		.4byte	.LBE2-.LBB2
+ 1460 023c 50020000 		.4byte	0x250
+ 1461 0240 0D       		.uleb128 0xd
+ 1462 0241 78000000 		.4byte	.LASF41
+ 1463 0245 01       		.byte	0x1
+ 1464 0246 E1       		.byte	0xe1
+ 1465 0247 A3020000 		.4byte	0x2a3
+ 1466 024b 03       		.uleb128 0x3
+ 1467 024c 91       		.byte	0x91
+ 1468 024d D87E     		.sleb128 -168
+ 1469 024f 00       		.byte	0
+ 1470 0250 11       		.uleb128 0x11
+ 1471 0251 44020000 		.4byte	.LBB3
+ 1472 0255 2E040000 		.4byte	.LBE3-.LBB3
+ 1473 0259 12       		.uleb128 0x12
+ 1474 025a 29000000 		.4byte	.LASF42
+ 1475 025e 01       		.byte	0x1
+ 1476 025f 5E01     		.2byte	0x15e
+ 1477 0261 C3020000 		.4byte	0x2c3
+ 1478 0265 03       		.uleb128 0x3
+ 1479 0266 91       		.byte	0x91
+ 1480 0267 D87E     		.sleb128 -168
+ 1481 0269 10       		.uleb128 0x10
+ 1482 026a C2030000 		.4byte	.LBB4
+ 1483 026e 7A000000 		.4byte	.LBE4-.LBB4
+ 1484 0272 87020000 		.4byte	0x287
+ 1485 0276 12       		.uleb128 0x12
+ 1486 0277 29000000 		.4byte	.LASF42
+ 1487 027b 01       		.byte	0x1
+ 1488 027c 2E01     		.2byte	0x12e
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 36
+
+
+ 1489 027e C3020000 		.4byte	0x2c3
+ 1490 0282 03       		.uleb128 0x3
+ 1491 0283 91       		.byte	0x91
+ 1492 0284 D87E     		.sleb128 -168
+ 1493 0286 00       		.byte	0
+ 1494 0287 11       		.uleb128 0x11
+ 1495 0288 98040000 		.4byte	.LBB5
+ 1496 028c 4C000000 		.4byte	.LBE5-.LBB5
+ 1497 0290 12       		.uleb128 0x12
+ 1498 0291 29000000 		.4byte	.LASF42
+ 1499 0295 01       		.byte	0x1
+ 1500 0296 4D01     		.2byte	0x14d
+ 1501 0298 C3020000 		.4byte	0x2c3
+ 1502 029c 03       		.uleb128 0x3
+ 1503 029d 91       		.byte	0x91
+ 1504 029e D87E     		.sleb128 -168
+ 1505 02a0 00       		.byte	0
+ 1506 02a1 00       		.byte	0
+ 1507 02a2 00       		.byte	0
+ 1508 02a3 13       		.uleb128 0x13
+ 1509 02a4 E9000000 		.4byte	0xe9
+ 1510 02a8 B3020000 		.4byte	0x2b3
+ 1511 02ac 14       		.uleb128 0x14
+ 1512 02ad 01010000 		.4byte	0x101
+ 1513 02b1 31       		.byte	0x31
+ 1514 02b2 00       		.byte	0
+ 1515 02b3 13       		.uleb128 0x13
+ 1516 02b4 E9000000 		.4byte	0xe9
+ 1517 02b8 C3020000 		.4byte	0x2c3
+ 1518 02bc 14       		.uleb128 0x14
+ 1519 02bd 01010000 		.4byte	0x101
+ 1520 02c1 0D       		.byte	0xd
+ 1521 02c2 00       		.byte	0
+ 1522 02c3 13       		.uleb128 0x13
+ 1523 02c4 E9000000 		.4byte	0xe9
+ 1524 02c8 D3020000 		.4byte	0x2d3
+ 1525 02cc 14       		.uleb128 0x14
+ 1526 02cd 01010000 		.4byte	0x101
+ 1527 02d1 3B       		.byte	0x3b
+ 1528 02d2 00       		.byte	0
+ 1529 02d3 15       		.uleb128 0x15
+ 1530 02d4 D4020000 		.4byte	.LASF43
+ 1531 02d8 06       		.byte	0x6
+ 1532 02d9 9606     		.2byte	0x696
+ 1533 02db DF020000 		.4byte	0x2df
+ 1534 02df 06       		.uleb128 0x6
+ 1535 02e0 AD000000 		.4byte	0xad
+ 1536 02e4 16       		.uleb128 0x16
+ 1537 02e5 34000000 		.4byte	.LASF44
+ 1538 02e9 07       		.byte	0x7
+ 1539 02ea 9101     		.2byte	0x191
+ 1540 02ec 97000000 		.4byte	0x97
+ 1541 02f0 05       		.uleb128 0x5
+ 1542 02f1 03       		.byte	0x3
+ 1543 02f2 00000000 		.4byte	devAddr
+ 1544 02f6 13       		.uleb128 0x13
+ 1545 02f7 97000000 		.4byte	0x97
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 37
+
+
+ 1546 02fb 06030000 		.4byte	0x306
+ 1547 02ff 14       		.uleb128 0x14
+ 1548 0300 01010000 		.4byte	0x101
+ 1549 0304 15       		.byte	0x15
+ 1550 0305 00       		.byte	0
+ 1551 0306 16       		.uleb128 0x16
+ 1552 0307 5B020000 		.4byte	.LASF45
+ 1553 030b 07       		.byte	0x7
+ 1554 030c 9201     		.2byte	0x192
+ 1555 030e F6020000 		.4byte	0x2f6
+ 1556 0312 05       		.uleb128 0x5
+ 1557 0313 03       		.byte	0x3
+ 1558 0314 00000000 		.4byte	buffer
+ 1559 0318 17       		.uleb128 0x17
+ 1560 0319 2F000000 		.4byte	.LASF46
+ 1561 031d 01       		.byte	0x1
+ 1562 031e 3C       		.byte	0x3c
+ 1563 031f B8000000 		.4byte	0xb8
+ 1564 0323 05       		.uleb128 0x5
+ 1565 0324 03       		.byte	0x3
+ 1566 0325 00000000 		.4byte	Addr
+ 1567 0329 18       		.uleb128 0x18
+ 1568 032a 696400   		.ascii	"id\000"
+ 1569 032d 01       		.byte	0x1
+ 1570 032e 3D       		.byte	0x3d
+ 1571 032f 62000000 		.4byte	0x62
+ 1572 0333 05       		.uleb128 0x5
+ 1573 0334 03       		.byte	0x3
+ 1574 0335 00000000 		.4byte	id
+ 1575 0339 17       		.uleb128 0x17
+ 1576 033a C0010000 		.4byte	.LASF47
+ 1577 033e 01       		.byte	0x1
+ 1578 033f 3E       		.byte	0x3e
+ 1579 0340 62000000 		.4byte	0x62
+ 1580 0344 05       		.uleb128 0x5
+ 1581 0345 03       		.byte	0x3
+ 1582 0346 00000000 		.4byte	data_time
+ 1583 034a 18       		.uleb128 0x18
+ 1584 034b 73756D00 		.ascii	"sum\000"
+ 1585 034f 01       		.byte	0x1
+ 1586 0350 40       		.byte	0x40
+ 1587 0351 62000000 		.4byte	0x62
+ 1588 0355 05       		.uleb128 0x5
+ 1589 0356 03       		.byte	0x3
+ 1590 0357 00000000 		.4byte	sum
+ 1591 035b 17       		.uleb128 0x17
+ 1592 035c 62000000 		.4byte	.LASF48
+ 1593 0360 01       		.byte	0x1
+ 1594 0361 41       		.byte	0x41
+ 1595 0362 A2000000 		.4byte	0xa2
+ 1596 0366 05       		.uleb128 0x5
+ 1597 0367 03       		.byte	0x3
+ 1598 0368 00000000 		.4byte	average
+ 1599 036c 17       		.uleb128 0x17
+ 1600 036d C7020000 		.4byte	.LASF49
+ 1601 0371 01       		.byte	0x1
+ 1602 0372 42       		.byte	0x42
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 38
+
+
+ 1603 0373 7D030000 		.4byte	0x37d
+ 1604 0377 05       		.uleb128 0x5
+ 1605 0378 03       		.byte	0x3
+ 1606 0379 00000000 		.4byte	collect_flag
+ 1607 037d 02       		.uleb128 0x2
+ 1608 037e 01       		.byte	0x1
+ 1609 037f 02       		.byte	0x2
+ 1610 0380 43020000 		.4byte	.LASF50
+ 1611 0384 17       		.uleb128 0x17
+ 1612 0385 E1020000 		.4byte	.LASF51
+ 1613 0389 01       		.byte	0x1
+ 1614 038a 43       		.byte	0x43
+ 1615 038b 7D030000 		.4byte	0x37d
+ 1616 038f 05       		.uleb128 0x5
+ 1617 0390 03       		.byte	0x3
+ 1618 0391 00000000 		.4byte	wait_flag
+ 1619 0395 17       		.uleb128 0x17
+ 1620 0396 BA020000 		.4byte	.LASF52
+ 1621 039a 01       		.byte	0x1
+ 1622 039b 45       		.byte	0x45
+ 1623 039c 25010000 		.4byte	0x125
+ 1624 03a0 05       		.uleb128 0x5
+ 1625 03a1 03       		.byte	0x3
+ 1626 03a2 00000000 		.4byte	STATE
+ 1627 03a6 17       		.uleb128 0x17
+ 1628 03a7 D7010000 		.4byte	.LASF53
+ 1629 03ab 01       		.byte	0x1
+ 1630 03ac 46       		.byte	0x46
+ 1631 03ad 97000000 		.4byte	0x97
+ 1632 03b1 05       		.uleb128 0x5
+ 1633 03b2 03       		.byte	0x3
+ 1634 03b3 00000000 		.4byte	testnum
+ 1635 03b7 17       		.uleb128 0x17
+ 1636 03b8 8A010000 		.4byte	.LASF54
+ 1637 03bc 01       		.byte	0x1
+ 1638 03bd 46       		.byte	0x46
+ 1639 03be 97000000 		.4byte	0x97
+ 1640 03c2 05       		.uleb128 0x5
+ 1641 03c3 03       		.byte	0x3
+ 1642 03c4 00000000 		.4byte	countdown
+ 1643 03c8 13       		.uleb128 0x13
+ 1644 03c9 E9000000 		.4byte	0xe9
+ 1645 03cd D8030000 		.4byte	0x3d8
+ 1646 03d1 14       		.uleb128 0x14
+ 1647 03d2 01010000 		.4byte	0x101
+ 1648 03d6 0A       		.byte	0xa
+ 1649 03d7 00       		.byte	0
+ 1650 03d8 17       		.uleb128 0x17
+ 1651 03d9 53000000 		.4byte	.LASF55
+ 1652 03dd 01       		.byte	0x1
+ 1653 03de 47       		.byte	0x47
+ 1654 03df C8030000 		.4byte	0x3c8
+ 1655 03e3 05       		.uleb128 0x5
+ 1656 03e4 03       		.byte	0x3
+ 1657 03e5 00000000 		.4byte	file
+ 1658 03e9 13       		.uleb128 0x13
+ 1659 03ea E9000000 		.4byte	0xe9
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 39
+
+
+ 1660 03ee F9030000 		.4byte	0x3f9
+ 1661 03f2 14       		.uleb128 0x14
+ 1662 03f3 01010000 		.4byte	0x101
+ 1663 03f7 09       		.byte	0x9
+ 1664 03f8 00       		.byte	0
+ 1665 03f9 17       		.uleb128 0x17
+ 1666 03fa 42010000 		.4byte	.LASF56
+ 1667 03fe 01       		.byte	0x1
+ 1668 03ff 48       		.byte	0x48
+ 1669 0400 E9030000 		.4byte	0x3e9
+ 1670 0404 05       		.uleb128 0x5
+ 1671 0405 03       		.byte	0x3
+ 1672 0406 00000000 		.4byte	volume
+ 1673 040a 17       		.uleb128 0x17
+ 1674 040b FE020000 		.4byte	.LASF57
+ 1675 040f 01       		.byte	0x1
+ 1676 0410 49       		.byte	0x49
+ 1677 0411 18010000 		.4byte	0x118
+ 1678 0415 05       		.uleb128 0x5
+ 1679 0416 03       		.byte	0x3
+ 1680 0417 00000000 		.4byte	fsfile
+ 1681 041b 00       		.byte	0
+ 1682              		.section	.debug_abbrev,"",%progbits
+ 1683              	.Ldebug_abbrev0:
+ 1684 0000 01       		.uleb128 0x1
+ 1685 0001 11       		.uleb128 0x11
+ 1686 0002 01       		.byte	0x1
+ 1687 0003 25       		.uleb128 0x25
+ 1688 0004 0E       		.uleb128 0xe
+ 1689 0005 13       		.uleb128 0x13
+ 1690 0006 0B       		.uleb128 0xb
+ 1691 0007 03       		.uleb128 0x3
+ 1692 0008 0E       		.uleb128 0xe
+ 1693 0009 1B       		.uleb128 0x1b
+ 1694 000a 0E       		.uleb128 0xe
+ 1695 000b 55       		.uleb128 0x55
+ 1696 000c 17       		.uleb128 0x17
+ 1697 000d 11       		.uleb128 0x11
+ 1698 000e 01       		.uleb128 0x1
+ 1699 000f 10       		.uleb128 0x10
+ 1700 0010 17       		.uleb128 0x17
+ 1701 0011 00       		.byte	0
+ 1702 0012 00       		.byte	0
+ 1703 0013 02       		.uleb128 0x2
+ 1704 0014 24       		.uleb128 0x24
+ 1705 0015 00       		.byte	0
+ 1706 0016 0B       		.uleb128 0xb
+ 1707 0017 0B       		.uleb128 0xb
+ 1708 0018 3E       		.uleb128 0x3e
+ 1709 0019 0B       		.uleb128 0xb
+ 1710 001a 03       		.uleb128 0x3
+ 1711 001b 0E       		.uleb128 0xe
+ 1712 001c 00       		.byte	0
+ 1713 001d 00       		.byte	0
+ 1714 001e 03       		.uleb128 0x3
+ 1715 001f 16       		.uleb128 0x16
+ 1716 0020 00       		.byte	0
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 40
+
+
+ 1717 0021 03       		.uleb128 0x3
+ 1718 0022 0E       		.uleb128 0xe
+ 1719 0023 3A       		.uleb128 0x3a
+ 1720 0024 0B       		.uleb128 0xb
+ 1721 0025 3B       		.uleb128 0x3b
+ 1722 0026 0B       		.uleb128 0xb
+ 1723 0027 49       		.uleb128 0x49
+ 1724 0028 13       		.uleb128 0x13
+ 1725 0029 00       		.byte	0
+ 1726 002a 00       		.byte	0
+ 1727 002b 04       		.uleb128 0x4
+ 1728 002c 24       		.uleb128 0x24
+ 1729 002d 00       		.byte	0
+ 1730 002e 0B       		.uleb128 0xb
+ 1731 002f 0B       		.uleb128 0xb
+ 1732 0030 3E       		.uleb128 0x3e
+ 1733 0031 0B       		.uleb128 0xb
+ 1734 0032 03       		.uleb128 0x3
+ 1735 0033 08       		.uleb128 0x8
+ 1736 0034 00       		.byte	0
+ 1737 0035 00       		.byte	0
+ 1738 0036 05       		.uleb128 0x5
+ 1739 0037 16       		.uleb128 0x16
+ 1740 0038 00       		.byte	0
+ 1741 0039 03       		.uleb128 0x3
+ 1742 003a 0E       		.uleb128 0xe
+ 1743 003b 3A       		.uleb128 0x3a
+ 1744 003c 0B       		.uleb128 0xb
+ 1745 003d 3B       		.uleb128 0x3b
+ 1746 003e 05       		.uleb128 0x5
+ 1747 003f 49       		.uleb128 0x49
+ 1748 0040 13       		.uleb128 0x13
+ 1749 0041 00       		.byte	0
+ 1750 0042 00       		.byte	0
+ 1751 0043 06       		.uleb128 0x6
+ 1752 0044 35       		.uleb128 0x35
+ 1753 0045 00       		.byte	0
+ 1754 0046 49       		.uleb128 0x49
+ 1755 0047 13       		.uleb128 0x13
+ 1756 0048 00       		.byte	0
+ 1757 0049 00       		.byte	0
+ 1758 004a 07       		.uleb128 0x7
+ 1759 004b 13       		.uleb128 0x13
+ 1760 004c 00       		.byte	0
+ 1761 004d 03       		.uleb128 0x3
+ 1762 004e 0E       		.uleb128 0xe
+ 1763 004f 3C       		.uleb128 0x3c
+ 1764 0050 19       		.uleb128 0x19
+ 1765 0051 00       		.byte	0
+ 1766 0052 00       		.byte	0
+ 1767 0053 08       		.uleb128 0x8
+ 1768 0054 0F       		.uleb128 0xf
+ 1769 0055 00       		.byte	0
+ 1770 0056 0B       		.uleb128 0xb
+ 1771 0057 0B       		.uleb128 0xb
+ 1772 0058 49       		.uleb128 0x49
+ 1773 0059 13       		.uleb128 0x13
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 41
+
+
+ 1774 005a 00       		.byte	0
+ 1775 005b 00       		.byte	0
+ 1776 005c 09       		.uleb128 0x9
+ 1777 005d 04       		.uleb128 0x4
+ 1778 005e 01       		.byte	0x1
+ 1779 005f 03       		.uleb128 0x3
+ 1780 0060 0E       		.uleb128 0xe
+ 1781 0061 0B       		.uleb128 0xb
+ 1782 0062 0B       		.uleb128 0xb
+ 1783 0063 3A       		.uleb128 0x3a
+ 1784 0064 0B       		.uleb128 0xb
+ 1785 0065 3B       		.uleb128 0x3b
+ 1786 0066 0B       		.uleb128 0xb
+ 1787 0067 01       		.uleb128 0x1
+ 1788 0068 13       		.uleb128 0x13
+ 1789 0069 00       		.byte	0
+ 1790 006a 00       		.byte	0
+ 1791 006b 0A       		.uleb128 0xa
+ 1792 006c 28       		.uleb128 0x28
+ 1793 006d 00       		.byte	0
+ 1794 006e 03       		.uleb128 0x3
+ 1795 006f 0E       		.uleb128 0xe
+ 1796 0070 1C       		.uleb128 0x1c
+ 1797 0071 0D       		.uleb128 0xd
+ 1798 0072 00       		.byte	0
+ 1799 0073 00       		.byte	0
+ 1800 0074 0B       		.uleb128 0xb
+ 1801 0075 2E       		.uleb128 0x2e
+ 1802 0076 00       		.byte	0
+ 1803 0077 3F       		.uleb128 0x3f
+ 1804 0078 19       		.uleb128 0x19
+ 1805 0079 03       		.uleb128 0x3
+ 1806 007a 0E       		.uleb128 0xe
+ 1807 007b 3A       		.uleb128 0x3a
+ 1808 007c 0B       		.uleb128 0xb
+ 1809 007d 3B       		.uleb128 0x3b
+ 1810 007e 0B       		.uleb128 0xb
+ 1811 007f 27       		.uleb128 0x27
+ 1812 0080 19       		.uleb128 0x19
+ 1813 0081 11       		.uleb128 0x11
+ 1814 0082 01       		.uleb128 0x1
+ 1815 0083 12       		.uleb128 0x12
+ 1816 0084 06       		.uleb128 0x6
+ 1817 0085 40       		.uleb128 0x40
+ 1818 0086 18       		.uleb128 0x18
+ 1819 0087 9742     		.uleb128 0x2117
+ 1820 0089 19       		.uleb128 0x19
+ 1821 008a 00       		.byte	0
+ 1822 008b 00       		.byte	0
+ 1823 008c 0C       		.uleb128 0xc
+ 1824 008d 2E       		.uleb128 0x2e
+ 1825 008e 01       		.byte	0x1
+ 1826 008f 3F       		.uleb128 0x3f
+ 1827 0090 19       		.uleb128 0x19
+ 1828 0091 03       		.uleb128 0x3
+ 1829 0092 0E       		.uleb128 0xe
+ 1830 0093 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 42
+
+
+ 1831 0094 0B       		.uleb128 0xb
+ 1832 0095 3B       		.uleb128 0x3b
+ 1833 0096 0B       		.uleb128 0xb
+ 1834 0097 49       		.uleb128 0x49
+ 1835 0098 13       		.uleb128 0x13
+ 1836 0099 11       		.uleb128 0x11
+ 1837 009a 01       		.uleb128 0x1
+ 1838 009b 12       		.uleb128 0x12
+ 1839 009c 06       		.uleb128 0x6
+ 1840 009d 40       		.uleb128 0x40
+ 1841 009e 18       		.uleb128 0x18
+ 1842 009f 9642     		.uleb128 0x2116
+ 1843 00a1 19       		.uleb128 0x19
+ 1844 00a2 01       		.uleb128 0x1
+ 1845 00a3 13       		.uleb128 0x13
+ 1846 00a4 00       		.byte	0
+ 1847 00a5 00       		.byte	0
+ 1848 00a6 0D       		.uleb128 0xd
+ 1849 00a7 34       		.uleb128 0x34
+ 1850 00a8 00       		.byte	0
+ 1851 00a9 03       		.uleb128 0x3
+ 1852 00aa 0E       		.uleb128 0xe
+ 1853 00ab 3A       		.uleb128 0x3a
+ 1854 00ac 0B       		.uleb128 0xb
+ 1855 00ad 3B       		.uleb128 0x3b
+ 1856 00ae 0B       		.uleb128 0xb
+ 1857 00af 49       		.uleb128 0x49
+ 1858 00b0 13       		.uleb128 0x13
+ 1859 00b1 02       		.uleb128 0x2
+ 1860 00b2 18       		.uleb128 0x18
+ 1861 00b3 00       		.byte	0
+ 1862 00b4 00       		.byte	0
+ 1863 00b5 0E       		.uleb128 0xe
+ 1864 00b6 34       		.uleb128 0x34
+ 1865 00b7 00       		.byte	0
+ 1866 00b8 03       		.uleb128 0x3
+ 1867 00b9 08       		.uleb128 0x8
+ 1868 00ba 3A       		.uleb128 0x3a
+ 1869 00bb 0B       		.uleb128 0xb
+ 1870 00bc 3B       		.uleb128 0x3b
+ 1871 00bd 0B       		.uleb128 0xb
+ 1872 00be 49       		.uleb128 0x49
+ 1873 00bf 13       		.uleb128 0x13
+ 1874 00c0 02       		.uleb128 0x2
+ 1875 00c1 18       		.uleb128 0x18
+ 1876 00c2 00       		.byte	0
+ 1877 00c3 00       		.byte	0
+ 1878 00c4 0F       		.uleb128 0xf
+ 1879 00c5 34       		.uleb128 0x34
+ 1880 00c6 00       		.byte	0
+ 1881 00c7 03       		.uleb128 0x3
+ 1882 00c8 08       		.uleb128 0x8
+ 1883 00c9 3A       		.uleb128 0x3a
+ 1884 00ca 0B       		.uleb128 0xb
+ 1885 00cb 3B       		.uleb128 0x3b
+ 1886 00cc 0B       		.uleb128 0xb
+ 1887 00cd 49       		.uleb128 0x49
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 43
+
+
+ 1888 00ce 13       		.uleb128 0x13
+ 1889 00cf 00       		.byte	0
+ 1890 00d0 00       		.byte	0
+ 1891 00d1 10       		.uleb128 0x10
+ 1892 00d2 0B       		.uleb128 0xb
+ 1893 00d3 01       		.byte	0x1
+ 1894 00d4 11       		.uleb128 0x11
+ 1895 00d5 01       		.uleb128 0x1
+ 1896 00d6 12       		.uleb128 0x12
+ 1897 00d7 06       		.uleb128 0x6
+ 1898 00d8 01       		.uleb128 0x1
+ 1899 00d9 13       		.uleb128 0x13
+ 1900 00da 00       		.byte	0
+ 1901 00db 00       		.byte	0
+ 1902 00dc 11       		.uleb128 0x11
+ 1903 00dd 0B       		.uleb128 0xb
+ 1904 00de 01       		.byte	0x1
+ 1905 00df 11       		.uleb128 0x11
+ 1906 00e0 01       		.uleb128 0x1
+ 1907 00e1 12       		.uleb128 0x12
+ 1908 00e2 06       		.uleb128 0x6
+ 1909 00e3 00       		.byte	0
+ 1910 00e4 00       		.byte	0
+ 1911 00e5 12       		.uleb128 0x12
+ 1912 00e6 34       		.uleb128 0x34
+ 1913 00e7 00       		.byte	0
+ 1914 00e8 03       		.uleb128 0x3
+ 1915 00e9 0E       		.uleb128 0xe
+ 1916 00ea 3A       		.uleb128 0x3a
+ 1917 00eb 0B       		.uleb128 0xb
+ 1918 00ec 3B       		.uleb128 0x3b
+ 1919 00ed 05       		.uleb128 0x5
+ 1920 00ee 49       		.uleb128 0x49
+ 1921 00ef 13       		.uleb128 0x13
+ 1922 00f0 02       		.uleb128 0x2
+ 1923 00f1 18       		.uleb128 0x18
+ 1924 00f2 00       		.byte	0
+ 1925 00f3 00       		.byte	0
+ 1926 00f4 13       		.uleb128 0x13
+ 1927 00f5 01       		.uleb128 0x1
+ 1928 00f6 01       		.byte	0x1
+ 1929 00f7 49       		.uleb128 0x49
+ 1930 00f8 13       		.uleb128 0x13
+ 1931 00f9 01       		.uleb128 0x1
+ 1932 00fa 13       		.uleb128 0x13
+ 1933 00fb 00       		.byte	0
+ 1934 00fc 00       		.byte	0
+ 1935 00fd 14       		.uleb128 0x14
+ 1936 00fe 21       		.uleb128 0x21
+ 1937 00ff 00       		.byte	0
+ 1938 0100 49       		.uleb128 0x49
+ 1939 0101 13       		.uleb128 0x13
+ 1940 0102 2F       		.uleb128 0x2f
+ 1941 0103 0B       		.uleb128 0xb
+ 1942 0104 00       		.byte	0
+ 1943 0105 00       		.byte	0
+ 1944 0106 15       		.uleb128 0x15
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 44
+
+
+ 1945 0107 34       		.uleb128 0x34
+ 1946 0108 00       		.byte	0
+ 1947 0109 03       		.uleb128 0x3
+ 1948 010a 0E       		.uleb128 0xe
+ 1949 010b 3A       		.uleb128 0x3a
+ 1950 010c 0B       		.uleb128 0xb
+ 1951 010d 3B       		.uleb128 0x3b
+ 1952 010e 05       		.uleb128 0x5
+ 1953 010f 49       		.uleb128 0x49
+ 1954 0110 13       		.uleb128 0x13
+ 1955 0111 3F       		.uleb128 0x3f
+ 1956 0112 19       		.uleb128 0x19
+ 1957 0113 3C       		.uleb128 0x3c
+ 1958 0114 19       		.uleb128 0x19
+ 1959 0115 00       		.byte	0
+ 1960 0116 00       		.byte	0
+ 1961 0117 16       		.uleb128 0x16
+ 1962 0118 34       		.uleb128 0x34
+ 1963 0119 00       		.byte	0
+ 1964 011a 03       		.uleb128 0x3
+ 1965 011b 0E       		.uleb128 0xe
+ 1966 011c 3A       		.uleb128 0x3a
+ 1967 011d 0B       		.uleb128 0xb
+ 1968 011e 3B       		.uleb128 0x3b
+ 1969 011f 05       		.uleb128 0x5
+ 1970 0120 49       		.uleb128 0x49
+ 1971 0121 13       		.uleb128 0x13
+ 1972 0122 3F       		.uleb128 0x3f
+ 1973 0123 19       		.uleb128 0x19
+ 1974 0124 02       		.uleb128 0x2
+ 1975 0125 18       		.uleb128 0x18
+ 1976 0126 00       		.byte	0
+ 1977 0127 00       		.byte	0
+ 1978 0128 17       		.uleb128 0x17
+ 1979 0129 34       		.uleb128 0x34
+ 1980 012a 00       		.byte	0
+ 1981 012b 03       		.uleb128 0x3
+ 1982 012c 0E       		.uleb128 0xe
+ 1983 012d 3A       		.uleb128 0x3a
+ 1984 012e 0B       		.uleb128 0xb
+ 1985 012f 3B       		.uleb128 0x3b
+ 1986 0130 0B       		.uleb128 0xb
+ 1987 0131 49       		.uleb128 0x49
+ 1988 0132 13       		.uleb128 0x13
+ 1989 0133 3F       		.uleb128 0x3f
+ 1990 0134 19       		.uleb128 0x19
+ 1991 0135 02       		.uleb128 0x2
+ 1992 0136 18       		.uleb128 0x18
+ 1993 0137 00       		.byte	0
+ 1994 0138 00       		.byte	0
+ 1995 0139 18       		.uleb128 0x18
+ 1996 013a 34       		.uleb128 0x34
+ 1997 013b 00       		.byte	0
+ 1998 013c 03       		.uleb128 0x3
+ 1999 013d 08       		.uleb128 0x8
+ 2000 013e 3A       		.uleb128 0x3a
+ 2001 013f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 45
+
+
+ 2002 0140 3B       		.uleb128 0x3b
+ 2003 0141 0B       		.uleb128 0xb
+ 2004 0142 49       		.uleb128 0x49
+ 2005 0143 13       		.uleb128 0x13
+ 2006 0144 3F       		.uleb128 0x3f
+ 2007 0145 19       		.uleb128 0x19
+ 2008 0146 02       		.uleb128 0x2
+ 2009 0147 18       		.uleb128 0x18
+ 2010 0148 00       		.byte	0
+ 2011 0149 00       		.byte	0
+ 2012 014a 00       		.byte	0
+ 2013              		.section	.debug_aranges,"",%progbits
+ 2014 0000 2C000000 		.4byte	0x2c
+ 2015 0004 0200     		.2byte	0x2
+ 2016 0006 00000000 		.4byte	.Ldebug_info0
+ 2017 000a 04       		.byte	0x4
+ 2018 000b 00       		.byte	0
+ 2019 000c 0000     		.2byte	0
+ 2020 000e 0000     		.2byte	0
+ 2021 0010 00000000 		.4byte	.LFB63
+ 2022 0014 38000000 		.4byte	.LFE63-.LFB63
+ 2023 0018 00000000 		.4byte	.LFB64
+ 2024 001c 4C000000 		.4byte	.LFE64-.LFB64
+ 2025 0020 00000000 		.4byte	.LFB65
+ 2026 0024 CC060000 		.4byte	.LFE65-.LFB65
+ 2027 0028 00000000 		.4byte	0
+ 2028 002c 00000000 		.4byte	0
+ 2029              		.section	.debug_ranges,"",%progbits
+ 2030              	.Ldebug_ranges0:
+ 2031 0000 00000000 		.4byte	.LFB63
+ 2032 0004 38000000 		.4byte	.LFE63
+ 2033 0008 00000000 		.4byte	.LFB64
+ 2034 000c 4C000000 		.4byte	.LFE64
+ 2035 0010 00000000 		.4byte	.LFB65
+ 2036 0014 CC060000 		.4byte	.LFE65
+ 2037 0018 00000000 		.4byte	0
+ 2038 001c 00000000 		.4byte	0
+ 2039              		.section	.debug_line,"",%progbits
+ 2040              	.Ldebug_line0:
+ 2041 0000 77020000 		.section	.debug_str,"MS",%progbits,1
+ 2041      02008601 
+ 2041      00000201 
+ 2041      FB0E0D00 
+ 2041      01010101 
+ 2042              	.LASF30:
+ 2043 0000 52455355 		.ascii	"RESURFACE\000"
+ 2043      52464143 
+ 2043      4500
+ 2044              	.LASF28:
+ 2045 000a 44455343 		.ascii	"DESCENDING\000"
+ 2045      454E4449 
+ 2045      4E4700
+ 2046              	.LASF26:
+ 2047 0015 53595354 		.ascii	"SYSTEM_CHECK\000"
+ 2047      454D5F43 
+ 2047      4845434B 
+ 2047      00
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 46
+
+
+ 2048              	.LASF61:
+ 2049 0022 53544154 		.ascii	"STATES\000"
+ 2049      455300
+ 2050              	.LASF42:
+ 2051 0029 73646275 		.ascii	"sdbuf\000"
+ 2051      6600
+ 2052              	.LASF46:
+ 2053 002f 41646472 		.ascii	"Addr\000"
+ 2053      00
+ 2054              	.LASF44:
+ 2055 0034 64657641 		.ascii	"devAddr\000"
+ 2055      64647200 
+ 2056              	.LASF29:
+ 2057 003c 4C414E44 		.ascii	"LANDED\000"
+ 2057      454400
+ 2058              	.LASF62:
+ 2059 0043 6D61696E 		.ascii	"main\000"
+ 2059      00
+ 2060              	.LASF8:
+ 2061 0048 5F5F7569 		.ascii	"__uint32_t\000"
+ 2061      6E743332 
+ 2061      5F7400
+ 2062              	.LASF55:
+ 2063 0053 66696C65 		.ascii	"file\000"
+ 2063      00
+ 2064              	.LASF4:
+ 2065 0058 73686F72 		.ascii	"short int\000"
+ 2065      7420696E 
+ 2065      7400
+ 2066              	.LASF48:
+ 2067 0062 61766572 		.ascii	"average\000"
+ 2067      61676500 
+ 2068              	.LASF13:
+ 2069 006a 75696E74 		.ascii	"uint8_t\000"
+ 2069      385F7400 
+ 2070              	.LASF18:
+ 2071 0072 696E7431 		.ascii	"int16\000"
+ 2071      3600
+ 2072              	.LASF41:
+ 2073 0078 70726573 		.ascii	"pressure\000"
+ 2073      73757265 
+ 2073      00
+ 2074              	.LASF38:
+ 2075 0081 64656369 		.ascii	"decimals\000"
+ 2075      6D616C73 
+ 2075      00
+ 2076              	.LASF19:
+ 2077 008a 666C6F61 		.ascii	"float\000"
+ 2077      7400
+ 2078              	.LASF40:
+ 2079 0090 74656D70 		.ascii	"temp\000"
+ 2079      00
+ 2080              	.LASF10:
+ 2081 0095 6C6F6E67 		.ascii	"long long int\000"
+ 2081      206C6F6E 
+ 2081      6720696E 
+ 2081      7400
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 47
+
+
+ 2082              	.LASF31:
+ 2083 00a3 5452414E 		.ascii	"TRANSMIT\000"
+ 2083      534D4954 
+ 2083      00
+ 2084              	.LASF58:
+ 2085 00ac 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2085      4320342E 
+ 2085      392E3320 
+ 2085      32303135 
+ 2085      30333033 
+ 2086 00df 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2086      20726576 
+ 2086      6973696F 
+ 2086      6E203232 
+ 2086      31323230 
+ 2087 0112 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2087      66756E63 
+ 2087      74696F6E 
+ 2087      2D736563 
+ 2087      74696F6E 
+ 2088              	.LASF39:
+ 2089 013a 766F6C74 		.ascii	"voltage\000"
+ 2089      61676500 
+ 2090              	.LASF56:
+ 2091 0142 766F6C75 		.ascii	"volume\000"
+ 2091      6D6500
+ 2092              	.LASF2:
+ 2093 0149 5F5F7569 		.ascii	"__uint8_t\000"
+ 2093      6E74385F 
+ 2093      7400
+ 2094              	.LASF32:
+ 2095 0153 4552524F 		.ascii	"ERROR\000"
+ 2095      5200
+ 2096              	.LASF25:
+ 2097 0159 6C6F6E67 		.ascii	"long double\000"
+ 2097      20646F75 
+ 2097      626C6500 
+ 2098              	.LASF27:
+ 2099 0165 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
+ 2099      5F544F5F 
+ 2099      4C41554E 
+ 2099      434800
+ 2100              	.LASF1:
+ 2101 0174 756E7369 		.ascii	"unsigned char\000"
+ 2101      676E6564 
+ 2101      20636861 
+ 2101      7200
+ 2102              	.LASF24:
+ 2103 0182 46535F46 		.ascii	"FS_FILE\000"
+ 2103      494C4500 
+ 2104              	.LASF54:
+ 2105 018a 636F756E 		.ascii	"countdown\000"
+ 2105      74646F77 
+ 2105      6E00
+ 2106              	.LASF0:
+ 2107 0194 7369676E 		.ascii	"signed char\000"
+ 2107      65642063 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 48
+
+
+ 2107      68617200 
+ 2108              	.LASF11:
+ 2109 01a0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2109      206C6F6E 
+ 2109      6720756E 
+ 2109      7369676E 
+ 2109      65642069 
+ 2110              	.LASF16:
+ 2111 01b7 75696E74 		.ascii	"uint32_t\000"
+ 2111      33325F74 
+ 2111      00
+ 2112              	.LASF47:
+ 2113 01c0 64617461 		.ascii	"data_time\000"
+ 2113      5F74696D 
+ 2113      6500
+ 2114              	.LASF12:
+ 2115 01ca 756E7369 		.ascii	"unsigned int\000"
+ 2115      676E6564 
+ 2115      20696E74 
+ 2115      00
+ 2116              	.LASF53:
+ 2117 01d7 74657374 		.ascii	"testnum\000"
+ 2117      6E756D00 
+ 2118              	.LASF5:
+ 2119 01df 73686F72 		.ascii	"short unsigned int\000"
+ 2119      7420756E 
+ 2119      7369676E 
+ 2119      65642069 
+ 2119      6E7400
+ 2120              	.LASF21:
+ 2121 01f2 63686172 		.ascii	"char\000"
+ 2121      00
+ 2122              	.LASF7:
+ 2123 01f7 6C6F6E67 		.ascii	"long int\000"
+ 2123      20696E74 
+ 2123      00
+ 2124              	.LASF15:
+ 2125 0200 696E7433 		.ascii	"int32_t\000"
+ 2125      325F7400 
+ 2126              	.LASF60:
+ 2127 0208 433A5C55 		.ascii	"C:\\Users\\jwgutter\\Documents\\O-Vac\\OVac.cydsn\000"
+ 2127      73657273 
+ 2127      5C6A7767 
+ 2127      75747465 
+ 2127      725C446F 
+ 2128              	.LASF14:
+ 2129 0235 696E7431 		.ascii	"int16_t\000"
+ 2129      365F7400 
+ 2130              	.LASF17:
+ 2131 023d 75696E74 		.ascii	"uint8\000"
+ 2131      3800
+ 2132              	.LASF50:
+ 2133 0243 5F426F6F 		.ascii	"_Bool\000"
+ 2133      6C00
+ 2134              	.LASF36:
+ 2135 0249 63757253 		.ascii	"curState\000"
+ 2135      74617465 
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 49
+
+
+ 2135      00
+ 2136              	.LASF37:
+ 2137 0252 7A5F6F66 		.ascii	"z_offset\000"
+ 2137      66736574 
+ 2137      00
+ 2138              	.LASF45:
+ 2139 025b 62756666 		.ascii	"buffer\000"
+ 2139      657200
+ 2140              	.LASF34:
+ 2141 0262 436F756E 		.ascii	"Countdown_ISR_Handler\000"
+ 2141      74646F77 
+ 2141      6E5F4953 
+ 2141      525F4861 
+ 2141      6E646C65 
+ 2142              	.LASF59:
+ 2143 0278 6D61696E 		.ascii	"main.c\000"
+ 2143      2E6300
+ 2144              	.LASF22:
+ 2145 027f 72656738 		.ascii	"reg8\000"
+ 2145      00
+ 2146              	.LASF9:
+ 2147 0284 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2147      20756E73 
+ 2147      69676E65 
+ 2147      6420696E 
+ 2147      7400
+ 2148              	.LASF20:
+ 2149 0296 646F7562 		.ascii	"double\000"
+ 2149      6C6500
+ 2150              	.LASF6:
+ 2151 029d 5F5F696E 		.ascii	"__int32_t\000"
+ 2151      7433325F 
+ 2151      7400
+ 2152              	.LASF3:
+ 2153 02a7 5F5F696E 		.ascii	"__int16_t\000"
+ 2153      7431365F 
+ 2153      7400
+ 2154              	.LASF23:
+ 2155 02b1 73697A65 		.ascii	"sizetype\000"
+ 2155      74797065 
+ 2155      00
+ 2156              	.LASF52:
+ 2157 02ba 53544154 		.ascii	"STATE\000"
+ 2157      4500
+ 2158              	.LASF35:
+ 2159 02c0 6F757470 		.ascii	"output\000"
+ 2159      757400
+ 2160              	.LASF49:
+ 2161 02c7 636F6C6C 		.ascii	"collect_flag\000"
+ 2161      6563745F 
+ 2161      666C6167 
+ 2161      00
+ 2162              	.LASF43:
+ 2163 02d4 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2163      52784275 
+ 2163      66666572 
+ 2163      00
+ARM GAS  C:\Users\jwgutter\AppData\Local\Temp\ccIJRkTO.s 			page 50
+
+
+ 2164              	.LASF51:
+ 2165 02e1 77616974 		.ascii	"wait_flag\000"
+ 2165      5F666C61 
+ 2165      6700
+ 2166              	.LASF33:
+ 2167 02eb 53616D70 		.ascii	"Sample_ISR_Handler\000"
+ 2167      6C655F49 
+ 2167      53525F48 
+ 2167      616E646C 
+ 2167      657200
+ 2168              	.LASF57:
+ 2169 02fe 66736669 		.ascii	"fsfile\000"
+ 2169      6C6500
+ 2170              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
