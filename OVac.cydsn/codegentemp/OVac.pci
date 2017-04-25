@@ -1,5 +1,5 @@
 # OVac
-# 2017-04-24 05:09:01Z
+# 2017-04-25 02:27:02Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -19,4 +19,7 @@ set_io "\emFile:SPI0_CS(0)\" iocell 3 7
 set_io "LED2(0)" iocell 12 6
 set_io "LED2_1(0)" iocell 2 1
 set_io "Solenoid_2(0)" iocell 1 5
+set_io "M_Pin(0)" iocell 1 2
+set_io "Reset(0)" iocell 2 2
 set_location "\ADC:DSM\" dsmodcell -1 -1 0
+set_location "\Comp:ctComp\" comparatorcell -1 -1 3

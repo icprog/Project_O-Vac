@@ -9,6 +9,7 @@
   <Data key="DataVersionKey" value="1" />
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
+      <Data key="2d48f498-f7bf-449c-9f8c-6ee8e3e3e2e8" value="Reset" />
       <Data key="02f2cf2c-2c7a-49df-9246-7a3435c21be3" value="SCL" />
       <Data key="4aca01e7-38ba-4c48-b7e2-1080606884cf" value="Solenoid_2" />
       <Data key="06ee4de4-e131-4b99-b386-a2a3e764564d/6df85302-e45f-45fb-97de-4bdf3128e07b" value="emFile_SPI0_CS" />
@@ -23,6 +24,8 @@
       <Data key="64730f14-e8b9-4cc5-b238-09742c8930c1" value="LED2" />
       <Data key="89373ea0-d317-4130-bd17-5d3cefcdeec3/77253644-2d29-412d-87e5-52485cd7a6d7" value="LCD_LCDPort" />
       <Data key="89373ea0-d317-4130-bd17-5d3cefcdeec3/ed092b9b-d398-4703-be89-cebf998501f6" value="LCD_LCDPort" />
+      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="M_Pin" />
+      <Data key="a8825712-59b4-40f8-8708-8ef9d845a9cc" value="Reset" />
       <Data key="cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada" value="ADC_in" />
       <Data key="ccfe27d4-70ee-42dc-a422-0465741d6615" value="LED7" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Solenoid_1" />
@@ -30,6 +33,11 @@
     </Group>
   </Group>
   <Group key="Pin2">
+    <Group key="2d48f498-f7bf-449c-9f8c-6ee8e3e3e2e8">
+      <Group key="0">
+        <Data key="Port Format" value="2,2" />
+      </Group>
+    </Group>
     <Group key="02f2cf2c-2c7a-49df-9246-7a3435c21be3">
       <Group key="0">
         <Data key="Port Format" value="12,4" />
@@ -134,6 +142,16 @@
       </Group>
       <Group key="6">
         <Data key="Port Format" value="12,6" />
+      </Group>
+    </Group>
+    <Group key="77715107-f8d5-47e5-a629-0fb83101ac6b">
+      <Group key="0">
+        <Data key="Port Format" value="1,2" />
+      </Group>
+    </Group>
+    <Group key="a8825712-59b4-40f8-8708-8ef9d845a9cc">
+      <Group key="0">
+        <Data key="Port Format" value="2,2" />
       </Group>
     </Group>
     <Group key="cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada">

@@ -1,12 +1,12 @@
-Loading plugins phase: Elapsed time ==> 0s.350ms
+Loading plugins phase: Elapsed time ==> 0s.524ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -d CY8C5868LTI-LP039 -s C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -d CY8C5868LTI-LP039 -s C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.883ms
+Elaboration phase: Elapsed time ==> 2s.597ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.131ms
+HDL generation phase: Elapsed time ==> 0s.171ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -24,23 +24,23 @@ HDL generation phase: Elapsed time ==> 0s.131ms
 ======================================================================
 Compiling:  OVac.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  OVac.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  OVac.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Apr 23 22:08:59 2017
+Mon Apr 24 19:26:58 2017
 
 
 ======================================================================
@@ -50,7 +50,7 @@ Options  :    -yv2 -q10 OVac.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Apr 23 22:08:59 2017
+Mon Apr 24 19:26:58 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
@@ -65,6 +65,8 @@ Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\ps
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_70\cy_vref_v1_70.v'
 
 vpp:  No errors.
 
@@ -92,11 +94,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  OVac.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Apr 23 22:09:00 2017
+Mon Apr 24 19:26:58 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -107,9 +109,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\codegentemp\OVac.ctl'.
+Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\codegentemp\OVac.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\codegentemp\OVac.v'.
+Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\codegentemp\OVac.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'.
@@ -120,6 +122,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_40\B_SPI_Master_v2_40.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_70\cy_vref_v1_70.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
@@ -129,11 +133,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  OVac.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 -verilog OVac.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Apr 23 22:09:00 2017
+Mon Apr 24 19:26:58 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -144,9 +148,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\codegentemp\OVac.ctl'.
+Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\codegentemp\OVac.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\codegentemp\OVac.v'.
+Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\codegentemp\OVac.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'.
@@ -157,6 +161,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_40\B_SPI_Master_v2_40.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_70\cy_vref_v1_70.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\lcpsoc3\stdlogic\cpsoc3.vif'.
@@ -218,9 +224,10 @@ Detecting unused logic.
 	Net_124
 	\adjust_timer:Net_102\
 	\adjust_timer:Net_266\
+	\Comp:Net_9\
 
 
-Deleted 53 User equations/components.
+Deleted 54 User equations/components.
 Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -269,6 +276,8 @@ Aliasing \adjust_timer:TimerUDB:status_5\ to zero
 Aliasing \adjust_timer:TimerUDB:status_4\ to zero
 Aliasing \adjust_timer:TimerUDB:status_0\ to \adjust_timer:TimerUDB:tc_i\
 Aliasing tmpOE__Solenoid_2_net_0 to \ADC:soc\
+Aliasing tmpOE__M_Pin_net_0 to \ADC:soc\
+Aliasing tmpOE__Reset_net_0 to \ADC:soc\
 Aliasing \emFile:SPI0:BSPIM:so_send_reg\\D\ to zero
 Aliasing \emFile:SPI0:BSPIM:dpcounter_one_reg\\D\ to \emFile:SPI0:BSPIM:load_rx_data\
 Aliasing \Countdown_timer:TimerUDB:capture_last\\D\ to zero
@@ -367,21 +376,24 @@ Removing Lhs of wire \adjust_timer:TimerUDB:cs_addr_2\[562] = zero[10]
 Removing Lhs of wire \adjust_timer:TimerUDB:cs_addr_1\[563] = \adjust_timer:TimerUDB:trig_reg\[551]
 Removing Lhs of wire \adjust_timer:TimerUDB:cs_addr_0\[564] = \adjust_timer:TimerUDB:per_zero\[543]
 Removing Lhs of wire tmpOE__Solenoid_2_net_0[742] = tmpOE__ADC_in_net_0[57]
-Removing Lhs of wire \emFile:SPI0:BSPIM:so_send_reg\\D\[747] = zero[10]
-Removing Lhs of wire \emFile:SPI0:BSPIM:mosi_reg\\D\[754] = \emFile:SPI0:BSPIM:mosi_pre_reg\[158]
-Removing Lhs of wire \emFile:SPI0:BSPIM:dpcounter_one_reg\\D\[756] = \emFile:SPI0:BSPIM:load_rx_data\[134]
-Removing Lhs of wire \emFile:SPI0:BSPIM:mosi_from_dp_reg\\D\[757] = \emFile:SPI0:BSPIM:mosi_from_dp\[148]
-Removing Lhs of wire \Countdown_timer:TimerUDB:capture_last\\D\[761] = zero[10]
-Removing Lhs of wire \Countdown_timer:TimerUDB:tc_reg_i\\D\[762] = \Countdown_timer:TimerUDB:status_tc\[299]
-Removing Lhs of wire \Countdown_timer:TimerUDB:hwEnable_reg\\D\[763] = \Countdown_timer:TimerUDB:control_7\[277]
-Removing Lhs of wire \Countdown_timer:TimerUDB:capture_out_reg_i\\D\[764] = \Countdown_timer:TimerUDB:capt_fifo_load\[295]
-Removing Lhs of wire \adjust_timer:TimerUDB:capture_last\\D\[765] = zero[10]
-Removing Lhs of wire \adjust_timer:TimerUDB:tc_reg_i\\D\[766] = \adjust_timer:TimerUDB:status_tc\[541]
-Removing Lhs of wire \adjust_timer:TimerUDB:hwEnable_reg\\D\[767] = \adjust_timer:TimerUDB:control_7\[519]
-Removing Lhs of wire \adjust_timer:TimerUDB:capture_out_reg_i\\D\[768] = \adjust_timer:TimerUDB:capt_fifo_load\[537]
+Removing Rhs of wire Net_179[752] = \Comp:Net_1\[751]
+Removing Lhs of wire tmpOE__M_Pin_net_0[758] = tmpOE__ADC_in_net_0[57]
+Removing Lhs of wire tmpOE__Reset_net_0[764] = tmpOE__ADC_in_net_0[57]
+Removing Lhs of wire \emFile:SPI0:BSPIM:so_send_reg\\D\[769] = zero[10]
+Removing Lhs of wire \emFile:SPI0:BSPIM:mosi_reg\\D\[776] = \emFile:SPI0:BSPIM:mosi_pre_reg\[158]
+Removing Lhs of wire \emFile:SPI0:BSPIM:dpcounter_one_reg\\D\[778] = \emFile:SPI0:BSPIM:load_rx_data\[134]
+Removing Lhs of wire \emFile:SPI0:BSPIM:mosi_from_dp_reg\\D\[779] = \emFile:SPI0:BSPIM:mosi_from_dp\[148]
+Removing Lhs of wire \Countdown_timer:TimerUDB:capture_last\\D\[783] = zero[10]
+Removing Lhs of wire \Countdown_timer:TimerUDB:tc_reg_i\\D\[784] = \Countdown_timer:TimerUDB:status_tc\[299]
+Removing Lhs of wire \Countdown_timer:TimerUDB:hwEnable_reg\\D\[785] = \Countdown_timer:TimerUDB:control_7\[277]
+Removing Lhs of wire \Countdown_timer:TimerUDB:capture_out_reg_i\\D\[786] = \Countdown_timer:TimerUDB:capt_fifo_load\[295]
+Removing Lhs of wire \adjust_timer:TimerUDB:capture_last\\D\[787] = zero[10]
+Removing Lhs of wire \adjust_timer:TimerUDB:tc_reg_i\\D\[788] = \adjust_timer:TimerUDB:status_tc\[541]
+Removing Lhs of wire \adjust_timer:TimerUDB:hwEnable_reg\\D\[789] = \adjust_timer:TimerUDB:control_7\[519]
+Removing Lhs of wire \adjust_timer:TimerUDB:capture_out_reg_i\\D\[790] = \adjust_timer:TimerUDB:capt_fifo_load\[537]
 
 ------------------------------------------------------
-Aliased 0 equations, 102 wires.
+Aliased 0 equations, 105 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -462,16 +474,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -dcpsoc3 OVac.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.248ms
+Warp synthesis phase: Elapsed time ==> 1s.167ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Sunday, 23 April 2017 22:09:00
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jwgutter\Documents\O-Vac\Project_O-Vac\OVac.cydsn\OVac.cyprj -d CY8C5868LTI-LP039 OVac.v -verilog
+cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Monday, 24 April 2017 19:26:59
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\OVac.cyprj -d CY8C5868LTI-LP039 OVac.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.025ms
+Design parsing phase: Elapsed time ==> 0s.112ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -483,6 +495,7 @@ Design parsing phase: Elapsed time ==> 0s.025ms
 Assigning clock I2C_Master_BusClock to clock BUS_CLK because it is a pass-through
 Assigning clock timer_clock to clock BUS_CLK because it is a pass-through
 Assigning clock timer_clock_1 to clock BUS_CLK because it is a pass-through
+Assigning clock Clock_2 to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Digital Clock 0: Automatic-assigning  clock 'emFile_Clock_1'. Fanout=1, Signal=\emFile:Net_19\
     Digital Clock 1: Automatic-assigning  clock 'ADC_Ext_CP_Clk'. Fanout=1, Signal=\ADC:Net_93\
@@ -1005,6 +1018,85 @@ Design Equations
         PORT MAP (
             pa_out => Solenoid_2(0)__PA ,
             pad => Solenoid_2(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = M_Pin(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_ANALOG
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: True
+            Can contain Digital: False
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: ANALOG
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => M_Pin(0)__PA ,
+            analog_term => Net_178 ,
+            pad => M_Pin(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = Reset(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => Reset(0)__PA ,
+            pad => Reset(0)_PAD );
         Properties:
         {
         }
@@ -1891,6 +1983,15 @@ Design Equations
             int_type = "10"
             is_nmi = 0
         }
+
+    interrupt: Name =moisture_isr
+        PORT MAP (
+            interrupt => Net_179 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
     </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Technology mapping summary" expanded>
@@ -1905,8 +2006,8 @@ Digital Clocks                :    3 :    5 :    8 : 37.50 %
 Analog Clocks                 :    1 :    3 :    4 : 25.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :    4 :   28 :   32 : 12.50 %
-IO                            :   15 :   33 :   48 : 31.25 %
+Interrupts                    :    5 :   27 :   32 : 15.63 %
+IO                            :   17 :   31 :   48 : 35.42 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
 I2C                           :    1 :    0 :    1 : 100.00 %
@@ -1925,7 +2026,7 @@ UDB                           :      :      :      :
     Control Registers         :    2 :      :      :        
     Count7 Cells              :    1 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
-Comparator                    :    0 :    4 :    4 :  0.00 %
+Comparator                    :    1 :    3 :    4 : 25.00 %
 Delta-Sigma ADC               :    1 :    0 :    1 : 100.00 %
 LPF                           :    0 :    2 :    2 :  0.00 %
 SAR ADC                       :    0 :    2 :    2 :  0.00 %
@@ -1933,8 +2034,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.040ms
-Tech Mapping phase: Elapsed time ==> 0s.128ms
+Technology Mapping: Elapsed time ==> 0s.368ms
+Tech Mapping phase: Elapsed time ==> 0s.665ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_35\" is connected to one terminal only. (App=cydsfit)
@@ -1943,6 +2044,8 @@ IO_6@[IOP=(1)][IoId=(6)] : ADC_in(0) (fixed)
 IO_6@[IOP=(12)][IoId=(6)] : LED2(0) (fixed)
 IO_1@[IOP=(2)][IoId=(1)] : LED2_1(0) (fixed)
 IO_7@[IOP=(12)][IoId=(7)] : LED7(0) (fixed)
+IO_2@[IOP=(1)][IoId=(2)] : M_Pin(0) (fixed)
+IO_2@[IOP=(2)][IoId=(2)] : Reset(0) (fixed)
 IO_4@[IOP=(12)][IoId=(4)] : SCL(0) (fixed)
 IO_5@[IOP=(12)][IoId=(5)] : SDA(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : Solenoid_1(0) (fixed)
@@ -1953,11 +2056,17 @@ IO_6@[IOP=(3)][IoId=(6)] : \emFile:mosi0(0)\ (fixed)
 IO_5@[IOP=(3)][IoId=(5)] : \emFile:sclk0(0)\ (fixed)
 DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
+Comparator[1]@[FFB(Comparator,1)] : \Comp:ctComp\
+Vref[3]@[FFB(Vref,3)] : vRef_1
+Log: apr.M0058: The analog placement iterative improvement is 49% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 76% done. (App=cydsfit)
 Analog Placement Results:
 IO_6@[IOP=(1)][IoId=(6)] : ADC_in(0) (fixed)
 IO_6@[IOP=(12)][IoId=(6)] : LED2(0) (fixed)
 IO_1@[IOP=(2)][IoId=(1)] : LED2_1(0) (fixed)
 IO_7@[IOP=(12)][IoId=(7)] : LED7(0) (fixed)
+IO_2@[IOP=(1)][IoId=(2)] : M_Pin(0) (fixed)
+IO_2@[IOP=(2)][IoId=(2)] : Reset(0) (fixed)
 IO_4@[IOP=(12)][IoId=(4)] : SCL(0) (fixed)
 IO_5@[IOP=(12)][IoId=(5)] : SDA(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : Solenoid_1(0) (fixed)
@@ -1968,11 +2077,13 @@ IO_6@[IOP=(3)][IoId=(6)] : \emFile:mosi0(0)\ (fixed)
 IO_5@[IOP=(3)][IoId=(5)] : \emFile:sclk0(0)\ (fixed)
 DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
+Comparator[3]@[FFB(Comparator,3)] : \Comp:ctComp\
+Vref[3]@[FFB(Vref,3)] : vRef_1
 
-Analog Placement phase: Elapsed time ==> 0s.038ms
+Analog Placement phase: Elapsed time ==> 1s.617ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.002ms
+Analog Routing phase: Elapsed time ==> 0s.024ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -1995,6 +2106,13 @@ Map of net to items {
     agr2_x_p1_6
     p1_6
   }
+  Net: Net_178 {
+    comp_3_vplus
+    amuxbusr_x_comp_3_vplus
+    amuxbusr
+    amuxbusr_x_p1_2
+    p1_2
+  }
   Net: \ADC:Net_249\ {
   }
   Net: \ADC:Net_257\ {
@@ -2002,6 +2120,12 @@ Map of net to items {
   Net: \ADC:Net_109\ {
   }
   Net: \ADC:Net_34\ {
+  }
+  Net: Net_180 {
+    common_vref_1024
+    comp_13_vref_1024
+    comp_13_vref_1024_x_comp_3_vminus
+    comp_3_vminus
   }
   Net: AmuxNet::\ADC:AMux\ {
     dsm_0_vminus
@@ -2018,6 +2142,15 @@ Map of item to net {
   agr2                                             -> Net_19
   agr2_x_p1_6                                      -> Net_19
   p1_6                                             -> Net_19
+  comp_3_vplus                                     -> Net_178
+  amuxbusr_x_comp_3_vplus                          -> Net_178
+  amuxbusr                                         -> Net_178
+  amuxbusr_x_p1_2                                  -> Net_178
+  p1_2                                             -> Net_178
+  common_vref_1024                                 -> Net_180
+  comp_13_vref_1024                                -> Net_180
+  comp_13_vref_1024_x_comp_3_vminus                -> Net_180
+  comp_3_vminus                                    -> Net_180
   dsm_0_vminus                                     -> \ADC:Net_20\
   common_vssa                                      -> \ADC:Net_244\
   dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\ADC:AMux\
@@ -2054,11 +2187,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.314ms
+Analog Code Generation phase: Elapsed time ==> 0s.438ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.4 sec.
+I2076: Total run-time: 1.7 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -2082,14 +2215,14 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.036ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.054ms
+Partitioning: Elapsed time ==> 0s.200ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -3078,6 +3211,15 @@ Intr container @ [IntrContainer=(0)]:
             int_type = "10"
             is_nmi = 0
         }
+  Intr@ [IntrContainer=(0)][IntrId=(1)] 
+    interrupt: Name =moisture_isr
+        PORT MAP (
+            interrupt => Net_179 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
   Intr@ [IntrContainer=(0)][IntrId=(15)] 
     interrupt: Name =\I2C_Master:I2C_IRQ\
         PORT MAP (
@@ -3108,6 +3250,47 @@ Intr container @ [IntrContainer=(0)]:
 Drq container @ [DrqContainer=(0)]: empty
 Port 0 is empty
 Port 1 contains the following IO cells:
+[IoId=2]: 
+Pin : Name = M_Pin(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => M_Pin(0)__PA ,
+        analog_term => Net_178 ,
+        pad => M_Pin(0)_PAD );
+    Properties:
+    {
+    }
+
 [IoId=5]: 
 Pin : Name = Solenoid_2(0)
     Attributes:
@@ -3266,6 +3449,46 @@ Pin : Name = LED2_1(0)
     PORT MAP (
         pa_out => LED2_1(0)__PA ,
         pad => LED2_1(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=2]: 
+Pin : Name = Reset(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Reset(0)__PA ,
+        pad => Reset(0)_PAD );
     Properties:
     {
     }
@@ -3632,7 +3855,18 @@ Clock group 0:
         Properties:
         {
         }
-Comparator group 0: empty
+Comparator group 0: 
+    Comparator Block @ F(Comparator,3): 
+    comparatorcell: Name =\Comp:ctComp\
+        PORT MAP (
+            vplus => Net_178 ,
+            vminus => Net_180 ,
+            clk_udb => ClockBlock_BUS_CLK_local ,
+            out => Net_179 );
+        Properties:
+        {
+            cy_registers = ""
+        }
 Digital Filter Block group 0: empty
 Delta-Sigma ADC group 0: 
     DS Modulator @ F(DSM,0): 
@@ -3720,6 +3954,17 @@ VIDAC group 0: empty
 Opamp group 0: empty
 CapSense Buffers group 0: empty
 Vref group 0: 
+    Vref Block @ F(Vref,3): 
+    vrefcell: Name =vRef_1
+        PORT MAP (
+            vout => Net_180 );
+        Properties:
+        {
+            autoenable = 1
+            guid = "89B398AD-36A8-4627-9212-707F2986319E"
+            ignoresleep = 0
+            name = "1.024V"
+        }
     Vref Block @ F(Vref,6): 
     vrefcell: Name =\ADC:vRef_2\
         PORT MAP (
@@ -3760,11 +4005,13 @@ Port Configuration report
      |     |       | Interrupt |                  |                     | 
 Port | Pin | Fixed |      Type |       Drive Mode |                Name | Connections
 -----+-----+-------+-----------+------------------+---------------------+---------------------------------------------------------
-   1 |   5 |     * |      NONE |         CMOS_OUT |       Solenoid_2(0) | 
+   1 |   2 |     * |      NONE |      HI_Z_ANALOG |            M_Pin(0) | Analog(Net_178)
+     |   5 |     * |      NONE |         CMOS_OUT |       Solenoid_2(0) | 
      |   6 |     * |      NONE |      HI_Z_ANALOG |           ADC_in(0) | Analog(Net_19)
      |   7 |     * |      NONE |         CMOS_OUT |       Solenoid_1(0) | 
 -----+-----+-------+-----------+------------------+---------------------+---------------------------------------------------------
    2 |   1 |     * |      NONE |         CMOS_OUT |           LED2_1(0) | 
+     |   2 |     * |      NONE |      RES_PULL_UP |            Reset(0) | 
 -----+-----+-------+-----------+------------------+---------------------+---------------------------------------------------------
    3 |   4 |     * |      NONE |     HI_Z_DIGITAL |   \emFile:miso0(0)\ | FB(\emFile:Net_16\)
      |   5 |     * |      NONE |         CMOS_OUT |   \emFile:sclk0(0)\ | In(\emFile:Net_22\)
@@ -3779,32 +4026,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |                Name | Connec
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.002ms
-Digital Placement phase: Elapsed time ==> 1s.724ms
+Digital component placer commit/Report: Elapsed time ==> 0s.026ms
+Digital Placement phase: Elapsed time ==> 2s.672ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.992ms
+Digital Routing phase: Elapsed time ==> 2s.353ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.189ms
+Bitstream Generation phase: Elapsed time ==> 0s.508ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.039ms
+Bitstream Verification phase: Elapsed time ==> 0s.116ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in OVac_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.473ms
+Static timing analysis phase: Elapsed time ==> 0s.553ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.000ms
+Data reporting phase: Elapsed time ==> 0s.004ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.226ms
+Design database save phase: Elapsed time ==> 0s.283ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 5s.176ms
+cydsfit: Elapsed time ==> 9s.422ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 5s.177ms
-API generation phase: Elapsed time ==> 1s.858ms
-Dependency generation phase: Elapsed time ==> 0s.016ms
-Cleanup phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 9s.432ms
+API generation phase: Elapsed time ==> 2s.108ms
+Dependency generation phase: Elapsed time ==> 0s.039ms
+Cleanup phase: Elapsed time ==> 0s.004ms

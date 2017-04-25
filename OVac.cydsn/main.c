@@ -37,7 +37,7 @@
 
 #define MPU6050 
 #define LCD
-#define SD
+//#define SD
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
@@ -65,6 +65,7 @@ long sum = 0;                               // Sum of accelerometer values.
 int16_t average = 0;                        // Moving average variable.
 bool collect_flag = 0;                      // flag indicating when to record acceleration sample.
 bool wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+bool PANIC_flag = 0;                        // flag indicating water is present in housing.
 //bool first_test = 1;                        // flag indicating first test(longer countdown)
 enum STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
 uint8_t testnum = 1, countdown = 0;
@@ -93,6 +94,27 @@ FS_FILE *fsfile;
 *  None.
 *
 *******************************************************************************/
+/* Reset funciton*/
+void Reset_system(){
+    id = 1;                                // Interrupt count.
+    data_time = 0;                        // data point num
+
+    sum = 0;                               // Sum of accelerometer values. 
+    average = 0;                        // Moving average variable.
+    collect_flag = 0;                      // flag indicating when to record acceleration sample.
+    wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+    PANIC_flag = 0;                        // flag indicating water is present in housing.
+//bool first_test = 1;                        // flag indicating first test(longer countdown)
+    STATE = WAIT_TO_LAUNCH;             // Set initial state. 
+    testnum = 1, countdown = 0;
+}
+
+/* Moisture sensor ISR */
+CY_ISR (Moisture_ISR_Handler){
+    PANIC_flag = 1;                             // Set flag to indicate water
+    STATE = RESURFACE;                          // Go to surface
+    Comp_Stop();                                // Stop comparator for interrupt
+}
 
 /* Sampling ISR */
 CY_ISR (Sample_ISR_Handler){
@@ -104,6 +126,7 @@ CY_ISR (Sample_ISR_Handler){
     }
 }
 
+/* Countdown ISR*/
 CY_ISR (Countdown_ISR_Handler){
     
     Countdown_timer_STATUS;                        //Clears interrupt by accessing timer status register
@@ -133,6 +156,8 @@ int main()
     ADC_Start();
     Sample_Timer_Start();                       //start timer module
     Sample_ISR_StartEx(Sample_ISR_Handler);     //reference ISR function
+    //moisture_isr_StartEx(Moisture_ISR_Handler); //moisture isr start
+    Comp_Start();                               //comparator for moisture start
     
     
     #ifdef LCD
@@ -220,6 +245,8 @@ int main()
     
     for(;;)
     {       
+        if (Reset_Read())
+            Reset_system();
         if(ADC_IsEndConversion(ADC_RETURN_STATUS))
         {
             char pressure[50];
@@ -371,11 +398,13 @@ int main()
                 
             case RESURFACE:
                 //CyDelay(4000u);
+                if (PANIC_flag)
+                    LCD_print("WATER DETECTED");
                 Solenoid_2_Write(1); //turn on solendiod 2
                 CyDelay(15000u);
                 Solenoid_2_Write(0); //turn off solenoid 2
                 //check pressure sensor to confirm we are at the surface
-                CyDelay(10000u);                                //wait 10 seconds to lift, for testing in pool
+                CyDelay(5000u);                                //wait 10 seconds to lift, for testing in pool
                 STATE = TRANSMIT;
                 #ifdef LCD
                     setCursor(0,0);
@@ -383,10 +412,10 @@ int main()
                     LCD_print("TRANSMIT");  
                 #endif
                 #ifdef SD
-                            memset(sdbuf, 0, 40);
-                            sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
-                            FS_Write(fsfile, sdbuf, strlen(sdbuf));
-                    #endif
+                    memset(sdbuf, 0, 40);
+                    sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
+                    FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                #endif
                 break;
             case TRANSMIT:
                 LED2_Write(1);
