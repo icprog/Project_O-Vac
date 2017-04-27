@@ -35,26 +35,15 @@
 #include "LiquidCrystal_I2C.h"
 #include "functions.h"
 
-#define MPU6050 
-#define LCD
+//#define MPU6050 
+//#define LCD
 //#define SD
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
 #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING state.
 #define DATA_TIME 5000                  // Number of ISR calls until transition into WAIT_TO_LAUNCH state.
-
-
-/*State Declarations*/
-enum STATES{
-SYSTEM_CHECK, 
-WAIT_TO_LAUNCH,
-DESCENDING,
-LANDED,
-RESURFACE,
-TRANSMIT,
-ERROR
-};
+#define BUFFER_LEN  64u                 // Buffer length for UART rx
 
 
 uint32_t Addr = 0x3F;                       // I2C address of LCD.
@@ -67,8 +56,10 @@ bool collect_flag = 0;                      // flag indicating when to record ac
 bool wait_flag = 0;                         // flag indicating when to increment interrupt counter.
 bool PANIC_flag = 0;                        // flag indicating water is present in housing.
 //bool first_test = 1;                        // flag indicating first test(longer countdown)
-enum STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
+STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
 uint8_t testnum = 1, countdown = 0;
+uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
+int j = 0, rxflag = 0, bytes = 0;    // UART variables
 char file[11] = "test_1.txt";
 char volume[10] = {};
 FS_FILE *fsfile;
@@ -119,7 +110,7 @@ CY_ISR (Moisture_ISR_Handler){
 /* Sampling ISR */
 CY_ISR (Sample_ISR_Handler){
     
-    Sample_Timer_STATUS;                        //Clears interrupt by accessing timer status register
+    Sample_Timer_STATUS;                        // Clears interrupt by accessing timer status register
     if (STATE == DESCENDING){ 
         collect_flag = 1;
         data_time++;
@@ -129,7 +120,7 @@ CY_ISR (Sample_ISR_Handler){
 /* Countdown ISR*/
 CY_ISR (Countdown_ISR_Handler){
     
-    Countdown_timer_STATUS;                        //Clears interrupt by accessing timer status register
+    Countdown_timer_STATUS;                        // Clears interrupt by accessing timer status register
     if (STATE == WAIT_TO_LAUNCH){ 
         wait_flag = 1;
         countdown++;
@@ -139,47 +130,58 @@ CY_ISR (Countdown_ISR_Handler){
     }
 }
 
+CY_ISR(rx_interrupt){
+    while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
+        RxBuffer[j++] = UART_GetChar();
+        if ((j - 3) == bytes)
+            rxflag = 1;
+    }
+}
+
 int main()
 {
     LED2_1_Write(1); 
     float output;
-    char buf[50];                               //just to hold text values in for writing to UART
+    char buf[50];                               // just to hold text values in for writing to UART
     
     char curState[14] = "SYSTEM_CHECK  ";
     int16_t ax, ay, az, i;
     //int16_t gx, gy, gz;
     int16_t z_offset = 0;
+    int tens = 0, ones = 0;                     // digit place variables for message len of bluetooth messages
     
     /* Start the components */
-    CYGlobalIntEnable;                          //enable global interrupts
-    I2C_Master_Start(); 
-    ADC_Start();
-    Sample_Timer_Start();                       //start timer module
-    Sample_ISR_StartEx(Sample_ISR_Handler);     //reference ISR function
-    //moisture_isr_StartEx(Moisture_ISR_Handler); //moisture isr start
-    Comp_Start();                               //comparator for moisture start
+    CYGlobalIntEnable;                          // enable global interrupts
+    //I2C_Master_Start(); 
+    //ADC_Start();
+    Sample_Timer_Start();                       // start timer module
+    Sample_ISR_StartEx(Sample_ISR_Handler);     // reference ISR function
+    rx_interrupt_StartEx(rx_interrupt);
+    //moisture_isr_StartEx(Moisture_ISR_Handler); // moisture isr start
+    //Comp_Start();                               // comparator for moisture start
+    UART_Start();
     
     
     #ifdef LCD
-    LiquidCrystal_I2C_init(Addr,16,2,0);        //initialize I2C communication with LCD
-    begin(); 
+        LiquidCrystal_I2C_init(Addr,16,2,0);        // initialize I2C communication with LCD
+        begin(); 
     
     #endif
    
     /* initialize MPU6050 */
     #ifdef MPU6050
-    MPU6050_init();    
-	MPU6050_initialize(); 
+        MPU6050_init();    
+	    MPU6050_initialize(); 
     #endif
         
     #ifdef LCD
-    /* Startup Display */
-    LCD_print("PSoC 5LP: O-Vac");
-    setCursor(0,1);
-    LCD_print("I2C Working");
-    
-    CyDelay(1000u);   
-    clear();
+        /* Startup Display */
+        LCD_print("PSoC 5LP: O-Vac");
+        setCursor(0,1);
+        LCD_print("I2C Working");
+        
+        CyDelay(1000u);   
+        clear();
     #endif
     
     /* Start the ADC conversion */
@@ -231,14 +233,14 @@ int main()
     #endif
     
     #ifdef LCD
-    /* Display the current State */
-    setCursor(0,0);    
-    LCD_print(curState);
+        /* Display the current State */
+        setCursor(0,0);    
+        LCD_print(curState);
     #endif
     
     
-    Countdown_timer_Start();
-    countdown_StartEx(Countdown_ISR_Handler);
+//    Countdown_timer_Start();
+//    countdown_StartEx(Countdown_ISR_Handler);
     int num = 0, decimals = 0;
     float voltage = 0, temp = 0;
     
@@ -263,9 +265,23 @@ int main()
             
         }
         
+    /* Bluetooth message response*/
+        if (j == 2){
+            tens = RxBuffer[0] - 48;
+            ones = RxBuffer[1] - 48;
+            bytes = (tens * 10) + ones;
+        } 
+        
+        if(rxflag) {
+            Process_BT(&RxBuffer[3], &STATE, bytes);
+            j = 0; bytes = 0;
+            memset(RxBuffer, 0, BUFFER_LEN);
+            rxflag = 0;
+        }
+        
         /* Display Z-Acceleration */
         //clear();
-        az = MPU6050_getAccelerationZ();
+        //az = MPU6050_getAccelerationZ();
        // I2C_LCD_print(1,0, id ,0,average);                                //print Interrupt count and Z-Acceleration
         
         /* State Machine */
@@ -278,21 +294,22 @@ int main()
                     #ifdef LCD
                         setCursor(0,0);
                         clear();
+                        
                         sprintf(buf, "T-minus %d seconds\n", (60 - countdown)); // countdown
                         LCD_print(buf);
                     #endif
-                    if(countdown == 60){
-                        STATE = DESCENDING;
-                        #ifdef LCD
-                            setCursor(0,0);
-                            clear();
-                            LCD_print("STATE: DESCENT");
-                        #endif           
-                        id=0;
-                        data_time = 0;
-                        countdown = 9;
-                        LED2_Write(1);                                      // turn the LED off 
-                    }
+//                    if(countdown == 60){
+//                        STATE = DESCENDING;
+//                        #ifdef LCD
+//                            setCursor(0,0);
+//                            clear();
+//                            LCD_print("STATE: DESCENT");
+//                        #endif           
+//                        id=0;
+//                        data_time = 0;
+//                        countdown = 9;
+//                        LED2_Write(1);                                      // turn the LED off 
+//                    }
                     wait_flag = 0; 
                 }
                 break;

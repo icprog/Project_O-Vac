@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
   22:Generated_Source\PSoC5/ADC_PM.c ****     ADC_DISABLED,
   23:Generated_Source\PSoC5/ADC_PM.c ****     ADC_CFG1_DEC_CR
   24:Generated_Source\PSoC5/ADC_PM.c **** };
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 2
 
 
   25:Generated_Source\PSoC5/ADC_PM.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
   63              		.cfi_endproc
   64              	.LFE0:
   65              		.size	ADC_SaveConfig, .-ADC_SaveConfig
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 3
 
 
   66              		.section	.text.ADC_RestoreConfig,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
   95              		.cfi_def_cfa_offset 0
   96 0012 7047     		bx	lr
   97              	.L6:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 4
 
 
   98              		.align	2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  128 000e 002B     		cmp	r3, #0
  129 0010 1AD0     		beq	.L8
   99:Generated_Source\PSoC5/ADC_PM.c ****        (ADC_ACT_PWR_DSM_EN == (ADC_PWRMGR_DSM_REG & ADC_ACT_PWR_DSM_EN)))
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 5
 
 
  130              		.loc 1 99 0 discriminator 1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  117:Generated_Source\PSoC5/ADC_PM.c **** 
  118:Generated_Source\PSoC5/ADC_PM.c ****     /* Save the user configuration */
  119:Generated_Source\PSoC5/ADC_PM.c ****     ADC_SaveConfig();
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 6
 
 
  166              		.loc 1 119 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  143:Generated_Source\PSoC5/ADC_PM.c ****     /* Restore the configuration */
  144:Generated_Source\PSoC5/ADC_PM.c ****     ADC_RestoreConfig();
  197              		.loc 1 144 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 7
 
 
  198 0004 FFF7FEFF 		bl	ADC_RestoreConfig
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  241 0021 00000000 		.4byte	.Ldebug_line0
  242 0025 02       		.uleb128 0x2
  243 0026 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 8
 
 
  244 0027 06       		.byte	0x6
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  298 0088 E4000000 		.4byte	.LASF11
  299 008c 04       		.uleb128 0x4
  300 008d E1010000 		.4byte	.LASF13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 9
 
 
  301 0091 02       		.byte	0x2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  355 0101 01       		.uleb128 0x1
  356 0102 9C       		.byte	0x9c
  357 0103 0A       		.uleb128 0xa
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 10
 
 
  358 0104 AB000000 		.4byte	.LASF21
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  412 0024 0B       		.uleb128 0xb
  413 0025 03       		.uleb128 0x3
  414 0026 08       		.uleb128 0x8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 11
 
 
  415 0027 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  469 005d 0E       		.uleb128 0xe
  470 005e 3A       		.uleb128 0x3a
  471 005f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 12
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 12
 
 
  472 0060 3B       		.uleb128 0x3b
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  526 0098 00       		.byte	0
  527 0099 03       		.uleb128 0x3
  528 009a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 13
 
 
  529 009b 3A       		.uleb128 0x3a
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  576 000e 4144435F 		.ascii	"ADC_backup\000"
  576      6261636B 
  576      757000
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 14
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 14
 
 
  577              	.LASF8:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  598              	.LASF11:
  599 00e4 63686172 		.ascii	"char\000"
  599      00
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 15
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 15
 
 
  600              	.LASF20:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 1
  623      7420696E 
  623      7400
  624              	.LASF13:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGTJpkf.s 			page 16
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccS8k3gz.s 			page 16
 
 
  625 01e1 72656738 		.ascii	"reg8\000"

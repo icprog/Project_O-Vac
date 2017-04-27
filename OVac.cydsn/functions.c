@@ -30,8 +30,16 @@ int16_t ComputeMA(int16_t avg, int16_t n, int16_t sample){
     return avg;    
 }
 
-char *ConvertToString(char *buf, char *string, ...){
-    return "hi";
+void Process_BT(uint8_t *RxBuffer, STATES *STATE, int bytes){
+    int i = 0;
+    if (strncmp(*RxBuffer, "start", 5)){
+        *STATE = DESCENDING;
+    }
+    while (i < bytes + 3){
+        while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+            UART_PutChar(RxBuffer[i++]);
+        }
+    }
 }
 
 /* [] END OF FILE */
