@@ -38,6 +38,7 @@
 //#define MPU6050 
 //#define LCD
 //#define SD
+#define BT
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
@@ -57,9 +58,9 @@ bool wait_flag = 0;                         // flag indicating when to increment
 bool PANIC_flag = 0;                        // flag indicating water is present in housing.
 //bool first_test = 1;                        // flag indicating first test(longer countdown)
 STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
-uint8_t testnum = 1, countdown = 0;
+uint8_t testnum = 1, countdown = 0, update_Data = 0;
 uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
-int j = 0, rxflag = 0, bytes = 0;    // UART variables
+int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
 char file[11] = "test_1.txt";
 char volume[10] = {};
 FS_FILE *fsfile;
@@ -85,20 +86,7 @@ FS_FILE *fsfile;
 *  None.
 *
 *******************************************************************************/
-/* Reset funciton*/
-void Reset_system(){
-    id = 1;                                // Interrupt count.
-    data_time = 0;                        // data point num
 
-    sum = 0;                               // Sum of accelerometer values. 
-    average = 0;                        // Moving average variable.
-    collect_flag = 0;                      // flag indicating when to record acceleration sample.
-    wait_flag = 0;                         // flag indicating when to increment interrupt counter.
-    PANIC_flag = 0;                        // flag indicating water is present in housing.
-//bool first_test = 1;                        // flag indicating first test(longer countdown)
-    STATE = WAIT_TO_LAUNCH;             // Set initial state. 
-    testnum = 1, countdown = 0;
-}
 
 /* Moisture sensor ISR */
 CY_ISR (Moisture_ISR_Handler){
@@ -128,12 +116,22 @@ CY_ISR (Countdown_ISR_Handler){
     else  if (STATE == DESCENDING){
         wait_flag = 1;
     }
+    #ifdef BT
+        if (STATE == TRANSMIT || STATE == WAIT_TO_LAUNCH){
+            update_Data++;
+            if (update_Data == 4){
+                transmit_flag = 1;
+                update_Data = 0;
+            }
+        }
+            
+    #endif
 }
 
 CY_ISR(rx_interrupt){
     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
-        RxBuffer[j++] = UART_GetChar();
-        if ((j - 3) == bytes)
+        RxBuffer[msg_count++] = UART_GetChar();
+        if ((msg_count - 3) == bytes)
             rxflag = 1;
     }
 }
@@ -143,6 +141,7 @@ int main()
     LED2_1_Write(1); 
     float output;
     char buf[50];                               // just to hold text values in for writing to UART
+    char tempbuf[20] = {};
     
     char curState[14] = "SYSTEM_CHECK  ";
     int16_t ax, ay, az, i;
@@ -239,16 +238,15 @@ int main()
     #endif
     
     
-//    Countdown_timer_Start();
-//    countdown_StartEx(Countdown_ISR_Handler);
+    Countdown_timer_Start();
+    countdown_StartEx(Countdown_ISR_Handler);
     int num = 0, decimals = 0;
     float voltage = 0, temp = 0;
     
     
     for(;;)
-    {       
-        if (Reset_Read())
-            Reset_system();
+    { 
+          
         if(ADC_IsEndConversion(ADC_RETURN_STATUS))
         {
             char pressure[50];
@@ -266,19 +264,22 @@ int main()
         }
         
     /* Bluetooth message response*/
-        if (j == 2){
+    #ifdef BT
+        if (msg_count == 2){
             tens = RxBuffer[0] - 48;
             ones = RxBuffer[1] - 48;
             bytes = (tens * 10) + ones;
         } 
         
         if(rxflag) {
-            Process_BT(&RxBuffer[3], &STATE, bytes);
-            j = 0; bytes = 0;
+            uint8_to_char(RxBuffer, &tempbuf[0], 20);
+            BT_Process(&tempbuf[3], &STATE, bytes, &dataflag);
+            msg_count = 0; bytes = 0;
             memset(RxBuffer, 0, BUFFER_LEN);
             rxflag = 0;
         }
-        
+    #endif
+    
         /* Display Z-Acceleration */
         //clear();
         //az = MPU6050_getAccelerationZ();
@@ -288,8 +289,20 @@ int main()
         switch (STATE){
     
             case WAIT_TO_LAUNCH:
-                
+                id = 1;                                // Interrupt count.
+                data_time = 0;                        // data point num
 
+                sum = 0;                               // Sum of accelerometer values. 
+                average = 0;                        // Moving average variable.
+                collect_flag = 0;                      // flag indicating when to record acceleration sample.
+                wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+                PANIC_flag = 0;                        // flag indicating water is present in housing.
+                //bool first_test = 1;                        // flag indicating first test(longer countdown)
+                testnum = 1, countdown = 0;
+                if (transmit_flag){
+                    BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matters, rest do not matter(could be anything)
+                    transmit_flag = 0;
+                }
                 if(wait_flag == 1){
                     #ifdef LCD
                         setCursor(0,0);
@@ -315,7 +328,7 @@ int main()
                 break;
                 
             case DESCENDING:
-    
+                STATE = TRANSMIT;
                 if(collect_flag == 1){
                     
                     if (id<MA_WINDOW){
@@ -437,13 +450,17 @@ int main()
             case TRANSMIT:
                 LED2_Write(1);
                 LED7_Write(1);
+                int t = 1;
+                if (transmit_flag){
+                    BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters, rest do not matter(could be anything)
+                    transmit_flag = 0;
+                }
                 #ifdef SD                                   //close old file, open new one
                     FS_FClose(fsfile);
                     sprintf(file, "test%d.txt", ++testnum);
                     fsfile = FS_FOpen(file, "w");
                 #endif 
                 CyDelay(15000u);
-                STATE = WAIT_TO_LAUNCH;
                 
 //            case LANDED:
 //                CyDelay(1000u);                             // delay a bit
