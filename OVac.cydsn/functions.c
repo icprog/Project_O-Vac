@@ -57,8 +57,8 @@ void BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag){
 /* For sending status of State, or data back in transmit state */
 void BT_Send(char *TxBuffer, STATES *STATE, int lengthOfBuf, int *firstPacket){
     int i = 0;
-    uint8 waitstate[23] = "STATE = wait_to_launch";
-    uint8 transtate[17] = "STATE = transmit";
+    uint8 waitstate[24] = "STATE = wait_to_launch\n";
+    uint8 transtate[18] = "STATE = transmit\n";
     
     if (*STATE == WAIT_TO_LAUNCH){                  // Just send STATE back to indicate
         while (i < 23){

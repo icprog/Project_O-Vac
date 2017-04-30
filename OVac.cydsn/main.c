@@ -38,7 +38,7 @@
 #define MPU6050 
 #define LCD
 #define SD
-//#define BT
+#define BT
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
@@ -114,7 +114,7 @@ CY_ISR (Countdown_ISR_Handler){
     #ifdef BT
         if (STATE == TRANSMIT || STATE == WAIT_TO_LAUNCH){
             update_Data++;
-            if (update_Data == 100){
+            if (update_Data == 50){
                 transmit_flag = 1;
                 update_Data = 0;
             }
@@ -146,6 +146,12 @@ int main()
     int num = 0, decimals = 0;                                       // ADC Voltage conversion placeholders
     float voltage = 0, temp = 0, output = 0, pressure_avg = 0;       // ADC Voltage conversion variables
     char buf[50], tempbuf[20] = {}, curState[14] = "SYSTEM_CHECK";  // buffers, UART and initial state
+    char descendbuf[DESCENDING_LEN] = STATE_DESCENDING;             // buffers for transmitting states
+    char landedbuf[LANDED_LEN] = STATE_LANDED;              
+    char vacuumbuf[VACUUM_LEN] = STATE_VACUUM;
+    char resurfbuf[RESURFACE_LEN] = STATE_RESURFACE;
+    char transbuf[TRANSMIT_LEN] = STATE_TRANSMIT;
+    int stateMsgCount = 0;
     
     int16_t ax, ay, az, i;
     int16_t gx, gy, gz;
@@ -281,17 +287,38 @@ int main()
         
     /* Bluetooth message response*/
     #ifdef BT
-        if (msg_count == 2){
+        if (msg_count >= 2){
             tens = RxBuffer[0] - 48;
             ones = RxBuffer[1] - 48;
             bytes = (tens * 10) + ones;
+            char t[5] = {};
+            sprintf(t, "%d%d", tens, ones);
+            setCursor(1, 0);
+            LCD_print(t);
         } 
         
         if(rxflag) {
             uint8_to_char(RxBuffer, &tempbuf[0], 20);
             BT_Process(&tempbuf[3], &STATE, bytes, &dataflag);
+            if (STATE == DESCENDING){
+                #ifdef LCD
+                    setCursor(0,0);
+                    clear();
+                    LCD_print("STATE: DESCENT");
+                #endif
+                #ifdef BT
+                    stateMsgCount = 0;
+                    while (stateMsgCount < DESCENDING_LEN){
+                        while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                            UART_PutChar(descendbuf[stateMsgCount++]);
+                            if (stateMsgCount >= DESCENDING_LEN) break;
+                        }
+                    }
+                #endif
+            }
             msg_count = 0; bytes = 0;
             memset(RxBuffer, 0, BUFFER_LEN);
+            memset(tempbuf, 0, 20);
             rxflag = 0;
         }
     #endif
@@ -324,16 +351,25 @@ int main()
                         setCursor(0,0);
                         clear();
                         
-                        sprintf(buf, "T-minus %d seconds\n", (15 - countdown)); // countdown
+                        sprintf(buf, "T-minus %d seconds\n", (60 - countdown)); // countdown
                         LCD_print(buf);
                     #endif
-                    if(countdown == 15){
+                    if(countdown == 60){
                         STATE = DESCENDING;
                         #ifdef LCD
                             setCursor(0,0);
                             clear();
                             LCD_print("STATE: DESCENT");
-                        #endif           
+                        #endif
+                        #ifdef BT
+                            stateMsgCount = 0;
+                            while (stateMsgCount < DESCENDING_LEN){
+                                while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                                    UART_PutChar(descendbuf[stateMsgCount++]);
+                                    if (stateMsgCount >= DESCENDING_LEN) break;
+                                }
+                            }
+                        #endif
                         id=0;
                         data_time = 0;
                         countdown = 9; 
@@ -367,6 +403,15 @@ int main()
                             sprintf(sdbuf, "STATE: LANDED ***********\n");
                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
                         #endif
+                        #ifdef BT
+                            stateMsgCount = 0;
+                            while (stateMsgCount < LANDED_LEN){
+                                while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                                    UART_PutChar(landedbuf[stateMsgCount++]);
+                                    if (stateMsgCount >= LANDED_LEN) break;
+                                }
+                            }
+                        #endif
                         id=0;                                                   //reset sample counter
                         data_time = 0;
                         sum = 0;
@@ -375,7 +420,7 @@ int main()
                     id++;     
                     
                     /*if desired amount of samples have been collected, switch states*/
-                    if(data_time >= DATA_TIME){
+                    if(data_time >= DATA_TIME * 2){
                         LED2_Write(0);                                          //turn LED off
                                                             
                         STATE = WAIT_TO_LAUNCH;                                //Switch to Waiting state    
@@ -391,14 +436,6 @@ int main()
                        
                     }
                     collect_flag = 0;
-                }
-                else if(wait_flag == 1){
-                       char sdbuf[60] = {};
-                        #ifdef SD
-                            sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output);
-                            FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
-                        #endif 
-                        wait_flag = 0;
                 }
                 break;
                 
@@ -417,6 +454,15 @@ int main()
                             sprintf(sdbuf, "STATE: VACUUMING ***********\n");
                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
                     #endif
+                    #ifdef BT
+                        stateMsgCount = 0;
+                        while (stateMsgCount < VACUUM_LEN){
+                            while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                                UART_PutChar(vacuumbuf[stateMsgCount++]);
+                                if (stateMsgCount >= VACUUM_LEN) break;
+                            }
+                        }
+                    #endif
                     
                     CyDelay(5000u);
                     Solenoid_1_Write(0); //turn off soleniod 1
@@ -433,15 +479,28 @@ int main()
                         sprintf(sdbuf, "STATE: RESURFACING ***********\n");
                         FS_Write(fsfile, sdbuf, strlen(sdbuf));
                     #endif
+                    #ifdef BT
+                        stateMsgCount = 0;
+                        while (stateMsgCount < RESURFACE_LEN){
+                            while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                                UART_PutChar(resurfbuf[stateMsgCount++]);
+                                if (stateMsgCount >= RESURFACE_LEN) break;
+                            }
+                        }
+                    #endif
                 break;
                 
             case RESURFACE:
                 //CyDelay(4000u);
                 if (PANIC_flag)
                     LCD_print("WATER DETECTED");
-                Solenoid_2_Write(1); //turn on solendiod 2
-                CyDelay(10000u);
-                Solenoid_2_Write(0); //turn off solenoid 2
+                int pulse = 0;
+                for (; pulse < 3; pulse++){
+                    CyDelay(1000u);
+                    Solenoid_2_Write(1); //turn on solenoid 2
+                    CyDelay(1000u);
+                    Solenoid_2_Write(0); //turn off solenoid 2
+                }
                 //check pressure sensor to confirm we are at the surface
                 CyDelay(5000u);                                //wait 10 seconds to lift, for testing in pool
                 STATE = TRANSMIT;
@@ -454,6 +513,15 @@ int main()
                     memset(sdbuf, 0, 40);
                     sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
                     FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                #endif
+                #ifdef BT
+                    stateMsgCount = 0;
+                    while (stateMsgCount < TRANSMIT_LEN){
+                        while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                            UART_PutChar(transbuf[stateMsgCount++]);
+                            if (stateMsgCount >= TRANSMIT_LEN) break;
+                        }
+                    }
                 #endif
                 break;
                 

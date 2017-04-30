@@ -21,8 +21,22 @@
 #define COMMANDS "\ncommands: \n05,start\n" \
                  "04,stop\n" \
                  "04,data\n"
-
 #define COMMANDS_LEN 37
+    
+#define STATE_DESCENDING "STATE: DESCENDING\n"
+#define DESCENDING_LEN 18
+    
+#define STATE_LANDED "STATE: LANDED\n"
+#define LANDED_LEN 14
+    
+#define STATE_VACUUM "STATE: VACUUMING\n"
+#define VACUUM_LEN 17
+    
+#define STATE_RESURFACE "STATE: RESURFACE\n"
+#define RESURFACE_LEN 17
+    
+#define STATE_TRANSMIT "STATE: TRANSMIT\n"
+#define TRANSMIT_LEN 16
     
 /*State Declarations*/
 typedef enum STATES{
