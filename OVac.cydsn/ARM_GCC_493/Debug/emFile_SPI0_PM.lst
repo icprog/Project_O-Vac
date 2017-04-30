@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
   22:Generated_Source\PSoC5/emFile_SPI0_PM.c ****     emFile_SPI0_DISABLED,
   23:Generated_Source\PSoC5/emFile_SPI0_PM.c ****     emFile_SPI0_BITCTR_INIT,
   24:Generated_Source\PSoC5/emFile_SPI0_PM.c ****     #if(CY_UDB_V0)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 2
 
 
   25:Generated_Source\PSoC5/emFile_SPI0_PM.c ****         emFile_SPI0_TX_INIT_INTERRUPTS_MASK,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
   53              	.LFE0:
   54              		.size	emFile_SPI0_SaveConfig, .-emFile_SPI0_SaveConfig
   55              		.section	.text.emFile_SPI0_RestoreConfig,"ax",%progbits
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 3
 
 
   56              		.align	2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
   77 0006 5DF8047B 		ldr	r7, [sp], #4
   78              		.cfi_restore 7
   79              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 4
 
 
   80 000a 7047     		bx	lr
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  108 0010 14BF     		ite	ne
  109 0012 0123     		movne	r3, #1
  110 0014 0023     		moveq	r3, #0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 5
 
 
  111 0016 DBB2     		uxtb	r3, r3
@@ -258,7 +258,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  121              	.L5:
  122              		.align	2
  123              	.L4:
- 124 0028 94640040 		.word	1073767572
+ 124 0028 98640040 		.word	1073767576
  125 002c 00000000 		.word	emFile_SPI0_backup
  126              		.cfi_endproc
  127              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  147:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  zero.
  148:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *
  149:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Reentrant:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 6
 
 
  150:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  No.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  163              	.L8:
  164 001c 00000000 		.word	emFile_SPI0_backup
  165              		.cfi_endproc
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 7
 
 
  166              	.LFE3:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  220 005f 05       		.byte	0x5
  221 0060 696E7400 		.ascii	"int\000"
  222 0064 02       		.uleb128 0x2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 8
 
 
  223 0065 04       		.byte	0x4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  277 00d0 09       		.uleb128 0x9
  278 00d1 9B000000 		.4byte	.LASF18
  279 00d5 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 9
 
 
  280 00d6 33       		.byte	0x33
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  334 000e 01       		.uleb128 0x1
  335 000f 10       		.uleb128 0x10
  336 0010 17       		.uleb128 0x17
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 10
 
 
  337 0011 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  391 0047 13       		.uleb128 0x13
  392 0048 00       		.byte	0
  393 0049 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 11
 
 
  394 004a 07       		.uleb128 0x7
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  448 0081 3F       		.uleb128 0x3f
  449 0082 19       		.uleb128 0x19
  450 0083 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 12
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 12
 
 
  451 0084 0E       		.uleb128 0xe
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  505 0004 0C000000 		.4byte	.LFE0
  506 0008 00000000 		.4byte	.LFB1
  507 000c 0C000000 		.4byte	.LFE1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 13
 
 
  508 0010 00000000 		.4byte	.LFB2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  533      3800
  534              	.LASF5:
  535 00b8 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 14
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 14
 
 
  535      20756E73 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 1
  553      2D736563 
  553      74696F6E 
  554              	.LASF10:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8BuS3R.s 			page 15
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccn4c0us.s 			page 15
 
 
  555 01cb 646F7562 		.ascii	"double\000"

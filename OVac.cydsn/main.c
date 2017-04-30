@@ -35,10 +35,10 @@
 #include "LiquidCrystal_I2C.h"
 #include "functions.h"
 
-//#define MPU6050 
-//#define LCD
-//#define SD
-#define BT
+#define MPU6050 
+#define LCD
+#define SD
+//#define BT
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
@@ -48,16 +48,17 @@
 
 
 uint32_t Addr = 0x3F;                       // I2C address of LCD.
-long id = 1;                                // Interrupt count.
+long id = 1, press_id = 1;                 // Interrupt count.
 long data_time = 0;                        // data point num
 
-long sum = 0;                               // Sum of accelerometer values. 
-int16_t average = 0;                        // Moving average variable.
+long sum = 0;                               // Sum of accelerometer values
+float pressure_sum = 0;                     // Sum of pressure values. 
+int16_t average = 0;                        // Moving average variable, accelerometer.
 bool collect_flag = 0;                      // flag indicating when to record acceleration sample.
 bool wait_flag = 0;                         // flag indicating when to increment interrupt counter.
 bool PANIC_flag = 0;                        // flag indicating water is present in housing.
 //bool first_test = 1;                        // flag indicating first test(longer countdown)
-STATES STATE = WAIT_TO_LAUNCH;         // Set initial state. 
+STATES STATE = WAIT_TO_LAUNCH;                  // Set initial state. 
 uint8_t testnum = 1, countdown = 0, update_Data = 0;
 uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
 int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
@@ -97,7 +98,6 @@ CY_ISR (Moisture_ISR_Handler){
 
 /* Sampling ISR */
 CY_ISR (Sample_ISR_Handler){
-    
     Sample_Timer_STATUS;                        // Clears interrupt by accessing timer status register
     if (STATE == DESCENDING){ 
         collect_flag = 1;
@@ -107,19 +107,14 @@ CY_ISR (Sample_ISR_Handler){
 
 /* Countdown ISR*/
 CY_ISR (Countdown_ISR_Handler){
-    
     Countdown_timer_STATUS;                        // Clears interrupt by accessing timer status register
-    if (STATE == WAIT_TO_LAUNCH){ 
-        wait_flag = 1;
-        countdown++;
-    }
-    else  if (STATE == DESCENDING){
+    if (STATE == DESCENDING || STATE == LANDED || STATE == RESURFACE){
         wait_flag = 1;
     }
     #ifdef BT
         if (STATE == TRANSMIT || STATE == WAIT_TO_LAUNCH){
             update_Data++;
-            if (update_Data == 4){
+            if (update_Data == 100){
                 transmit_flag = 1;
                 update_Data = 0;
             }
@@ -129,30 +124,38 @@ CY_ISR (Countdown_ISR_Handler){
 }
 
 CY_ISR(rx_interrupt){
+    #ifdef BT
     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
         RxBuffer[msg_count++] = UART_GetChar();
         if ((msg_count - 3) == bytes)
             rxflag = 1;
     }
+    #endif
+}
+
+CY_ISR(temp_interrupt){
+    adjust_timer_STATUS;
+    if (STATE == WAIT_TO_LAUNCH){ 
+        wait_flag = 1;
+        countdown++;
+    }
 }
 
 int main()
 {
-    LED2_1_Write(1); 
-    float output;
-    char buf[50];                               // just to hold text values in for writing to UART
-    char tempbuf[20] = {};
+    int num = 0, decimals = 0;                                       // ADC Voltage conversion placeholders
+    float voltage = 0, temp = 0, output = 0, pressure_avg = 0;       // ADC Voltage conversion variables
+    char buf[50], tempbuf[20] = {}, curState[14] = "SYSTEM_CHECK";  // buffers, UART and initial state
     
-    char curState[14] = "SYSTEM_CHECK  ";
     int16_t ax, ay, az, i;
-    //int16_t gx, gy, gz;
+    int16_t gx, gy, gz;
     int16_t z_offset = 0;
     int tens = 0, ones = 0;                     // digit place variables for message len of bluetooth messages
     
     /* Start the components */
     CYGlobalIntEnable;                          // enable global interrupts
-    //I2C_Master_Start(); 
-    //ADC_Start();
+    I2C_Master_Start(); 
+    ADC_Start();
     Sample_Timer_Start();                       // start timer module
     Sample_ISR_StartEx(Sample_ISR_Handler);     // reference ISR function
     rx_interrupt_StartEx(rx_interrupt);
@@ -236,30 +239,43 @@ int main()
         setCursor(0,0);    
         LCD_print(curState);
     #endif
-    
+    STATE = WAIT_TO_LAUNCH;
     
     Countdown_timer_Start();
+    adjust_timer_Start();
     countdown_StartEx(Countdown_ISR_Handler);
-    int num = 0, decimals = 0;
-    float voltage = 0, temp = 0;
-    
+    temp_isr_StartEx(temp_interrupt);
     
     for(;;)
-    { 
-          
+    {
+        
         if(ADC_IsEndConversion(ADC_RETURN_STATUS))
         {
-            char pressure[50];
             output = ADC_GetResult32();
-            
-            setCursor(0, 1);
+
             voltage = output * (3.32 / 4096);
-            num = voltage;
-            temp = voltage - num;
-            decimals = temp * 10000;
-            #ifdef SD
-//                
-            #endif
+            if(wait_flag == 1){
+                if (press_id < MA_WINDOW){
+                    pressure_sum += voltage;     
+                }
+                else if(press_id == MA_WINDOW){
+                    pressure_sum += voltage;
+                    pressure_avg = pressure_sum/MA_WINDOW;                            // compute baseline average
+                }
+                else{
+                    pressure_avg = ComputeMA(pressure_avg, MA_WINDOW, voltage);
+                    num = pressure_avg;
+                    temp = pressure_avg - num;
+                    decimals = temp * 10000;
+                    char sdbuf[60] = {};
+                    #ifdef SD
+                        sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); // log pressure data
+                        FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
+                    #endif 
+                }
+                wait_flag = 0;
+                press_id++;
+            }
             
         }
         
@@ -281,24 +297,24 @@ int main()
     #endif
     
         /* Display Z-Acceleration */
-        //clear();
-        //az = MPU6050_getAccelerationZ();
-       // I2C_LCD_print(1,0, id ,0,average);                                //print Interrupt count and Z-Acceleration
-        
+
+        az = MPU6050_getAccelerationZ();
+
+        int t = 1;
         /* State Machine */
         switch (STATE){
     
             case WAIT_TO_LAUNCH:
                 id = 1;                                // Interrupt count.
                 data_time = 0;                        // data point num
-
                 sum = 0;                               // Sum of accelerometer values. 
                 average = 0;                        // Moving average variable.
                 collect_flag = 0;                      // flag indicating when to record acceleration sample.
-                wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+                //wait_flag = 0;                         // flag indicating when to increment interrupt counter.
                 PANIC_flag = 0;                        // flag indicating water is present in housing.
                 //bool first_test = 1;                        // flag indicating first test(longer countdown)
-                testnum = 1, countdown = 0;
+                testnum = 1; //countdown = 0;
+            
                 if (transmit_flag){
                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matters, rest do not matter(could be anything)
                     transmit_flag = 0;
@@ -308,30 +324,27 @@ int main()
                         setCursor(0,0);
                         clear();
                         
-                        sprintf(buf, "T-minus %d seconds\n", (60 - countdown)); // countdown
+                        sprintf(buf, "T-minus %d seconds\n", (15 - countdown)); // countdown
                         LCD_print(buf);
                     #endif
-//                    if(countdown == 60){
-//                        STATE = DESCENDING;
-//                        #ifdef LCD
-//                            setCursor(0,0);
-//                            clear();
-//                            LCD_print("STATE: DESCENT");
-//                        #endif           
-//                        id=0;
-//                        data_time = 0;
-//                        countdown = 9;
-//                        LED2_Write(1);                                      // turn the LED off 
-//                    }
+                    if(countdown == 15){
+                        STATE = DESCENDING;
+                        #ifdef LCD
+                            setCursor(0,0);
+                            clear();
+                            LCD_print("STATE: DESCENT");
+                        #endif           
+                        id=0;
+                        data_time = 0;
+                        countdown = 9; 
+                    }
                     wait_flag = 0; 
                 }
                 break;
                 
             case DESCENDING:
-                STATE = TRANSMIT;
                 if(collect_flag == 1){
-                    
-                    if (id<MA_WINDOW){
+                    if (id < MA_WINDOW){
                         sum += az;     
                     }
                     else if(id == MA_WINDOW){
@@ -340,21 +353,14 @@ int main()
                     }
                     else{
                         average = ComputeMA(average, MA_WINDOW, az);
-                        /*sprintf(buf, "%d", average);
-                        setCursor(0,1);
-                        LCD_print(buf);*/
-                        
                     }
                     
-                    if(average > BOT_THRESHOLD){
-                        LED2_Write(0);
-                        LED7_Write(1);                                          //turn LED on                        
+                    if(average > BOT_THRESHOLD){                        
                         STATE = LANDED;                                     //Switch to LANDED state 
                         #ifdef LCD
                             setCursor(0,0);
                             clear();
                             LCD_print("STATE: LANDED");  
-                        //I2C_LCD_print(1,0, id ,0,average);
                         #endif
                         char sdbuf[60] = {};
                         #ifdef SD
@@ -404,25 +410,28 @@ int main()
                         clear();
                         LCD_print("VACUUMING");  
                     #endif
+                    
                     char sdbuf[60] = {};
                     #ifdef SD
                             memset(sdbuf, 0, 40);
                             sprintf(sdbuf, "STATE: VACUUMING ***********\n");
                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
                     #endif
-                    CyDelay(7000u);
+                    
+                    CyDelay(5000u);
                     Solenoid_1_Write(0); //turn off soleniod 1
                     CyDelay(5000u);
                     STATE = RESURFACE;
+                    
                     #ifdef LCD
                         setCursor(0,0);
                         clear();
                         LCD_print("STATE: RESURFACING");  
                     #endif
                     #ifdef SD
-                            memset(sdbuf, 0, 40);
-                            sprintf(sdbuf, "STATE: RESURFACING ***********\n");
-                            FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                        memset(sdbuf, 0, 40);
+                        sprintf(sdbuf, "STATE: RESURFACING ***********\n");
+                        FS_Write(fsfile, sdbuf, strlen(sdbuf));
                     #endif
                 break;
                 
@@ -431,7 +440,7 @@ int main()
                 if (PANIC_flag)
                     LCD_print("WATER DETECTED");
                 Solenoid_2_Write(1); //turn on solendiod 2
-                CyDelay(15000u);
+                CyDelay(10000u);
                 Solenoid_2_Write(0); //turn off solenoid 2
                 //check pressure sensor to confirm we are at the surface
                 CyDelay(5000u);                                //wait 10 seconds to lift, for testing in pool
@@ -447,35 +456,20 @@ int main()
                     FS_Write(fsfile, sdbuf, strlen(sdbuf));
                 #endif
                 break;
+                
             case TRANSMIT:
-                LED2_Write(1);
-                LED7_Write(1);
-                int t = 1;
                 if (transmit_flag){
                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters, rest do not matter(could be anything)
                     transmit_flag = 0;
                 }
-                #ifdef SD                                   //close old file, open new one
-                    FS_FClose(fsfile);
-                    sprintf(file, "test%d.txt", ++testnum);
-                    fsfile = FS_FOpen(file, "w");
-                #endif 
-                CyDelay(15000u);
-                
-//            case LANDED:
-//                CyDelay(1000u);                             // delay a bit
-//                LED2_Write(1);                              // turn on other LED to indicate landed
-//                STATE = WAIT_TO_LAUNCH;
-//                #ifdef LCD
-//                    setCursor(0,0);
-//                    clear();
-//                    LCD_print("STATE: WAIT");
-//                #endif 
-//                #ifdef SD                                   // close old file, open new one
+                //FS_Read(fsfile, 4);
+//                #ifdef SD                                   //close old file, open new one
 //                    FS_FClose(fsfile);
 //                    sprintf(file, "test%d.txt", ++testnum);
 //                    fsfile = FS_FOpen(file, "w");
 //                #endif 
+                //CyDelay(15000u);
+                
                 break;
                 
             default:

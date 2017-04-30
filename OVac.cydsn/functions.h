@@ -18,6 +18,12 @@
 #ifndef _FUNCTIONS_H_
 #define _FUNCTIONS_H_
     
+#define COMMANDS "\ncommands: \n05,start\n" \
+                 "04,stop\n" \
+                 "04,data\n"
+
+#define COMMANDS_LEN 37
+    
 /*State Declarations*/
 typedef enum STATES{
     SYSTEM_CHECK, 
@@ -31,7 +37,7 @@ typedef enum STATES{
     
 void I2C_LCD_print(uint8_t row, uint8_t column, uint16_t ax, uint16_t ay,uint16_t az);
 
-int16_t ComputeMA(int16_t avg, int16_t n, int16_t sample);
+float ComputeMA(float avg, int16_t n, float sample);
 
 void BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag);
 

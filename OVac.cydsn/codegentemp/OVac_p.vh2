@@ -1,5 +1,5 @@
 -- Project:   OVac
--- Generated: 04/27/2017 16:01:49
+-- Generated: 04/29/2017 16:47:09
 -- PSoC Creator  4.0 Update 1
 
 ENTITY OVac IS
@@ -51,6 +51,7 @@ ARCHITECTURE __DEFAULT__ OF OVac IS
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
     SIGNAL Net_101 : bit;
     SIGNAL Net_10_local : bit;
+    SIGNAL Net_120 : bit;
     SIGNAL Net_179 : bit;
     SIGNAL Net_219 : bit;
     SIGNAL Net_22 : bit;
@@ -2928,7 +2929,8 @@ BEGIN
             status_3 => \adjust_timer:TimerUDB:status_3\,
             status_2 => \adjust_timer:TimerUDB:status_2\,
             status_1 => open,
-            status_0 => \adjust_timer:TimerUDB:status_tc\);
+            status_0 => \adjust_timer:TimerUDB:status_tc\,
+            interrupt => Net_120);
 
     \adjust_timer:TimerUDB:sT32:timerdp:u0\:datapathcell
         GENERIC MAP(
@@ -3336,6 +3338,14 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_226,
+            clock => ClockBlock_BUS_CLK);
+
+    temp_isr:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_120,
             clock => ClockBlock_BUS_CLK);
 
     \emFile:SPI0:BSPIM:state_2\:macrocell

@@ -24,7 +24,7 @@ void I2C_LCD_print(uint8_t row, uint8_t column, uint16_t ax, uint16_t ay,uint16_
     LCD_print(accelData);
 }
 
-int16_t ComputeMA(int16_t avg, int16_t n, int16_t sample){
+float ComputeMA(float avg, int16_t n, float sample){
     avg -= avg/n;
     avg += sample/n;
     return avg;    
@@ -33,14 +33,20 @@ int16_t ComputeMA(int16_t avg, int16_t n, int16_t sample){
 /* Process an incoming message, only for WAIT, TRANSMIT states, or for a reset of the system */
 void BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag){
     int i = 0;
-    char msg[10];
+    char commands[COMMANDS_LEN] = COMMANDS;
     if (!strncmp(RxBuffer, "stop", 4)){                      // stop/reset program, go back to WAIT
         *STATE = WAIT_TO_LAUNCH;
     } else if (*STATE == WAIT_TO_LAUNCH && !strncmp(RxBuffer, "start", 5)){ // start the process, go to DESCENDING
         *STATE = DESCENDING;
     } else if (*STATE == TRANSMIT && !strncmp(RxBuffer, "data", 4)){ // prompt to start sending data back
         *dataflag = 1;
-    }  
+    } else{
+        while (i < COMMANDS_LEN){
+            while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
+                UART_PutChar(commands[i++]);
+        }
+        return;
+    }
    
     while (i < bytes + 3){
         while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)

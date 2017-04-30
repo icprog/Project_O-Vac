@@ -37,6 +37,7 @@
 <v>OVac-000\OVac\Source Files\LiquidCrystal_I2C.c</v>
 <v>OVac-000\OVac\Source Files\main.c</v>
 <v>OVac-000\OVac\Source Files\mpu6050.c</v>
+<v>OVac-000\OVac\Generated_Source</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\ADC</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\ADC\ADC.c</v>
@@ -192,6 +193,9 @@
 <v>OVac-000\OVac\Generated_Source\PSoC5\Solenoid_2\Solenoid_2.c</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\Solenoid_2\Solenoid_2.h</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\Solenoid_2\Solenoid_2_aliases.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\temp_isr</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\temp_isr\temp_isr.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\temp_isr\temp_isr.h</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\UART</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\UART\UART.c</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\UART\UART.h</v>
@@ -234,6 +238,33 @@
 <v>OVac-000\OVac\Header Files\mpu6050.h</v>
 <v>OVac-000\OVac\Source Files</v>
 <v>OVac-000\OVac\Generated_Source</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC\ADC.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC\ADC.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC\ADC_INT.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC\ADC_PM.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_AMux</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_AMux\ADC_AMux.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_Ext_CP_Clk</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_in</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_in\ADC_in.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_in\ADC_in.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_in\ADC_in_aliases.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer.h</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer_PM.c</v>
+<v>OVac-000\OVac\Generated_Source\PSoC5\Clock_1</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -314,6 +345,7 @@
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\SDA.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\Solenoid_1.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\Solenoid_2.lst</v>
+<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\temp_isr.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\UART.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_BOOT.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\UART_INT.lst</v>
@@ -432,6 +464,8 @@
 <name v=".\OVac.cydwr" />
 <name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\main.c" />
+<name v=".\functions.c" />
+<name v=".\functions.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -439,7 +473,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1117, 552" SelectedTabbedMdiWindow="3d9bf6d0-de3a-42d0-97e7-1400b12c962f"><DocumentWindow Key="d3d22e19-4e93-4683-839e-7c3ff639f0c2" Guid="d76f757a-6659-4bee-af3e-fe6d2bc36d95" /><DocumentWindow Key="ce3a54a4-a42f-4075-bbaa-27c74315a84b" Guid="0f573126-1fcc-4121-a70c-95fc2f9186c9" /><DocumentWindow Key="edeef426-11a6-46fe-9b9f-a3feea7affac" Guid="3d9bf6d0-de3a-42d0-97e7-1400b12c962f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1337, 678" SelectedTabbedMdiWindow="cbfda358-007e-4960-9391-6455506c1790"><DocumentWindow Key="53e915e3-f458-44cf-8931-14a725307e75" Guid="184862b5-1d0e-4e80-8ecd-0e4f2fbd8a54" /><DocumentWindow Key="6ed5bb2f-cc04-4d3d-b430-6f9b5e6473d9" Guid="b2f2c9a6-7eaf-4e20-abde-3da4f4fea90d" /><DocumentWindow Key="108ed295-3421-4779-bbd1-58e85be37dce" Guid="f5b1a537-e6a8-4bb4-8b8d-f07ef394c493" /><DocumentWindow Key="daeeb6ad-f712-4ed5-917d-920b6806c904" Guid="cbfda358-007e-4960-9391-6455506c1790" /><DocumentWindow Key="2dc1c4e9-3cc0-44b7-84e1-53d807c8e407" Guid="b63efb91-127c-4ddb-b2be-5250952b6fb5" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

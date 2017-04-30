@@ -2,7 +2,7 @@
 --	Conversion of OVac.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Apr 27 16:01:46 2017
+--	Sat Apr 29 16:47:06 2017
 --
 
 USE cypress.cypress.all;
@@ -3064,7 +3064,7 @@ timer_clock_1:cy_clock_v1_0
 		clock=>\adjust_timer:TimerUDB:ClockOutFromEnBlock\,
 		status=>(zero, zero, zero, \adjust_timer:TimerUDB:status_3\,
 			\adjust_timer:TimerUDB:status_2\, zero, \adjust_timer:TimerUDB:status_tc\),
-		interrupt=>\adjust_timer:Net_55\);
+		interrupt=>Net_120);
 \adjust_timer:TimerUDB:sT32:timerdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
@@ -4095,6 +4095,10 @@ rx_interrupt:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_226);
+temp_isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_120);
 \emFile:SPI0:BSPIM:so_send_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\emFile:SPI0:BSPIM:clk_fin\,

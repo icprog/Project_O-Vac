@@ -53,6 +53,7 @@
 #include "Reset.h"
 #include "UART.h"
 #include "rx_interrupt.h"
+#include "temp_isr.h"
 #include "ADC_AMux.h"
 #include "ADC_Ext_CP_Clk.h"
 #include "ADC_IRQ.h"
