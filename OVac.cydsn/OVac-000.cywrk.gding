@@ -256,15 +256,6 @@
 <v>OVac-000\OVac\Generated_Source\PSoC5\ADC_in\ADC_in_aliases.h</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ</v>
 <v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.c</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_IRQ\ADC_IRQ.h</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.c</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\ADC_theACLK\ADC_theACLK.h</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer.c</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer.h</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\adjust_timer\adjust_timer_PM.c</v>
-<v>OVac-000\OVac\Generated_Source\PSoC5\Clock_1</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -388,15 +379,6 @@
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
 <v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_Clock_1.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_ConfigMMC_SPI.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_miso0.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_MMC_HW_SPI.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_mosi0.lst</v>
-<v>OVac-000\OVac\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_PM.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

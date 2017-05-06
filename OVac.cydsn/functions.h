@@ -19,12 +19,20 @@
 #define _FUNCTIONS_H_
     
 #define COMMANDS "\ncommands: \n05,start\n" \
-                 "04,stop\n" \
-                 "04,data\n"
-#define COMMANDS_LEN 37
+                 "05,reset\n" \
+                 "04,data\n" \
+                 "05,depth"            
     
-#define STATE_DESCENDING "STATE: DESCENDING\n"
-#define DESCENDING_LEN 18
+#define COMMANDS_LEN 46
+    
+#define STATE_WAITING "STATE: WAIT_TO_LAUNCH\n"
+#define WAITING_LEN 24
+    
+#define SEND_DEPTH "Enter desired depth:"
+#define SEND_DEPTH_LEN 20
+    
+#define STATE_DESCENDING "\nSTATE: DESCENDING\n"
+#define DESCENDING_LEN 19
     
 #define STATE_LANDED "STATE: LANDED\n"
 #define LANDED_LEN 14
@@ -37,6 +45,9 @@
     
 #define STATE_TRANSMIT "STATE: TRANSMIT\n"
 #define TRANSMIT_LEN 16
+   
+#define TRANSMITTING "Transmitting data\n"
+#define TRANSMITTING_LEN 18
     
 /*State Declarations*/
 typedef enum STATES{
@@ -53,7 +64,7 @@ void I2C_LCD_print(uint8_t row, uint8_t column, uint16_t ax, uint16_t ay,uint16_
 
 float ComputeMA(float avg, int16_t n, float sample);
 
-void BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag);
+int BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag, int *reset);
 
 void BT_Send(char *RxBuffer, STATES *STATE, int lengthOfBuf, int *firstPacket);
 

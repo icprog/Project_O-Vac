@@ -62,6 +62,7 @@ STATES STATE = WAIT_TO_LAUNCH;                  // Set initial state.
 uint8_t testnum = 1, countdown = 0, update_Data = 0;
 uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
 int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
+int depth = 0, reset = 0;                                                  // Variable depth
 char file[11] = "test_1.txt";
 char volume[10] = {};
 FS_FILE *fsfile;
@@ -112,9 +113,9 @@ CY_ISR (Countdown_ISR_Handler){
         wait_flag = 1;
     }
     #ifdef BT
-        if (STATE == TRANSMIT || STATE == WAIT_TO_LAUNCH){
+        if (STATE == TRANSMIT || (STATE == WAIT_TO_LAUNCH && !dataflag)){
             update_Data++;
-            if (update_Data == 50){
+            if (update_Data == 100){
                 transmit_flag = 1;
                 update_Data = 0;
             }
@@ -127,7 +128,7 @@ CY_ISR(rx_interrupt){
     #ifdef BT
     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
         RxBuffer[msg_count++] = UART_GetChar();
-        if ((msg_count - 3) == bytes)
+        if ((msg_count - 3) >= bytes)
             rxflag = 1;
     }
     #endif
@@ -135,7 +136,7 @@ CY_ISR(rx_interrupt){
 
 CY_ISR(temp_interrupt){
     adjust_timer_STATUS;
-    if (STATE == WAIT_TO_LAUNCH || STATE == LANDED || STATE == RESURFACE){ 
+    if ((STATE == WAIT_TO_LAUNCH && depth != 0) || STATE == LANDED || STATE == RESURFACE){ 
         wait_flag = 1;
         countdown++;
     }
@@ -291,35 +292,16 @@ int main()
             tens = RxBuffer[0] - 48;
             ones = RxBuffer[1] - 48;
             bytes = (tens * 10) + ones;
-            char t[5] = {};
-            sprintf(t, "%d%d", tens, ones);
-            setCursor(1, 0);
-            LCD_print(t);
         } 
         
         if(rxflag) {
             uint8_to_char(RxBuffer, &tempbuf[0], 20);
-            BT_Process(&tempbuf[3], &STATE, bytes, &dataflag);
-            if (STATE == DESCENDING){
-                #ifdef LCD
-                    setCursor(0,0);
-                    clear();
-                    LCD_print("STATE: DESCENT");
-                #endif
-                #ifdef BT
-                    stateMsgCount = 0;
-                    while (stateMsgCount < DESCENDING_LEN){
-                        while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
-                            UART_PutChar(descendbuf[stateMsgCount++]);
-                            if (stateMsgCount >= DESCENDING_LEN) break;
-                        }
-                    }
-                #endif
-                countdown = 0;
-            }
+            depth = BT_Process(&tempbuf[3], &STATE, bytes, &dataflag, &reset);
+            
             msg_count = 0; bytes = 0;
             memset(RxBuffer, 0, BUFFER_LEN);
             memset(tempbuf, 0, 20);
+            countdown = 0;
             rxflag = 0;
         }
     #endif
@@ -333,15 +315,19 @@ int main()
         switch (STATE){
     
             case WAIT_TO_LAUNCH:
-                id = 1;                                // Interrupt count.
-                data_time = 0;                        // data point num
-                sum = 0;                               // Sum of accelerometer values. 
-                average = 0;                        // Moving average variable.
-                collect_flag = 0;                      // flag indicating when to record acceleration sample.
-                //wait_flag = 0;                         // flag indicating when to increment interrupt counter.
-                PANIC_flag = 0;                        // flag indicating water is present in housing.
-                //bool first_test = 1;                        // flag indicating first test(longer countdown)
-                testnum = 1; //countdown = 0;
+                if (reset){
+                    id = 1;                                // Interrupt count.
+                    data_time = 0;                        // data point num
+                    sum = 0;                               // Sum of accelerometer values. 
+                    average = 0;                        // Moving average variable.
+                    collect_flag = 0;                      // flag indicating when to record acceleration sample.
+                    wait_flag = 0;                         // flag indicating when to increment interrupt counter.
+                    PANIC_flag = 0;                        // flag indicating water is present in housing.
+                    //bool first_test = 1;                        // flag indicating first test(longer countdown)
+                    testnum = 1;
+                    depth = 0; countdown = 0; msg_count = 0; dataflag = 0;
+                    reset = 0;
+                }
             
                 if (transmit_flag){
                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matters, rest do not matter(could be anything)
@@ -352,10 +338,20 @@ int main()
                         setCursor(0,0);
                         clear();
                         
-                        sprintf(buf, "T-minus %d seconds\n", (60 - countdown)); // countdown
+                        sprintf(buf, "T-minus %d seconds\n", (10 - countdown)); // countdown
                         LCD_print(buf);
                     #endif
-                    if(countdown == 60){
+                    #ifdef BT
+                        stateMsgCount = 0;
+                        sprintf(buf, "\n%d seconds remaining", (10 - countdown));
+                        while (stateMsgCount < 21){
+                            while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+                                UART_PutChar(buf[stateMsgCount++]);
+                                if (stateMsgCount >= 21) break;
+                            }
+                        }
+                    #endif
+                    if(countdown == 10){
                         STATE = DESCENDING;
                         #ifdef LCD
                             setCursor(0,0);
@@ -373,7 +369,7 @@ int main()
                         #endif
                         id=0;
                         data_time = 0;
-                        countdown = 9; 
+                        countdown = 0; 
                     }
                     wait_flag = 0; 
                 }
@@ -510,7 +506,7 @@ int main()
                     pulse++;
                     countdown = 0;
                 }
-                if (pulse == 6){
+                if (pulse == 2){
                     char sdbuf[60] = {};
                                                    //wait 10 seconds to lift, for testing in pool
                     STATE = TRANSMIT;
@@ -544,6 +540,8 @@ int main()
                 }
                 countdown = 0;
                 pulse = 0;
+                depth = 0;
+                
                 //FS_Read(fsfile, 4);
 //                #ifdef SD                                   //close old file, open new one
 //                    FS_FClose(fsfile);

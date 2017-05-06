@@ -31,44 +31,61 @@ float ComputeMA(float avg, int16_t n, float sample){
 }
 
 /* Process an incoming message, only for WAIT, TRANSMIT states, or for a reset of the system */
-void BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *dataflag){
-    int i = 0;
+int BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *flag, int *reset){
+    int i = 0, ones = 0, tens = 0, hunds = 0;
     char commands[COMMANDS_LEN] = COMMANDS;
-    if (!strncmp(RxBuffer, "stop", 4)){                      // stop/reset program, go back to WAIT
+    char depth[SEND_DEPTH_LEN] = SEND_DEPTH;
+    if (!strncmp(RxBuffer, "reset", 5)){                      // stop/reset program, go back to WAIT
         *STATE = WAIT_TO_LAUNCH;
-    } else if (*STATE == WAIT_TO_LAUNCH && !strncmp(RxBuffer, "start", 5)){ // start the process, go to DESCENDING
-        *STATE = DESCENDING;
+        *reset = 1;
+    } else if (*STATE == WAIT_TO_LAUNCH && !strncmp(RxBuffer, "start", 5)){ // start the process, ask for depth
+         *flag = 1;
+        while (i < SEND_DEPTH_LEN){
+            while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
+                UART_PutChar(depth[i++]);
+        }
+    } else if (*STATE == WAIT_TO_LAUNCH && !strncmp(RxBuffer, "d:", 2)){
+        hunds = RxBuffer[2] - 48;
+        tens = RxBuffer[3] - 48;
+        ones = RxBuffer[4] - 48;
+         
+        if (hunds){ UART_PutChar(RxBuffer[2]); UART_PutChar(RxBuffer[3]);}
+        else if (tens) UART_PutChar(RxBuffer[3]);
+        UART_PutChar(RxBuffer[4]);
+        
+        return (hunds * 100) + (tens * 10) + ones;
     } else if (*STATE == TRANSMIT && !strncmp(RxBuffer, "data", 4)){ // prompt to start sending data back
-        *dataflag = 1;
-    } else{
+        *flag = 1;
+    } else {
         while (i < COMMANDS_LEN){
             while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
                 UART_PutChar(commands[i++]);
         }
-        return;
+        return 0;
     }
    
     while (i < bytes + 3){
         while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
             UART_PutChar(RxBuffer[i++]);
     }
+    return 0;
 }
 
 /* For sending status of State, or data back in transmit state */
 void BT_Send(char *TxBuffer, STATES *STATE, int lengthOfBuf, int *firstPacket){
     int i = 0;
-    uint8 waitstate[24] = "STATE = wait_to_launch\n";
-    uint8 transtate[18] = "STATE = transmit\n";
+    uint8 waitstate[WAITING_LEN] = STATE_WAITING;
+    uint8 transtate[TRANSMITTING_LEN] = TRANSMITTING;
     
     if (*STATE == WAIT_TO_LAUNCH){                  // Just send STATE back to indicate
-        while (i < 23){
+        while (i < WAITING_LEN - 1){
             while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
                 UART_PutChar(waitstate[i++]);
         }
     }
     else if (*STATE == TRANSMIT){                   // Send STATE back then data from buffer
         if (*firstPacket){                          // only send STATE once
-            while (i < 17){
+            while (i < TRANSMITTING_LEN - 1){
                 while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
                     UART_PutChar(transtate[i++]);
             }
