@@ -531,17 +531,19 @@ int success = 1;
             if(0 != FS_GetVolumeName(0u, volume, 9u))
                 /* Getting volume name succeeded so prompt it on the LCD */
                 LCD_print("Sd vol succeed");
-            else
+            else{
                 LCD_print("Sd vol failed");
                 success = 0;
+            }
             CyDelay(500u);
             clear();
             if(0 == FS_FormatSD(volume))
                 LCD_print("format Succeeded");
-            else
+            else{
                 LCD_print("format Failed");
                 success = 0;
-          
+            }
+            
             CyDelay(500u);
             clear();
             
@@ -558,16 +560,17 @@ int success = 1;
                 if(0 != FS_Write(fsfile, filename, strlen(filename))) 
                     /* Inditate that data was written to a file */
                     LCD_print("written to file");
-                else
+                else {
                     LCD_print("Failed to write");
                     success = 0;
                     clear();
+                }
                 CyDelay(500u);
             }
-            else
+            else{
                 LCD_print("file not created");
                 success = 0;
-        
+            }
         FS_Write(fsfile, "\n------------\n", 14);
 return success;
 }
