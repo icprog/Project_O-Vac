@@ -1,4 +1,4 @@
---------------- Rebuild Started: 04/23/2017 14:07:45 Project: OVac, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Rebuild Started: 05/07/2017 16:24:25 Project: OVac, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 Deleting file ".\ARM_GCC_493\Debug\main.o"
 Deleting file ".\ARM_GCC_493\Debug\LiquidCrystal_I2C.o"
 Deleting file ".\ARM_GCC_493\Debug\i2cFunctions.o"
@@ -21,7 +21,6 @@ Deleting file ".\ARM_GCC_493\Debug\ADC_AMux.o"
 Deleting file ".\ARM_GCC_493\Debug\ADC_Ext_CP_Clk.o"
 Deleting file ".\ARM_GCC_493\Debug\ADC_IRQ.o"
 Deleting file ".\ARM_GCC_493\Debug\ADC_theACLK.o"
-Deleting file ".\ARM_GCC_493\Debug\LED4.o"
 Deleting file ".\ARM_GCC_493\Debug\SDA.o"
 Deleting file ".\ARM_GCC_493\Debug\SCL.o"
 Deleting file ".\ARM_GCC_493\Debug\I2C_Master.o"
@@ -54,6 +53,20 @@ Deleting file ".\ARM_GCC_493\Debug\countdown.o"
 Deleting file ".\ARM_GCC_493\Debug\LED2_1.o"
 Deleting file ".\ARM_GCC_493\Debug\adjust_timer.o"
 Deleting file ".\ARM_GCC_493\Debug\adjust_timer_PM.o"
+Deleting file ".\ARM_GCC_493\Debug\LED7.o"
+Deleting file ".\ARM_GCC_493\Debug\Solenoid_2.o"
+Deleting file ".\ARM_GCC_493\Debug\Comp.o"
+Deleting file ".\ARM_GCC_493\Debug\Comp_PM.o"
+Deleting file ".\ARM_GCC_493\Debug\moisture_isr.o"
+Deleting file ".\ARM_GCC_493\Debug\M_Pin.o"
+Deleting file ".\ARM_GCC_493\Debug\Reset.o"
+Deleting file ".\ARM_GCC_493\Debug\UART.o"
+Deleting file ".\ARM_GCC_493\Debug\UART_PM.o"
+Deleting file ".\ARM_GCC_493\Debug\UART_INT.o"
+Deleting file ".\ARM_GCC_493\Debug\UART_BOOT.o"
+Deleting file ".\ARM_GCC_493\Debug\rx_interrupt.o"
+Deleting file ".\ARM_GCC_493\Debug\UART_IntClock.o"
+Deleting file ".\ARM_GCC_493\Debug\temp_isr.o"
 Deleting file ".\ARM_GCC_493\Debug\OVac.hex"
 Deleting file ".\ARM_GCC_493\Debug\OVac.elf"
 Deleting file ".\ARM_GCC_493\Debug\OVac.map"
@@ -63,13 +76,16 @@ Deleting file ".\OVac.rpt"
 Deleting file ".\OVac_timing.html"
 Deleting file ".\ARM_GCC_493\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
 Deleting file ".\ARM_GCC_493\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
-cydsfit.exe -.appdatapath "C:\Users\airamire\AppData\Local\Cypress Semiconductor\PSoC Creator\4.0" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\airamire\Documents\PSoC Creator\OVac.cydsn\OVac.cyprj" -d CY8C5868LTI-LP039 -s "C:\Users\airamire\Documents\PSoC Creator\OVac.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit.exe -.appdatapath "C:\Users\gstoll\AppData\Local\Cypress Semiconductor\PSoC Creator\4.0" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\gstoll\Desktop\Project_O-Vac\OVac.cydsn\OVac.cyprj -d CY8C5868LTI-LP039 -s C:\Users\gstoll\Desktop\Project_O-Vac\OVac.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 HDL Generation...
 Synthesis...
 Tech Mapping...
+ADD: pft.M0040: information: The following 2 pin(s) will be assigned a location by the fitter: LED2(0), LED7(0)
 Analog Placement...
 Info: apr.M0002: Analog signal "\ADC:Net_35\" is connected to one terminal only. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 49% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 76% done. (App=cydsfit)
 Analog Routing...
 Analog Code Generation...
 Digital Placement...
@@ -101,7 +117,6 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/ADC_Ext_CP_Clk.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\ADC_Ext_CP_Clk.c -o .\ARM_GCC_493\Debug\ADC_Ext_CP_Clk.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/ADC_IRQ.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\ADC_IRQ.c -o .\ARM_GCC_493\Debug\ADC_IRQ.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/ADC_theACLK.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\ADC_theACLK.c -o .\ARM_GCC_493\Debug\ADC_theACLK.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/LED4.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\LED4.c -o .\ARM_GCC_493\Debug\LED4.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/SDA.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\SDA.c -o .\ARM_GCC_493\Debug\SDA.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/SCL.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\SCL.c -o .\ARM_GCC_493\Debug\SCL.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/I2C_Master.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\I2C_Master.c -o .\ARM_GCC_493\Debug\I2C_Master.o
@@ -134,12 +149,26 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/LED2_1.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\LED2_1.c -o .\ARM_GCC_493\Debug\LED2_1.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/adjust_timer.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\adjust_timer.c -o .\ARM_GCC_493\Debug\adjust_timer.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/adjust_timer_PM.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\adjust_timer_PM.c -o .\ARM_GCC_493\Debug\adjust_timer_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/LED7.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\LED7.c -o .\ARM_GCC_493\Debug\LED7.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Solenoid_2.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Solenoid_2.c -o .\ARM_GCC_493\Debug\Solenoid_2.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Comp.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Comp.c -o .\ARM_GCC_493\Debug\Comp.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Comp_PM.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Comp_PM.c -o .\ARM_GCC_493\Debug\Comp_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/moisture_isr.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\moisture_isr.c -o .\ARM_GCC_493\Debug\moisture_isr.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/M_Pin.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\M_Pin.c -o .\ARM_GCC_493\Debug\M_Pin.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/Reset.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\Reset.c -o .\ARM_GCC_493\Debug\Reset.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/UART.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\UART.c -o .\ARM_GCC_493\Debug\UART.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/UART_PM.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\UART_PM.c -o .\ARM_GCC_493\Debug\UART_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/UART_INT.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\UART_INT.c -o .\ARM_GCC_493\Debug\UART_INT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/UART_BOOT.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\UART_BOOT.c -o .\ARM_GCC_493\Debug\UART_BOOT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/rx_interrupt.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\rx_interrupt.c -o .\ARM_GCC_493\Debug\rx_interrupt.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/UART_IntClock.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\UART_IntClock.c -o .\ARM_GCC_493\Debug\UART_IntClock.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\emFile_V322c\Code\Include\PSoC5 -I.\emFile_V322c\Code\Include\PSoC5\emf32nOS -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_493\Debug/temp_isr.lst -g -ffunction-sections -O0 -ffat-lto-objects -c Generated_Source\PSoC5\temp_isr.c -o .\ARM_GCC_493\Debug\temp_isr.o
 arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\ARM_GCC_493\Debug/CyBootAsmGnu.lst -g -o .\ARM_GCC_493\Debug\CyBootAsmGnu.o Generated_Source\PSoC5\CyBootAsmGnu.s
-arm-none-eabi-ar.exe -rs .\ARM_GCC_493\Debug\OVac.a .\ARM_GCC_493\Debug\cyfitter_cfg.o .\ARM_GCC_493\Debug\CyDmac.o .\ARM_GCC_493\Debug\CyFlash.o .\ARM_GCC_493\Debug\CyLib.o .\ARM_GCC_493\Debug\cyPm.o .\ARM_GCC_493\Debug\CySpc.o .\ARM_GCC_493\Debug\cyutils.o .\ARM_GCC_493\Debug\ADC.o .\ARM_GCC_493\Debug\ADC_PM.o .\ARM_GCC_493\Debug\ADC_INT.o .\ARM_GCC_493\Debug\ADC_AMux.o .\ARM_GCC_493\Debug\ADC_Ext_CP_Clk.o .\ARM_GCC_493\Debug\ADC_IRQ.o .\ARM_GCC_493\Debug\ADC_theACLK.o .\ARM_GCC_493\Debug\LED4.o .\ARM_GCC_493\Debug\SDA.o .\ARM_GCC_493\Debug\SCL.o .\ARM_GCC_493\Debug\I2C_Master.o .\ARM_GCC_493\Debug\I2C_Master_BOOT.o .\ARM_GCC_493\Debug\I2C_Master_INT.o .\ARM_GCC_493\Debug\I2C_Master_PM.o .\ARM_GCC_493\Debug\I2C_Master_SLAVE.o .\ARM_GCC_493\Debug\I2C_Master_MASTER.o .\ARM_GCC_493\Debug\emFile_ConfigMMC_SPI.o .\ARM_GCC_493\Debug\emFile_MMC_HW_SPI.o .\ARM_GCC_493\Debug\emFile_PM.o .\ARM_GCC_493\Debug\emFile_SPI0.o .\ARM_GCC_493\Debug\emFile_SPI0_PM.o .\ARM_GCC_493\Debug\emFile_SPI0_INT.o .\ARM_GCC_493\Debug\emFile_mosi0.o .\ARM_GCC_493\Debug\emFile_Clock_1.o .\ARM_GCC_493\Debug\emFile_miso0.o .\ARM_GCC_493\Debug\emFile_sclk0.o .\ARM_GCC_493\Debug\emFile_SPI0_CS.o .\ARM_GCC_493\Debug\Sample_Timer.o .\ARM_GCC_493\Debug\Sample_Timer_PM.o .\ARM_GCC_493\Debug\Clock_1.o .\ARM_GCC_493\Debug\Sample_ISR.o .\ARM_GCC_493\Debug\ADC_in.o .\ARM_GCC_493\Debug\Solenoid_1.o .\ARM_GCC_493\Debug\LED2.o .\ARM_GCC_493\Debug\Countdown_timer.o .\ARM_GCC_493\Debug\Countdown_timer_PM.o .\ARM_GCC_493\Debug\countdown.o .\ARM_GCC_493\Debug\LED2_1.o .\ARM_GCC_493\Debug\adjust_timer.o .\ARM_GCC_493\Debug\adjust_timer_PM.o .\ARM_GCC_493\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe -rs .\ARM_GCC_493\Debug\OVac.a .\ARM_GCC_493\Debug\cyfitter_cfg.o .\ARM_GCC_493\Debug\CyDmac.o .\ARM_GCC_493\Debug\CyFlash.o .\ARM_GCC_493\Debug\CyLib.o .\ARM_GCC_493\Debug\cyPm.o .\ARM_GCC_493\Debug\CySpc.o .\ARM_GCC_493\Debug\cyutils.o .\ARM_GCC_493\Debug\ADC.o .\ARM_GCC_493\Debug\ADC_PM.o .\ARM_GCC_493\Debug\ADC_INT.o .\ARM_GCC_493\Debug\ADC_AMux.o .\ARM_GCC_493\Debug\ADC_Ext_CP_Clk.o .\ARM_GCC_493\Debug\ADC_IRQ.o .\ARM_GCC_493\Debug\ADC_theACLK.o .\ARM_GCC_493\Debug\SDA.o .\ARM_GCC_493\Debug\SCL.o .\ARM_GCC_493\Debug\I2C_Master.o .\ARM_GCC_493\Debug\I2C_Master_BOOT.o .\ARM_GCC_493\Debug\I2C_Master_INT.o .\ARM_GCC_493\Debug\I2C_Master_PM.o .\ARM_GCC_493\Debug\I2C_Master_SLAVE.o .\ARM_GCC_493\Debug\I2C_Master_MASTER.o .\ARM_GCC_493\Debug\emFile_ConfigMMC_SPI.o .\ARM_GCC_493\Debug\emFile_MMC_HW_SPI.o .\ARM_GCC_493\Debug\emFile_PM.o .\ARM_GCC_493\Debug\emFile_SPI0.o .\ARM_GCC_493\Debug\emFile_SPI0_PM.o .\ARM_GCC_493\Debug\emFile_SPI0_INT.o .\ARM_GCC_493\Debug\emFile_mosi0.o .\ARM_GCC_493\Debug\emFile_Clock_1.o .\ARM_GCC_493\Debug\emFile_miso0.o .\ARM_GCC_493\Debug\emFile_sclk0.o .\ARM_GCC_493\Debug\emFile_SPI0_CS.o .\ARM_GCC_493\Debug\Sample_Timer.o .\ARM_GCC_493\Debug\Sample_Timer_PM.o .\ARM_GCC_493\Debug\Clock_1.o .\ARM_GCC_493\Debug\Sample_ISR.o .\ARM_GCC_493\Debug\ADC_in.o .\ARM_GCC_493\Debug\Solenoid_1.o .\ARM_GCC_493\Debug\LED2.o .\ARM_GCC_493\Debug\Countdown_timer.o .\ARM_GCC_493\Debug\Countdown_timer_PM.o .\ARM_GCC_493\Debug\countdown.o .\ARM_GCC_493\Debug\LED2_1.o .\ARM_GCC_493\Debug\adjust_timer.o .\ARM_GCC_493\Debug\adjust_timer_PM.o .\ARM_GCC_493\Debug\LED7.o .\ARM_GCC_493\Debug\Solenoid_2.o .\ARM_GCC_493\Debug\Comp.o .\ARM_GCC_493\Debug\Comp_PM.o .\ARM_GCC_493\Debug\moisture_isr.o .\ARM_GCC_493\Debug\M_Pin.o .\ARM_GCC_493\Debug\Reset.o .\ARM_GCC_493\Debug\UART.o .\ARM_GCC_493\Debug\UART_PM.o .\ARM_GCC_493\Debug\UART_INT.o .\ARM_GCC_493\Debug\UART_BOOT.o .\ARM_GCC_493\Debug\rx_interrupt.o .\ARM_GCC_493\Debug\UART_IntClock.o .\ARM_GCC_493\Debug\temp_isr.o .\ARM_GCC_493\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\ARM_GCC_493\Debug\OVac.a
-arm-none-eabi-gcc.exe -Wl,--start-group -o .\ARM_GCC_493\Debug\OVac.elf .\ARM_GCC_493\Debug\main.o .\ARM_GCC_493\Debug\LiquidCrystal_I2C.o .\ARM_GCC_493\Debug\i2cFunctions.o .\ARM_GCC_493\Debug\functions.o .\ARM_GCC_493\Debug\mpu6050.o .\ARM_GCC_493\Debug\cymetadata.o .\ARM_GCC_493\Debug\Cm3Start.o .\ARM_GCC_493\Debug\OVac.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -ffat-lto-objects -l emf32nosnlfn -L Generated_Source\PSoC5 -L .\emFile_V322c\Code\Include\PSoC5 -L .\emFile_V322c\LinkLibrary\PSoC5 -L .\emFile_V322c\LinkLibrary\PSoC5\GCC -Wl,-Map,.\ARM_GCC_493\Debug/OVac.map -T "C:\Users\airamire\Documents\PSoC Creator\OVac.cydsn\Generated_Source\PSoC5\cm3gcc.ld" -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
-cyelftool.exe -C "C:\Users\airamire\Documents\PSoC Creator\OVac.cydsn\ARM_GCC_493\Debug\OVac.elf" --flash_row_size 256 --flash_size 262144
-cyelftool.exe -S "C:\Users\airamire\Documents\PSoC Creator\OVac.cydsn\ARM_GCC_493\Debug\OVac.elf"
-Flash used: 33768 of 262144 bytes (12.9 %).
-SRAM used: 7021 of 65536 bytes (10.7 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 04/23/2017 14:08:06 ---------------
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\ARM_GCC_493\Debug\OVac.elf .\ARM_GCC_493\Debug\main.o .\ARM_GCC_493\Debug\LiquidCrystal_I2C.o .\ARM_GCC_493\Debug\i2cFunctions.o .\ARM_GCC_493\Debug\functions.o .\ARM_GCC_493\Debug\mpu6050.o .\ARM_GCC_493\Debug\cymetadata.o .\ARM_GCC_493\Debug\Cm3Start.o .\ARM_GCC_493\Debug\OVac.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -ffat-lto-objects -l emf32nosnlfn -L Generated_Source\PSoC5 -L .\emFile_V322c\Code\Include\PSoC5 -L .\emFile_V322c\LinkLibrary\PSoC5 -L .\emFile_V322c\LinkLibrary\PSoC5\GCC -Wl,-Map,.\ARM_GCC_493\Debug/OVac.map -T C:\Users\gstoll\Desktop\Project_O-Vac\OVac.cydsn\Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C C:\Users\gstoll\Desktop\Project_O-Vac\OVac.cydsn\ARM_GCC_493\Debug\OVac.elf --flash_row_size 256 --flash_size 262144
+cyelftool.exe -S C:\Users\gstoll\Desktop\Project_O-Vac\OVac.cydsn\ARM_GCC_493\Debug\OVac.elf
+Flash used: 35992 of 262144 bytes (13.7 %).
+SRAM used: 7133 of 65536 bytes (10.9 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 05/07/2017 16:24:52 ---------------

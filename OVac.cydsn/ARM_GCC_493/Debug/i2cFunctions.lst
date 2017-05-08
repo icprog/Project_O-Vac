@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
   37              		.cfi_def_cfa_offset 32
   38 0004 00AF     		add	r7, sp, #0
   39              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 2
 
 
   40 0006 3B60     		str	r3, [r7]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
   85              		.loc 1 26 0
   86 0056 0020     		movs	r0, #0
   87 0058 FFF7FEFF 		bl	I2C_Master_MasterReadByte
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 3
 
 
   88 005c 0346     		mov	r3, r0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
   32:i2cFunctions.c **** }
  137              		.loc 1 32 0
  138 0020 0837     		adds	r7, r7, #8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 4
 
 
  139              		.cfi_def_cfa_offset 8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  190 0034 FB73     		strb	r3, [r7, #15]
   36:i2cFunctions.c ****     I2CReadByte(devAddr, regAddr, value);
  191              		.loc 1 36 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 5
 
 
  192 0036 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  241              		.cfi_def_cfa_offset 8
  242              		.cfi_offset 7, -8
  243              		.cfi_offset 14, -4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 6
 
 
  244 0002 82B0     		sub	sp, sp, #8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
   46:i2cFunctions.c **** void I2CWriteBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *value) {
  294              		.loc 1 46 0
  295              		.cfi_startproc
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 7
 
 
  296              		@ args = 0, pretend = 0, frame = 16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
   53:i2cFunctions.c **** 	I2C_Master_MasterSendStop();	
  343              		.loc 1 53 0
  344 0046 FFF7FEFF 		bl	I2C_Master_MasterSendStop
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 8
 
 
   54:i2cFunctions.c **** }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  394              		@ sp needed
  395 0026 80BD     		pop	{r7, pc}
  396              		.cfi_endproc
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 9
 
 
  397              	.LFE68:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  446 003a 07F10E03 		add	r3, r7, #14
  447 003e 0846     		mov	r0, r1
  448 0040 1146     		mov	r1, r2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 10
 
 
  449 0042 1A46     		mov	r2, r3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  497              		.size	I2CWriteBits, .-I2CWriteBits
  498              		.section	.text.I2CWriteBit,"ax",%progbits
  499              		.align	2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 11
 
 
  500              		.global	I2CWriteBit
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  549 0042 DBB2     		uxtb	r3, r3
  550 0044 1343     		orrs	r3, r3, r2
  551 0046 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 12
 
 
  552 0048 DBB2     		uxtb	r3, r3
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  602              		.cfi_offset 7, -8
  603              		.cfi_offset 14, -4
  604 0002 84B0     		sub	sp, sp, #16
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 13
 
 
  605              		.cfi_def_cfa_offset 24
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  652 0054 9A42     		cmp	r2, r3
  653 0056 E9D8     		bhi	.L17
   85:i2cFunctions.c **** 	}
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 14
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 14
 
 
   86:i2cFunctions.c **** 	I2C_Master_MasterSendStop();		
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  702              		.cfi_def_cfa_offset 8
  703 0024 BD46     		mov	sp, r7
  704              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 15
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 15
 
 
  705              		@ sp needed
@@ -860,15 +860,15 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  721 000b 01       		.uleb128 0x1
  722 000c 2D000000 		.4byte	.LASF36
  723 0010 01       		.byte	0x1
- 724 0011 D0010000 		.4byte	.LASF37
- 725 0015 BB000000 		.4byte	.LASF38
+ 724 0011 CF010000 		.4byte	.LASF37
+ 725 0015 C7000000 		.4byte	.LASF38
  726 0019 00000000 		.4byte	.Ldebug_ranges0+0
  727 001d 00000000 		.4byte	0
  728 0021 00000000 		.4byte	.Ldebug_line0
  729 0025 02       		.uleb128 0x2
  730 0026 01       		.byte	0x1
  731 0027 06       		.byte	0x6
- 732 0028 3D020000 		.4byte	.LASF0
+ 732 0028 3C020000 		.4byte	.LASF0
  733 002c 03       		.uleb128 0x3
  734 002d 00000000 		.4byte	.LASF3
  735 0031 02       		.byte	0x2
@@ -877,20 +877,20 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  738 0037 02       		.uleb128 0x2
  739 0038 01       		.byte	0x1
  740 0039 08       		.byte	0x8
- 741 003a FF000000 		.4byte	.LASF1
+ 741 003a FE000000 		.4byte	.LASF1
  742 003e 02       		.uleb128 0x2
  743 003f 02       		.byte	0x2
  744 0040 05       		.byte	0x5
- 745 0041 FE010000 		.4byte	.LASF2
+ 745 0041 FD010000 		.4byte	.LASF2
  746 0045 03       		.uleb128 0x3
- 747 0046 6C010000 		.4byte	.LASF4
+ 747 0046 6B010000 		.4byte	.LASF4
  748 004a 02       		.byte	0x2
  749 004b 2B       		.byte	0x2b
  750 004c 50000000 		.4byte	0x50
  751 0050 02       		.uleb128 0x2
  752 0051 02       		.byte	0x2
  753 0052 07       		.byte	0x7
- 754 0053 3F010000 		.4byte	.LASF5
+ 754 0053 3E010000 		.4byte	.LASF5
  755 0057 03       		.uleb128 0x3
  756 0058 1E000000 		.4byte	.LASF6
  757 005c 02       		.byte	0x2
@@ -898,23 +898,23 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  759 005e 62000000 		.4byte	0x62
  760 0062 02       		.uleb128 0x2
  761 0063 04       		.byte	0x4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 16
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 16
 
 
  762 0064 05       		.byte	0x5
- 763 0065 27020000 		.4byte	.LASF7
+ 763 0065 26020000 		.4byte	.LASF7
  764 0069 02       		.uleb128 0x2
  765 006a 04       		.byte	0x4
  766 006b 07       		.byte	0x7
- 767 006c 2D010000 		.4byte	.LASF8
+ 767 006c 2C010000 		.4byte	.LASF8
  768 0070 02       		.uleb128 0x2
  769 0071 08       		.byte	0x8
  770 0072 05       		.byte	0x5
- 771 0073 DF010000 		.4byte	.LASF9
+ 771 0073 DE010000 		.4byte	.LASF9
  772 0077 02       		.uleb128 0x2
  773 0078 08       		.byte	0x8
  774 0079 07       		.byte	0x7
- 775 007a A0010000 		.4byte	.LASF10
+ 775 007a 9F010000 		.4byte	.LASF10
  776 007e 04       		.uleb128 0x4
  777 007f 04       		.byte	0x4
  778 0080 05       		.byte	0x5
@@ -922,43 +922,43 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  780 0085 02       		.uleb128 0x2
  781 0086 04       		.byte	0x4
  782 0087 07       		.byte	0x7
- 783 0088 93010000 		.4byte	.LASF11
+ 783 0088 92010000 		.4byte	.LASF11
  784 008c 03       		.uleb128 0x3
- 785 008d B7010000 		.4byte	.LASF12
+ 785 008d B6010000 		.4byte	.LASF12
  786 0091 03       		.byte	0x3
  787 0092 15       		.byte	0x15
  788 0093 2C000000 		.4byte	0x2c
  789 0097 03       		.uleb128 0x3
- 790 0098 10020000 		.4byte	.LASF13
+ 790 0098 0F020000 		.4byte	.LASF13
  791 009c 03       		.byte	0x3
  792 009d 21       		.byte	0x21
  793 009e 45000000 		.4byte	0x45
  794 00a2 03       		.uleb128 0x3
- 795 00a3 BF010000 		.4byte	.LASF14
+ 795 00a3 BE010000 		.4byte	.LASF14
  796 00a7 03       		.byte	0x3
  797 00a8 2C       		.byte	0x2c
  798 00a9 57000000 		.4byte	0x57
  799 00ad 02       		.uleb128 0x2
  800 00ae 04       		.byte	0x4
  801 00af 04       		.byte	0x4
- 802 00b0 F9000000 		.4byte	.LASF15
+ 802 00b0 F8000000 		.4byte	.LASF15
  803 00b4 02       		.uleb128 0x2
  804 00b5 08       		.byte	0x8
  805 00b6 04       		.byte	0x4
- 806 00b7 77010000 		.4byte	.LASF16
+ 806 00b7 76010000 		.4byte	.LASF16
  807 00bb 02       		.uleb128 0x2
  808 00bc 01       		.byte	0x1
  809 00bd 08       		.byte	0x8
- 810 00be ED010000 		.4byte	.LASF17
+ 810 00be EC010000 		.4byte	.LASF17
  811 00c2 02       		.uleb128 0x2
  812 00c3 04       		.byte	0x4
  813 00c4 07       		.byte	0x7
- 814 00c5 C7010000 		.4byte	.LASF18
+ 814 00c5 C6010000 		.4byte	.LASF18
  815 00c9 05       		.uleb128 0x5
- 816 00ca 30020000 		.4byte	.LASF23
+ 816 00ca 2F020000 		.4byte	.LASF23
  817 00ce 01       		.byte	0x1
  818 00cf 12       		.byte	0x12
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 17
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 17
 
 
  819 00d0 00000000 		.4byte	.LFB63
@@ -967,7 +967,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  822 00d9 9C       		.byte	0x9c
  823 00da 23010000 		.4byte	0x123
  824 00de 06       		.uleb128 0x6
- 825 00df 08020000 		.4byte	.LASF19
+ 825 00df 07020000 		.4byte	.LASF19
  826 00e3 01       		.byte	0x1
  827 00e4 12       		.byte	0x12
  828 00e5 8C000000 		.4byte	0x8c
@@ -975,7 +975,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  830 00ea 91       		.byte	0x91
  831 00eb 67       		.sleb128 -25
  832 00ec 06       		.uleb128 0x6
- 833 00ed 25010000 		.4byte	.LASF20
+ 833 00ed 24010000 		.4byte	.LASF20
  834 00f1 01       		.byte	0x1
  835 00f2 12       		.byte	0x12
  836 00f3 8C000000 		.4byte	0x8c
@@ -983,7 +983,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  838 00f8 91       		.byte	0x91
  839 00f9 66       		.sleb128 -26
  840 00fa 06       		.uleb128 0x6
- 841 00fb 5D020000 		.4byte	.LASF21
+ 841 00fb 5C020000 		.4byte	.LASF21
  842 00ff 01       		.byte	0x1
  843 0100 12       		.byte	0x12
  844 0101 8C000000 		.4byte	0x8c
@@ -1011,19 +1011,19 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  866 0124 04       		.byte	0x4
  867 0125 8C000000 		.4byte	0x8c
  868 0129 05       		.uleb128 0x5
- 869 012a ED000000 		.4byte	.LASF24
+ 869 012a BB000000 		.4byte	.LASF24
  870 012e 01       		.byte	0x1
  871 012f 1E       		.byte	0x1e
  872 0130 00000000 		.4byte	.LFB64
  873 0134 26000000 		.4byte	.LFE64-.LFB64
  874 0138 01       		.uleb128 0x1
  875 0139 9C       		.byte	0x9c
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 18
 
 
  876 013a 69010000 		.4byte	0x169
  877 013e 06       		.uleb128 0x6
- 878 013f 08020000 		.4byte	.LASF19
+ 878 013f 07020000 		.4byte	.LASF19
  879 0143 01       		.byte	0x1
  880 0144 1E       		.byte	0x1e
  881 0145 8C000000 		.4byte	0x8c
@@ -1031,7 +1031,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  883 014a 91       		.byte	0x91
  884 014b 77       		.sleb128 -9
  885 014c 06       		.uleb128 0x6
- 886 014d 25010000 		.4byte	.LASF20
+ 886 014d 24010000 		.4byte	.LASF20
  887 0151 01       		.byte	0x1
  888 0152 1E       		.byte	0x1e
  889 0153 8C000000 		.4byte	0x8c
@@ -1048,7 +1048,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  900 0167 70       		.sleb128 -16
  901 0168 00       		.byte	0
  902 0169 05       		.uleb128 0x5
- 903 016a F2010000 		.4byte	.LASF25
+ 903 016a F1010000 		.4byte	.LASF25
  904 016e 01       		.byte	0x1
  905 016f 22       		.byte	0x22
  906 0170 00000000 		.4byte	.LFB65
@@ -1057,7 +1057,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  909 0179 9C       		.byte	0x9c
  910 017a D3010000 		.4byte	0x1d3
  911 017e 06       		.uleb128 0x6
- 912 017f 08020000 		.4byte	.LASF19
+ 912 017f 07020000 		.4byte	.LASF19
  913 0183 01       		.byte	0x1
  914 0184 22       		.byte	0x22
  915 0185 8C000000 		.4byte	0x8c
@@ -1065,7 +1065,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  917 018a 91       		.byte	0x91
  918 018b 67       		.sleb128 -25
  919 018c 06       		.uleb128 0x6
- 920 018d 25010000 		.4byte	.LASF20
+ 920 018d 24010000 		.4byte	.LASF20
  921 0191 01       		.byte	0x1
  922 0192 22       		.byte	0x22
  923 0193 8C000000 		.4byte	0x8c
@@ -1073,18 +1073,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  925 0198 91       		.byte	0x91
  926 0199 66       		.sleb128 -26
  927 019a 06       		.uleb128 0x6
- 928 019b 7E010000 		.4byte	.LASF26
+ 928 019b 7D010000 		.4byte	.LASF26
  929 019f 01       		.byte	0x1
  930 01a0 22       		.byte	0x22
  931 01a1 8C000000 		.4byte	0x8c
  932 01a5 02       		.uleb128 0x2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 19
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 19
 
 
  933 01a6 91       		.byte	0x91
  934 01a7 65       		.sleb128 -27
  935 01a8 06       		.uleb128 0x6
- 936 01a9 5D020000 		.4byte	.LASF21
+ 936 01a9 5C020000 		.4byte	.LASF21
  937 01ad 01       		.byte	0x1
  938 01ae 22       		.byte	0x22
  939 01af 8C000000 		.4byte	0x8c
@@ -1109,7 +1109,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  958 01d1 6F       		.sleb128 -17
  959 01d2 00       		.byte	0
  960 01d3 05       		.uleb128 0x5
- 961 01d4 1A010000 		.4byte	.LASF28
+ 961 01d4 19010000 		.4byte	.LASF28
  962 01d8 01       		.byte	0x1
  963 01d9 29       		.byte	0x29
  964 01da 00000000 		.4byte	.LFB66
@@ -1118,7 +1118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  967 01e3 9C       		.byte	0x9c
  968 01e4 21020000 		.4byte	0x221
  969 01e8 06       		.uleb128 0x6
- 970 01e9 08020000 		.4byte	.LASF19
+ 970 01e9 07020000 		.4byte	.LASF19
  971 01ed 01       		.byte	0x1
  972 01ee 29       		.byte	0x29
  973 01ef 8C000000 		.4byte	0x8c
@@ -1126,7 +1126,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  975 01f4 91       		.byte	0x91
  976 01f5 77       		.sleb128 -9
  977 01f6 06       		.uleb128 0x6
- 978 01f7 25010000 		.4byte	.LASF20
+ 978 01f7 24010000 		.4byte	.LASF20
  979 01fb 01       		.byte	0x1
  980 01fc 29       		.byte	0x29
  981 01fd 8C000000 		.4byte	0x8c
@@ -1134,11 +1134,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  983 0202 91       		.byte	0x91
  984 0203 76       		.sleb128 -10
  985 0204 06       		.uleb128 0x6
- 986 0205 56020000 		.4byte	.LASF29
+ 986 0205 55020000 		.4byte	.LASF29
  987 0209 01       		.byte	0x1
  988 020a 29       		.byte	0x29
  989 020b 8C000000 		.4byte	0x8c
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 20
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 20
 
 
  990 020f 02       		.uleb128 0x2
@@ -1163,7 +1163,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1009 0231 9C       		.byte	0x9c
  1010 0232 7B020000 		.4byte	0x27b
  1011 0236 06       		.uleb128 0x6
- 1012 0237 08020000 		.4byte	.LASF19
+ 1012 0237 07020000 		.4byte	.LASF19
  1013 023b 01       		.byte	0x1
  1014 023c 2E       		.byte	0x2e
  1015 023d 8C000000 		.4byte	0x8c
@@ -1171,7 +1171,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1017 0242 91       		.byte	0x91
  1018 0243 6F       		.sleb128 -17
  1019 0244 06       		.uleb128 0x6
- 1020 0245 25010000 		.4byte	.LASF20
+ 1020 0245 24010000 		.4byte	.LASF20
  1021 0249 01       		.byte	0x1
  1022 024a 2E       		.byte	0x2e
  1023 024b 8C000000 		.4byte	0x8c
@@ -1179,7 +1179,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1025 0250 91       		.byte	0x91
  1026 0251 6E       		.sleb128 -18
  1027 0252 06       		.uleb128 0x6
- 1028 0253 5D020000 		.4byte	.LASF21
+ 1028 0253 5C020000 		.4byte	.LASF21
  1029 0257 01       		.byte	0x1
  1030 0258 2E       		.byte	0x2e
  1031 0259 8C000000 		.4byte	0x8c
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1044 026f 6900     		.ascii	"i\000"
  1045 0271 01       		.byte	0x1
  1046 0272 2F       		.byte	0x2f
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 21
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 21
 
 
  1047 0273 8C000000 		.4byte	0x8c
@@ -1207,7 +1207,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1050 0279 77       		.sleb128 -9
  1051 027a 00       		.byte	0
  1052 027b 05       		.uleb128 0x5
- 1053 027c 52010000 		.4byte	.LASF31
+ 1053 027c 51010000 		.4byte	.LASF31
  1054 0280 01       		.byte	0x1
  1055 0281 38       		.byte	0x38
  1056 0282 00000000 		.4byte	.LFB68
@@ -1216,7 +1216,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1059 028b 9C       		.byte	0x9c
  1060 028c BB020000 		.4byte	0x2bb
  1061 0290 06       		.uleb128 0x6
- 1062 0291 08020000 		.4byte	.LASF19
+ 1062 0291 07020000 		.4byte	.LASF19
  1063 0295 01       		.byte	0x1
  1064 0296 38       		.byte	0x38
  1065 0297 8C000000 		.4byte	0x8c
@@ -1224,7 +1224,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1067 029c 91       		.byte	0x91
  1068 029d 77       		.sleb128 -9
  1069 029e 06       		.uleb128 0x6
- 1070 029f 25010000 		.4byte	.LASF20
+ 1070 029f 24010000 		.4byte	.LASF20
  1071 02a3 01       		.byte	0x1
  1072 02a4 38       		.byte	0x38
  1073 02a5 8C000000 		.4byte	0x8c
@@ -1241,7 +1241,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1084 02b9 75       		.sleb128 -11
  1085 02ba 00       		.byte	0
  1086 02bb 05       		.uleb128 0x5
- 1087 02bc 49020000 		.4byte	.LASF32
+ 1087 02bc 48020000 		.4byte	.LASF32
  1088 02c0 01       		.byte	0x1
  1089 02c1 3C       		.byte	0x3c
  1090 02c2 00000000 		.4byte	.LFB69
@@ -1250,7 +1250,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1093 02cb 9C       		.byte	0x9c
  1094 02cc 31030000 		.4byte	0x331
  1095 02d0 06       		.uleb128 0x6
- 1096 02d1 08020000 		.4byte	.LASF19
+ 1096 02d1 07020000 		.4byte	.LASF19
  1097 02d5 01       		.byte	0x1
  1098 02d6 3C       		.byte	0x3c
  1099 02d7 8C000000 		.4byte	0x8c
@@ -1258,10 +1258,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1101 02dc 91       		.byte	0x91
  1102 02dd 67       		.sleb128 -25
  1103 02de 06       		.uleb128 0x6
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 22
 
 
- 1104 02df 25010000 		.4byte	.LASF20
+ 1104 02df 24010000 		.4byte	.LASF20
  1105 02e3 01       		.byte	0x1
  1106 02e4 3C       		.byte	0x3c
  1107 02e5 8C000000 		.4byte	0x8c
@@ -1269,7 +1269,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1109 02ea 91       		.byte	0x91
  1110 02eb 66       		.sleb128 -26
  1111 02ec 06       		.uleb128 0x6
- 1112 02ed 7E010000 		.4byte	.LASF26
+ 1112 02ed 7D010000 		.4byte	.LASF26
  1113 02f1 01       		.byte	0x1
  1114 02f2 3C       		.byte	0x3c
  1115 02f3 8C000000 		.4byte	0x8c
@@ -1277,7 +1277,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1117 02f8 91       		.byte	0x91
  1118 02f9 65       		.sleb128 -27
  1119 02fa 06       		.uleb128 0x6
- 1120 02fb 5D020000 		.4byte	.LASF21
+ 1120 02fb 5C020000 		.4byte	.LASF21
  1121 02ff 01       		.byte	0x1
  1122 0300 3C       		.byte	0x3c
  1123 0301 8C000000 		.4byte	0x8c
@@ -1310,7 +1310,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1150 032f 6F       		.sleb128 -17
  1151 0330 00       		.byte	0
  1152 0331 05       		.uleb128 0x5
- 1153 0332 87010000 		.4byte	.LASF33
+ 1153 0332 86010000 		.4byte	.LASF33
  1154 0336 01       		.byte	0x1
  1155 0337 47       		.byte	0x47
  1156 0338 00000000 		.4byte	.LFB70
@@ -1318,11 +1318,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1158 0340 01       		.uleb128 0x1
  1159 0341 9C       		.byte	0x9c
  1160 0342 8B030000 		.4byte	0x38b
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 23
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 23
 
 
  1161 0346 06       		.uleb128 0x6
- 1162 0347 08020000 		.4byte	.LASF19
+ 1162 0347 07020000 		.4byte	.LASF19
  1163 034b 01       		.byte	0x1
  1164 034c 47       		.byte	0x47
  1165 034d 8C000000 		.4byte	0x8c
@@ -1330,7 +1330,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1167 0352 91       		.byte	0x91
  1168 0353 67       		.sleb128 -25
  1169 0354 06       		.uleb128 0x6
- 1170 0355 25010000 		.4byte	.LASF20
+ 1170 0355 24010000 		.4byte	.LASF20
  1171 0359 01       		.byte	0x1
  1172 035a 47       		.byte	0x47
  1173 035b 8C000000 		.4byte	0x8c
@@ -1338,7 +1338,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1175 0360 91       		.byte	0x91
  1176 0361 66       		.sleb128 -26
  1177 0362 06       		.uleb128 0x6
- 1178 0363 56020000 		.4byte	.LASF29
+ 1178 0363 55020000 		.4byte	.LASF29
  1179 0367 01       		.byte	0x1
  1180 0368 47       		.byte	0x47
  1181 0369 8C000000 		.4byte	0x8c
@@ -1363,7 +1363,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1200 0389 6F       		.sleb128 -17
  1201 038a 00       		.byte	0
  1202 038b 05       		.uleb128 0x5
- 1203 038c 19020000 		.4byte	.LASF34
+ 1203 038c 18020000 		.4byte	.LASF34
  1204 0390 01       		.byte	0x1
  1205 0391 4E       		.byte	0x4e
  1206 0392 00000000 		.4byte	.LFB71
@@ -1372,18 +1372,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1209 039b 9C       		.byte	0x9c
  1210 039c E5030000 		.4byte	0x3e5
  1211 03a0 06       		.uleb128 0x6
- 1212 03a1 08020000 		.4byte	.LASF19
+ 1212 03a1 07020000 		.4byte	.LASF19
  1213 03a5 01       		.byte	0x1
  1214 03a6 4E       		.byte	0x4e
  1215 03a7 8C000000 		.4byte	0x8c
  1216 03ab 02       		.uleb128 0x2
  1217 03ac 91       		.byte	0x91
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 24
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 24
 
 
  1218 03ad 6F       		.sleb128 -17
  1219 03ae 06       		.uleb128 0x6
- 1220 03af 25010000 		.4byte	.LASF20
+ 1220 03af 24010000 		.4byte	.LASF20
  1221 03b3 01       		.byte	0x1
  1222 03b4 4E       		.byte	0x4e
  1223 03b5 8C000000 		.4byte	0x8c
@@ -1391,7 +1391,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1225 03ba 91       		.byte	0x91
  1226 03bb 6E       		.sleb128 -18
  1227 03bc 06       		.uleb128 0x6
- 1228 03bd 5D020000 		.4byte	.LASF21
+ 1228 03bd 5C020000 		.4byte	.LASF21
  1229 03c1 01       		.byte	0x1
  1230 03c2 4E       		.byte	0x4e
  1231 03c3 8C000000 		.4byte	0x8c
@@ -1419,7 +1419,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1253 03e6 04       		.byte	0x4
  1254 03e7 97000000 		.4byte	0x97
  1255 03eb 05       		.uleb128 0x5
- 1256 03ec 0D010000 		.4byte	.LASF35
+ 1256 03ec 0C010000 		.4byte	.LASF35
  1257 03f0 01       		.byte	0x1
  1258 03f1 59       		.byte	0x59
  1259 03f2 00000000 		.4byte	.LFB72
@@ -1428,7 +1428,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1262 03fb 9C       		.byte	0x9c
  1263 03fc 2B040000 		.4byte	0x42b
  1264 0400 06       		.uleb128 0x6
- 1265 0401 08020000 		.4byte	.LASF19
+ 1265 0401 07020000 		.4byte	.LASF19
  1266 0405 01       		.byte	0x1
  1267 0406 59       		.byte	0x59
  1268 0407 8C000000 		.4byte	0x8c
@@ -1436,9 +1436,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1270 040c 91       		.byte	0x91
  1271 040d 77       		.sleb128 -9
  1272 040e 06       		.uleb128 0x6
- 1273 040f 25010000 		.4byte	.LASF20
+ 1273 040f 24010000 		.4byte	.LASF20
  1274 0413 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 25
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 25
 
 
  1275 0414 59       		.byte	0x59
@@ -1456,7 +1456,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1287 0429 74       		.sleb128 -12
  1288 042a 00       		.byte	0
  1289 042b 0A       		.uleb128 0xa
- 1290 042c 5F010000 		.4byte	.LASF39
+ 1290 042c 5E010000 		.4byte	.LASF39
  1291 0430 04       		.byte	0x4
  1292 0431 9606     		.2byte	0x696
  1293 0433 37040000 		.4byte	0x437
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1329 001e 03       		.uleb128 0x3
  1330 001f 16       		.uleb128 0x16
  1331 0020 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 26
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 26
 
 
  1332 0021 03       		.uleb128 0x3
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1386 0058 0B       		.uleb128 0xb
  1387 0059 49       		.uleb128 0x49
  1388 005a 13       		.uleb128 0x13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 27
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 27
 
 
  1389 005b 02       		.uleb128 0x2
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1443 0091 3F       		.uleb128 0x3f
  1444 0092 19       		.uleb128 0x19
  1445 0093 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 28
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 28
 
 
  1446 0094 19       		.uleb128 0x19
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1500 002c 28000000 		.4byte	.LFE68
  1501 0030 00000000 		.4byte	.LFB69
  1502 0034 9C000000 		.4byte	.LFE69
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 29
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 29
 
 
  1503 0038 00000000 		.4byte	.LFB70
@@ -1731,159 +1731,159 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 1
  1527      74696F6E 
  1527      2D736563 
  1527      74696F6E 
- 1528              	.LASF38:
- 1529 00bb 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 1529      73657273 
- 1529      5C676469 
- 1529      6E675C44 
- 1529      6F63756D 
- 1530 00e9 64736E00 		.ascii	"dsn\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 30
+ 1528              	.LASF24:
+ 1529 00bb 49324352 		.ascii	"I2CReadByte\000"
+ 1529      65616442 
+ 1529      79746500 
+ 1530              	.LASF38:
+ 1531 00c7 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\OVac.cyd"
+ 1531      73657273 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 30
 
 
- 1531              	.LASF24:
- 1532 00ed 49324352 		.ascii	"I2CReadByte\000"
- 1532      65616442 
- 1532      79746500 
+ 1531      5C677374 
+ 1531      6F6C6C5C 
+ 1531      4465736B 
+ 1532 00f5 736E00   		.ascii	"sn\000"
  1533              	.LASF15:
- 1534 00f9 666C6F61 		.ascii	"float\000"
+ 1534 00f8 666C6F61 		.ascii	"float\000"
  1534      7400
  1535              	.LASF1:
- 1536 00ff 756E7369 		.ascii	"unsigned char\000"
+ 1536 00fe 756E7369 		.ascii	"unsigned char\000"
  1536      676E6564 
  1536      20636861 
  1536      7200
  1537              	.LASF35:
- 1538 010d 49324357 		.ascii	"I2CWriteWord\000"
+ 1538 010c 49324357 		.ascii	"I2CWriteWord\000"
  1538      72697465 
  1538      576F7264 
  1538      00
  1539              	.LASF28:
- 1540 011a 49324352 		.ascii	"I2CReadBit\000"
+ 1540 0119 49324352 		.ascii	"I2CReadBit\000"
  1540      65616442 
  1540      697400
  1541              	.LASF20:
- 1542 0125 72656741 		.ascii	"regAddr\000"
+ 1542 0124 72656741 		.ascii	"regAddr\000"
  1542      64647200 
  1543              	.LASF8:
- 1544 012d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1544 012c 6C6F6E67 		.ascii	"long unsigned int\000"
  1544      20756E73 
  1544      69676E65 
  1544      6420696E 
  1544      7400
  1545              	.LASF5:
- 1546 013f 73686F72 		.ascii	"short unsigned int\000"
+ 1546 013e 73686F72 		.ascii	"short unsigned int\000"
  1546      7420756E 
  1546      7369676E 
  1546      65642069 
  1546      6E7400
  1547              	.LASF31:
- 1548 0152 49324357 		.ascii	"I2CWriteByte\000"
+ 1548 0151 49324357 		.ascii	"I2CWriteByte\000"
  1548      72697465 
  1548      42797465 
  1548      00
  1549              	.LASF39:
- 1550 015f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1550 015e 49544D5F 		.ascii	"ITM_RxBuffer\000"
  1550      52784275 
  1550      66666572 
  1550      00
  1551              	.LASF4:
- 1552 016c 5F5F7569 		.ascii	"__uint16_t\000"
+ 1552 016b 5F5F7569 		.ascii	"__uint16_t\000"
  1552      6E743136 
  1552      5F7400
  1553              	.LASF16:
- 1554 0177 646F7562 		.ascii	"double\000"
+ 1554 0176 646F7562 		.ascii	"double\000"
  1554      6C6500
  1555              	.LASF26:
- 1556 017e 62697453 		.ascii	"bitStart\000"
+ 1556 017d 62697453 		.ascii	"bitStart\000"
  1556      74617274 
  1556      00
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 31
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 31
 
 
  1557              	.LASF33:
- 1558 0187 49324357 		.ascii	"I2CWriteBit\000"
+ 1558 0186 49324357 		.ascii	"I2CWriteBit\000"
  1558      72697465 
  1558      42697400 
  1559              	.LASF11:
- 1560 0193 756E7369 		.ascii	"unsigned int\000"
+ 1560 0192 756E7369 		.ascii	"unsigned int\000"
  1560      676E6564 
  1560      20696E74 
  1560      00
  1561              	.LASF10:
- 1562 01a0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1562 019f 6C6F6E67 		.ascii	"long long unsigned int\000"
  1562      206C6F6E 
  1562      6720756E 
  1562      7369676E 
  1562      65642069 
  1563              	.LASF12:
- 1564 01b7 75696E74 		.ascii	"uint8_t\000"
+ 1564 01b6 75696E74 		.ascii	"uint8_t\000"
  1564      385F7400 
  1565              	.LASF14:
- 1566 01bf 696E7433 		.ascii	"int32_t\000"
+ 1566 01be 696E7433 		.ascii	"int32_t\000"
  1566      325F7400 
  1567              	.LASF18:
- 1568 01c7 73697A65 		.ascii	"sizetype\000"
+ 1568 01c6 73697A65 		.ascii	"sizetype\000"
  1568      74797065 
  1568      00
  1569              	.LASF37:
- 1570 01d0 69326346 		.ascii	"i2cFunctions.c\000"
+ 1570 01cf 69326346 		.ascii	"i2cFunctions.c\000"
  1570      756E6374 
  1570      696F6E73 
  1570      2E6300
  1571              	.LASF9:
- 1572 01df 6C6F6E67 		.ascii	"long long int\000"
+ 1572 01de 6C6F6E67 		.ascii	"long long int\000"
  1572      206C6F6E 
  1572      6720696E 
  1572      7400
  1573              	.LASF17:
- 1574 01ed 63686172 		.ascii	"char\000"
+ 1574 01ec 63686172 		.ascii	"char\000"
  1574      00
  1575              	.LASF25:
- 1576 01f2 49324352 		.ascii	"I2CReadBits\000"
+ 1576 01f1 49324352 		.ascii	"I2CReadBits\000"
  1576      65616442 
  1576      69747300 
  1577              	.LASF2:
- 1578 01fe 73686F72 		.ascii	"short int\000"
+ 1578 01fd 73686F72 		.ascii	"short int\000"
  1578      7420696E 
  1578      7400
  1579              	.LASF19:
- 1580 0208 64657641 		.ascii	"devAddr\000"
+ 1580 0207 64657641 		.ascii	"devAddr\000"
  1580      64647200 
  1581              	.LASF13:
- 1582 0210 75696E74 		.ascii	"uint16_t\000"
+ 1582 020f 75696E74 		.ascii	"uint16_t\000"
  1582      31365F74 
  1582      00
  1583              	.LASF34:
- 1584 0219 49324357 		.ascii	"I2CWriteWords\000"
+ 1584 0218 49324357 		.ascii	"I2CWriteWords\000"
  1584      72697465 
  1584      576F7264 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccuipDuR.s 			page 32
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccvPgHSg.s 			page 32
 
 
  1584      7300
  1585              	.LASF7:
- 1586 0227 6C6F6E67 		.ascii	"long int\000"
+ 1586 0226 6C6F6E67 		.ascii	"long int\000"
  1586      20696E74 
  1586      00
  1587              	.LASF23:
- 1588 0230 49324352 		.ascii	"I2CReadBytes\000"
+ 1588 022f 49324352 		.ascii	"I2CReadBytes\000"
  1588      65616442 
  1588      79746573 
  1588      00
  1589              	.LASF0:
- 1590 023d 7369676E 		.ascii	"signed char\000"
+ 1590 023c 7369676E 		.ascii	"signed char\000"
  1590      65642063 
  1590      68617200 
  1591              	.LASF32:
- 1592 0249 49324357 		.ascii	"I2CWriteBits\000"
+ 1592 0248 49324357 		.ascii	"I2CWriteBits\000"
  1592      72697465 
  1592      42697473 
  1592      00
  1593              	.LASF29:
- 1594 0256 6269744E 		.ascii	"bitNum\000"
+ 1594 0255 6269744E 		.ascii	"bitNum\000"
  1594      756D00
  1595              	.LASF21:
- 1596 025d 6C656E67 		.ascii	"length\000"
+ 1596 025c 6C656E67 		.ascii	"length\000"
  1596      746800
  1597              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

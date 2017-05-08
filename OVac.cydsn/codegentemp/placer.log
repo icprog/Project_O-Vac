@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 29 2016 09:00:55
 
-#File Generated:     Apr 29 2017 16:47:09
+#File Generated:     May 7 2017 16:24:32
 
 #Purpose:            
 
@@ -128,7 +128,7 @@ Clock: emFile_Clock_1       | Frequency:  52.5 MHz | Target:  24.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.4 (sec)
+D2088: Phase 7, elapsed time : 0.2 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	18
@@ -242,7 +242,7 @@ Clock: emFile_Clock_1       | Frequency:  55.1 MHz | Target:  24.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.5 (sec)
+D2088: Phase 7, elapsed time : 1.1 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	18
@@ -299,5 +299,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 3.0 sec.
+I2076: Total run-time: 2.3 sec.
 

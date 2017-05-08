@@ -89,6 +89,7 @@ FS_FILE *fsfile;
 *
 *******************************************************************************/
 
+int SD_SETUP(char* filename); //SD card setup function
 
 /* Moisture sensor ISR */
 CY_ISR (Moisture_ISR_Handler){
@@ -119,8 +120,7 @@ CY_ISR (Countdown_ISR_Handler){
                 transmit_flag = 1;
                 update_Data = 0;
             }
-        }
-            
+        }          
     #endif
 }
 
@@ -198,47 +198,8 @@ int main()
 
     /* Start SD card*/
     #ifdef SD
-        {
-            FS_Init();
-            FS_Mount(volume);
-            if(0 != FS_GetVolumeName(0u, volume, 9u))
-                /* Getting volume name succeeded so prompt it on the LCD */
-                LCD_print("Sd vol succeed");
-            else
-                LCD_print("Sd vol failed");
-                
-            CyDelay(500u);
-            clear();
-            if(0 == FS_FormatSD(volume))
-                LCD_print("format Succeeded");
-            else
-                LCD_print("format Failed");
-          
-            CyDelay(500u);
-            clear();
-            
-            fsfile = FS_FOpen(file, "w");
-            if(fsfile)
-            {
-                /* Indicate successful file creation message */
-                LCD_print("File ");
-                LCD_print("was opened");
-                /* Need some delay to indicate output on the LCD */
-                CyDelay(500u);
-                clear();
-                
-                if(0 != FS_Write(fsfile, file, strlen(file))) 
-                    /* Inditate that data was written to a file */
-                    LCD_print("written to file");
-                else
-                    LCD_print("Failed to write");
-                    clear();
-                CyDelay(500u);
-            }
-            else
-                LCD_print("file not created");
-        }
-        FS_Write(fsfile, "\n------------\n", 14);
+        int SD_Result = SD_SETUP(file); 
+        
     #endif
     
     #ifdef LCD
@@ -510,6 +471,12 @@ int main()
                     char sdbuf[60] = {};
                                                    //wait 10 seconds to lift, for testing in pool
                     STATE = TRANSMIT;
+                    #ifdef SD                                   //close old file, open new one
+                    FS_FClose(fsfile);
+                    sprintf(file, "test%d.txt", ++testnum);
+                    fsfile = FS_FOpen(file, "w");
+                    #endif 
+                    
                     #ifdef LCD
                         setCursor(0,0);
                         clear();
@@ -543,11 +510,7 @@ int main()
                 depth = 0;
                 
                 //FS_Read(fsfile, 4);
-//                #ifdef SD                                   //close old file, open new one
-//                    FS_FClose(fsfile);
-//                    sprintf(file, "test%d.txt", ++testnum);
-//                    fsfile = FS_FOpen(file, "w");
-//                #endif 
+                
                 //CyDelay(15000u);
                 
                 break;
@@ -559,6 +522,54 @@ int main()
         }
         
     }
+}
+
+int SD_SETUP(char* filename){
+int success = 1;
+      FS_Init();
+            FS_Mount(volume);
+            if(0 != FS_GetVolumeName(0u, volume, 9u))
+                /* Getting volume name succeeded so prompt it on the LCD */
+                LCD_print("Sd vol succeed");
+            else
+                LCD_print("Sd vol failed");
+                success = 0;
+            CyDelay(500u);
+            clear();
+            if(0 == FS_FormatSD(volume))
+                LCD_print("format Succeeded");
+            else
+                LCD_print("format Failed");
+                success = 0;
+          
+            CyDelay(500u);
+            clear();
+            
+            fsfile = FS_FOpen(filename, "w");
+            if(fsfile)
+            {
+                /* Indicate successful file creation message */
+                LCD_print("File ");
+                LCD_print("was opened");
+                /* Need some delay to indicate output on the LCD */
+                CyDelay(500u);
+                clear();
+                
+                if(0 != FS_Write(fsfile, filename, strlen(filename))) 
+                    /* Inditate that data was written to a file */
+                    LCD_print("written to file");
+                else
+                    LCD_print("Failed to write");
+                    success = 0;
+                    clear();
+                CyDelay(500u);
+            }
+            else
+                LCD_print("file not created");
+                success = 0;
+        
+        FS_Write(fsfile, "\n------------\n", 14);
+return success;
 }
 
 

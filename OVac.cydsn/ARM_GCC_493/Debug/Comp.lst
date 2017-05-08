@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
   23:Generated_Source\PSoC5/Comp.c **** static void Comp_trimAdjust(uint8 nibble) ;
   24:Generated_Source\PSoC5/Comp.c **** 
   25:Generated_Source\PSoC5/Comp.c **** /* static Comp_backupStruct  Comp_backup; */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 2
 
 
   26:Generated_Source\PSoC5/Comp.c **** #if (CY_PSOC5A)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
   59:Generated_Source\PSoC5/Comp.c ****     #else
   60:Generated_Source\PSoC5/Comp.c ****         Comp_CR &= (uint8)(~Comp_HYST_OFF);
   61:Generated_Source\PSoC5/Comp.c ****     #endif /* Comp_DEFAULT_HYSTERESIS == 0u */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 3
 
 
   62:Generated_Source\PSoC5/Comp.c ****     /* Power down override feature is not supported for PSoC5A. */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
   87 005a 80BD     		pop	{r7, pc}
   88              	.L3:
   89              		.align	2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 4
 
 
   90              	.L2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  124 0016 064B     		ldr	r3, .L5+4
  125 0018 1B78     		ldrb	r3, [r3]
  126 001a DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 5
 
 
  127 001c 43F00803 		orr	r3, r3, #8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  130:Generated_Source\PSoC5/Comp.c **** *
  131:Generated_Source\PSoC5/Comp.c **** * Global variables:
  132:Generated_Source\PSoC5/Comp.c **** *  Comp_initVar: Is modified when this function is called for the 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 6
 
 
  133:Generated_Source\PSoC5/Comp.c **** *   first time. Is used to ensure that initialization happens only once.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  192              		.type	Comp_Stop, %function
  193              	Comp_Stop:
  194              	.LFB3:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 7
 
 
  149:Generated_Source\PSoC5/Comp.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  177:Generated_Source\PSoC5/Comp.c ****         Comp_CR = Comp_COMP_REG_CLR;
  178:Generated_Source\PSoC5/Comp.c ****     #endif /* CY_PSOC5A */
  179:Generated_Source\PSoC5/Comp.c **** }
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 8
 
 
  221              		.loc 1 179 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  256              		.cfi_def_cfa_register 7
  257 0006 0346     		mov	r3, r0
  258 0008 FB71     		strb	r3, [r7, #7]
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 9
 
 
  199:Generated_Source\PSoC5/Comp.c ****     /* Clear and Set power level */    
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  220:Generated_Source\PSoC5/Comp.c ****         #if (CY_PSOC5A)
  221:Generated_Source\PSoC5/Comp.c ****             Comp_TR = Comp_LS_TRIM_TR0;
  222:Generated_Source\PSoC5/Comp.c ****         #endif /* CY_PSOC5A */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 10
 
 
  223:Generated_Source\PSoC5/Comp.c ****         
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  233:Generated_Source\PSoC5/Comp.c **** 
  234:Generated_Source\PSoC5/Comp.c **** /*******************************************************************************
  235:Generated_Source\PSoC5/Comp.c **** * Function Name: Comp_GetCompare
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 11
 
 
  236:Generated_Source\PSoC5/Comp.c **** ********************************************************************************
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  371              		.thumb_func
  372              		.type	Comp_trimAdjust, %function
  373              	Comp_trimAdjust:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 12
 
 
  374              	.LFB6:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  394 0014 7B73     		strb	r3, [r7, #13]
  289:Generated_Source\PSoC5/Comp.c ****     
  290:Generated_Source\PSoC5/Comp.c ****     if (nibble == 0u)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 13
 
 
  395              		.loc 1 290 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  421 0040 DBB2     		uxtb	r3, r3
  422 0042 43F01003 		orr	r3, r3, #16
  423 0046 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 14
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 14
 
 
  424 0048 1370     		strb	r3, [r2]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  349:Generated_Source\PSoC5/Comp.c ****             #endif /* CY_PSOC5A */
  350:Generated_Source\PSoC5/Comp.c ****             
  351:Generated_Source\PSoC5/Comp.c ****             /* PSoC3, PSoC5LP or later */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 15
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 15
 
 
  352:Generated_Source\PSoC5/Comp.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  479 009a 06E0     		b	.L23
  480              	.L32:
  342:Generated_Source\PSoC5/Comp.c **** 	{
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 16
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 16
 
 
  481              		.loc 1 342 0 discriminator 2
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  393:Generated_Source\PSoC5/Comp.c **** * Theory: 
  394:Generated_Source\PSoC5/Comp.c **** *  This function is used to optimize the calibration for user specific voltage
  395:Generated_Source\PSoC5/Comp.c **** *  range.  The comparator trim is adjusted to counter transistor offsets
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 17
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 17
 
 
  396:Generated_Source\PSoC5/Comp.c **** *   - offset is defined as positive if the output transitions to high before inP
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  517              		.cfi_startproc
  518              		@ args = 0, pretend = 0, frame = 8
  519              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 18
 
 
  520 0000 80B5     		push	{r7, lr}
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  554              		.loc 1 468 0
  555 0030 214B     		ldr	r3, .L41+12
  556 0032 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 19
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 19
 
 
  557 0034 3B71     		strb	r3, [r7, #4]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  491:Generated_Source\PSoC5/Comp.c **** 		Comp_trimAdjust(0u);
  589              		.loc 1 491 0
  590 006e 0020     		movs	r0, #0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 20
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 20
 
 
  591 0070 FFF7FEFF 		bl	Comp_trimAdjust
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  625              		.cfi_def_cfa_offset 8
  626 00a8 BD46     		mov	sp, r7
  627              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 21
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 21
 
 
  628              		@ sp needed
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  663 0008 FB80     		strh	r3, [r7, #6]	@ movhi
  531:Generated_Source\PSoC5/Comp.c ****     /* Stores value in the Analog Comparator trim register */
  532:Generated_Source\PSoC5/Comp.c ****     /* PSoC5A */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 22
 
 
  533:Generated_Source\PSoC5/Comp.c ****     #if (CY_PSOC5A)
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  549:Generated_Source\PSoC5/Comp.c **** 
  550:Generated_Source\PSoC5/Comp.c ****     /*******************************************************************************
  551:Generated_Source\PSoC5/Comp.c ****     * Function Name: Comp_PwrDwnOverrideEnable
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 23
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 23
 
 
  552:Generated_Source\PSoC5/Comp.c ****     ********************************************************************************
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  738              		.thumb
  739              		.thumb_func
  740              		.type	Comp_PwrDwnOverrideDisable, %function
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 24
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 24
 
 
  741              	Comp_PwrDwnOverrideDisable:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  773              		.cfi_endproc
  774              	.LFE10:
  775              		.size	Comp_PwrDwnOverrideDisable, .-Comp_PwrDwnOverrideDisable
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 25
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 25
 
 
  776              		.text
@@ -1451,25 +1451,25 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  783 0006 00000000 		.4byte	.Ldebug_abbrev0
  784 000a 04       		.byte	0x4
  785 000b 01       		.uleb128 0x1
- 786 000c E1000000 		.4byte	.LASF35
+ 786 000c E0000000 		.4byte	.LASF35
  787 0010 01       		.byte	0x1
- 788 0011 C3000000 		.4byte	.LASF36
- 789 0015 40000000 		.4byte	.LASF37
+ 788 0011 C2000000 		.4byte	.LASF36
+ 789 0015 4A000000 		.4byte	.LASF37
  790 0019 00000000 		.4byte	.Ldebug_ranges0+0
  791 001d 00000000 		.4byte	0
  792 0021 00000000 		.4byte	.Ldebug_line0
  793 0025 02       		.uleb128 0x2
  794 0026 01       		.byte	0x1
  795 0027 06       		.byte	0x6
- 796 0028 5A020000 		.4byte	.LASF0
+ 796 0028 59020000 		.4byte	.LASF0
  797 002c 02       		.uleb128 0x2
  798 002d 01       		.byte	0x1
  799 002e 08       		.byte	0x8
- 800 002f 90000000 		.4byte	.LASF1
+ 800 002f 8F000000 		.4byte	.LASF1
  801 0033 02       		.uleb128 0x2
  802 0034 02       		.byte	0x2
  803 0035 05       		.byte	0x5
- 804 0036 2F020000 		.4byte	.LASF2
+ 804 0036 2E020000 		.4byte	.LASF2
  805 003a 02       		.uleb128 0x2
  806 003b 02       		.byte	0x2
  807 003c 07       		.byte	0x7
@@ -1477,19 +1477,19 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  809 0041 02       		.uleb128 0x2
  810 0042 04       		.byte	0x4
  811 0043 05       		.byte	0x5
- 812 0044 51020000 		.4byte	.LASF4
+ 812 0044 50020000 		.4byte	.LASF4
  813 0048 02       		.uleb128 0x2
  814 0049 04       		.byte	0x4
  815 004a 07       		.byte	0x7
- 816 004b AB000000 		.4byte	.LASF5
+ 816 004b AA000000 		.4byte	.LASF5
  817 004f 02       		.uleb128 0x2
  818 0050 08       		.byte	0x8
  819 0051 05       		.byte	0x5
- 820 0052 0E020000 		.4byte	.LASF6
+ 820 0052 0D020000 		.4byte	.LASF6
  821 0056 02       		.uleb128 0x2
  822 0057 08       		.byte	0x8
  823 0058 07       		.byte	0x7
- 824 0059 A7010000 		.4byte	.LASF7
+ 824 0059 A6010000 		.4byte	.LASF7
  825 005d 03       		.uleb128 0x3
  826 005e 04       		.byte	0x4
  827 005f 05       		.byte	0x5
@@ -1497,39 +1497,39 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  829 0064 02       		.uleb128 0x2
  830 0065 04       		.byte	0x4
  831 0066 07       		.byte	0x7
- 832 0067 91010000 		.4byte	.LASF8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 26
+ 832 0067 90010000 		.4byte	.LASF8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 26
 
 
  833 006b 04       		.uleb128 0x4
- 834 006c BD000000 		.4byte	.LASF9
+ 834 006c BC000000 		.4byte	.LASF9
  835 0070 02       		.byte	0x2
  836 0071 9201     		.2byte	0x192
  837 0073 2C000000 		.4byte	0x2c
  838 0077 04       		.uleb128 0x4
- 839 0078 76010000 		.4byte	.LASF10
+ 839 0078 75010000 		.4byte	.LASF10
  840 007c 02       		.byte	0x2
  841 007d 9301     		.2byte	0x193
  842 007f 3A000000 		.4byte	0x3a
  843 0083 04       		.uleb128 0x4
- 844 0084 8A010000 		.4byte	.LASF11
+ 844 0084 89010000 		.4byte	.LASF11
  845 0088 02       		.byte	0x2
  846 0089 9401     		.2byte	0x194
  847 008b 48000000 		.4byte	0x48
  848 008f 02       		.uleb128 0x2
  849 0090 04       		.byte	0x4
  850 0091 04       		.byte	0x4
- 851 0092 83000000 		.4byte	.LASF12
+ 851 0092 82000000 		.4byte	.LASF12
  852 0096 02       		.uleb128 0x2
  853 0097 08       		.byte	0x8
  854 0098 04       		.byte	0x4
- 855 0099 6F010000 		.4byte	.LASF13
+ 855 0099 6E010000 		.4byte	.LASF13
  856 009d 02       		.uleb128 0x2
  857 009e 01       		.byte	0x1
  858 009f 08       		.byte	0x8
- 859 00a0 1C020000 		.4byte	.LASF14
+ 859 00a0 1B020000 		.4byte	.LASF14
  860 00a4 04       		.uleb128 0x4
- 861 00a5 9E000000 		.4byte	.LASF15
+ 861 00a5 9D000000 		.4byte	.LASF15
  862 00a9 02       		.byte	0x2
  863 00aa 3C02     		.2byte	0x23c
  864 00ac B0000000 		.4byte	0xb0
@@ -1538,9 +1538,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  867 00b5 02       		.uleb128 0x2
  868 00b6 04       		.byte	0x4
  869 00b7 07       		.byte	0x7
- 870 00b8 E0010000 		.4byte	.LASF16
+ 870 00b8 DF010000 		.4byte	.LASF16
  871 00bc 06       		.uleb128 0x6
- 872 00bd 47020000 		.4byte	.LASF17
+ 872 00bd 46020000 		.4byte	.LASF17
  873 00c1 01       		.byte	0x1
  874 00c2 33       		.byte	0x33
  875 00c3 00000000 		.4byte	.LFB0
@@ -1548,7 +1548,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  877 00cb 01       		.uleb128 0x1
  878 00cc 9C       		.byte	0x9c
  879 00cd 07       		.uleb128 0x7
- 880 00ce BE010000 		.4byte	.LASF18
+ 880 00ce BD010000 		.4byte	.LASF18
  881 00d2 01       		.byte	0x1
  882 00d3 63       		.byte	0x63
  883 00d4 00000000 		.4byte	.LFB1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  887 00de 06       		.uleb128 0x6
  888 00df 0E000000 		.4byte	.LASF19
  889 00e3 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 27
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 27
 
 
  890 00e4 88       		.byte	0x88
@@ -1567,7 +1567,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  893 00ed 01       		.uleb128 0x1
  894 00ee 9C       		.byte	0x9c
  895 00ef 07       		.uleb128 0x7
- 896 00f0 72000000 		.4byte	.LASF20
+ 896 00f0 40000000 		.4byte	.LASF20
  897 00f4 01       		.byte	0x1
  898 00f5 A5       		.byte	0xa5
  899 00f6 00000000 		.4byte	.LFB3
@@ -1575,7 +1575,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  901 00fe 01       		.uleb128 0x1
  902 00ff 9C       		.byte	0x9c
  903 0100 08       		.uleb128 0x8
- 904 0101 21020000 		.4byte	.LASF30
+ 904 0101 20020000 		.4byte	.LASF30
  905 0105 01       		.byte	0x1
  906 0106 C5       		.byte	0xc5
  907 0107 00000000 		.4byte	.LFB4
@@ -1584,7 +1584,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  910 0110 9C       		.byte	0x9c
  911 0111 24010000 		.4byte	0x124
  912 0115 09       		.uleb128 0x9
- 913 0116 DA010000 		.4byte	.LASF21
+ 913 0116 D9010000 		.4byte	.LASF21
  914 011a 01       		.byte	0x1
  915 011b C5       		.byte	0xc5
  916 011c 6B000000 		.4byte	0x6b
@@ -1593,7 +1593,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  919 0122 77       		.sleb128 -9
  920 0123 00       		.byte	0
  921 0124 0A       		.uleb128 0xa
- 922 0125 CA010000 		.4byte	.LASF38
+ 922 0125 C9010000 		.4byte	.LASF38
  923 0129 01       		.byte	0x1
  924 012a FB       		.byte	0xfb
  925 012b 6B000000 		.4byte	0x6b
@@ -1602,7 +1602,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  928 0137 01       		.uleb128 0x1
  929 0138 9C       		.byte	0x9c
  930 0139 0B       		.uleb128 0xb
- 931 013a 81020000 		.4byte	.LASF39
+ 931 013a 80020000 		.4byte	.LASF39
  932 013e 01       		.byte	0x1
  933 013f 1A01     		.2byte	0x11a
  934 0141 00000000 		.4byte	.LFB6
@@ -1611,18 +1611,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  937 014a 9C       		.byte	0x9c
  938 014b 8C010000 		.4byte	0x18c
  939 014f 0C       		.uleb128 0xc
- 940 0150 91020000 		.4byte	.LASF22
+ 940 0150 90020000 		.4byte	.LASF22
  941 0154 01       		.byte	0x1
  942 0155 1A01     		.2byte	0x11a
  943 0157 6B000000 		.4byte	0x6b
  944 015b 02       		.uleb128 0x2
  945 015c 91       		.byte	0x91
  946 015d 6F       		.sleb128 -17
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 28
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 28
 
 
  947 015e 0D       		.uleb128 0xd
- 948 015f A3000000 		.4byte	.LASF23
+ 948 015f A2000000 		.4byte	.LASF23
  949 0163 01       		.byte	0x1
  950 0164 1C01     		.2byte	0x11c
  951 0166 6B000000 		.4byte	0x6b
@@ -1630,7 +1630,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  953 016b 91       		.byte	0x91
  954 016c 77       		.sleb128 -9
  955 016d 0D       		.uleb128 0xd
- 956 016e 03020000 		.4byte	.LASF24
+ 956 016e 02020000 		.4byte	.LASF24
  957 0172 01       		.byte	0x1
  958 0173 1C01     		.2byte	0x11c
  959 0175 6B000000 		.4byte	0x6b
@@ -1638,7 +1638,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  961 017a 91       		.byte	0x91
  962 017b 76       		.sleb128 -10
  963 017c 0D       		.uleb128 0xd
- 964 017d 9E010000 		.4byte	.LASF25
+ 964 017d 9D010000 		.4byte	.LASF25
  965 0181 01       		.byte	0x1
  966 0182 1D01     		.2byte	0x11d
  967 0184 6B000000 		.4byte	0x6b
@@ -1647,7 +1647,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  970 018a 75       		.sleb128 -11
  971 018b 00       		.byte	0
  972 018c 0E       		.uleb128 0xe
- 973 018d 7D010000 		.4byte	.LASF40
+ 973 018d 7C010000 		.4byte	.LASF40
  974 0191 01       		.byte	0x1
  975 0192 BF01     		.2byte	0x1bf
  976 0194 77000000 		.4byte	0x77
@@ -1657,7 +1657,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  980 01a1 9C       		.byte	0x9c
  981 01a2 E3010000 		.4byte	0x1e3
  982 01a6 0D       		.uleb128 0xd
- 983 01a7 7C000000 		.4byte	.LASF26
+ 983 01a7 7B000000 		.4byte	.LASF26
  984 01ab 01       		.byte	0x1
  985 01ac C101     		.2byte	0x1c1
  986 01ae 6B000000 		.4byte	0x6b
@@ -1673,12 +1673,12 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  996 01c2 91       		.byte	0x91
  997 01c3 76       		.sleb128 -10
  998 01c4 0D       		.uleb128 0xd
- 999 01c5 89000000 		.4byte	.LASF28
+ 999 01c5 88000000 		.4byte	.LASF28
  1000 01c9 01       		.byte	0x1
  1001 01ca C301     		.2byte	0x1c3
  1002 01cc 6B000000 		.4byte	0x6b
  1003 01d0 02       		.uleb128 0x2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 29
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 29
 
 
  1004 01d1 91       		.byte	0x91
@@ -1693,7 +1693,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1013 01e1 74       		.sleb128 -12
  1014 01e2 00       		.byte	0
  1015 01e3 0F       		.uleb128 0xf
- 1016 01e4 39020000 		.4byte	.LASF31
+ 1016 01e4 38020000 		.4byte	.LASF31
  1017 01e8 01       		.byte	0x1
  1018 01e9 1102     		.2byte	0x211
  1019 01eb 00000000 		.4byte	.LFB8
@@ -1711,7 +1711,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1031 0207 76       		.sleb128 -10
  1032 0208 00       		.byte	0
  1033 0209 10       		.uleb128 0x10
- 1034 020a E9010000 		.4byte	.LASF33
+ 1034 020a E8010000 		.4byte	.LASF33
  1035 020e 01       		.byte	0x1
  1036 020f 3502     		.2byte	0x235
  1037 0211 00000000 		.4byte	.LFB9
@@ -1719,7 +1719,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1039 0219 01       		.uleb128 0x1
  1040 021a 9C       		.byte	0x9c
  1041 021b 10       		.uleb128 0x10
- 1042 021c 66020000 		.4byte	.LASF34
+ 1042 021c 65020000 		.4byte	.LASF34
  1043 0220 01       		.byte	0x1
  1044 0221 4B02     		.2byte	0x24b
  1045 0223 00000000 		.4byte	.LFB10
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1058              		.section	.debug_abbrev,"",%progbits
  1059              	.Ldebug_abbrev0:
  1060 0000 01       		.uleb128 0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 30
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 30
 
 
  1061 0001 11       		.uleb128 0x11
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1115 0037 35       		.uleb128 0x35
  1116 0038 00       		.byte	0
  1117 0039 49       		.uleb128 0x49
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 31
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 31
 
 
  1118 003a 13       		.uleb128 0x13
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1172 0072 03       		.uleb128 0x3
  1173 0073 0E       		.uleb128 0xe
  1174 0074 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 32
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 32
 
 
  1175 0075 0B       		.uleb128 0xb
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1229 00ad 19       		.uleb128 0x19
  1230 00ae 00       		.byte	0
  1231 00af 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 33
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 33
 
 
  1232 00b0 0B       		.uleb128 0xb
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1286 00e7 2E       		.uleb128 0x2e
  1287 00e8 01       		.byte	0x1
  1288 00e9 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 34
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 34
 
 
  1289 00ea 19       		.uleb128 0x19
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1343 0122 0E       		.uleb128 0xe
  1344 0123 3A       		.uleb128 0x3a
  1345 0124 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 35
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 35
 
 
  1346 0125 3B       		.uleb128 0x3b
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1400 0048 00000000 		.4byte	.LFB7
  1401 004c C4000000 		.4byte	.LFE7-.LFB7
  1402 0050 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 36
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 36
 
 
  1403 0054 30000000 		.4byte	.LFE8-.LFB8
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1448 0020 436F6D70 		.ascii	"Comp_initVar\000"
  1448      5F696E69 
  1448      74566172 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 37
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 37
 
 
  1448      00
@@ -2168,177 +2168,177 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 1
  1450      7369676E 
  1450      65642069 
  1450      6E7400
- 1451              	.LASF37:
- 1452 0040 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 1452      73657273 
- 1452      5C676469 
- 1452      6E675C44 
- 1452      6F63756D 
- 1453 006e 64736E00 		.ascii	"dsn\000"
- 1454              	.LASF20:
- 1455 0072 436F6D70 		.ascii	"Comp_Stop\000"
- 1455      5F53746F 
- 1455      7000
+ 1451              	.LASF20:
+ 1452 0040 436F6D70 		.ascii	"Comp_Stop\000"
+ 1452      5F53746F 
+ 1452      7000
+ 1453              	.LASF37:
+ 1454 004a 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\OVac.cyd"
+ 1454      73657273 
+ 1454      5C677374 
+ 1454      6F6C6C5C 
+ 1454      4465736B 
+ 1455 0078 736E00   		.ascii	"sn\000"
  1456              	.LASF26:
- 1457 007c 746D7053 		.ascii	"tmpSW0\000"
+ 1457 007b 746D7053 		.ascii	"tmpSW0\000"
  1457      573000
  1458              	.LASF12:
- 1459 0083 666C6F61 		.ascii	"float\000"
+ 1459 0082 666C6F61 		.ascii	"float\000"
  1459      7400
  1460              	.LASF28:
- 1461 0089 746D7053 		.ascii	"tmpSW3\000"
+ 1461 0088 746D7053 		.ascii	"tmpSW3\000"
  1461      573300
  1462              	.LASF1:
- 1463 0090 756E7369 		.ascii	"unsigned char\000"
+ 1463 008f 756E7369 		.ascii	"unsigned char\000"
  1463      676E6564 
  1463      20636861 
  1463      7200
  1464              	.LASF15:
- 1465 009e 72656738 		.ascii	"reg8\000"
+ 1465 009d 72656738 		.ascii	"reg8\000"
  1465      00
  1466              	.LASF23:
- 1467 00a3 7472696D 		.ascii	"trimCnt\000"
+ 1467 00a2 7472696D 		.ascii	"trimCnt\000"
  1467      436E7400 
  1468              	.LASF5:
- 1469 00ab 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1469 00aa 6C6F6E67 		.ascii	"long unsigned int\000"
  1469      20756E73 
  1469      69676E65 
  1469      6420696E 
  1469      7400
  1470              	.LASF9:
- 1471 00bd 75696E74 		.ascii	"uint8\000"
+ 1471 00bc 75696E74 		.ascii	"uint8\000"
  1471      3800
  1472              	.LASF36:
- 1473 00c3 47656E65 		.ascii	"Generated_Source\\PSoC5\\Comp.c\000"
+ 1473 00c2 47656E65 		.ascii	"Generated_Source\\PSoC5\\Comp.c\000"
  1473      72617465 
  1473      645F536F 
  1473      75726365 
  1473      5C50536F 
  1474              	.LASF35:
- 1475 00e1 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1475 00e0 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  1475      4320342E 
  1475      392E3320 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 38
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 38
 
 
  1475      32303135 
  1475      30333033 
- 1476 0114 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1476 0113 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  1476      20726576 
  1476      6973696F 
  1476      6E203232 
  1476      31323230 
- 1477 0147 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1477 0146 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  1477      66756E63 
  1477      74696F6E 
  1477      2D736563 
  1477      74696F6E 
  1478              	.LASF13:
- 1479 016f 646F7562 		.ascii	"double\000"
+ 1479 016e 646F7562 		.ascii	"double\000"
  1479      6C6500
  1480              	.LASF10:
- 1481 0176 75696E74 		.ascii	"uint16\000"
+ 1481 0175 75696E74 		.ascii	"uint16\000"
  1481      313600
  1482              	.LASF40:
- 1483 017d 436F6D70 		.ascii	"Comp_ZeroCal\000"
+ 1483 017c 436F6D70 		.ascii	"Comp_ZeroCal\000"
  1483      5F5A6572 
  1483      6F43616C 
  1483      00
  1484              	.LASF11:
- 1485 018a 75696E74 		.ascii	"uint32\000"
+ 1485 0189 75696E74 		.ascii	"uint32\000"
  1485      333200
  1486              	.LASF8:
- 1487 0191 756E7369 		.ascii	"unsigned int\000"
+ 1487 0190 756E7369 		.ascii	"unsigned int\000"
  1487      676E6564 
  1487      20696E74 
  1487      00
  1488              	.LASF25:
- 1489 019e 636D7053 		.ascii	"cmpState\000"
+ 1489 019d 636D7053 		.ascii	"cmpState\000"
  1489      74617465 
  1489      00
  1490              	.LASF7:
- 1491 01a7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1491 01a6 6C6F6E67 		.ascii	"long long unsigned int\000"
  1491      206C6F6E 
  1491      6720756E 
  1491      7369676E 
  1491      65642069 
  1492              	.LASF18:
- 1493 01be 436F6D70 		.ascii	"Comp_Enable\000"
+ 1493 01bd 436F6D70 		.ascii	"Comp_Enable\000"
  1493      5F456E61 
  1493      626C6500 
  1494              	.LASF38:
- 1495 01ca 436F6D70 		.ascii	"Comp_GetCompare\000"
+ 1495 01c9 436F6D70 		.ascii	"Comp_GetCompare\000"
  1495      5F476574 
  1495      436F6D70 
  1495      61726500 
  1496              	.LASF21:
- 1497 01da 73706565 		.ascii	"speed\000"
+ 1497 01d9 73706565 		.ascii	"speed\000"
  1497      6400
  1498              	.LASF16:
- 1499 01e0 73697A65 		.ascii	"sizetype\000"
+ 1499 01df 73697A65 		.ascii	"sizetype\000"
  1499      74797065 
  1499      00
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 39
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 39
 
 
  1500              	.LASF33:
- 1501 01e9 436F6D70 		.ascii	"Comp_PwrDwnOverrideEnable\000"
+ 1501 01e8 436F6D70 		.ascii	"Comp_PwrDwnOverrideEnable\000"
  1501      5F507772 
  1501      44776E4F 
  1501      76657272 
  1501      69646545 
  1502              	.LASF24:
- 1503 0203 7472696D 		.ascii	"trimCntMax\000"
+ 1503 0202 7472696D 		.ascii	"trimCntMax\000"
  1503      436E744D 
  1503      617800
  1504              	.LASF6:
- 1505 020e 6C6F6E67 		.ascii	"long long int\000"
+ 1505 020d 6C6F6E67 		.ascii	"long long int\000"
  1505      206C6F6E 
  1505      6720696E 
  1505      7400
  1506              	.LASF14:
- 1507 021c 63686172 		.ascii	"char\000"
+ 1507 021b 63686172 		.ascii	"char\000"
  1507      00
  1508              	.LASF30:
- 1509 0221 436F6D70 		.ascii	"Comp_SetSpeed\000"
+ 1509 0220 436F6D70 		.ascii	"Comp_SetSpeed\000"
  1509      5F536574 
  1509      53706565 
  1509      6400
  1510              	.LASF2:
- 1511 022f 73686F72 		.ascii	"short int\000"
+ 1511 022e 73686F72 		.ascii	"short int\000"
  1511      7420696E 
  1511      7400
  1512              	.LASF31:
- 1513 0239 436F6D70 		.ascii	"Comp_LoadTrim\000"
+ 1513 0238 436F6D70 		.ascii	"Comp_LoadTrim\000"
  1513      5F4C6F61 
  1513      64547269 
  1513      6D00
  1514              	.LASF17:
- 1515 0247 436F6D70 		.ascii	"Comp_Init\000"
+ 1515 0246 436F6D70 		.ascii	"Comp_Init\000"
  1515      5F496E69 
  1515      7400
  1516              	.LASF4:
- 1517 0251 6C6F6E67 		.ascii	"long int\000"
+ 1517 0250 6C6F6E67 		.ascii	"long int\000"
  1517      20696E74 
  1517      00
  1518              	.LASF0:
- 1519 025a 7369676E 		.ascii	"signed char\000"
+ 1519 0259 7369676E 		.ascii	"signed char\000"
  1519      65642063 
  1519      68617200 
  1520              	.LASF34:
- 1521 0266 436F6D70 		.ascii	"Comp_PwrDwnOverrideDisable\000"
+ 1521 0265 436F6D70 		.ascii	"Comp_PwrDwnOverrideDisable\000"
  1521      5F507772 
  1521      44776E4F 
  1521      76657272 
  1521      69646544 
  1522              	.LASF39:
- 1523 0281 436F6D70 		.ascii	"Comp_trimAdjust\000"
+ 1523 0280 436F6D70 		.ascii	"Comp_trimAdjust\000"
  1523      5F747269 
  1523      6D41646A 
  1523      75737400 
  1524              	.LASF22:
- 1525 0291 6E696262 		.ascii	"nibble\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cctga7s2.s 			page 40
+ 1525 0290 6E696262 		.ascii	"nibble\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cc2EL5Ms.s 			page 40
 
 
  1525      6C6500

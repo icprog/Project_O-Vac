@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
   27:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** #define emFile_MMC_DEFAULT_SUPPLY_VOLTAGE    (3300u)
   28:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
   29:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** /* Max. startup frequency (KHz) */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 2
 
 
   30:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** #define emFile_STARTUP_FREQ                   (400u)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
   36              		.cfi_offset 14, -4
   37 0002 82B0     		sub	sp, sp, #8
   38              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 3
 
 
   39 0004 00AF     		add	r7, sp, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
   68              	.L4:
   69 0034 11E0     		b	.L1
   70              	.L7:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 4
 
 
  102:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  156:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  157:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****             case 3u:
  158:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 5
 
 
  159:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****                 if (emFile_isInited3 == 0u)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  196:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  197:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****             /* Start SPI 0 */
  198:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****             emFile_SPI0_Start();
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 6
 
 
   88              		.loc 1 198 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  115              		.loc 1 225 0
  116              		.cfi_startproc
  117              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 7
 
 
  118              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  156              	.L17:
  242:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  243:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     #if (emFile_NUMBER_SD_CARDS >= 2u)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 8
 
 
  244:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  157              		.loc 1 297 0
  158 003a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
  159 003c 1846     		mov	r0, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 9
 
 
  160 003e FFF7FEFF 		bl	emFile_SPI0_WriteTxData
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  313:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** ********************************************************************************
  314:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** *
  315:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** * Summary:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 10
 
 
  316:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** *  FS low level function. Sets the card slot active using the
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  346:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  347:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****                 break;
  348:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 11
 
 
  349:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****         #endif /* (emFile_NUMBER_SD_CARDS >= 2u) */
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  246              	.LFB66:
  380:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  381:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 12
 
 
  382:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** /*******************************************************************************
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  412:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****         case 1u:
  413:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  414:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****             emFile_SPI1_CS_Write(1u);
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 13
 
 
  415:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  293              	FS_MMC_HW_X_IsWriteProtected:
  294              	.LFB67:
  447:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 14
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 14
 
 
  448:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  313              		.loc 1 483 0
  314 0010 0023     		movs	r3, #0
  315 0012 FB60     		str	r3, [r7, #12]
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 15
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 15
 
 
  484:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  535:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  536:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****             #else
  537:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 16
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 16
 
 
  538:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****                 wpState = 0;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  347              	FS_MMC_HW_X_SetMaxSpeed:
  348              	.LFB68:
  564:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 17
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 17
 
 
  565:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  373 001e 06E0     		b	.L36
  374              	.L35:
  595:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     }
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 18
 
 
  596:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     else if(MaxFreq > emFile_MAX_SPI_FREQ)
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  409              		.loc 1 615 0
  410 0060 0CE0     		b	.L39
  411              	.L41:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 19
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 19
 
 
  616:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  655:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     }
  656:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** 
  657:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     return (MaxFreq);
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 20
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 20
 
 
  427              		.loc 1 657 0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  453 0000 80B4     		push	{r7}
  454              		.cfi_def_cfa_offset 4
  455              		.cfi_offset 7, -4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 21
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 21
 
 
  456 0002 85B0     		sub	sp, sp, #20
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  705:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****         }
  487              		.loc 1 705 0
  488 0034 0023     		movs	r3, #0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 22
 
 
  489 0036 FB60     		str	r3, [r7, #12]
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  524              		@ sp needed
  525 0062 5DF8047B 		ldr	r7, [sp], #4
  526              		.cfi_restore 7
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 23
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 23
 
 
  527              		.cfi_def_cfa_offset 0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  754:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c ****     emFile_Init(Unit);
  554              		.loc 1 754 0
  555 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 24
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 24
 
 
  556 000c 1846     		mov	r0, r3
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  588              		.section	.text.FS_MMC_HW_X_Read,"ax",%progbits
  589              		.align	2
  590              		.global	FS_MMC_HW_X_Read
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 25
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 25
 
 
  591              		.thumb
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  617 0012 BB60     		str	r3, [r7, #8]
  618 0014 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
  619 0016 1846     		mov	r0, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 26
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 26
 
 
  620 0018 FF21     		movs	r1, #255
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  830:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** *
  831:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** * Return:
  832:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** *  None
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 27
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 27
 
 
  833:Generated_Source\PSoC5/emFile_MMC_HW_SPI.c **** *
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  690              	.LFE72:
  691              		.size	FS_MMC_HW_X_Write, .-FS_MMC_HW_X_Write
  692 0032 00BF     		.text
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 28
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 28
 
 
  693              	.Letext0:
@@ -1635,23 +1635,23 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  704 000b 01       		.uleb128 0x1
  705 000c 44000000 		.4byte	.LASF37
  706 0010 01       		.byte	0x1
- 707 0011 9B010000 		.4byte	.LASF38
- 708 0015 D2000000 		.4byte	.LASF39
+ 707 0011 9A010000 		.4byte	.LASF38
+ 708 0015 E4000000 		.4byte	.LASF39
  709 0019 00000000 		.4byte	.Ldebug_ranges0+0
  710 001d 00000000 		.4byte	0
  711 0021 00000000 		.4byte	.Ldebug_line0
  712 0025 02       		.uleb128 0x2
  713 0026 02       		.byte	0x2
  714 0027 07       		.byte	0x7
- 715 0028 6A010000 		.4byte	.LASF0
+ 715 0028 69010000 		.4byte	.LASF0
  716 002c 02       		.uleb128 0x2
  717 002d 04       		.byte	0x4
  718 002e 07       		.byte	0x7
- 719 002f C6010000 		.4byte	.LASF1
+ 719 002f C5010000 		.4byte	.LASF1
  720 0033 02       		.uleb128 0x2
  721 0034 04       		.byte	0x4
  722 0035 07       		.byte	0x7
- 723 0036 21020000 		.4byte	.LASF2
+ 723 0036 20020000 		.4byte	.LASF2
  724 003a 03       		.uleb128 0x3
  725 003b 04       		.byte	0x4
  726 003c 05       		.byte	0x5
@@ -1659,33 +1659,33 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  728 0041 02       		.uleb128 0x2
  729 0042 01       		.byte	0x1
  730 0043 08       		.byte	0x8
- 731 0044 3C010000 		.4byte	.LASF3
+ 731 0044 3B010000 		.4byte	.LASF3
  732 0048 02       		.uleb128 0x2
  733 0049 04       		.byte	0x4
  734 004a 07       		.byte	0x7
- 735 004b 6B020000 		.4byte	.LASF4
+ 735 004b 6A020000 		.4byte	.LASF4
  736 004f 02       		.uleb128 0x2
  737 0050 01       		.byte	0x1
  738 0051 08       		.byte	0x8
- 739 0052 8B020000 		.4byte	.LASF5
+ 739 0052 8A020000 		.4byte	.LASF5
  740 0056 02       		.uleb128 0x2
  741 0057 02       		.byte	0x2
  742 0058 05       		.byte	0x5
- 743 0059 EF010000 		.4byte	.LASF6
+ 743 0059 EE010000 		.4byte	.LASF6
  744 005d 02       		.uleb128 0x2
  745 005e 04       		.byte	0x4
  746 005f 05       		.byte	0x5
- 747 0060 A0020000 		.4byte	.LASF7
+ 747 0060 9F020000 		.4byte	.LASF7
  748 0064 04       		.uleb128 0x4
  749 0065 04       		.byte	0x4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 29
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 29
 
 
  750 0066 41000000 		.4byte	0x41
  751 006a 02       		.uleb128 0x2
  752 006b 01       		.byte	0x1
  753 006c 06       		.byte	0x6
- 754 006d 30010000 		.4byte	.LASF8
+ 754 006d 2F010000 		.4byte	.LASF8
  755 0071 05       		.uleb128 0x5
  756 0072 3A000000 		.4byte	.LASF11
  757 0076 02       		.byte	0x2
@@ -1694,31 +1694,31 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  760 007c 02       		.uleb128 0x2
  761 007d 08       		.byte	0x8
  762 007e 05       		.byte	0x5
- 763 007f 74020000 		.4byte	.LASF9
+ 763 007f 73020000 		.4byte	.LASF9
  764 0083 02       		.uleb128 0x2
  765 0084 08       		.byte	0x8
  766 0085 07       		.byte	0x7
- 767 0086 2E020000 		.4byte	.LASF10
+ 767 0086 2D020000 		.4byte	.LASF10
  768 008a 05       		.uleb128 0x5
- 769 008b 63020000 		.4byte	.LASF12
+ 769 008b 62020000 		.4byte	.LASF12
  770 008f 03       		.byte	0x3
  771 0090 2C       		.byte	0x2c
  772 0091 71000000 		.4byte	0x71
  773 0095 06       		.uleb128 0x6
- 774 0096 9A020000 		.4byte	.LASF13
+ 774 0096 99020000 		.4byte	.LASF13
  775 009a 04       		.byte	0x4
  776 009b 9201     		.2byte	0x192
  777 009d 41000000 		.4byte	0x41
  778 00a1 02       		.uleb128 0x2
  779 00a2 04       		.byte	0x4
  780 00a3 04       		.byte	0x4
- 781 00a4 2A010000 		.4byte	.LASF14
+ 781 00a4 29010000 		.4byte	.LASF14
  782 00a8 02       		.uleb128 0x2
  783 00a9 08       		.byte	0x8
  784 00aa 04       		.byte	0x4
- 785 00ab 04010000 		.4byte	.LASF15
+ 785 00ab D2000000 		.4byte	.LASF15
  786 00af 07       		.uleb128 0x7
- 787 00b0 A9020000 		.4byte	.LASF40
+ 787 00b0 A8020000 		.4byte	.LASF40
  788 00b4 01       		.byte	0x1
  789 00b5 4B       		.byte	0x4b
  790 00b6 00000000 		.4byte	.LFB63
@@ -1727,7 +1727,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  793 00bf 9C       		.byte	0x9c
  794 00c0 D3000000 		.4byte	0xd3
  795 00c4 08       		.uleb128 0x8
- 796 00c5 C6020000 		.4byte	.LASF16
+ 796 00c5 C5020000 		.4byte	.LASF16
  797 00c9 01       		.byte	0x1
  798 00ca 4B       		.byte	0x4b
  799 00cb 41000000 		.4byte	0x41
@@ -1736,9 +1736,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  802 00d1 77       		.sleb128 -9
  803 00d2 00       		.byte	0
  804 00d3 09       		.uleb128 0x9
- 805 00d4 16010000 		.4byte	.LASF41
+ 805 00d4 15010000 		.4byte	.LASF41
  806 00d8 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 30
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 30
 
 
  807 00d9 E0       		.byte	0xe0
@@ -1749,7 +1749,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  812 00e7 9C       		.byte	0x9c
  813 00e8 17010000 		.4byte	0x117
  814 00ec 08       		.uleb128 0x8
- 815 00ed C6020000 		.4byte	.LASF16
+ 815 00ed C5020000 		.4byte	.LASF16
  816 00f1 01       		.byte	0x1
  817 00f2 E0       		.byte	0xe0
  818 00f3 41000000 		.4byte	0x41
@@ -1757,7 +1757,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  820 00f8 91       		.byte	0x91
  821 00f9 6F       		.sleb128 -17
  822 00fa 08       		.uleb128 0x8
- 823 00fb 0B010000 		.4byte	.LASF17
+ 823 00fb D9000000 		.4byte	.LASF17
  824 00ff 01       		.byte	0x1
  825 0100 E0       		.byte	0xe0
  826 0101 41000000 		.4byte	0x41
@@ -1765,7 +1765,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  828 0106 91       		.byte	0x91
  829 0107 6E       		.sleb128 -18
  830 0108 0A       		.uleb128 0xa
- 831 0109 62010000 		.4byte	.LASF20
+ 831 0109 61010000 		.4byte	.LASF20
  832 010d 01       		.byte	0x1
  833 010e E2       		.byte	0xe2
  834 010f 41000000 		.4byte	0x41
@@ -1783,7 +1783,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  846 0128 9C       		.byte	0x9c
  847 0129 3D010000 		.4byte	0x13d
  848 012d 0C       		.uleb128 0xc
- 849 012e C6020000 		.4byte	.LASF16
+ 849 012e C5020000 		.4byte	.LASF16
  850 0132 01       		.byte	0x1
  851 0133 4901     		.2byte	0x149
  852 0135 41000000 		.4byte	0x41
@@ -1792,19 +1792,19 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  855 013b 77       		.sleb128 -9
  856 013c 00       		.byte	0
  857 013d 0B       		.uleb128 0xb
- 858 013e CB020000 		.4byte	.LASF19
+ 858 013e CA020000 		.4byte	.LASF19
  859 0142 01       		.byte	0x1
  860 0143 9001     		.2byte	0x190
  861 0145 00000000 		.4byte	.LFB66
  862 0149 26000000 		.4byte	.LFE66-.LFB66
  863 014d 01       		.uleb128 0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 31
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 31
 
 
  864 014e 9C       		.byte	0x9c
  865 014f 63010000 		.4byte	0x163
  866 0153 0C       		.uleb128 0xc
- 867 0154 C6020000 		.4byte	.LASF16
+ 867 0154 C5020000 		.4byte	.LASF16
  868 0158 01       		.byte	0x1
  869 0159 9001     		.2byte	0x190
  870 015b 41000000 		.4byte	0x41
@@ -1823,7 +1823,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  883 0178 9C       		.byte	0x9c
  884 0179 9C010000 		.4byte	0x19c
  885 017d 0C       		.uleb128 0xc
- 886 017e C6020000 		.4byte	.LASF16
+ 886 017e C5020000 		.4byte	.LASF16
  887 0182 01       		.byte	0x1
  888 0183 D401     		.2byte	0x1d4
  889 0185 41000000 		.4byte	0x41
@@ -1840,7 +1840,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  900 019a 74       		.sleb128 -12
  901 019b 00       		.byte	0
  902 019c 0F       		.uleb128 0xf
- 903 019d 4A010000 		.4byte	.LASF23
+ 903 019d 49010000 		.4byte	.LASF23
  904 01a1 01       		.byte	0x1
  905 01a2 4B02     		.2byte	0x24b
  906 01a4 25000000 		.4byte	0x25
@@ -1850,7 +1850,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  910 01b1 9C       		.byte	0x9c
  911 01b2 F3010000 		.4byte	0x1f3
  912 01b6 0C       		.uleb128 0xc
- 913 01b7 C6020000 		.4byte	.LASF16
+ 913 01b7 C5020000 		.4byte	.LASF16
  914 01bb 01       		.byte	0x1
  915 01bc 4B02     		.2byte	0x24b
  916 01be 41000000 		.4byte	0x41
@@ -1858,10 +1858,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  918 01c3 91       		.byte	0x91
  919 01c4 6F       		.sleb128 -17
  920 01c5 0C       		.uleb128 0xc
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 32
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 32
 
 
- 921 01c6 03020000 		.4byte	.LASF24
+ 921 01c6 02020000 		.4byte	.LASF24
  922 01ca 01       		.byte	0x1
  923 01cb 4B02     		.2byte	0x24b
  924 01cd 25000000 		.4byte	0x25
@@ -1869,7 +1869,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  926 01d2 91       		.byte	0x91
  927 01d3 6C       		.sleb128 -20
  928 01d4 0E       		.uleb128 0xe
- 929 01d5 95020000 		.4byte	.LASF25
+ 929 01d5 94020000 		.4byte	.LASF25
  930 01d9 01       		.byte	0x1
  931 01da 4D02     		.2byte	0x24d
  932 01dc 25000000 		.4byte	0x25
@@ -1877,7 +1877,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  934 01e1 91       		.byte	0x91
  935 01e2 76       		.sleb128 -10
  936 01e3 0E       		.uleb128 0xe
- 937 01e4 F9010000 		.4byte	.LASF26
+ 937 01e4 F8010000 		.4byte	.LASF26
  938 01e8 01       		.byte	0x1
  939 01e9 4E02     		.2byte	0x24e
  940 01eb 2C000000 		.4byte	0x2c
@@ -1886,7 +1886,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  943 01f1 70       		.sleb128 -16
  944 01f2 00       		.byte	0
  945 01f3 0D       		.uleb128 0xd
- 946 01f4 D8010000 		.4byte	.LASF27
+ 946 01f4 D7010000 		.4byte	.LASF27
  947 01f8 01       		.byte	0x1
  948 01f9 AC02     		.2byte	0x2ac
  949 01fb 3A000000 		.4byte	0x3a
@@ -1896,7 +1896,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  953 0208 9C       		.byte	0x9c
  954 0209 4A020000 		.4byte	0x24a
  955 020d 0C       		.uleb128 0xc
- 956 020e C6020000 		.4byte	.LASF16
+ 956 020e C5020000 		.4byte	.LASF16
  957 0212 01       		.byte	0x1
  958 0213 AC02     		.2byte	0x2ac
  959 0215 41000000 		.4byte	0x41
@@ -1904,7 +1904,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  961 021a 91       		.byte	0x91
  962 021b 6F       		.sleb128 -17
  963 021c 0C       		.uleb128 0xc
- 964 021d 90020000 		.4byte	.LASF28
+ 964 021d 8F020000 		.4byte	.LASF28
  965 0221 01       		.byte	0x1
  966 0222 AC02     		.2byte	0x2ac
  967 0224 25000000 		.4byte	0x25
@@ -1912,18 +1912,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  969 0229 91       		.byte	0x91
  970 022a 6C       		.sleb128 -20
  971 022b 0C       		.uleb128 0xc
- 972 022c 45020000 		.4byte	.LASF29
+ 972 022c 44020000 		.4byte	.LASF29
  973 0230 01       		.byte	0x1
  974 0231 AC02     		.2byte	0x2ac
  975 0233 25000000 		.4byte	0x25
  976 0237 02       		.uleb128 0x2
  977 0238 91       		.byte	0x91
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 33
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 33
 
 
  978 0239 6A       		.sleb128 -22
  979 023a 0E       		.uleb128 0xe
- 980 023b 4A020000 		.4byte	.LASF30
+ 980 023b 49020000 		.4byte	.LASF30
  981 023f 01       		.byte	0x1
  982 0240 AE02     		.2byte	0x2ae
  983 0242 3A000000 		.4byte	0x3a
@@ -1932,7 +1932,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  986 0248 74       		.sleb128 -12
  987 0249 00       		.byte	0
  988 024a 0F       		.uleb128 0xf
- 989 024b 0B020000 		.4byte	.LASF31
+ 989 024b 0A020000 		.4byte	.LASF31
  990 024f 01       		.byte	0x1
  991 0250 EE02     		.2byte	0x2ee
  992 0252 3A000000 		.4byte	0x3a
@@ -1942,7 +1942,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  996 025f 9C       		.byte	0x9c
  997 0260 83020000 		.4byte	0x283
  998 0264 0C       		.uleb128 0xc
- 999 0265 C6020000 		.4byte	.LASF16
+ 999 0265 C5020000 		.4byte	.LASF16
  1000 0269 01       		.byte	0x1
  1001 026a EE02     		.2byte	0x2ee
  1002 026c 41000000 		.4byte	0x41
@@ -1950,7 +1950,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1004 0271 91       		.byte	0x91
  1005 0272 6F       		.sleb128 -17
  1006 0273 0E       		.uleb128 0xe
- 1007 0274 4A020000 		.4byte	.LASF30
+ 1007 0274 49020000 		.4byte	.LASF30
  1008 0278 01       		.byte	0x1
  1009 0279 F002     		.2byte	0x2f0
  1010 027b 3A000000 		.4byte	0x3a
@@ -1959,7 +1959,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1013 0281 74       		.sleb128 -12
  1014 0282 00       		.byte	0
  1015 0283 0B       		.uleb128 0xb
- 1016 0284 7D010000 		.4byte	.LASF32
+ 1016 0284 7C010000 		.4byte	.LASF32
  1017 0288 01       		.byte	0x1
  1018 0289 2003     		.2byte	0x320
  1019 028b 00000000 		.4byte	.LFB71
@@ -1968,7 +1968,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1022 0294 9C       		.byte	0x9c
  1023 0295 C7020000 		.4byte	0x2c7
  1024 0299 0C       		.uleb128 0xc
- 1025 029a C6020000 		.4byte	.LASF16
+ 1025 029a C5020000 		.4byte	.LASF16
  1026 029e 01       		.byte	0x1
  1027 029f 2003     		.2byte	0x320
  1028 02a1 41000000 		.4byte	0x41
@@ -1976,9 +1976,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1030 02a6 91       		.byte	0x91
  1031 02a7 6F       		.sleb128 -17
  1032 02a8 0C       		.uleb128 0xc
- 1033 02a9 10010000 		.4byte	.LASF33
+ 1033 02a9 DE000000 		.4byte	.LASF33
  1034 02ad 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 34
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 34
 
 
  1035 02ae 2003     		.2byte	0x320
@@ -1987,7 +1987,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1038 02b5 91       		.byte	0x91
  1039 02b6 68       		.sleb128 -24
  1040 02b7 0C       		.uleb128 0xc
- 1041 02b8 82020000 		.4byte	.LASF34
+ 1041 02b8 81020000 		.4byte	.LASF34
  1042 02bc 01       		.byte	0x1
  1043 02bd 2003     		.2byte	0x320
  1044 02bf 3A000000 		.4byte	0x3a
@@ -1996,7 +1996,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1047 02c5 64       		.sleb128 -28
  1048 02c6 00       		.byte	0
  1049 02c7 0B       		.uleb128 0xb
- 1050 02c8 51020000 		.4byte	.LASF35
+ 1050 02c8 50020000 		.4byte	.LASF35
  1051 02cc 01       		.byte	0x1
  1052 02cd 4703     		.2byte	0x347
  1053 02cf 00000000 		.4byte	.LFB72
@@ -2005,7 +2005,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1056 02d8 9C       		.byte	0x9c
  1057 02d9 0B030000 		.4byte	0x30b
  1058 02dd 0C       		.uleb128 0xc
- 1059 02de C6020000 		.4byte	.LASF16
+ 1059 02de C5020000 		.4byte	.LASF16
  1060 02e2 01       		.byte	0x1
  1061 02e3 4703     		.2byte	0x347
  1062 02e5 41000000 		.4byte	0x41
@@ -2013,7 +2013,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1064 02ea 91       		.byte	0x91
  1065 02eb 77       		.sleb128 -9
  1066 02ec 0C       		.uleb128 0xc
- 1067 02ed 10010000 		.4byte	.LASF33
+ 1067 02ed DE000000 		.4byte	.LASF33
  1068 02f1 01       		.byte	0x1
  1069 02f2 4703     		.2byte	0x347
  1070 02f4 0B030000 		.4byte	0x30b
@@ -2021,7 +2021,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1072 02f9 91       		.byte	0x91
  1073 02fa 70       		.sleb128 -16
  1074 02fb 0C       		.uleb128 0xc
- 1075 02fc 82020000 		.4byte	.LASF34
+ 1075 02fc 81020000 		.4byte	.LASF34
  1076 0300 01       		.byte	0x1
  1077 0301 4703     		.2byte	0x347
  1078 0303 3A000000 		.4byte	0x3a
@@ -2035,10 +2035,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1086 0311 10       		.uleb128 0x10
  1087 0312 41000000 		.4byte	0x41
  1088 0316 0A       		.uleb128 0xa
- 1089 0317 B5020000 		.4byte	.LASF36
+ 1089 0317 B4020000 		.4byte	.LASF36
  1090 031b 01       		.byte	0x1
  1091 031c 25       		.byte	0x25
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 35
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 35
 
 
  1092 031d 4F000000 		.4byte	0x4f
@@ -2046,7 +2046,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1094 0322 03       		.byte	0x3
  1095 0323 00000000 		.4byte	emFile_isInited0
  1096 0327 11       		.uleb128 0x11
- 1097 0328 8E010000 		.4byte	.LASF42
+ 1097 0328 8D010000 		.4byte	.LASF42
  1098 032c 05       		.byte	0x5
  1099 032d 9606     		.2byte	0x696
  1100 032f 33030000 		.4byte	0x333
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1146 0028 00       		.byte	0
  1147 0029 04       		.uleb128 0x4
  1148 002a 0F       		.uleb128 0xf
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 36
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 36
 
 
  1149 002b 00       		.byte	0
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1203 0062 00       		.byte	0
  1204 0063 00       		.byte	0
  1205 0064 08       		.uleb128 0x8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 37
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 37
 
 
  1206 0065 05       		.uleb128 0x5
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1260 009c 0B       		.uleb128 0xb
  1261 009d 2E       		.uleb128 0x2e
  1262 009e 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 38
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 38
 
 
  1263 009f 3F       		.uleb128 0x3f
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1317 00d6 12       		.uleb128 0x12
  1318 00d7 06       		.uleb128 0x6
  1319 00d8 40       		.uleb128 0x40
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 39
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 39
 
 
  1320 00d9 18       		.uleb128 0x18
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1374 0111 00       		.byte	0
  1375 0112 00       		.byte	0
  1376 0113 11       		.uleb128 0x11
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 40
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 40
 
 
  1377 0114 34       		.uleb128 0x34
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1431              		.section	.debug_ranges,"",%progbits
  1432              	.Ldebug_ranges0:
  1433 0000 00000000 		.4byte	.LFB63
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 41
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 41
 
 
  1434 0004 64000000 		.4byte	.LFE63
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1468      20726576 
  1468      6973696F 
  1468      6E203232 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 42
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 42
 
 
  1468      31323230 
@@ -2467,58 +2467,58 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1469      74696F6E 
  1469      2D736563 
  1469      74696F6E 
- 1470              	.LASF39:
- 1471 00d2 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 1471      73657273 
- 1471      5C676469 
- 1471      6E675C44 
- 1471      6F63756D 
- 1472 0100 64736E00 		.ascii	"dsn\000"
- 1473              	.LASF15:
- 1474 0104 646F7562 		.ascii	"double\000"
- 1474      6C6500
- 1475              	.LASF17:
- 1476 010b 44617461 		.ascii	"Data\000"
- 1476      00
- 1477              	.LASF33:
- 1478 0110 70446174 		.ascii	"pData\000"
- 1478      6100
+ 1470              	.LASF15:
+ 1471 00d2 646F7562 		.ascii	"double\000"
+ 1471      6C6500
+ 1472              	.LASF17:
+ 1473 00d9 44617461 		.ascii	"Data\000"
+ 1473      00
+ 1474              	.LASF33:
+ 1475 00de 70446174 		.ascii	"pData\000"
+ 1475      6100
+ 1476              	.LASF39:
+ 1477 00e4 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\OVac.cyd"
+ 1477      73657273 
+ 1477      5C677374 
+ 1477      6F6C6C5C 
+ 1477      4465736B 
+ 1478 0112 736E00   		.ascii	"sn\000"
  1479              	.LASF41:
- 1480 0116 656D4669 		.ascii	"emFile_ReadWriteSPI\000"
+ 1480 0115 656D4669 		.ascii	"emFile_ReadWriteSPI\000"
  1480      6C655F52 
  1480      65616457 
  1480      72697465 
  1480      53504900 
  1481              	.LASF14:
- 1482 012a 666C6F61 		.ascii	"float\000"
+ 1482 0129 666C6F61 		.ascii	"float\000"
  1482      7400
  1483              	.LASF8:
- 1484 0130 7369676E 		.ascii	"signed char\000"
+ 1484 012f 7369676E 		.ascii	"signed char\000"
  1484      65642063 
  1484      68617200 
  1485              	.LASF3:
- 1486 013c 756E7369 		.ascii	"unsigned char\000"
+ 1486 013b 756E7369 		.ascii	"unsigned char\000"
  1486      676E6564 
  1486      20636861 
  1486      7200
  1487              	.LASF23:
- 1488 014a 46535F4D 		.ascii	"FS_MMC_HW_X_SetMaxSpeed\000"
+ 1488 0149 46535F4D 		.ascii	"FS_MMC_HW_X_SetMaxSpeed\000"
  1488      4D435F48 
  1488      575F585F 
  1488      5365744D 
  1488      61785370 
  1489              	.LASF20:
- 1490 0162 73706944 		.ascii	"spiData\000"
+ 1490 0161 73706944 		.ascii	"spiData\000"
  1490      61746100 
  1491              	.LASF0:
- 1492 016a 73686F72 		.ascii	"short unsigned int\000"
+ 1492 0169 73686F72 		.ascii	"short unsigned int\000"
  1492      7420756E 
  1492      7369676E 
  1492      65642069 
  1492      6E7400
  1493              	.LASF32:
- 1494 017d 46535F4D 		.ascii	"FS_MMC_HW_X_Read\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 43
+ 1494 017c 46535F4D 		.ascii	"FS_MMC_HW_X_Read\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 43
 
 
  1494      4D435F48 
@@ -2526,119 +2526,119 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 1
  1494      52656164 
  1494      00
  1495              	.LASF42:
- 1496 018e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1496 018d 49544D5F 		.ascii	"ITM_RxBuffer\000"
  1496      52784275 
  1496      66666572 
  1496      00
  1497              	.LASF38:
- 1498 019b 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_MMC_HW_SPI.c\000"
+ 1498 019a 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_MMC_HW_SPI.c\000"
  1498      72617465 
  1498      645F536F 
  1498      75726365 
  1498      5C50536F 
  1499              	.LASF1:
- 1500 01c6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1500 01c5 6C6F6E67 		.ascii	"long unsigned int\000"
  1500      20756E73 
  1500      69676E65 
  1500      6420696E 
  1500      7400
  1501              	.LASF27:
- 1502 01d8 46535F4D 		.ascii	"FS_MMC_HW_X_SetVoltage\000"
+ 1502 01d7 46535F4D 		.ascii	"FS_MMC_HW_X_SetVoltage\000"
  1502      4D435F48 
  1502      575F585F 
  1502      53657456 
  1502      6F6C7461 
  1503              	.LASF6:
- 1504 01ef 73686F72 		.ascii	"short int\000"
+ 1504 01ee 73686F72 		.ascii	"short int\000"
  1504      7420696E 
  1504      7400
  1505              	.LASF26:
- 1506 01f9 64697652 		.ascii	"divResult\000"
+ 1506 01f8 64697652 		.ascii	"divResult\000"
  1506      6573756C 
  1506      7400
  1507              	.LASF24:
- 1508 0203 4D617846 		.ascii	"MaxFreq\000"
+ 1508 0202 4D617846 		.ascii	"MaxFreq\000"
  1508      72657100 
  1509              	.LASF31:
- 1510 020b 46535F4D 		.ascii	"FS_MMC_HW_X_IsPresent\000"
+ 1510 020a 46535F4D 		.ascii	"FS_MMC_HW_X_IsPresent\000"
  1510      4D435F48 
  1510      575F585F 
  1510      49735072 
  1510      6573656E 
  1511              	.LASF2:
- 1512 0221 756E7369 		.ascii	"unsigned int\000"
+ 1512 0220 756E7369 		.ascii	"unsigned int\000"
  1512      676E6564 
  1512      20696E74 
  1512      00
  1513              	.LASF10:
- 1514 022e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1514 022d 6C6F6E67 		.ascii	"long long unsigned int\000"
  1514      206C6F6E 
  1514      6720756E 
  1514      7369676E 
  1514      65642069 
  1515              	.LASF29:
- 1516 0245 566D6178 		.ascii	"Vmax\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 44
+ 1516 0244 566D6178 		.ascii	"Vmax\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 44
 
 
  1516      00
  1517              	.LASF30:
- 1518 024a 72657375 		.ascii	"result\000"
+ 1518 0249 72657375 		.ascii	"result\000"
  1518      6C7400
  1519              	.LASF35:
- 1520 0251 46535F4D 		.ascii	"FS_MMC_HW_X_Write\000"
+ 1520 0250 46535F4D 		.ascii	"FS_MMC_HW_X_Write\000"
  1520      4D435F48 
  1520      575F585F 
  1520      57726974 
  1520      6500
  1521              	.LASF12:
- 1522 0263 696E7433 		.ascii	"int32_t\000"
+ 1522 0262 696E7433 		.ascii	"int32_t\000"
  1522      325F7400 
  1523              	.LASF4:
- 1524 026b 73697A65 		.ascii	"sizetype\000"
+ 1524 026a 73697A65 		.ascii	"sizetype\000"
  1524      74797065 
  1524      00
  1525              	.LASF9:
- 1526 0274 6C6F6E67 		.ascii	"long long int\000"
+ 1526 0273 6C6F6E67 		.ascii	"long long int\000"
  1526      206C6F6E 
  1526      6720696E 
  1526      7400
  1527              	.LASF34:
- 1528 0282 4E756D42 		.ascii	"NumBytes\000"
+ 1528 0281 4E756D42 		.ascii	"NumBytes\000"
  1528      79746573 
  1528      00
  1529              	.LASF5:
- 1530 028b 63686172 		.ascii	"char\000"
+ 1530 028a 63686172 		.ascii	"char\000"
  1530      00
  1531              	.LASF28:
- 1532 0290 566D696E 		.ascii	"Vmin\000"
+ 1532 028f 566D696E 		.ascii	"Vmin\000"
  1532      00
  1533              	.LASF25:
- 1534 0295 66726571 		.ascii	"freq\000"
+ 1534 0294 66726571 		.ascii	"freq\000"
  1534      00
  1535              	.LASF13:
- 1536 029a 75696E74 		.ascii	"uint8\000"
+ 1536 0299 75696E74 		.ascii	"uint8\000"
  1536      3800
  1537              	.LASF7:
- 1538 02a0 6C6F6E67 		.ascii	"long int\000"
+ 1538 029f 6C6F6E67 		.ascii	"long int\000"
  1538      20696E74 
  1538      00
  1539              	.LASF40:
- 1540 02a9 656D4669 		.ascii	"emFile_Init\000"
+ 1540 02a8 656D4669 		.ascii	"emFile_Init\000"
  1540      6C655F49 
  1540      6E697400 
  1541              	.LASF36:
- 1542 02b5 656D4669 		.ascii	"emFile_isInited0\000"
+ 1542 02b4 656D4669 		.ascii	"emFile_isInited0\000"
  1542      6C655F69 
  1542      73496E69 
  1542      74656430 
  1542      00
  1543              	.LASF16:
- 1544 02c6 556E6974 		.ascii	"Unit\000"
+ 1544 02c5 556E6974 		.ascii	"Unit\000"
  1544      00
  1545              	.LASF19:
- 1546 02cb 46535F4D 		.ascii	"FS_MMC_HW_X_DisableCS\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc8i16q8.s 			page 45
+ 1546 02ca 46535F4D 		.ascii	"FS_MMC_HW_X_DisableCS\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccHHZN3z.s 			page 45
 
 
  1546      4D435F48 
