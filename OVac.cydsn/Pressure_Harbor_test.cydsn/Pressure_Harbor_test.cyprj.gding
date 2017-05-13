@@ -74,6 +74,7 @@
 <dep name=".\LiquidCrystal_I2C.h" />
 <dep name=".\functions.h" />
 <dep name=".\main.c" />
+<dep name=".\mpu6050.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\ADC.h" />
 <file name=".\Generated_Source\PSoC5\ADC_AMux.h" />
@@ -137,71 +138,7 @@
 <file name=".\LiquidCrystal_I2C.h" />
 <file name=".\functions.h" />
 <file name=".\main.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\functions.o">
-<dep name=".\Generated_Source\PSoC5\ADC.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_AMux.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Ext_CP_Clk.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_in.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_in_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_1.h" />
-<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\I2C_Master.h" />
-<dep name=".\Generated_Source\PSoC5\I2C_Master_PVT.h" />
-<dep name=".\Generated_Source\PSoC5\SCL.h" />
-<dep name=".\Generated_Source\PSoC5\SCL_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\SDA.h" />
-<dep name=".\Generated_Source\PSoC5\SDA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\Sample_ISR.h" />
-<dep name=".\Generated_Source\PSoC5\Sample_Timer.h" />
-<dep name=".\Generated_Source\PSoC5\UART.h" />
-<dep name=".\Generated_Source\PSoC5\UART_IntClock.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC5\cypins.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\Generated_Source\PSoC5\emFile.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_Clock_1.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_SPI0.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_SPI0_CS.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_SPI0_CS_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_SPI0_PVT.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_miso0.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_miso0_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_mosi0.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_mosi0_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_sclk0.h" />
-<dep name=".\Generated_Source\PSoC5\emFile_sclk0_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\project.h" />
-<dep name=".\Generated_Source\PSoC5\rx_interrupt.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\FS.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_ConfDefaults.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Dev.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Storage.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Types.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\Global.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\MMC_X_HW.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\SEGGER.h" />
-<dep name="..\emFile_V322c\Code\Include\PSoC5\emf32nOS\FS_Conf.h" />
-<dep name=".\LiquidCrystal_I2C.h" />
-<dep name=".\functions.c" />
-<dep name=".\functions.h" />
-</file>
-<file name=".\functions.c" />
+<file name=".\mpu6050.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\ADC.o">
 <dep name=".\Generated_Source\PSoC5\ADC.c" />
 <dep name=".\Generated_Source\PSoC5\ADC.h" />
@@ -929,6 +866,71 @@
 <dep name=".\LiquidCrystal_I2C.h" />
 </file>
 <file name=".\LiquidCrystal_I2C.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\functions.o">
+<dep name="..\emFile_V322c\Code\Include\PSoC5\FS.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_ConfDefaults.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Dev.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Storage.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\FS_Types.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\Global.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\MMC_X_HW.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\SEGGER.h" />
+<dep name="..\emFile_V322c\Code\Include\PSoC5\emf32nOS\FS_Conf.h" />
+<dep name=".\Generated_Source\PSoC5\ADC.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_AMux.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_in.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_in_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Master.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Master_PVT.h" />
+<dep name=".\Generated_Source\PSoC5\SCL.h" />
+<dep name=".\Generated_Source\PSoC5\SCL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\SDA.h" />
+<dep name=".\Generated_Source\PSoC5\SDA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Sample_ISR.h" />
+<dep name=".\Generated_Source\PSoC5\Sample_Timer.h" />
+<dep name=".\Generated_Source\PSoC5\UART.h" />
+<dep name=".\Generated_Source\PSoC5\UART_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\emFile.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_Clock_1.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_SPI0.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_SPI0_CS.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_SPI0_CS_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_SPI0_PVT.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_miso0.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_miso0_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_mosi0.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_mosi0_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_sclk0.h" />
+<dep name=".\Generated_Source\PSoC5\emFile_sclk0_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\rx_interrupt.h" />
+<dep name=".\LiquidCrystal_I2C.h" />
+<dep name=".\functions.c" />
+<dep name=".\functions.h" />
+</file>
+<file name=".\functions.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\i2cFunctions.o">
 <dep name="..\emFile_V322c\Code\Include\PSoC5\Global.h" />
 <dep name="..\emFile_V322c\Code\Include\PSoC5\MMC_X_HW.h" />
@@ -995,6 +997,11 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\mpu6050.o">
+<dep name=".\mpu6050.c" />
+<dep name=".\mpu6050.h" />
+</file>
+<file name=".\mpu6050.c" />
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
@@ -1008,6 +1015,7 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\functions.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\i2cFunctions.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\LiquidCrystal_I2C.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\mpu6050.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cymetadata.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC.o" />
@@ -1120,6 +1128,7 @@
 <name_val_pair name="Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -I..\emFile_V322c\Code\Include\PSoC5\emf32nOS -I..\emFile_V322c\Code\Include\PSoC5 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
 <name_val_pair name="Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -I..\emFile_V322c\Code\Include\PSoC5\emf32nOS -I..\emFile_V322c\Code\Include\PSoC5 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
 <name_val_pair name="C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\CortexM3\ARM_GCC_493\Debug\Pressure_Harbor_test.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -ffat-lto-objects -l emf32nosnlfn -L Generated_Source\PSoC5 -L ..\emFile_V322c\Code\Include\PSoC5 -L ..\emFile_V322c\LinkLibrary\PSoC5 -L ..\emFile_V322c\LinkLibrary\PSoC5\GCC -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
+<name_val_pair name="mpu6050.c" v="-mcpu=cortex-m3 -mthumb -I..\emFile_V322c\Code\Include\PSoC5\emf32nOS -I..\emFile_V322c\Code\Include\PSoC5 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\gding\AppData\Local\Cypress Semiconductor\PSoC Creator\4.0&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -d CY8C5868LTI-LP039 -s C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -2044,7 +2053,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131386875151177203" />
+<deps_time v="131389370508333309" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 <pdl_path v="C:\Users\gding\OneDrive\Documents\Cypress\PDL\2.1.0" />
@@ -2052,15 +2061,12 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131386897880154357" />
+<deps_time v="131389401878748335" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
-<debugger_breakpoint_list>
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\main.c" linenumber="143" />
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\main.c" linenumber="141" />
-</debugger_breakpoint_list>
+<debugger_breakpoint_list />
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
 </dataGuid>
 </userData>

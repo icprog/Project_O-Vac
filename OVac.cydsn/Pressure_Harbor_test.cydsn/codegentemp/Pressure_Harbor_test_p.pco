@@ -57,18 +57,18 @@ set_location "\emFile:Net_10\" macrocell 2 1 0 2
 set_location "\I2C_Master:I2C_FF\" i2ccell -1 -1 0
 # Note: port 12 is the logical name for port 7
 set_io "SDA(0)" iocell 12 5
-set_location "ClockBlock" clockblockcell -1 -1 0
 set_location "\ADC:DSM\" dsmodcell -1 -1 0
 set_io "\emFile:mosi0(0)\" iocell 3 6
 # Note: port 12 is the logical name for port 7
 set_io "SCL(0)" iocell 12 4
 set_location "\Sample_Timer:TimerHW\" timercell -1 -1 0
 set_io "\emFile:miso0(0)\" iocell 3 4
-set_location "\ADC:IRQ\" interrupt -1 -1 29
+set_location "ClockBlock" clockblockcell -1 -1 0
 set_location "rx_interrupt" interrupt -1 -1 0
+set_location "\ADC:IRQ\" interrupt -1 -1 29
 set_location "\I2C_Master:I2C_IRQ\" interrupt -1 -1 15
 set_location "Sample_ISR" interrupt -1 -1 17
-set_io "ADC_in(0)" iocell 1 6
+set_io "ADC_in(0)" iocell 1 2
 set_io "\emFile:SPI0_CS(0)\" iocell 3 7
 set_io "\emFile:sclk0(0)\" iocell 3 5
 # Note: port 12 is the logical name for port 7

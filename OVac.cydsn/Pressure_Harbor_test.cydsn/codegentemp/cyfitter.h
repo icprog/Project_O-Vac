@@ -156,11 +156,11 @@
 #define ADC_Ext_CP_Clk__PM_STBY_MSK 0x02u
 
 /* ADC_in */
-#define ADC_in__0__INTTYPE CYREG_PICU1_INTTYPE6
-#define ADC_in__0__MASK 0x40u
-#define ADC_in__0__PC CYREG_PRT1_PC6
+#define ADC_in__0__INTTYPE CYREG_PICU1_INTTYPE2
+#define ADC_in__0__MASK 0x04u
+#define ADC_in__0__PC CYREG_PRT1_PC2
 #define ADC_in__0__PORT 1u
-#define ADC_in__0__SHIFT 6u
+#define ADC_in__0__SHIFT 2u
 #define ADC_in__AG CYREG_PRT1_AG
 #define ADC_in__AMUX CYREG_PRT1_AMUX
 #define ADC_in__BIE CYREG_PRT1_BIE
@@ -175,7 +175,7 @@
 #define ADC_in__INTTYPE_BASE CYDEV_PICU_INTTYPE_PICU1_BASE
 #define ADC_in__LCD_COM_SEG CYREG_PRT1_LCD_COM_SEG
 #define ADC_in__LCD_EN CYREG_PRT1_LCD_EN
-#define ADC_in__MASK 0x40u
+#define ADC_in__MASK 0x04u
 #define ADC_in__PORT 1u
 #define ADC_in__PRT CYREG_PRT1_PRT
 #define ADC_in__PRTDSI__CAPS_SEL CYREG_PRT1_CAPS_SEL
@@ -186,7 +186,7 @@
 #define ADC_in__PRTDSI__OUT_SEL1 CYREG_PRT1_OUT_SEL1
 #define ADC_in__PRTDSI__SYNC_OUT CYREG_PRT1_SYNC_OUT
 #define ADC_in__PS CYREG_PRT1_PS
-#define ADC_in__SHIFT 6u
+#define ADC_in__SHIFT 2u
 #define ADC_in__SLW CYREG_PRT1_SLW
 
 /* ADC_IRQ */

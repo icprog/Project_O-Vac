@@ -30,6 +30,7 @@
 #include <project.h>
 #include <mpu6050.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <FS.h>
 #include "LiquidCrystal_I2C.h"
@@ -37,19 +38,21 @@
 
 #define MPU6050 
 #define LCD
-#define SD
+//#define SD
 #define BT
 
 #define MA_WINDOW 15                    // Number of samples in the moving average window.
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
 #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING state.
-#define DATA_TIME 5000                  // Number of ISR calls until transition into WAIT_TO_LAUNCH state.
 #define BUFFER_LEN  64u                 // Buffer length for UART rx
+#define DEGREES_45 (131 * 45)           // Gyro value corresponding to 60 degrees. Default setting is 131 LSB/degree/s 
+#define DEGREES_70 (131 * 70)           // So every 131 in gyro value equals 1 degree
 
 
 uint32_t Addr = 0x3F;                       // I2C address of LCD.
 long id = 1, press_id = 1;                 // Interrupt count.
 long data_time = 0;                        // data point num
+long descent_time = 0;                  // Max number of seconds allowed for descent, x 500 because it uses the same 2ms timer
 
 long sum = 0;                               // Sum of accelerometer values
 float pressure_sum = 0;                     // Sum of pressure values. 
@@ -62,7 +65,8 @@ STATES STATE = WAIT_TO_LAUNCH;                  // Set initial state.
 uint8_t testnum = 1, countdown = 0, update_Data = 0;
 uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
 int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
-int depth = 0, reset = 0;                                                  // Variable depth
+int depth = 0, reset = 0;                                                  // Variable depth                                              // gyro variables
+float xavg = 0, yavg = 0, xsum = 0, ysum = 0;
 char file[11] = "test_1.txt";
 char volume[10] = {};
 FS_FILE *fsfile;
@@ -101,7 +105,7 @@ CY_ISR (Moisture_ISR_Handler){
 /* Sampling ISR */
 CY_ISR (Sample_ISR_Handler){
     Sample_Timer_STATUS;                        // Clears interrupt by accessing timer status register
-    if (STATE == DESCENDING){ 
+    if (STATE == DESCENDING || STATE == LANDED){ 
         collect_flag = 1;
         data_time++;
     }
@@ -123,7 +127,7 @@ CY_ISR (Countdown_ISR_Handler){
         }          
     #endif
 }
-
+/* Bluetooth UART Rx ISR*/
 CY_ISR(rx_interrupt){
     #ifdef BT
     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
@@ -152,7 +156,7 @@ int main()
     char vacuumbuf[VACUUM_LEN] = STATE_VACUUM;
     char resurfbuf[RESURFACE_LEN] = STATE_RESURFACE;
     char transbuf[TRANSMIT_LEN] = STATE_TRANSMIT;
-    int stateMsgCount = 0;
+    int stateMsgCount = 0, pulse = 0;
     
     int16_t ax, ay, az, i;
     int16_t gx, gy, gz;
@@ -213,7 +217,8 @@ int main()
     adjust_timer_Start();
     countdown_StartEx(Countdown_ISR_Handler);
     temp_isr_StartEx(temp_interrupt);
-    int pulse = 0;
+   
+    
     for(;;)
     {
         
@@ -247,7 +252,8 @@ int main()
             
         }
         
-    /* Bluetooth message response*/
+    /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Once full message has
+     * has arrived, process it. */
     #ifdef BT
         if (msg_count >= 2){
             tens = RxBuffer[0] - 48;
@@ -267,7 +273,7 @@ int main()
         }
     #endif
     
-        /* Display Z-Acceleration */
+        /* Get Z-Acceleration */
 
         az = MPU6050_getAccelerationZ();
 
@@ -294,14 +300,8 @@ int main()
                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matters, rest do not matter(could be anything)
                     transmit_flag = 0;
                 }
+                // Once depth has been entered, can begin countdown into descending
                 if(wait_flag == 1){
-                    #ifdef LCD
-                        setCursor(0,0);
-                        clear();
-                        
-                        sprintf(buf, "T-minus %d seconds\n", (10 - countdown)); // countdown
-                        LCD_print(buf);
-                    #endif
                     #ifdef BT
                         stateMsgCount = 0;
                         sprintf(buf, "\n%d seconds remaining", (10 - countdown));
@@ -312,7 +312,11 @@ int main()
                             }
                         }
                     #endif
+                    /* at 10 seconds, change into descending */
                     if(countdown == 10){
+                        descent_time = (((depth / 13) + 3) * 2 * 500);
+                        /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m of leeway, x500 for
+                         * number of ISR calls to get 1 second */ 
                         STATE = DESCENDING;
                         #ifdef LCD
                             setCursor(0,0);
@@ -337,16 +341,29 @@ int main()
                 break;
                 
             case DESCENDING:
-                if(collect_flag == 1){
-                    if (id < MA_WINDOW){
-                        sum += az;     
+                MPU6050_getRotation(&gx, &gy, &gz); // gather gyro data
+                if(collect_flag == 1){              // Check accelerometer and gyro data
+                    if (id < MA_WINDOW){    
+                        sum += az;  
+                        xsum += gx;
+                        ysum += gy;
                     }
                     else if(id == MA_WINDOW){
                         sum += az;
-                        average = sum/MA_WINDOW;                            //compute baseline average
+                        xsum += gx;
+                        ysum += gy;
+                        average = sum/MA_WINDOW;            //compute baseline averages for x, y axises
+                        xavg = xsum/MA_WINDOW;                            
+                        yavg = ysum/MA_WINDOW;
+                                                   
                     }
                     else{
-                        average = ComputeMA(average, MA_WINDOW, az);
+                        average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
+                        xavg = ComputeMA(xavg, MA_WINDOW, gx);
+                        yavg = ComputeMA(yavg, MA_WINDOW, gy);
+                        if (abs((int)xavg) > DEGREES_70 || abs((int)yavg) > DEGREES_70){ // If gyro sees sideways orientation
+                            STATE = RESURFACE;                                        // start lift bag
+                        }
                     }
                     
                     if(average > BOT_THRESHOLD){                        
@@ -361,45 +378,23 @@ int main()
                             sprintf(sdbuf, "STATE: LANDED ***********\n");
                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
                         #endif
-                        #ifdef BT
-                            stateMsgCount = 0;
-                            while (stateMsgCount < LANDED_LEN){
-                                while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
-                                    UART_PutChar(landedbuf[stateMsgCount++]);
-                                    if (stateMsgCount >= LANDED_LEN) break;
-                                }
-                            }
-                        #endif
-                        #ifdef LCD
-                            setCursor(0,0);
-                            clear();
-                            LCD_print("VACUUMING");  
-                        #endif
                         
                         #ifdef SD
                                 memset(sdbuf, 0, 40);
                                 sprintf(sdbuf, "STATE: VACUUMING ***********\n");
                                 FS_Write(fsfile, sdbuf, strlen(sdbuf));
                         #endif
-                        #ifdef BT
-                            stateMsgCount = 0;
-                            while (stateMsgCount < VACUUM_LEN){
-                                while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
-                                    UART_PutChar(vacuumbuf[stateMsgCount++]);
-                                    if (stateMsgCount >= VACUUM_LEN) break;
-                                }
-                            }
-                        #endif
-                            id=0;                                                   //reset sample counter
-                            data_time = 0;
-                            sum = 0;
-                            average = 0; 
+                        
+                        id=0;                                                   //reset sample counter
+                        data_time = 0;
+                        sum = 0;
+                        average = 0; 
                         countdown = 0;
                     }
                     id++;     
                     
-                    /*if desired amount of samples have been collected, switch states*/
-                    if(data_time >= DATA_TIME * 2){
+                    /* if desired amount of samples have been collected, switch states */
+                    if(data_time >= descent_time ){                         // variable descent time
                         LED2_Write(0);                                          //turn LED off
                                                             
                         STATE = WAIT_TO_LAUNCH;                                //Switch to Waiting state    
@@ -421,6 +416,33 @@ int main()
                 case LANDED:
                     if (countdown == 7) {countdown = 0; pulse = 1; Solenoid_1_Write(1);} //turn on solenoid 1}
                     
+                    MPU6050_getRotation(&gx, &gy, &gz); // gather gyro data
+                    if(collect_flag == 1){
+                        if (id < MA_WINDOW){
+                            xsum += gx;
+                            ysum += gy;
+                        }
+                        else if(id == MA_WINDOW){
+                            xsum += gx;
+                            ysum += gy;
+                            xavg = xsum/MA_WINDOW;                            //compute baseline average
+                            yavg = ysum/MA_WINDOW;
+                        }
+                        else{
+                            xavg = ComputeMA(xavg, MA_WINDOW, gx);
+                            yavg = ComputeMA(yavg, MA_WINDOW, gy);
+                        }
+                        if (abs((int)xavg) > DEGREES_45 || abs((int)yavg) > DEGREES_45){ // If tilting, sent back up
+                            STATE = RESURFACE;
+                            clear();
+                            LCD_print("Tilted");
+                            clear();
+                            LCD_print("STATE: RESURFACING");
+                            CyDelay(500u);
+                        }
+                        collect_flag = 0;
+                        id++;
+                    }
                     
                     if (countdown == 5 && pulse){
                         pulse++;
@@ -441,22 +463,13 @@ int main()
                             sprintf(sdbuf, "STATE: RESURFACING ***********\n");
                             FS_Write(fsfile, sdbuf, strlen(sdbuf));
                         #endif
-                        #ifdef BT
-                            stateMsgCount = 0;
-                            while (stateMsgCount < RESURFACE_LEN){
-                                while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
-                                    UART_PutChar(resurfbuf[stateMsgCount++]);
-                                    if (stateMsgCount >= RESURFACE_LEN) break;
-                                }
-                            }
-                        #endif
                         pulse = 0;
                         countdown = 0;
                     }
                 break;
                 
             case RESURFACE:
-                if (PANIC_flag)
+                if (PANIC_flag) // Display that moisture sensor triggered
                     LCD_print("WATER DETECTED");
                 Solenoid_2_Write(1);
                 
@@ -472,9 +485,9 @@ int main()
                                                    //wait 10 seconds to lift, for testing in pool
                     STATE = TRANSMIT;
                     #ifdef SD                                   //close old file, open new one
-                    FS_FClose(fsfile);
-                    sprintf(file, "test%d.txt", ++testnum);
-                    fsfile = FS_FOpen(file, "w");
+                        FS_FClose(fsfile);
+                        sprintf(file, "test%d.txt", ++testnum);
+                        fsfile = FS_FOpen(file, "w");
                     #endif 
                     
                     #ifdef LCD
@@ -487,15 +500,6 @@ int main()
                         sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
                         FS_Write(fsfile, sdbuf, strlen(sdbuf));
                     #endif
-                    #ifdef BT
-                        stateMsgCount = 0;
-                        while (stateMsgCount < TRANSMIT_LEN){
-                            while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
-                                UART_PutChar(transbuf[stateMsgCount++]);
-                                if (stateMsgCount >= TRANSMIT_LEN) break;
-                            }
-                        }
-                    #endif
                     countdown = 0;
                 }
                 break;
@@ -505,22 +509,17 @@ int main()
                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters, rest do not matter(could be anything)
                     transmit_flag = 0;
                 }
+                data_time = 0;
                 countdown = 0;
                 pulse = 0;
                 depth = 0;
-                
-                //FS_Read(fsfile, 4);
-                
-                //CyDelay(15000u);
                 
                 break;
                 
             default:
                 break;
         
-        
         }
-        
     }
 }
 

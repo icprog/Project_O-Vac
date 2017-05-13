@@ -11462,11 +11462,11 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
 
 
  158              	/* ADC_in */
- 159              	.set ADC_in__0__INTTYPE, CYREG_PICU1_INTTYPE6
- 160              	.set ADC_in__0__MASK, 0x40
- 161              	.set ADC_in__0__PC, CYREG_PRT1_PC6
+ 159              	.set ADC_in__0__INTTYPE, CYREG_PICU1_INTTYPE2
+ 160              	.set ADC_in__0__MASK, 0x04
+ 161              	.set ADC_in__0__PC, CYREG_PRT1_PC2
  162              	.set ADC_in__0__PORT, 1
- 163              	.set ADC_in__0__SHIFT, 6
+ 163              	.set ADC_in__0__SHIFT, 2
  164              	.set ADC_in__AG, CYREG_PRT1_AG
  165              	.set ADC_in__AMUX, CYREG_PRT1_AMUX
  166              	.set ADC_in__BIE, CYREG_PRT1_BIE
@@ -11481,7 +11481,7 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  175              	.set ADC_in__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU1_BASE
  176              	.set ADC_in__LCD_COM_SEG, CYREG_PRT1_LCD_COM_SEG
  177              	.set ADC_in__LCD_EN, CYREG_PRT1_LCD_EN
- 178              	.set ADC_in__MASK, 0x40
+ 178              	.set ADC_in__MASK, 0x04
  179              	.set ADC_in__PORT, 1
  180              	.set ADC_in__PRT, CYREG_PRT1_PRT
  181              	.set ADC_in__PRTDSI__CAPS_SEL, CYREG_PRT1_CAPS_SEL
@@ -11492,7 +11492,7 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  186              	.set ADC_in__PRTDSI__OUT_SEL1, CYREG_PRT1_OUT_SEL1
  187              	.set ADC_in__PRTDSI__SYNC_OUT, CYREG_PRT1_SYNC_OUT
  188              	.set ADC_in__PS, CYREG_PRT1_PS
- 189              	.set ADC_in__SHIFT, 6
+ 189              	.set ADC_in__SHIFT, 2
  190              	.set ADC_in__SLW, CYREG_PRT1_SLW
  191              	
  192              	/* ADC_IRQ */

@@ -32,7 +32,8 @@ float ComputeMA(float avg, int16_t n, float sample){
 
 /* Process an incoming message, only for WAIT, TRANSMIT states, or for a reset of the system */
 int BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *flag, int *reset){
-    int i = 0, ones = 0, tens = 0, hunds = 0;
+    int i = 0;
+    static int ones = 0, tens = 0, hunds = 0;
     char commands[COMMANDS_LEN] = COMMANDS;
     char depth[SEND_DEPTH_LEN] = SEND_DEPTH;
     if (!strncmp(RxBuffer, "reset", 5)){                      // stop/reset program, go back to WAIT
@@ -61,14 +62,14 @@ int BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *flag, int *reset){
             while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
                 UART_PutChar(commands[i++]);
         }
-        return 0;
+        return (hunds * 100) + (tens * 10) + ones;
     }
    
     while (i < bytes + 3){
         while(UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL)
             UART_PutChar(RxBuffer[i++]);
     }
-    return 0;
+    return (hunds * 100) + (tens * 10) + ones;
 }
 
 /* For sending status of State, or data back in transmit state */
