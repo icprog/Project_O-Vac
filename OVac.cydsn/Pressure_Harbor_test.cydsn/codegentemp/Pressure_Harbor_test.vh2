@@ -2,7 +2,7 @@
 --	Conversion of Pressure_Harbor_test.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed May 10 17:44:00 2017
+--	Wed May 17 20:21:03 2017
 --
 
 USE cypress.cypress.all;
@@ -869,7 +869,7 @@ Net_21D <= ((not \UART:BUART:reset_reg\ and \UART:BUART:tx_state_2\)
 		vout=>\ADC:Net_20\);
 \ADC:DSM\:cy_psoc3_ds_mod_v4_0
 	GENERIC MAP(cy_registers=>"",
-		resolution=>10)
+		resolution=>12)
 	PORT MAP(aclock=>\ADC:Net_488\,
 		vplus=>Net_19,
 		vminus=>\ADC:Net_520\,
@@ -931,7 +931,7 @@ Net_21D <= ((not \UART:BUART:reset_reg\ and \UART:BUART:tx_state_2\)
 		id=>"f9b69582-16c1-4837-86e7-ce971b04e59e/edd15f43-b66b-457b-be3a-5342345270c8",
 		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
 		divisor=>0,
-		period=>"4347826086.95652",
+		period=>"3125000000",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>\ADC:Net_488\,

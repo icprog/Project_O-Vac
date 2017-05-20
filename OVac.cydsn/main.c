@@ -45,28 +45,28 @@
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
 #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING state.
 #define BUFFER_LEN  64u                 // Buffer length for UART rx
-#define DEGREES_45 (131 * 45)           // Gyro value corresponding to 60 degrees. Default setting is 131 LSB/degree/s 
-#define DEGREES_70 (131 * 70)           // So every 131 in gyro value equals 1 degree
+#define DEGREES_30 (131 * 30)           // Gyro value corresponding to 30 degrees. Default setting is 131 LSB/degree/s 
+#define DEGREES_50 (131 * 50)           // So every 131 in gyro value equals 1 degree of rotational velocity
 
 
-uint32_t Addr = 0x3F;                       // I2C address of LCD.
-long id = 1, press_id = 1;                 // Interrupt count.
-long data_time = 0;                        // data point num
+uint32_t Addr = 0x3F;                   // I2C address of LCD.
+long id = 1, press_id = 1;              // Interrupt count.
+long data_time = 0;                     // data point num
 long descent_time = 0;                  // Max number of seconds allowed for descent, x 500 because it uses the same 2ms timer
 
-long sum = 0;                               // Sum of accelerometer values
-float pressure_sum = 0;                     // Sum of pressure values. 
-int16_t average = 0;                        // Moving average variable, accelerometer.
-bool collect_flag = 0;                      // flag indicating when to record acceleration sample.
-bool wait_flag = 0;                         // flag indicating when to increment interrupt counter.
-bool PANIC_flag = 0;                        // flag indicating water is present in housing.
-//bool first_test = 1;                        // flag indicating first test(longer countdown)
-STATES STATE = WAIT_TO_LAUNCH;                  // Set initial state. 
-uint8_t testnum = 1, countdown = 0, update_Data = 0;
-uint8_t RxBuffer[BUFFER_LEN] = {};            // Rx Buffer
+long sum = 0;                           // Sum of accelerometer values
+float pressure_sum = 0;                 // Sum of pressure values. 
+int16_t average = 0;                    // Moving average variable, accelerometer.
+bool collect_flag = 0;                  // flag indicating when to record acceleration sample.
+bool wait_flag = 0;                     // flag indicating when to increment interrupt counter.
+bool PANIC_flag = 0;                    // flag indicating water is present in housing.
+//bool first_test = 1;                  // flag indicating first test(longer countdown)
+STATES STATE = WAIT_TO_LAUNCH;                      // Set initial state. 
+uint8_t countdown = 0, update_Data = 0;             // Counting variables, one for countdowns, one for updating state to user 
+uint8_t RxBuffer[BUFFER_LEN] = {};                  // Rx Buffer
 int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
-int depth = 0, reset = 0;                                                  // Variable depth                                              // gyro variables
-float xavg = 0, yavg = 0, xsum = 0, ysum = 0;
+int depth = 0, reset = 0;                                                     // Variable depth, reset flag                                              // gyro variables
+float xavg = 0, yavg = 0, xsum = 0, ysum = 0;                                 // gyro avg/sum values
 char file[11] = "test_1.txt";
 char volume[10] = {};
 FS_FILE *fsfile;
@@ -77,13 +77,21 @@ FS_FILE *fsfile;
 *
 * Summary:
 *  main() performs following functions:
-*  1: Initializes the LCD.
-*  2: Initializes timer module and sampling interrupt.
-*  3: Initializes MPU6050 Accelerometer/Gyroscope module.
-*  4: Samples Z-axis acceleration data from module @ 500hz.
-*  5: Computes moving average of Z-axis acceleration values.
-*  6: Transitions from DESCENDING to LANDED state when sudden acceleration occurs
-*     (ie. moving average > 200000).
+*  1: Initializes all necessary components on board (accelerometer/gyro, SD card, LCD, timers, interrupts, ADC, UART for 
+*       Bluetooth).
+*  2: Begins at state: WAIT_FOR_LAUNCH. Waits for a bluetooth command to start, then prompts for a desired depth. Upon 
+*       completion, starts a countdown for which the device should be thrown in the water before it completes. Switches to 
+*       DESCENDING state.
+*  3: Samples Z-axis acceleration data from module @ 500hz. Computes moving average of Z-axis acceleration values. Same goes
+*       for gyro data in the case that the system flips somehow. If the moving average has breached the threshold(value of 
+*       20000), we know it has landed on the bottom. If the time of descent has gone over the max descent time, calculated 
+*       from the depth earlier, then we go to resurfacing. 
+*  4: At the LANDED state, we delay to let the system settle, then turn on solenoid 1. This solenoid activates the suction
+*       in the legs. The suction occurs for 5 seconds, then turns off. Switch to RESURFACING.
+*  5: To resurface, we pulse the solenoids at a rate of 3 seconds on to 1 second off. The number of pulses is also determined
+*       by the depth. Once the number of pulses has finished, we move to TRANSMIT.
+*  6: At TRANSMIT, we simply wait for the data command to begin sending out the collected data or for the reset command to 
+*       do another run.
 *
 * Parameters:
 *  None.
@@ -105,22 +113,23 @@ CY_ISR (Moisture_ISR_Handler){
 /* Sampling ISR */
 CY_ISR (Sample_ISR_Handler){
     Sample_Timer_STATUS;                        // Clears interrupt by accessing timer status register
-    if (STATE == DESCENDING || STATE == LANDED){ 
-        collect_flag = 1;
+    if (STATE == DESCENDING || STATE == LANDED){
         data_time++;
     }
+    collect_flag = 1;
 }
 
 /* Countdown ISR*/
 CY_ISR (Countdown_ISR_Handler){
     Countdown_timer_STATUS;                        // Clears interrupt by accessing timer status register
-    if (STATE == DESCENDING || STATE == LANDED || STATE == RESURFACE){
+    if ((STATE == WAIT_TO_LAUNCH && depth != 0) || STATE == LANDED || STATE == RESURFACE){ 
         wait_flag = 1;
+        countdown++;
     }
     #ifdef BT
         if (STATE == TRANSMIT || (STATE == WAIT_TO_LAUNCH && !dataflag)){
             update_Data++;
-            if (update_Data == 100){
+            if (update_Data == 10){
                 transmit_flag = 1;
                 update_Data = 0;
             }
@@ -136,14 +145,6 @@ CY_ISR(rx_interrupt){
             rxflag = 1;
     }
     #endif
-}
-
-CY_ISR(temp_interrupt){
-    adjust_timer_STATUS;
-    if ((STATE == WAIT_TO_LAUNCH && depth != 0) || STATE == LANDED || STATE == RESURFACE){ 
-        wait_flag = 1;
-        countdown++;
-    }
 }
 
 int main()
@@ -214,20 +215,18 @@ int main()
     STATE = WAIT_TO_LAUNCH;
     
     Countdown_timer_Start();
-    adjust_timer_Start();
     countdown_StartEx(Countdown_ISR_Handler);
-    temp_isr_StartEx(temp_interrupt);
    
     
     for(;;)
     {
         
-        if(ADC_IsEndConversion(ADC_RETURN_STATUS))
+        if(ADC_IsEndConversion(ADC_RETURN_STATUS))              // voltage conversion for pressure
         {
             output = ADC_GetResult32();
 
             voltage = output * (3.32 / 4096);
-            if(wait_flag == 1){
+            if(collect_flag == 1){
                 if (press_id < MA_WINDOW){
                     pressure_sum += voltage;     
                 }
@@ -246,7 +245,7 @@ int main()
                         FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
                     #endif 
                 }
-                wait_flag = 0;
+                if (STATE != DESCENDING) collect_flag = 0;
                 press_id++;
             }
             
@@ -281,19 +280,27 @@ int main()
         /* State Machine */
         switch (STATE){
     
-            case WAIT_TO_LAUNCH:
-                if (reset){
+            /* Waiting for start command and depth*/
+            case WAIT_TO_LAUNCH:  
+                if (reset){                         // If reset command was received, reset:
                     id = 1;                                // Interrupt count.
-                    data_time = 0;                        // data point num
+                    data_time = 0;                         // data point num
                     sum = 0;                               // Sum of accelerometer values. 
-                    average = 0;                        // Moving average variable.
+                    average = 0;                           // Moving average variable.
+                    xavg = 0; yavg = 0;                    // Gyro average variables
                     collect_flag = 0;                      // flag indicating when to record acceleration sample.
                     wait_flag = 0;                         // flag indicating when to increment interrupt counter.
                     PANIC_flag = 0;                        // flag indicating water is present in housing.
-                    //bool first_test = 1;                        // flag indicating first test(longer countdown)
-                    testnum = 1;
-                    depth = 0; countdown = 0; msg_count = 0; dataflag = 0;
-                    reset = 0;
+                    //bool first_test = 1;                 // flag indicating first test(longer countdown)
+                    depth = 0; countdown = 0;              // Current desired depth, variable for counting seconds 
+                    msg_count = 0; dataflag = 0;           // BT message len variable, data flag 
+                    reset = 0;                             // indicates whether to reset variables or not
+                    pulse = 0;
+                    #ifdef LCD
+                        setCursor(0,0);
+                        clear();
+                        LCD_print("STATE: WAIT");  
+                    #endif 
                 }
             
                 if (transmit_flag){
@@ -332,8 +339,6 @@ int main()
                                 }
                             }
                         #endif
-                        id=0;
-                        data_time = 0;
                         countdown = 0; 
                     }
                     wait_flag = 0; 
@@ -361,7 +366,7 @@ int main()
                         average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
                         xavg = ComputeMA(xavg, MA_WINDOW, gx);
                         yavg = ComputeMA(yavg, MA_WINDOW, gy);
-                        if (abs((int)xavg) > DEGREES_70 || abs((int)yavg) > DEGREES_70){ // If gyro sees sideways orientation
+                        if (abs((int)xavg) > DEGREES_50 || abs((int)yavg) > DEGREES_50){ // If gyro sees intense rotation
                             STATE = RESURFACE;                                        // start lift bag
                         }
                     }
@@ -373,16 +378,11 @@ int main()
                             clear();
                             LCD_print("STATE: LANDED");  
                         #endif
-                        char sdbuf[60] = {};
                         #ifdef SD
-                            sprintf(sdbuf, "STATE: LANDED ***********\n");
-                            FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                            FS_Write(fsfile, landedbuf, LANDED_LEN);
                         #endif
-                        
                         #ifdef SD
-                                memset(sdbuf, 0, 40);
-                                sprintf(sdbuf, "STATE: VACUUMING ***********\n");
-                                FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                            FS_Write(fsfile, vacuumbuf, VACUUM_LEN);
                         #endif
                         
                         id=0;                                                   //reset sample counter
@@ -393,32 +393,34 @@ int main()
                     }
                     id++;     
                     
-                    /* if desired amount of samples have been collected, switch states */
+                    /* if max time allowed for descent has been reached, resurface */
                     if(data_time >= descent_time ){                         // variable descent time
-                        LED2_Write(0);                                          //turn LED off
-                                                            
-                        STATE = WAIT_TO_LAUNCH;                                //Switch to Waiting state    
+                        STATE = RESURFACE;                                      
                         #ifdef LCD
                             setCursor(0,0);
                             clear();
-                            LCD_print("STATE: WAIT");  
+                            LCD_print("STATE: RESURFACE");  
                         #endif
-                        id=0;                                                  //reset sample counter
+                        id=0;                                               //reset sample counter
                         data_time = 0;
-                        sum = 0;                                               //reset sum 
+                        sum = 0;                                            //reset sum 
                         average = 0;
-                       
                     }
+                    
                     collect_flag = 0;
                 }
                 break;
                 
                 case LANDED:
-                    if (countdown == 7) {countdown = 0; pulse = 1; Solenoid_1_Write(1);} //turn on solenoid 1}
+                    if (countdown == 7) {                   // Delay for 7 seconds at bottom
+                        countdown = 0; 
+                        pulse = 1;                          // next stage of the state
+                        Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
+                    } 
                     
-                    MPU6050_getRotation(&gx, &gy, &gz); // gather gyro data
-                    if(collect_flag == 1){
-                        if (id < MA_WINDOW){
+                    MPU6050_getRotation(&gx, &gy, &gz);     // gather gyro data
+                    if(collect_flag == 1){                  // Compute gryo data again in case of tipping
+                        if (id < MA_WINDOW){    
                             xsum += gx;
                             ysum += gy;
                         }
@@ -432,36 +434,32 @@ int main()
                             xavg = ComputeMA(xavg, MA_WINDOW, gx);
                             yavg = ComputeMA(yavg, MA_WINDOW, gy);
                         }
-                        if (abs((int)xavg) > DEGREES_45 || abs((int)yavg) > DEGREES_45){ // If tilting, sent back up
+                        if (abs((int)xavg) > DEGREES_30 || abs((int)yavg) > DEGREES_30){ // If tilting, send back up
                             STATE = RESURFACE;
                             clear();
                             LCD_print("Tilted");
                             clear();
                             LCD_print("STATE: RESURFACING");
-                            CyDelay(500u);
                         }
                         collect_flag = 0;
                         id++;
                     }
                     
-                    if (countdown == 5 && pulse){
+                    if (countdown == 5 && pulse){           // Second stage, turn off solenoid
                         pulse++;
-                        Solenoid_1_Write(0); //turn off soleniod 1
+                        Solenoid_1_Write(0);                // turn off soleniod 1
                         countdown = 0;
-                        
                     }
-                    if (countdown == 3 && pulse == 2){
+                    if (countdown == 3 && pulse == 2){      // Delay for 3 seconds then resurface
                         STATE = RESURFACE;
-                        char sdbuf[60] = {};
+                        
                         #ifdef LCD
                             setCursor(0,0);
                             clear();
                             LCD_print("STATE: RESURFACING");  
                         #endif
                         #ifdef SD
-                            memset(sdbuf, 0, 40);
-                            sprintf(sdbuf, "STATE: RESURFACING ***********\n");
-                            FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                            FS_Write(fsfile, resurfbuf, RESURFACE_LEN);
                         #endif
                         pulse = 0;
                         countdown = 0;
@@ -469,20 +467,19 @@ int main()
                 break;
                 
             case RESURFACE:
-                if (PANIC_flag) // Display that moisture sensor triggered
+                if (PANIC_flag)                 // Display that moisture sensor triggered
                     LCD_print("WATER DETECTED");
-                Solenoid_2_Write(1);
+                    
+                Solenoid_2_Write(1);            // turn on lift bag solenoid                
                 
                 //check pressure sensor to confirm we are at the surface
                 if (countdown == 3){
-                    Solenoid_2_Write(0);
+                    Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second, 
                     CyDelay(1000u);
                     pulse++;
                     countdown = 0;
                 }
                 if (pulse == 2){
-                    char sdbuf[60] = {};
-                                                   //wait 10 seconds to lift, for testing in pool
                     STATE = TRANSMIT;
                     #ifdef SD                                   //close old file, open new one
                         FS_FClose(fsfile);
@@ -496,9 +493,7 @@ int main()
                         LCD_print("TRANSMIT");  
                     #endif
                     #ifdef SD
-                        memset(sdbuf, 0, 40);
-                        sprintf(sdbuf, "STATE: TRANSMIT ***********\n");
-                        FS_Write(fsfile, sdbuf, strlen(sdbuf));
+                        FS_Write(fsfile, transbuf, TRANSMIT_LEN);
                     #endif
                     countdown = 0;
                 }

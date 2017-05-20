@@ -1,5 +1,5 @@
 -- Project:   OVac
--- Generated: 05/12/2017 16:57:27
+-- Generated: 05/17/2017 17:48:33
 -- PSoC Creator  4.0 Update 1
 
 ENTITY OVac IS
@@ -291,25 +291,25 @@ ARCHITECTURE __DEFAULT__ OF OVac IS
     SIGNAL \adjust_timer:TimerUDB:sT32:timerdp:u3.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF \emFile:SPI0:BSPIM:mosi_pre_reg_split\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF ADC_in(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF ADC_in(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF ADC_in(0) : LABEL IS "P0[4]";
     ATTRIBUTE lib_model OF SDA(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF SDA(0) : LABEL IS "P12[5]";
     ATTRIBUTE lib_model OF SCL(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF SCL(0) : LABEL IS "P12[4]";
     ATTRIBUTE lib_model OF Solenoid_1(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF Solenoid_1(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Solenoid_1(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF \emFile:mosi0(0)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \emFile:mosi0(0)\ : LABEL IS "P3[6]";
+    ATTRIBUTE Location OF \emFile:mosi0(0)\ : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF \emFile:miso0(0)\ : LABEL IS "iocell6";
-    ATTRIBUTE Location OF \emFile:miso0(0)\ : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF \emFile:miso0(0)\ : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF \emFile:sclk0(0)\ : LABEL IS "iocell7";
-    ATTRIBUTE Location OF \emFile:sclk0(0)\ : LABEL IS "P3[5]";
+    ATTRIBUTE Location OF \emFile:sclk0(0)\ : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF \emFile:SPI0_CS(0)\ : LABEL IS "iocell8";
-    ATTRIBUTE Location OF \emFile:SPI0_CS(0)\ : LABEL IS "P3[7]";
+    ATTRIBUTE Location OF \emFile:SPI0_CS(0)\ : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF LED2_1(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF LED2_1(0) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF Solenoid_2(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF Solenoid_2(0) : LABEL IS "P1[5]";
+    ATTRIBUTE Location OF Solenoid_2(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF M_Pin(0) : LABEL IS "iocell11";
     ATTRIBUTE Location OF M_Pin(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF Reset(0) : LABEL IS "iocell12";
@@ -350,7 +350,7 @@ ARCHITECTURE __DEFAULT__ OF OVac IS
     ATTRIBUTE lib_model OF \adjust_timer:TimerUDB:sT32:timerdp:u1\ : LABEL IS "datapathcell7";
     ATTRIBUTE lib_model OF \adjust_timer:TimerUDB:sT32:timerdp:u2\ : LABEL IS "datapathcell8";
     ATTRIBUTE lib_model OF \adjust_timer:TimerUDB:sT32:timerdp:u3\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \Comp:ctComp\ : LABEL IS "F(Comparator,3)";
+    ATTRIBUTE Location OF \Comp:ctComp\ : LABEL IS "F(Comparator,1)";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell10";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell11";
     ATTRIBUTE lib_model OF \UART:BUART:sTX:TxSts\ : LABEL IS "statusicell5";

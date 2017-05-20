@@ -1,5 +1,5 @@
 -- Project:   Pressure_Harbor_test
--- Generated: 05/10/2017 17:44:01
+-- Generated: 05/17/2017 20:21:04
 -- PSoC Creator  4.0 Update 1
 
 ENTITY Pressure_Harbor_test IS
@@ -174,13 +174,13 @@ ARCHITECTURE __DEFAULT__ OF Pressure_Harbor_test IS
     ATTRIBUTE lib_model OF ADC_in(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF ADC_in(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF \emFile:mosi0(0)\ : LABEL IS "iocell2";
-    ATTRIBUTE Location OF \emFile:mosi0(0)\ : LABEL IS "P3[6]";
+    ATTRIBUTE Location OF \emFile:mosi0(0)\ : LABEL IS "P1[5]";
     ATTRIBUTE lib_model OF \emFile:miso0(0)\ : LABEL IS "iocell3";
-    ATTRIBUTE Location OF \emFile:miso0(0)\ : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF \emFile:miso0(0)\ : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF \emFile:sclk0(0)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \emFile:sclk0(0)\ : LABEL IS "P3[5]";
+    ATTRIBUTE Location OF \emFile:sclk0(0)\ : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF \emFile:SPI0_CS(0)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \emFile:SPI0_CS(0)\ : LABEL IS "P3[7]";
+    ATTRIBUTE Location OF \emFile:SPI0_CS(0)\ : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF Rx(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF Rx(0) : LABEL IS "P12[6]";
     ATTRIBUTE lib_model OF Tx(0) : LABEL IS "iocell7";
@@ -639,12 +639,12 @@ BEGIN
             dclk_0 => \emFile:Net_19_local\,
             dclk_glb_1 => \ADC:Net_93\,
             dclk_1 => \ADC:Net_93_local\,
-            dclk_glb_2 => \UART:Net_9\,
-            dclk_2 => \UART:Net_9_local\,
             aclk_glb_0 => \ADC:Net_488\,
             aclk_0 => \ADC:Net_488_local\,
             clk_a_dig_glb_0 => \ADC:Net_488_adig\,
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
+            dclk_glb_2 => \UART:Net_9\,
+            dclk_2 => \UART:Net_9_local\,
             dclk_glb_3 => Net_14,
             dclk_3 => Net_14_local,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
@@ -1628,7 +1628,7 @@ BEGIN
     \ADC:DSM\:dsmodcell
         GENERIC MAP(
             cy_registers => "",
-            resolution => 10)
+            resolution => 12)
         PORT MAP(
             aclock => \ClockBlock.aclk_glb_ff_0__sig\,
             modbitin_udb => open,

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
   24:Generated_Source\PSoC5/ADC_AMux.c **** * Function Name: ADC_AMux_Start
   25:Generated_Source\PSoC5/ADC_AMux.c **** ********************************************************************************
   26:Generated_Source\PSoC5/ADC_AMux.c **** * Summary:
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 2
 
 
   27:Generated_Source\PSoC5/ADC_AMux.c **** *  Disconnect all channels.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
   49:Generated_Source\PSoC5/ADC_AMux.c **** 
   50:Generated_Source\PSoC5/ADC_AMux.c ****     ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
   62              		.loc 1 50 0 is_stmt 1
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 3
 
 
   63 0020 024B     		ldr	r3, .L4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
   97              		.cfi_def_cfa_offset 16
   98 0004 00AF     		add	r7, sp, #0
   99              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 4
 
 
  100 0006 0346     		mov	r3, r0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
   91:Generated_Source\PSoC5/ADC_AMux.c **** *  void
   92:Generated_Source\PSoC5/ADC_AMux.c **** *
   93:Generated_Source\PSoC5/ADC_AMux.c **** *******************************************************************************/
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 5
 
 
   94:Generated_Source\PSoC5/ADC_AMux.c **** void ADC_AMux_FastSelect(uint8 channel) 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  169              		.cfi_def_cfa_offset 8
  170 002c BD46     		mov	sp, r7
  171              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 6
 
 
  172              		@ sp needed
@@ -322,46 +322,46 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  190 000b 01       		.uleb128 0x1
  191 000c 08000000 		.4byte	.LASF18
  192 0010 01       		.byte	0x1
- 193 0011 B0010000 		.4byte	.LASF19
- 194 0015 BA000000 		.4byte	.LASF20
+ 193 0011 B1010000 		.4byte	.LASF19
+ 194 0015 96000000 		.4byte	.LASF20
  195 0019 00000000 		.4byte	.Ldebug_ranges0+0
  196 001d 00000000 		.4byte	0
  197 0021 00000000 		.4byte	.Ldebug_line0
  198 0025 02       		.uleb128 0x2
  199 0026 01       		.byte	0x1
  200 0027 06       		.byte	0x6
- 201 0028 A4010000 		.4byte	.LASF0
+ 201 0028 A5010000 		.4byte	.LASF0
  202 002c 02       		.uleb128 0x2
  203 002d 01       		.byte	0x1
  204 002e 08       		.byte	0x8
- 205 002f F1000000 		.4byte	.LASF1
+ 205 002f E3000000 		.4byte	.LASF1
  206 0033 02       		.uleb128 0x2
  207 0034 02       		.byte	0x2
  208 0035 05       		.byte	0x5
- 209 0036 7B010000 		.4byte	.LASF2
+ 209 0036 7C010000 		.4byte	.LASF2
  210 003a 02       		.uleb128 0x2
  211 003b 02       		.byte	0x2
  212 003c 07       		.byte	0x7
- 213 003d 11010000 		.4byte	.LASF3
+ 213 003d 03010000 		.4byte	.LASF3
  214 0041 02       		.uleb128 0x2
  215 0042 04       		.byte	0x4
  216 0043 05       		.byte	0x5
- 217 0044 8B010000 		.4byte	.LASF4
+ 217 0044 8C010000 		.4byte	.LASF4
  218 0048 02       		.uleb128 0x2
  219 0049 04       		.byte	0x4
  220 004a 07       		.byte	0x7
- 221 004b FF000000 		.4byte	.LASF5
+ 221 004b F1000000 		.4byte	.LASF5
  222 004f 02       		.uleb128 0x2
  223 0050 08       		.byte	0x8
  224 0051 05       		.byte	0x5
- 225 0052 68010000 		.4byte	.LASF6
+ 225 0052 69010000 		.4byte	.LASF6
  226 0056 02       		.uleb128 0x2
  227 0057 08       		.byte	0x8
  228 0058 07       		.byte	0x7
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 7
 
 
- 229 0059 4C010000 		.4byte	.LASF7
+ 229 0059 39010000 		.4byte	.LASF7
  230 005d 03       		.uleb128 0x3
  231 005e 04       		.byte	0x4
  232 005f 05       		.byte	0x5
@@ -369,26 +369,26 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  234 0064 02       		.uleb128 0x2
  235 0065 04       		.byte	0x4
  236 0066 07       		.byte	0x7
- 237 0067 3F010000 		.4byte	.LASF8
+ 237 0067 2C010000 		.4byte	.LASF8
  238 006b 04       		.uleb128 0x4
- 239 006c 85010000 		.4byte	.LASF21
+ 239 006c 86010000 		.4byte	.LASF21
  240 0070 02       		.byte	0x2
  241 0071 9201     		.2byte	0x192
  242 0073 2C000000 		.4byte	0x2c
  243 0077 02       		.uleb128 0x2
  244 0078 04       		.byte	0x4
  245 0079 04       		.byte	0x4
- 246 007a EB000000 		.4byte	.LASF9
+ 246 007a DD000000 		.4byte	.LASF9
  247 007e 02       		.uleb128 0x2
  248 007f 08       		.byte	0x8
  249 0080 04       		.byte	0x4
- 250 0081 24010000 		.4byte	.LASF10
+ 250 0081 16010000 		.4byte	.LASF10
  251 0085 02       		.uleb128 0x2
  252 0086 01       		.byte	0x1
  253 0087 08       		.byte	0x8
- 254 0088 76010000 		.4byte	.LASF11
+ 254 0088 77010000 		.4byte	.LASF11
  255 008c 05       		.uleb128 0x5
- 256 008d 96000000 		.4byte	.LASF12
+ 256 008d 1D010000 		.4byte	.LASF12
  257 0091 01       		.byte	0x1
  258 0092 24       		.byte	0x24
  259 0093 00000000 		.4byte	.LFB0
@@ -397,7 +397,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  262 009c 9C       		.byte	0x9c
  263 009d B0000000 		.4byte	0xb0
  264 00a1 06       		.uleb128 0x6
- 265 00a2 63010000 		.4byte	.LASF16
+ 265 00a2 50010000 		.4byte	.LASF16
  266 00a6 01       		.byte	0x1
  267 00a7 26       		.byte	0x26
  268 00a8 6B000000 		.4byte	0x6b
@@ -406,7 +406,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  271 00ae 77       		.sleb128 -9
  272 00af 00       		.byte	0
  273 00b0 05       		.uleb128 0x5
- 274 00b1 94010000 		.4byte	.LASF13
+ 274 00b1 95010000 		.4byte	.LASF13
  275 00b5 01       		.byte	0x1
  276 00b6 45       		.byte	0x45
  277 00b7 00000000 		.4byte	.LFB1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  283 00c6 00000000 		.4byte	.LASF15
  284 00ca 01       		.byte	0x1
  285 00cb 45       		.byte	0x45
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 8
 
 
  286 00cc 6B000000 		.4byte	0x6b
@@ -427,7 +427,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  289 00d2 77       		.sleb128 -9
  290 00d3 00       		.byte	0
  291 00d4 05       		.uleb128 0x5
- 292 00d5 2B010000 		.4byte	.LASF14
+ 292 00d5 55010000 		.4byte	.LASF14
  293 00d9 01       		.byte	0x1
  294 00da 5E       		.byte	0x5e
  295 00db 00000000 		.4byte	.LFB2
@@ -445,7 +445,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  307 00f6 77       		.sleb128 -9
  308 00f7 00       		.byte	0
  309 00f8 06       		.uleb128 0x6
- 310 00f9 A5000000 		.4byte	.LASF17
+ 310 00f9 C8000000 		.4byte	.LASF17
  311 00fd 01       		.byte	0x1
  312 00fe 14       		.byte	0x14
  313 00ff 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  340 0014 24       		.uleb128 0x24
  341 0015 00       		.byte	0
  342 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 9
 
 
  343 0017 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  397 004e 00       		.byte	0
  398 004f 00       		.byte	0
  399 0050 06       		.uleb128 0x6
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 10
 
 
  400 0051 34       		.uleb128 0x34
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  454 0018 00000000 		.4byte	0
  455 001c 00000000 		.4byte	0
  456              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 11
 
 
  457              	.Ldebug_line0:
@@ -626,103 +626,103 @@ ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 1
  464      74696F6E 
  464      2D736563 
  464      74696F6E 
- 465              	.LASF12:
- 466 0096 4144435F 		.ascii	"ADC_AMux_Start\000"
- 466      414D7578 
- 466      5F537461 
- 466      727400
- 467              	.LASF17:
- 468 00a5 4144435F 		.ascii	"ADC_AMux_lastChannel\000"
- 468      414D7578 
- 468      5F6C6173 
- 468      74436861 
- 468      6E6E656C 
- 469              	.LASF20:
- 470 00ba 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\OVac.cyd"
- 470      73657273 
- 470      5C677374 
- 470      6F6C6C5C 
- 470      4465736B 
- 471 00e8 736E00   		.ascii	"sn\000"
- 472              	.LASF9:
- 473 00eb 666C6F61 		.ascii	"float\000"
- 473      7400
- 474              	.LASF1:
- 475 00f1 756E7369 		.ascii	"unsigned char\000"
- 475      676E6564 
- 475      20636861 
- 475      7200
- 476              	.LASF5:
- 477 00ff 6C6F6E67 		.ascii	"long unsigned int\000"
- 477      20756E73 
- 477      69676E65 
- 477      6420696E 
- 477      7400
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 12
+ 465              	.LASF20:
+ 466 0096 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
+ 466      73657273 
+ 466      5C676469 
+ 466      6E675C44 
+ 466      6F63756D 
+ 467 00c4 64736E00 		.ascii	"dsn\000"
+ 468              	.LASF17:
+ 469 00c8 4144435F 		.ascii	"ADC_AMux_lastChannel\000"
+ 469      414D7578 
+ 469      5F6C6173 
+ 469      74436861 
+ 469      6E6E656C 
+ 470              	.LASF9:
+ 471 00dd 666C6F61 		.ascii	"float\000"
+ 471      7400
+ 472              	.LASF1:
+ 473 00e3 756E7369 		.ascii	"unsigned char\000"
+ 473      676E6564 
+ 473      20636861 
+ 473      7200
+ 474              	.LASF5:
+ 475 00f1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 475      20756E73 
+ 475      69676E65 
+ 475      6420696E 
+ 475      7400
+ 476              	.LASF3:
+ 477 0103 73686F72 		.ascii	"short unsigned int\000"
+ 477      7420756E 
+ 477      7369676E 
+ 477      65642069 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 12
 
 
- 478              	.LASF3:
- 479 0111 73686F72 		.ascii	"short unsigned int\000"
- 479      7420756E 
- 479      7369676E 
- 479      65642069 
- 479      6E7400
- 480              	.LASF10:
- 481 0124 646F7562 		.ascii	"double\000"
- 481      6C6500
- 482              	.LASF14:
- 483 012b 4144435F 		.ascii	"ADC_AMux_FastSelect\000"
- 483      414D7578 
- 483      5F466173 
- 483      7453656C 
- 483      65637400 
- 484              	.LASF8:
- 485 013f 756E7369 		.ascii	"unsigned int\000"
- 485      676E6564 
- 485      20696E74 
- 485      00
- 486              	.LASF7:
- 487 014c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 487      206C6F6E 
- 487      6720756E 
- 487      7369676E 
- 487      65642069 
- 488              	.LASF16:
- 489 0163 6368616E 		.ascii	"chan\000"
- 489      00
+ 477      6E7400
+ 478              	.LASF10:
+ 479 0116 646F7562 		.ascii	"double\000"
+ 479      6C6500
+ 480              	.LASF12:
+ 481 011d 4144435F 		.ascii	"ADC_AMux_Start\000"
+ 481      414D7578 
+ 481      5F537461 
+ 481      727400
+ 482              	.LASF8:
+ 483 012c 756E7369 		.ascii	"unsigned int\000"
+ 483      676E6564 
+ 483      20696E74 
+ 483      00
+ 484              	.LASF7:
+ 485 0139 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 485      206C6F6E 
+ 485      6720756E 
+ 485      7369676E 
+ 485      65642069 
+ 486              	.LASF16:
+ 487 0150 6368616E 		.ascii	"chan\000"
+ 487      00
+ 488              	.LASF14:
+ 489 0155 4144435F 		.ascii	"ADC_AMux_FastSelect\000"
+ 489      414D7578 
+ 489      5F466173 
+ 489      7453656C 
+ 489      65637400 
  490              	.LASF6:
- 491 0168 6C6F6E67 		.ascii	"long long int\000"
+ 491 0169 6C6F6E67 		.ascii	"long long int\000"
  491      206C6F6E 
  491      6720696E 
  491      7400
  492              	.LASF11:
- 493 0176 63686172 		.ascii	"char\000"
+ 493 0177 63686172 		.ascii	"char\000"
  493      00
  494              	.LASF2:
- 495 017b 73686F72 		.ascii	"short int\000"
+ 495 017c 73686F72 		.ascii	"short int\000"
  495      7420696E 
  495      7400
  496              	.LASF21:
- 497 0185 75696E74 		.ascii	"uint8\000"
+ 497 0186 75696E74 		.ascii	"uint8\000"
  497      3800
  498              	.LASF4:
- 499 018b 6C6F6E67 		.ascii	"long int\000"
+ 499 018c 6C6F6E67 		.ascii	"long int\000"
  499      20696E74 
  499      00
  500              	.LASF13:
- 501 0194 4144435F 		.ascii	"ADC_AMux_Select\000"
+ 501 0195 4144435F 		.ascii	"ADC_AMux_Select\000"
  501      414D7578 
  501      5F53656C 
  501      65637400 
  502              	.LASF0:
- 503 01a4 7369676E 		.ascii	"signed char\000"
+ 503 01a5 7369676E 		.ascii	"signed char\000"
  503      65642063 
  503      68617200 
-ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccH01mzf.s 			page 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccIvMpxY.s 			page 13
 
 
  504              	.LASF19:
- 505 01b0 47656E65 		.ascii	"Generated_Source\\PSoC5\\ADC_AMux.c\000"
+ 505 01b1 47656E65 		.ascii	"Generated_Source\\PSoC5\\ADC_AMux.c\000"
  505      72617465 
  505      645F536F 
  505      75726365 

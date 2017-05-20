@@ -33,9 +33,10 @@ float ComputeMA(float avg, int16_t n, float sample){
 /* Process an incoming message, only for WAIT, TRANSMIT states, or for a reset of the system */
 int BT_Process(char *RxBuffer, STATES *STATE, int bytes, int *flag, int *reset){
     int i = 0;
-    static int ones = 0, tens = 0, hunds = 0;
+    int ones = 0, tens = 0, hunds = 0;
     char commands[COMMANDS_LEN] = COMMANDS;
     char depth[SEND_DEPTH_LEN] = SEND_DEPTH;
+    
     if (!strncmp(RxBuffer, "reset", 5)){                      // stop/reset program, go back to WAIT
         *STATE = WAIT_TO_LAUNCH;
         *reset = 1;

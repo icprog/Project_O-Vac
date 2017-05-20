@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   29:Generated_Source\PSoC5/emFile_sclk0.c **** * Summary:
   30:Generated_Source\PSoC5/emFile_sclk0.c **** *  Assign a new value to the digital port's data output register.  
   31:Generated_Source\PSoC5/emFile_sclk0.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 2
 
 
   32:Generated_Source\PSoC5/emFile_sclk0.c **** * Parameters:  
@@ -80,20 +80,20 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   33              		.loc 1 41 0
   34 0000 044A     		ldr	r2, .L2
   35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  36 0004 03F0DF03 		and	r3, r3, #223
+  36 0004 03F0BF03 		and	r3, r3, #191
   37              	.LVL1:
   42:Generated_Source\PSoC5/emFile_sclk0.c ****     emFile_sclk0_DR = staticBits | ((uint8)(value << emFile_sclk0_SHIFT) & emFile_sclk0_MASK);
   38              		.loc 1 42 0
-  39 0008 4001     		lsls	r0, r0, #5
+  39 0008 8001     		lsls	r0, r0, #6
   40              	.LVL2:
-  41 000a 00F02000 		and	r0, r0, #32
+  41 000a 00F04000 		and	r0, r0, #64
   42 000e 1843     		orrs	r0, r0, r3
   43 0010 1070     		strb	r0, [r2]
   44 0012 7047     		bx	lr
   45              	.L3:
   46              		.align	2
   47              	.L2:
-  48 0014 30510040 		.word	1073762608
+  48 0014 10510040 		.word	1073762576
   49              		.cfi_endproc
   50              	.LFE0:
   51              		.size	emFile_sclk0_Write, .-emFile_sclk0_Write
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   53:Generated_Source\PSoC5/emFile_sclk0.c **** * Parameters:  
   54:Generated_Source\PSoC5/emFile_sclk0.c **** *  mode:  Change the pins to one of the following drive modes.
   55:Generated_Source\PSoC5/emFile_sclk0.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 3
 
 
   56:Generated_Source\PSoC5/emFile_sclk0.c **** *  emFile_sclk0_DM_STRONG     Strong Drive 
@@ -155,7 +155,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   75              	.L6:
   76 0012 00BF     		.align	2
   77              	.L5:
-  78 0014 1D500040 		.word	1073762333
+  78 0014 0E500040 		.word	1073762318
   79              		.cfi_endproc
   80              	.LFE1:
   81              		.size	emFile_sclk0_SetDriveMode, .-emFile_sclk0_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   80:Generated_Source\PSoC5/emFile_sclk0.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:Generated_Source\PSoC5/emFile_sclk0.c **** *  form.
   82:Generated_Source\PSoC5/emFile_sclk0.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 4
 
 
   83:Generated_Source\PSoC5/emFile_sclk0.c **** * Parameters:  
@@ -204,12 +204,12 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
   97 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
   96:Generated_Source\PSoC5/emFile_sclk0.c **** }
   98              		.loc 1 96 0
-  99 0004 C0F34010 		ubfx	r0, r0, #5, #1
+  99 0004 C0F38010 		ubfx	r0, r0, #6, #1
  100 0008 7047     		bx	lr
  101              	.L9:
  102 000a 00BF     		.align	2
  103              	.L8:
- 104 000c 31510040 		.word	1073762609
+ 104 000c 11510040 		.word	1073762577
  105              		.cfi_endproc
  106              	.LFE2:
  107              		.size	emFile_sclk0_Read, .-emFile_sclk0_Read
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  111:Generated_Source\PSoC5/emFile_sclk0.c **** *  
  112:Generated_Source\PSoC5/emFile_sclk0.c **** *******************************************************************************/
  113:Generated_Source\PSoC5/emFile_sclk0.c **** uint8 emFile_sclk0_ReadDataReg(void) 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 5
 
 
  114:Generated_Source\PSoC5/emFile_sclk0.c **** {
@@ -253,12 +253,12 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  123 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  116:Generated_Source\PSoC5/emFile_sclk0.c **** }
  124              		.loc 1 116 0
- 125 0004 C0F34010 		ubfx	r0, r0, #5, #1
+ 125 0004 C0F38010 		ubfx	r0, r0, #6, #1
  126 0008 7047     		bx	lr
  127              	.L12:
  128 000a 00BF     		.align	2
  129              	.L11:
- 130 000c 30510040 		.word	1073762608
+ 130 000c 10510040 		.word	1073762576
  131              		.cfi_endproc
  132              	.LFE3:
  133              		.size	emFile_sclk0_ReadDataReg, .-emFile_sclk0_ReadDataReg
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  167 0041 02       		.uleb128 0x2
  168 0042 04       		.byte	0x4
  169 0043 05       		.byte	0x5
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 6
 
 
  170 0044 E8010000 		.4byte	.LASF4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  224 00b2 07       		.uleb128 0x7
  225 00b3 19000000 		.4byte	.LASF16
  226 00b7 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 7
 
 
  227 00b8 27       		.byte	0x27
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  338 003f 01       		.byte	0x1
  339 0040 3F       		.uleb128 0x3f
  340 0041 19       		.uleb128 0x19
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 9
 
 
  341 0042 03       		.uleb128 0x3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  395 0079 19       		.uleb128 0x19
  396 007a 03       		.uleb128 0x3
  397 007b 0E       		.uleb128 0xe
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 10
 
 
  398 007c 3A       		.uleb128 0x3a
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  452 000b 00       		.byte	0
  453 000c 0000     		.2byte	0
  454 000e 0000     		.2byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 11
 
 
  455 0010 00000000 		.4byte	.LFB0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  491      5C676469 
  491      6E675C44 
  491      6F63756D 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 12
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 12
 
 
  492 0070 64736E5C 		.ascii	"dsn\\Pressure_Harbor_test.cydsn\000"
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 1
  510      65642069 
  511              	.LASF15:
  512 0180 656D4669 		.ascii	"emFile_sclk0_SetDriveMode\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\cc45Alks.s 			page 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccZKc4qZ.s 			page 13
 
 
  512      6C655F73 

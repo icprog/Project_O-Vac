@@ -96,7 +96,7 @@ CY_ISR_PROTO(ADC_ISR4);
 **************************************/
 
 /* Default configuration values from user parameters */
-#define ADC_CFG1_RESOLUTION         (10u )
+#define ADC_CFG1_RESOLUTION         (12u )
 #define ADC_CFG1_INPUT_RANGE        (2u)
 #define ADC_CFG1_SRATE              (10000u)
 #define ADC_CFG1_REFERENCE          (5u)
@@ -1342,22 +1342,22 @@ extern volatile int32 ADC_CountsPerVolt;
 * ADC_CFG1 Input Buffer Gain: 1
 * ADC_CFG1 Reference: 5
 * ADC_CFG1 Input Range: 2
-* ADC_CFG1 Resolution: 10 bits
-* ADC_CFG1 Clock: 230000 Hz
+* ADC_CFG1 Resolution: 12 bits
+* ADC_CFG1 Clock: 320000 Hz
 */
 
 #define ADC_CFG1_DEC_CR             (0x38u)
 #define ADC_CFG1_DEC_SR             (0x14u)
-#define ADC_CFG1_DEC_SHIFT1         (0x05u)
-#define ADC_CFG1_DEC_SHIFT2         (0x07u)
+#define ADC_CFG1_DEC_SHIFT1         (0x06u)
+#define ADC_CFG1_DEC_SHIFT2         (0x08u)
 #define ADC_CFG1_DEC_DIV            (0)
 #define ADC_CFG1_DEC_DR2            (0x00u)
 #define ADC_CFG1_DEC_DR2H           (0x00u)
-#define ADC_CFG1_DEC_DR1            (0x16u)
+#define ADC_CFG1_DEC_DR1            (0x1Fu)
 #define ADC_CFG1_DEC_OCOR           (0x00u)
 #define ADC_CFG1_DEC_OCORM          (0x00u)
 #define ADC_CFG1_DEC_OCORH          (0x00u)
-#define ADC_CFG1_DEC_GVAL           (0x0Bu)
+#define ADC_CFG1_DEC_GVAL           (0x0Du)
 #define ADC_CFG1_DEC_GCOR           (0x00u)
 #define ADC_CFG1_DEC_GCORH          (0x00u)
 #define ADC_CFG1_DEC_COHER          (0x01u)
@@ -1394,17 +1394,17 @@ extern volatile int32 ADC_CountsPerVolt;
 #define ADC_CFG1_DSM_OUT0           (0x00u)
 #define ADC_CFG1_DSM_OUT1           (0x00u)
 #define ADC_CFG1_DSM_SW3            (0x40u)
-#define ADC_CFG1_CLOCKS_PER_SAMPLE  (0x0017u)
-#define ADC_CFG1_CLOCK_FREQ         (230000u)
-#define ADC_CFG1_CP_CLOCK_FREQ      (920000u)
+#define ADC_CFG1_CLOCKS_PER_SAMPLE  (0x0020u)
+#define ADC_CFG1_CLOCK_FREQ         (320000u)
+#define ADC_CFG1_CP_CLOCK_FREQ      (1280000u)
 #define ADC_CFG1_REFERENCE_VOLTAGE  (1.2500)
-#define ADC_CFG1_COUNTS_PER_VOLT    (205)
+#define ADC_CFG1_COUNTS_PER_VOLT    (819)
 #define ADC_CFG1_IDEAL_DEC_GAIN     (0x8D6Bu)
-#define ADC_CFG1_IDEAL_ODDDEC_GAIN  (0x7806u)
+#define ADC_CFG1_IDEAL_ODDDEC_GAIN  (0x8000u)
 
 #define ADC_CFG1_ALIGNMENT          (0u)
-#define ADC_CFG1_ADC_CLK_DIVIDER    (103u)
-#define ADC_CFG1_CP_CLK_DIVIDER     (24u)
+#define ADC_CFG1_ADC_CLK_DIVIDER    (74u)
+#define ADC_CFG1_CP_CLK_DIVIDER     (18u)
 
 /* Input and DAC Cap values in pF */
 #define ADC_CFG1_IPCAP1VALUE        (0x01F0u)
