@@ -1,0 +1,714 @@
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"emFile_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.emFile_SaveConfig,"ax",%progbits
+  19              		.align	2
+  20              		.global	emFile_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	emFile_SaveConfig, %function
+  24              	emFile_SaveConfig:
+  25              	.LFB63:
+  26              		.file 1 "Generated_Source\\PSoC5\\emFile_PM.c"
+   1:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/emFile_PM.c **** * File Name: emFile_PM.c
+   3:Generated_Source\PSoC5/emFile_PM.c **** * Version 1.20
+   4:Generated_Source\PSoC5/emFile_PM.c **** *
+   5:Generated_Source\PSoC5/emFile_PM.c **** * Description:
+   6:Generated_Source\PSoC5/emFile_PM.c **** *  This file provides the API source code for Power Management of the emFile
+   7:Generated_Source\PSoC5/emFile_PM.c **** *  component.
+   8:Generated_Source\PSoC5/emFile_PM.c **** *
+   9:Generated_Source\PSoC5/emFile_PM.c **** * Note:
+  10:Generated_Source\PSoC5/emFile_PM.c **** *
+  11:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************
+  12:Generated_Source\PSoC5/emFile_PM.c **** * Copyright 2011-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/emFile_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC5/emFile_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC5/emFile_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/emFile_PM.c **** 
+  18:Generated_Source\PSoC5/emFile_PM.c **** #include <project.h>
+  19:Generated_Source\PSoC5/emFile_PM.c **** #include "emFile.h"
+  20:Generated_Source\PSoC5/emFile_PM.c **** 
+  21:Generated_Source\PSoC5/emFile_PM.c **** 
+  22:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
+  23:Generated_Source\PSoC5/emFile_PM.c **** * Function Name: emFile_SaveConfig
+  24:Generated_Source\PSoC5/emFile_PM.c **** ********************************************************************************
+  25:Generated_Source\PSoC5/emFile_PM.c **** *
+  26:Generated_Source\PSoC5/emFile_PM.c **** * Summary:
+  27:Generated_Source\PSoC5/emFile_PM.c **** *  Saves SPI Masters configuration.
+  28:Generated_Source\PSoC5/emFile_PM.c **** *
+  29:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
+  30:Generated_Source\PSoC5/emFile_PM.c **** *  None
+  31:Generated_Source\PSoC5/emFile_PM.c **** *
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 2
+
+
+  32:Generated_Source\PSoC5/emFile_PM.c **** * Return:
+  33:Generated_Source\PSoC5/emFile_PM.c **** *  None
+  34:Generated_Source\PSoC5/emFile_PM.c **** *
+  35:Generated_Source\PSoC5/emFile_PM.c **** * Reentrant:
+  36:Generated_Source\PSoC5/emFile_PM.c **** *  No
+  37:Generated_Source\PSoC5/emFile_PM.c **** *
+  38:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************/
+  39:Generated_Source\PSoC5/emFile_PM.c **** void emFile_SaveConfig(void) 
+  40:Generated_Source\PSoC5/emFile_PM.c **** {
+  27              		.loc 1 40 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+  34              		.cfi_offset 14, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  41:Generated_Source\PSoC5/emFile_PM.c ****     #if(emFile_NUMBER_SD_CARDS == 4u)
+  42:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  43:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_SaveConfig();
+  44:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_SaveConfig();
+  45:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI3_SaveConfig();
+  46:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 3u)
+  47:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  48:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_SaveConfig();
+  49:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_SaveConfig();
+  50:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 2u)
+  51:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  52:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_SaveConfig();
+  53:Generated_Source\PSoC5/emFile_PM.c ****     #else
+  54:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  37              		.loc 1 54 0
+  38 0004 FFF7FEFF 		bl	emFile_SPI0_SaveConfig
+  55:Generated_Source\PSoC5/emFile_PM.c ****     #endif /* (emFile_NUMBER_SD_CARDS == 4u) */
+  56:Generated_Source\PSoC5/emFile_PM.c **** }
+  39              		.loc 1 56 0
+  40 0008 80BD     		pop	{r7, pc}
+  41              		.cfi_endproc
+  42              	.LFE63:
+  43              		.size	emFile_SaveConfig, .-emFile_SaveConfig
+  44 000a 00BF     		.section	.text.emFile_RestoreConfig,"ax",%progbits
+  45              		.align	2
+  46              		.global	emFile_RestoreConfig
+  47              		.thumb
+  48              		.thumb_func
+  49              		.type	emFile_RestoreConfig, %function
+  50              	emFile_RestoreConfig:
+  51              	.LFB64:
+  57:Generated_Source\PSoC5/emFile_PM.c **** 
+  58:Generated_Source\PSoC5/emFile_PM.c **** 
+  59:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
+  60:Generated_Source\PSoC5/emFile_PM.c **** * Function Name: emFile_RestoreConfig
+  61:Generated_Source\PSoC5/emFile_PM.c **** ********************************************************************************
+  62:Generated_Source\PSoC5/emFile_PM.c **** *
+  63:Generated_Source\PSoC5/emFile_PM.c **** * Summary:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 3
+
+
+  64:Generated_Source\PSoC5/emFile_PM.c **** *  Restores SPI Masters configuration.
+  65:Generated_Source\PSoC5/emFile_PM.c **** *
+  66:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
+  67:Generated_Source\PSoC5/emFile_PM.c **** *  None
+  68:Generated_Source\PSoC5/emFile_PM.c **** *
+  69:Generated_Source\PSoC5/emFile_PM.c **** * Return:
+  70:Generated_Source\PSoC5/emFile_PM.c **** *  None
+  71:Generated_Source\PSoC5/emFile_PM.c **** *
+  72:Generated_Source\PSoC5/emFile_PM.c **** * Side Effects:
+  73:Generated_Source\PSoC5/emFile_PM.c **** *  If this API is called without first calling SaveConfig then in the following
+  74:Generated_Source\PSoC5/emFile_PM.c **** *  registers will be default values from Customizer:
+  75:Generated_Source\PSoC5/emFile_PM.c **** *
+  76:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************/
+  77:Generated_Source\PSoC5/emFile_PM.c **** void emFile_RestoreConfig(void) 
+  78:Generated_Source\PSoC5/emFile_PM.c **** {
+  52              		.loc 1 78 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 1, uses_anonymous_args = 0
+  56 0000 80B5     		push	{r7, lr}
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 7, -8
+  59              		.cfi_offset 14, -4
+  60 0002 00AF     		add	r7, sp, #0
+  61              		.cfi_def_cfa_register 7
+  79:Generated_Source\PSoC5/emFile_PM.c ****     #if(emFile_NUMBER_SD_CARDS == 4u)
+  80:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_RestoreConfig();
+  81:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_RestoreConfig();
+  82:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_RestoreConfig();
+  83:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI3_RestoreConfig();
+  84:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 3u)
+  85:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  86:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_SaveConfig();
+  87:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_SaveConfig();
+  88:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 2u)
+  89:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  90:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_SaveConfig();
+  91:Generated_Source\PSoC5/emFile_PM.c ****     #else
+  92:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_SaveConfig();
+  62              		.loc 1 92 0
+  63 0004 FFF7FEFF 		bl	emFile_SPI0_SaveConfig
+  93:Generated_Source\PSoC5/emFile_PM.c ****     #endif /* (emFile_NUMBER_SD_CARDS == 4u) */
+  94:Generated_Source\PSoC5/emFile_PM.c **** }
+  64              		.loc 1 94 0
+  65 0008 80BD     		pop	{r7, pc}
+  66              		.cfi_endproc
+  67              	.LFE64:
+  68              		.size	emFile_RestoreConfig, .-emFile_RestoreConfig
+  69 000a 00BF     		.section	.text.emFile_Sleep,"ax",%progbits
+  70              		.align	2
+  71              		.global	emFile_Sleep
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	emFile_Sleep, %function
+  75              	emFile_Sleep:
+  76              	.LFB65:
+  95:Generated_Source\PSoC5/emFile_PM.c **** 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 4
+
+
+  96:Generated_Source\PSoC5/emFile_PM.c **** 
+  97:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
+  98:Generated_Source\PSoC5/emFile_PM.c **** * Function Name: emFile_Sleep
+  99:Generated_Source\PSoC5/emFile_PM.c **** ********************************************************************************
+ 100:Generated_Source\PSoC5/emFile_PM.c **** *
+ 101:Generated_Source\PSoC5/emFile_PM.c **** * Summary:
+ 102:Generated_Source\PSoC5/emFile_PM.c **** *  Prepare emFile to go to sleep.
+ 103:Generated_Source\PSoC5/emFile_PM.c **** *
+ 104:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
+ 105:Generated_Source\PSoC5/emFile_PM.c **** *  None
+ 106:Generated_Source\PSoC5/emFile_PM.c **** *
+ 107:Generated_Source\PSoC5/emFile_PM.c **** * Return:
+ 108:Generated_Source\PSoC5/emFile_PM.c **** *  None
+ 109:Generated_Source\PSoC5/emFile_PM.c **** *
+ 110:Generated_Source\PSoC5/emFile_PM.c **** * Reentrant:
+ 111:Generated_Source\PSoC5/emFile_PM.c **** *  No
+ 112:Generated_Source\PSoC5/emFile_PM.c **** *
+ 113:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************/
+ 114:Generated_Source\PSoC5/emFile_PM.c **** void emFile_Sleep(void) 
+ 115:Generated_Source\PSoC5/emFile_PM.c **** {
+  77              		.loc 1 115 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 1, uses_anonymous_args = 0
+  81 0000 80B5     		push	{r7, lr}
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 7, -8
+  84              		.cfi_offset 14, -4
+  85 0002 00AF     		add	r7, sp, #0
+  86              		.cfi_def_cfa_register 7
+ 116:Generated_Source\PSoC5/emFile_PM.c ****     #if(emFile_NUMBER_SD_CARDS == 4u)
+ 117:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Sleep();
+ 118:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Sleep();
+ 119:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_Sleep();
+ 120:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI3_Sleep();
+ 121:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 3u)
+ 122:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Sleep();
+ 123:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Sleep();
+ 124:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_Sleep();
+ 125:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 2u)
+ 126:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Sleep();
+ 127:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Sleep();
+ 128:Generated_Source\PSoC5/emFile_PM.c ****     #else
+ 129:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Sleep();
+  87              		.loc 1 129 0
+  88 0004 FFF7FEFF 		bl	emFile_SPI0_Sleep
+ 130:Generated_Source\PSoC5/emFile_PM.c ****     #endif /* (emFile_NUMBER_SD_CARDS == 4u) */
+ 131:Generated_Source\PSoC5/emFile_PM.c **** }
+  89              		.loc 1 131 0
+  90 0008 80BD     		pop	{r7, pc}
+  91              		.cfi_endproc
+  92              	.LFE65:
+  93              		.size	emFile_Sleep, .-emFile_Sleep
+  94 000a 00BF     		.section	.text.emFile_Wakeup,"ax",%progbits
+  95              		.align	2
+  96              		.global	emFile_Wakeup
+  97              		.thumb
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 5
+
+
+  98              		.thumb_func
+  99              		.type	emFile_Wakeup, %function
+ 100              	emFile_Wakeup:
+ 101              	.LFB66:
+ 132:Generated_Source\PSoC5/emFile_PM.c **** 
+ 133:Generated_Source\PSoC5/emFile_PM.c **** 
+ 134:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
+ 135:Generated_Source\PSoC5/emFile_PM.c **** * Function Name: emFile_Wakeup
+ 136:Generated_Source\PSoC5/emFile_PM.c **** ********************************************************************************
+ 137:Generated_Source\PSoC5/emFile_PM.c **** *
+ 138:Generated_Source\PSoC5/emFile_PM.c **** * Summary:
+ 139:Generated_Source\PSoC5/emFile_PM.c **** *  Prepare SPIM Components to wake up.
+ 140:Generated_Source\PSoC5/emFile_PM.c **** *
+ 141:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
+ 142:Generated_Source\PSoC5/emFile_PM.c **** *  None
+ 143:Generated_Source\PSoC5/emFile_PM.c **** *
+ 144:Generated_Source\PSoC5/emFile_PM.c **** * Return:
+ 145:Generated_Source\PSoC5/emFile_PM.c **** *  None
+ 146:Generated_Source\PSoC5/emFile_PM.c **** *
+ 147:Generated_Source\PSoC5/emFile_PM.c **** * Reentrant:
+ 148:Generated_Source\PSoC5/emFile_PM.c **** *  No
+ 149:Generated_Source\PSoC5/emFile_PM.c **** *
+ 150:Generated_Source\PSoC5/emFile_PM.c **** *******************************************************************************/
+ 151:Generated_Source\PSoC5/emFile_PM.c **** void emFile_Wakeup(void) 
+ 152:Generated_Source\PSoC5/emFile_PM.c **** {
+ 102              		.loc 1 152 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 0000 80B5     		push	{r7, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 7, -8
+ 109              		.cfi_offset 14, -4
+ 110 0002 00AF     		add	r7, sp, #0
+ 111              		.cfi_def_cfa_register 7
+ 153:Generated_Source\PSoC5/emFile_PM.c ****     #if(emFile_NUMBER_SD_CARDS == 4u)
+ 154:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Wakeup();
+ 155:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Wakeup();
+ 156:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_Wakeup();
+ 157:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI3_Wakeup();
+ 158:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 3u)
+ 159:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Wakeup();
+ 160:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Wakeup();
+ 161:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI2_Wakeup();
+ 162:Generated_Source\PSoC5/emFile_PM.c ****     #elif(emFile_NUMBER_SD_CARDS == 2u)
+ 163:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Wakeup();
+ 164:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI1_Wakeup();
+ 165:Generated_Source\PSoC5/emFile_PM.c ****     #else
+ 166:Generated_Source\PSoC5/emFile_PM.c ****         emFile_SPI0_Wakeup();
+ 112              		.loc 1 166 0
+ 113 0004 FFF7FEFF 		bl	emFile_SPI0_Wakeup
+ 167:Generated_Source\PSoC5/emFile_PM.c ****     #endif /* (emFile_NUMBER_SD_CARDS == 4u) */
+ 168:Generated_Source\PSoC5/emFile_PM.c **** }
+ 114              		.loc 1 168 0
+ 115 0008 80BD     		pop	{r7, pc}
+ 116              		.cfi_endproc
+ 117              	.LFE66:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 6
+
+
+ 118              		.size	emFile_Wakeup, .-emFile_Wakeup
+ 119 000a 00BF     		.text
+ 120              	.Letext0:
+ 121              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 122              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 123              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 124              		.section	.debug_info,"",%progbits
+ 125              	.Ldebug_info0:
+ 126 0000 EF000000 		.4byte	0xef
+ 127 0004 0400     		.2byte	0x4
+ 128 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 129 000a 04       		.byte	0x4
+ 130 000b 01       		.uleb128 0x1
+ 131 000c E7000000 		.4byte	.LASF19
+ 132 0010 01       		.byte	0x1
+ 133 0011 57000000 		.4byte	.LASF20
+ 134 0015 7A000000 		.4byte	.LASF21
+ 135 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 136 001d 00000000 		.4byte	0
+ 137 0021 00000000 		.4byte	.Ldebug_line0
+ 138 0025 02       		.uleb128 0x2
+ 139 0026 01       		.byte	0x1
+ 140 0027 06       		.byte	0x6
+ 141 0028 96010000 		.4byte	.LASF0
+ 142 002c 02       		.uleb128 0x2
+ 143 002d 01       		.byte	0x1
+ 144 002e 08       		.byte	0x8
+ 145 002f CB000000 		.4byte	.LASF1
+ 146 0033 02       		.uleb128 0x2
+ 147 0034 02       		.byte	0x2
+ 148 0035 05       		.byte	0x5
+ 149 0036 B2010000 		.4byte	.LASF2
+ 150 003a 02       		.uleb128 0x2
+ 151 003b 02       		.byte	0x2
+ 152 003c 07       		.byte	0x7
+ 153 003d 0E000000 		.4byte	.LASF3
+ 154 0041 03       		.uleb128 0x3
+ 155 0042 A2010000 		.4byte	.LASF9
+ 156 0046 02       		.byte	0x2
+ 157 0047 3F       		.byte	0x3f
+ 158 0048 4C000000 		.4byte	0x4c
+ 159 004c 02       		.uleb128 0x2
+ 160 004d 04       		.byte	0x4
+ 161 004e 05       		.byte	0x5
+ 162 004f DE000000 		.4byte	.LASF4
+ 163 0053 02       		.uleb128 0x2
+ 164 0054 04       		.byte	0x4
+ 165 0055 07       		.byte	0x7
+ 166 0056 2E000000 		.4byte	.LASF5
+ 167 005a 02       		.uleb128 0x2
+ 168 005b 08       		.byte	0x8
+ 169 005c 05       		.byte	0x5
+ 170 005d 00000000 		.4byte	.LASF6
+ 171 0061 02       		.uleb128 0x2
+ 172 0062 08       		.byte	0x8
+ 173 0063 07       		.byte	0x7
+ 174 0064 40000000 		.4byte	.LASF7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 7
+
+
+ 175 0068 04       		.uleb128 0x4
+ 176 0069 04       		.byte	0x4
+ 177 006a 05       		.byte	0x5
+ 178 006b 696E7400 		.ascii	"int\000"
+ 179 006f 02       		.uleb128 0x2
+ 180 0070 04       		.byte	0x4
+ 181 0071 07       		.byte	0x7
+ 182 0072 21000000 		.4byte	.LASF8
+ 183 0076 03       		.uleb128 0x3
+ 184 0077 D1010000 		.4byte	.LASF10
+ 185 007b 03       		.byte	0x3
+ 186 007c 2C       		.byte	0x2c
+ 187 007d 41000000 		.4byte	0x41
+ 188 0081 02       		.uleb128 0x2
+ 189 0082 04       		.byte	0x4
+ 190 0083 04       		.byte	0x4
+ 191 0084 AC010000 		.4byte	.LASF11
+ 192 0088 02       		.uleb128 0x2
+ 193 0089 08       		.byte	0x8
+ 194 008a 04       		.byte	0x4
+ 195 008b 75010000 		.4byte	.LASF12
+ 196 008f 02       		.uleb128 0x2
+ 197 0090 01       		.byte	0x1
+ 198 0091 08       		.byte	0x8
+ 199 0092 D9000000 		.4byte	.LASF13
+ 200 0096 02       		.uleb128 0x2
+ 201 0097 04       		.byte	0x4
+ 202 0098 07       		.byte	0x7
+ 203 0099 E7010000 		.4byte	.LASF14
+ 204 009d 05       		.uleb128 0x5
+ 205 009e B9000000 		.4byte	.LASF15
+ 206 00a2 01       		.byte	0x1
+ 207 00a3 27       		.byte	0x27
+ 208 00a4 00000000 		.4byte	.LFB63
+ 209 00a8 0A000000 		.4byte	.LFE63-.LFB63
+ 210 00ac 01       		.uleb128 0x1
+ 211 00ad 9C       		.byte	0x9c
+ 212 00ae 05       		.uleb128 0x5
+ 213 00af BC010000 		.4byte	.LASF16
+ 214 00b3 01       		.byte	0x1
+ 215 00b4 4D       		.byte	0x4d
+ 216 00b5 00000000 		.4byte	.LFB64
+ 217 00b9 0A000000 		.4byte	.LFE64-.LFB64
+ 218 00bd 01       		.uleb128 0x1
+ 219 00be 9C       		.byte	0x9c
+ 220 00bf 05       		.uleb128 0x5
+ 221 00c0 7C010000 		.4byte	.LASF17
+ 222 00c4 01       		.byte	0x1
+ 223 00c5 72       		.byte	0x72
+ 224 00c6 00000000 		.4byte	.LFB65
+ 225 00ca 0A000000 		.4byte	.LFE65-.LFB65
+ 226 00ce 01       		.uleb128 0x1
+ 227 00cf 9C       		.byte	0x9c
+ 228 00d0 05       		.uleb128 0x5
+ 229 00d1 D9010000 		.4byte	.LASF18
+ 230 00d5 01       		.byte	0x1
+ 231 00d6 97       		.byte	0x97
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 8
+
+
+ 232 00d7 00000000 		.4byte	.LFB66
+ 233 00db 0A000000 		.4byte	.LFE66-.LFB66
+ 234 00df 01       		.uleb128 0x1
+ 235 00e0 9C       		.byte	0x9c
+ 236 00e1 06       		.uleb128 0x6
+ 237 00e2 89010000 		.4byte	.LASF22
+ 238 00e6 04       		.byte	0x4
+ 239 00e7 9606     		.2byte	0x696
+ 240 00e9 ED000000 		.4byte	0xed
+ 241 00ed 07       		.uleb128 0x7
+ 242 00ee 76000000 		.4byte	0x76
+ 243 00f2 00       		.byte	0
+ 244              		.section	.debug_abbrev,"",%progbits
+ 245              	.Ldebug_abbrev0:
+ 246 0000 01       		.uleb128 0x1
+ 247 0001 11       		.uleb128 0x11
+ 248 0002 01       		.byte	0x1
+ 249 0003 25       		.uleb128 0x25
+ 250 0004 0E       		.uleb128 0xe
+ 251 0005 13       		.uleb128 0x13
+ 252 0006 0B       		.uleb128 0xb
+ 253 0007 03       		.uleb128 0x3
+ 254 0008 0E       		.uleb128 0xe
+ 255 0009 1B       		.uleb128 0x1b
+ 256 000a 0E       		.uleb128 0xe
+ 257 000b 55       		.uleb128 0x55
+ 258 000c 17       		.uleb128 0x17
+ 259 000d 11       		.uleb128 0x11
+ 260 000e 01       		.uleb128 0x1
+ 261 000f 10       		.uleb128 0x10
+ 262 0010 17       		.uleb128 0x17
+ 263 0011 00       		.byte	0
+ 264 0012 00       		.byte	0
+ 265 0013 02       		.uleb128 0x2
+ 266 0014 24       		.uleb128 0x24
+ 267 0015 00       		.byte	0
+ 268 0016 0B       		.uleb128 0xb
+ 269 0017 0B       		.uleb128 0xb
+ 270 0018 3E       		.uleb128 0x3e
+ 271 0019 0B       		.uleb128 0xb
+ 272 001a 03       		.uleb128 0x3
+ 273 001b 0E       		.uleb128 0xe
+ 274 001c 00       		.byte	0
+ 275 001d 00       		.byte	0
+ 276 001e 03       		.uleb128 0x3
+ 277 001f 16       		.uleb128 0x16
+ 278 0020 00       		.byte	0
+ 279 0021 03       		.uleb128 0x3
+ 280 0022 0E       		.uleb128 0xe
+ 281 0023 3A       		.uleb128 0x3a
+ 282 0024 0B       		.uleb128 0xb
+ 283 0025 3B       		.uleb128 0x3b
+ 284 0026 0B       		.uleb128 0xb
+ 285 0027 49       		.uleb128 0x49
+ 286 0028 13       		.uleb128 0x13
+ 287 0029 00       		.byte	0
+ 288 002a 00       		.byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 9
+
+
+ 289 002b 04       		.uleb128 0x4
+ 290 002c 24       		.uleb128 0x24
+ 291 002d 00       		.byte	0
+ 292 002e 0B       		.uleb128 0xb
+ 293 002f 0B       		.uleb128 0xb
+ 294 0030 3E       		.uleb128 0x3e
+ 295 0031 0B       		.uleb128 0xb
+ 296 0032 03       		.uleb128 0x3
+ 297 0033 08       		.uleb128 0x8
+ 298 0034 00       		.byte	0
+ 299 0035 00       		.byte	0
+ 300 0036 05       		.uleb128 0x5
+ 301 0037 2E       		.uleb128 0x2e
+ 302 0038 00       		.byte	0
+ 303 0039 3F       		.uleb128 0x3f
+ 304 003a 19       		.uleb128 0x19
+ 305 003b 03       		.uleb128 0x3
+ 306 003c 0E       		.uleb128 0xe
+ 307 003d 3A       		.uleb128 0x3a
+ 308 003e 0B       		.uleb128 0xb
+ 309 003f 3B       		.uleb128 0x3b
+ 310 0040 0B       		.uleb128 0xb
+ 311 0041 27       		.uleb128 0x27
+ 312 0042 19       		.uleb128 0x19
+ 313 0043 11       		.uleb128 0x11
+ 314 0044 01       		.uleb128 0x1
+ 315 0045 12       		.uleb128 0x12
+ 316 0046 06       		.uleb128 0x6
+ 317 0047 40       		.uleb128 0x40
+ 318 0048 18       		.uleb128 0x18
+ 319 0049 9642     		.uleb128 0x2116
+ 320 004b 19       		.uleb128 0x19
+ 321 004c 00       		.byte	0
+ 322 004d 00       		.byte	0
+ 323 004e 06       		.uleb128 0x6
+ 324 004f 34       		.uleb128 0x34
+ 325 0050 00       		.byte	0
+ 326 0051 03       		.uleb128 0x3
+ 327 0052 0E       		.uleb128 0xe
+ 328 0053 3A       		.uleb128 0x3a
+ 329 0054 0B       		.uleb128 0xb
+ 330 0055 3B       		.uleb128 0x3b
+ 331 0056 05       		.uleb128 0x5
+ 332 0057 49       		.uleb128 0x49
+ 333 0058 13       		.uleb128 0x13
+ 334 0059 3F       		.uleb128 0x3f
+ 335 005a 19       		.uleb128 0x19
+ 336 005b 3C       		.uleb128 0x3c
+ 337 005c 19       		.uleb128 0x19
+ 338 005d 00       		.byte	0
+ 339 005e 00       		.byte	0
+ 340 005f 07       		.uleb128 0x7
+ 341 0060 35       		.uleb128 0x35
+ 342 0061 00       		.byte	0
+ 343 0062 49       		.uleb128 0x49
+ 344 0063 13       		.uleb128 0x13
+ 345 0064 00       		.byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 10
+
+
+ 346 0065 00       		.byte	0
+ 347 0066 00       		.byte	0
+ 348              		.section	.debug_aranges,"",%progbits
+ 349 0000 34000000 		.4byte	0x34
+ 350 0004 0200     		.2byte	0x2
+ 351 0006 00000000 		.4byte	.Ldebug_info0
+ 352 000a 04       		.byte	0x4
+ 353 000b 00       		.byte	0
+ 354 000c 0000     		.2byte	0
+ 355 000e 0000     		.2byte	0
+ 356 0010 00000000 		.4byte	.LFB63
+ 357 0014 0A000000 		.4byte	.LFE63-.LFB63
+ 358 0018 00000000 		.4byte	.LFB64
+ 359 001c 0A000000 		.4byte	.LFE64-.LFB64
+ 360 0020 00000000 		.4byte	.LFB65
+ 361 0024 0A000000 		.4byte	.LFE65-.LFB65
+ 362 0028 00000000 		.4byte	.LFB66
+ 363 002c 0A000000 		.4byte	.LFE66-.LFB66
+ 364 0030 00000000 		.4byte	0
+ 365 0034 00000000 		.4byte	0
+ 366              		.section	.debug_ranges,"",%progbits
+ 367              	.Ldebug_ranges0:
+ 368 0000 00000000 		.4byte	.LFB63
+ 369 0004 0A000000 		.4byte	.LFE63
+ 370 0008 00000000 		.4byte	.LFB64
+ 371 000c 0A000000 		.4byte	.LFE64
+ 372 0010 00000000 		.4byte	.LFB65
+ 373 0014 0A000000 		.4byte	.LFE65
+ 374 0018 00000000 		.4byte	.LFB66
+ 375 001c 0A000000 		.4byte	.LFE66
+ 376 0020 00000000 		.4byte	0
+ 377 0024 00000000 		.4byte	0
+ 378              		.section	.debug_line,"",%progbits
+ 379              	.Ldebug_line0:
+ 380 0000 94010000 		.section	.debug_str,"MS",%progbits,1
+ 380      02003F01 
+ 380      00000201 
+ 380      FB0E0D00 
+ 380      01010101 
+ 381              	.LASF6:
+ 382 0000 6C6F6E67 		.ascii	"long long int\000"
+ 382      206C6F6E 
+ 382      6720696E 
+ 382      7400
+ 383              	.LASF3:
+ 384 000e 73686F72 		.ascii	"short unsigned int\000"
+ 384      7420756E 
+ 384      7369676E 
+ 384      65642069 
+ 384      6E7400
+ 385              	.LASF8:
+ 386 0021 756E7369 		.ascii	"unsigned int\000"
+ 386      676E6564 
+ 386      20696E74 
+ 386      00
+ 387              	.LASF5:
+ 388 002e 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 11
+
+
+ 388      20756E73 
+ 388      69676E65 
+ 388      6420696E 
+ 388      7400
+ 389              	.LASF7:
+ 390 0040 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 390      206C6F6E 
+ 390      6720756E 
+ 390      7369676E 
+ 390      65642069 
+ 391              	.LASF20:
+ 392 0057 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_PM.c\000"
+ 392      72617465 
+ 392      645F536F 
+ 392      75726365 
+ 392      5C50536F 
+ 393              	.LASF21:
+ 394 007a 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_wo"
+ 394      73657273 
+ 394      5C676469 
+ 394      6E675C44 
+ 394      6F63756D 
+ 395 00a8 5F666169 		.ascii	"_failsafes.cydsn\000"
+ 395      6C736166 
+ 395      65732E63 
+ 395      7964736E 
+ 395      00
+ 396              	.LASF15:
+ 397 00b9 656D4669 		.ascii	"emFile_SaveConfig\000"
+ 397      6C655F53 
+ 397      61766543 
+ 397      6F6E6669 
+ 397      6700
+ 398              	.LASF1:
+ 399 00cb 756E7369 		.ascii	"unsigned char\000"
+ 399      676E6564 
+ 399      20636861 
+ 399      7200
+ 400              	.LASF13:
+ 401 00d9 63686172 		.ascii	"char\000"
+ 401      00
+ 402              	.LASF4:
+ 403 00de 6C6F6E67 		.ascii	"long int\000"
+ 403      20696E74 
+ 403      00
+ 404              	.LASF19:
+ 405 00e7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 405      4320342E 
+ 405      392E3320 
+ 405      32303135 
+ 405      30333033 
+ 406 011a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 406      20726576 
+ 406      6973696F 
+ 406      6E203232 
+ 406      31323230 
+ 407 014d 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccRCw6kw.s 			page 12
+
+
+ 407      66756E63 
+ 407      74696F6E 
+ 407      2D736563 
+ 407      74696F6E 
+ 408              	.LASF12:
+ 409 0175 646F7562 		.ascii	"double\000"
+ 409      6C6500
+ 410              	.LASF17:
+ 411 017c 656D4669 		.ascii	"emFile_Sleep\000"
+ 411      6C655F53 
+ 411      6C656570 
+ 411      00
+ 412              	.LASF22:
+ 413 0189 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 413      52784275 
+ 413      66666572 
+ 413      00
+ 414              	.LASF0:
+ 415 0196 7369676E 		.ascii	"signed char\000"
+ 415      65642063 
+ 415      68617200 
+ 416              	.LASF9:
+ 417 01a2 5F5F696E 		.ascii	"__int32_t\000"
+ 417      7433325F 
+ 417      7400
+ 418              	.LASF11:
+ 419 01ac 666C6F61 		.ascii	"float\000"
+ 419      7400
+ 420              	.LASF2:
+ 421 01b2 73686F72 		.ascii	"short int\000"
+ 421      7420696E 
+ 421      7400
+ 422              	.LASF16:
+ 423 01bc 656D4669 		.ascii	"emFile_RestoreConfig\000"
+ 423      6C655F52 
+ 423      6573746F 
+ 423      7265436F 
+ 423      6E666967 
+ 424              	.LASF10:
+ 425 01d1 696E7433 		.ascii	"int32_t\000"
+ 425      325F7400 
+ 426              	.LASF18:
+ 427 01d9 656D4669 		.ascii	"emFile_Wakeup\000"
+ 427      6C655F57 
+ 427      616B6575 
+ 427      7000
+ 428              	.LASF14:
+ 429 01e7 73697A65 		.ascii	"sizetype\000"
+ 429      74797065 
+ 429      00
+ 430              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -45,7 +45,7 @@
 #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED state.
 #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING state.
 #define BUFFER_LEN  64u                 // Buffer length for UART rx
-#define DEGREES_30 (131 * 30)           // Gyro value corresponding to 30 degrees. Default setting is 131 LSB/degree/s 
+#define DEGREES_20 (131 * 20)           // Gyro value corresponding to 30 degrees. Default setting is 131 LSB/degree/s 
 #define DEGREES_50 (131 * 50)           // So every 131 in gyro value equals 1 degree of rotational velocity
 
 
@@ -141,7 +141,7 @@ CY_ISR(rx_interrupt){
     #ifdef BT
     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
         RxBuffer[msg_count++] = UART_GetChar();
-        if ((msg_count - 3) >= bytes)
+        if ((msg_count - 3) > bytes)
             rxflag = 1;
     }
     #endif
@@ -157,7 +157,7 @@ int main()
     char vacuumbuf[VACUUM_LEN] = STATE_VACUUM;
     char resurfbuf[RESURFACE_LEN] = STATE_RESURFACE;
     char transbuf[TRANSMIT_LEN] = STATE_TRANSMIT;
-    int stateMsgCount = 0, pulse = 0;
+    int stateMsgCount = 0, pulse = 0, secs_for_tilt = 0;
     
     int16_t ax, ay, az, i;
     int16_t gx, gy, gz;
@@ -224,7 +224,6 @@ int main()
         if(ADC_IsEndConversion(ADC_RETURN_STATUS))              // voltage conversion for pressure
         {
             output = ADC_GetResult32();
-
             voltage = output * (3.32 / 4096);
             if(collect_flag == 1){
                 if (press_id < MA_WINDOW){
@@ -248,7 +247,6 @@ int main()
                 if (STATE != DESCENDING) collect_flag = 0;
                 press_id++;
             }
-            
         }
         
     /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Once full message has
@@ -357,7 +355,7 @@ int main()
                         sum += az;
                         xsum += gx;
                         ysum += gy;
-                        average = sum/MA_WINDOW;            //compute baseline averages for x, y axises
+                        sum = sum/MA_WINDOW;
                         xavg = xsum/MA_WINDOW;                            
                         yavg = ysum/MA_WINDOW;
                                                    
@@ -366,9 +364,22 @@ int main()
                         average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
                         xavg = ComputeMA(xavg, MA_WINDOW, gx);
                         yavg = ComputeMA(yavg, MA_WINDOW, gy);
-                        if (abs((int)xavg) > DEGREES_50 || abs((int)yavg) > DEGREES_50){ // If gyro sees intense rotation
-                            STATE = RESURFACE;                                        // start lift bag
-                        }
+                        #ifdef SD
+                        sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); // log pressure data
+                        FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
+                        #endif 
+//                        if (abs((int)xavg) > DEGREES_50 || abs((int)yavg) > DEGREES_50){ // If gyro sees intense rotation
+//                            STATE = RESURFACE;                                        // start lift bag
+//                            setCursor(0,0);
+//                            clear();
+//                            LCD_print("Tilted");
+//                            CyDelay(1000u);
+//                            setCursor(0,0);
+//                            clear();
+//                            LCD_print("STATE: RESURFACING");
+//                            CyDelay(1000u);
+//                            
+//                        }
                     }
                     
                     if(average > BOT_THRESHOLD){                        
@@ -391,7 +402,7 @@ int main()
                         average = 0; 
                         countdown = 0;
                     }
-                    id++;     
+                    id++;
                     
                     /* if max time allowed for descent has been reached, resurface */
                     if(data_time >= descent_time ){                         // variable descent time
@@ -412,7 +423,7 @@ int main()
                 break;
                 
                 case LANDED:
-                    if (countdown == 7) {                   // Delay for 7 seconds at bottom
+                    if (countdown == 15) {                   // Delay for 7 seconds at bottom
                         countdown = 0; 
                         pulse = 1;                          // next stage of the state
                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
@@ -434,13 +445,24 @@ int main()
                             xavg = ComputeMA(xavg, MA_WINDOW, gx);
                             yavg = ComputeMA(yavg, MA_WINDOW, gy);
                         }
-                        if (abs((int)xavg) > DEGREES_30 || abs((int)yavg) > DEGREES_30){ // If tilting, send back up
-                            STATE = RESURFACE;
-                            clear();
-                            LCD_print("Tilted");
-                            clear();
-                            LCD_print("STATE: RESURFACING");
-                        }
+//                        if (countdown > 7 && pulse == 0){       // Allow for device to settle
+//                            if (abs((int)xavg) > DEGREES_20 || abs((int)yavg) > DEGREES_20){ // If tilting, send back up
+//                                secs_for_tilt++;
+//                                if (secs_for_tilt > 750) {
+//                                    STATE = RESURFACE;
+//                                    setCursor(0,0);
+//                                    clear();
+//                                    LCD_print("Tilted");
+//                                    CyDelay(1000u);
+//                                    setCursor(0,0);
+//                                    clear();
+//                                    LCD_print("STATE: RESURFACING");
+//                                    CyDelay(1000u);
+//                                    countdown = 0;
+//                                    secs_for_tilt = 0;
+//                                }
+//                            }
+//                        }
                         collect_flag = 0;
                         id++;
                     }
@@ -474,7 +496,7 @@ int main()
                 
                 //check pressure sensor to confirm we are at the surface
                 if (countdown == 3){
-                    Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second, 
+                    Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second
                     CyDelay(1000u);
                     pulse++;
                     countdown = 0;
@@ -503,12 +525,7 @@ int main()
                 if (transmit_flag){
                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters, rest do not matter(could be anything)
                     transmit_flag = 0;
-                }
-                data_time = 0;
-                countdown = 0;
-                pulse = 0;
-                depth = 0;
-                
+                }            
                 break;
                 
             default:

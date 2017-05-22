@@ -1,0 +1,3533 @@
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"LiquidCrystal_I2C.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	_addr,1,1
+  19              		.comm	_displayfunction,1,1
+  20              		.comm	_displaycontrol,1,1
+  21              		.comm	_displaymode,1,1
+  22              		.comm	_cols,1,1
+  23              		.comm	_rows,1,1
+  24              		.comm	_charsize,1,1
+  25              		.comm	_backlightval,1,1
+  26              		.section	.text.LiquidCrystal_I2C_init,"ax",%progbits
+  27              		.align	2
+  28              		.global	LiquidCrystal_I2C_init
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	LiquidCrystal_I2C_init, %function
+  32              	LiquidCrystal_I2C_init:
+  33              	.LFB63:
+  34              		.file 1 "LiquidCrystal_I2C.c"
+   1:LiquidCrystal_I2C.c **** #include "LiquidCrystal_I2C.h"
+   2:LiquidCrystal_I2C.c **** 
+   3:LiquidCrystal_I2C.c **** 
+   4:LiquidCrystal_I2C.c **** //#include "LiquidCrystal_I2C.h"/Portado para PSoC por Šarūnas Straigis
+   5:LiquidCrystal_I2C.c **** //http://www.element14.com/community/people/sarunaszx/blog
+   6:LiquidCrystal_I2C.c **** //Portado y modificado para PSoC 4 y PSoC 5LP por Brayan Bermudez y Carlos Diaz
+   7:LiquidCrystal_I2C.c **** //http://digitalprojectsudistrital.blogspot.com.co/
+   8:LiquidCrystal_I2C.c **** 
+   9:LiquidCrystal_I2C.c **** 
+  10:LiquidCrystal_I2C.c **** 
+  11:LiquidCrystal_I2C.c **** // When the display powers up, it is configured as follows:
+  12:LiquidCrystal_I2C.c **** //
+  13:LiquidCrystal_I2C.c **** // 1. Display clear
+  14:LiquidCrystal_I2C.c **** // 2. Function set: 
+  15:LiquidCrystal_I2C.c **** //    DL = 1; 8-bit interface data 
+  16:LiquidCrystal_I2C.c **** //    N = 0; 1-line display 
+  17:LiquidCrystal_I2C.c **** //    F = 0; 5x8 dot character font 
+  18:LiquidCrystal_I2C.c **** // 3. Display on/off control: 
+  19:LiquidCrystal_I2C.c **** //    D = 0; Display off 
+  20:LiquidCrystal_I2C.c **** //    C = 0; Cursor off 
+  21:LiquidCrystal_I2C.c **** //    B = 0; Blinking off 
+  22:LiquidCrystal_I2C.c **** // 4. Entry mode set: 
+  23:LiquidCrystal_I2C.c **** //    I/D = 1; Increment by 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 2
+
+
+  24:LiquidCrystal_I2C.c **** //    S = 0; No shift 
+  25:LiquidCrystal_I2C.c **** //
+  26:LiquidCrystal_I2C.c **** // Note, however, that resetting the Arduino doesn't reset the LCD, so we
+  27:LiquidCrystal_I2C.c **** // can't assume that its in that state when a sketch starts (and the
+  28:LiquidCrystal_I2C.c **** // LiquidCrystal constructor is called).
+  29:LiquidCrystal_I2C.c **** 
+  30:LiquidCrystal_I2C.c **** uint8_t _addr;
+  31:LiquidCrystal_I2C.c **** uint8_t _displayfunction;
+  32:LiquidCrystal_I2C.c **** uint8_t _displaycontrol;
+  33:LiquidCrystal_I2C.c **** uint8_t _displaymode;
+  34:LiquidCrystal_I2C.c **** uint8_t _cols;
+  35:LiquidCrystal_I2C.c **** uint8_t _rows;
+  36:LiquidCrystal_I2C.c **** uint8_t _charsize;
+  37:LiquidCrystal_I2C.c **** uint8_t _backlightval;
+  38:LiquidCrystal_I2C.c **** 
+  39:LiquidCrystal_I2C.c **** void LiquidCrystal_I2C_init(uint8_t lcd_addr, uint8_t lcd_cols, uint8_t lcd_rows, uint8_t charsize)
+  40:LiquidCrystal_I2C.c **** {
+  35              		.loc 1 40 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 8
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 90B4     		push	{r4, r7}
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 4, -8
+  43              		.cfi_offset 7, -4
+  44 0002 82B0     		sub	sp, sp, #8
+  45              		.cfi_def_cfa_offset 16
+  46 0004 00AF     		add	r7, sp, #0
+  47              		.cfi_def_cfa_register 7
+  48 0006 0446     		mov	r4, r0
+  49 0008 0846     		mov	r0, r1
+  50 000a 1146     		mov	r1, r2
+  51 000c 1A46     		mov	r2, r3
+  52 000e 2346     		mov	r3, r4
+  53 0010 FB71     		strb	r3, [r7, #7]
+  54 0012 0346     		mov	r3, r0
+  55 0014 BB71     		strb	r3, [r7, #6]
+  56 0016 0B46     		mov	r3, r1
+  57 0018 7B71     		strb	r3, [r7, #5]
+  58 001a 1346     		mov	r3, r2
+  59 001c 3B71     		strb	r3, [r7, #4]
+  41:LiquidCrystal_I2C.c **** 	_addr = lcd_addr;
+  60              		.loc 1 41 0
+  61 001e 0A4A     		ldr	r2, .L3
+  62 0020 FB79     		ldrb	r3, [r7, #7]
+  63 0022 1370     		strb	r3, [r2]
+  42:LiquidCrystal_I2C.c **** 	_cols = lcd_cols;
+  64              		.loc 1 42 0
+  65 0024 094A     		ldr	r2, .L3+4
+  66 0026 BB79     		ldrb	r3, [r7, #6]
+  67 0028 1370     		strb	r3, [r2]
+  43:LiquidCrystal_I2C.c **** 	_rows = lcd_rows;
+  68              		.loc 1 43 0
+  69 002a 094A     		ldr	r2, .L3+8
+  70 002c 7B79     		ldrb	r3, [r7, #5]
+  71 002e 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 3
+
+
+  44:LiquidCrystal_I2C.c **** 	_charsize = charsize;
+  72              		.loc 1 44 0
+  73 0030 084A     		ldr	r2, .L3+12
+  74 0032 3B79     		ldrb	r3, [r7, #4]
+  75 0034 1370     		strb	r3, [r2]
+  45:LiquidCrystal_I2C.c **** 	_backlightval = LCD_BACKLIGHT;
+  76              		.loc 1 45 0
+  77 0036 084B     		ldr	r3, .L3+16
+  78 0038 0822     		movs	r2, #8
+  79 003a 1A70     		strb	r2, [r3]
+  46:LiquidCrystal_I2C.c ****     
+  47:LiquidCrystal_I2C.c ****     return;
+  80              		.loc 1 47 0
+  81 003c 00BF     		nop
+  48:LiquidCrystal_I2C.c **** }
+  82              		.loc 1 48 0
+  83 003e 0837     		adds	r7, r7, #8
+  84              		.cfi_def_cfa_offset 8
+  85 0040 BD46     		mov	sp, r7
+  86              		.cfi_def_cfa_register 13
+  87              		@ sp needed
+  88 0042 90BC     		pop	{r4, r7}
+  89              		.cfi_restore 7
+  90              		.cfi_restore 4
+  91              		.cfi_def_cfa_offset 0
+  92 0044 7047     		bx	lr
+  93              	.L4:
+  94 0046 00BF     		.align	2
+  95              	.L3:
+  96 0048 00000000 		.word	_addr
+  97 004c 00000000 		.word	_cols
+  98 0050 00000000 		.word	_rows
+  99 0054 00000000 		.word	_charsize
+ 100 0058 00000000 		.word	_backlightval
+ 101              		.cfi_endproc
+ 102              	.LFE63:
+ 103              		.size	LiquidCrystal_I2C_init, .-LiquidCrystal_I2C_init
+ 104              		.section	.text.begin,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	begin
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	begin, %function
+ 110              	begin:
+ 111              	.LFB64:
+  49:LiquidCrystal_I2C.c **** 
+  50:LiquidCrystal_I2C.c **** void begin(void){
+ 112              		.loc 1 50 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 1, uses_anonymous_args = 0
+ 116 0000 80B5     		push	{r7, lr}
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 7, -8
+ 119              		.cfi_offset 14, -4
+ 120 0002 00AF     		add	r7, sp, #0
+ 121              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 4
+
+
+  51:LiquidCrystal_I2C.c ****   
+  52:LiquidCrystal_I2C.c **** 	_displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
+ 122              		.loc 1 52 0
+ 123 0004 2E4B     		ldr	r3, .L9
+ 124 0006 0022     		movs	r2, #0
+ 125 0008 1A70     		strb	r2, [r3]
+  53:LiquidCrystal_I2C.c **** 
+  54:LiquidCrystal_I2C.c **** 	if (_rows > 1) {
+ 126              		.loc 1 54 0
+ 127 000a 2E4B     		ldr	r3, .L9+4
+ 128 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 129 000e 012B     		cmp	r3, #1
+ 130 0010 06D9     		bls	.L6
+  55:LiquidCrystal_I2C.c **** 		_displayfunction |= LCD_2LINE;
+ 131              		.loc 1 55 0
+ 132 0012 2B4B     		ldr	r3, .L9
+ 133 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 134 0016 43F00803 		orr	r3, r3, #8
+ 135 001a DAB2     		uxtb	r2, r3
+ 136 001c 284B     		ldr	r3, .L9
+ 137 001e 1A70     		strb	r2, [r3]
+ 138              	.L6:
+  56:LiquidCrystal_I2C.c **** 	}
+  57:LiquidCrystal_I2C.c **** 
+  58:LiquidCrystal_I2C.c **** 	// for some 1 line displays you can select a 10 pixel high font
+  59:LiquidCrystal_I2C.c **** 	if ((_charsize != 0) && (_rows == 1)) {
+ 139              		.loc 1 59 0
+ 140 0020 294B     		ldr	r3, .L9+8
+ 141 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 142 0024 002B     		cmp	r3, #0
+ 143 0026 0AD0     		beq	.L7
+ 144              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 145 0028 264B     		ldr	r3, .L9+4
+ 146 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 147 002c 012B     		cmp	r3, #1
+ 148 002e 06D1     		bne	.L7
+  60:LiquidCrystal_I2C.c **** 		_displayfunction |= LCD_5x10DOTS;
+ 149              		.loc 1 60 0 is_stmt 1
+ 150 0030 234B     		ldr	r3, .L9
+ 151 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 152 0034 43F00403 		orr	r3, r3, #4
+ 153 0038 DAB2     		uxtb	r2, r3
+ 154 003a 214B     		ldr	r3, .L9
+ 155 003c 1A70     		strb	r2, [r3]
+ 156              	.L7:
+  61:LiquidCrystal_I2C.c **** 	}
+  62:LiquidCrystal_I2C.c **** 
+  63:LiquidCrystal_I2C.c **** 	// SEE PAGE 45/46 FOR INITIALIZATION SPECIFICATION!
+  64:LiquidCrystal_I2C.c **** 	// according to datasheet, we need at least 40ms after power rises above 2.7V
+  65:LiquidCrystal_I2C.c **** 	// before sending commands. Arduino can turn on way befer 4.5V so we'll wait 50
+  66:LiquidCrystal_I2C.c **** 	CyDelay(50); 
+ 157              		.loc 1 66 0
+ 158 003e 3220     		movs	r0, #50
+ 159 0040 FFF7FEFF 		bl	CyDelay
+  67:LiquidCrystal_I2C.c **** 
+  68:LiquidCrystal_I2C.c **** 	// Now we pull both RS and R/W low to begin commands
+  69:LiquidCrystal_I2C.c **** 	expanderWrite(_backlightval);	// reset expanderand turn backlight off (Bit 8 =1)
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 5
+
+
+ 160              		.loc 1 69 0
+ 161 0044 214B     		ldr	r3, .L9+12
+ 162 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 163 0048 1846     		mov	r0, r3
+ 164 004a FFF7FEFF 		bl	expanderWrite
+  70:LiquidCrystal_I2C.c **** 	CyDelay(1000);
+ 165              		.loc 1 70 0
+ 166 004e 4FF47A70 		mov	r0, #1000
+ 167 0052 FFF7FEFF 		bl	CyDelay
+  71:LiquidCrystal_I2C.c **** 
+  72:LiquidCrystal_I2C.c **** 	//put the LCD into 4 bit mode
+  73:LiquidCrystal_I2C.c **** 	// this is according to the hitachi HD44780 datasheet
+  74:LiquidCrystal_I2C.c **** 	// figure 24, pg 46
+  75:LiquidCrystal_I2C.c **** 
+  76:LiquidCrystal_I2C.c **** 	// we start in 8bit mode, try to set 4 bit mode
+  77:LiquidCrystal_I2C.c **** 	write4bits(0x03 << 4);
+ 168              		.loc 1 77 0
+ 169 0056 3020     		movs	r0, #48
+ 170 0058 FFF7FEFF 		bl	write4bits
+  78:LiquidCrystal_I2C.c **** 	CyDelayUs(4500); // wait min 4.1ms
+ 171              		.loc 1 78 0
+ 172 005c 41F29410 		movw	r0, #4500
+ 173 0060 FFF7FEFF 		bl	CyDelayUs
+  79:LiquidCrystal_I2C.c **** 
+  80:LiquidCrystal_I2C.c **** 	// second try
+  81:LiquidCrystal_I2C.c **** 	write4bits(0x03 << 4);
+ 174              		.loc 1 81 0
+ 175 0064 3020     		movs	r0, #48
+ 176 0066 FFF7FEFF 		bl	write4bits
+  82:LiquidCrystal_I2C.c **** 	CyDelayUs(4500); // wait min 4.1ms
+ 177              		.loc 1 82 0
+ 178 006a 41F29410 		movw	r0, #4500
+ 179 006e FFF7FEFF 		bl	CyDelayUs
+  83:LiquidCrystal_I2C.c **** 
+  84:LiquidCrystal_I2C.c **** 	// third go!
+  85:LiquidCrystal_I2C.c **** 	write4bits(0x03 << 4); 
+ 180              		.loc 1 85 0
+ 181 0072 3020     		movs	r0, #48
+ 182 0074 FFF7FEFF 		bl	write4bits
+  86:LiquidCrystal_I2C.c **** 	CyDelayUs(150);
+ 183              		.loc 1 86 0
+ 184 0078 9620     		movs	r0, #150
+ 185 007a FFF7FEFF 		bl	CyDelayUs
+  87:LiquidCrystal_I2C.c **** 
+  88:LiquidCrystal_I2C.c **** 	// finally, set to 4-bit interface
+  89:LiquidCrystal_I2C.c **** 	write4bits(0x02 << 4); 
+ 186              		.loc 1 89 0
+ 187 007e 2020     		movs	r0, #32
+ 188 0080 FFF7FEFF 		bl	write4bits
+  90:LiquidCrystal_I2C.c **** 
+  91:LiquidCrystal_I2C.c **** 	// set # lines, font size, etc.
+  92:LiquidCrystal_I2C.c **** 	command(LCD_FUNCTIONSET | _displayfunction);  
+ 189              		.loc 1 92 0
+ 190 0084 0E4B     		ldr	r3, .L9
+ 191 0086 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 192 0088 43F02003 		orr	r3, r3, #32
+ 193 008c DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 6
+
+
+ 194 008e 1846     		mov	r0, r3
+ 195 0090 FFF7FEFF 		bl	command
+  93:LiquidCrystal_I2C.c **** 	
+  94:LiquidCrystal_I2C.c **** 	// turn the display on with no cursor or blinking default
+  95:LiquidCrystal_I2C.c **** 	_displaycontrol = LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF;
+ 196              		.loc 1 95 0
+ 197 0094 0E4B     		ldr	r3, .L9+16
+ 198 0096 0422     		movs	r2, #4
+ 199 0098 1A70     		strb	r2, [r3]
+  96:LiquidCrystal_I2C.c **** 	display();
+ 200              		.loc 1 96 0
+ 201 009a FFF7FEFF 		bl	display
+  97:LiquidCrystal_I2C.c **** 	
+  98:LiquidCrystal_I2C.c **** 	// clear it off
+  99:LiquidCrystal_I2C.c **** 	clear();
+ 202              		.loc 1 99 0
+ 203 009e FFF7FEFF 		bl	clear
+ 100:LiquidCrystal_I2C.c **** 	
+ 101:LiquidCrystal_I2C.c **** 	// Initialize to default text direction (for roman languages)
+ 102:LiquidCrystal_I2C.c **** 	_displaymode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
+ 204              		.loc 1 102 0
+ 205 00a2 0C4B     		ldr	r3, .L9+20
+ 206 00a4 0222     		movs	r2, #2
+ 207 00a6 1A70     		strb	r2, [r3]
+ 103:LiquidCrystal_I2C.c **** 	
+ 104:LiquidCrystal_I2C.c **** 	// set the entry mode
+ 105:LiquidCrystal_I2C.c **** 	command(LCD_ENTRYMODESET | _displaymode);
+ 208              		.loc 1 105 0
+ 209 00a8 0A4B     		ldr	r3, .L9+20
+ 210 00aa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 211 00ac 43F00403 		orr	r3, r3, #4
+ 212 00b0 DBB2     		uxtb	r3, r3
+ 213 00b2 1846     		mov	r0, r3
+ 214 00b4 FFF7FEFF 		bl	command
+ 106:LiquidCrystal_I2C.c **** 	
+ 107:LiquidCrystal_I2C.c **** 	home();
+ 215              		.loc 1 107 0
+ 216 00b8 FFF7FEFF 		bl	home
+ 108:LiquidCrystal_I2C.c ****     
+ 109:LiquidCrystal_I2C.c ****     return;
+ 217              		.loc 1 109 0
+ 218 00bc 00BF     		nop
+ 110:LiquidCrystal_I2C.c **** }
+ 219              		.loc 1 110 0
+ 220 00be 80BD     		pop	{r7, pc}
+ 221              	.L10:
+ 222              		.align	2
+ 223              	.L9:
+ 224 00c0 00000000 		.word	_displayfunction
+ 225 00c4 00000000 		.word	_rows
+ 226 00c8 00000000 		.word	_charsize
+ 227 00cc 00000000 		.word	_backlightval
+ 228 00d0 00000000 		.word	_displaycontrol
+ 229 00d4 00000000 		.word	_displaymode
+ 230              		.cfi_endproc
+ 231              	.LFE64:
+ 232              		.size	begin, .-begin
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 7
+
+
+ 233              		.section	.text.clear,"ax",%progbits
+ 234              		.align	2
+ 235              		.global	clear
+ 236              		.thumb
+ 237              		.thumb_func
+ 238              		.type	clear, %function
+ 239              	clear:
+ 240              	.LFB65:
+ 111:LiquidCrystal_I2C.c **** 
+ 112:LiquidCrystal_I2C.c **** /********** high level commands, for the user! */
+ 113:LiquidCrystal_I2C.c **** void clear(void){
+ 241              		.loc 1 113 0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 1, uses_anonymous_args = 0
+ 245 0000 80B5     		push	{r7, lr}
+ 246              		.cfi_def_cfa_offset 8
+ 247              		.cfi_offset 7, -8
+ 248              		.cfi_offset 14, -4
+ 249 0002 00AF     		add	r7, sp, #0
+ 250              		.cfi_def_cfa_register 7
+ 114:LiquidCrystal_I2C.c ****     
+ 115:LiquidCrystal_I2C.c **** 	command(LCD_CLEARDISPLAY);// clear display, set cursor position to zero
+ 251              		.loc 1 115 0
+ 252 0004 0120     		movs	r0, #1
+ 253 0006 FFF7FEFF 		bl	command
+ 116:LiquidCrystal_I2C.c **** 	CyDelay(2);  // this command takes a long time!
+ 254              		.loc 1 116 0
+ 255 000a 0220     		movs	r0, #2
+ 256 000c FFF7FEFF 		bl	CyDelay
+ 117:LiquidCrystal_I2C.c ****     
+ 118:LiquidCrystal_I2C.c ****     return;
+ 257              		.loc 1 118 0
+ 258 0010 00BF     		nop
+ 119:LiquidCrystal_I2C.c **** }
+ 259              		.loc 1 119 0
+ 260 0012 80BD     		pop	{r7, pc}
+ 261              		.cfi_endproc
+ 262              	.LFE65:
+ 263              		.size	clear, .-clear
+ 264              		.section	.text.home,"ax",%progbits
+ 265              		.align	2
+ 266              		.global	home
+ 267              		.thumb
+ 268              		.thumb_func
+ 269              		.type	home, %function
+ 270              	home:
+ 271              	.LFB66:
+ 120:LiquidCrystal_I2C.c **** 
+ 121:LiquidCrystal_I2C.c **** void home(void){
+ 272              		.loc 1 121 0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 0
+ 275              		@ frame_needed = 1, uses_anonymous_args = 0
+ 276 0000 80B5     		push	{r7, lr}
+ 277              		.cfi_def_cfa_offset 8
+ 278              		.cfi_offset 7, -8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 8
+
+
+ 279              		.cfi_offset 14, -4
+ 280 0002 00AF     		add	r7, sp, #0
+ 281              		.cfi_def_cfa_register 7
+ 122:LiquidCrystal_I2C.c **** 	
+ 123:LiquidCrystal_I2C.c ****     command(LCD_RETURNHOME);  // set cursor position to zero
+ 282              		.loc 1 123 0
+ 283 0004 0220     		movs	r0, #2
+ 284 0006 FFF7FEFF 		bl	command
+ 124:LiquidCrystal_I2C.c **** 	CyDelay(2);  // this command takes a long time!
+ 285              		.loc 1 124 0
+ 286 000a 0220     		movs	r0, #2
+ 287 000c FFF7FEFF 		bl	CyDelay
+ 125:LiquidCrystal_I2C.c ****     
+ 126:LiquidCrystal_I2C.c ****     return;
+ 288              		.loc 1 126 0
+ 289 0010 00BF     		nop
+ 127:LiquidCrystal_I2C.c **** }
+ 290              		.loc 1 127 0
+ 291 0012 80BD     		pop	{r7, pc}
+ 292              		.cfi_endproc
+ 293              	.LFE66:
+ 294              		.size	home, .-home
+ 295              		.section	.rodata
+ 296              		.align	2
+ 297              	.LC0:
+ 298 0000 00000000 		.word	0
+ 299 0004 40000000 		.word	64
+ 300 0008 14000000 		.word	20
+ 301 000c 54000000 		.word	84
+ 302              		.section	.text.setCursor,"ax",%progbits
+ 303              		.align	2
+ 304              		.global	setCursor
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.type	setCursor, %function
+ 308              	setCursor:
+ 309              	.LFB67:
+ 128:LiquidCrystal_I2C.c **** 
+ 129:LiquidCrystal_I2C.c **** void setCursor(uint8_t col, uint8_t row){
+ 310              		.loc 1 129 0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 24
+ 313              		@ frame_needed = 1, uses_anonymous_args = 0
+ 314 0000 90B5     		push	{r4, r7, lr}
+ 315              		.cfi_def_cfa_offset 12
+ 316              		.cfi_offset 4, -12
+ 317              		.cfi_offset 7, -8
+ 318              		.cfi_offset 14, -4
+ 319 0002 87B0     		sub	sp, sp, #28
+ 320              		.cfi_def_cfa_offset 40
+ 321 0004 00AF     		add	r7, sp, #0
+ 322              		.cfi_def_cfa_register 7
+ 323 0006 0346     		mov	r3, r0
+ 324 0008 0A46     		mov	r2, r1
+ 325 000a FB71     		strb	r3, [r7, #7]
+ 326 000c 1346     		mov	r3, r2
+ 327 000e BB71     		strb	r3, [r7, #6]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 9
+
+
+ 130:LiquidCrystal_I2C.c ****     
+ 131:LiquidCrystal_I2C.c **** 	int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
+ 328              		.loc 1 131 0
+ 329 0010 124B     		ldr	r3, .L18
+ 330 0012 07F10804 		add	r4, r7, #8
+ 331 0016 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 332 0018 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+ 132:LiquidCrystal_I2C.c **** 	if (row > _rows) {
+ 333              		.loc 1 132 0
+ 334 001c 104B     		ldr	r3, .L18+4
+ 335 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 336 0020 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 337 0022 9A42     		cmp	r2, r3
+ 338 0024 03D9     		bls	.L16
+ 133:LiquidCrystal_I2C.c **** 		row = _rows-1;    // we count rows starting w/0
+ 339              		.loc 1 133 0
+ 340 0026 0E4B     		ldr	r3, .L18+4
+ 341 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 342 002a 013B     		subs	r3, r3, #1
+ 343 002c BB71     		strb	r3, [r7, #6]
+ 344              	.L16:
+ 134:LiquidCrystal_I2C.c **** 	}
+ 135:LiquidCrystal_I2C.c **** 	command(LCD_SETDDRAMADDR | (col + row_offsets[row]));
+ 345              		.loc 1 135 0
+ 346 002e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 347 0030 9B00     		lsls	r3, r3, #2
+ 348 0032 07F11802 		add	r2, r7, #24
+ 349 0036 1344     		add	r3, r3, r2
+ 350 0038 53F8103C 		ldr	r3, [r3, #-16]
+ 351 003c DAB2     		uxtb	r2, r3
+ 352 003e FB79     		ldrb	r3, [r7, #7]
+ 353 0040 1344     		add	r3, r3, r2
+ 354 0042 DBB2     		uxtb	r3, r3
+ 355 0044 DBB2     		uxtb	r3, r3
+ 356 0046 63F07F03 		orn	r3, r3, #127
+ 357 004a DBB2     		uxtb	r3, r3
+ 358 004c DBB2     		uxtb	r3, r3
+ 359 004e 1846     		mov	r0, r3
+ 360 0050 FFF7FEFF 		bl	command
+ 136:LiquidCrystal_I2C.c ****     
+ 137:LiquidCrystal_I2C.c ****     return;
+ 361              		.loc 1 137 0
+ 362 0054 00BF     		nop
+ 138:LiquidCrystal_I2C.c **** }
+ 363              		.loc 1 138 0
+ 364 0056 1C37     		adds	r7, r7, #28
+ 365              		.cfi_def_cfa_offset 12
+ 366 0058 BD46     		mov	sp, r7
+ 367              		.cfi_def_cfa_register 13
+ 368              		@ sp needed
+ 369 005a 90BD     		pop	{r4, r7, pc}
+ 370              	.L19:
+ 371              		.align	2
+ 372              	.L18:
+ 373 005c 00000000 		.word	.LC0
+ 374 0060 00000000 		.word	_rows
+ 375              		.cfi_endproc
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 10
+
+
+ 376              	.LFE67:
+ 377              		.size	setCursor, .-setCursor
+ 378              		.section	.text.noDisplay,"ax",%progbits
+ 379              		.align	2
+ 380              		.global	noDisplay
+ 381              		.thumb
+ 382              		.thumb_func
+ 383              		.type	noDisplay, %function
+ 384              	noDisplay:
+ 385              	.LFB68:
+ 139:LiquidCrystal_I2C.c **** 
+ 140:LiquidCrystal_I2C.c **** // Turn the display on/off (quickly)
+ 141:LiquidCrystal_I2C.c **** void noDisplay(void){
+ 386              		.loc 1 141 0
+ 387              		.cfi_startproc
+ 388              		@ args = 0, pretend = 0, frame = 0
+ 389              		@ frame_needed = 1, uses_anonymous_args = 0
+ 390 0000 80B5     		push	{r7, lr}
+ 391              		.cfi_def_cfa_offset 8
+ 392              		.cfi_offset 7, -8
+ 393              		.cfi_offset 14, -4
+ 394 0002 00AF     		add	r7, sp, #0
+ 395              		.cfi_def_cfa_register 7
+ 142:LiquidCrystal_I2C.c **** 	
+ 143:LiquidCrystal_I2C.c ****     _displaycontrol &= ~LCD_DISPLAYON;
+ 396              		.loc 1 143 0
+ 397 0004 084B     		ldr	r3, .L22
+ 398 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 399 0008 23F00403 		bic	r3, r3, #4
+ 400 000c DAB2     		uxtb	r2, r3
+ 401 000e 064B     		ldr	r3, .L22
+ 402 0010 1A70     		strb	r2, [r3]
+ 144:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 403              		.loc 1 144 0
+ 404 0012 054B     		ldr	r3, .L22
+ 405 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 406 0016 43F00803 		orr	r3, r3, #8
+ 407 001a DBB2     		uxtb	r3, r3
+ 408 001c 1846     		mov	r0, r3
+ 409 001e FFF7FEFF 		bl	command
+ 145:LiquidCrystal_I2C.c ****     
+ 146:LiquidCrystal_I2C.c ****     return;
+ 410              		.loc 1 146 0
+ 411 0022 00BF     		nop
+ 147:LiquidCrystal_I2C.c **** }
+ 412              		.loc 1 147 0
+ 413 0024 80BD     		pop	{r7, pc}
+ 414              	.L23:
+ 415 0026 00BF     		.align	2
+ 416              	.L22:
+ 417 0028 00000000 		.word	_displaycontrol
+ 418              		.cfi_endproc
+ 419              	.LFE68:
+ 420              		.size	noDisplay, .-noDisplay
+ 421              		.section	.text.display,"ax",%progbits
+ 422              		.align	2
+ 423              		.global	display
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 11
+
+
+ 424              		.thumb
+ 425              		.thumb_func
+ 426              		.type	display, %function
+ 427              	display:
+ 428              	.LFB69:
+ 148:LiquidCrystal_I2C.c **** void display(void){
+ 429              		.loc 1 148 0
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 1, uses_anonymous_args = 0
+ 433 0000 80B5     		push	{r7, lr}
+ 434              		.cfi_def_cfa_offset 8
+ 435              		.cfi_offset 7, -8
+ 436              		.cfi_offset 14, -4
+ 437 0002 00AF     		add	r7, sp, #0
+ 438              		.cfi_def_cfa_register 7
+ 149:LiquidCrystal_I2C.c ****     
+ 150:LiquidCrystal_I2C.c **** 	_displaycontrol |= LCD_DISPLAYON;
+ 439              		.loc 1 150 0
+ 440 0004 084B     		ldr	r3, .L26
+ 441 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 442 0008 43F00403 		orr	r3, r3, #4
+ 443 000c DAB2     		uxtb	r2, r3
+ 444 000e 064B     		ldr	r3, .L26
+ 445 0010 1A70     		strb	r2, [r3]
+ 151:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 446              		.loc 1 151 0
+ 447 0012 054B     		ldr	r3, .L26
+ 448 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 449 0016 43F00803 		orr	r3, r3, #8
+ 450 001a DBB2     		uxtb	r3, r3
+ 451 001c 1846     		mov	r0, r3
+ 452 001e FFF7FEFF 		bl	command
+ 152:LiquidCrystal_I2C.c ****     
+ 153:LiquidCrystal_I2C.c ****     return;
+ 453              		.loc 1 153 0
+ 454 0022 00BF     		nop
+ 154:LiquidCrystal_I2C.c **** }
+ 455              		.loc 1 154 0
+ 456 0024 80BD     		pop	{r7, pc}
+ 457              	.L27:
+ 458 0026 00BF     		.align	2
+ 459              	.L26:
+ 460 0028 00000000 		.word	_displaycontrol
+ 461              		.cfi_endproc
+ 462              	.LFE69:
+ 463              		.size	display, .-display
+ 464              		.section	.text.noCursor,"ax",%progbits
+ 465              		.align	2
+ 466              		.global	noCursor
+ 467              		.thumb
+ 468              		.thumb_func
+ 469              		.type	noCursor, %function
+ 470              	noCursor:
+ 471              	.LFB70:
+ 155:LiquidCrystal_I2C.c **** 
+ 156:LiquidCrystal_I2C.c **** // Turns the underline cursor on/off
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 12
+
+
+ 157:LiquidCrystal_I2C.c **** void noCursor(void){
+ 472              		.loc 1 157 0
+ 473              		.cfi_startproc
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 1, uses_anonymous_args = 0
+ 476 0000 80B5     		push	{r7, lr}
+ 477              		.cfi_def_cfa_offset 8
+ 478              		.cfi_offset 7, -8
+ 479              		.cfi_offset 14, -4
+ 480 0002 00AF     		add	r7, sp, #0
+ 481              		.cfi_def_cfa_register 7
+ 158:LiquidCrystal_I2C.c **** 	
+ 159:LiquidCrystal_I2C.c ****     _displaycontrol &= ~LCD_CURSORON;
+ 482              		.loc 1 159 0
+ 483 0004 084B     		ldr	r3, .L30
+ 484 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 485 0008 23F00203 		bic	r3, r3, #2
+ 486 000c DAB2     		uxtb	r2, r3
+ 487 000e 064B     		ldr	r3, .L30
+ 488 0010 1A70     		strb	r2, [r3]
+ 160:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 489              		.loc 1 160 0
+ 490 0012 054B     		ldr	r3, .L30
+ 491 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 492 0016 43F00803 		orr	r3, r3, #8
+ 493 001a DBB2     		uxtb	r3, r3
+ 494 001c 1846     		mov	r0, r3
+ 495 001e FFF7FEFF 		bl	command
+ 161:LiquidCrystal_I2C.c ****     
+ 162:LiquidCrystal_I2C.c ****     return;
+ 496              		.loc 1 162 0
+ 497 0022 00BF     		nop
+ 163:LiquidCrystal_I2C.c **** }
+ 498              		.loc 1 163 0
+ 499 0024 80BD     		pop	{r7, pc}
+ 500              	.L31:
+ 501 0026 00BF     		.align	2
+ 502              	.L30:
+ 503 0028 00000000 		.word	_displaycontrol
+ 504              		.cfi_endproc
+ 505              	.LFE70:
+ 506              		.size	noCursor, .-noCursor
+ 507              		.section	.text.cursor,"ax",%progbits
+ 508              		.align	2
+ 509              		.global	cursor
+ 510              		.thumb
+ 511              		.thumb_func
+ 512              		.type	cursor, %function
+ 513              	cursor:
+ 514              	.LFB71:
+ 164:LiquidCrystal_I2C.c **** void cursor(void){
+ 515              		.loc 1 164 0
+ 516              		.cfi_startproc
+ 517              		@ args = 0, pretend = 0, frame = 0
+ 518              		@ frame_needed = 1, uses_anonymous_args = 0
+ 519 0000 80B5     		push	{r7, lr}
+ 520              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 13
+
+
+ 521              		.cfi_offset 7, -8
+ 522              		.cfi_offset 14, -4
+ 523 0002 00AF     		add	r7, sp, #0
+ 524              		.cfi_def_cfa_register 7
+ 165:LiquidCrystal_I2C.c **** 	
+ 166:LiquidCrystal_I2C.c ****     _displaycontrol |= LCD_CURSORON;
+ 525              		.loc 1 166 0
+ 526 0004 084B     		ldr	r3, .L34
+ 527 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 528 0008 43F00203 		orr	r3, r3, #2
+ 529 000c DAB2     		uxtb	r2, r3
+ 530 000e 064B     		ldr	r3, .L34
+ 531 0010 1A70     		strb	r2, [r3]
+ 167:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 532              		.loc 1 167 0
+ 533 0012 054B     		ldr	r3, .L34
+ 534 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 535 0016 43F00803 		orr	r3, r3, #8
+ 536 001a DBB2     		uxtb	r3, r3
+ 537 001c 1846     		mov	r0, r3
+ 538 001e FFF7FEFF 		bl	command
+ 168:LiquidCrystal_I2C.c ****     
+ 169:LiquidCrystal_I2C.c ****     return;
+ 539              		.loc 1 169 0
+ 540 0022 00BF     		nop
+ 170:LiquidCrystal_I2C.c **** }
+ 541              		.loc 1 170 0
+ 542 0024 80BD     		pop	{r7, pc}
+ 543              	.L35:
+ 544 0026 00BF     		.align	2
+ 545              	.L34:
+ 546 0028 00000000 		.word	_displaycontrol
+ 547              		.cfi_endproc
+ 548              	.LFE71:
+ 549              		.size	cursor, .-cursor
+ 550              		.section	.text.noBlink,"ax",%progbits
+ 551              		.align	2
+ 552              		.global	noBlink
+ 553              		.thumb
+ 554              		.thumb_func
+ 555              		.type	noBlink, %function
+ 556              	noBlink:
+ 557              	.LFB72:
+ 171:LiquidCrystal_I2C.c **** 
+ 172:LiquidCrystal_I2C.c **** // Turn on and off the blinking cursor
+ 173:LiquidCrystal_I2C.c **** void noBlink(void){
+ 558              		.loc 1 173 0
+ 559              		.cfi_startproc
+ 560              		@ args = 0, pretend = 0, frame = 0
+ 561              		@ frame_needed = 1, uses_anonymous_args = 0
+ 562 0000 80B5     		push	{r7, lr}
+ 563              		.cfi_def_cfa_offset 8
+ 564              		.cfi_offset 7, -8
+ 565              		.cfi_offset 14, -4
+ 566 0002 00AF     		add	r7, sp, #0
+ 567              		.cfi_def_cfa_register 7
+ 174:LiquidCrystal_I2C.c **** 	
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 14
+
+
+ 175:LiquidCrystal_I2C.c ****     _displaycontrol &= ~LCD_BLINKON;
+ 568              		.loc 1 175 0
+ 569 0004 084B     		ldr	r3, .L38
+ 570 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 571 0008 23F00103 		bic	r3, r3, #1
+ 572 000c DAB2     		uxtb	r2, r3
+ 573 000e 064B     		ldr	r3, .L38
+ 574 0010 1A70     		strb	r2, [r3]
+ 176:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 575              		.loc 1 176 0
+ 576 0012 054B     		ldr	r3, .L38
+ 577 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 578 0016 43F00803 		orr	r3, r3, #8
+ 579 001a DBB2     		uxtb	r3, r3
+ 580 001c 1846     		mov	r0, r3
+ 581 001e FFF7FEFF 		bl	command
+ 177:LiquidCrystal_I2C.c ****     
+ 178:LiquidCrystal_I2C.c ****     return;
+ 582              		.loc 1 178 0
+ 583 0022 00BF     		nop
+ 179:LiquidCrystal_I2C.c **** }
+ 584              		.loc 1 179 0
+ 585 0024 80BD     		pop	{r7, pc}
+ 586              	.L39:
+ 587 0026 00BF     		.align	2
+ 588              	.L38:
+ 589 0028 00000000 		.word	_displaycontrol
+ 590              		.cfi_endproc
+ 591              	.LFE72:
+ 592              		.size	noBlink, .-noBlink
+ 593              		.section	.text.blink,"ax",%progbits
+ 594              		.align	2
+ 595              		.global	blink
+ 596              		.thumb
+ 597              		.thumb_func
+ 598              		.type	blink, %function
+ 599              	blink:
+ 600              	.LFB73:
+ 180:LiquidCrystal_I2C.c **** void blink(void){
+ 601              		.loc 1 180 0
+ 602              		.cfi_startproc
+ 603              		@ args = 0, pretend = 0, frame = 0
+ 604              		@ frame_needed = 1, uses_anonymous_args = 0
+ 605 0000 80B5     		push	{r7, lr}
+ 606              		.cfi_def_cfa_offset 8
+ 607              		.cfi_offset 7, -8
+ 608              		.cfi_offset 14, -4
+ 609 0002 00AF     		add	r7, sp, #0
+ 610              		.cfi_def_cfa_register 7
+ 181:LiquidCrystal_I2C.c ****     
+ 182:LiquidCrystal_I2C.c **** 	_displaycontrol |= LCD_BLINKON;
+ 611              		.loc 1 182 0
+ 612 0004 084B     		ldr	r3, .L42
+ 613 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 614 0008 43F00103 		orr	r3, r3, #1
+ 615 000c DAB2     		uxtb	r2, r3
+ 616 000e 064B     		ldr	r3, .L42
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 15
+
+
+ 617 0010 1A70     		strb	r2, [r3]
+ 183:LiquidCrystal_I2C.c **** 	command(LCD_DISPLAYCONTROL | _displaycontrol);
+ 618              		.loc 1 183 0
+ 619 0012 054B     		ldr	r3, .L42
+ 620 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 621 0016 43F00803 		orr	r3, r3, #8
+ 622 001a DBB2     		uxtb	r3, r3
+ 623 001c 1846     		mov	r0, r3
+ 624 001e FFF7FEFF 		bl	command
+ 184:LiquidCrystal_I2C.c ****     
+ 185:LiquidCrystal_I2C.c ****     return;
+ 625              		.loc 1 185 0
+ 626 0022 00BF     		nop
+ 186:LiquidCrystal_I2C.c **** }
+ 627              		.loc 1 186 0
+ 628 0024 80BD     		pop	{r7, pc}
+ 629              	.L43:
+ 630 0026 00BF     		.align	2
+ 631              	.L42:
+ 632 0028 00000000 		.word	_displaycontrol
+ 633              		.cfi_endproc
+ 634              	.LFE73:
+ 635              		.size	blink, .-blink
+ 636              		.section	.text.scrollDisplayLeft,"ax",%progbits
+ 637              		.align	2
+ 638              		.global	scrollDisplayLeft
+ 639              		.thumb
+ 640              		.thumb_func
+ 641              		.type	scrollDisplayLeft, %function
+ 642              	scrollDisplayLeft:
+ 643              	.LFB74:
+ 187:LiquidCrystal_I2C.c **** 
+ 188:LiquidCrystal_I2C.c **** // These commands scroll the display without changing the RAM
+ 189:LiquidCrystal_I2C.c **** void scrollDisplayLeft(void){
+ 644              		.loc 1 189 0
+ 645              		.cfi_startproc
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 1, uses_anonymous_args = 0
+ 648 0000 80B5     		push	{r7, lr}
+ 649              		.cfi_def_cfa_offset 8
+ 650              		.cfi_offset 7, -8
+ 651              		.cfi_offset 14, -4
+ 652 0002 00AF     		add	r7, sp, #0
+ 653              		.cfi_def_cfa_register 7
+ 190:LiquidCrystal_I2C.c ****     
+ 191:LiquidCrystal_I2C.c **** 	command(LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVELEFT);
+ 654              		.loc 1 191 0
+ 655 0004 1820     		movs	r0, #24
+ 656 0006 FFF7FEFF 		bl	command
+ 192:LiquidCrystal_I2C.c ****     
+ 193:LiquidCrystal_I2C.c ****     return;
+ 657              		.loc 1 193 0
+ 658 000a 00BF     		nop
+ 194:LiquidCrystal_I2C.c **** }
+ 659              		.loc 1 194 0
+ 660 000c 80BD     		pop	{r7, pc}
+ 661              		.cfi_endproc
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 16
+
+
+ 662              	.LFE74:
+ 663              		.size	scrollDisplayLeft, .-scrollDisplayLeft
+ 664 000e 00BF     		.section	.text.scrollDisplayRight,"ax",%progbits
+ 665              		.align	2
+ 666              		.global	scrollDisplayRight
+ 667              		.thumb
+ 668              		.thumb_func
+ 669              		.type	scrollDisplayRight, %function
+ 670              	scrollDisplayRight:
+ 671              	.LFB75:
+ 195:LiquidCrystal_I2C.c **** void scrollDisplayRight(void){
+ 672              		.loc 1 195 0
+ 673              		.cfi_startproc
+ 674              		@ args = 0, pretend = 0, frame = 0
+ 675              		@ frame_needed = 1, uses_anonymous_args = 0
+ 676 0000 80B5     		push	{r7, lr}
+ 677              		.cfi_def_cfa_offset 8
+ 678              		.cfi_offset 7, -8
+ 679              		.cfi_offset 14, -4
+ 680 0002 00AF     		add	r7, sp, #0
+ 681              		.cfi_def_cfa_register 7
+ 196:LiquidCrystal_I2C.c **** 	
+ 197:LiquidCrystal_I2C.c ****     command(LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVERIGHT);
+ 682              		.loc 1 197 0
+ 683 0004 1C20     		movs	r0, #28
+ 684 0006 FFF7FEFF 		bl	command
+ 198:LiquidCrystal_I2C.c ****     
+ 199:LiquidCrystal_I2C.c ****     return;
+ 685              		.loc 1 199 0
+ 686 000a 00BF     		nop
+ 200:LiquidCrystal_I2C.c **** }
+ 687              		.loc 1 200 0
+ 688 000c 80BD     		pop	{r7, pc}
+ 689              		.cfi_endproc
+ 690              	.LFE75:
+ 691              		.size	scrollDisplayRight, .-scrollDisplayRight
+ 692 000e 00BF     		.section	.text.leftToRight,"ax",%progbits
+ 693              		.align	2
+ 694              		.global	leftToRight
+ 695              		.thumb
+ 696              		.thumb_func
+ 697              		.type	leftToRight, %function
+ 698              	leftToRight:
+ 699              	.LFB76:
+ 201:LiquidCrystal_I2C.c **** 
+ 202:LiquidCrystal_I2C.c **** // This is for text that flows Left to Right
+ 203:LiquidCrystal_I2C.c **** void leftToRight(void){
+ 700              		.loc 1 203 0
+ 701              		.cfi_startproc
+ 702              		@ args = 0, pretend = 0, frame = 0
+ 703              		@ frame_needed = 1, uses_anonymous_args = 0
+ 704 0000 80B5     		push	{r7, lr}
+ 705              		.cfi_def_cfa_offset 8
+ 706              		.cfi_offset 7, -8
+ 707              		.cfi_offset 14, -4
+ 708 0002 00AF     		add	r7, sp, #0
+ 709              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 17
+
+
+ 204:LiquidCrystal_I2C.c ****     
+ 205:LiquidCrystal_I2C.c **** 	_displaymode |= LCD_ENTRYLEFT;
+ 710              		.loc 1 205 0
+ 711 0004 084B     		ldr	r3, .L50
+ 712 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 713 0008 43F00203 		orr	r3, r3, #2
+ 714 000c DAB2     		uxtb	r2, r3
+ 715 000e 064B     		ldr	r3, .L50
+ 716 0010 1A70     		strb	r2, [r3]
+ 206:LiquidCrystal_I2C.c **** 	command(LCD_ENTRYMODESET | _displaymode);
+ 717              		.loc 1 206 0
+ 718 0012 054B     		ldr	r3, .L50
+ 719 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 720 0016 43F00403 		orr	r3, r3, #4
+ 721 001a DBB2     		uxtb	r3, r3
+ 722 001c 1846     		mov	r0, r3
+ 723 001e FFF7FEFF 		bl	command
+ 207:LiquidCrystal_I2C.c ****     
+ 208:LiquidCrystal_I2C.c ****     return;
+ 724              		.loc 1 208 0
+ 725 0022 00BF     		nop
+ 209:LiquidCrystal_I2C.c **** }
+ 726              		.loc 1 209 0
+ 727 0024 80BD     		pop	{r7, pc}
+ 728              	.L51:
+ 729 0026 00BF     		.align	2
+ 730              	.L50:
+ 731 0028 00000000 		.word	_displaymode
+ 732              		.cfi_endproc
+ 733              	.LFE76:
+ 734              		.size	leftToRight, .-leftToRight
+ 735              		.section	.text.rightToLeft,"ax",%progbits
+ 736              		.align	2
+ 737              		.global	rightToLeft
+ 738              		.thumb
+ 739              		.thumb_func
+ 740              		.type	rightToLeft, %function
+ 741              	rightToLeft:
+ 742              	.LFB77:
+ 210:LiquidCrystal_I2C.c **** 
+ 211:LiquidCrystal_I2C.c **** // This is for text that flows Right to Left
+ 212:LiquidCrystal_I2C.c **** void rightToLeft(void){
+ 743              		.loc 1 212 0
+ 744              		.cfi_startproc
+ 745              		@ args = 0, pretend = 0, frame = 0
+ 746              		@ frame_needed = 1, uses_anonymous_args = 0
+ 747 0000 80B5     		push	{r7, lr}
+ 748              		.cfi_def_cfa_offset 8
+ 749              		.cfi_offset 7, -8
+ 750              		.cfi_offset 14, -4
+ 751 0002 00AF     		add	r7, sp, #0
+ 752              		.cfi_def_cfa_register 7
+ 213:LiquidCrystal_I2C.c ****     
+ 214:LiquidCrystal_I2C.c **** 	_displaymode &= ~LCD_ENTRYLEFT;
+ 753              		.loc 1 214 0
+ 754 0004 084B     		ldr	r3, .L54
+ 755 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 18
+
+
+ 756 0008 23F00203 		bic	r3, r3, #2
+ 757 000c DAB2     		uxtb	r2, r3
+ 758 000e 064B     		ldr	r3, .L54
+ 759 0010 1A70     		strb	r2, [r3]
+ 215:LiquidCrystal_I2C.c **** 	command(LCD_ENTRYMODESET | _displaymode);
+ 760              		.loc 1 215 0
+ 761 0012 054B     		ldr	r3, .L54
+ 762 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 763 0016 43F00403 		orr	r3, r3, #4
+ 764 001a DBB2     		uxtb	r3, r3
+ 765 001c 1846     		mov	r0, r3
+ 766 001e FFF7FEFF 		bl	command
+ 216:LiquidCrystal_I2C.c ****     
+ 217:LiquidCrystal_I2C.c ****     return;
+ 767              		.loc 1 217 0
+ 768 0022 00BF     		nop
+ 218:LiquidCrystal_I2C.c **** }
+ 769              		.loc 1 218 0
+ 770 0024 80BD     		pop	{r7, pc}
+ 771              	.L55:
+ 772 0026 00BF     		.align	2
+ 773              	.L54:
+ 774 0028 00000000 		.word	_displaymode
+ 775              		.cfi_endproc
+ 776              	.LFE77:
+ 777              		.size	rightToLeft, .-rightToLeft
+ 778              		.section	.text.autoscroll,"ax",%progbits
+ 779              		.align	2
+ 780              		.global	autoscroll
+ 781              		.thumb
+ 782              		.thumb_func
+ 783              		.type	autoscroll, %function
+ 784              	autoscroll:
+ 785              	.LFB78:
+ 219:LiquidCrystal_I2C.c **** 
+ 220:LiquidCrystal_I2C.c **** // This will 'right justify' text from the cursor
+ 221:LiquidCrystal_I2C.c **** void autoscroll(void){
+ 786              		.loc 1 221 0
+ 787              		.cfi_startproc
+ 788              		@ args = 0, pretend = 0, frame = 0
+ 789              		@ frame_needed = 1, uses_anonymous_args = 0
+ 790 0000 80B5     		push	{r7, lr}
+ 791              		.cfi_def_cfa_offset 8
+ 792              		.cfi_offset 7, -8
+ 793              		.cfi_offset 14, -4
+ 794 0002 00AF     		add	r7, sp, #0
+ 795              		.cfi_def_cfa_register 7
+ 222:LiquidCrystal_I2C.c **** 	
+ 223:LiquidCrystal_I2C.c ****     _displaymode |= LCD_ENTRYSHIFTINCREMENT;
+ 796              		.loc 1 223 0
+ 797 0004 084B     		ldr	r3, .L58
+ 798 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 799 0008 43F00103 		orr	r3, r3, #1
+ 800 000c DAB2     		uxtb	r2, r3
+ 801 000e 064B     		ldr	r3, .L58
+ 802 0010 1A70     		strb	r2, [r3]
+ 224:LiquidCrystal_I2C.c **** 	command(LCD_ENTRYMODESET | _displaymode);
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 19
+
+
+ 803              		.loc 1 224 0
+ 804 0012 054B     		ldr	r3, .L58
+ 805 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 806 0016 43F00403 		orr	r3, r3, #4
+ 807 001a DBB2     		uxtb	r3, r3
+ 808 001c 1846     		mov	r0, r3
+ 809 001e FFF7FEFF 		bl	command
+ 225:LiquidCrystal_I2C.c ****     
+ 226:LiquidCrystal_I2C.c ****     return;
+ 810              		.loc 1 226 0
+ 811 0022 00BF     		nop
+ 227:LiquidCrystal_I2C.c **** }
+ 812              		.loc 1 227 0
+ 813 0024 80BD     		pop	{r7, pc}
+ 814              	.L59:
+ 815 0026 00BF     		.align	2
+ 816              	.L58:
+ 817 0028 00000000 		.word	_displaymode
+ 818              		.cfi_endproc
+ 819              	.LFE78:
+ 820              		.size	autoscroll, .-autoscroll
+ 821              		.section	.text.noAutoscroll,"ax",%progbits
+ 822              		.align	2
+ 823              		.global	noAutoscroll
+ 824              		.thumb
+ 825              		.thumb_func
+ 826              		.type	noAutoscroll, %function
+ 827              	noAutoscroll:
+ 828              	.LFB79:
+ 228:LiquidCrystal_I2C.c **** 
+ 229:LiquidCrystal_I2C.c **** // This will 'left justify' text from the cursor
+ 230:LiquidCrystal_I2C.c **** void noAutoscroll(void){
+ 829              		.loc 1 230 0
+ 830              		.cfi_startproc
+ 831              		@ args = 0, pretend = 0, frame = 0
+ 832              		@ frame_needed = 1, uses_anonymous_args = 0
+ 833 0000 80B5     		push	{r7, lr}
+ 834              		.cfi_def_cfa_offset 8
+ 835              		.cfi_offset 7, -8
+ 836              		.cfi_offset 14, -4
+ 837 0002 00AF     		add	r7, sp, #0
+ 838              		.cfi_def_cfa_register 7
+ 231:LiquidCrystal_I2C.c **** 	
+ 232:LiquidCrystal_I2C.c ****     _displaymode &= ~LCD_ENTRYSHIFTINCREMENT;
+ 839              		.loc 1 232 0
+ 840 0004 084B     		ldr	r3, .L62
+ 841 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 842 0008 23F00103 		bic	r3, r3, #1
+ 843 000c DAB2     		uxtb	r2, r3
+ 844 000e 064B     		ldr	r3, .L62
+ 845 0010 1A70     		strb	r2, [r3]
+ 233:LiquidCrystal_I2C.c **** 	command(LCD_ENTRYMODESET | _displaymode);
+ 846              		.loc 1 233 0
+ 847 0012 054B     		ldr	r3, .L62
+ 848 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 849 0016 43F00403 		orr	r3, r3, #4
+ 850 001a DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 20
+
+
+ 851 001c 1846     		mov	r0, r3
+ 852 001e FFF7FEFF 		bl	command
+ 234:LiquidCrystal_I2C.c ****     
+ 235:LiquidCrystal_I2C.c ****     return;
+ 853              		.loc 1 235 0
+ 854 0022 00BF     		nop
+ 236:LiquidCrystal_I2C.c **** }
+ 855              		.loc 1 236 0
+ 856 0024 80BD     		pop	{r7, pc}
+ 857              	.L63:
+ 858 0026 00BF     		.align	2
+ 859              	.L62:
+ 860 0028 00000000 		.word	_displaymode
+ 861              		.cfi_endproc
+ 862              	.LFE79:
+ 863              		.size	noAutoscroll, .-noAutoscroll
+ 864              		.section	.text.createChar,"ax",%progbits
+ 865              		.align	2
+ 866              		.global	createChar
+ 867              		.thumb
+ 868              		.thumb_func
+ 869              		.type	createChar, %function
+ 870              	createChar:
+ 871              	.LFB80:
+ 237:LiquidCrystal_I2C.c **** 
+ 238:LiquidCrystal_I2C.c **** // Allows us to fill the first 8 CGRAM locations
+ 239:LiquidCrystal_I2C.c **** // with custom characters
+ 240:LiquidCrystal_I2C.c **** void createChar(uint8_t location, uint8_t charmap[]){ uint32_t i = 0;
+ 872              		.loc 1 240 0
+ 873              		.cfi_startproc
+ 874              		@ args = 0, pretend = 0, frame = 16
+ 875              		@ frame_needed = 1, uses_anonymous_args = 0
+ 876 0000 80B5     		push	{r7, lr}
+ 877              		.cfi_def_cfa_offset 8
+ 878              		.cfi_offset 7, -8
+ 879              		.cfi_offset 14, -4
+ 880 0002 84B0     		sub	sp, sp, #16
+ 881              		.cfi_def_cfa_offset 24
+ 882 0004 00AF     		add	r7, sp, #0
+ 883              		.cfi_def_cfa_register 7
+ 884 0006 0346     		mov	r3, r0
+ 885 0008 3960     		str	r1, [r7]
+ 886 000a FB71     		strb	r3, [r7, #7]
+ 887              		.loc 1 240 0
+ 888 000c 0023     		movs	r3, #0
+ 889 000e FB60     		str	r3, [r7, #12]
+ 241:LiquidCrystal_I2C.c **** 	
+ 242:LiquidCrystal_I2C.c ****     location &= 0x7; // we only have 8 locations 0-7
+ 890              		.loc 1 242 0
+ 891 0010 FB79     		ldrb	r3, [r7, #7]
+ 892 0012 03F00703 		and	r3, r3, #7
+ 893 0016 FB71     		strb	r3, [r7, #7]
+ 243:LiquidCrystal_I2C.c **** 	command(LCD_SETCGRAMADDR | (location << 3));
+ 894              		.loc 1 243 0
+ 895 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 896 001a DB00     		lsls	r3, r3, #3
+ 897 001c DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 21
+
+
+ 898 001e 43F04003 		orr	r3, r3, #64
+ 899 0022 DBB2     		uxtb	r3, r3
+ 900 0024 DBB2     		uxtb	r3, r3
+ 901 0026 1846     		mov	r0, r3
+ 902 0028 FFF7FEFF 		bl	command
+ 244:LiquidCrystal_I2C.c **** 	for (i=0; i<8; i++) {
+ 903              		.loc 1 244 0
+ 904 002c 0023     		movs	r3, #0
+ 905 002e FB60     		str	r3, [r7, #12]
+ 906 0030 09E0     		b	.L65
+ 907              	.L66:
+ 245:LiquidCrystal_I2C.c **** 		write(charmap[i]);
+ 908              		.loc 1 245 0 discriminator 3
+ 909 0032 3A68     		ldr	r2, [r7]
+ 910 0034 FB68     		ldr	r3, [r7, #12]
+ 911 0036 1344     		add	r3, r3, r2
+ 912 0038 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 913 003a 1846     		mov	r0, r3
+ 914 003c FFF7FEFF 		bl	write
+ 244:LiquidCrystal_I2C.c **** 	for (i=0; i<8; i++) {
+ 915              		.loc 1 244 0 discriminator 3
+ 916 0040 FB68     		ldr	r3, [r7, #12]
+ 917 0042 0133     		adds	r3, r3, #1
+ 918 0044 FB60     		str	r3, [r7, #12]
+ 919              	.L65:
+ 244:LiquidCrystal_I2C.c **** 	for (i=0; i<8; i++) {
+ 920              		.loc 1 244 0 is_stmt 0 discriminator 1
+ 921 0046 FB68     		ldr	r3, [r7, #12]
+ 922 0048 072B     		cmp	r3, #7
+ 923 004a F2D9     		bls	.L66
+ 246:LiquidCrystal_I2C.c **** 	}
+ 247:LiquidCrystal_I2C.c ****     
+ 248:LiquidCrystal_I2C.c ****     return;
+ 924              		.loc 1 248 0 is_stmt 1
+ 925 004c 00BF     		nop
+ 249:LiquidCrystal_I2C.c **** }
+ 926              		.loc 1 249 0
+ 927 004e 1037     		adds	r7, r7, #16
+ 928              		.cfi_def_cfa_offset 8
+ 929 0050 BD46     		mov	sp, r7
+ 930              		.cfi_def_cfa_register 13
+ 931              		@ sp needed
+ 932 0052 80BD     		pop	{r7, pc}
+ 933              		.cfi_endproc
+ 934              	.LFE80:
+ 935              		.size	createChar, .-createChar
+ 936              		.section	.text.noBacklight,"ax",%progbits
+ 937              		.align	2
+ 938              		.global	noBacklight
+ 939              		.thumb
+ 940              		.thumb_func
+ 941              		.type	noBacklight, %function
+ 942              	noBacklight:
+ 943              	.LFB81:
+ 250:LiquidCrystal_I2C.c **** 
+ 251:LiquidCrystal_I2C.c **** // Turn the (optional) backlight off/on
+ 252:LiquidCrystal_I2C.c **** void noBacklight(void) {
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 22
+
+
+ 944              		.loc 1 252 0
+ 945              		.cfi_startproc
+ 946              		@ args = 0, pretend = 0, frame = 0
+ 947              		@ frame_needed = 1, uses_anonymous_args = 0
+ 948 0000 80B5     		push	{r7, lr}
+ 949              		.cfi_def_cfa_offset 8
+ 950              		.cfi_offset 7, -8
+ 951              		.cfi_offset 14, -4
+ 952 0002 00AF     		add	r7, sp, #0
+ 953              		.cfi_def_cfa_register 7
+ 253:LiquidCrystal_I2C.c **** 	
+ 254:LiquidCrystal_I2C.c ****     _backlightval=LCD_NOBACKLIGHT;
+ 954              		.loc 1 254 0
+ 955 0004 034B     		ldr	r3, .L70
+ 956 0006 0022     		movs	r2, #0
+ 957 0008 1A70     		strb	r2, [r3]
+ 255:LiquidCrystal_I2C.c **** 	expanderWrite(0);
+ 958              		.loc 1 255 0
+ 959 000a 0020     		movs	r0, #0
+ 960 000c FFF7FEFF 		bl	expanderWrite
+ 256:LiquidCrystal_I2C.c ****     
+ 257:LiquidCrystal_I2C.c ****     return;
+ 961              		.loc 1 257 0
+ 962 0010 00BF     		nop
+ 258:LiquidCrystal_I2C.c **** }
+ 963              		.loc 1 258 0
+ 964 0012 80BD     		pop	{r7, pc}
+ 965              	.L71:
+ 966              		.align	2
+ 967              	.L70:
+ 968 0014 00000000 		.word	_backlightval
+ 969              		.cfi_endproc
+ 970              	.LFE81:
+ 971              		.size	noBacklight, .-noBacklight
+ 972              		.section	.text.backlight,"ax",%progbits
+ 973              		.align	2
+ 974              		.global	backlight
+ 975              		.thumb
+ 976              		.thumb_func
+ 977              		.type	backlight, %function
+ 978              	backlight:
+ 979              	.LFB82:
+ 259:LiquidCrystal_I2C.c **** 
+ 260:LiquidCrystal_I2C.c **** void backlight(void){
+ 980              		.loc 1 260 0
+ 981              		.cfi_startproc
+ 982              		@ args = 0, pretend = 0, frame = 0
+ 983              		@ frame_needed = 1, uses_anonymous_args = 0
+ 984 0000 80B5     		push	{r7, lr}
+ 985              		.cfi_def_cfa_offset 8
+ 986              		.cfi_offset 7, -8
+ 987              		.cfi_offset 14, -4
+ 988 0002 00AF     		add	r7, sp, #0
+ 989              		.cfi_def_cfa_register 7
+ 261:LiquidCrystal_I2C.c ****     
+ 262:LiquidCrystal_I2C.c **** 	_backlightval=LCD_BACKLIGHT;
+ 990              		.loc 1 262 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 23
+
+
+ 991 0004 034B     		ldr	r3, .L74
+ 992 0006 0822     		movs	r2, #8
+ 993 0008 1A70     		strb	r2, [r3]
+ 263:LiquidCrystal_I2C.c **** 	expanderWrite(0);
+ 994              		.loc 1 263 0
+ 995 000a 0020     		movs	r0, #0
+ 996 000c FFF7FEFF 		bl	expanderWrite
+ 264:LiquidCrystal_I2C.c ****     
+ 265:LiquidCrystal_I2C.c ****     return;
+ 997              		.loc 1 265 0
+ 998 0010 00BF     		nop
+ 266:LiquidCrystal_I2C.c **** }
+ 999              		.loc 1 266 0
+ 1000 0012 80BD     		pop	{r7, pc}
+ 1001              	.L75:
+ 1002              		.align	2
+ 1003              	.L74:
+ 1004 0014 00000000 		.word	_backlightval
+ 1005              		.cfi_endproc
+ 1006              	.LFE82:
+ 1007              		.size	backlight, .-backlight
+ 1008              		.section	.text.command,"ax",%progbits
+ 1009              		.align	2
+ 1010              		.global	command
+ 1011              		.thumb
+ 1012              		.thumb_func
+ 1013              		.type	command, %function
+ 1014              	command:
+ 1015              	.LFB83:
+ 267:LiquidCrystal_I2C.c **** 
+ 268:LiquidCrystal_I2C.c **** /*********** mid level commands, for sending data/cmds */
+ 269:LiquidCrystal_I2C.c **** 
+ 270:LiquidCrystal_I2C.c **** void command(uint8_t value){
+ 1016              		.loc 1 270 0
+ 1017              		.cfi_startproc
+ 1018              		@ args = 0, pretend = 0, frame = 8
+ 1019              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1020 0000 80B5     		push	{r7, lr}
+ 1021              		.cfi_def_cfa_offset 8
+ 1022              		.cfi_offset 7, -8
+ 1023              		.cfi_offset 14, -4
+ 1024 0002 82B0     		sub	sp, sp, #8
+ 1025              		.cfi_def_cfa_offset 16
+ 1026 0004 00AF     		add	r7, sp, #0
+ 1027              		.cfi_def_cfa_register 7
+ 1028 0006 0346     		mov	r3, r0
+ 1029 0008 FB71     		strb	r3, [r7, #7]
+ 271:LiquidCrystal_I2C.c **** 	
+ 272:LiquidCrystal_I2C.c ****     send(value, 0);
+ 1030              		.loc 1 272 0
+ 1031 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1032 000c 1846     		mov	r0, r3
+ 1033 000e 0021     		movs	r1, #0
+ 1034 0010 FFF7FEFF 		bl	send
+ 273:LiquidCrystal_I2C.c ****     
+ 274:LiquidCrystal_I2C.c ****     return;
+ 1035              		.loc 1 274 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 24
+
+
+ 1036 0014 00BF     		nop
+ 275:LiquidCrystal_I2C.c **** }
+ 1037              		.loc 1 275 0
+ 1038 0016 0837     		adds	r7, r7, #8
+ 1039              		.cfi_def_cfa_offset 8
+ 1040 0018 BD46     		mov	sp, r7
+ 1041              		.cfi_def_cfa_register 13
+ 1042              		@ sp needed
+ 1043 001a 80BD     		pop	{r7, pc}
+ 1044              		.cfi_endproc
+ 1045              	.LFE83:
+ 1046              		.size	command, .-command
+ 1047              		.section	.text.write,"ax",%progbits
+ 1048              		.align	2
+ 1049              		.global	write
+ 1050              		.thumb
+ 1051              		.thumb_func
+ 1052              		.type	write, %function
+ 1053              	write:
+ 1054              	.LFB84:
+ 276:LiquidCrystal_I2C.c **** 
+ 277:LiquidCrystal_I2C.c ****  void write(uint8_t value){
+ 1055              		.loc 1 277 0
+ 1056              		.cfi_startproc
+ 1057              		@ args = 0, pretend = 0, frame = 8
+ 1058              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1059 0000 80B5     		push	{r7, lr}
+ 1060              		.cfi_def_cfa_offset 8
+ 1061              		.cfi_offset 7, -8
+ 1062              		.cfi_offset 14, -4
+ 1063 0002 82B0     		sub	sp, sp, #8
+ 1064              		.cfi_def_cfa_offset 16
+ 1065 0004 00AF     		add	r7, sp, #0
+ 1066              		.cfi_def_cfa_register 7
+ 1067 0006 0346     		mov	r3, r0
+ 1068 0008 FB71     		strb	r3, [r7, #7]
+ 278:LiquidCrystal_I2C.c ****     
+ 279:LiquidCrystal_I2C.c **** 	send(value, Rs);
+ 1069              		.loc 1 279 0
+ 1070 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1071 000c 1846     		mov	r0, r3
+ 1072 000e 0121     		movs	r1, #1
+ 1073 0010 FFF7FEFF 		bl	send
+ 280:LiquidCrystal_I2C.c ****     
+ 281:LiquidCrystal_I2C.c ****     return;
+ 1074              		.loc 1 281 0
+ 1075 0014 00BF     		nop
+ 282:LiquidCrystal_I2C.c **** }
+ 1076              		.loc 1 282 0
+ 1077 0016 0837     		adds	r7, r7, #8
+ 1078              		.cfi_def_cfa_offset 8
+ 1079 0018 BD46     		mov	sp, r7
+ 1080              		.cfi_def_cfa_register 13
+ 1081              		@ sp needed
+ 1082 001a 80BD     		pop	{r7, pc}
+ 1083              		.cfi_endproc
+ 1084              	.LFE84:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 25
+
+
+ 1085              		.size	write, .-write
+ 1086              		.section	.text.send,"ax",%progbits
+ 1087              		.align	2
+ 1088              		.global	send
+ 1089              		.thumb
+ 1090              		.thumb_func
+ 1091              		.type	send, %function
+ 1092              	send:
+ 1093              	.LFB85:
+ 283:LiquidCrystal_I2C.c **** 
+ 284:LiquidCrystal_I2C.c **** 
+ 285:LiquidCrystal_I2C.c **** /************ low level data pushing commands **********/
+ 286:LiquidCrystal_I2C.c **** 
+ 287:LiquidCrystal_I2C.c **** // write either command or data
+ 288:LiquidCrystal_I2C.c **** void send(uint8_t value, uint8_t mode){
+ 1094              		.loc 1 288 0
+ 1095              		.cfi_startproc
+ 1096              		@ args = 0, pretend = 0, frame = 16
+ 1097              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1098 0000 80B5     		push	{r7, lr}
+ 1099              		.cfi_def_cfa_offset 8
+ 1100              		.cfi_offset 7, -8
+ 1101              		.cfi_offset 14, -4
+ 1102 0002 84B0     		sub	sp, sp, #16
+ 1103              		.cfi_def_cfa_offset 24
+ 1104 0004 00AF     		add	r7, sp, #0
+ 1105              		.cfi_def_cfa_register 7
+ 1106 0006 0346     		mov	r3, r0
+ 1107 0008 0A46     		mov	r2, r1
+ 1108 000a FB71     		strb	r3, [r7, #7]
+ 1109 000c 1346     		mov	r3, r2
+ 1110 000e BB71     		strb	r3, [r7, #6]
+ 289:LiquidCrystal_I2C.c ****     
+ 290:LiquidCrystal_I2C.c **** 	uint8_t highnib=value&0xf0;
+ 1111              		.loc 1 290 0
+ 1112 0010 FB79     		ldrb	r3, [r7, #7]
+ 1113 0012 23F00F03 		bic	r3, r3, #15
+ 1114 0016 FB73     		strb	r3, [r7, #15]
+ 291:LiquidCrystal_I2C.c **** 	uint8_t lownib=(value<<4)&0xf0;
+ 1115              		.loc 1 291 0
+ 1116 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1117 001a 1B01     		lsls	r3, r3, #4
+ 1118 001c BB73     		strb	r3, [r7, #14]
+ 292:LiquidCrystal_I2C.c **** 	write4bits((highnib)|mode);
+ 1119              		.loc 1 292 0
+ 1120 001e FA7B     		ldrb	r2, [r7, #15]
+ 1121 0020 BB79     		ldrb	r3, [r7, #6]
+ 1122 0022 1343     		orrs	r3, r3, r2
+ 1123 0024 DBB2     		uxtb	r3, r3
+ 1124 0026 1846     		mov	r0, r3
+ 1125 0028 FFF7FEFF 		bl	write4bits
+ 293:LiquidCrystal_I2C.c **** 	write4bits((lownib)|mode); 
+ 1126              		.loc 1 293 0
+ 1127 002c BA7B     		ldrb	r2, [r7, #14]
+ 1128 002e BB79     		ldrb	r3, [r7, #6]
+ 1129 0030 1343     		orrs	r3, r3, r2
+ 1130 0032 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 26
+
+
+ 1131 0034 1846     		mov	r0, r3
+ 1132 0036 FFF7FEFF 		bl	write4bits
+ 294:LiquidCrystal_I2C.c ****     
+ 295:LiquidCrystal_I2C.c ****     return;
+ 1133              		.loc 1 295 0
+ 1134 003a 00BF     		nop
+ 296:LiquidCrystal_I2C.c **** }
+ 1135              		.loc 1 296 0
+ 1136 003c 1037     		adds	r7, r7, #16
+ 1137              		.cfi_def_cfa_offset 8
+ 1138 003e BD46     		mov	sp, r7
+ 1139              		.cfi_def_cfa_register 13
+ 1140              		@ sp needed
+ 1141 0040 80BD     		pop	{r7, pc}
+ 1142              		.cfi_endproc
+ 1143              	.LFE85:
+ 1144              		.size	send, .-send
+ 1145 0042 00BF     		.section	.text.write4bits,"ax",%progbits
+ 1146              		.align	2
+ 1147              		.global	write4bits
+ 1148              		.thumb
+ 1149              		.thumb_func
+ 1150              		.type	write4bits, %function
+ 1151              	write4bits:
+ 1152              	.LFB86:
+ 297:LiquidCrystal_I2C.c **** 
+ 298:LiquidCrystal_I2C.c **** void write4bits(uint8_t value) {
+ 1153              		.loc 1 298 0
+ 1154              		.cfi_startproc
+ 1155              		@ args = 0, pretend = 0, frame = 8
+ 1156              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1157 0000 80B5     		push	{r7, lr}
+ 1158              		.cfi_def_cfa_offset 8
+ 1159              		.cfi_offset 7, -8
+ 1160              		.cfi_offset 14, -4
+ 1161 0002 82B0     		sub	sp, sp, #8
+ 1162              		.cfi_def_cfa_offset 16
+ 1163 0004 00AF     		add	r7, sp, #0
+ 1164              		.cfi_def_cfa_register 7
+ 1165 0006 0346     		mov	r3, r0
+ 1166 0008 FB71     		strb	r3, [r7, #7]
+ 299:LiquidCrystal_I2C.c ****     
+ 300:LiquidCrystal_I2C.c **** 	expanderWrite(value);
+ 1167              		.loc 1 300 0
+ 1168 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1169 000c 1846     		mov	r0, r3
+ 1170 000e FFF7FEFF 		bl	expanderWrite
+ 301:LiquidCrystal_I2C.c **** 	pulseEnable(value);
+ 1171              		.loc 1 301 0
+ 1172 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1173 0014 1846     		mov	r0, r3
+ 1174 0016 FFF7FEFF 		bl	pulseEnable
+ 302:LiquidCrystal_I2C.c ****     
+ 303:LiquidCrystal_I2C.c ****     return;
+ 1175              		.loc 1 303 0
+ 1176 001a 00BF     		nop
+ 304:LiquidCrystal_I2C.c **** }
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 27
+
+
+ 1177              		.loc 1 304 0
+ 1178 001c 0837     		adds	r7, r7, #8
+ 1179              		.cfi_def_cfa_offset 8
+ 1180 001e BD46     		mov	sp, r7
+ 1181              		.cfi_def_cfa_register 13
+ 1182              		@ sp needed
+ 1183 0020 80BD     		pop	{r7, pc}
+ 1184              		.cfi_endproc
+ 1185              	.LFE86:
+ 1186              		.size	write4bits, .-write4bits
+ 1187 0022 00BF     		.section	.text.expanderWrite,"ax",%progbits
+ 1188              		.align	2
+ 1189              		.global	expanderWrite
+ 1190              		.thumb
+ 1191              		.thumb_func
+ 1192              		.type	expanderWrite, %function
+ 1193              	expanderWrite:
+ 1194              	.LFB87:
+ 305:LiquidCrystal_I2C.c **** 
+ 306:LiquidCrystal_I2C.c **** void expanderWrite(uint8_t _data){     
+ 1195              		.loc 1 306 0
+ 1196              		.cfi_startproc
+ 1197              		@ args = 0, pretend = 0, frame = 8
+ 1198              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1199 0000 80B5     		push	{r7, lr}
+ 1200              		.cfi_def_cfa_offset 8
+ 1201              		.cfi_offset 7, -8
+ 1202              		.cfi_offset 14, -4
+ 1203 0002 82B0     		sub	sp, sp, #8
+ 1204              		.cfi_def_cfa_offset 16
+ 1205 0004 00AF     		add	r7, sp, #0
+ 1206              		.cfi_def_cfa_register 7
+ 1207 0006 0346     		mov	r3, r0
+ 1208 0008 FB71     		strb	r3, [r7, #7]
+ 307:LiquidCrystal_I2C.c ****     
+ 308:LiquidCrystal_I2C.c **** 	I2C_M_write_byte(_addr,_data | _backlightval);	   
+ 1209              		.loc 1 308 0
+ 1210 000a 074B     		ldr	r3, .L86
+ 1211 000c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1212 000e 074B     		ldr	r3, .L86+4
+ 1213 0010 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1214 0012 FB79     		ldrb	r3, [r7, #7]
+ 1215 0014 1343     		orrs	r3, r3, r2
+ 1216 0016 DBB2     		uxtb	r3, r3
+ 1217 0018 0846     		mov	r0, r1
+ 1218 001a 1946     		mov	r1, r3
+ 1219 001c FFF7FEFF 		bl	I2C_M_write_byte
+ 309:LiquidCrystal_I2C.c ****     
+ 310:LiquidCrystal_I2C.c ****     return;
+ 1220              		.loc 1 310 0
+ 1221 0020 00BF     		nop
+ 311:LiquidCrystal_I2C.c **** }
+ 1222              		.loc 1 311 0
+ 1223 0022 0837     		adds	r7, r7, #8
+ 1224              		.cfi_def_cfa_offset 8
+ 1225 0024 BD46     		mov	sp, r7
+ 1226              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 28
+
+
+ 1227              		@ sp needed
+ 1228 0026 80BD     		pop	{r7, pc}
+ 1229              	.L87:
+ 1230              		.align	2
+ 1231              	.L86:
+ 1232 0028 00000000 		.word	_addr
+ 1233 002c 00000000 		.word	_backlightval
+ 1234              		.cfi_endproc
+ 1235              	.LFE87:
+ 1236              		.size	expanderWrite, .-expanderWrite
+ 1237              		.section	.text.pulseEnable,"ax",%progbits
+ 1238              		.align	2
+ 1239              		.global	pulseEnable
+ 1240              		.thumb
+ 1241              		.thumb_func
+ 1242              		.type	pulseEnable, %function
+ 1243              	pulseEnable:
+ 1244              	.LFB88:
+ 312:LiquidCrystal_I2C.c **** 
+ 313:LiquidCrystal_I2C.c **** void pulseEnable(uint8_t _data){
+ 1245              		.loc 1 313 0
+ 1246              		.cfi_startproc
+ 1247              		@ args = 0, pretend = 0, frame = 8
+ 1248              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1249 0000 80B5     		push	{r7, lr}
+ 1250              		.cfi_def_cfa_offset 8
+ 1251              		.cfi_offset 7, -8
+ 1252              		.cfi_offset 14, -4
+ 1253 0002 82B0     		sub	sp, sp, #8
+ 1254              		.cfi_def_cfa_offset 16
+ 1255 0004 00AF     		add	r7, sp, #0
+ 1256              		.cfi_def_cfa_register 7
+ 1257 0006 0346     		mov	r3, r0
+ 1258 0008 FB71     		strb	r3, [r7, #7]
+ 314:LiquidCrystal_I2C.c ****     
+ 315:LiquidCrystal_I2C.c **** 	expanderWrite(_data | En);	// En high
+ 1259              		.loc 1 315 0
+ 1260 000a FB79     		ldrb	r3, [r7, #7]
+ 1261 000c 43F00403 		orr	r3, r3, #4
+ 1262 0010 DBB2     		uxtb	r3, r3
+ 1263 0012 1846     		mov	r0, r3
+ 1264 0014 FFF7FEFF 		bl	expanderWrite
+ 316:LiquidCrystal_I2C.c **** 	CyDelayUs(1);		// enable pulse must be >450ns
+ 1265              		.loc 1 316 0
+ 1266 0018 0120     		movs	r0, #1
+ 1267 001a FFF7FEFF 		bl	CyDelayUs
+ 317:LiquidCrystal_I2C.c **** 	expanderWrite(_data & ~En);	// En low
+ 1268              		.loc 1 317 0
+ 1269 001e FB79     		ldrb	r3, [r7, #7]
+ 1270 0020 23F00403 		bic	r3, r3, #4
+ 1271 0024 DBB2     		uxtb	r3, r3
+ 1272 0026 1846     		mov	r0, r3
+ 1273 0028 FFF7FEFF 		bl	expanderWrite
+ 318:LiquidCrystal_I2C.c **** 	CyDelayUs(50);		// commands need > 37us to settle
+ 1274              		.loc 1 318 0
+ 1275 002c 3220     		movs	r0, #50
+ 1276 002e FFF7FEFF 		bl	CyDelayUs
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 29
+
+
+ 319:LiquidCrystal_I2C.c ****     
+ 320:LiquidCrystal_I2C.c ****     return;
+ 1277              		.loc 1 320 0
+ 1278 0032 00BF     		nop
+ 321:LiquidCrystal_I2C.c **** }
+ 1279              		.loc 1 321 0
+ 1280 0034 0837     		adds	r7, r7, #8
+ 1281              		.cfi_def_cfa_offset 8
+ 1282 0036 BD46     		mov	sp, r7
+ 1283              		.cfi_def_cfa_register 13
+ 1284              		@ sp needed
+ 1285 0038 80BD     		pop	{r7, pc}
+ 1286              		.cfi_endproc
+ 1287              	.LFE88:
+ 1288              		.size	pulseEnable, .-pulseEnable
+ 1289 003a 00BF     		.section	.text.load_custom_character,"ax",%progbits
+ 1290              		.align	2
+ 1291              		.global	load_custom_character
+ 1292              		.thumb
+ 1293              		.thumb_func
+ 1294              		.type	load_custom_character, %function
+ 1295              	load_custom_character:
+ 1296              	.LFB89:
+ 322:LiquidCrystal_I2C.c **** 
+ 323:LiquidCrystal_I2C.c **** void load_custom_character(uint8_t char_num, uint8_t *rows){
+ 1297              		.loc 1 323 0
+ 1298              		.cfi_startproc
+ 1299              		@ args = 0, pretend = 0, frame = 8
+ 1300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1301 0000 80B5     		push	{r7, lr}
+ 1302              		.cfi_def_cfa_offset 8
+ 1303              		.cfi_offset 7, -8
+ 1304              		.cfi_offset 14, -4
+ 1305 0002 82B0     		sub	sp, sp, #8
+ 1306              		.cfi_def_cfa_offset 16
+ 1307 0004 00AF     		add	r7, sp, #0
+ 1308              		.cfi_def_cfa_register 7
+ 1309 0006 0346     		mov	r3, r0
+ 1310 0008 3960     		str	r1, [r7]
+ 1311 000a FB71     		strb	r3, [r7, #7]
+ 324:LiquidCrystal_I2C.c **** 	
+ 325:LiquidCrystal_I2C.c ****     createChar(char_num, rows);
+ 1312              		.loc 1 325 0
+ 1313 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1314 000e 1846     		mov	r0, r3
+ 1315 0010 3968     		ldr	r1, [r7]
+ 1316 0012 FFF7FEFF 		bl	createChar
+ 326:LiquidCrystal_I2C.c ****     
+ 327:LiquidCrystal_I2C.c ****     return;
+ 1317              		.loc 1 327 0
+ 1318 0016 00BF     		nop
+ 328:LiquidCrystal_I2C.c **** }
+ 1319              		.loc 1 328 0
+ 1320 0018 0837     		adds	r7, r7, #8
+ 1321              		.cfi_def_cfa_offset 8
+ 1322 001a BD46     		mov	sp, r7
+ 1323              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 30
+
+
+ 1324              		@ sp needed
+ 1325 001c 80BD     		pop	{r7, pc}
+ 1326              		.cfi_endproc
+ 1327              	.LFE89:
+ 1328              		.size	load_custom_character, .-load_custom_character
+ 1329 001e 00BF     		.section	.text.setBacklight,"ax",%progbits
+ 1330              		.align	2
+ 1331              		.global	setBacklight
+ 1332              		.thumb
+ 1333              		.thumb_func
+ 1334              		.type	setBacklight, %function
+ 1335              	setBacklight:
+ 1336              	.LFB90:
+ 329:LiquidCrystal_I2C.c **** 
+ 330:LiquidCrystal_I2C.c **** void setBacklight(uint8_t new_val){
+ 1337              		.loc 1 330 0
+ 1338              		.cfi_startproc
+ 1339              		@ args = 0, pretend = 0, frame = 8
+ 1340              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1341 0000 80B5     		push	{r7, lr}
+ 1342              		.cfi_def_cfa_offset 8
+ 1343              		.cfi_offset 7, -8
+ 1344              		.cfi_offset 14, -4
+ 1345 0002 82B0     		sub	sp, sp, #8
+ 1346              		.cfi_def_cfa_offset 16
+ 1347 0004 00AF     		add	r7, sp, #0
+ 1348              		.cfi_def_cfa_register 7
+ 1349 0006 0346     		mov	r3, r0
+ 1350 0008 FB71     		strb	r3, [r7, #7]
+ 331:LiquidCrystal_I2C.c ****     
+ 332:LiquidCrystal_I2C.c **** 	if (new_val) {
+ 1351              		.loc 1 332 0
+ 1352 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1353 000c 002B     		cmp	r3, #0
+ 1354 000e 02D0     		beq	.L93
+ 333:LiquidCrystal_I2C.c **** 		backlight();		// turn backlight on
+ 1355              		.loc 1 333 0
+ 1356 0010 FFF7FEFF 		bl	backlight
+ 1357 0014 01E0     		b	.L94
+ 1358              	.L93:
+ 334:LiquidCrystal_I2C.c **** 	} else {
+ 335:LiquidCrystal_I2C.c **** 		noBacklight();		// turn backlight off
+ 1359              		.loc 1 335 0
+ 1360 0016 FFF7FEFF 		bl	noBacklight
+ 1361              	.L94:
+ 336:LiquidCrystal_I2C.c **** 	}
+ 337:LiquidCrystal_I2C.c ****     
+ 338:LiquidCrystal_I2C.c ****     return;
+ 1362              		.loc 1 338 0
+ 1363 001a 00BF     		nop
+ 339:LiquidCrystal_I2C.c **** }
+ 1364              		.loc 1 339 0
+ 1365 001c 0837     		adds	r7, r7, #8
+ 1366              		.cfi_def_cfa_offset 8
+ 1367 001e BD46     		mov	sp, r7
+ 1368              		.cfi_def_cfa_register 13
+ 1369              		@ sp needed
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 31
+
+
+ 1370 0020 80BD     		pop	{r7, pc}
+ 1371              		.cfi_endproc
+ 1372              	.LFE90:
+ 1373              		.size	setBacklight, .-setBacklight
+ 1374 0022 00BF     		.section	.text.LCD_print,"ax",%progbits
+ 1375              		.align	2
+ 1376              		.global	LCD_print
+ 1377              		.thumb
+ 1378              		.thumb_func
+ 1379              		.type	LCD_print, %function
+ 1380              	LCD_print:
+ 1381              	.LFB91:
+ 340:LiquidCrystal_I2C.c **** 
+ 341:LiquidCrystal_I2C.c **** void LCD_print(char word[]){ uint32_t i = 0;
+ 1382              		.loc 1 341 0
+ 1383              		.cfi_startproc
+ 1384              		@ args = 0, pretend = 0, frame = 16
+ 1385              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1386 0000 80B5     		push	{r7, lr}
+ 1387              		.cfi_def_cfa_offset 8
+ 1388              		.cfi_offset 7, -8
+ 1389              		.cfi_offset 14, -4
+ 1390 0002 84B0     		sub	sp, sp, #16
+ 1391              		.cfi_def_cfa_offset 24
+ 1392 0004 00AF     		add	r7, sp, #0
+ 1393              		.cfi_def_cfa_register 7
+ 1394 0006 7860     		str	r0, [r7, #4]
+ 1395              		.loc 1 341 0
+ 1396 0008 0023     		movs	r3, #0
+ 1397 000a FB60     		str	r3, [r7, #12]
+ 342:LiquidCrystal_I2C.c ****     
+ 343:LiquidCrystal_I2C.c ****     uint8_t size = strlen(word);
+ 1398              		.loc 1 343 0
+ 1399 000c 7868     		ldr	r0, [r7, #4]
+ 1400 000e FFF7FEFF 		bl	strlen
+ 1401 0012 0346     		mov	r3, r0
+ 1402 0014 FB72     		strb	r3, [r7, #11]
+ 344:LiquidCrystal_I2C.c ****     
+ 345:LiquidCrystal_I2C.c ****     for (i = 0; i < size; i++){
+ 1403              		.loc 1 345 0
+ 1404 0016 0023     		movs	r3, #0
+ 1405 0018 FB60     		str	r3, [r7, #12]
+ 1406 001a 09E0     		b	.L97
+ 1407              	.L98:
+ 346:LiquidCrystal_I2C.c ****         write(word[i]);
+ 1408              		.loc 1 346 0 discriminator 3
+ 1409 001c 7A68     		ldr	r2, [r7, #4]
+ 1410 001e FB68     		ldr	r3, [r7, #12]
+ 1411 0020 1344     		add	r3, r3, r2
+ 1412 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1413 0024 1846     		mov	r0, r3
+ 1414 0026 FFF7FEFF 		bl	write
+ 345:LiquidCrystal_I2C.c ****         write(word[i]);
+ 1415              		.loc 1 345 0 discriminator 3
+ 1416 002a FB68     		ldr	r3, [r7, #12]
+ 1417 002c 0133     		adds	r3, r3, #1
+ 1418 002e FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 32
+
+
+ 1419              	.L97:
+ 345:LiquidCrystal_I2C.c ****         write(word[i]);
+ 1420              		.loc 1 345 0 is_stmt 0 discriminator 1
+ 1421 0030 FA7A     		ldrb	r2, [r7, #11]	@ zero_extendqisi2
+ 1422 0032 FB68     		ldr	r3, [r7, #12]
+ 1423 0034 9A42     		cmp	r2, r3
+ 1424 0036 F1D8     		bhi	.L98
+ 347:LiquidCrystal_I2C.c ****     }
+ 348:LiquidCrystal_I2C.c **** 
+ 349:LiquidCrystal_I2C.c ****     return;
+ 1425              		.loc 1 349 0 is_stmt 1
+ 1426 0038 00BF     		nop
+ 350:LiquidCrystal_I2C.c **** }
+ 1427              		.loc 1 350 0
+ 1428 003a 1037     		adds	r7, r7, #16
+ 1429              		.cfi_def_cfa_offset 8
+ 1430 003c BD46     		mov	sp, r7
+ 1431              		.cfi_def_cfa_register 13
+ 1432              		@ sp needed
+ 1433 003e 80BD     		pop	{r7, pc}
+ 1434              		.cfi_endproc
+ 1435              	.LFE91:
+ 1436              		.size	LCD_print, .-LCD_print
+ 1437              		.section	.text.I2C_M_write_byte,"ax",%progbits
+ 1438              		.align	2
+ 1439              		.global	I2C_M_write_byte
+ 1440              		.thumb
+ 1441              		.thumb_func
+ 1442              		.type	I2C_M_write_byte, %function
+ 1443              	I2C_M_write_byte:
+ 1444              	.LFB92:
+ 351:LiquidCrystal_I2C.c **** 
+ 352:LiquidCrystal_I2C.c **** void I2C_M_write_byte(uint8_t addr,uint8_t data){ 
+ 1445              		.loc 1 352 0
+ 1446              		.cfi_startproc
+ 1447              		@ args = 0, pretend = 0, frame = 8
+ 1448              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1449 0000 80B5     		push	{r7, lr}
+ 1450              		.cfi_def_cfa_offset 8
+ 1451              		.cfi_offset 7, -8
+ 1452              		.cfi_offset 14, -4
+ 1453 0002 82B0     		sub	sp, sp, #8
+ 1454              		.cfi_def_cfa_offset 16
+ 1455 0004 00AF     		add	r7, sp, #0
+ 1456              		.cfi_def_cfa_register 7
+ 1457 0006 0346     		mov	r3, r0
+ 1458 0008 0A46     		mov	r2, r1
+ 1459 000a FB71     		strb	r3, [r7, #7]
+ 1460 000c 1346     		mov	r3, r2
+ 1461 000e BB71     		strb	r3, [r7, #6]
+ 353:LiquidCrystal_I2C.c **** 
+ 354:LiquidCrystal_I2C.c **** #if CY_PSOC5
+ 355:LiquidCrystal_I2C.c ****     I2C_Master_MasterSendStart(addr, 0);
+ 1462              		.loc 1 355 0
+ 1463 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1464 0012 1846     		mov	r0, r3
+ 1465 0014 0021     		movs	r1, #0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 33
+
+
+ 1466 0016 FFF7FEFF 		bl	I2C_Master_MasterSendStart
+ 356:LiquidCrystal_I2C.c ****     I2C_Master_MasterWriteByte(data);
+ 1467              		.loc 1 356 0
+ 1468 001a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 1469 001c 1846     		mov	r0, r3
+ 1470 001e FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 357:LiquidCrystal_I2C.c ****     I2C_Master_MasterSendStop();
+ 1471              		.loc 1 357 0
+ 1472 0022 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 358:LiquidCrystal_I2C.c **** #elif CY_PSOC4
+ 359:LiquidCrystal_I2C.c ****     I2C_I2CMasterSendStart(addr, 0);
+ 360:LiquidCrystal_I2C.c ****     I2C_I2CMasterWriteByte(data);
+ 361:LiquidCrystal_I2C.c ****     I2C_I2CMasterSendStop();
+ 362:LiquidCrystal_I2C.c **** #endif
+ 363:LiquidCrystal_I2C.c ****     
+ 364:LiquidCrystal_I2C.c ****     return;
+ 1473              		.loc 1 364 0
+ 1474 0026 00BF     		nop
+ 365:LiquidCrystal_I2C.c **** }
+ 1475              		.loc 1 365 0
+ 1476 0028 0837     		adds	r7, r7, #8
+ 1477              		.cfi_def_cfa_offset 8
+ 1478 002a BD46     		mov	sp, r7
+ 1479              		.cfi_def_cfa_register 13
+ 1480              		@ sp needed
+ 1481 002c 80BD     		pop	{r7, pc}
+ 1482              		.cfi_endproc
+ 1483              	.LFE92:
+ 1484              		.size	I2C_M_write_byte, .-I2C_M_write_byte
+ 1485 002e 00BF     		.text
+ 1486              	.Letext0:
+ 1487              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1488              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1489              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 1490              		.section	.debug_info,"",%progbits
+ 1491              	.Ldebug_info0:
+ 1492 0000 4C050000 		.4byte	0x54c
+ 1493 0004 0400     		.2byte	0x4
+ 1494 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1495 000a 04       		.byte	0x4
+ 1496 000b 01       		.uleb128 0x1
+ 1497 000c E3000000 		.4byte	.LASF77
+ 1498 0010 01       		.byte	0x1
+ 1499 0011 94030000 		.4byte	.LASF78
+ 1500 0015 25030000 		.4byte	.LASF79
+ 1501 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1502 001d 00000000 		.4byte	0
+ 1503 0021 00000000 		.4byte	.Ldebug_line0
+ 1504 0025 02       		.uleb128 0x2
+ 1505 0026 01       		.byte	0x1
+ 1506 0027 06       		.byte	0x6
+ 1507 0028 F0010000 		.4byte	.LASF0
+ 1508 002c 03       		.uleb128 0x3
+ 1509 002d 80010000 		.4byte	.LASF4
+ 1510 0031 02       		.byte	0x2
+ 1511 0032 1D       		.byte	0x1d
+ 1512 0033 37000000 		.4byte	0x37
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 34
+
+
+ 1513 0037 02       		.uleb128 0x2
+ 1514 0038 01       		.byte	0x1
+ 1515 0039 08       		.byte	0x8
+ 1516 003a C7010000 		.4byte	.LASF1
+ 1517 003e 02       		.uleb128 0x2
+ 1518 003f 02       		.byte	0x2
+ 1519 0040 05       		.byte	0x5
+ 1520 0041 3A000000 		.4byte	.LASF2
+ 1521 0045 02       		.uleb128 0x2
+ 1522 0046 02       		.byte	0x2
+ 1523 0047 07       		.byte	0x7
+ 1524 0048 41020000 		.4byte	.LASF3
+ 1525 004c 03       		.uleb128 0x3
+ 1526 004d 63030000 		.4byte	.LASF5
+ 1527 0051 02       		.byte	0x2
+ 1528 0052 3F       		.byte	0x3f
+ 1529 0053 57000000 		.4byte	0x57
+ 1530 0057 02       		.uleb128 0x2
+ 1531 0058 04       		.byte	0x4
+ 1532 0059 05       		.byte	0x5
+ 1533 005a 7A020000 		.4byte	.LASF6
+ 1534 005e 03       		.uleb128 0x3
+ 1535 005f FA020000 		.4byte	.LASF7
+ 1536 0063 02       		.byte	0x2
+ 1537 0064 41       		.byte	0x41
+ 1538 0065 69000000 		.4byte	0x69
+ 1539 0069 02       		.uleb128 0x2
+ 1540 006a 04       		.byte	0x4
+ 1541 006b 07       		.byte	0x7
+ 1542 006c CF020000 		.4byte	.LASF8
+ 1543 0070 02       		.uleb128 0x2
+ 1544 0071 08       		.byte	0x8
+ 1545 0072 05       		.byte	0x5
+ 1546 0073 D5000000 		.4byte	.LASF9
+ 1547 0077 02       		.uleb128 0x2
+ 1548 0078 08       		.byte	0x8
+ 1549 0079 07       		.byte	0x7
+ 1550 007a 04020000 		.4byte	.LASF10
+ 1551 007e 04       		.uleb128 0x4
+ 1552 007f 04       		.byte	0x4
+ 1553 0080 05       		.byte	0x5
+ 1554 0081 696E7400 		.ascii	"int\000"
+ 1555 0085 02       		.uleb128 0x2
+ 1556 0086 04       		.byte	0x4
+ 1557 0087 07       		.byte	0x7
+ 1558 0088 2B020000 		.4byte	.LASF11
+ 1559 008c 03       		.uleb128 0x3
+ 1560 008d A2000000 		.4byte	.LASF12
+ 1561 0091 03       		.byte	0x3
+ 1562 0092 15       		.byte	0x15
+ 1563 0093 2C000000 		.4byte	0x2c
+ 1564 0097 03       		.uleb128 0x3
+ 1565 0098 FC010000 		.4byte	.LASF13
+ 1566 009c 03       		.byte	0x3
+ 1567 009d 2C       		.byte	0x2c
+ 1568 009e 4C000000 		.4byte	0x4c
+ 1569 00a2 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 35
+
+
+ 1570 00a3 22020000 		.4byte	.LASF14
+ 1571 00a7 03       		.byte	0x3
+ 1572 00a8 2D       		.byte	0x2d
+ 1573 00a9 5E000000 		.4byte	0x5e
+ 1574 00ad 02       		.uleb128 0x2
+ 1575 00ae 04       		.byte	0x4
+ 1576 00af 04       		.byte	0x4
+ 1577 00b0 CF000000 		.4byte	.LASF15
+ 1578 00b4 02       		.uleb128 0x2
+ 1579 00b5 08       		.byte	0x8
+ 1580 00b6 04       		.byte	0x4
+ 1581 00b7 E1020000 		.4byte	.LASF16
+ 1582 00bb 02       		.uleb128 0x2
+ 1583 00bc 01       		.byte	0x1
+ 1584 00bd 08       		.byte	0x8
+ 1585 00be 75020000 		.4byte	.LASF17
+ 1586 00c2 02       		.uleb128 0x2
+ 1587 00c3 04       		.byte	0x4
+ 1588 00c4 07       		.byte	0x7
+ 1589 00c5 71010000 		.4byte	.LASF18
+ 1590 00c9 05       		.uleb128 0x5
+ 1591 00ca 04       		.byte	0x4
+ 1592 00cb BB000000 		.4byte	0xbb
+ 1593 00cf 06       		.uleb128 0x6
+ 1594 00d0 B3030000 		.4byte	.LASF26
+ 1595 00d4 01       		.byte	0x1
+ 1596 00d5 27       		.byte	0x27
+ 1597 00d6 00000000 		.4byte	.LFB63
+ 1598 00da 5C000000 		.4byte	.LFE63-.LFB63
+ 1599 00de 01       		.uleb128 0x1
+ 1600 00df 9C       		.byte	0x9c
+ 1601 00e0 1D010000 		.4byte	0x11d
+ 1602 00e4 07       		.uleb128 0x7
+ 1603 00e5 80030000 		.4byte	.LASF19
+ 1604 00e9 01       		.byte	0x1
+ 1605 00ea 27       		.byte	0x27
+ 1606 00eb 8C000000 		.4byte	0x8c
+ 1607 00ef 02       		.uleb128 0x2
+ 1608 00f0 91       		.byte	0x91
+ 1609 00f1 77       		.sleb128 -9
+ 1610 00f2 07       		.uleb128 0x7
+ 1611 00f3 AA000000 		.4byte	.LASF20
+ 1612 00f7 01       		.byte	0x1
+ 1613 00f8 27       		.byte	0x27
+ 1614 00f9 8C000000 		.4byte	0x8c
+ 1615 00fd 02       		.uleb128 0x2
+ 1616 00fe 91       		.byte	0x91
+ 1617 00ff 76       		.sleb128 -10
+ 1618 0100 07       		.uleb128 0x7
+ 1619 0101 2B000000 		.4byte	.LASF21
+ 1620 0105 01       		.byte	0x1
+ 1621 0106 27       		.byte	0x27
+ 1622 0107 8C000000 		.4byte	0x8c
+ 1623 010b 02       		.uleb128 0x2
+ 1624 010c 91       		.byte	0x91
+ 1625 010d 75       		.sleb128 -11
+ 1626 010e 07       		.uleb128 0x7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 36
+
+
+ 1627 010f 56000000 		.4byte	.LASF22
+ 1628 0113 01       		.byte	0x1
+ 1629 0114 27       		.byte	0x27
+ 1630 0115 8C000000 		.4byte	0x8c
+ 1631 0119 02       		.uleb128 0x2
+ 1632 011a 91       		.byte	0x91
+ 1633 011b 74       		.sleb128 -12
+ 1634 011c 00       		.byte	0
+ 1635 011d 08       		.uleb128 0x8
+ 1636 011e 5F000000 		.4byte	.LASF23
+ 1637 0122 01       		.byte	0x1
+ 1638 0123 32       		.byte	0x32
+ 1639 0124 00000000 		.4byte	.LFB64
+ 1640 0128 D8000000 		.4byte	.LFE64-.LFB64
+ 1641 012c 01       		.uleb128 0x1
+ 1642 012d 9C       		.byte	0x9c
+ 1643 012e 08       		.uleb128 0x8
+ 1644 012f 8A010000 		.4byte	.LASF24
+ 1645 0133 01       		.byte	0x1
+ 1646 0134 71       		.byte	0x71
+ 1647 0135 00000000 		.4byte	.LFB65
+ 1648 0139 14000000 		.4byte	.LFE65-.LFB65
+ 1649 013d 01       		.uleb128 0x1
+ 1650 013e 9C       		.byte	0x9c
+ 1651 013f 08       		.uleb128 0x8
+ 1652 0140 C4000000 		.4byte	.LASF25
+ 1653 0144 01       		.byte	0x1
+ 1654 0145 79       		.byte	0x79
+ 1655 0146 00000000 		.4byte	.LFB66
+ 1656 014a 14000000 		.4byte	.LFE66-.LFB66
+ 1657 014e 01       		.uleb128 0x1
+ 1658 014f 9C       		.byte	0x9c
+ 1659 0150 09       		.uleb128 0x9
+ 1660 0151 F0020000 		.4byte	.LASF27
+ 1661 0155 01       		.byte	0x1
+ 1662 0156 81       		.byte	0x81
+ 1663 0157 00000000 		.4byte	.LFB67
+ 1664 015b 64000000 		.4byte	.LFE67-.LFB67
+ 1665 015f 01       		.uleb128 0x1
+ 1666 0160 9C       		.byte	0x9c
+ 1667 0161 90010000 		.4byte	0x190
+ 1668 0165 0A       		.uleb128 0xa
+ 1669 0166 636F6C00 		.ascii	"col\000"
+ 1670 016a 01       		.byte	0x1
+ 1671 016b 81       		.byte	0x81
+ 1672 016c 8C000000 		.4byte	0x8c
+ 1673 0170 02       		.uleb128 0x2
+ 1674 0171 91       		.byte	0x91
+ 1675 0172 5F       		.sleb128 -33
+ 1676 0173 0A       		.uleb128 0xa
+ 1677 0174 726F7700 		.ascii	"row\000"
+ 1678 0178 01       		.byte	0x1
+ 1679 0179 81       		.byte	0x81
+ 1680 017a 8C000000 		.4byte	0x8c
+ 1681 017e 02       		.uleb128 0x2
+ 1682 017f 91       		.byte	0x91
+ 1683 0180 5E       		.sleb128 -34
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 37
+
+
+ 1684 0181 0B       		.uleb128 0xb
+ 1685 0182 A3010000 		.4byte	.LASF43
+ 1686 0186 01       		.byte	0x1
+ 1687 0187 83       		.byte	0x83
+ 1688 0188 90010000 		.4byte	0x190
+ 1689 018c 02       		.uleb128 0x2
+ 1690 018d 91       		.byte	0x91
+ 1691 018e 60       		.sleb128 -32
+ 1692 018f 00       		.byte	0
+ 1693 0190 0C       		.uleb128 0xc
+ 1694 0191 7E000000 		.4byte	0x7e
+ 1695 0195 A0010000 		.4byte	0x1a0
+ 1696 0199 0D       		.uleb128 0xd
+ 1697 019a C2000000 		.4byte	0xc2
+ 1698 019e 03       		.byte	0x3
+ 1699 019f 00       		.byte	0
+ 1700 01a0 08       		.uleb128 0x8
+ 1701 01a1 6B020000 		.4byte	.LASF28
+ 1702 01a5 01       		.byte	0x1
+ 1703 01a6 8D       		.byte	0x8d
+ 1704 01a7 00000000 		.4byte	.LFB68
+ 1705 01ab 2C000000 		.4byte	.LFE68-.LFB68
+ 1706 01af 01       		.uleb128 0x1
+ 1707 01b0 9C       		.byte	0x9c
+ 1708 01b1 08       		.uleb128 0x8
+ 1709 01b2 E8020000 		.4byte	.LASF29
+ 1710 01b6 01       		.byte	0x1
+ 1711 01b7 94       		.byte	0x94
+ 1712 01b8 00000000 		.4byte	.LFB69
+ 1713 01bc 2C000000 		.4byte	.LFE69-.LFB69
+ 1714 01c0 01       		.uleb128 0x1
+ 1715 01c1 9C       		.byte	0x9c
+ 1716 01c2 08       		.uleb128 0x8
+ 1717 01c3 38020000 		.4byte	.LASF30
+ 1718 01c7 01       		.byte	0x1
+ 1719 01c8 9D       		.byte	0x9d
+ 1720 01c9 00000000 		.4byte	.LFB70
+ 1721 01cd 2C000000 		.4byte	.LFE70-.LFB70
+ 1722 01d1 01       		.uleb128 0x1
+ 1723 01d2 9C       		.byte	0x9c
+ 1724 01d3 08       		.uleb128 0x8
+ 1725 01d4 D5010000 		.4byte	.LASF31
+ 1726 01d8 01       		.byte	0x1
+ 1727 01d9 A4       		.byte	0xa4
+ 1728 01da 00000000 		.4byte	.LFB71
+ 1729 01de 2C000000 		.4byte	.LFE71-.LFB71
+ 1730 01e2 01       		.uleb128 0x1
+ 1731 01e3 9C       		.byte	0x9c
+ 1732 01e4 08       		.uleb128 0x8
+ 1733 01e5 A0020000 		.4byte	.LASF32
+ 1734 01e9 01       		.byte	0x1
+ 1735 01ea AD       		.byte	0xad
+ 1736 01eb 00000000 		.4byte	.LFB72
+ 1737 01ef 2C000000 		.4byte	.LFE72-.LFB72
+ 1738 01f3 01       		.uleb128 0x1
+ 1739 01f4 9C       		.byte	0x9c
+ 1740 01f5 08       		.uleb128 0x8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 38
+
+
+ 1741 01f6 1A000000 		.4byte	.LASF33
+ 1742 01fa 01       		.byte	0x1
+ 1743 01fb B4       		.byte	0xb4
+ 1744 01fc 00000000 		.4byte	.LFB73
+ 1745 0200 2C000000 		.4byte	.LFE73-.LFB73
+ 1746 0204 01       		.uleb128 0x1
+ 1747 0205 9C       		.byte	0x9c
+ 1748 0206 08       		.uleb128 0x8
+ 1749 0207 13030000 		.4byte	.LASF34
+ 1750 020b 01       		.byte	0x1
+ 1751 020c BD       		.byte	0xbd
+ 1752 020d 00000000 		.4byte	.LFB74
+ 1753 0211 0E000000 		.4byte	.LFE74-.LFB74
+ 1754 0215 01       		.uleb128 0x1
+ 1755 0216 9C       		.byte	0x9c
+ 1756 0217 08       		.uleb128 0x8
+ 1757 0218 65000000 		.4byte	.LASF35
+ 1758 021c 01       		.byte	0x1
+ 1759 021d C3       		.byte	0xc3
+ 1760 021e 00000000 		.4byte	.LFB75
+ 1761 0222 0E000000 		.4byte	.LFE75-.LFB75
+ 1762 0226 01       		.uleb128 0x1
+ 1763 0227 9C       		.byte	0x9c
+ 1764 0228 08       		.uleb128 0x8
+ 1765 0229 CA030000 		.4byte	.LASF36
+ 1766 022d 01       		.byte	0x1
+ 1767 022e CB       		.byte	0xcb
+ 1768 022f 00000000 		.4byte	.LFB76
+ 1769 0233 2C000000 		.4byte	.LFE76-.LFB76
+ 1770 0237 01       		.uleb128 0x1
+ 1771 0238 9C       		.byte	0x9c
+ 1772 0239 08       		.uleb128 0x8
+ 1773 023a AD020000 		.4byte	.LASF37
+ 1774 023e 01       		.byte	0x1
+ 1775 023f D4       		.byte	0xd4
+ 1776 0240 00000000 		.4byte	.LFB77
+ 1777 0244 2C000000 		.4byte	.LFE77-.LFB77
+ 1778 0248 01       		.uleb128 0x1
+ 1779 0249 9C       		.byte	0x9c
+ 1780 024a 08       		.uleb128 0x8
+ 1781 024b A8030000 		.4byte	.LASF38
+ 1782 024f 01       		.byte	0x1
+ 1783 0250 DD       		.byte	0xdd
+ 1784 0251 00000000 		.4byte	.LFB78
+ 1785 0255 2C000000 		.4byte	.LFE78-.LFB78
+ 1786 0259 01       		.uleb128 0x1
+ 1787 025a 9C       		.byte	0x9c
+ 1788 025b 08       		.uleb128 0x8
+ 1789 025c 49000000 		.4byte	.LASF39
+ 1790 0260 01       		.byte	0x1
+ 1791 0261 E6       		.byte	0xe6
+ 1792 0262 00000000 		.4byte	.LFB79
+ 1793 0266 2C000000 		.4byte	.LFE79-.LFB79
+ 1794 026a 01       		.uleb128 0x1
+ 1795 026b 9C       		.byte	0x9c
+ 1796 026c 09       		.uleb128 0x9
+ 1797 026d E5010000 		.4byte	.LASF40
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 39
+
+
+ 1798 0271 01       		.byte	0x1
+ 1799 0272 F0       		.byte	0xf0
+ 1800 0273 00000000 		.4byte	.LFB80
+ 1801 0277 54000000 		.4byte	.LFE80-.LFB80
+ 1802 027b 01       		.uleb128 0x1
+ 1803 027c 9C       		.byte	0x9c
+ 1804 027d AA020000 		.4byte	0x2aa
+ 1805 0281 07       		.uleb128 0x7
+ 1806 0282 6D030000 		.4byte	.LASF41
+ 1807 0286 01       		.byte	0x1
+ 1808 0287 F0       		.byte	0xf0
+ 1809 0288 8C000000 		.4byte	0x8c
+ 1810 028c 02       		.uleb128 0x2
+ 1811 028d 91       		.byte	0x91
+ 1812 028e 6F       		.sleb128 -17
+ 1813 028f 07       		.uleb128 0x7
+ 1814 0290 0B030000 		.4byte	.LASF42
+ 1815 0294 01       		.byte	0x1
+ 1816 0295 F0       		.byte	0xf0
+ 1817 0296 AA020000 		.4byte	0x2aa
+ 1818 029a 02       		.uleb128 0x2
+ 1819 029b 91       		.byte	0x91
+ 1820 029c 68       		.sleb128 -24
+ 1821 029d 0E       		.uleb128 0xe
+ 1822 029e 6900     		.ascii	"i\000"
+ 1823 02a0 01       		.byte	0x1
+ 1824 02a1 F0       		.byte	0xf0
+ 1825 02a2 A2000000 		.4byte	0xa2
+ 1826 02a6 02       		.uleb128 0x2
+ 1827 02a7 91       		.byte	0x91
+ 1828 02a8 74       		.sleb128 -12
+ 1829 02a9 00       		.byte	0
+ 1830 02aa 05       		.uleb128 0x5
+ 1831 02ab 04       		.byte	0x4
+ 1832 02ac 8C000000 		.4byte	0x8c
+ 1833 02b0 08       		.uleb128 0x8
+ 1834 02b1 94020000 		.4byte	.LASF44
+ 1835 02b5 01       		.byte	0x1
+ 1836 02b6 FC       		.byte	0xfc
+ 1837 02b7 00000000 		.4byte	.LFB81
+ 1838 02bb 18000000 		.4byte	.LFE81-.LFB81
+ 1839 02bf 01       		.uleb128 0x1
+ 1840 02c0 9C       		.byte	0x9c
+ 1841 02c1 0F       		.uleb128 0xf
+ 1842 02c2 76030000 		.4byte	.LASF45
+ 1843 02c6 01       		.byte	0x1
+ 1844 02c7 0401     		.2byte	0x104
+ 1845 02c9 00000000 		.4byte	.LFB82
+ 1846 02cd 18000000 		.4byte	.LFE82-.LFB82
+ 1847 02d1 01       		.uleb128 0x1
+ 1848 02d2 9C       		.byte	0x9c
+ 1849 02d3 10       		.uleb128 0x10
+ 1850 02d4 ED030000 		.4byte	.LASF46
+ 1851 02d8 01       		.byte	0x1
+ 1852 02d9 0E01     		.2byte	0x10e
+ 1853 02db 00000000 		.4byte	.LFB83
+ 1854 02df 1C000000 		.4byte	.LFE83-.LFB83
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 40
+
+
+ 1855 02e3 01       		.uleb128 0x1
+ 1856 02e4 9C       		.byte	0x9c
+ 1857 02e5 F9020000 		.4byte	0x2f9
+ 1858 02e9 11       		.uleb128 0x11
+ 1859 02ea 8B000000 		.4byte	.LASF47
+ 1860 02ee 01       		.byte	0x1
+ 1861 02ef 0E01     		.2byte	0x10e
+ 1862 02f1 8C000000 		.4byte	0x8c
+ 1863 02f5 02       		.uleb128 0x2
+ 1864 02f6 91       		.byte	0x91
+ 1865 02f7 77       		.sleb128 -9
+ 1866 02f8 00       		.byte	0
+ 1867 02f9 10       		.uleb128 0x10
+ 1868 02fa 20000000 		.4byte	.LASF48
+ 1869 02fe 01       		.byte	0x1
+ 1870 02ff 1501     		.2byte	0x115
+ 1871 0301 00000000 		.4byte	.LFB84
+ 1872 0305 1C000000 		.4byte	.LFE84-.LFB84
+ 1873 0309 01       		.uleb128 0x1
+ 1874 030a 9C       		.byte	0x9c
+ 1875 030b 1F030000 		.4byte	0x31f
+ 1876 030f 11       		.uleb128 0x11
+ 1877 0310 8B000000 		.4byte	.LASF47
+ 1878 0314 01       		.byte	0x1
+ 1879 0315 1501     		.2byte	0x115
+ 1880 0317 8C000000 		.4byte	0x8c
+ 1881 031b 02       		.uleb128 0x2
+ 1882 031c 91       		.byte	0x91
+ 1883 031d 77       		.sleb128 -9
+ 1884 031e 00       		.byte	0
+ 1885 031f 10       		.uleb128 0x10
+ 1886 0320 26000000 		.4byte	.LASF49
+ 1887 0324 01       		.byte	0x1
+ 1888 0325 2001     		.2byte	0x120
+ 1889 0327 00000000 		.4byte	.LFB85
+ 1890 032b 42000000 		.4byte	.LFE85-.LFB85
+ 1891 032f 01       		.uleb128 0x1
+ 1892 0330 9C       		.byte	0x9c
+ 1893 0331 72030000 		.4byte	0x372
+ 1894 0335 11       		.uleb128 0x11
+ 1895 0336 8B000000 		.4byte	.LASF47
+ 1896 033a 01       		.byte	0x1
+ 1897 033b 2001     		.2byte	0x120
+ 1898 033d 8C000000 		.4byte	0x8c
+ 1899 0341 02       		.uleb128 0x2
+ 1900 0342 91       		.byte	0x91
+ 1901 0343 6F       		.sleb128 -17
+ 1902 0344 11       		.uleb128 0x11
+ 1903 0345 86000000 		.4byte	.LASF50
+ 1904 0349 01       		.byte	0x1
+ 1905 034a 2001     		.2byte	0x120
+ 1906 034c 8C000000 		.4byte	0x8c
+ 1907 0350 02       		.uleb128 0x2
+ 1908 0351 91       		.byte	0x91
+ 1909 0352 6E       		.sleb128 -18
+ 1910 0353 12       		.uleb128 0x12
+ 1911 0354 BF010000 		.4byte	.LASF51
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 41
+
+
+ 1912 0358 01       		.byte	0x1
+ 1913 0359 2201     		.2byte	0x122
+ 1914 035b 8C000000 		.4byte	0x8c
+ 1915 035f 02       		.uleb128 0x2
+ 1916 0360 91       		.byte	0x91
+ 1917 0361 77       		.sleb128 -9
+ 1918 0362 12       		.uleb128 0x12
+ 1919 0363 1B020000 		.4byte	.LASF52
+ 1920 0367 01       		.byte	0x1
+ 1921 0368 2301     		.2byte	0x123
+ 1922 036a 8C000000 		.4byte	0x8c
+ 1923 036e 02       		.uleb128 0x2
+ 1924 036f 91       		.byte	0x91
+ 1925 0370 76       		.sleb128 -10
+ 1926 0371 00       		.byte	0
+ 1927 0372 10       		.uleb128 0x10
+ 1928 0373 89030000 		.4byte	.LASF53
+ 1929 0377 01       		.byte	0x1
+ 1930 0378 2A01     		.2byte	0x12a
+ 1931 037a 00000000 		.4byte	.LFB86
+ 1932 037e 22000000 		.4byte	.LFE86-.LFB86
+ 1933 0382 01       		.uleb128 0x1
+ 1934 0383 9C       		.byte	0x9c
+ 1935 0384 98030000 		.4byte	0x398
+ 1936 0388 11       		.uleb128 0x11
+ 1937 0389 8B000000 		.4byte	.LASF47
+ 1938 038d 01       		.byte	0x1
+ 1939 038e 2A01     		.2byte	0x12a
+ 1940 0390 8C000000 		.4byte	0x8c
+ 1941 0394 02       		.uleb128 0x2
+ 1942 0395 91       		.byte	0x91
+ 1943 0396 77       		.sleb128 -9
+ 1944 0397 00       		.byte	0
+ 1945 0398 10       		.uleb128 0x10
+ 1946 0399 90010000 		.4byte	.LASF54
+ 1947 039d 01       		.byte	0x1
+ 1948 039e 3201     		.2byte	0x132
+ 1949 03a0 00000000 		.4byte	.LFB87
+ 1950 03a4 30000000 		.4byte	.LFE87-.LFB87
+ 1951 03a8 01       		.uleb128 0x1
+ 1952 03a9 9C       		.byte	0x9c
+ 1953 03aa BE030000 		.4byte	0x3be
+ 1954 03ae 11       		.uleb128 0x11
+ 1955 03af 7A010000 		.4byte	.LASF55
+ 1956 03b3 01       		.byte	0x1
+ 1957 03b4 3201     		.2byte	0x132
+ 1958 03b6 8C000000 		.4byte	0x8c
+ 1959 03ba 02       		.uleb128 0x2
+ 1960 03bb 91       		.byte	0x91
+ 1961 03bc 77       		.sleb128 -9
+ 1962 03bd 00       		.byte	0
+ 1963 03be 10       		.uleb128 0x10
+ 1964 03bf 83020000 		.4byte	.LASF56
+ 1965 03c3 01       		.byte	0x1
+ 1966 03c4 3901     		.2byte	0x139
+ 1967 03c6 00000000 		.4byte	.LFB88
+ 1968 03ca 3A000000 		.4byte	.LFE88-.LFB88
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 42
+
+
+ 1969 03ce 01       		.uleb128 0x1
+ 1970 03cf 9C       		.byte	0x9c
+ 1971 03d0 E4030000 		.4byte	0x3e4
+ 1972 03d4 11       		.uleb128 0x11
+ 1973 03d5 7A010000 		.4byte	.LASF55
+ 1974 03d9 01       		.byte	0x1
+ 1975 03da 3901     		.2byte	0x139
+ 1976 03dc 8C000000 		.4byte	0x8c
+ 1977 03e0 02       		.uleb128 0x2
+ 1978 03e1 91       		.byte	0x91
+ 1979 03e2 77       		.sleb128 -9
+ 1980 03e3 00       		.byte	0
+ 1981 03e4 10       		.uleb128 0x10
+ 1982 03e5 B9020000 		.4byte	.LASF57
+ 1983 03e9 01       		.byte	0x1
+ 1984 03ea 4301     		.2byte	0x143
+ 1985 03ec 00000000 		.4byte	.LFB89
+ 1986 03f0 1E000000 		.4byte	.LFE89-.LFB89
+ 1987 03f4 01       		.uleb128 0x1
+ 1988 03f5 9C       		.byte	0x9c
+ 1989 03f6 19040000 		.4byte	0x419
+ 1990 03fa 11       		.uleb128 0x11
+ 1991 03fb DC010000 		.4byte	.LASF58
+ 1992 03ff 01       		.byte	0x1
+ 1993 0400 4301     		.2byte	0x143
+ 1994 0402 8C000000 		.4byte	0x8c
+ 1995 0406 02       		.uleb128 0x2
+ 1996 0407 91       		.byte	0x91
+ 1997 0408 77       		.sleb128 -9
+ 1998 0409 11       		.uleb128 0x11
+ 1999 040a 44000000 		.4byte	.LASF59
+ 2000 040e 01       		.byte	0x1
+ 2001 040f 4301     		.2byte	0x143
+ 2002 0411 AA020000 		.4byte	0x2aa
+ 2003 0415 02       		.uleb128 0x2
+ 2004 0416 91       		.byte	0x91
+ 2005 0417 70       		.sleb128 -16
+ 2006 0418 00       		.byte	0
+ 2007 0419 10       		.uleb128 0x10
+ 2008 041a 5E020000 		.4byte	.LASF60
+ 2009 041e 01       		.byte	0x1
+ 2010 041f 4A01     		.2byte	0x14a
+ 2011 0421 00000000 		.4byte	.LFB90
+ 2012 0425 22000000 		.4byte	.LFE90-.LFB90
+ 2013 0429 01       		.uleb128 0x1
+ 2014 042a 9C       		.byte	0x9c
+ 2015 042b 3F040000 		.4byte	0x43f
+ 2016 042f 11       		.uleb128 0x11
+ 2017 0430 05000000 		.4byte	.LASF61
+ 2018 0434 01       		.byte	0x1
+ 2019 0435 4A01     		.2byte	0x14a
+ 2020 0437 8C000000 		.4byte	0x8c
+ 2021 043b 02       		.uleb128 0x2
+ 2022 043c 91       		.byte	0x91
+ 2023 043d 77       		.sleb128 -9
+ 2024 043e 00       		.byte	0
+ 2025 043f 10       		.uleb128 0x10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 43
+
+
+ 2026 0440 54020000 		.4byte	.LASF62
+ 2027 0444 01       		.byte	0x1
+ 2028 0445 5501     		.2byte	0x155
+ 2029 0447 00000000 		.4byte	.LFB91
+ 2030 044b 40000000 		.4byte	.LFE91-.LFB91
+ 2031 044f 01       		.uleb128 0x1
+ 2032 0450 9C       		.byte	0x9c
+ 2033 0451 81040000 		.4byte	0x481
+ 2034 0455 11       		.uleb128 0x11
+ 2035 0456 00000000 		.4byte	.LASF63
+ 2036 045a 01       		.byte	0x1
+ 2037 045b 5501     		.2byte	0x155
+ 2038 045d C9000000 		.4byte	0xc9
+ 2039 0461 02       		.uleb128 0x2
+ 2040 0462 91       		.byte	0x91
+ 2041 0463 6C       		.sleb128 -20
+ 2042 0464 13       		.uleb128 0x13
+ 2043 0465 6900     		.ascii	"i\000"
+ 2044 0467 01       		.byte	0x1
+ 2045 0468 5501     		.2byte	0x155
+ 2046 046a A2000000 		.4byte	0xa2
+ 2047 046e 02       		.uleb128 0x2
+ 2048 046f 91       		.byte	0x91
+ 2049 0470 74       		.sleb128 -12
+ 2050 0471 12       		.uleb128 0x12
+ 2051 0472 9E010000 		.4byte	.LASF64
+ 2052 0476 01       		.byte	0x1
+ 2053 0477 5701     		.2byte	0x157
+ 2054 0479 8C000000 		.4byte	0x8c
+ 2055 047d 02       		.uleb128 0x2
+ 2056 047e 91       		.byte	0x91
+ 2057 047f 73       		.sleb128 -13
+ 2058 0480 00       		.byte	0
+ 2059 0481 10       		.uleb128 0x10
+ 2060 0482 B3000000 		.4byte	.LASF65
+ 2061 0486 01       		.byte	0x1
+ 2062 0487 6001     		.2byte	0x160
+ 2063 0489 00000000 		.4byte	.LFB92
+ 2064 048d 2E000000 		.4byte	.LFE92-.LFB92
+ 2065 0491 01       		.uleb128 0x1
+ 2066 0492 9C       		.byte	0x9c
+ 2067 0493 B6040000 		.4byte	0x4b6
+ 2068 0497 11       		.uleb128 0x11
+ 2069 0498 8F020000 		.4byte	.LASF66
+ 2070 049c 01       		.byte	0x1
+ 2071 049d 6001     		.2byte	0x160
+ 2072 049f 8C000000 		.4byte	0x8c
+ 2073 04a3 02       		.uleb128 0x2
+ 2074 04a4 91       		.byte	0x91
+ 2075 04a5 77       		.sleb128 -9
+ 2076 04a6 11       		.uleb128 0x11
+ 2077 04a7 A8020000 		.4byte	.LASF67
+ 2078 04ab 01       		.byte	0x1
+ 2079 04ac 6001     		.2byte	0x160
+ 2080 04ae 8C000000 		.4byte	0x8c
+ 2081 04b2 02       		.uleb128 0x2
+ 2082 04b3 91       		.byte	0x91
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 44
+
+
+ 2083 04b4 76       		.sleb128 -10
+ 2084 04b5 00       		.byte	0
+ 2085 04b6 14       		.uleb128 0x14
+ 2086 04b7 E0030000 		.4byte	.LASF68
+ 2087 04bb 04       		.byte	0x4
+ 2088 04bc 9606     		.2byte	0x696
+ 2089 04be C2040000 		.4byte	0x4c2
+ 2090 04c2 15       		.uleb128 0x15
+ 2091 04c3 97000000 		.4byte	0x97
+ 2092 04c7 16       		.uleb128 0x16
+ 2093 04c8 34000000 		.4byte	.LASF69
+ 2094 04cc 01       		.byte	0x1
+ 2095 04cd 1E       		.byte	0x1e
+ 2096 04ce 8C000000 		.4byte	0x8c
+ 2097 04d2 05       		.uleb128 0x5
+ 2098 04d3 03       		.byte	0x3
+ 2099 04d4 00000000 		.4byte	_addr
+ 2100 04d8 16       		.uleb128 0x16
+ 2101 04d9 91000000 		.4byte	.LASF70
+ 2102 04dd 01       		.byte	0x1
+ 2103 04de 1F       		.byte	0x1f
+ 2104 04df 8C000000 		.4byte	0x8c
+ 2105 04e3 05       		.uleb128 0x5
+ 2106 04e4 03       		.byte	0x3
+ 2107 04e5 00000000 		.4byte	_displayfunction
+ 2108 04e9 16       		.uleb128 0x16
+ 2109 04ea AF010000 		.4byte	.LASF71
+ 2110 04ee 01       		.byte	0x1
+ 2111 04ef 20       		.byte	0x20
+ 2112 04f0 8C000000 		.4byte	0x8c
+ 2113 04f4 05       		.uleb128 0x5
+ 2114 04f5 03       		.byte	0x3
+ 2115 04f6 00000000 		.4byte	_displaycontrol
+ 2116 04fa 16       		.uleb128 0x16
+ 2117 04fb 0D000000 		.4byte	.LASF72
+ 2118 04ff 01       		.byte	0x1
+ 2119 0500 21       		.byte	0x21
+ 2120 0501 8C000000 		.4byte	0x8c
+ 2121 0505 05       		.uleb128 0x5
+ 2122 0506 03       		.byte	0x3
+ 2123 0507 00000000 		.4byte	_displaymode
+ 2124 050b 16       		.uleb128 0x16
+ 2125 050c 05030000 		.4byte	.LASF73
+ 2126 0510 01       		.byte	0x1
+ 2127 0511 22       		.byte	0x22
+ 2128 0512 8C000000 		.4byte	0x8c
+ 2129 0516 05       		.uleb128 0x5
+ 2130 0517 03       		.byte	0x3
+ 2131 0518 00000000 		.4byte	_cols
+ 2132 051c 16       		.uleb128 0x16
+ 2133 051d C9000000 		.4byte	.LASF74
+ 2134 0521 01       		.byte	0x1
+ 2135 0522 23       		.byte	0x23
+ 2136 0523 8C000000 		.4byte	0x8c
+ 2137 0527 05       		.uleb128 0x5
+ 2138 0528 03       		.byte	0x3
+ 2139 0529 00000000 		.4byte	_rows
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 45
+
+
+ 2140 052d 16       		.uleb128 0x16
+ 2141 052e D6030000 		.4byte	.LASF75
+ 2142 0532 01       		.byte	0x1
+ 2143 0533 24       		.byte	0x24
+ 2144 0534 8C000000 		.4byte	0x8c
+ 2145 0538 05       		.uleb128 0x5
+ 2146 0539 03       		.byte	0x3
+ 2147 053a 00000000 		.4byte	_charsize
+ 2148 053e 16       		.uleb128 0x16
+ 2149 053f 78000000 		.4byte	.LASF76
+ 2150 0543 01       		.byte	0x1
+ 2151 0544 25       		.byte	0x25
+ 2152 0545 8C000000 		.4byte	0x8c
+ 2153 0549 05       		.uleb128 0x5
+ 2154 054a 03       		.byte	0x3
+ 2155 054b 00000000 		.4byte	_backlightval
+ 2156 054f 00       		.byte	0
+ 2157              		.section	.debug_abbrev,"",%progbits
+ 2158              	.Ldebug_abbrev0:
+ 2159 0000 01       		.uleb128 0x1
+ 2160 0001 11       		.uleb128 0x11
+ 2161 0002 01       		.byte	0x1
+ 2162 0003 25       		.uleb128 0x25
+ 2163 0004 0E       		.uleb128 0xe
+ 2164 0005 13       		.uleb128 0x13
+ 2165 0006 0B       		.uleb128 0xb
+ 2166 0007 03       		.uleb128 0x3
+ 2167 0008 0E       		.uleb128 0xe
+ 2168 0009 1B       		.uleb128 0x1b
+ 2169 000a 0E       		.uleb128 0xe
+ 2170 000b 55       		.uleb128 0x55
+ 2171 000c 17       		.uleb128 0x17
+ 2172 000d 11       		.uleb128 0x11
+ 2173 000e 01       		.uleb128 0x1
+ 2174 000f 10       		.uleb128 0x10
+ 2175 0010 17       		.uleb128 0x17
+ 2176 0011 00       		.byte	0
+ 2177 0012 00       		.byte	0
+ 2178 0013 02       		.uleb128 0x2
+ 2179 0014 24       		.uleb128 0x24
+ 2180 0015 00       		.byte	0
+ 2181 0016 0B       		.uleb128 0xb
+ 2182 0017 0B       		.uleb128 0xb
+ 2183 0018 3E       		.uleb128 0x3e
+ 2184 0019 0B       		.uleb128 0xb
+ 2185 001a 03       		.uleb128 0x3
+ 2186 001b 0E       		.uleb128 0xe
+ 2187 001c 00       		.byte	0
+ 2188 001d 00       		.byte	0
+ 2189 001e 03       		.uleb128 0x3
+ 2190 001f 16       		.uleb128 0x16
+ 2191 0020 00       		.byte	0
+ 2192 0021 03       		.uleb128 0x3
+ 2193 0022 0E       		.uleb128 0xe
+ 2194 0023 3A       		.uleb128 0x3a
+ 2195 0024 0B       		.uleb128 0xb
+ 2196 0025 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 46
+
+
+ 2197 0026 0B       		.uleb128 0xb
+ 2198 0027 49       		.uleb128 0x49
+ 2199 0028 13       		.uleb128 0x13
+ 2200 0029 00       		.byte	0
+ 2201 002a 00       		.byte	0
+ 2202 002b 04       		.uleb128 0x4
+ 2203 002c 24       		.uleb128 0x24
+ 2204 002d 00       		.byte	0
+ 2205 002e 0B       		.uleb128 0xb
+ 2206 002f 0B       		.uleb128 0xb
+ 2207 0030 3E       		.uleb128 0x3e
+ 2208 0031 0B       		.uleb128 0xb
+ 2209 0032 03       		.uleb128 0x3
+ 2210 0033 08       		.uleb128 0x8
+ 2211 0034 00       		.byte	0
+ 2212 0035 00       		.byte	0
+ 2213 0036 05       		.uleb128 0x5
+ 2214 0037 0F       		.uleb128 0xf
+ 2215 0038 00       		.byte	0
+ 2216 0039 0B       		.uleb128 0xb
+ 2217 003a 0B       		.uleb128 0xb
+ 2218 003b 49       		.uleb128 0x49
+ 2219 003c 13       		.uleb128 0x13
+ 2220 003d 00       		.byte	0
+ 2221 003e 00       		.byte	0
+ 2222 003f 06       		.uleb128 0x6
+ 2223 0040 2E       		.uleb128 0x2e
+ 2224 0041 01       		.byte	0x1
+ 2225 0042 3F       		.uleb128 0x3f
+ 2226 0043 19       		.uleb128 0x19
+ 2227 0044 03       		.uleb128 0x3
+ 2228 0045 0E       		.uleb128 0xe
+ 2229 0046 3A       		.uleb128 0x3a
+ 2230 0047 0B       		.uleb128 0xb
+ 2231 0048 3B       		.uleb128 0x3b
+ 2232 0049 0B       		.uleb128 0xb
+ 2233 004a 27       		.uleb128 0x27
+ 2234 004b 19       		.uleb128 0x19
+ 2235 004c 11       		.uleb128 0x11
+ 2236 004d 01       		.uleb128 0x1
+ 2237 004e 12       		.uleb128 0x12
+ 2238 004f 06       		.uleb128 0x6
+ 2239 0050 40       		.uleb128 0x40
+ 2240 0051 18       		.uleb128 0x18
+ 2241 0052 9742     		.uleb128 0x2117
+ 2242 0054 19       		.uleb128 0x19
+ 2243 0055 01       		.uleb128 0x1
+ 2244 0056 13       		.uleb128 0x13
+ 2245 0057 00       		.byte	0
+ 2246 0058 00       		.byte	0
+ 2247 0059 07       		.uleb128 0x7
+ 2248 005a 05       		.uleb128 0x5
+ 2249 005b 00       		.byte	0
+ 2250 005c 03       		.uleb128 0x3
+ 2251 005d 0E       		.uleb128 0xe
+ 2252 005e 3A       		.uleb128 0x3a
+ 2253 005f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 47
+
+
+ 2254 0060 3B       		.uleb128 0x3b
+ 2255 0061 0B       		.uleb128 0xb
+ 2256 0062 49       		.uleb128 0x49
+ 2257 0063 13       		.uleb128 0x13
+ 2258 0064 02       		.uleb128 0x2
+ 2259 0065 18       		.uleb128 0x18
+ 2260 0066 00       		.byte	0
+ 2261 0067 00       		.byte	0
+ 2262 0068 08       		.uleb128 0x8
+ 2263 0069 2E       		.uleb128 0x2e
+ 2264 006a 00       		.byte	0
+ 2265 006b 3F       		.uleb128 0x3f
+ 2266 006c 19       		.uleb128 0x19
+ 2267 006d 03       		.uleb128 0x3
+ 2268 006e 0E       		.uleb128 0xe
+ 2269 006f 3A       		.uleb128 0x3a
+ 2270 0070 0B       		.uleb128 0xb
+ 2271 0071 3B       		.uleb128 0x3b
+ 2272 0072 0B       		.uleb128 0xb
+ 2273 0073 27       		.uleb128 0x27
+ 2274 0074 19       		.uleb128 0x19
+ 2275 0075 11       		.uleb128 0x11
+ 2276 0076 01       		.uleb128 0x1
+ 2277 0077 12       		.uleb128 0x12
+ 2278 0078 06       		.uleb128 0x6
+ 2279 0079 40       		.uleb128 0x40
+ 2280 007a 18       		.uleb128 0x18
+ 2281 007b 9642     		.uleb128 0x2116
+ 2282 007d 19       		.uleb128 0x19
+ 2283 007e 00       		.byte	0
+ 2284 007f 00       		.byte	0
+ 2285 0080 09       		.uleb128 0x9
+ 2286 0081 2E       		.uleb128 0x2e
+ 2287 0082 01       		.byte	0x1
+ 2288 0083 3F       		.uleb128 0x3f
+ 2289 0084 19       		.uleb128 0x19
+ 2290 0085 03       		.uleb128 0x3
+ 2291 0086 0E       		.uleb128 0xe
+ 2292 0087 3A       		.uleb128 0x3a
+ 2293 0088 0B       		.uleb128 0xb
+ 2294 0089 3B       		.uleb128 0x3b
+ 2295 008a 0B       		.uleb128 0xb
+ 2296 008b 27       		.uleb128 0x27
+ 2297 008c 19       		.uleb128 0x19
+ 2298 008d 11       		.uleb128 0x11
+ 2299 008e 01       		.uleb128 0x1
+ 2300 008f 12       		.uleb128 0x12
+ 2301 0090 06       		.uleb128 0x6
+ 2302 0091 40       		.uleb128 0x40
+ 2303 0092 18       		.uleb128 0x18
+ 2304 0093 9642     		.uleb128 0x2116
+ 2305 0095 19       		.uleb128 0x19
+ 2306 0096 01       		.uleb128 0x1
+ 2307 0097 13       		.uleb128 0x13
+ 2308 0098 00       		.byte	0
+ 2309 0099 00       		.byte	0
+ 2310 009a 0A       		.uleb128 0xa
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 48
+
+
+ 2311 009b 05       		.uleb128 0x5
+ 2312 009c 00       		.byte	0
+ 2313 009d 03       		.uleb128 0x3
+ 2314 009e 08       		.uleb128 0x8
+ 2315 009f 3A       		.uleb128 0x3a
+ 2316 00a0 0B       		.uleb128 0xb
+ 2317 00a1 3B       		.uleb128 0x3b
+ 2318 00a2 0B       		.uleb128 0xb
+ 2319 00a3 49       		.uleb128 0x49
+ 2320 00a4 13       		.uleb128 0x13
+ 2321 00a5 02       		.uleb128 0x2
+ 2322 00a6 18       		.uleb128 0x18
+ 2323 00a7 00       		.byte	0
+ 2324 00a8 00       		.byte	0
+ 2325 00a9 0B       		.uleb128 0xb
+ 2326 00aa 34       		.uleb128 0x34
+ 2327 00ab 00       		.byte	0
+ 2328 00ac 03       		.uleb128 0x3
+ 2329 00ad 0E       		.uleb128 0xe
+ 2330 00ae 3A       		.uleb128 0x3a
+ 2331 00af 0B       		.uleb128 0xb
+ 2332 00b0 3B       		.uleb128 0x3b
+ 2333 00b1 0B       		.uleb128 0xb
+ 2334 00b2 49       		.uleb128 0x49
+ 2335 00b3 13       		.uleb128 0x13
+ 2336 00b4 02       		.uleb128 0x2
+ 2337 00b5 18       		.uleb128 0x18
+ 2338 00b6 00       		.byte	0
+ 2339 00b7 00       		.byte	0
+ 2340 00b8 0C       		.uleb128 0xc
+ 2341 00b9 01       		.uleb128 0x1
+ 2342 00ba 01       		.byte	0x1
+ 2343 00bb 49       		.uleb128 0x49
+ 2344 00bc 13       		.uleb128 0x13
+ 2345 00bd 01       		.uleb128 0x1
+ 2346 00be 13       		.uleb128 0x13
+ 2347 00bf 00       		.byte	0
+ 2348 00c0 00       		.byte	0
+ 2349 00c1 0D       		.uleb128 0xd
+ 2350 00c2 21       		.uleb128 0x21
+ 2351 00c3 00       		.byte	0
+ 2352 00c4 49       		.uleb128 0x49
+ 2353 00c5 13       		.uleb128 0x13
+ 2354 00c6 2F       		.uleb128 0x2f
+ 2355 00c7 0B       		.uleb128 0xb
+ 2356 00c8 00       		.byte	0
+ 2357 00c9 00       		.byte	0
+ 2358 00ca 0E       		.uleb128 0xe
+ 2359 00cb 34       		.uleb128 0x34
+ 2360 00cc 00       		.byte	0
+ 2361 00cd 03       		.uleb128 0x3
+ 2362 00ce 08       		.uleb128 0x8
+ 2363 00cf 3A       		.uleb128 0x3a
+ 2364 00d0 0B       		.uleb128 0xb
+ 2365 00d1 3B       		.uleb128 0x3b
+ 2366 00d2 0B       		.uleb128 0xb
+ 2367 00d3 49       		.uleb128 0x49
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 49
+
+
+ 2368 00d4 13       		.uleb128 0x13
+ 2369 00d5 02       		.uleb128 0x2
+ 2370 00d6 18       		.uleb128 0x18
+ 2371 00d7 00       		.byte	0
+ 2372 00d8 00       		.byte	0
+ 2373 00d9 0F       		.uleb128 0xf
+ 2374 00da 2E       		.uleb128 0x2e
+ 2375 00db 00       		.byte	0
+ 2376 00dc 3F       		.uleb128 0x3f
+ 2377 00dd 19       		.uleb128 0x19
+ 2378 00de 03       		.uleb128 0x3
+ 2379 00df 0E       		.uleb128 0xe
+ 2380 00e0 3A       		.uleb128 0x3a
+ 2381 00e1 0B       		.uleb128 0xb
+ 2382 00e2 3B       		.uleb128 0x3b
+ 2383 00e3 05       		.uleb128 0x5
+ 2384 00e4 27       		.uleb128 0x27
+ 2385 00e5 19       		.uleb128 0x19
+ 2386 00e6 11       		.uleb128 0x11
+ 2387 00e7 01       		.uleb128 0x1
+ 2388 00e8 12       		.uleb128 0x12
+ 2389 00e9 06       		.uleb128 0x6
+ 2390 00ea 40       		.uleb128 0x40
+ 2391 00eb 18       		.uleb128 0x18
+ 2392 00ec 9642     		.uleb128 0x2116
+ 2393 00ee 19       		.uleb128 0x19
+ 2394 00ef 00       		.byte	0
+ 2395 00f0 00       		.byte	0
+ 2396 00f1 10       		.uleb128 0x10
+ 2397 00f2 2E       		.uleb128 0x2e
+ 2398 00f3 01       		.byte	0x1
+ 2399 00f4 3F       		.uleb128 0x3f
+ 2400 00f5 19       		.uleb128 0x19
+ 2401 00f6 03       		.uleb128 0x3
+ 2402 00f7 0E       		.uleb128 0xe
+ 2403 00f8 3A       		.uleb128 0x3a
+ 2404 00f9 0B       		.uleb128 0xb
+ 2405 00fa 3B       		.uleb128 0x3b
+ 2406 00fb 05       		.uleb128 0x5
+ 2407 00fc 27       		.uleb128 0x27
+ 2408 00fd 19       		.uleb128 0x19
+ 2409 00fe 11       		.uleb128 0x11
+ 2410 00ff 01       		.uleb128 0x1
+ 2411 0100 12       		.uleb128 0x12
+ 2412 0101 06       		.uleb128 0x6
+ 2413 0102 40       		.uleb128 0x40
+ 2414 0103 18       		.uleb128 0x18
+ 2415 0104 9642     		.uleb128 0x2116
+ 2416 0106 19       		.uleb128 0x19
+ 2417 0107 01       		.uleb128 0x1
+ 2418 0108 13       		.uleb128 0x13
+ 2419 0109 00       		.byte	0
+ 2420 010a 00       		.byte	0
+ 2421 010b 11       		.uleb128 0x11
+ 2422 010c 05       		.uleb128 0x5
+ 2423 010d 00       		.byte	0
+ 2424 010e 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 50
+
+
+ 2425 010f 0E       		.uleb128 0xe
+ 2426 0110 3A       		.uleb128 0x3a
+ 2427 0111 0B       		.uleb128 0xb
+ 2428 0112 3B       		.uleb128 0x3b
+ 2429 0113 05       		.uleb128 0x5
+ 2430 0114 49       		.uleb128 0x49
+ 2431 0115 13       		.uleb128 0x13
+ 2432 0116 02       		.uleb128 0x2
+ 2433 0117 18       		.uleb128 0x18
+ 2434 0118 00       		.byte	0
+ 2435 0119 00       		.byte	0
+ 2436 011a 12       		.uleb128 0x12
+ 2437 011b 34       		.uleb128 0x34
+ 2438 011c 00       		.byte	0
+ 2439 011d 03       		.uleb128 0x3
+ 2440 011e 0E       		.uleb128 0xe
+ 2441 011f 3A       		.uleb128 0x3a
+ 2442 0120 0B       		.uleb128 0xb
+ 2443 0121 3B       		.uleb128 0x3b
+ 2444 0122 05       		.uleb128 0x5
+ 2445 0123 49       		.uleb128 0x49
+ 2446 0124 13       		.uleb128 0x13
+ 2447 0125 02       		.uleb128 0x2
+ 2448 0126 18       		.uleb128 0x18
+ 2449 0127 00       		.byte	0
+ 2450 0128 00       		.byte	0
+ 2451 0129 13       		.uleb128 0x13
+ 2452 012a 34       		.uleb128 0x34
+ 2453 012b 00       		.byte	0
+ 2454 012c 03       		.uleb128 0x3
+ 2455 012d 08       		.uleb128 0x8
+ 2456 012e 3A       		.uleb128 0x3a
+ 2457 012f 0B       		.uleb128 0xb
+ 2458 0130 3B       		.uleb128 0x3b
+ 2459 0131 05       		.uleb128 0x5
+ 2460 0132 49       		.uleb128 0x49
+ 2461 0133 13       		.uleb128 0x13
+ 2462 0134 02       		.uleb128 0x2
+ 2463 0135 18       		.uleb128 0x18
+ 2464 0136 00       		.byte	0
+ 2465 0137 00       		.byte	0
+ 2466 0138 14       		.uleb128 0x14
+ 2467 0139 34       		.uleb128 0x34
+ 2468 013a 00       		.byte	0
+ 2469 013b 03       		.uleb128 0x3
+ 2470 013c 0E       		.uleb128 0xe
+ 2471 013d 3A       		.uleb128 0x3a
+ 2472 013e 0B       		.uleb128 0xb
+ 2473 013f 3B       		.uleb128 0x3b
+ 2474 0140 05       		.uleb128 0x5
+ 2475 0141 49       		.uleb128 0x49
+ 2476 0142 13       		.uleb128 0x13
+ 2477 0143 3F       		.uleb128 0x3f
+ 2478 0144 19       		.uleb128 0x19
+ 2479 0145 3C       		.uleb128 0x3c
+ 2480 0146 19       		.uleb128 0x19
+ 2481 0147 00       		.byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 51
+
+
+ 2482 0148 00       		.byte	0
+ 2483 0149 15       		.uleb128 0x15
+ 2484 014a 35       		.uleb128 0x35
+ 2485 014b 00       		.byte	0
+ 2486 014c 49       		.uleb128 0x49
+ 2487 014d 13       		.uleb128 0x13
+ 2488 014e 00       		.byte	0
+ 2489 014f 00       		.byte	0
+ 2490 0150 16       		.uleb128 0x16
+ 2491 0151 34       		.uleb128 0x34
+ 2492 0152 00       		.byte	0
+ 2493 0153 03       		.uleb128 0x3
+ 2494 0154 0E       		.uleb128 0xe
+ 2495 0155 3A       		.uleb128 0x3a
+ 2496 0156 0B       		.uleb128 0xb
+ 2497 0157 3B       		.uleb128 0x3b
+ 2498 0158 0B       		.uleb128 0xb
+ 2499 0159 49       		.uleb128 0x49
+ 2500 015a 13       		.uleb128 0x13
+ 2501 015b 3F       		.uleb128 0x3f
+ 2502 015c 19       		.uleb128 0x19
+ 2503 015d 02       		.uleb128 0x2
+ 2504 015e 18       		.uleb128 0x18
+ 2505 015f 00       		.byte	0
+ 2506 0160 00       		.byte	0
+ 2507 0161 00       		.byte	0
+ 2508              		.section	.debug_aranges,"",%progbits
+ 2509 0000 04010000 		.4byte	0x104
+ 2510 0004 0200     		.2byte	0x2
+ 2511 0006 00000000 		.4byte	.Ldebug_info0
+ 2512 000a 04       		.byte	0x4
+ 2513 000b 00       		.byte	0
+ 2514 000c 0000     		.2byte	0
+ 2515 000e 0000     		.2byte	0
+ 2516 0010 00000000 		.4byte	.LFB63
+ 2517 0014 5C000000 		.4byte	.LFE63-.LFB63
+ 2518 0018 00000000 		.4byte	.LFB64
+ 2519 001c D8000000 		.4byte	.LFE64-.LFB64
+ 2520 0020 00000000 		.4byte	.LFB65
+ 2521 0024 14000000 		.4byte	.LFE65-.LFB65
+ 2522 0028 00000000 		.4byte	.LFB66
+ 2523 002c 14000000 		.4byte	.LFE66-.LFB66
+ 2524 0030 00000000 		.4byte	.LFB67
+ 2525 0034 64000000 		.4byte	.LFE67-.LFB67
+ 2526 0038 00000000 		.4byte	.LFB68
+ 2527 003c 2C000000 		.4byte	.LFE68-.LFB68
+ 2528 0040 00000000 		.4byte	.LFB69
+ 2529 0044 2C000000 		.4byte	.LFE69-.LFB69
+ 2530 0048 00000000 		.4byte	.LFB70
+ 2531 004c 2C000000 		.4byte	.LFE70-.LFB70
+ 2532 0050 00000000 		.4byte	.LFB71
+ 2533 0054 2C000000 		.4byte	.LFE71-.LFB71
+ 2534 0058 00000000 		.4byte	.LFB72
+ 2535 005c 2C000000 		.4byte	.LFE72-.LFB72
+ 2536 0060 00000000 		.4byte	.LFB73
+ 2537 0064 2C000000 		.4byte	.LFE73-.LFB73
+ 2538 0068 00000000 		.4byte	.LFB74
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 52
+
+
+ 2539 006c 0E000000 		.4byte	.LFE74-.LFB74
+ 2540 0070 00000000 		.4byte	.LFB75
+ 2541 0074 0E000000 		.4byte	.LFE75-.LFB75
+ 2542 0078 00000000 		.4byte	.LFB76
+ 2543 007c 2C000000 		.4byte	.LFE76-.LFB76
+ 2544 0080 00000000 		.4byte	.LFB77
+ 2545 0084 2C000000 		.4byte	.LFE77-.LFB77
+ 2546 0088 00000000 		.4byte	.LFB78
+ 2547 008c 2C000000 		.4byte	.LFE78-.LFB78
+ 2548 0090 00000000 		.4byte	.LFB79
+ 2549 0094 2C000000 		.4byte	.LFE79-.LFB79
+ 2550 0098 00000000 		.4byte	.LFB80
+ 2551 009c 54000000 		.4byte	.LFE80-.LFB80
+ 2552 00a0 00000000 		.4byte	.LFB81
+ 2553 00a4 18000000 		.4byte	.LFE81-.LFB81
+ 2554 00a8 00000000 		.4byte	.LFB82
+ 2555 00ac 18000000 		.4byte	.LFE82-.LFB82
+ 2556 00b0 00000000 		.4byte	.LFB83
+ 2557 00b4 1C000000 		.4byte	.LFE83-.LFB83
+ 2558 00b8 00000000 		.4byte	.LFB84
+ 2559 00bc 1C000000 		.4byte	.LFE84-.LFB84
+ 2560 00c0 00000000 		.4byte	.LFB85
+ 2561 00c4 42000000 		.4byte	.LFE85-.LFB85
+ 2562 00c8 00000000 		.4byte	.LFB86
+ 2563 00cc 22000000 		.4byte	.LFE86-.LFB86
+ 2564 00d0 00000000 		.4byte	.LFB87
+ 2565 00d4 30000000 		.4byte	.LFE87-.LFB87
+ 2566 00d8 00000000 		.4byte	.LFB88
+ 2567 00dc 3A000000 		.4byte	.LFE88-.LFB88
+ 2568 00e0 00000000 		.4byte	.LFB89
+ 2569 00e4 1E000000 		.4byte	.LFE89-.LFB89
+ 2570 00e8 00000000 		.4byte	.LFB90
+ 2571 00ec 22000000 		.4byte	.LFE90-.LFB90
+ 2572 00f0 00000000 		.4byte	.LFB91
+ 2573 00f4 40000000 		.4byte	.LFE91-.LFB91
+ 2574 00f8 00000000 		.4byte	.LFB92
+ 2575 00fc 2E000000 		.4byte	.LFE92-.LFB92
+ 2576 0100 00000000 		.4byte	0
+ 2577 0104 00000000 		.4byte	0
+ 2578              		.section	.debug_ranges,"",%progbits
+ 2579              	.Ldebug_ranges0:
+ 2580 0000 00000000 		.4byte	.LFB63
+ 2581 0004 5C000000 		.4byte	.LFE63
+ 2582 0008 00000000 		.4byte	.LFB64
+ 2583 000c D8000000 		.4byte	.LFE64
+ 2584 0010 00000000 		.4byte	.LFB65
+ 2585 0014 14000000 		.4byte	.LFE65
+ 2586 0018 00000000 		.4byte	.LFB66
+ 2587 001c 14000000 		.4byte	.LFE66
+ 2588 0020 00000000 		.4byte	.LFB67
+ 2589 0024 64000000 		.4byte	.LFE67
+ 2590 0028 00000000 		.4byte	.LFB68
+ 2591 002c 2C000000 		.4byte	.LFE68
+ 2592 0030 00000000 		.4byte	.LFB69
+ 2593 0034 2C000000 		.4byte	.LFE69
+ 2594 0038 00000000 		.4byte	.LFB70
+ 2595 003c 2C000000 		.4byte	.LFE70
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 53
+
+
+ 2596 0040 00000000 		.4byte	.LFB71
+ 2597 0044 2C000000 		.4byte	.LFE71
+ 2598 0048 00000000 		.4byte	.LFB72
+ 2599 004c 2C000000 		.4byte	.LFE72
+ 2600 0050 00000000 		.4byte	.LFB73
+ 2601 0054 2C000000 		.4byte	.LFE73
+ 2602 0058 00000000 		.4byte	.LFB74
+ 2603 005c 0E000000 		.4byte	.LFE74
+ 2604 0060 00000000 		.4byte	.LFB75
+ 2605 0064 0E000000 		.4byte	.LFE75
+ 2606 0068 00000000 		.4byte	.LFB76
+ 2607 006c 2C000000 		.4byte	.LFE76
+ 2608 0070 00000000 		.4byte	.LFB77
+ 2609 0074 2C000000 		.4byte	.LFE77
+ 2610 0078 00000000 		.4byte	.LFB78
+ 2611 007c 2C000000 		.4byte	.LFE78
+ 2612 0080 00000000 		.4byte	.LFB79
+ 2613 0084 2C000000 		.4byte	.LFE79
+ 2614 0088 00000000 		.4byte	.LFB80
+ 2615 008c 54000000 		.4byte	.LFE80
+ 2616 0090 00000000 		.4byte	.LFB81
+ 2617 0094 18000000 		.4byte	.LFE81
+ 2618 0098 00000000 		.4byte	.LFB82
+ 2619 009c 18000000 		.4byte	.LFE82
+ 2620 00a0 00000000 		.4byte	.LFB83
+ 2621 00a4 1C000000 		.4byte	.LFE83
+ 2622 00a8 00000000 		.4byte	.LFB84
+ 2623 00ac 1C000000 		.4byte	.LFE84
+ 2624 00b0 00000000 		.4byte	.LFB85
+ 2625 00b4 42000000 		.4byte	.LFE85
+ 2626 00b8 00000000 		.4byte	.LFB86
+ 2627 00bc 22000000 		.4byte	.LFE86
+ 2628 00c0 00000000 		.4byte	.LFB87
+ 2629 00c4 30000000 		.4byte	.LFE87
+ 2630 00c8 00000000 		.4byte	.LFB88
+ 2631 00cc 3A000000 		.4byte	.LFE88
+ 2632 00d0 00000000 		.4byte	.LFB89
+ 2633 00d4 1E000000 		.4byte	.LFE89
+ 2634 00d8 00000000 		.4byte	.LFB90
+ 2635 00dc 22000000 		.4byte	.LFE90
+ 2636 00e0 00000000 		.4byte	.LFB91
+ 2637 00e4 40000000 		.4byte	.LFE91
+ 2638 00e8 00000000 		.4byte	.LFB92
+ 2639 00ec 2E000000 		.4byte	.LFE92
+ 2640 00f0 00000000 		.4byte	0
+ 2641 00f4 00000000 		.4byte	0
+ 2642              		.section	.debug_line,"",%progbits
+ 2643              	.Ldebug_line0:
+ 2644 0000 E9030000 		.section	.debug_str,"MS",%progbits,1
+ 2644      02004701 
+ 2644      00000201 
+ 2644      FB0E0D00 
+ 2644      01010101 
+ 2645              	.LASF63:
+ 2646 0000 776F7264 		.ascii	"word\000"
+ 2646      00
+ 2647              	.LASF61:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 54
+
+
+ 2648 0005 6E65775F 		.ascii	"new_val\000"
+ 2648      76616C00 
+ 2649              	.LASF72:
+ 2650 000d 5F646973 		.ascii	"_displaymode\000"
+ 2650      706C6179 
+ 2650      6D6F6465 
+ 2650      00
+ 2651              	.LASF33:
+ 2652 001a 626C696E 		.ascii	"blink\000"
+ 2652      6B00
+ 2653              	.LASF48:
+ 2654 0020 77726974 		.ascii	"write\000"
+ 2654      6500
+ 2655              	.LASF49:
+ 2656 0026 73656E64 		.ascii	"send\000"
+ 2656      00
+ 2657              	.LASF21:
+ 2658 002b 6C63645F 		.ascii	"lcd_rows\000"
+ 2658      726F7773 
+ 2658      00
+ 2659              	.LASF69:
+ 2660 0034 5F616464 		.ascii	"_addr\000"
+ 2660      7200
+ 2661              	.LASF2:
+ 2662 003a 73686F72 		.ascii	"short int\000"
+ 2662      7420696E 
+ 2662      7400
+ 2663              	.LASF59:
+ 2664 0044 726F7773 		.ascii	"rows\000"
+ 2664      00
+ 2665              	.LASF39:
+ 2666 0049 6E6F4175 		.ascii	"noAutoscroll\000"
+ 2666      746F7363 
+ 2666      726F6C6C 
+ 2666      00
+ 2667              	.LASF22:
+ 2668 0056 63686172 		.ascii	"charsize\000"
+ 2668      73697A65 
+ 2668      00
+ 2669              	.LASF23:
+ 2670 005f 62656769 		.ascii	"begin\000"
+ 2670      6E00
+ 2671              	.LASF35:
+ 2672 0065 7363726F 		.ascii	"scrollDisplayRight\000"
+ 2672      6C6C4469 
+ 2672      73706C61 
+ 2672      79526967 
+ 2672      687400
+ 2673              	.LASF76:
+ 2674 0078 5F626163 		.ascii	"_backlightval\000"
+ 2674      6B6C6967 
+ 2674      68747661 
+ 2674      6C00
+ 2675              	.LASF50:
+ 2676 0086 6D6F6465 		.ascii	"mode\000"
+ 2676      00
+ 2677              	.LASF47:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 55
+
+
+ 2678 008b 76616C75 		.ascii	"value\000"
+ 2678      6500
+ 2679              	.LASF70:
+ 2680 0091 5F646973 		.ascii	"_displayfunction\000"
+ 2680      706C6179 
+ 2680      66756E63 
+ 2680      74696F6E 
+ 2680      00
+ 2681              	.LASF12:
+ 2682 00a2 75696E74 		.ascii	"uint8_t\000"
+ 2682      385F7400 
+ 2683              	.LASF20:
+ 2684 00aa 6C63645F 		.ascii	"lcd_cols\000"
+ 2684      636F6C73 
+ 2684      00
+ 2685              	.LASF65:
+ 2686 00b3 4932435F 		.ascii	"I2C_M_write_byte\000"
+ 2686      4D5F7772 
+ 2686      6974655F 
+ 2686      62797465 
+ 2686      00
+ 2687              	.LASF25:
+ 2688 00c4 686F6D65 		.ascii	"home\000"
+ 2688      00
+ 2689              	.LASF74:
+ 2690 00c9 5F726F77 		.ascii	"_rows\000"
+ 2690      7300
+ 2691              	.LASF15:
+ 2692 00cf 666C6F61 		.ascii	"float\000"
+ 2692      7400
+ 2693              	.LASF9:
+ 2694 00d5 6C6F6E67 		.ascii	"long long int\000"
+ 2694      206C6F6E 
+ 2694      6720696E 
+ 2694      7400
+ 2695              	.LASF77:
+ 2696 00e3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2696      4320342E 
+ 2696      392E3320 
+ 2696      32303135 
+ 2696      30333033 
+ 2697 0116 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2697      20726576 
+ 2697      6973696F 
+ 2697      6E203232 
+ 2697      31323230 
+ 2698 0149 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2698      66756E63 
+ 2698      74696F6E 
+ 2698      2D736563 
+ 2698      74696F6E 
+ 2699              	.LASF18:
+ 2700 0171 73697A65 		.ascii	"sizetype\000"
+ 2700      74797065 
+ 2700      00
+ 2701              	.LASF55:
+ 2702 017a 5F646174 		.ascii	"_data\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 56
+
+
+ 2702      6100
+ 2703              	.LASF4:
+ 2704 0180 5F5F7569 		.ascii	"__uint8_t\000"
+ 2704      6E74385F 
+ 2704      7400
+ 2705              	.LASF24:
+ 2706 018a 636C6561 		.ascii	"clear\000"
+ 2706      7200
+ 2707              	.LASF54:
+ 2708 0190 65787061 		.ascii	"expanderWrite\000"
+ 2708      6E646572 
+ 2708      57726974 
+ 2708      6500
+ 2709              	.LASF64:
+ 2710 019e 73697A65 		.ascii	"size\000"
+ 2710      00
+ 2711              	.LASF43:
+ 2712 01a3 726F775F 		.ascii	"row_offsets\000"
+ 2712      6F666673 
+ 2712      65747300 
+ 2713              	.LASF71:
+ 2714 01af 5F646973 		.ascii	"_displaycontrol\000"
+ 2714      706C6179 
+ 2714      636F6E74 
+ 2714      726F6C00 
+ 2715              	.LASF51:
+ 2716 01bf 68696768 		.ascii	"highnib\000"
+ 2716      6E696200 
+ 2717              	.LASF1:
+ 2718 01c7 756E7369 		.ascii	"unsigned char\000"
+ 2718      676E6564 
+ 2718      20636861 
+ 2718      7200
+ 2719              	.LASF31:
+ 2720 01d5 63757273 		.ascii	"cursor\000"
+ 2720      6F7200
+ 2721              	.LASF58:
+ 2722 01dc 63686172 		.ascii	"char_num\000"
+ 2722      5F6E756D 
+ 2722      00
+ 2723              	.LASF40:
+ 2724 01e5 63726561 		.ascii	"createChar\000"
+ 2724      74654368 
+ 2724      617200
+ 2725              	.LASF0:
+ 2726 01f0 7369676E 		.ascii	"signed char\000"
+ 2726      65642063 
+ 2726      68617200 
+ 2727              	.LASF13:
+ 2728 01fc 696E7433 		.ascii	"int32_t\000"
+ 2728      325F7400 
+ 2729              	.LASF10:
+ 2730 0204 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2730      206C6F6E 
+ 2730      6720756E 
+ 2730      7369676E 
+ 2730      65642069 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 57
+
+
+ 2731              	.LASF52:
+ 2732 021b 6C6F776E 		.ascii	"lownib\000"
+ 2732      696200
+ 2733              	.LASF14:
+ 2734 0222 75696E74 		.ascii	"uint32_t\000"
+ 2734      33325F74 
+ 2734      00
+ 2735              	.LASF11:
+ 2736 022b 756E7369 		.ascii	"unsigned int\000"
+ 2736      676E6564 
+ 2736      20696E74 
+ 2736      00
+ 2737              	.LASF30:
+ 2738 0238 6E6F4375 		.ascii	"noCursor\000"
+ 2738      72736F72 
+ 2738      00
+ 2739              	.LASF3:
+ 2740 0241 73686F72 		.ascii	"short unsigned int\000"
+ 2740      7420756E 
+ 2740      7369676E 
+ 2740      65642069 
+ 2740      6E7400
+ 2741              	.LASF62:
+ 2742 0254 4C43445F 		.ascii	"LCD_print\000"
+ 2742      7072696E 
+ 2742      7400
+ 2743              	.LASF60:
+ 2744 025e 73657442 		.ascii	"setBacklight\000"
+ 2744      61636B6C 
+ 2744      69676874 
+ 2744      00
+ 2745              	.LASF28:
+ 2746 026b 6E6F4469 		.ascii	"noDisplay\000"
+ 2746      73706C61 
+ 2746      7900
+ 2747              	.LASF17:
+ 2748 0275 63686172 		.ascii	"char\000"
+ 2748      00
+ 2749              	.LASF6:
+ 2750 027a 6C6F6E67 		.ascii	"long int\000"
+ 2750      20696E74 
+ 2750      00
+ 2751              	.LASF56:
+ 2752 0283 70756C73 		.ascii	"pulseEnable\000"
+ 2752      65456E61 
+ 2752      626C6500 
+ 2753              	.LASF66:
+ 2754 028f 61646472 		.ascii	"addr\000"
+ 2754      00
+ 2755              	.LASF44:
+ 2756 0294 6E6F4261 		.ascii	"noBacklight\000"
+ 2756      636B6C69 
+ 2756      67687400 
+ 2757              	.LASF32:
+ 2758 02a0 6E6F426C 		.ascii	"noBlink\000"
+ 2758      696E6B00 
+ 2759              	.LASF67:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 58
+
+
+ 2760 02a8 64617461 		.ascii	"data\000"
+ 2760      00
+ 2761              	.LASF37:
+ 2762 02ad 72696768 		.ascii	"rightToLeft\000"
+ 2762      74546F4C 
+ 2762      65667400 
+ 2763              	.LASF57:
+ 2764 02b9 6C6F6164 		.ascii	"load_custom_character\000"
+ 2764      5F637573 
+ 2764      746F6D5F 
+ 2764      63686172 
+ 2764      61637465 
+ 2765              	.LASF8:
+ 2766 02cf 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2766      20756E73 
+ 2766      69676E65 
+ 2766      6420696E 
+ 2766      7400
+ 2767              	.LASF16:
+ 2768 02e1 646F7562 		.ascii	"double\000"
+ 2768      6C6500
+ 2769              	.LASF29:
+ 2770 02e8 64697370 		.ascii	"display\000"
+ 2770      6C617900 
+ 2771              	.LASF27:
+ 2772 02f0 73657443 		.ascii	"setCursor\000"
+ 2772      7572736F 
+ 2772      7200
+ 2773              	.LASF7:
+ 2774 02fa 5F5F7569 		.ascii	"__uint32_t\000"
+ 2774      6E743332 
+ 2774      5F7400
+ 2775              	.LASF73:
+ 2776 0305 5F636F6C 		.ascii	"_cols\000"
+ 2776      7300
+ 2777              	.LASF42:
+ 2778 030b 63686172 		.ascii	"charmap\000"
+ 2778      6D617000 
+ 2779              	.LASF34:
+ 2780 0313 7363726F 		.ascii	"scrollDisplayLeft\000"
+ 2780      6C6C4469 
+ 2780      73706C61 
+ 2780      794C6566 
+ 2780      7400
+ 2781              	.LASF79:
+ 2782 0325 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_w_"
+ 2782      73657273 
+ 2782      5C676469 
+ 2782      6E675C44 
+ 2782      6F63756D 
+ 2783 0353 6661696C 		.ascii	"failsafes.cydsn\000"
+ 2783      73616665 
+ 2783      732E6379 
+ 2783      64736E00 
+ 2784              	.LASF5:
+ 2785 0363 5F5F696E 		.ascii	"__int32_t\000"
+ 2785      7433325F 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccCwzxRg.s 			page 59
+
+
+ 2785      7400
+ 2786              	.LASF41:
+ 2787 036d 6C6F6361 		.ascii	"location\000"
+ 2787      74696F6E 
+ 2787      00
+ 2788              	.LASF45:
+ 2789 0376 6261636B 		.ascii	"backlight\000"
+ 2789      6C696768 
+ 2789      7400
+ 2790              	.LASF19:
+ 2791 0380 6C63645F 		.ascii	"lcd_addr\000"
+ 2791      61646472 
+ 2791      00
+ 2792              	.LASF53:
+ 2793 0389 77726974 		.ascii	"write4bits\000"
+ 2793      65346269 
+ 2793      747300
+ 2794              	.LASF78:
+ 2795 0394 4C697175 		.ascii	"LiquidCrystal_I2C.c\000"
+ 2795      69644372 
+ 2795      79737461 
+ 2795      6C5F4932 
+ 2795      432E6300 
+ 2796              	.LASF38:
+ 2797 03a8 6175746F 		.ascii	"autoscroll\000"
+ 2797      7363726F 
+ 2797      6C6C00
+ 2798              	.LASF26:
+ 2799 03b3 4C697175 		.ascii	"LiquidCrystal_I2C_init\000"
+ 2799      69644372 
+ 2799      79737461 
+ 2799      6C5F4932 
+ 2799      435F696E 
+ 2800              	.LASF36:
+ 2801 03ca 6C656674 		.ascii	"leftToRight\000"
+ 2801      546F5269 
+ 2801      67687400 
+ 2802              	.LASF75:
+ 2803 03d6 5F636861 		.ascii	"_charsize\000"
+ 2803      7273697A 
+ 2803      6500
+ 2804              	.LASF68:
+ 2805 03e0 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2805      52784275 
+ 2805      66666572 
+ 2805      00
+ 2806              	.LASF46:
+ 2807 03ed 636F6D6D 		.ascii	"command\000"
+ 2807      616E6400 
+ 2808              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

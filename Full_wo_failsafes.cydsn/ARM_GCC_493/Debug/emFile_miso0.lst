@@ -1,0 +1,817 @@
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"emFile_miso0.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.emFile_miso0_Write,"ax",%progbits
+  19              		.align	2
+  20              		.global	emFile_miso0_Write
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	emFile_miso0_Write, %function
+  24              	emFile_miso0_Write:
+  25              	.LFB0:
+  26              		.file 1 "Generated_Source\\PSoC5\\emFile_miso0.c"
+   1:Generated_Source\PSoC5/emFile_miso0.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/emFile_miso0.c **** * File Name: emFile_miso0.c  
+   3:Generated_Source\PSoC5/emFile_miso0.c **** * Version 2.0
+   4:Generated_Source\PSoC5/emFile_miso0.c **** *
+   5:Generated_Source\PSoC5/emFile_miso0.c **** * Description:
+   6:Generated_Source\PSoC5/emFile_miso0.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC5/emFile_miso0.c **** *
+   8:Generated_Source\PSoC5/emFile_miso0.c **** * Note:
+   9:Generated_Source\PSoC5/emFile_miso0.c **** *
+  10:Generated_Source\PSoC5/emFile_miso0.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/emFile_miso0.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/emFile_miso0.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC5/emFile_miso0.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC5/emFile_miso0.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/emFile_miso0.c **** *******************************************************************************/
+  16:Generated_Source\PSoC5/emFile_miso0.c **** 
+  17:Generated_Source\PSoC5/emFile_miso0.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC5/emFile_miso0.c **** #include "emFile_miso0.h"
+  19:Generated_Source\PSoC5/emFile_miso0.c **** 
+  20:Generated_Source\PSoC5/emFile_miso0.c **** /* APIs are not generated for P15[7:6] on PSoC 5 */
+  21:Generated_Source\PSoC5/emFile_miso0.c **** #if !(CY_PSOC5A &&\
+  22:Generated_Source\PSoC5/emFile_miso0.c **** 	 emFile_miso0__PORT == 15 && ((emFile_miso0__MASK & 0xC0) != 0))
+  23:Generated_Source\PSoC5/emFile_miso0.c **** 
+  24:Generated_Source\PSoC5/emFile_miso0.c **** 
+  25:Generated_Source\PSoC5/emFile_miso0.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/emFile_miso0.c **** * Function Name: emFile_miso0_Write
+  27:Generated_Source\PSoC5/emFile_miso0.c **** ********************************************************************************
+  28:Generated_Source\PSoC5/emFile_miso0.c **** *
+  29:Generated_Source\PSoC5/emFile_miso0.c **** * Summary:
+  30:Generated_Source\PSoC5/emFile_miso0.c **** *  Assign a new value to the digital port's data output register.  
+  31:Generated_Source\PSoC5/emFile_miso0.c **** *
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 2
+
+
+  32:Generated_Source\PSoC5/emFile_miso0.c **** * Parameters:  
+  33:Generated_Source\PSoC5/emFile_miso0.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  34:Generated_Source\PSoC5/emFile_miso0.c **** *
+  35:Generated_Source\PSoC5/emFile_miso0.c **** * Return: 
+  36:Generated_Source\PSoC5/emFile_miso0.c **** *  None
+  37:Generated_Source\PSoC5/emFile_miso0.c **** *  
+  38:Generated_Source\PSoC5/emFile_miso0.c **** *******************************************************************************/
+  39:Generated_Source\PSoC5/emFile_miso0.c **** void emFile_miso0_Write(uint8 value) 
+  40:Generated_Source\PSoC5/emFile_miso0.c **** {
+  27              		.loc 1 40 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 85B0     		sub	sp, sp, #20
+  36              		.cfi_def_cfa_offset 24
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  39 0006 0346     		mov	r3, r0
+  40 0008 FB71     		strb	r3, [r7, #7]
+  41:Generated_Source\PSoC5/emFile_miso0.c ****     uint8 staticBits = (emFile_miso0_DR & (uint8)(~emFile_miso0_MASK));
+  41              		.loc 1 41 0
+  42 000a 094B     		ldr	r3, .L2
+  43 000c 1B78     		ldrb	r3, [r3]
+  44 000e DBB2     		uxtb	r3, r3
+  45 0010 03F07F03 		and	r3, r3, #127
+  46 0014 FB73     		strb	r3, [r7, #15]
+  42:Generated_Source\PSoC5/emFile_miso0.c ****     emFile_miso0_DR = staticBits | ((uint8)(value << emFile_miso0_SHIFT) & emFile_miso0_MASK);
+  47              		.loc 1 42 0
+  48 0016 0649     		ldr	r1, .L2
+  49 0018 FB79     		ldrb	r3, [r7, #7]
+  50 001a DB01     		lsls	r3, r3, #7
+  51 001c DAB2     		uxtb	r2, r3
+  52 001e FB7B     		ldrb	r3, [r7, #15]
+  53 0020 1343     		orrs	r3, r3, r2
+  54 0022 DBB2     		uxtb	r3, r3
+  55 0024 0B70     		strb	r3, [r1]
+  43:Generated_Source\PSoC5/emFile_miso0.c **** }
+  56              		.loc 1 43 0
+  57 0026 1437     		adds	r7, r7, #20
+  58              		.cfi_def_cfa_offset 4
+  59 0028 BD46     		mov	sp, r7
+  60              		.cfi_def_cfa_register 13
+  61              		@ sp needed
+  62 002a 5DF8047B 		ldr	r7, [sp], #4
+  63              		.cfi_restore 7
+  64              		.cfi_def_cfa_offset 0
+  65 002e 7047     		bx	lr
+  66              	.L3:
+  67              		.align	2
+  68              	.L2:
+  69 0030 10510040 		.word	1073762576
+  70              		.cfi_endproc
+  71              	.LFE0:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 3
+
+
+  72              		.size	emFile_miso0_Write, .-emFile_miso0_Write
+  73              		.section	.text.emFile_miso0_SetDriveMode,"ax",%progbits
+  74              		.align	2
+  75              		.global	emFile_miso0_SetDriveMode
+  76              		.thumb
+  77              		.thumb_func
+  78              		.type	emFile_miso0_SetDriveMode, %function
+  79              	emFile_miso0_SetDriveMode:
+  80              	.LFB1:
+  44:Generated_Source\PSoC5/emFile_miso0.c **** 
+  45:Generated_Source\PSoC5/emFile_miso0.c **** 
+  46:Generated_Source\PSoC5/emFile_miso0.c **** /*******************************************************************************
+  47:Generated_Source\PSoC5/emFile_miso0.c **** * Function Name: emFile_miso0_SetDriveMode
+  48:Generated_Source\PSoC5/emFile_miso0.c **** ********************************************************************************
+  49:Generated_Source\PSoC5/emFile_miso0.c **** *
+  50:Generated_Source\PSoC5/emFile_miso0.c **** * Summary:
+  51:Generated_Source\PSoC5/emFile_miso0.c **** *  Change the drive mode on the pins of the port.
+  52:Generated_Source\PSoC5/emFile_miso0.c **** * 
+  53:Generated_Source\PSoC5/emFile_miso0.c **** * Parameters:  
+  54:Generated_Source\PSoC5/emFile_miso0.c **** *  mode:  Change the pins to one of the following drive modes.
+  55:Generated_Source\PSoC5/emFile_miso0.c **** *
+  56:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_STRONG     Strong Drive 
+  57:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_OD_HI      Open Drain, Drives High 
+  58:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_OD_LO      Open Drain, Drives Low 
+  59:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_RES_UP     Resistive Pull Up 
+  60:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_RES_DWN    Resistive Pull Down 
+  61:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_RES_UPDWN  Resistive Pull Up/Down 
+  62:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_DIG_HIZ    High Impedance Digital 
+  63:Generated_Source\PSoC5/emFile_miso0.c **** *  emFile_miso0_DM_ALG_HIZ    High Impedance Analog 
+  64:Generated_Source\PSoC5/emFile_miso0.c **** *
+  65:Generated_Source\PSoC5/emFile_miso0.c **** * Return: 
+  66:Generated_Source\PSoC5/emFile_miso0.c **** *  None
+  67:Generated_Source\PSoC5/emFile_miso0.c **** *
+  68:Generated_Source\PSoC5/emFile_miso0.c **** *******************************************************************************/
+  69:Generated_Source\PSoC5/emFile_miso0.c **** void emFile_miso0_SetDriveMode(uint8 mode) 
+  70:Generated_Source\PSoC5/emFile_miso0.c **** {
+  81              		.loc 1 70 0
+  82              		.cfi_startproc
+  83              		@ args = 0, pretend = 0, frame = 8
+  84              		@ frame_needed = 1, uses_anonymous_args = 0
+  85              		@ link register save eliminated.
+  86 0000 80B4     		push	{r7}
+  87              		.cfi_def_cfa_offset 4
+  88              		.cfi_offset 7, -4
+  89 0002 83B0     		sub	sp, sp, #12
+  90              		.cfi_def_cfa_offset 16
+  91 0004 00AF     		add	r7, sp, #0
+  92              		.cfi_def_cfa_register 7
+  93 0006 0346     		mov	r3, r0
+  94 0008 FB71     		strb	r3, [r7, #7]
+  71:Generated_Source\PSoC5/emFile_miso0.c **** 	CyPins_SetPinDriveMode(emFile_miso0_0, mode);
+  95              		.loc 1 71 0
+  96 000a 0A4B     		ldr	r3, .L5
+  97 000c 094A     		ldr	r2, .L5
+  98 000e 1278     		ldrb	r2, [r2]
+  99 0010 D2B2     		uxtb	r2, r2
+ 100 0012 D2B2     		uxtb	r2, r2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 4
+
+
+ 101 0014 22F00E02 		bic	r2, r2, #14
+ 102 0018 D1B2     		uxtb	r1, r2
+ 103 001a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 104 001c 02F00E02 		and	r2, r2, #14
+ 105 0020 D2B2     		uxtb	r2, r2
+ 106 0022 0A43     		orrs	r2, r2, r1
+ 107 0024 D2B2     		uxtb	r2, r2
+ 108 0026 D2B2     		uxtb	r2, r2
+ 109 0028 1A70     		strb	r2, [r3]
+  72:Generated_Source\PSoC5/emFile_miso0.c **** }
+ 110              		.loc 1 72 0
+ 111 002a 0C37     		adds	r7, r7, #12
+ 112              		.cfi_def_cfa_offset 4
+ 113 002c BD46     		mov	sp, r7
+ 114              		.cfi_def_cfa_register 13
+ 115              		@ sp needed
+ 116 002e 5DF8047B 		ldr	r7, [sp], #4
+ 117              		.cfi_restore 7
+ 118              		.cfi_def_cfa_offset 0
+ 119 0032 7047     		bx	lr
+ 120              	.L6:
+ 121              		.align	2
+ 122              	.L5:
+ 123 0034 0F500040 		.word	1073762319
+ 124              		.cfi_endproc
+ 125              	.LFE1:
+ 126              		.size	emFile_miso0_SetDriveMode, .-emFile_miso0_SetDriveMode
+ 127              		.section	.text.emFile_miso0_Read,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	emFile_miso0_Read
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.type	emFile_miso0_Read, %function
+ 133              	emFile_miso0_Read:
+ 134              	.LFB2:
+  73:Generated_Source\PSoC5/emFile_miso0.c **** 
+  74:Generated_Source\PSoC5/emFile_miso0.c **** 
+  75:Generated_Source\PSoC5/emFile_miso0.c **** /*******************************************************************************
+  76:Generated_Source\PSoC5/emFile_miso0.c **** * Function Name: emFile_miso0_Read
+  77:Generated_Source\PSoC5/emFile_miso0.c **** ********************************************************************************
+  78:Generated_Source\PSoC5/emFile_miso0.c **** *
+  79:Generated_Source\PSoC5/emFile_miso0.c **** * Summary:
+  80:Generated_Source\PSoC5/emFile_miso0.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  81:Generated_Source\PSoC5/emFile_miso0.c **** *  form.
+  82:Generated_Source\PSoC5/emFile_miso0.c **** *
+  83:Generated_Source\PSoC5/emFile_miso0.c **** * Parameters:  
+  84:Generated_Source\PSoC5/emFile_miso0.c **** *  None
+  85:Generated_Source\PSoC5/emFile_miso0.c **** *
+  86:Generated_Source\PSoC5/emFile_miso0.c **** * Return: 
+  87:Generated_Source\PSoC5/emFile_miso0.c **** *  Returns the current value of the Digital Port as a right justified number
+  88:Generated_Source\PSoC5/emFile_miso0.c **** *  
+  89:Generated_Source\PSoC5/emFile_miso0.c **** * Note:
+  90:Generated_Source\PSoC5/emFile_miso0.c **** *  Macro emFile_miso0_ReadPS calls this function. 
+  91:Generated_Source\PSoC5/emFile_miso0.c **** *  
+  92:Generated_Source\PSoC5/emFile_miso0.c **** *******************************************************************************/
+  93:Generated_Source\PSoC5/emFile_miso0.c **** uint8 emFile_miso0_Read(void) 
+  94:Generated_Source\PSoC5/emFile_miso0.c **** {
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 5
+
+
+ 135              		.loc 1 94 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 1, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
+ 140 0000 80B4     		push	{r7}
+ 141              		.cfi_def_cfa_offset 4
+ 142              		.cfi_offset 7, -4
+ 143 0002 00AF     		add	r7, sp, #0
+ 144              		.cfi_def_cfa_register 7
+  95:Generated_Source\PSoC5/emFile_miso0.c ****     return (emFile_miso0_PS & emFile_miso0_MASK) >> emFile_miso0_SHIFT;
+ 145              		.loc 1 95 0
+ 146 0004 044B     		ldr	r3, .L9
+ 147 0006 1B78     		ldrb	r3, [r3]
+ 148 0008 DBB2     		uxtb	r3, r3
+ 149 000a DB09     		lsrs	r3, r3, #7
+ 150 000c DBB2     		uxtb	r3, r3
+  96:Generated_Source\PSoC5/emFile_miso0.c **** }
+ 151              		.loc 1 96 0
+ 152 000e 1846     		mov	r0, r3
+ 153 0010 BD46     		mov	sp, r7
+ 154              		.cfi_def_cfa_register 13
+ 155              		@ sp needed
+ 156 0012 5DF8047B 		ldr	r7, [sp], #4
+ 157              		.cfi_restore 7
+ 158              		.cfi_def_cfa_offset 0
+ 159 0016 7047     		bx	lr
+ 160              	.L10:
+ 161              		.align	2
+ 162              	.L9:
+ 163 0018 11510040 		.word	1073762577
+ 164              		.cfi_endproc
+ 165              	.LFE2:
+ 166              		.size	emFile_miso0_Read, .-emFile_miso0_Read
+ 167              		.section	.text.emFile_miso0_ReadDataReg,"ax",%progbits
+ 168              		.align	2
+ 169              		.global	emFile_miso0_ReadDataReg
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.type	emFile_miso0_ReadDataReg, %function
+ 173              	emFile_miso0_ReadDataReg:
+ 174              	.LFB3:
+  97:Generated_Source\PSoC5/emFile_miso0.c **** 
+  98:Generated_Source\PSoC5/emFile_miso0.c **** 
+  99:Generated_Source\PSoC5/emFile_miso0.c **** /*******************************************************************************
+ 100:Generated_Source\PSoC5/emFile_miso0.c **** * Function Name: emFile_miso0_ReadDataReg
+ 101:Generated_Source\PSoC5/emFile_miso0.c **** ********************************************************************************
+ 102:Generated_Source\PSoC5/emFile_miso0.c **** *
+ 103:Generated_Source\PSoC5/emFile_miso0.c **** * Summary:
+ 104:Generated_Source\PSoC5/emFile_miso0.c **** *  Read the current value assigned to a Digital Port's data output register
+ 105:Generated_Source\PSoC5/emFile_miso0.c **** *
+ 106:Generated_Source\PSoC5/emFile_miso0.c **** * Parameters:  
+ 107:Generated_Source\PSoC5/emFile_miso0.c **** *  None 
+ 108:Generated_Source\PSoC5/emFile_miso0.c **** *
+ 109:Generated_Source\PSoC5/emFile_miso0.c **** * Return: 
+ 110:Generated_Source\PSoC5/emFile_miso0.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 111:Generated_Source\PSoC5/emFile_miso0.c **** *  
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 6
+
+
+ 112:Generated_Source\PSoC5/emFile_miso0.c **** *******************************************************************************/
+ 113:Generated_Source\PSoC5/emFile_miso0.c **** uint8 emFile_miso0_ReadDataReg(void) 
+ 114:Generated_Source\PSoC5/emFile_miso0.c **** {
+ 175              		.loc 1 114 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 1, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
+ 180 0000 80B4     		push	{r7}
+ 181              		.cfi_def_cfa_offset 4
+ 182              		.cfi_offset 7, -4
+ 183 0002 00AF     		add	r7, sp, #0
+ 184              		.cfi_def_cfa_register 7
+ 115:Generated_Source\PSoC5/emFile_miso0.c ****     return (emFile_miso0_DR & emFile_miso0_MASK) >> emFile_miso0_SHIFT;
+ 185              		.loc 1 115 0
+ 186 0004 044B     		ldr	r3, .L13
+ 187 0006 1B78     		ldrb	r3, [r3]
+ 188 0008 DBB2     		uxtb	r3, r3
+ 189 000a DB09     		lsrs	r3, r3, #7
+ 190 000c DBB2     		uxtb	r3, r3
+ 116:Generated_Source\PSoC5/emFile_miso0.c **** }
+ 191              		.loc 1 116 0
+ 192 000e 1846     		mov	r0, r3
+ 193 0010 BD46     		mov	sp, r7
+ 194              		.cfi_def_cfa_register 13
+ 195              		@ sp needed
+ 196 0012 5DF8047B 		ldr	r7, [sp], #4
+ 197              		.cfi_restore 7
+ 198              		.cfi_def_cfa_offset 0
+ 199 0016 7047     		bx	lr
+ 200              	.L14:
+ 201              		.align	2
+ 202              	.L13:
+ 203 0018 10510040 		.word	1073762576
+ 204              		.cfi_endproc
+ 205              	.LFE3:
+ 206              		.size	emFile_miso0_ReadDataReg, .-emFile_miso0_ReadDataReg
+ 207              		.text
+ 208              	.Letext0:
+ 209              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 210              		.section	.debug_info,"",%progbits
+ 211              	.Ldebug_info0:
+ 212 0000 1A010000 		.4byte	0x11a
+ 213 0004 0400     		.2byte	0x4
+ 214 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 215 000a 04       		.byte	0x4
+ 216 000b 01       		.uleb128 0x1
+ 217 000c 11000000 		.4byte	.LASF20
+ 218 0010 01       		.byte	0x1
+ 219 0011 9F010000 		.4byte	.LASF21
+ 220 0015 52010000 		.4byte	.LASF22
+ 221 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 222 001d 00000000 		.4byte	0
+ 223 0021 00000000 		.4byte	.Ldebug_line0
+ 224 0025 02       		.uleb128 0x2
+ 225 0026 01       		.byte	0x1
+ 226 0027 06       		.byte	0x6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 7
+
+
+ 227 0028 E3010000 		.4byte	.LASF0
+ 228 002c 02       		.uleb128 0x2
+ 229 002d 01       		.byte	0x1
+ 230 002e 08       		.byte	0x8
+ 231 002f A5000000 		.4byte	.LASF1
+ 232 0033 02       		.uleb128 0x2
+ 233 0034 02       		.byte	0x2
+ 234 0035 05       		.byte	0x5
+ 235 0036 CA010000 		.4byte	.LASF2
+ 236 003a 02       		.uleb128 0x2
+ 237 003b 02       		.byte	0x2
+ 238 003c 07       		.byte	0x7
+ 239 003d DC000000 		.4byte	.LASF3
+ 240 0041 02       		.uleb128 0x2
+ 241 0042 04       		.byte	0x4
+ 242 0043 05       		.byte	0x5
+ 243 0044 DA010000 		.4byte	.LASF4
+ 244 0048 02       		.uleb128 0x2
+ 245 0049 04       		.byte	0x4
+ 246 004a 07       		.byte	0x7
+ 247 004b B8000000 		.4byte	.LASF5
+ 248 004f 02       		.uleb128 0x2
+ 249 0050 08       		.byte	0x8
+ 250 0051 05       		.byte	0x5
+ 251 0052 91010000 		.4byte	.LASF6
+ 252 0056 02       		.uleb128 0x2
+ 253 0057 08       		.byte	0x8
+ 254 0058 07       		.byte	0x7
+ 255 0059 03010000 		.4byte	.LASF7
+ 256 005d 03       		.uleb128 0x3
+ 257 005e 04       		.byte	0x4
+ 258 005f 05       		.byte	0x5
+ 259 0060 696E7400 		.ascii	"int\000"
+ 260 0064 02       		.uleb128 0x2
+ 261 0065 04       		.byte	0x4
+ 262 0066 07       		.byte	0x7
+ 263 0067 F6000000 		.4byte	.LASF8
+ 264 006b 04       		.uleb128 0x4
+ 265 006c D4010000 		.4byte	.LASF12
+ 266 0070 02       		.byte	0x2
+ 267 0071 9201     		.2byte	0x192
+ 268 0073 2C000000 		.4byte	0x2c
+ 269 0077 02       		.uleb128 0x2
+ 270 0078 04       		.byte	0x4
+ 271 0079 04       		.byte	0x4
+ 272 007a 9F000000 		.4byte	.LASF9
+ 273 007e 02       		.uleb128 0x2
+ 274 007f 08       		.byte	0x8
+ 275 0080 04       		.byte	0x4
+ 276 0081 EF000000 		.4byte	.LASF10
+ 277 0085 02       		.uleb128 0x2
+ 278 0086 01       		.byte	0x1
+ 279 0087 08       		.byte	0x8
+ 280 0088 C5010000 		.4byte	.LASF11
+ 281 008c 04       		.uleb128 0x4
+ 282 008d B3000000 		.4byte	.LASF13
+ 283 0091 02       		.byte	0x2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 8
+
+
+ 284 0092 3C02     		.2byte	0x23c
+ 285 0094 98000000 		.4byte	0x98
+ 286 0098 05       		.uleb128 0x5
+ 287 0099 6B000000 		.4byte	0x6b
+ 288 009d 06       		.uleb128 0x6
+ 289 009e EF010000 		.4byte	.LASF14
+ 290 00a2 01       		.byte	0x1
+ 291 00a3 27       		.byte	0x27
+ 292 00a4 00000000 		.4byte	.LFB0
+ 293 00a8 34000000 		.4byte	.LFE0-.LFB0
+ 294 00ac 01       		.uleb128 0x1
+ 295 00ad 9C       		.byte	0x9c
+ 296 00ae CF000000 		.4byte	0xcf
+ 297 00b2 07       		.uleb128 0x7
+ 298 00b3 00000000 		.4byte	.LASF16
+ 299 00b7 01       		.byte	0x1
+ 300 00b8 27       		.byte	0x27
+ 301 00b9 6B000000 		.4byte	0x6b
+ 302 00bd 02       		.uleb128 0x2
+ 303 00be 91       		.byte	0x91
+ 304 00bf 6F       		.sleb128 -17
+ 305 00c0 08       		.uleb128 0x8
+ 306 00c1 06000000 		.4byte	.LASF23
+ 307 00c5 01       		.byte	0x1
+ 308 00c6 29       		.byte	0x29
+ 309 00c7 6B000000 		.4byte	0x6b
+ 310 00cb 02       		.uleb128 0x2
+ 311 00cc 91       		.byte	0x91
+ 312 00cd 77       		.sleb128 -9
+ 313 00ce 00       		.byte	0
+ 314 00cf 06       		.uleb128 0x6
+ 315 00d0 38010000 		.4byte	.LASF15
+ 316 00d4 01       		.byte	0x1
+ 317 00d5 45       		.byte	0x45
+ 318 00d6 00000000 		.4byte	.LFB1
+ 319 00da 38000000 		.4byte	.LFE1-.LFB1
+ 320 00de 01       		.uleb128 0x1
+ 321 00df 9C       		.byte	0x9c
+ 322 00e0 F3000000 		.4byte	0xf3
+ 323 00e4 07       		.uleb128 0x7
+ 324 00e5 1A010000 		.4byte	.LASF17
+ 325 00e9 01       		.byte	0x1
+ 326 00ea 45       		.byte	0x45
+ 327 00eb 6B000000 		.4byte	0x6b
+ 328 00ef 02       		.uleb128 0x2
+ 329 00f0 91       		.byte	0x91
+ 330 00f1 77       		.sleb128 -9
+ 331 00f2 00       		.byte	0
+ 332 00f3 09       		.uleb128 0x9
+ 333 00f4 CA000000 		.4byte	.LASF18
+ 334 00f8 01       		.byte	0x1
+ 335 00f9 5D       		.byte	0x5d
+ 336 00fa 6B000000 		.4byte	0x6b
+ 337 00fe 00000000 		.4byte	.LFB2
+ 338 0102 1C000000 		.4byte	.LFE2-.LFB2
+ 339 0106 01       		.uleb128 0x1
+ 340 0107 9C       		.byte	0x9c
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 9
+
+
+ 341 0108 09       		.uleb128 0x9
+ 342 0109 1F010000 		.4byte	.LASF19
+ 343 010d 01       		.byte	0x1
+ 344 010e 71       		.byte	0x71
+ 345 010f 6B000000 		.4byte	0x6b
+ 346 0113 00000000 		.4byte	.LFB3
+ 347 0117 1C000000 		.4byte	.LFE3-.LFB3
+ 348 011b 01       		.uleb128 0x1
+ 349 011c 9C       		.byte	0x9c
+ 350 011d 00       		.byte	0
+ 351              		.section	.debug_abbrev,"",%progbits
+ 352              	.Ldebug_abbrev0:
+ 353 0000 01       		.uleb128 0x1
+ 354 0001 11       		.uleb128 0x11
+ 355 0002 01       		.byte	0x1
+ 356 0003 25       		.uleb128 0x25
+ 357 0004 0E       		.uleb128 0xe
+ 358 0005 13       		.uleb128 0x13
+ 359 0006 0B       		.uleb128 0xb
+ 360 0007 03       		.uleb128 0x3
+ 361 0008 0E       		.uleb128 0xe
+ 362 0009 1B       		.uleb128 0x1b
+ 363 000a 0E       		.uleb128 0xe
+ 364 000b 55       		.uleb128 0x55
+ 365 000c 17       		.uleb128 0x17
+ 366 000d 11       		.uleb128 0x11
+ 367 000e 01       		.uleb128 0x1
+ 368 000f 10       		.uleb128 0x10
+ 369 0010 17       		.uleb128 0x17
+ 370 0011 00       		.byte	0
+ 371 0012 00       		.byte	0
+ 372 0013 02       		.uleb128 0x2
+ 373 0014 24       		.uleb128 0x24
+ 374 0015 00       		.byte	0
+ 375 0016 0B       		.uleb128 0xb
+ 376 0017 0B       		.uleb128 0xb
+ 377 0018 3E       		.uleb128 0x3e
+ 378 0019 0B       		.uleb128 0xb
+ 379 001a 03       		.uleb128 0x3
+ 380 001b 0E       		.uleb128 0xe
+ 381 001c 00       		.byte	0
+ 382 001d 00       		.byte	0
+ 383 001e 03       		.uleb128 0x3
+ 384 001f 24       		.uleb128 0x24
+ 385 0020 00       		.byte	0
+ 386 0021 0B       		.uleb128 0xb
+ 387 0022 0B       		.uleb128 0xb
+ 388 0023 3E       		.uleb128 0x3e
+ 389 0024 0B       		.uleb128 0xb
+ 390 0025 03       		.uleb128 0x3
+ 391 0026 08       		.uleb128 0x8
+ 392 0027 00       		.byte	0
+ 393 0028 00       		.byte	0
+ 394 0029 04       		.uleb128 0x4
+ 395 002a 16       		.uleb128 0x16
+ 396 002b 00       		.byte	0
+ 397 002c 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 10
+
+
+ 398 002d 0E       		.uleb128 0xe
+ 399 002e 3A       		.uleb128 0x3a
+ 400 002f 0B       		.uleb128 0xb
+ 401 0030 3B       		.uleb128 0x3b
+ 402 0031 05       		.uleb128 0x5
+ 403 0032 49       		.uleb128 0x49
+ 404 0033 13       		.uleb128 0x13
+ 405 0034 00       		.byte	0
+ 406 0035 00       		.byte	0
+ 407 0036 05       		.uleb128 0x5
+ 408 0037 35       		.uleb128 0x35
+ 409 0038 00       		.byte	0
+ 410 0039 49       		.uleb128 0x49
+ 411 003a 13       		.uleb128 0x13
+ 412 003b 00       		.byte	0
+ 413 003c 00       		.byte	0
+ 414 003d 06       		.uleb128 0x6
+ 415 003e 2E       		.uleb128 0x2e
+ 416 003f 01       		.byte	0x1
+ 417 0040 3F       		.uleb128 0x3f
+ 418 0041 19       		.uleb128 0x19
+ 419 0042 03       		.uleb128 0x3
+ 420 0043 0E       		.uleb128 0xe
+ 421 0044 3A       		.uleb128 0x3a
+ 422 0045 0B       		.uleb128 0xb
+ 423 0046 3B       		.uleb128 0x3b
+ 424 0047 0B       		.uleb128 0xb
+ 425 0048 27       		.uleb128 0x27
+ 426 0049 19       		.uleb128 0x19
+ 427 004a 11       		.uleb128 0x11
+ 428 004b 01       		.uleb128 0x1
+ 429 004c 12       		.uleb128 0x12
+ 430 004d 06       		.uleb128 0x6
+ 431 004e 40       		.uleb128 0x40
+ 432 004f 18       		.uleb128 0x18
+ 433 0050 9742     		.uleb128 0x2117
+ 434 0052 19       		.uleb128 0x19
+ 435 0053 01       		.uleb128 0x1
+ 436 0054 13       		.uleb128 0x13
+ 437 0055 00       		.byte	0
+ 438 0056 00       		.byte	0
+ 439 0057 07       		.uleb128 0x7
+ 440 0058 05       		.uleb128 0x5
+ 441 0059 00       		.byte	0
+ 442 005a 03       		.uleb128 0x3
+ 443 005b 0E       		.uleb128 0xe
+ 444 005c 3A       		.uleb128 0x3a
+ 445 005d 0B       		.uleb128 0xb
+ 446 005e 3B       		.uleb128 0x3b
+ 447 005f 0B       		.uleb128 0xb
+ 448 0060 49       		.uleb128 0x49
+ 449 0061 13       		.uleb128 0x13
+ 450 0062 02       		.uleb128 0x2
+ 451 0063 18       		.uleb128 0x18
+ 452 0064 00       		.byte	0
+ 453 0065 00       		.byte	0
+ 454 0066 08       		.uleb128 0x8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 11
+
+
+ 455 0067 34       		.uleb128 0x34
+ 456 0068 00       		.byte	0
+ 457 0069 03       		.uleb128 0x3
+ 458 006a 0E       		.uleb128 0xe
+ 459 006b 3A       		.uleb128 0x3a
+ 460 006c 0B       		.uleb128 0xb
+ 461 006d 3B       		.uleb128 0x3b
+ 462 006e 0B       		.uleb128 0xb
+ 463 006f 49       		.uleb128 0x49
+ 464 0070 13       		.uleb128 0x13
+ 465 0071 02       		.uleb128 0x2
+ 466 0072 18       		.uleb128 0x18
+ 467 0073 00       		.byte	0
+ 468 0074 00       		.byte	0
+ 469 0075 09       		.uleb128 0x9
+ 470 0076 2E       		.uleb128 0x2e
+ 471 0077 00       		.byte	0
+ 472 0078 3F       		.uleb128 0x3f
+ 473 0079 19       		.uleb128 0x19
+ 474 007a 03       		.uleb128 0x3
+ 475 007b 0E       		.uleb128 0xe
+ 476 007c 3A       		.uleb128 0x3a
+ 477 007d 0B       		.uleb128 0xb
+ 478 007e 3B       		.uleb128 0x3b
+ 479 007f 0B       		.uleb128 0xb
+ 480 0080 27       		.uleb128 0x27
+ 481 0081 19       		.uleb128 0x19
+ 482 0082 49       		.uleb128 0x49
+ 483 0083 13       		.uleb128 0x13
+ 484 0084 11       		.uleb128 0x11
+ 485 0085 01       		.uleb128 0x1
+ 486 0086 12       		.uleb128 0x12
+ 487 0087 06       		.uleb128 0x6
+ 488 0088 40       		.uleb128 0x40
+ 489 0089 18       		.uleb128 0x18
+ 490 008a 9742     		.uleb128 0x2117
+ 491 008c 19       		.uleb128 0x19
+ 492 008d 00       		.byte	0
+ 493 008e 00       		.byte	0
+ 494 008f 00       		.byte	0
+ 495              		.section	.debug_aranges,"",%progbits
+ 496 0000 34000000 		.4byte	0x34
+ 497 0004 0200     		.2byte	0x2
+ 498 0006 00000000 		.4byte	.Ldebug_info0
+ 499 000a 04       		.byte	0x4
+ 500 000b 00       		.byte	0
+ 501 000c 0000     		.2byte	0
+ 502 000e 0000     		.2byte	0
+ 503 0010 00000000 		.4byte	.LFB0
+ 504 0014 34000000 		.4byte	.LFE0-.LFB0
+ 505 0018 00000000 		.4byte	.LFB1
+ 506 001c 38000000 		.4byte	.LFE1-.LFB1
+ 507 0020 00000000 		.4byte	.LFB2
+ 508 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 509 0028 00000000 		.4byte	.LFB3
+ 510 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 511 0030 00000000 		.4byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 12
+
+
+ 512 0034 00000000 		.4byte	0
+ 513              		.section	.debug_ranges,"",%progbits
+ 514              	.Ldebug_ranges0:
+ 515 0000 00000000 		.4byte	.LFB0
+ 516 0004 34000000 		.4byte	.LFE0
+ 517 0008 00000000 		.4byte	.LFB1
+ 518 000c 38000000 		.4byte	.LFE1
+ 519 0010 00000000 		.4byte	.LFB2
+ 520 0014 1C000000 		.4byte	.LFE2
+ 521 0018 00000000 		.4byte	.LFB3
+ 522 001c 1C000000 		.4byte	.LFE3
+ 523 0020 00000000 		.4byte	0
+ 524 0024 00000000 		.4byte	0
+ 525              		.section	.debug_line,"",%progbits
+ 526              	.Ldebug_line0:
+ 527 0000 97000000 		.section	.debug_str,"MS",%progbits,1
+ 527      02004900 
+ 527      00000201 
+ 527      FB0E0D00 
+ 527      01010101 
+ 528              	.LASF16:
+ 529 0000 76616C75 		.ascii	"value\000"
+ 529      6500
+ 530              	.LASF23:
+ 531 0006 73746174 		.ascii	"staticBits\000"
+ 531      69634269 
+ 531      747300
+ 532              	.LASF20:
+ 533 0011 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 533      4320342E 
+ 533      392E3320 
+ 533      32303135 
+ 533      30333033 
+ 534 0044 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 534      20726576 
+ 534      6973696F 
+ 534      6E203232 
+ 534      31323230 
+ 535 0077 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 535      66756E63 
+ 535      74696F6E 
+ 535      2D736563 
+ 535      74696F6E 
+ 536              	.LASF9:
+ 537 009f 666C6F61 		.ascii	"float\000"
+ 537      7400
+ 538              	.LASF1:
+ 539 00a5 756E7369 		.ascii	"unsigned char\000"
+ 539      676E6564 
+ 539      20636861 
+ 539      7200
+ 540              	.LASF13:
+ 541 00b3 72656738 		.ascii	"reg8\000"
+ 541      00
+ 542              	.LASF5:
+ 543 00b8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 543      20756E73 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 13
+
+
+ 543      69676E65 
+ 543      6420696E 
+ 543      7400
+ 544              	.LASF18:
+ 545 00ca 656D4669 		.ascii	"emFile_miso0_Read\000"
+ 545      6C655F6D 
+ 545      69736F30 
+ 545      5F526561 
+ 545      6400
+ 546              	.LASF3:
+ 547 00dc 73686F72 		.ascii	"short unsigned int\000"
+ 547      7420756E 
+ 547      7369676E 
+ 547      65642069 
+ 547      6E7400
+ 548              	.LASF10:
+ 549 00ef 646F7562 		.ascii	"double\000"
+ 549      6C6500
+ 550              	.LASF8:
+ 551 00f6 756E7369 		.ascii	"unsigned int\000"
+ 551      676E6564 
+ 551      20696E74 
+ 551      00
+ 552              	.LASF7:
+ 553 0103 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 553      206C6F6E 
+ 553      6720756E 
+ 553      7369676E 
+ 553      65642069 
+ 554              	.LASF17:
+ 555 011a 6D6F6465 		.ascii	"mode\000"
+ 555      00
+ 556              	.LASF19:
+ 557 011f 656D4669 		.ascii	"emFile_miso0_ReadDataReg\000"
+ 557      6C655F6D 
+ 557      69736F30 
+ 557      5F526561 
+ 557      64446174 
+ 558              	.LASF15:
+ 559 0138 656D4669 		.ascii	"emFile_miso0_SetDriveMode\000"
+ 559      6C655F6D 
+ 559      69736F30 
+ 559      5F536574 
+ 559      44726976 
+ 560              	.LASF22:
+ 561 0152 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_wo"
+ 561      73657273 
+ 561      5C676469 
+ 561      6E675C44 
+ 561      6F63756D 
+ 562 0180 5F666169 		.ascii	"_failsafes.cydsn\000"
+ 562      6C736166 
+ 562      65732E63 
+ 562      7964736E 
+ 562      00
+ 563              	.LASF6:
+ 564 0191 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccsdmGWa.s 			page 14
+
+
+ 564      206C6F6E 
+ 564      6720696E 
+ 564      7400
+ 565              	.LASF21:
+ 566 019f 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_miso0.c\000"
+ 566      72617465 
+ 566      645F536F 
+ 566      75726365 
+ 566      5C50536F 
+ 567              	.LASF11:
+ 568 01c5 63686172 		.ascii	"char\000"
+ 568      00
+ 569              	.LASF2:
+ 570 01ca 73686F72 		.ascii	"short int\000"
+ 570      7420696E 
+ 570      7400
+ 571              	.LASF12:
+ 572 01d4 75696E74 		.ascii	"uint8\000"
+ 572      3800
+ 573              	.LASF4:
+ 574 01da 6C6F6E67 		.ascii	"long int\000"
+ 574      20696E74 
+ 574      00
+ 575              	.LASF0:
+ 576 01e3 7369676E 		.ascii	"signed char\000"
+ 576      65642063 
+ 576      68617200 
+ 577              	.LASF14:
+ 578 01ef 656D4669 		.ascii	"emFile_miso0_Write\000"
+ 578      6C655F6D 
+ 578      69736F30 
+ 578      5F577269 
+ 578      746500
+ 579              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

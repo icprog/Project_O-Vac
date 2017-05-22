@@ -1,0 +1,4776 @@
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	devAddr,1,1
+  19              		.comm	buffer,22,4
+  20              		.global	Addr
+  21              		.data
+  22              		.align	2
+  23              		.type	Addr, %object
+  24              		.size	Addr, 4
+  25              	Addr:
+  26 0000 3F000000 		.word	63
+  27              		.global	id
+  28              		.align	2
+  29              		.type	id, %object
+  30              		.size	id, 4
+  31              	id:
+  32 0004 01000000 		.word	1
+  33              		.global	press_id
+  34              		.align	2
+  35              		.type	press_id, %object
+  36              		.size	press_id, 4
+  37              	press_id:
+  38 0008 01000000 		.word	1
+  39              		.global	data_time
+  40              		.bss
+  41              		.align	2
+  42              		.type	data_time, %object
+  43              		.size	data_time, 4
+  44              	data_time:
+  45 0000 00000000 		.space	4
+  46              		.global	descent_time
+  47              		.align	2
+  48              		.type	descent_time, %object
+  49              		.size	descent_time, 4
+  50              	descent_time:
+  51 0004 00000000 		.space	4
+  52              		.global	sum
+  53              		.align	2
+  54              		.type	sum, %object
+  55              		.size	sum, 4
+  56              	sum:
+  57 0008 00000000 		.space	4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 2
+
+
+  58              		.global	pressure_sum
+  59              		.align	2
+  60              		.type	pressure_sum, %object
+  61              		.size	pressure_sum, 4
+  62              	pressure_sum:
+  63 000c 00000000 		.space	4
+  64              		.global	average
+  65              		.align	1
+  66              		.type	average, %object
+  67              		.size	average, 2
+  68              	average:
+  69 0010 0000     		.space	2
+  70              		.global	collect_flag
+  71              		.type	collect_flag, %object
+  72              		.size	collect_flag, 1
+  73              	collect_flag:
+  74 0012 00       		.space	1
+  75              		.global	wait_flag
+  76              		.type	wait_flag, %object
+  77              		.size	wait_flag, 1
+  78              	wait_flag:
+  79 0013 00       		.space	1
+  80              		.global	PANIC_flag
+  81              		.type	PANIC_flag, %object
+  82              		.size	PANIC_flag, 1
+  83              	PANIC_flag:
+  84 0014 00       		.space	1
+  85              		.global	STATE
+  86              		.data
+  87              		.type	STATE, %object
+  88              		.size	STATE, 1
+  89              	STATE:
+  90 000c 01       		.byte	1
+  91              		.global	countdown
+  92              		.bss
+  93              		.type	countdown, %object
+  94              		.size	countdown, 1
+  95              	countdown:
+  96 0015 00       		.space	1
+  97              		.global	update_Data
+  98              		.type	update_Data, %object
+  99              		.size	update_Data, 1
+ 100              	update_Data:
+ 101 0016 00       		.space	1
+ 102              		.global	RxBuffer
+ 103 0017 00       		.align	2
+ 104              		.type	RxBuffer, %object
+ 105              		.size	RxBuffer, 64
+ 106              	RxBuffer:
+ 107 0018 00000000 		.space	64
+ 107      00000000 
+ 107      00000000 
+ 107      00000000 
+ 107      00000000 
+ 108              		.global	msg_count
+ 109              		.align	2
+ 110              		.type	msg_count, %object
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 3
+
+
+ 111              		.size	msg_count, 4
+ 112              	msg_count:
+ 113 0058 00000000 		.space	4
+ 114              		.global	rxflag
+ 115              		.align	2
+ 116              		.type	rxflag, %object
+ 117              		.size	rxflag, 4
+ 118              	rxflag:
+ 119 005c 00000000 		.space	4
+ 120              		.global	bytes
+ 121              		.align	2
+ 122              		.type	bytes, %object
+ 123              		.size	bytes, 4
+ 124              	bytes:
+ 125 0060 00000000 		.space	4
+ 126              		.global	dataflag
+ 127              		.align	2
+ 128              		.type	dataflag, %object
+ 129              		.size	dataflag, 4
+ 130              	dataflag:
+ 131 0064 00000000 		.space	4
+ 132              		.global	transmit_flag
+ 133              		.align	2
+ 134              		.type	transmit_flag, %object
+ 135              		.size	transmit_flag, 4
+ 136              	transmit_flag:
+ 137 0068 00000000 		.space	4
+ 138              		.global	depth
+ 139              		.align	2
+ 140              		.type	depth, %object
+ 141              		.size	depth, 4
+ 142              	depth:
+ 143 006c 00000000 		.space	4
+ 144              		.global	reset
+ 145              		.align	2
+ 146              		.type	reset, %object
+ 147              		.size	reset, 4
+ 148              	reset:
+ 149 0070 00000000 		.space	4
+ 150              		.global	xavg
+ 151              		.align	2
+ 152              		.type	xavg, %object
+ 153              		.size	xavg, 4
+ 154              	xavg:
+ 155 0074 00000000 		.space	4
+ 156              		.global	yavg
+ 157              		.align	2
+ 158              		.type	yavg, %object
+ 159              		.size	yavg, 4
+ 160              	yavg:
+ 161 0078 00000000 		.space	4
+ 162              		.global	xsum
+ 163              		.align	2
+ 164              		.type	xsum, %object
+ 165              		.size	xsum, 4
+ 166              	xsum:
+ 167 007c 00000000 		.space	4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 4
+
+
+ 168              		.global	ysum
+ 169              		.align	2
+ 170              		.type	ysum, %object
+ 171              		.size	ysum, 4
+ 172              	ysum:
+ 173 0080 00000000 		.space	4
+ 174              		.global	file
+ 175              		.data
+ 176 000d 000000   		.align	2
+ 177              		.type	file, %object
+ 178              		.size	file, 11
+ 179              	file:
+ 180 0010 74657374 		.ascii	"test_1.txt\000"
+ 180      5F312E74 
+ 180      787400
+ 181              		.global	volume
+ 182 001b 00       		.bss
+ 183              		.align	2
+ 184              		.type	volume, %object
+ 185              		.size	volume, 10
+ 186              	volume:
+ 187 0084 00000000 		.space	10
+ 187      00000000 
+ 187      0000
+ 188              		.comm	fsfile,4,4
+ 189 008e 0000     		.section	.text.Moisture_ISR_Handler,"ax",%progbits
+ 190              		.align	2
+ 191              		.global	Moisture_ISR_Handler
+ 192              		.thumb
+ 193              		.thumb_func
+ 194              		.type	Moisture_ISR_Handler, %function
+ 195              	Moisture_ISR_Handler:
+ 196              	.LFB63:
+ 197              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 2.20
+   5:main.c        **** *
+   6:main.c        **** * Description:
+   7:main.c        **** *   This is a source code for example project of ADC single ended mode.
+   8:main.c        **** *
+   9:main.c        **** *   Variable resistor(pot) is connected to +ve input of ADC using the I/O pin.
+  10:main.c        **** *   P0.0. When voltage to positive terminal of ADC is 0, the output displayed
+  11:main.c        **** *   on the LCD pannel is 0x0000. As voltage on positive terminal goes on
+  12:main.c        **** *   increasing, the  converted value goes on increasing from 0x0000 and reaches
+  13:main.c        **** *   0xFFFF when voltage becomes 1.024V. Futher increase in voltage value,
+  14:main.c        **** *   doesn't cause any changes to values displayed in the LCD.
+  15:main.c        **** *
+  16:main.c        **** * Hardware Connections: 
+  17:main.c        **** *  Connect analog input from Variable resistor to port P0[0] of DVK1 board.
+  18:main.c        **** *
+  19:main.c        **** ********************************************************************************
+  20:main.c        **** * Copyright 2012-2015, Cypress Semiconductor Corporation. All rights reserved.
+  21:main.c        **** * This software is owned by Cypress Semiconductor Corporation and is protected
+  22:main.c        **** * by and subject to worldwide patent and copyright laws and treaties.
+  23:main.c        **** * Therefore, you may use this software only as provided in the license agreement
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 5
+
+
+  24:main.c        **** * accompanying the software package from which you obtained this software.
+  25:main.c        **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  26:main.c        **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  27:main.c        **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:main.c        **** *******************************************************************************/
+  29:main.c        **** 
+  30:main.c        **** #include <project.h>
+  31:main.c        **** #include <mpu6050.h>
+  32:main.c        **** #include <stdio.h>
+  33:main.c        **** #include <stdlib.h>
+  34:main.c        **** #include <string.h>
+  35:main.c        **** #include <FS.h>
+  36:main.c        **** #include "LiquidCrystal_I2C.h"
+  37:main.c        **** #include "functions.h"
+  38:main.c        **** 
+  39:main.c        **** #define MPU6050 
+  40:main.c        **** #define LCD
+  41:main.c        **** //#define SD
+  42:main.c        **** #define BT
+  43:main.c        **** 
+  44:main.c        **** #define MA_WINDOW 15                    // Number of samples in the moving average window.
+  45:main.c        **** #define BOT_THRESHOLD 20000             // Z-Aacceleration threshold for transition into LANDED sta
+  46:main.c        **** #define WAIT_TIME 1000                  // Number of ISR calls until transition into DESCENDING sta
+  47:main.c        **** #define BUFFER_LEN  64u                 // Buffer length for UART rx
+  48:main.c        **** #define DEGREES_20 (131 * 20)           // Gyro value corresponding to 30 degrees. Default setting 
+  49:main.c        **** #define DEGREES_50 (131 * 50)           // So every 131 in gyro value equals 1 degree of rotational
+  50:main.c        **** 
+  51:main.c        **** 
+  52:main.c        **** uint32_t Addr = 0x3F;                   // I2C address of LCD.
+  53:main.c        **** long id = 1, press_id = 1;              // Interrupt count.
+  54:main.c        **** long data_time = 0;                     // data point num
+  55:main.c        **** long descent_time = 0;                  // Max number of seconds allowed for descent, x 500 because
+  56:main.c        **** 
+  57:main.c        **** long sum = 0;                           // Sum of accelerometer values
+  58:main.c        **** float pressure_sum = 0;                 // Sum of pressure values. 
+  59:main.c        **** int16_t average = 0;                    // Moving average variable, accelerometer.
+  60:main.c        **** bool collect_flag = 0;                  // flag indicating when to record acceleration sample.
+  61:main.c        **** bool wait_flag = 0;                     // flag indicating when to increment interrupt counter.
+  62:main.c        **** bool PANIC_flag = 0;                    // flag indicating water is present in housing.
+  63:main.c        **** //bool first_test = 1;                  // flag indicating first test(longer countdown)
+  64:main.c        **** STATES STATE = WAIT_TO_LAUNCH;                      // Set initial state. 
+  65:main.c        **** uint8_t countdown = 0, update_Data = 0;             // Counting variables, one for countdowns, one 
+  66:main.c        **** uint8_t RxBuffer[BUFFER_LEN] = {};                  // Rx Buffer
+  67:main.c        **** int msg_count = 0, rxflag = 0, bytes = 0, dataflag = 0, transmit_flag = 0;    // UART variables
+  68:main.c        **** int depth = 0, reset = 0;                                                     // Variable depth, re
+  69:main.c        **** float xavg = 0, yavg = 0, xsum = 0, ysum = 0;                                 // gyro avg/sum value
+  70:main.c        **** char file[11] = "test_1.txt";
+  71:main.c        **** char volume[10] = {};
+  72:main.c        **** FS_FILE *fsfile;
+  73:main.c        **** 
+  74:main.c        **** /*******************************************************************************
+  75:main.c        **** * Function Name: main
+  76:main.c        **** ********************************************************************************
+  77:main.c        **** *
+  78:main.c        **** * Summary:
+  79:main.c        **** *  main() performs following functions:
+  80:main.c        **** *  1: Initializes all necessary components on board (accelerometer/gyro, SD card, LCD, timers, inte
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 6
+
+
+  81:main.c        **** *       Bluetooth).
+  82:main.c        **** *  2: Begins at state: WAIT_FOR_LAUNCH. Waits for a bluetooth command to start, then prompts for a 
+  83:main.c        **** *       completion, starts a countdown for which the device should be thrown in the water before it
+  84:main.c        **** *       DESCENDING state.
+  85:main.c        **** *  3: Samples Z-axis acceleration data from module @ 500hz. Computes moving average of Z-axis accel
+  86:main.c        **** *       for gyro data in the case that the system flips somehow. If the moving average has breached
+  87:main.c        **** *       20000), we know it has landed on the bottom. If the time of descent has gone over the max d
+  88:main.c        **** *       from the depth earlier, then we go to resurfacing. 
+  89:main.c        **** *  4: At the LANDED state, we delay to let the system settle, then turn on solenoid 1. This solenoi
+  90:main.c        **** *       in the legs. The suction occurs for 5 seconds, then turns off. Switch to RESURFACING.
+  91:main.c        **** *  5: To resurface, we pulse the solenoids at a rate of 3 seconds on to 1 second off. The number of
+  92:main.c        **** *       by the depth. Once the number of pulses has finished, we move to TRANSMIT.
+  93:main.c        **** *  6: At TRANSMIT, we simply wait for the data command to begin sending out the collected data or f
+  94:main.c        **** *       do another run.
+  95:main.c        **** *
+  96:main.c        **** * Parameters:
+  97:main.c        **** *  None.
+  98:main.c        **** *
+  99:main.c        **** * Return:
+ 100:main.c        **** *  None.
+ 101:main.c        **** *
+ 102:main.c        **** *******************************************************************************/
+ 103:main.c        **** 
+ 104:main.c        **** int SD_SETUP(char* filename); //SD card setup function
+ 105:main.c        **** 
+ 106:main.c        **** /* Moisture sensor ISR */
+ 107:main.c        **** CY_ISR (Moisture_ISR_Handler){
+ 198              		.loc 1 107 0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 1, uses_anonymous_args = 0
+ 202 0000 80B5     		push	{r7, lr}
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 7, -8
+ 205              		.cfi_offset 14, -4
+ 206 0002 00AF     		add	r7, sp, #0
+ 207              		.cfi_def_cfa_register 7
+ 108:main.c        ****     PANIC_flag = 1;                             // Set flag to indicate water
+ 208              		.loc 1 108 0
+ 209 0004 044B     		ldr	r3, .L2
+ 210 0006 0122     		movs	r2, #1
+ 211 0008 1A70     		strb	r2, [r3]
+ 109:main.c        ****     STATE = RESURFACE;                          // Go to surface
+ 212              		.loc 1 109 0
+ 213 000a 044B     		ldr	r3, .L2+4
+ 214 000c 0422     		movs	r2, #4
+ 215 000e 1A70     		strb	r2, [r3]
+ 110:main.c        ****     Comp_Stop();                                // Stop comparator for interrupt
+ 216              		.loc 1 110 0
+ 217 0010 FFF7FEFF 		bl	Comp_Stop
+ 111:main.c        **** }
+ 218              		.loc 1 111 0
+ 219 0014 80BD     		pop	{r7, pc}
+ 220              	.L3:
+ 221 0016 00BF     		.align	2
+ 222              	.L2:
+ 223 0018 00000000 		.word	PANIC_flag
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 7
+
+
+ 224 001c 00000000 		.word	STATE
+ 225              		.cfi_endproc
+ 226              	.LFE63:
+ 227              		.size	Moisture_ISR_Handler, .-Moisture_ISR_Handler
+ 228              		.section	.text.Sample_ISR_Handler,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	Sample_ISR_Handler
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	Sample_ISR_Handler, %function
+ 234              	Sample_ISR_Handler:
+ 235              	.LFB64:
+ 112:main.c        **** 
+ 113:main.c        **** /* Sampling ISR */
+ 114:main.c        **** CY_ISR (Sample_ISR_Handler){
+ 236              		.loc 1 114 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 1, uses_anonymous_args = 0
+ 240              		@ link register save eliminated.
+ 241 0000 80B4     		push	{r7}
+ 242              		.cfi_def_cfa_offset 4
+ 243              		.cfi_offset 7, -4
+ 244 0002 00AF     		add	r7, sp, #0
+ 245              		.cfi_def_cfa_register 7
+ 115:main.c        ****     Sample_Timer_STATUS;                        // Clears interrupt by accessing timer status regis
+ 246              		.loc 1 115 0
+ 247 0004 0A4B     		ldr	r3, .L7
+ 248 0006 1B78     		ldrb	r3, [r3]
+ 116:main.c        ****     if (STATE == DESCENDING || STATE == LANDED){
+ 249              		.loc 1 116 0
+ 250 0008 0A4B     		ldr	r3, .L7+4
+ 251 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 252 000c 022B     		cmp	r3, #2
+ 253 000e 03D0     		beq	.L5
+ 254              		.loc 1 116 0 is_stmt 0 discriminator 1
+ 255 0010 084B     		ldr	r3, .L7+4
+ 256 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 257 0014 032B     		cmp	r3, #3
+ 258 0016 04D1     		bne	.L6
+ 259              	.L5:
+ 117:main.c        ****         data_time++;
+ 260              		.loc 1 117 0 is_stmt 1
+ 261 0018 074B     		ldr	r3, .L7+8
+ 262 001a 1B68     		ldr	r3, [r3]
+ 263 001c 0133     		adds	r3, r3, #1
+ 264 001e 064A     		ldr	r2, .L7+8
+ 265 0020 1360     		str	r3, [r2]
+ 266              	.L6:
+ 118:main.c        ****     }
+ 119:main.c        ****     collect_flag = 1;
+ 267              		.loc 1 119 0
+ 268 0022 064B     		ldr	r3, .L7+12
+ 269 0024 0122     		movs	r2, #1
+ 270 0026 1A70     		strb	r2, [r3]
+ 120:main.c        **** }
+ 271              		.loc 1 120 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 8
+
+
+ 272 0028 BD46     		mov	sp, r7
+ 273              		.cfi_def_cfa_register 13
+ 274              		@ sp needed
+ 275 002a 5DF8047B 		ldr	r7, [sp], #4
+ 276              		.cfi_restore 7
+ 277              		.cfi_def_cfa_offset 0
+ 278 002e 7047     		bx	lr
+ 279              	.L8:
+ 280              		.align	2
+ 281              	.L7:
+ 282 0030 034F0040 		.word	1073762051
+ 283 0034 00000000 		.word	STATE
+ 284 0038 00000000 		.word	data_time
+ 285 003c 00000000 		.word	collect_flag
+ 286              		.cfi_endproc
+ 287              	.LFE64:
+ 288              		.size	Sample_ISR_Handler, .-Sample_ISR_Handler
+ 289              		.section	.text.Countdown_ISR_Handler,"ax",%progbits
+ 290              		.align	2
+ 291              		.global	Countdown_ISR_Handler
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.type	Countdown_ISR_Handler, %function
+ 295              	Countdown_ISR_Handler:
+ 296              	.LFB65:
+ 121:main.c        **** 
+ 122:main.c        **** /* Countdown ISR*/
+ 123:main.c        **** CY_ISR (Countdown_ISR_Handler){
+ 297              		.loc 1 123 0
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 302 0000 80B4     		push	{r7}
+ 303              		.cfi_def_cfa_offset 4
+ 304              		.cfi_offset 7, -4
+ 305 0002 00AF     		add	r7, sp, #0
+ 306              		.cfi_def_cfa_register 7
+ 124:main.c        ****     Countdown_timer_STATUS;                        // Clears interrupt by accessing timer status re
+ 307              		.loc 1 124 0
+ 308 0004 1D4B     		ldr	r3, .L15
+ 309 0006 1B78     		ldrb	r3, [r3]
+ 125:main.c        ****     if ((STATE == WAIT_TO_LAUNCH && depth != 0) || STATE == LANDED || STATE == RESURFACE){ 
+ 310              		.loc 1 125 0
+ 311 0008 1D4B     		ldr	r3, .L15+4
+ 312 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 313 000c 012B     		cmp	r3, #1
+ 314 000e 03D1     		bne	.L10
+ 315              		.loc 1 125 0 is_stmt 0 discriminator 1
+ 316 0010 1C4B     		ldr	r3, .L15+8
+ 317 0012 1B68     		ldr	r3, [r3]
+ 318 0014 002B     		cmp	r3, #0
+ 319 0016 07D1     		bne	.L11
+ 320              	.L10:
+ 321              		.loc 1 125 0 discriminator 3
+ 322 0018 194B     		ldr	r3, .L15+4
+ 323 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 9
+
+
+ 324 001c 032B     		cmp	r3, #3
+ 325 001e 03D0     		beq	.L11
+ 326              		.loc 1 125 0 discriminator 4
+ 327 0020 174B     		ldr	r3, .L15+4
+ 328 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 329 0024 042B     		cmp	r3, #4
+ 330 0026 08D1     		bne	.L12
+ 331              	.L11:
+ 126:main.c        ****         wait_flag = 1;
+ 332              		.loc 1 126 0 is_stmt 1
+ 333 0028 174B     		ldr	r3, .L15+12
+ 334 002a 0122     		movs	r2, #1
+ 335 002c 1A70     		strb	r2, [r3]
+ 127:main.c        ****         countdown++;
+ 336              		.loc 1 127 0
+ 337 002e 174B     		ldr	r3, .L15+16
+ 338 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 339 0032 0133     		adds	r3, r3, #1
+ 340 0034 DAB2     		uxtb	r2, r3
+ 341 0036 154B     		ldr	r3, .L15+16
+ 342 0038 1A70     		strb	r2, [r3]
+ 343              	.L12:
+ 128:main.c        ****     }
+ 129:main.c        ****     #ifdef BT
+ 130:main.c        ****         if (STATE == TRANSMIT || (STATE == WAIT_TO_LAUNCH && !dataflag)){
+ 344              		.loc 1 130 0
+ 345 003a 114B     		ldr	r3, .L15+4
+ 346 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 347 003e 052B     		cmp	r3, #5
+ 348 0040 07D0     		beq	.L13
+ 349              		.loc 1 130 0 is_stmt 0 discriminator 1
+ 350 0042 0F4B     		ldr	r3, .L15+4
+ 351 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 352 0046 012B     		cmp	r3, #1
+ 353 0048 13D1     		bne	.L9
+ 354              		.loc 1 130 0 discriminator 2
+ 355 004a 114B     		ldr	r3, .L15+20
+ 356 004c 1B68     		ldr	r3, [r3]
+ 357 004e 002B     		cmp	r3, #0
+ 358 0050 0FD1     		bne	.L9
+ 359              	.L13:
+ 131:main.c        ****             update_Data++;
+ 360              		.loc 1 131 0 is_stmt 1
+ 361 0052 104B     		ldr	r3, .L15+24
+ 362 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 363 0056 0133     		adds	r3, r3, #1
+ 364 0058 DAB2     		uxtb	r2, r3
+ 365 005a 0E4B     		ldr	r3, .L15+24
+ 366 005c 1A70     		strb	r2, [r3]
+ 132:main.c        ****             if (update_Data == 10){
+ 367              		.loc 1 132 0
+ 368 005e 0D4B     		ldr	r3, .L15+24
+ 369 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 370 0062 0A2B     		cmp	r3, #10
+ 371 0064 05D1     		bne	.L9
+ 133:main.c        ****                 transmit_flag = 1;
+ 372              		.loc 1 133 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 10
+
+
+ 373 0066 0C4B     		ldr	r3, .L15+28
+ 374 0068 0122     		movs	r2, #1
+ 375 006a 1A60     		str	r2, [r3]
+ 134:main.c        ****                 update_Data = 0;
+ 376              		.loc 1 134 0
+ 377 006c 094B     		ldr	r3, .L15+24
+ 378 006e 0022     		movs	r2, #0
+ 379 0070 1A70     		strb	r2, [r3]
+ 380              	.L9:
+ 135:main.c        ****             }
+ 136:main.c        ****         }          
+ 137:main.c        ****     #endif
+ 138:main.c        **** }
+ 381              		.loc 1 138 0
+ 382 0072 BD46     		mov	sp, r7
+ 383              		.cfi_def_cfa_register 13
+ 384              		@ sp needed
+ 385 0074 5DF8047B 		ldr	r7, [sp], #4
+ 386              		.cfi_restore 7
+ 387              		.cfi_def_cfa_offset 0
+ 388 0078 7047     		bx	lr
+ 389              	.L16:
+ 390 007a 00BF     		.align	2
+ 391              	.L15:
+ 392 007c 67640040 		.word	1073767527
+ 393 0080 00000000 		.word	STATE
+ 394 0084 00000000 		.word	depth
+ 395 0088 00000000 		.word	wait_flag
+ 396 008c 00000000 		.word	countdown
+ 397 0090 00000000 		.word	dataflag
+ 398 0094 00000000 		.word	update_Data
+ 399 0098 00000000 		.word	transmit_flag
+ 400              		.cfi_endproc
+ 401              	.LFE65:
+ 402              		.size	Countdown_ISR_Handler, .-Countdown_ISR_Handler
+ 403              		.section	.text.rx_interrupt,"ax",%progbits
+ 404              		.align	2
+ 405              		.global	rx_interrupt
+ 406              		.thumb
+ 407              		.thumb_func
+ 408              		.type	rx_interrupt, %function
+ 409              	rx_interrupt:
+ 410              	.LFB66:
+ 139:main.c        **** /* Bluetooth UART Rx ISR*/
+ 140:main.c        **** CY_ISR(rx_interrupt){
+ 411              		.loc 1 140 0
+ 412              		.cfi_startproc
+ 413              		@ args = 0, pretend = 0, frame = 0
+ 414              		@ frame_needed = 1, uses_anonymous_args = 0
+ 415 0000 98B5     		push	{r3, r4, r7, lr}
+ 416              		.cfi_def_cfa_offset 16
+ 417              		.cfi_offset 3, -16
+ 418              		.cfi_offset 4, -12
+ 419              		.cfi_offset 7, -8
+ 420              		.cfi_offset 14, -4
+ 421 0002 00AF     		add	r7, sp, #0
+ 422              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 11
+
+
+ 141:main.c        ****     #ifdef BT
+ 142:main.c        ****     while (UART_ReadRxStatus() & UART_RX_STS_FIFO_NOTEMPTY){
+ 423              		.loc 1 142 0
+ 424 0004 14E0     		b	.L18
+ 425              	.L19:
+ 143:main.c        ****         RxBuffer[msg_count++] = UART_GetChar();
+ 426              		.loc 1 143 0
+ 427 0006 0E4B     		ldr	r3, .L20
+ 428 0008 1C68     		ldr	r4, [r3]
+ 429 000a 631C     		adds	r3, r4, #1
+ 430 000c 0C4A     		ldr	r2, .L20
+ 431 000e 1360     		str	r3, [r2]
+ 432 0010 FFF7FEFF 		bl	UART_GetChar
+ 433 0014 0346     		mov	r3, r0
+ 434 0016 1A46     		mov	r2, r3
+ 435 0018 0A4B     		ldr	r3, .L20+4
+ 436 001a 1A55     		strb	r2, [r3, r4]
+ 144:main.c        ****         if ((msg_count - 3) > bytes)
+ 437              		.loc 1 144 0
+ 438 001c 084B     		ldr	r3, .L20
+ 439 001e 1B68     		ldr	r3, [r3]
+ 440 0020 DA1E     		subs	r2, r3, #3
+ 441 0022 094B     		ldr	r3, .L20+8
+ 442 0024 1B68     		ldr	r3, [r3]
+ 443 0026 9A42     		cmp	r2, r3
+ 444 0028 02DD     		ble	.L18
+ 145:main.c        ****             rxflag = 1;
+ 445              		.loc 1 145 0
+ 446 002a 084B     		ldr	r3, .L20+12
+ 447 002c 0122     		movs	r2, #1
+ 448 002e 1A60     		str	r2, [r3]
+ 449              	.L18:
+ 142:main.c        ****         RxBuffer[msg_count++] = UART_GetChar();
+ 450              		.loc 1 142 0
+ 451 0030 FFF7FEFF 		bl	UART_ReadRxStatus
+ 452 0034 0346     		mov	r3, r0
+ 453 0036 03F02003 		and	r3, r3, #32
+ 454 003a 002B     		cmp	r3, #0
+ 455 003c E3D1     		bne	.L19
+ 146:main.c        ****     }
+ 147:main.c        ****     #endif
+ 148:main.c        **** }
+ 456              		.loc 1 148 0
+ 457 003e 98BD     		pop	{r3, r4, r7, pc}
+ 458              	.L21:
+ 459              		.align	2
+ 460              	.L20:
+ 461 0040 00000000 		.word	msg_count
+ 462 0044 00000000 		.word	RxBuffer
+ 463 0048 00000000 		.word	bytes
+ 464 004c 00000000 		.word	rxflag
+ 465              		.cfi_endproc
+ 466              	.LFE66:
+ 467              		.size	rx_interrupt, .-rx_interrupt
+ 468              		.section	.rodata
+ 469              		.align	2
+ 470              	.LC6:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 12
+
+
+ 471 0000 50536F43 		.ascii	"PSoC 5LP: O-Vac\000"
+ 471      20354C50 
+ 471      3A204F2D 
+ 471      56616300 
+ 472              		.align	2
+ 473              	.LC7:
+ 474 0010 49324320 		.ascii	"I2C Working\000"
+ 474      576F726B 
+ 474      696E6700 
+ 475              		.align	2
+ 476              	.LC8:
+ 477 001c 53544154 		.ascii	"STATE: WAIT\000"
+ 477      453A2057 
+ 477      41495400 
+ 478              		.global	__aeabi_i2f
+ 479              		.global	__aeabi_f2d
+ 480              		.global	__aeabi_dmul
+ 481              		.global	__aeabi_d2f
+ 482              		.global	__aeabi_fadd
+ 483              		.global	__aeabi_fdiv
+ 484              		.global	__aeabi_f2iz
+ 485              		.global	__aeabi_fsub
+ 486              		.global	__aeabi_fmul
+ 487              		.align	2
+ 488              	.LC9:
+ 489 0028 0A256420 		.ascii	"\012%d seconds remaining\000"
+ 489      7365636F 
+ 489      6E647320 
+ 489      72656D61 
+ 489      696E696E 
+ 490 003e 0000     		.align	2
+ 491              	.LC10:
+ 492 0040 53544154 		.ascii	"STATE: DESCENT\000"
+ 492      453A2044 
+ 492      45534345 
+ 492      4E5400
+ 493 004f 00       		.align	2
+ 494              	.LC11:
+ 495 0050 54696C74 		.ascii	"Tilted\000"
+ 495      656400
+ 496 0057 00       		.align	2
+ 497              	.LC12:
+ 498 0058 53544154 		.ascii	"STATE: RESURFACING\000"
+ 498      453A2052 
+ 498      45535552 
+ 498      46414349 
+ 498      4E4700
+ 499 006b 00       		.align	2
+ 500              	.LC13:
+ 501 006c 53544154 		.ascii	"STATE: LANDED\000"
+ 501      453A204C 
+ 501      414E4445 
+ 501      4400
+ 502 007a 0000     		.align	2
+ 503              	.LC14:
+ 504 007c 53544154 		.ascii	"STATE: RESURFACE\000"
+ 504      453A2052 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 13
+
+
+ 504      45535552 
+ 504      46414345 
+ 504      00
+ 505 008d 000000   		.align	2
+ 506              	.LC15:
+ 507 0090 57415445 		.ascii	"WATER DETECTED\000"
+ 507      52204445 
+ 507      54454354 
+ 507      454400
+ 508 009f 00       		.align	2
+ 509              	.LC16:
+ 510 00a0 5452414E 		.ascii	"TRANSMIT\000"
+ 510      534D4954 
+ 510      00
+ 511 00a9 000000   		.align	2
+ 512              	.LC0:
+ 513 00ac 53595354 		.ascii	"SYSTEM_CHECK\000"
+ 513      454D5F43 
+ 513      4845434B 
+ 513      00
+ 514 00b9 00       		.space	1
+ 515 00ba 0000     		.align	2
+ 516              	.LC1:
+ 517 00bc 0A535441 		.ascii	"\012STATE: DESCENDING\012\000"
+ 517      54453A20 
+ 517      44455343 
+ 517      454E4449 
+ 517      4E470A00 
+ 518              		.align	2
+ 519              	.LC2:
+ 520 00d0 53544154 		.ascii	"STATE: LANDED\012\000"
+ 520      453A204C 
+ 520      414E4445 
+ 520      440A00
+ 521 00df 00       		.align	2
+ 522              	.LC3:
+ 523 00e0 53544154 		.ascii	"STATE: VACUUMING\012\000"
+ 523      453A2056 
+ 523      41435555 
+ 523      4D494E47 
+ 523      0A00
+ 524 00f2 0000     		.align	2
+ 525              	.LC4:
+ 526 00f4 53544154 		.ascii	"STATE: RESURFACE\012\000"
+ 526      453A2052 
+ 526      45535552 
+ 526      46414345 
+ 526      0A00
+ 527 0106 0000     		.align	2
+ 528              	.LC5:
+ 529 0108 53544154 		.ascii	"STATE: TRANSMIT\012\000"
+ 529      453A2054 
+ 529      52414E53 
+ 529      4D49540A 
+ 529      00
+ 530              		.section	.text.main,"ax",%progbits
+ 531              		.align	2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 14
+
+
+ 532              		.global	main
+ 533              		.thumb
+ 534              		.thumb_func
+ 535              		.type	main, %function
+ 536              	main:
+ 537              	.LFB67:
+ 149:main.c        **** 
+ 150:main.c        **** int main()
+ 151:main.c        **** {
+ 538              		.loc 1 151 0
+ 539              		.cfi_startproc
+ 540              		@ args = 0, pretend = 0, frame = 304
+ 541              		@ frame_needed = 1, uses_anonymous_args = 0
+ 542 0000 B0B5     		push	{r4, r5, r7, lr}
+ 543              		.cfi_def_cfa_offset 16
+ 544              		.cfi_offset 4, -16
+ 545              		.cfi_offset 5, -12
+ 546              		.cfi_offset 7, -8
+ 547              		.cfi_offset 14, -4
+ 548 0002 CEB0     		sub	sp, sp, #312
+ 549              		.cfi_def_cfa_offset 328
+ 550 0004 02AF     		add	r7, sp, #8
+ 551              		.cfi_def_cfa 7, 320
+ 152:main.c        ****     int num = 0, decimals = 0;                                       // ADC Voltage conversion plac
+ 552              		.loc 1 152 0
+ 553 0006 0023     		movs	r3, #0
+ 554 0008 C7F81C31 		str	r3, [r7, #284]
+ 555 000c 0023     		movs	r3, #0
+ 556 000e C7F81831 		str	r3, [r7, #280]
+ 153:main.c        ****     float voltage = 0, temp = 0, output = 0, pressure_avg = 0;       // ADC Voltage conversion vari
+ 557              		.loc 1 153 0
+ 558 0012 4FF00003 		mov	r3, #0
+ 559 0016 C7F81431 		str	r3, [r7, #276]	@ float
+ 560 001a 4FF00003 		mov	r3, #0
+ 561 001e C7F81031 		str	r3, [r7, #272]	@ float
+ 562 0022 4FF00003 		mov	r3, #0
+ 563 0026 C7F80C31 		str	r3, [r7, #268]	@ float
+ 564 002a 4FF00003 		mov	r3, #0
+ 565 002e C7F82C31 		str	r3, [r7, #300]	@ float
+ 154:main.c        ****     char buf[50], tempbuf[20] = {}, curState[14] = "SYSTEM_CHECK";  // buffers, UART and initial st
+ 566              		.loc 1 154 0
+ 567 0032 07F1BC03 		add	r3, r7, #188
+ 568 0036 0022     		movs	r2, #0
+ 569 0038 1A60     		str	r2, [r3]
+ 570 003a 0433     		adds	r3, r3, #4
+ 571 003c 0022     		movs	r2, #0
+ 572 003e 1A60     		str	r2, [r3]
+ 573 0040 0433     		adds	r3, r3, #4
+ 574 0042 0022     		movs	r2, #0
+ 575 0044 1A60     		str	r2, [r3]
+ 576 0046 0433     		adds	r3, r3, #4
+ 577 0048 0022     		movs	r2, #0
+ 578 004a 1A60     		str	r2, [r3]
+ 579 004c 0433     		adds	r3, r3, #4
+ 580 004e 0022     		movs	r2, #0
+ 581 0050 1A60     		str	r2, [r3]
+ 582 0052 0433     		adds	r3, r3, #4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 15
+
+
+ 583 0054 C24B     		ldr	r3, .L72+8
+ 584 0056 07F1AC04 		add	r4, r7, #172
+ 585 005a 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 586 005c 07C4     		stmia	r4!, {r0, r1, r2}
+ 587 005e 2370     		strb	r3, [r4]
+ 588 0060 0023     		movs	r3, #0
+ 589 0062 87F8B930 		strb	r3, [r7, #185]
+ 155:main.c        ****     char descendbuf[DESCENDING_LEN] = STATE_DESCENDING;             // buffers for transmitting sta
+ 590              		.loc 1 155 0
+ 591 0066 BF4B     		ldr	r3, .L72+12
+ 592 0068 07F19804 		add	r4, r7, #152
+ 593 006c 1D46     		mov	r5, r3
+ 594 006e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 595 0070 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 596 0072 2B68     		ldr	r3, [r5]
+ 597 0074 1A46     		mov	r2, r3	@ movhi
+ 598 0076 2280     		strh	r2, [r4]	@ movhi
+ 599 0078 0234     		adds	r4, r4, #2
+ 600 007a 1B0C     		lsrs	r3, r3, #16
+ 601 007c 2370     		strb	r3, [r4]
+ 156:main.c        ****     char landedbuf[LANDED_LEN] = STATE_LANDED;              
+ 602              		.loc 1 156 0
+ 603 007e BA4B     		ldr	r3, .L72+16
+ 604 0080 07F18804 		add	r4, r7, #136
+ 605 0084 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 606 0086 07C4     		stmia	r4!, {r0, r1, r2}
+ 607 0088 2380     		strh	r3, [r4]	@ movhi
+ 157:main.c        ****     char vacuumbuf[VACUUM_LEN] = STATE_VACUUM;
+ 608              		.loc 1 157 0
+ 609 008a B84B     		ldr	r3, .L72+20
+ 610 008c 07F17404 		add	r4, r7, #116
+ 611 0090 1D46     		mov	r5, r3
+ 612 0092 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 613 0094 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 614 0096 2B68     		ldr	r3, [r5]
+ 615 0098 2370     		strb	r3, [r4]
+ 158:main.c        ****     char resurfbuf[RESURFACE_LEN] = STATE_RESURFACE;
+ 616              		.loc 1 158 0
+ 617 009a B54B     		ldr	r3, .L72+24
+ 618 009c 07F16004 		add	r4, r7, #96
+ 619 00a0 1D46     		mov	r5, r3
+ 620 00a2 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 621 00a4 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 622 00a6 2B68     		ldr	r3, [r5]
+ 623 00a8 2370     		strb	r3, [r4]
+ 159:main.c        ****     char transbuf[TRANSMIT_LEN] = STATE_TRANSMIT;
+ 624              		.loc 1 159 0
+ 625 00aa B24B     		ldr	r3, .L72+28
+ 626 00ac 07F15004 		add	r4, r7, #80
+ 627 00b0 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 628 00b2 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+ 160:main.c        ****     int stateMsgCount = 0, pulse = 0, secs_for_tilt = 0;
+ 629              		.loc 1 160 0
+ 630 00b6 0023     		movs	r3, #0
+ 631 00b8 C7F82831 		str	r3, [r7, #296]
+ 632 00bc 0023     		movs	r3, #0
+ 633 00be C7F82431 		str	r3, [r7, #292]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 16
+
+
+ 634 00c2 0023     		movs	r3, #0
+ 635 00c4 C7F82031 		str	r3, [r7, #288]
+ 161:main.c        ****     
+ 162:main.c        ****     int16_t ax, ay, az, i;
+ 163:main.c        ****     int16_t gx, gy, gz;
+ 164:main.c        ****     int16_t z_offset = 0;
+ 636              		.loc 1 164 0
+ 637 00c8 0023     		movs	r3, #0
+ 638 00ca A7F80A31 		strh	r3, [r7, #266]	@ movhi
+ 165:main.c        ****     int tens = 0, ones = 0;                     // digit place variables for message len of bluetoo
+ 639              		.loc 1 165 0
+ 640 00ce 0023     		movs	r3, #0
+ 641 00d0 7B64     		str	r3, [r7, #68]
+ 642 00d2 0023     		movs	r3, #0
+ 643 00d4 C7F80431 		str	r3, [r7, #260]
+ 166:main.c        ****     
+ 167:main.c        ****     /* Start the components */
+ 168:main.c        ****     CYGlobalIntEnable;                          // enable global interrupts
+ 644              		.loc 1 168 0
+ 645              	@ 168 "main.c" 1
+ 646 00d8 62B6     		CPSIE   i
+ 647              	@ 0 "" 2
+ 169:main.c        ****     I2C_Master_Start(); 
+ 648              		.loc 1 169 0
+ 649              		.thumb
+ 650 00da FFF7FEFF 		bl	I2C_Master_Start
+ 170:main.c        ****     ADC_Start();
+ 651              		.loc 1 170 0
+ 652 00de FFF7FEFF 		bl	ADC_Start
+ 171:main.c        ****     Sample_Timer_Start();                       // start timer module
+ 653              		.loc 1 171 0
+ 654 00e2 FFF7FEFF 		bl	Sample_Timer_Start
+ 172:main.c        ****     Sample_ISR_StartEx(Sample_ISR_Handler);     // reference ISR function
+ 655              		.loc 1 172 0
+ 656 00e6 A448     		ldr	r0, .L72+32
+ 657 00e8 FFF7FEFF 		bl	Sample_ISR_StartEx
+ 173:main.c        ****     rx_interrupt_StartEx(rx_interrupt);
+ 658              		.loc 1 173 0
+ 659 00ec A348     		ldr	r0, .L72+36
+ 660 00ee FFF7FEFF 		bl	rx_interrupt_StartEx
+ 174:main.c        ****     //moisture_isr_StartEx(Moisture_ISR_Handler); // moisture isr start
+ 175:main.c        ****     //Comp_Start();                               // comparator for moisture start
+ 176:main.c        ****     UART_Start();
+ 661              		.loc 1 176 0
+ 662 00f2 FFF7FEFF 		bl	UART_Start
+ 177:main.c        ****     
+ 178:main.c        ****     
+ 179:main.c        ****     #ifdef LCD
+ 180:main.c        ****         LiquidCrystal_I2C_init(Addr,16,2,0);        // initialize I2C communication with LCD
+ 663              		.loc 1 180 0
+ 664 00f6 A24B     		ldr	r3, .L72+40
+ 665 00f8 1B68     		ldr	r3, [r3]
+ 666 00fa DBB2     		uxtb	r3, r3
+ 667 00fc 1846     		mov	r0, r3
+ 668 00fe 1021     		movs	r1, #16
+ 669 0100 0222     		movs	r2, #2
+ 670 0102 0023     		movs	r3, #0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 17
+
+
+ 671 0104 FFF7FEFF 		bl	LiquidCrystal_I2C_init
+ 181:main.c        ****         begin(); 
+ 672              		.loc 1 181 0
+ 673 0108 FFF7FEFF 		bl	begin
+ 182:main.c        ****     
+ 183:main.c        ****     #endif
+ 184:main.c        ****    
+ 185:main.c        ****     /* initialize MPU6050 */
+ 186:main.c        ****     #ifdef MPU6050
+ 187:main.c        ****         MPU6050_init();    
+ 674              		.loc 1 187 0
+ 675 010c FFF7FEFF 		bl	MPU6050_init
+ 188:main.c        **** 	    MPU6050_initialize(); 
+ 676              		.loc 1 188 0
+ 677 0110 FFF7FEFF 		bl	MPU6050_initialize
+ 189:main.c        ****     #endif
+ 190:main.c        ****         
+ 191:main.c        ****     #ifdef LCD
+ 192:main.c        ****         /* Startup Display */
+ 193:main.c        ****         LCD_print("PSoC 5LP: O-Vac");
+ 678              		.loc 1 193 0
+ 679 0114 9B48     		ldr	r0, .L72+44
+ 680 0116 FFF7FEFF 		bl	LCD_print
+ 194:main.c        ****         setCursor(0,1);
+ 681              		.loc 1 194 0
+ 682 011a 0020     		movs	r0, #0
+ 683 011c 0121     		movs	r1, #1
+ 684 011e FFF7FEFF 		bl	setCursor
+ 195:main.c        ****         LCD_print("I2C Working");
+ 685              		.loc 1 195 0
+ 686 0122 9948     		ldr	r0, .L72+48
+ 687 0124 FFF7FEFF 		bl	LCD_print
+ 196:main.c        ****         
+ 197:main.c        ****         CyDelay(1000u);   
+ 688              		.loc 1 197 0
+ 689 0128 4FF47A70 		mov	r0, #1000
+ 690 012c FFF7FEFF 		bl	CyDelay
+ 198:main.c        ****         clear();
+ 691              		.loc 1 198 0
+ 692 0130 FFF7FEFF 		bl	clear
+ 199:main.c        ****     #endif
+ 200:main.c        ****     
+ 201:main.c        ****     /* Start the ADC conversion */
+ 202:main.c        ****     ADC_StartConvert();
+ 693              		.loc 1 202 0
+ 694 0134 FFF7FEFF 		bl	ADC_StartConvert
+ 203:main.c        **** 
+ 204:main.c        ****     /* Start SD card*/
+ 205:main.c        ****     #ifdef SD
+ 206:main.c        ****         int SD_Result = SD_SETUP(file); 
+ 207:main.c        ****         
+ 208:main.c        ****     #endif
+ 209:main.c        ****     
+ 210:main.c        ****     #ifdef LCD
+ 211:main.c        ****         /* Display the current State */
+ 212:main.c        ****         setCursor(0,0);    
+ 695              		.loc 1 212 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 18
+
+
+ 696 0138 0020     		movs	r0, #0
+ 697 013a 0021     		movs	r1, #0
+ 698 013c FFF7FEFF 		bl	setCursor
+ 213:main.c        ****         LCD_print(curState);
+ 699              		.loc 1 213 0
+ 700 0140 07F1AC03 		add	r3, r7, #172
+ 701 0144 1846     		mov	r0, r3
+ 702 0146 FFF7FEFF 		bl	LCD_print
+ 214:main.c        ****     #endif
+ 215:main.c        ****     STATE = WAIT_TO_LAUNCH;
+ 703              		.loc 1 215 0
+ 704 014a 904B     		ldr	r3, .L72+52
+ 705 014c 0122     		movs	r2, #1
+ 706 014e 1A70     		strb	r2, [r3]
+ 216:main.c        ****     
+ 217:main.c        ****     #ifdef LCD
+ 218:main.c        ****         setCursor(0,0);
+ 707              		.loc 1 218 0
+ 708 0150 0020     		movs	r0, #0
+ 709 0152 0021     		movs	r1, #0
+ 710 0154 FFF7FEFF 		bl	setCursor
+ 219:main.c        ****         clear();
+ 711              		.loc 1 219 0
+ 712 0158 FFF7FEFF 		bl	clear
+ 220:main.c        ****         LCD_print("STATE: WAIT");  
+ 713              		.loc 1 220 0
+ 714 015c 8C48     		ldr	r0, .L72+56
+ 715 015e FFF7FEFF 		bl	LCD_print
+ 221:main.c        ****     #endif
+ 222:main.c        ****     
+ 223:main.c        ****     Countdown_timer_Start();
+ 716              		.loc 1 223 0
+ 717 0162 FFF7FEFF 		bl	Countdown_timer_Start
+ 224:main.c        ****     countdown_StartEx(Countdown_ISR_Handler);
+ 718              		.loc 1 224 0
+ 719 0166 8B48     		ldr	r0, .L72+60
+ 720 0168 FFF7FEFF 		bl	countdown_StartEx
+ 721              	.L70:
+ 722              	.LBB2:
+ 225:main.c        ****    
+ 226:main.c        ****     
+ 227:main.c        ****     for(;;)
+ 228:main.c        ****     {
+ 229:main.c        ****         
+ 230:main.c        ****         if(ADC_IsEndConversion(ADC_RETURN_STATUS))              // voltage conversion for pressure
+ 723              		.loc 1 230 0
+ 724 016c 0120     		movs	r0, #1
+ 725 016e FFF7FEFF 		bl	ADC_IsEndConversion
+ 726 0172 0346     		mov	r3, r0
+ 727 0174 002B     		cmp	r3, #0
+ 728 0176 00F08980 		beq	.L23
+ 231:main.c        ****         {
+ 232:main.c        ****             output = ADC_GetResult32();
+ 729              		.loc 1 232 0
+ 730 017a FFF7FEFF 		bl	ADC_GetResult32
+ 731 017e 0346     		mov	r3, r0
+ 732 0180 1846     		mov	r0, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 19
+
+
+ 733 0182 FFF7FEFF 		bl	__aeabi_i2f
+ 734 0186 0346     		mov	r3, r0
+ 735 0188 C7F80C31 		str	r3, [r7, #268]	@ float
+ 233:main.c        ****             voltage = output * (3.32 / 4096);
+ 736              		.loc 1 233 0
+ 737 018c D7F80C01 		ldr	r0, [r7, #268]	@ float
+ 738 0190 FFF7FEFF 		bl	__aeabi_f2d
+ 739 0194 0246     		mov	r2, r0
+ 740 0196 0B46     		mov	r3, r1
+ 741 0198 1046     		mov	r0, r2
+ 742 019a 1946     		mov	r1, r3
+ 743 019c 6EA3     		adr	r3, .L72
+ 744 019e D3E90023 		ldrd	r2, [r3]
+ 745 01a2 FFF7FEFF 		bl	__aeabi_dmul
+ 746 01a6 0246     		mov	r2, r0
+ 747 01a8 0B46     		mov	r3, r1
+ 748 01aa 1046     		mov	r0, r2
+ 749 01ac 1946     		mov	r1, r3
+ 750 01ae FFF7FEFF 		bl	__aeabi_d2f
+ 751 01b2 0346     		mov	r3, r0
+ 752 01b4 C7F81431 		str	r3, [r7, #276]	@ float
+ 234:main.c        ****             if(collect_flag == 1){
+ 753              		.loc 1 234 0
+ 754 01b8 774B     		ldr	r3, .L72+64
+ 755 01ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 756 01bc 002B     		cmp	r3, #0
+ 757 01be 65D0     		beq	.L23
+ 235:main.c        ****                 if (press_id < MA_WINDOW){
+ 758              		.loc 1 235 0
+ 759 01c0 764B     		ldr	r3, .L72+68
+ 760 01c2 1B68     		ldr	r3, [r3]
+ 761 01c4 0E2B     		cmp	r3, #14
+ 762 01c6 0BDC     		bgt	.L24
+ 236:main.c        ****                     pressure_sum += voltage;     
+ 763              		.loc 1 236 0
+ 764 01c8 754B     		ldr	r3, .L72+72
+ 765 01ca 1B68     		ldr	r3, [r3]	@ float
+ 766 01cc 1846     		mov	r0, r3
+ 767 01ce D7F81411 		ldr	r1, [r7, #276]	@ float
+ 768 01d2 FFF7FEFF 		bl	__aeabi_fadd
+ 769 01d6 0346     		mov	r3, r0
+ 770 01d8 1A46     		mov	r2, r3
+ 771 01da 714B     		ldr	r3, .L72+72
+ 772 01dc 1A60     		str	r2, [r3]	@ float
+ 773 01de 49E0     		b	.L25
+ 774              	.L24:
+ 237:main.c        ****                 }
+ 238:main.c        ****                 else if(press_id == MA_WINDOW){
+ 775              		.loc 1 238 0
+ 776 01e0 6E4B     		ldr	r3, .L72+68
+ 777 01e2 1B68     		ldr	r3, [r3]
+ 778 01e4 0F2B     		cmp	r3, #15
+ 779 01e6 14D1     		bne	.L26
+ 239:main.c        ****                     pressure_sum += voltage;
+ 780              		.loc 1 239 0
+ 781 01e8 6D4B     		ldr	r3, .L72+72
+ 782 01ea 1B68     		ldr	r3, [r3]	@ float
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 20
+
+
+ 783 01ec 1846     		mov	r0, r3
+ 784 01ee D7F81411 		ldr	r1, [r7, #276]	@ float
+ 785 01f2 FFF7FEFF 		bl	__aeabi_fadd
+ 786 01f6 0346     		mov	r3, r0
+ 787 01f8 1A46     		mov	r2, r3
+ 788 01fa 694B     		ldr	r3, .L72+72
+ 789 01fc 1A60     		str	r2, [r3]	@ float
+ 240:main.c        ****                     pressure_avg = pressure_sum/MA_WINDOW;                            // compute ba
+ 790              		.loc 1 240 0
+ 791 01fe 684B     		ldr	r3, .L72+72
+ 792 0200 1B68     		ldr	r3, [r3]	@ float
+ 793 0202 1846     		mov	r0, r3
+ 794 0204 6749     		ldr	r1, .L72+76
+ 795 0206 FFF7FEFF 		bl	__aeabi_fdiv
+ 796 020a 0346     		mov	r3, r0
+ 797 020c C7F82C31 		str	r3, [r7, #300]	@ float
+ 798 0210 30E0     		b	.L25
+ 799              	.L26:
+ 800              	.LBB3:
+ 241:main.c        ****                 }
+ 242:main.c        ****                 else{
+ 243:main.c        ****                     pressure_avg = ComputeMA(pressure_avg, MA_WINDOW, voltage);
+ 801              		.loc 1 243 0
+ 802 0212 D7F82C01 		ldr	r0, [r7, #300]	@ float
+ 803 0216 0F21     		movs	r1, #15
+ 804 0218 D7F81421 		ldr	r2, [r7, #276]	@ float
+ 805 021c FFF7FEFF 		bl	ComputeMA
+ 806 0220 C7F82C01 		str	r0, [r7, #300]	@ float
+ 244:main.c        ****                     num = pressure_avg;
+ 807              		.loc 1 244 0
+ 808 0224 D7F82C01 		ldr	r0, [r7, #300]	@ float
+ 809 0228 FFF7FEFF 		bl	__aeabi_f2iz
+ 810 022c 0346     		mov	r3, r0
+ 811 022e C7F81C31 		str	r3, [r7, #284]
+ 245:main.c        ****                     temp = pressure_avg - num;
+ 812              		.loc 1 245 0
+ 813 0232 D7F81C01 		ldr	r0, [r7, #284]
+ 814 0236 FFF7FEFF 		bl	__aeabi_i2f
+ 815 023a 0346     		mov	r3, r0
+ 816 023c D7F82C01 		ldr	r0, [r7, #300]	@ float
+ 817 0240 1946     		mov	r1, r3
+ 818 0242 FFF7FEFF 		bl	__aeabi_fsub
+ 819 0246 0346     		mov	r3, r0
+ 820 0248 C7F81031 		str	r3, [r7, #272]	@ float
+ 246:main.c        ****                     decimals = temp * 10000;
+ 821              		.loc 1 246 0
+ 822 024c D7F81001 		ldr	r0, [r7, #272]	@ float
+ 823 0250 5549     		ldr	r1, .L72+80
+ 824 0252 FFF7FEFF 		bl	__aeabi_fmul
+ 825 0256 0346     		mov	r3, r0
+ 826 0258 1846     		mov	r0, r3
+ 827 025a FFF7FEFF 		bl	__aeabi_f2iz
+ 828 025e 0346     		mov	r3, r0
+ 829 0260 C7F81831 		str	r3, [r7, #280]
+ 247:main.c        ****                     char sdbuf[60] = {};
+ 830              		.loc 1 247 0
+ 831 0264 3B1D     		adds	r3, r7, #4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 21
+
+
+ 832 0266 1A46     		mov	r2, r3
+ 833 0268 3C23     		movs	r3, #60
+ 834 026a 1046     		mov	r0, r2
+ 835 026c 0021     		movs	r1, #0
+ 836 026e 1A46     		mov	r2, r3
+ 837 0270 FFF7FEFF 		bl	memset
+ 838              	.L25:
+ 839              	.LBE3:
+ 248:main.c        ****                     #ifdef SD
+ 249:main.c        ****                         sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); //
+ 250:main.c        ****                         FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
+ 251:main.c        ****                     #endif 
+ 252:main.c        ****                 }
+ 253:main.c        ****                 if (STATE != DESCENDING) collect_flag = 0;
+ 840              		.loc 1 253 0
+ 841 0274 454B     		ldr	r3, .L72+52
+ 842 0276 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 843 0278 022B     		cmp	r3, #2
+ 844 027a 02D0     		beq	.L27
+ 845              		.loc 1 253 0 is_stmt 0 discriminator 1
+ 846 027c 464B     		ldr	r3, .L72+64
+ 847 027e 0022     		movs	r2, #0
+ 848 0280 1A70     		strb	r2, [r3]
+ 849              	.L27:
+ 254:main.c        ****                 press_id++;
+ 850              		.loc 1 254 0 is_stmt 1
+ 851 0282 464B     		ldr	r3, .L72+68
+ 852 0284 1B68     		ldr	r3, [r3]
+ 853 0286 0133     		adds	r3, r3, #1
+ 854 0288 444A     		ldr	r2, .L72+68
+ 855 028a 1360     		str	r3, [r2]
+ 856              	.L23:
+ 255:main.c        ****             }
+ 256:main.c        ****         }
+ 257:main.c        ****         
+ 258:main.c        ****     /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Onc
+ 259:main.c        ****      * has arrived, process it. */
+ 260:main.c        ****     #ifdef BT
+ 261:main.c        ****         if (msg_count >= 2){
+ 857              		.loc 1 261 0
+ 858 028c 474B     		ldr	r3, .L72+84
+ 859 028e 1B68     		ldr	r3, [r3]
+ 860 0290 012B     		cmp	r3, #1
+ 861 0292 13DD     		ble	.L28
+ 262:main.c        ****             tens = RxBuffer[0] - 48;
+ 862              		.loc 1 262 0
+ 863 0294 464B     		ldr	r3, .L72+88
+ 864 0296 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 865 0298 303B     		subs	r3, r3, #48
+ 866 029a 7B64     		str	r3, [r7, #68]
+ 263:main.c        ****             ones = RxBuffer[1] - 48;
+ 867              		.loc 1 263 0
+ 868 029c 444B     		ldr	r3, .L72+88
+ 869 029e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 870 02a0 303B     		subs	r3, r3, #48
+ 871 02a2 C7F80431 		str	r3, [r7, #260]
+ 264:main.c        ****             bytes = (tens * 10) + ones;
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 22
+
+
+ 872              		.loc 1 264 0
+ 873 02a6 7A6C     		ldr	r2, [r7, #68]
+ 874 02a8 1346     		mov	r3, r2
+ 875 02aa 9B00     		lsls	r3, r3, #2
+ 876 02ac 1344     		add	r3, r3, r2
+ 877 02ae 5B00     		lsls	r3, r3, #1
+ 878 02b0 1A46     		mov	r2, r3
+ 879 02b2 D7F80431 		ldr	r3, [r7, #260]
+ 880 02b6 1344     		add	r3, r3, r2
+ 881 02b8 3E4A     		ldr	r2, .L72+92
+ 882 02ba 1360     		str	r3, [r2]
+ 883              	.L28:
+ 265:main.c        ****         } 
+ 266:main.c        ****         
+ 267:main.c        ****         if(rxflag) {
+ 884              		.loc 1 267 0
+ 885 02bc 3E4B     		ldr	r3, .L72+96
+ 886 02be 1B68     		ldr	r3, [r3]
+ 887 02c0 002B     		cmp	r3, #0
+ 888 02c2 2DD0     		beq	.L29
+ 268:main.c        ****             uint8_to_char(RxBuffer, &tempbuf[0], 20);
+ 889              		.loc 1 268 0
+ 890 02c4 07F1BC03 		add	r3, r7, #188
+ 891 02c8 3948     		ldr	r0, .L72+88
+ 892 02ca 1946     		mov	r1, r3
+ 893 02cc 1422     		movs	r2, #20
+ 894 02ce FFF7FEFF 		bl	uint8_to_char
+ 269:main.c        ****             depth = BT_Process(&tempbuf[3], &STATE, bytes, &dataflag, &reset);
+ 895              		.loc 1 269 0
+ 896 02d2 384B     		ldr	r3, .L72+92
+ 897 02d4 1A68     		ldr	r2, [r3]
+ 898 02d6 07F1BC03 		add	r3, r7, #188
+ 899 02da D91C     		adds	r1, r3, #3
+ 900 02dc 374B     		ldr	r3, .L72+100
+ 901 02de 0093     		str	r3, [sp]
+ 902 02e0 0846     		mov	r0, r1
+ 903 02e2 2A49     		ldr	r1, .L72+52
+ 904 02e4 364B     		ldr	r3, .L72+104
+ 905 02e6 FFF7FEFF 		bl	BT_Process
+ 906 02ea 0246     		mov	r2, r0
+ 907 02ec 354B     		ldr	r3, .L72+108
+ 908 02ee 1A60     		str	r2, [r3]
+ 270:main.c        ****             
+ 271:main.c        ****             msg_count = 0; bytes = 0;
+ 909              		.loc 1 271 0
+ 910 02f0 2E4B     		ldr	r3, .L72+84
+ 911 02f2 0022     		movs	r2, #0
+ 912 02f4 1A60     		str	r2, [r3]
+ 913 02f6 2F4B     		ldr	r3, .L72+92
+ 914 02f8 0022     		movs	r2, #0
+ 915 02fa 1A60     		str	r2, [r3]
+ 272:main.c        ****             memset(RxBuffer, 0, BUFFER_LEN);
+ 916              		.loc 1 272 0
+ 917 02fc 2C48     		ldr	r0, .L72+88
+ 918 02fe 0021     		movs	r1, #0
+ 919 0300 4022     		movs	r2, #64
+ 920 0302 FFF7FEFF 		bl	memset
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 23
+
+
+ 273:main.c        ****             memset(tempbuf, 0, 20);
+ 921              		.loc 1 273 0
+ 922 0306 07F1BC03 		add	r3, r7, #188
+ 923 030a 1846     		mov	r0, r3
+ 924 030c 0021     		movs	r1, #0
+ 925 030e 1422     		movs	r2, #20
+ 926 0310 FFF7FEFF 		bl	memset
+ 274:main.c        ****             countdown = 0;
+ 927              		.loc 1 274 0
+ 928 0314 2C4B     		ldr	r3, .L72+112
+ 929 0316 0022     		movs	r2, #0
+ 930 0318 1A70     		strb	r2, [r3]
+ 275:main.c        ****             rxflag = 0;
+ 931              		.loc 1 275 0
+ 932 031a 274B     		ldr	r3, .L72+96
+ 933 031c 0022     		movs	r2, #0
+ 934 031e 1A60     		str	r2, [r3]
+ 935              	.L29:
+ 276:main.c        ****         }
+ 277:main.c        ****     #endif
+ 278:main.c        ****     
+ 279:main.c        ****         /* Get Z-Acceleration */
+ 280:main.c        **** 
+ 281:main.c        ****         az = MPU6050_getAccelerationZ();
+ 936              		.loc 1 281 0
+ 937 0320 FFF7FEFF 		bl	MPU6050_getAccelerationZ
+ 938 0324 0346     		mov	r3, r0
+ 939 0326 A7F80231 		strh	r3, [r7, #258]	@ movhi
+ 282:main.c        **** 
+ 283:main.c        ****         int t = 1;
+ 940              		.loc 1 283 0
+ 941 032a 0123     		movs	r3, #1
+ 942 032c 3B64     		str	r3, [r7, #64]
+ 284:main.c        ****         /* State Machine */
+ 285:main.c        ****         switch (STATE){
+ 943              		.loc 1 285 0
+ 944 032e 174B     		ldr	r3, .L72+52
+ 945 0330 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 946 0332 013B     		subs	r3, r3, #1
+ 947 0334 042B     		cmp	r3, #4
+ 948 0336 00F21884 		bhi	.L71
+ 949 033a 01A2     		adr	r2, .L32
+ 950 033c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 951              		.p2align 2
+ 952              	.L32:
+ 953 0340 CD030000 		.word	.L31+1
+ 954 0344 59050000 		.word	.L33+1
+ 955 0348 4F080000 		.word	.L34+1
+ 956 034c E30A0000 		.word	.L35+1
+ 957 0350 470B0000 		.word	.L36+1
+ 958              		.p2align 1
+ 959              	.L73:
+ 960 0354 AFF30080 		.align	3
+ 961              	.L72:
+ 962 0358 8FC2F528 		.word	687194767
+ 963 035c 5C8F4A3F 		.word	1061850972
+ 964 0360 AC000000 		.word	.LC0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 24
+
+
+ 965 0364 BC000000 		.word	.LC1
+ 966 0368 D0000000 		.word	.LC2
+ 967 036c E0000000 		.word	.LC3
+ 968 0370 F4000000 		.word	.LC4
+ 969 0374 08010000 		.word	.LC5
+ 970 0378 00000000 		.word	Sample_ISR_Handler
+ 971 037c 00000000 		.word	rx_interrupt
+ 972 0380 00000000 		.word	Addr
+ 973 0384 00000000 		.word	.LC6
+ 974 0388 10000000 		.word	.LC7
+ 975 038c 00000000 		.word	STATE
+ 976 0390 1C000000 		.word	.LC8
+ 977 0394 00000000 		.word	Countdown_ISR_Handler
+ 978 0398 00000000 		.word	collect_flag
+ 979 039c 00000000 		.word	press_id
+ 980 03a0 00000000 		.word	pressure_sum
+ 981 03a4 00007041 		.word	1097859072
+ 982 03a8 00401C46 		.word	1176256512
+ 983 03ac 00000000 		.word	msg_count
+ 984 03b0 00000000 		.word	RxBuffer
+ 985 03b4 00000000 		.word	bytes
+ 986 03b8 00000000 		.word	rxflag
+ 987 03bc 00000000 		.word	reset
+ 988 03c0 00000000 		.word	dataflag
+ 989 03c4 00000000 		.word	depth
+ 990 03c8 00000000 		.word	countdown
+ 991              	.L31:
+ 286:main.c        ****     
+ 287:main.c        ****             /* Waiting for start command and depth*/
+ 288:main.c        ****             case WAIT_TO_LAUNCH:  
+ 289:main.c        ****                 if (reset){                         // If reset command was received, reset:
+ 992              		.loc 1 289 0
+ 993 03cc A84B     		ldr	r3, .L74
+ 994 03ce 1B68     		ldr	r3, [r3]
+ 995 03d0 002B     		cmp	r3, #0
+ 996 03d2 37D0     		beq	.L37
+ 290:main.c        ****                     id = 1;                                // Interrupt count.
+ 997              		.loc 1 290 0
+ 998 03d4 A74B     		ldr	r3, .L74+4
+ 999 03d6 0122     		movs	r2, #1
+ 1000 03d8 1A60     		str	r2, [r3]
+ 291:main.c        ****                     data_time = 0;                         // data point num
+ 1001              		.loc 1 291 0
+ 1002 03da A74B     		ldr	r3, .L74+8
+ 1003 03dc 0022     		movs	r2, #0
+ 1004 03de 1A60     		str	r2, [r3]
+ 292:main.c        ****                     sum = 0;                               // Sum of accelerometer values. 
+ 1005              		.loc 1 292 0
+ 1006 03e0 A64B     		ldr	r3, .L74+12
+ 1007 03e2 0022     		movs	r2, #0
+ 1008 03e4 1A60     		str	r2, [r3]
+ 293:main.c        ****                     average = 0;                           // Moving average variable.
+ 1009              		.loc 1 293 0
+ 1010 03e6 A64B     		ldr	r3, .L74+16
+ 1011 03e8 0022     		movs	r2, #0
+ 1012 03ea 1A80     		strh	r2, [r3]	@ movhi
+ 294:main.c        ****                     xavg = 0; yavg = 0;                    // Gyro average variables
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 25
+
+
+ 1013              		.loc 1 294 0
+ 1014 03ec A54B     		ldr	r3, .L74+20
+ 1015 03ee 4FF00002 		mov	r2, #0
+ 1016 03f2 1A60     		str	r2, [r3]	@ float
+ 1017 03f4 A44B     		ldr	r3, .L74+24
+ 1018 03f6 4FF00002 		mov	r2, #0
+ 1019 03fa 1A60     		str	r2, [r3]	@ float
+ 295:main.c        ****                     collect_flag = 0;                      // flag indicating when to record accele
+ 1020              		.loc 1 295 0
+ 1021 03fc A34B     		ldr	r3, .L74+28
+ 1022 03fe 0022     		movs	r2, #0
+ 1023 0400 1A70     		strb	r2, [r3]
+ 296:main.c        ****                     wait_flag = 0;                         // flag indicating when to increment int
+ 1024              		.loc 1 296 0
+ 1025 0402 A34B     		ldr	r3, .L74+32
+ 1026 0404 0022     		movs	r2, #0
+ 1027 0406 1A70     		strb	r2, [r3]
+ 297:main.c        ****                     PANIC_flag = 0;                        // flag indicating water is present in h
+ 1028              		.loc 1 297 0
+ 1029 0408 A24B     		ldr	r3, .L74+36
+ 1030 040a 0022     		movs	r2, #0
+ 1031 040c 1A70     		strb	r2, [r3]
+ 298:main.c        ****                     //bool first_test = 1;                 // flag indicating first test(longer cou
+ 299:main.c        ****                     depth = 0; countdown = 0;              // Current desired depth, variable for c
+ 1032              		.loc 1 299 0
+ 1033 040e A24B     		ldr	r3, .L74+40
+ 1034 0410 0022     		movs	r2, #0
+ 1035 0412 1A60     		str	r2, [r3]
+ 1036 0414 A14B     		ldr	r3, .L74+44
+ 1037 0416 0022     		movs	r2, #0
+ 1038 0418 1A70     		strb	r2, [r3]
+ 300:main.c        ****                     msg_count = 0; dataflag = 0;           // BT message len variable, data flag 
+ 1039              		.loc 1 300 0
+ 1040 041a A14B     		ldr	r3, .L74+48
+ 1041 041c 0022     		movs	r2, #0
+ 1042 041e 1A60     		str	r2, [r3]
+ 1043 0420 A04B     		ldr	r3, .L74+52
+ 1044 0422 0022     		movs	r2, #0
+ 1045 0424 1A60     		str	r2, [r3]
+ 301:main.c        ****                     reset = 0;                             // indicates whether to reset variables 
+ 1046              		.loc 1 301 0
+ 1047 0426 924B     		ldr	r3, .L74
+ 1048 0428 0022     		movs	r2, #0
+ 1049 042a 1A60     		str	r2, [r3]
+ 302:main.c        ****                     pulse = 0;
+ 1050              		.loc 1 302 0
+ 1051 042c 0023     		movs	r3, #0
+ 1052 042e C7F82431 		str	r3, [r7, #292]
+ 303:main.c        ****                     #ifdef LCD
+ 304:main.c        ****                         setCursor(0,0);
+ 1053              		.loc 1 304 0
+ 1054 0432 0020     		movs	r0, #0
+ 1055 0434 0021     		movs	r1, #0
+ 1056 0436 FFF7FEFF 		bl	setCursor
+ 305:main.c        ****                         clear();
+ 1057              		.loc 1 305 0
+ 1058 043a FFF7FEFF 		bl	clear
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 26
+
+
+ 306:main.c        ****                         LCD_print("STATE: WAIT");  
+ 1059              		.loc 1 306 0
+ 1060 043e 9A48     		ldr	r0, .L74+56
+ 1061 0440 FFF7FEFF 		bl	LCD_print
+ 1062              	.L37:
+ 307:main.c        ****                     #endif 
+ 308:main.c        ****                 }
+ 309:main.c        ****             
+ 310:main.c        ****                 if (transmit_flag){
+ 1063              		.loc 1 310 0
+ 1064 0444 994B     		ldr	r3, .L74+60
+ 1065 0446 1B68     		ldr	r3, [r3]
+ 1066 0448 002B     		cmp	r3, #0
+ 1067 044a 0BD0     		beq	.L38
+ 311:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matte
+ 1068              		.loc 1 311 0
+ 1069 044c 07F1BC02 		add	r2, r7, #188
+ 1070 0450 07F14403 		add	r3, r7, #68
+ 1071 0454 1046     		mov	r0, r2
+ 1072 0456 9649     		ldr	r1, .L74+64
+ 1073 0458 0A22     		movs	r2, #10
+ 1074 045a FFF7FEFF 		bl	BT_Send
+ 312:main.c        ****                     transmit_flag = 0;
+ 1075              		.loc 1 312 0
+ 1076 045e 934B     		ldr	r3, .L74+60
+ 1077 0460 0022     		movs	r2, #0
+ 1078 0462 1A60     		str	r2, [r3]
+ 1079              	.L38:
+ 313:main.c        ****                 }
+ 314:main.c        ****                 // Once depth has been entered, can begin countdown into descending
+ 315:main.c        ****                 if(wait_flag == 1){
+ 1080              		.loc 1 315 0
+ 1081 0464 8A4B     		ldr	r3, .L74+32
+ 1082 0466 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1083 0468 002B     		cmp	r3, #0
+ 1084 046a 74D0     		beq	.L39
+ 316:main.c        ****                     #ifdef BT
+ 317:main.c        ****                         stateMsgCount = 0;
+ 1085              		.loc 1 317 0
+ 1086 046c 0023     		movs	r3, #0
+ 1087 046e C7F82831 		str	r3, [r7, #296]
+ 318:main.c        ****                         sprintf(buf, "\n%d seconds remaining", (10 - countdown));
+ 1088              		.loc 1 318 0
+ 1089 0472 8A4B     		ldr	r3, .L74+44
+ 1090 0474 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1091 0476 C3F10A03 		rsb	r3, r3, #10
+ 1092 047a 07F1D002 		add	r2, r7, #208
+ 1093 047e 1046     		mov	r0, r2
+ 1094 0480 8C49     		ldr	r1, .L74+68
+ 1095 0482 1A46     		mov	r2, r3
+ 1096 0484 FFF7FEFF 		bl	sprintf
+ 319:main.c        ****                         while (stateMsgCount < 21){
+ 1097              		.loc 1 319 0
+ 1098 0488 19E0     		b	.L40
+ 1099              	.L43:
+ 320:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1100              		.loc 1 320 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 27
+
+
+ 1101 048a 11E0     		b	.L41
+ 1102              	.L42:
+ 321:main.c        ****                                 UART_PutChar(buf[stateMsgCount++]);
+ 1103              		.loc 1 321 0
+ 1104 048c D7F82831 		ldr	r3, [r7, #296]
+ 1105 0490 5A1C     		adds	r2, r3, #1
+ 1106 0492 C7F82821 		str	r2, [r7, #296]
+ 1107 0496 07F59872 		add	r2, r7, #304
+ 1108 049a 1344     		add	r3, r3, r2
+ 1109 049c 13F8603C 		ldrb	r3, [r3, #-96]	@ zero_extendqisi2
+ 1110 04a0 1846     		mov	r0, r3
+ 1111 04a2 FFF7FEFF 		bl	UART_PutChar
+ 322:main.c        ****                                 if (stateMsgCount >= 21) break;
+ 1112              		.loc 1 322 0
+ 1113 04a6 D7F82831 		ldr	r3, [r7, #296]
+ 1114 04aa 142B     		cmp	r3, #20
+ 1115 04ac 00DD     		ble	.L41
+ 1116 04ae 06E0     		b	.L40
+ 1117              	.L41:
+ 320:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1118              		.loc 1 320 0
+ 1119 04b0 FFF7FEFF 		bl	UART_ReadTxStatus
+ 1120 04b4 0346     		mov	r3, r0
+ 1121 04b6 03F00803 		and	r3, r3, #8
+ 1122 04ba 002B     		cmp	r3, #0
+ 1123 04bc E6D1     		bne	.L42
+ 1124              	.L40:
+ 319:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1125              		.loc 1 319 0
+ 1126 04be D7F82831 		ldr	r3, [r7, #296]
+ 1127 04c2 142B     		cmp	r3, #20
+ 1128 04c4 E1DD     		ble	.L43
+ 323:main.c        ****                             }
+ 324:main.c        ****                         }
+ 325:main.c        ****                     #endif
+ 326:main.c        ****                     /* at 10 seconds, change into descending */
+ 327:main.c        ****                     if(countdown == 10){
+ 1129              		.loc 1 327 0
+ 1130 04c6 754B     		ldr	r3, .L74+44
+ 1131 04c8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1132 04ca 0A2B     		cmp	r3, #10
+ 1133 04cc 3FD1     		bne	.L44
+ 328:main.c        ****                         descent_time = (((depth / 13) + 3) * 2 * 500);
+ 1134              		.loc 1 328 0
+ 1135 04ce 724B     		ldr	r3, .L74+40
+ 1136 04d0 1B68     		ldr	r3, [r3]
+ 1137 04d2 794A     		ldr	r2, .L74+72
+ 1138 04d4 82FB0312 		smull	r1, r2, r2, r3
+ 1139 04d8 9210     		asrs	r2, r2, #2
+ 1140 04da DB17     		asrs	r3, r3, #31
+ 1141 04dc D31A     		subs	r3, r2, r3
+ 1142 04de 0333     		adds	r3, r3, #3
+ 1143 04e0 4FF47A72 		mov	r2, #1000
+ 1144 04e4 02FB03F3 		mul	r3, r2, r3
+ 1145 04e8 744A     		ldr	r2, .L74+76
+ 1146 04ea 1360     		str	r3, [r2]
+ 329:main.c        ****                         /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 28
+
+
+ 330:main.c        ****                          * number of ISR calls to get 1 second */ 
+ 331:main.c        ****                         STATE = DESCENDING;
+ 1147              		.loc 1 331 0
+ 1148 04ec 704B     		ldr	r3, .L74+64
+ 1149 04ee 0222     		movs	r2, #2
+ 1150 04f0 1A70     		strb	r2, [r3]
+ 332:main.c        ****                         #ifdef LCD
+ 333:main.c        ****                             setCursor(0,0);
+ 1151              		.loc 1 333 0
+ 1152 04f2 0020     		movs	r0, #0
+ 1153 04f4 0021     		movs	r1, #0
+ 1154 04f6 FFF7FEFF 		bl	setCursor
+ 334:main.c        ****                             clear();
+ 1155              		.loc 1 334 0
+ 1156 04fa FFF7FEFF 		bl	clear
+ 335:main.c        ****                             LCD_print("STATE: DESCENT");
+ 1157              		.loc 1 335 0
+ 1158 04fe 7048     		ldr	r0, .L74+80
+ 1159 0500 FFF7FEFF 		bl	LCD_print
+ 336:main.c        ****                         #endif
+ 337:main.c        ****                         #ifdef BT
+ 338:main.c        ****                             stateMsgCount = 0;
+ 1160              		.loc 1 338 0
+ 1161 0504 0023     		movs	r3, #0
+ 1162 0506 C7F82831 		str	r3, [r7, #296]
+ 339:main.c        ****                             while (stateMsgCount < DESCENDING_LEN){
+ 1163              		.loc 1 339 0
+ 1164 050a 19E0     		b	.L45
+ 1165              	.L48:
+ 340:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1166              		.loc 1 340 0
+ 1167 050c 11E0     		b	.L46
+ 1168              	.L47:
+ 341:main.c        ****                                     UART_PutChar(descendbuf[stateMsgCount++]);
+ 1169              		.loc 1 341 0
+ 1170 050e D7F82831 		ldr	r3, [r7, #296]
+ 1171 0512 5A1C     		adds	r2, r3, #1
+ 1172 0514 C7F82821 		str	r2, [r7, #296]
+ 1173 0518 07F59872 		add	r2, r7, #304
+ 1174 051c 1344     		add	r3, r3, r2
+ 1175 051e 13F8983C 		ldrb	r3, [r3, #-152]	@ zero_extendqisi2
+ 1176 0522 1846     		mov	r0, r3
+ 1177 0524 FFF7FEFF 		bl	UART_PutChar
+ 342:main.c        ****                                     if (stateMsgCount >= DESCENDING_LEN) break;
+ 1178              		.loc 1 342 0
+ 1179 0528 D7F82831 		ldr	r3, [r7, #296]
+ 1180 052c 122B     		cmp	r3, #18
+ 1181 052e 00DD     		ble	.L46
+ 1182 0530 06E0     		b	.L45
+ 1183              	.L46:
+ 340:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1184              		.loc 1 340 0
+ 1185 0532 FFF7FEFF 		bl	UART_ReadTxStatus
+ 1186 0536 0346     		mov	r3, r0
+ 1187 0538 03F00803 		and	r3, r3, #8
+ 1188 053c 002B     		cmp	r3, #0
+ 1189 053e E6D1     		bne	.L47
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 29
+
+
+ 1190              	.L45:
+ 339:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1191              		.loc 1 339 0
+ 1192 0540 D7F82831 		ldr	r3, [r7, #296]
+ 1193 0544 122B     		cmp	r3, #18
+ 1194 0546 E1DD     		ble	.L48
+ 343:main.c        ****                                 }
+ 344:main.c        ****                             }
+ 345:main.c        ****                         #endif
+ 346:main.c        ****                         countdown = 0; 
+ 1195              		.loc 1 346 0
+ 1196 0548 544B     		ldr	r3, .L74+44
+ 1197 054a 0022     		movs	r2, #0
+ 1198 054c 1A70     		strb	r2, [r3]
+ 1199              	.L44:
+ 347:main.c        ****                     }
+ 348:main.c        ****                     wait_flag = 0; 
+ 1200              		.loc 1 348 0
+ 1201 054e 504B     		ldr	r3, .L74+32
+ 1202 0550 0022     		movs	r2, #0
+ 1203 0552 1A70     		strb	r2, [r3]
+ 349:main.c        ****                 }
+ 350:main.c        ****                 break;
+ 1204              		.loc 1 350 0
+ 1205 0554 0AE3     		b	.L49
+ 1206              	.L39:
+ 1207 0556 09E3     		b	.L49
+ 1208              	.L33:
+ 351:main.c        ****                 
+ 352:main.c        ****             case DESCENDING:
+ 353:main.c        ****                 MPU6050_getRotation(&gx, &gy, &gz); // gather gyro data
+ 1209              		.loc 1 353 0
+ 1210 0558 07F14E01 		add	r1, r7, #78
+ 1211 055c 07F14C02 		add	r2, r7, #76
+ 1212 0560 07F14A03 		add	r3, r7, #74
+ 1213 0564 0846     		mov	r0, r1
+ 1214 0566 1146     		mov	r1, r2
+ 1215 0568 1A46     		mov	r2, r3
+ 1216 056a FFF7FEFF 		bl	MPU6050_getRotation
+ 354:main.c        ****                 if(collect_flag == 1){              // Check accelerometer and gyro data
+ 1217              		.loc 1 354 0
+ 1218 056e 474B     		ldr	r3, .L74+28
+ 1219 0570 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1220 0572 002B     		cmp	r3, #0
+ 1221 0574 00F06A81 		beq	.L50
+ 355:main.c        ****                     if (id < MA_WINDOW){    
+ 1222              		.loc 1 355 0
+ 1223 0578 3E4B     		ldr	r3, .L74+4
+ 1224 057a 1B68     		ldr	r3, [r3]
+ 1225 057c 0E2B     		cmp	r3, #14
+ 1226 057e 29DC     		bgt	.L51
+ 356:main.c        ****                         sum += az;  
+ 1227              		.loc 1 356 0
+ 1228 0580 B7F90221 		ldrsh	r2, [r7, #258]
+ 1229 0584 3D4B     		ldr	r3, .L74+12
+ 1230 0586 1B68     		ldr	r3, [r3]
+ 1231 0588 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 30
+
+
+ 1232 058a 3C4A     		ldr	r2, .L74+12
+ 1233 058c 1360     		str	r3, [r2]
+ 357:main.c        ****                         xsum += gx;
+ 1234              		.loc 1 357 0
+ 1235 058e B7F84E30 		ldrh	r3, [r7, #78]
+ 1236 0592 1BB2     		sxth	r3, r3
+ 1237 0594 1846     		mov	r0, r3
+ 1238 0596 FFF7FEFF 		bl	__aeabi_i2f
+ 1239 059a 0246     		mov	r2, r0
+ 1240 059c 494B     		ldr	r3, .L74+84
+ 1241 059e 1B68     		ldr	r3, [r3]	@ float
+ 1242 05a0 1046     		mov	r0, r2
+ 1243 05a2 1946     		mov	r1, r3
+ 1244 05a4 FFF7FEFF 		bl	__aeabi_fadd
+ 1245 05a8 0346     		mov	r3, r0
+ 1246 05aa 1A46     		mov	r2, r3
+ 1247 05ac 454B     		ldr	r3, .L74+84
+ 1248 05ae 1A60     		str	r2, [r3]	@ float
+ 358:main.c        ****                         ysum += gy;
+ 1249              		.loc 1 358 0
+ 1250 05b0 B7F84C30 		ldrh	r3, [r7, #76]
+ 1251 05b4 1BB2     		sxth	r3, r3
+ 1252 05b6 1846     		mov	r0, r3
+ 1253 05b8 FFF7FEFF 		bl	__aeabi_i2f
+ 1254 05bc 0246     		mov	r2, r0
+ 1255 05be 424B     		ldr	r3, .L74+88
+ 1256 05c0 1B68     		ldr	r3, [r3]	@ float
+ 1257 05c2 1046     		mov	r0, r2
+ 1258 05c4 1946     		mov	r1, r3
+ 1259 05c6 FFF7FEFF 		bl	__aeabi_fadd
+ 1260 05ca 0346     		mov	r3, r0
+ 1261 05cc 1A46     		mov	r2, r3
+ 1262 05ce 3E4B     		ldr	r3, .L74+88
+ 1263 05d0 1A60     		str	r2, [r3]	@ float
+ 1264 05d2 F2E0     		b	.L52
+ 1265              	.L51:
+ 359:main.c        ****                     }
+ 360:main.c        ****                     else if(id == MA_WINDOW){
+ 1266              		.loc 1 360 0
+ 1267 05d4 274B     		ldr	r3, .L74+4
+ 1268 05d6 1B68     		ldr	r3, [r3]
+ 1269 05d8 0F2B     		cmp	r3, #15
+ 1270 05da 7BD1     		bne	.L53
+ 361:main.c        ****                         sum += az;
+ 1271              		.loc 1 361 0
+ 1272 05dc B7F90221 		ldrsh	r2, [r7, #258]
+ 1273 05e0 264B     		ldr	r3, .L74+12
+ 1274 05e2 1B68     		ldr	r3, [r3]
+ 1275 05e4 1344     		add	r3, r3, r2
+ 1276 05e6 254A     		ldr	r2, .L74+12
+ 1277 05e8 1360     		str	r3, [r2]
+ 362:main.c        ****                         xsum += gx;
+ 1278              		.loc 1 362 0
+ 1279 05ea B7F84E30 		ldrh	r3, [r7, #78]
+ 1280 05ee 1BB2     		sxth	r3, r3
+ 1281 05f0 1846     		mov	r0, r3
+ 1282 05f2 FFF7FEFF 		bl	__aeabi_i2f
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 31
+
+
+ 1283 05f6 0246     		mov	r2, r0
+ 1284 05f8 324B     		ldr	r3, .L74+84
+ 1285 05fa 1B68     		ldr	r3, [r3]	@ float
+ 1286 05fc 1046     		mov	r0, r2
+ 1287 05fe 1946     		mov	r1, r3
+ 1288 0600 FFF7FEFF 		bl	__aeabi_fadd
+ 1289 0604 0346     		mov	r3, r0
+ 1290 0606 1A46     		mov	r2, r3
+ 1291 0608 2E4B     		ldr	r3, .L74+84
+ 1292 060a 1A60     		str	r2, [r3]	@ float
+ 363:main.c        ****                         ysum += gy;
+ 1293              		.loc 1 363 0
+ 1294 060c B7F84C30 		ldrh	r3, [r7, #76]
+ 1295 0610 1BB2     		sxth	r3, r3
+ 1296 0612 1846     		mov	r0, r3
+ 1297 0614 FFF7FEFF 		bl	__aeabi_i2f
+ 1298 0618 0246     		mov	r2, r0
+ 1299 061a 2B4B     		ldr	r3, .L74+88
+ 1300 061c 1B68     		ldr	r3, [r3]	@ float
+ 1301 061e 1046     		mov	r0, r2
+ 1302 0620 1946     		mov	r1, r3
+ 1303 0622 FFF7FEFF 		bl	__aeabi_fadd
+ 1304 0626 0346     		mov	r3, r0
+ 1305 0628 1A46     		mov	r2, r3
+ 1306 062a 274B     		ldr	r3, .L74+88
+ 1307 062c 1A60     		str	r2, [r3]	@ float
+ 364:main.c        ****                         sum = sum/MA_WINDOW;
+ 1308              		.loc 1 364 0
+ 1309 062e 134B     		ldr	r3, .L74+12
+ 1310 0630 1B68     		ldr	r3, [r3]
+ 1311 0632 264A     		ldr	r2, .L74+92
+ 1312 0634 82FB0312 		smull	r1, r2, r2, r3
+ 1313 0638 1A44     		add	r2, r2, r3
+ 1314 063a D210     		asrs	r2, r2, #3
+ 1315 063c DB17     		asrs	r3, r3, #31
+ 1316 063e D31A     		subs	r3, r2, r3
+ 1317 0640 0E4A     		ldr	r2, .L74+12
+ 1318 0642 1360     		str	r3, [r2]
+ 365:main.c        ****                         xavg = xsum/MA_WINDOW;                            
+ 1319              		.loc 1 365 0
+ 1320 0644 1F4B     		ldr	r3, .L74+84
+ 1321 0646 1B68     		ldr	r3, [r3]	@ float
+ 1322 0648 1846     		mov	r0, r3
+ 1323 064a 2149     		ldr	r1, .L74+96
+ 1324 064c FFF7FEFF 		bl	__aeabi_fdiv
+ 1325 0650 0346     		mov	r3, r0
+ 1326 0652 1A46     		mov	r2, r3
+ 1327 0654 0B4B     		ldr	r3, .L74+20
+ 1328 0656 1A60     		str	r2, [r3]	@ float
+ 366:main.c        ****                         yavg = ysum/MA_WINDOW;
+ 1329              		.loc 1 366 0
+ 1330 0658 1B4B     		ldr	r3, .L74+88
+ 1331 065a 1B68     		ldr	r3, [r3]	@ float
+ 1332 065c 1846     		mov	r0, r3
+ 1333 065e 1C49     		ldr	r1, .L74+96
+ 1334 0660 FFF7FEFF 		bl	__aeabi_fdiv
+ 1335 0664 0346     		mov	r3, r0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 32
+
+
+ 1336 0666 1A46     		mov	r2, r3
+ 1337 0668 074B     		ldr	r3, .L74+24
+ 1338 066a 1A60     		str	r2, [r3]	@ float
+ 1339 066c A5E0     		b	.L52
+ 1340              	.L75:
+ 1341 066e 00BF     		.align	2
+ 1342              	.L74:
+ 1343 0670 00000000 		.word	reset
+ 1344 0674 00000000 		.word	id
+ 1345 0678 00000000 		.word	data_time
+ 1346 067c 00000000 		.word	sum
+ 1347 0680 00000000 		.word	average
+ 1348 0684 00000000 		.word	xavg
+ 1349 0688 00000000 		.word	yavg
+ 1350 068c 00000000 		.word	collect_flag
+ 1351 0690 00000000 		.word	wait_flag
+ 1352 0694 00000000 		.word	PANIC_flag
+ 1353 0698 00000000 		.word	depth
+ 1354 069c 00000000 		.word	countdown
+ 1355 06a0 00000000 		.word	msg_count
+ 1356 06a4 00000000 		.word	dataflag
+ 1357 06a8 1C000000 		.word	.LC8
+ 1358 06ac 00000000 		.word	transmit_flag
+ 1359 06b0 00000000 		.word	STATE
+ 1360 06b4 28000000 		.word	.LC9
+ 1361 06b8 4FECC44E 		.word	1321528399
+ 1362 06bc 00000000 		.word	descent_time
+ 1363 06c0 40000000 		.word	.LC10
+ 1364 06c4 00000000 		.word	xsum
+ 1365 06c8 00000000 		.word	ysum
+ 1366 06cc 89888888 		.word	-2004318071
+ 1367 06d0 00007041 		.word	1097859072
+ 1368              	.L53:
+ 367:main.c        ****                                                    
+ 368:main.c        ****                     }
+ 369:main.c        ****                     else{
+ 370:main.c        ****                         average = ComputeMA(average, MA_WINDOW, az);                // Compute aver
+ 1369              		.loc 1 370 0
+ 1370 06d4 9D4B     		ldr	r3, .L76
+ 1371 06d6 1B88     		ldrh	r3, [r3]
+ 1372 06d8 1BB2     		sxth	r3, r3
+ 1373 06da 1846     		mov	r0, r3
+ 1374 06dc FFF7FEFF 		bl	__aeabi_i2f
+ 1375 06e0 0446     		mov	r4, r0
+ 1376 06e2 B7F90231 		ldrsh	r3, [r7, #258]
+ 1377 06e6 1846     		mov	r0, r3
+ 1378 06e8 FFF7FEFF 		bl	__aeabi_i2f
+ 1379 06ec 0346     		mov	r3, r0
+ 1380 06ee 2046     		mov	r0, r4
+ 1381 06f0 0F21     		movs	r1, #15
+ 1382 06f2 1A46     		mov	r2, r3
+ 1383 06f4 FFF7FEFF 		bl	ComputeMA
+ 1384 06f8 0346     		mov	r3, r0
+ 1385 06fa 1846     		mov	r0, r3
+ 1386 06fc FFF7FEFF 		bl	__aeabi_f2iz
+ 1387 0700 0346     		mov	r3, r0
+ 1388 0702 9AB2     		uxth	r2, r3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 33
+
+
+ 1389 0704 914B     		ldr	r3, .L76
+ 1390 0706 1A80     		strh	r2, [r3]	@ movhi
+ 371:main.c        ****                         xavg = ComputeMA(xavg, MA_WINDOW, gx);
+ 1391              		.loc 1 371 0
+ 1392 0708 914B     		ldr	r3, .L76+4
+ 1393 070a 1C68     		ldr	r4, [r3]	@ float
+ 1394 070c B7F84E30 		ldrh	r3, [r7, #78]
+ 1395 0710 1BB2     		sxth	r3, r3
+ 1396 0712 1846     		mov	r0, r3
+ 1397 0714 FFF7FEFF 		bl	__aeabi_i2f
+ 1398 0718 0346     		mov	r3, r0
+ 1399 071a 2046     		mov	r0, r4
+ 1400 071c 0F21     		movs	r1, #15
+ 1401 071e 1A46     		mov	r2, r3
+ 1402 0720 FFF7FEFF 		bl	ComputeMA
+ 1403 0724 0246     		mov	r2, r0
+ 1404 0726 8A4B     		ldr	r3, .L76+4
+ 1405 0728 1A60     		str	r2, [r3]	@ float
+ 372:main.c        ****                         yavg = ComputeMA(yavg, MA_WINDOW, gy);
+ 1406              		.loc 1 372 0
+ 1407 072a 8A4B     		ldr	r3, .L76+8
+ 1408 072c 1C68     		ldr	r4, [r3]	@ float
+ 1409 072e B7F84C30 		ldrh	r3, [r7, #76]
+ 1410 0732 1BB2     		sxth	r3, r3
+ 1411 0734 1846     		mov	r0, r3
+ 1412 0736 FFF7FEFF 		bl	__aeabi_i2f
+ 1413 073a 0346     		mov	r3, r0
+ 1414 073c 2046     		mov	r0, r4
+ 1415 073e 0F21     		movs	r1, #15
+ 1416 0740 1A46     		mov	r2, r3
+ 1417 0742 FFF7FEFF 		bl	ComputeMA
+ 1418 0746 0246     		mov	r2, r0
+ 1419 0748 824B     		ldr	r3, .L76+8
+ 1420 074a 1A60     		str	r2, [r3]	@ float
+ 373:main.c        ****                         #ifdef SD
+ 374:main.c        ****                         sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); //
+ 375:main.c        ****                         FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
+ 376:main.c        ****                         #endif 
+ 377:main.c        ****                         if (abs((int)xavg) > DEGREES_50 || abs((int)yavg) > DEGREES_50){ // If gyro
+ 1421              		.loc 1 377 0
+ 1422 074c 804B     		ldr	r3, .L76+4
+ 1423 074e 1B68     		ldr	r3, [r3]	@ float
+ 1424 0750 1846     		mov	r0, r3
+ 1425 0752 FFF7FEFF 		bl	__aeabi_f2iz
+ 1426 0756 0346     		mov	r3, r0
+ 1427 0758 002B     		cmp	r3, #0
+ 1428 075a B8BF     		it	lt
+ 1429 075c 5B42     		rsblt	r3, r3, #0
+ 1430 075e 41F69612 		movw	r2, #6550
+ 1431 0762 9342     		cmp	r3, r2
+ 1432 0764 0CDC     		bgt	.L54
+ 1433              		.loc 1 377 0 is_stmt 0 discriminator 1
+ 1434 0766 7B4B     		ldr	r3, .L76+8
+ 1435 0768 1B68     		ldr	r3, [r3]	@ float
+ 1436 076a 1846     		mov	r0, r3
+ 1437 076c FFF7FEFF 		bl	__aeabi_f2iz
+ 1438 0770 0346     		mov	r3, r0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 34
+
+
+ 1439 0772 002B     		cmp	r3, #0
+ 1440 0774 B8BF     		it	lt
+ 1441 0776 5B42     		rsblt	r3, r3, #0
+ 1442 0778 41F69612 		movw	r2, #6550
+ 1443 077c 9342     		cmp	r3, r2
+ 1444 077e 1CDD     		ble	.L52
+ 1445              	.L54:
+ 378:main.c        ****                             STATE = RESURFACE;                                        // start lift
+ 1446              		.loc 1 378 0 is_stmt 1
+ 1447 0780 754B     		ldr	r3, .L76+12
+ 1448 0782 0422     		movs	r2, #4
+ 1449 0784 1A70     		strb	r2, [r3]
+ 379:main.c        ****                             setCursor(0,0);
+ 1450              		.loc 1 379 0
+ 1451 0786 0020     		movs	r0, #0
+ 1452 0788 0021     		movs	r1, #0
+ 1453 078a FFF7FEFF 		bl	setCursor
+ 380:main.c        ****                             clear();
+ 1454              		.loc 1 380 0
+ 1455 078e FFF7FEFF 		bl	clear
+ 381:main.c        ****                             LCD_print("Tilted");
+ 1456              		.loc 1 381 0
+ 1457 0792 7248     		ldr	r0, .L76+16
+ 1458 0794 FFF7FEFF 		bl	LCD_print
+ 382:main.c        ****                             CyDelay(1000u);
+ 1459              		.loc 1 382 0
+ 1460 0798 4FF47A70 		mov	r0, #1000
+ 1461 079c FFF7FEFF 		bl	CyDelay
+ 383:main.c        ****                             setCursor(0,0);
+ 1462              		.loc 1 383 0
+ 1463 07a0 0020     		movs	r0, #0
+ 1464 07a2 0021     		movs	r1, #0
+ 1465 07a4 FFF7FEFF 		bl	setCursor
+ 384:main.c        ****                             clear();
+ 1466              		.loc 1 384 0
+ 1467 07a8 FFF7FEFF 		bl	clear
+ 385:main.c        ****                             LCD_print("STATE: RESURFACING");
+ 1468              		.loc 1 385 0
+ 1469 07ac 6C48     		ldr	r0, .L76+20
+ 1470 07ae FFF7FEFF 		bl	LCD_print
+ 386:main.c        ****                             CyDelay(1000u);
+ 1471              		.loc 1 386 0
+ 1472 07b2 4FF47A70 		mov	r0, #1000
+ 1473 07b6 FFF7FEFF 		bl	CyDelay
+ 1474              	.L52:
+ 387:main.c        ****                             
+ 388:main.c        ****                         }
+ 389:main.c        ****                     }
+ 390:main.c        ****                     
+ 391:main.c        ****                     if(average > BOT_THRESHOLD){                        
+ 1475              		.loc 1 391 0
+ 1476 07ba 644B     		ldr	r3, .L76
+ 1477 07bc 1B88     		ldrh	r3, [r3]
+ 1478 07be 1BB2     		sxth	r3, r3
+ 1479 07c0 44F62062 		movw	r2, #20000
+ 1480 07c4 9342     		cmp	r3, r2
+ 1481 07c6 1ADD     		ble	.L55
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 35
+
+
+ 392:main.c        ****                         STATE = LANDED;                                     //Switch to LANDED stat
+ 1482              		.loc 1 392 0
+ 1483 07c8 634B     		ldr	r3, .L76+12
+ 1484 07ca 0322     		movs	r2, #3
+ 1485 07cc 1A70     		strb	r2, [r3]
+ 393:main.c        ****                         #ifdef LCD
+ 394:main.c        ****                             setCursor(0,0);
+ 1486              		.loc 1 394 0
+ 1487 07ce 0020     		movs	r0, #0
+ 1488 07d0 0021     		movs	r1, #0
+ 1489 07d2 FFF7FEFF 		bl	setCursor
+ 395:main.c        ****                             clear();
+ 1490              		.loc 1 395 0
+ 1491 07d6 FFF7FEFF 		bl	clear
+ 396:main.c        ****                             LCD_print("STATE: LANDED");  
+ 1492              		.loc 1 396 0
+ 1493 07da 6248     		ldr	r0, .L76+24
+ 1494 07dc FFF7FEFF 		bl	LCD_print
+ 397:main.c        ****                         #endif
+ 398:main.c        ****                         #ifdef SD
+ 399:main.c        ****                             FS_Write(fsfile, landedbuf, LANDED_LEN);
+ 400:main.c        ****                         #endif
+ 401:main.c        ****                         #ifdef SD
+ 402:main.c        ****                             FS_Write(fsfile, vacuumbuf, VACUUM_LEN);
+ 403:main.c        ****                         #endif
+ 404:main.c        ****                         
+ 405:main.c        ****                         id=0;                                                   //reset sample coun
+ 1495              		.loc 1 405 0
+ 1496 07e0 614B     		ldr	r3, .L76+28
+ 1497 07e2 0022     		movs	r2, #0
+ 1498 07e4 1A60     		str	r2, [r3]
+ 406:main.c        ****                         data_time = 0;
+ 1499              		.loc 1 406 0
+ 1500 07e6 614B     		ldr	r3, .L76+32
+ 1501 07e8 0022     		movs	r2, #0
+ 1502 07ea 1A60     		str	r2, [r3]
+ 407:main.c        ****                         sum = 0;
+ 1503              		.loc 1 407 0
+ 1504 07ec 604B     		ldr	r3, .L76+36
+ 1505 07ee 0022     		movs	r2, #0
+ 1506 07f0 1A60     		str	r2, [r3]
+ 408:main.c        ****                         average = 0; 
+ 1507              		.loc 1 408 0
+ 1508 07f2 564B     		ldr	r3, .L76
+ 1509 07f4 0022     		movs	r2, #0
+ 1510 07f6 1A80     		strh	r2, [r3]	@ movhi
+ 409:main.c        ****                         countdown = 0;
+ 1511              		.loc 1 409 0
+ 1512 07f8 5E4B     		ldr	r3, .L76+40
+ 1513 07fa 0022     		movs	r2, #0
+ 1514 07fc 1A70     		strb	r2, [r3]
+ 1515              	.L55:
+ 410:main.c        ****                     }
+ 411:main.c        ****                     id++;
+ 1516              		.loc 1 411 0
+ 1517 07fe 5A4B     		ldr	r3, .L76+28
+ 1518 0800 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 36
+
+
+ 1519 0802 0133     		adds	r3, r3, #1
+ 1520 0804 584A     		ldr	r2, .L76+28
+ 1521 0806 1360     		str	r3, [r2]
+ 412:main.c        ****                     
+ 413:main.c        ****                     /* if max time allowed for descent has been reached, resurface */
+ 414:main.c        ****                     if(data_time >= descent_time ){                         // variable descent tim
+ 1522              		.loc 1 414 0
+ 1523 0808 584B     		ldr	r3, .L76+32
+ 1524 080a 1A68     		ldr	r2, [r3]
+ 1525 080c 5A4B     		ldr	r3, .L76+44
+ 1526 080e 1B68     		ldr	r3, [r3]
+ 1527 0810 9A42     		cmp	r2, r3
+ 1528 0812 17DB     		blt	.L56
+ 415:main.c        ****                         STATE = RESURFACE;                                      
+ 1529              		.loc 1 415 0
+ 1530 0814 504B     		ldr	r3, .L76+12
+ 1531 0816 0422     		movs	r2, #4
+ 1532 0818 1A70     		strb	r2, [r3]
+ 416:main.c        ****                         #ifdef LCD
+ 417:main.c        ****                             setCursor(0,0);
+ 1533              		.loc 1 417 0
+ 1534 081a 0020     		movs	r0, #0
+ 1535 081c 0021     		movs	r1, #0
+ 1536 081e FFF7FEFF 		bl	setCursor
+ 418:main.c        ****                             clear();
+ 1537              		.loc 1 418 0
+ 1538 0822 FFF7FEFF 		bl	clear
+ 419:main.c        ****                             LCD_print("STATE: RESURFACE");  
+ 1539              		.loc 1 419 0
+ 1540 0826 5548     		ldr	r0, .L76+48
+ 1541 0828 FFF7FEFF 		bl	LCD_print
+ 420:main.c        ****                         #endif
+ 421:main.c        ****                         id=0;                                               //reset sample counter
+ 1542              		.loc 1 421 0
+ 1543 082c 4E4B     		ldr	r3, .L76+28
+ 1544 082e 0022     		movs	r2, #0
+ 1545 0830 1A60     		str	r2, [r3]
+ 422:main.c        ****                         data_time = 0;
+ 1546              		.loc 1 422 0
+ 1547 0832 4E4B     		ldr	r3, .L76+32
+ 1548 0834 0022     		movs	r2, #0
+ 1549 0836 1A60     		str	r2, [r3]
+ 423:main.c        ****                         sum = 0;                                            //reset sum 
+ 1550              		.loc 1 423 0
+ 1551 0838 4D4B     		ldr	r3, .L76+36
+ 1552 083a 0022     		movs	r2, #0
+ 1553 083c 1A60     		str	r2, [r3]
+ 424:main.c        ****                         average = 0;
+ 1554              		.loc 1 424 0
+ 1555 083e 434B     		ldr	r3, .L76
+ 1556 0840 0022     		movs	r2, #0
+ 1557 0842 1A80     		strh	r2, [r3]	@ movhi
+ 1558              	.L56:
+ 425:main.c        ****                     }
+ 426:main.c        ****                     
+ 427:main.c        ****                     collect_flag = 0;
+ 1559              		.loc 1 427 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 37
+
+
+ 1560 0844 4E4B     		ldr	r3, .L76+52
+ 1561 0846 0022     		movs	r2, #0
+ 1562 0848 1A70     		strb	r2, [r3]
+ 428:main.c        ****                 }
+ 429:main.c        ****                 break;
+ 1563              		.loc 1 429 0
+ 1564 084a 8FE1     		b	.L49
+ 1565              	.L50:
+ 1566              		.loc 1 429 0 is_stmt 0 discriminator 2
+ 1567 084c 8EE1     		b	.L49
+ 1568              	.L34:
+ 430:main.c        ****                 
+ 431:main.c        ****                 case LANDED:
+ 432:main.c        ****                     if (countdown == 15) {                   // Delay for 7 seconds at bottom
+ 1569              		.loc 1 432 0 is_stmt 1
+ 1570 084e 494B     		ldr	r3, .L76+40
+ 1571 0850 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1572 0852 0F2B     		cmp	r3, #15
+ 1573 0854 08D1     		bne	.L57
+ 433:main.c        ****                         countdown = 0; 
+ 1574              		.loc 1 433 0
+ 1575 0856 474B     		ldr	r3, .L76+40
+ 1576 0858 0022     		movs	r2, #0
+ 1577 085a 1A70     		strb	r2, [r3]
+ 434:main.c        ****                         pulse = 1;                          // next stage of the state
+ 1578              		.loc 1 434 0
+ 1579 085c 0123     		movs	r3, #1
+ 1580 085e C7F82431 		str	r3, [r7, #292]
+ 435:main.c        ****                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
+ 1581              		.loc 1 435 0
+ 1582 0862 0120     		movs	r0, #1
+ 1583 0864 FFF7FEFF 		bl	Solenoid_1_Write
+ 1584              	.L57:
+ 436:main.c        ****                     } 
+ 437:main.c        ****                     
+ 438:main.c        ****                     MPU6050_getRotation(&gx, &gy, &gz);     // gather gyro data
+ 1585              		.loc 1 438 0
+ 1586 0868 07F14E01 		add	r1, r7, #78
+ 1587 086c 07F14C02 		add	r2, r7, #76
+ 1588 0870 07F14A03 		add	r3, r7, #74
+ 1589 0874 0846     		mov	r0, r1
+ 1590 0876 1146     		mov	r1, r2
+ 1591 0878 1A46     		mov	r2, r3
+ 1592 087a FFF7FEFF 		bl	MPU6050_getRotation
+ 439:main.c        ****                     if(collect_flag == 1){                  // Compute gryo data again in case of t
+ 1593              		.loc 1 439 0
+ 1594 087e 404B     		ldr	r3, .L76+52
+ 1595 0880 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1596 0882 002B     		cmp	r3, #0
+ 1597 0884 00F0FE80 		beq	.L58
+ 440:main.c        ****                         if (id < MA_WINDOW){    
+ 1598              		.loc 1 440 0
+ 1599 0888 374B     		ldr	r3, .L76+28
+ 1600 088a 1B68     		ldr	r3, [r3]
+ 1601 088c 0E2B     		cmp	r3, #14
+ 1602 088e 22DC     		bgt	.L59
+ 441:main.c        ****                             xsum += gx;
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 38
+
+
+ 1603              		.loc 1 441 0
+ 1604 0890 B7F84E30 		ldrh	r3, [r7, #78]
+ 1605 0894 1BB2     		sxth	r3, r3
+ 1606 0896 1846     		mov	r0, r3
+ 1607 0898 FFF7FEFF 		bl	__aeabi_i2f
+ 1608 089c 0246     		mov	r2, r0
+ 1609 089e 394B     		ldr	r3, .L76+56
+ 1610 08a0 1B68     		ldr	r3, [r3]	@ float
+ 1611 08a2 1046     		mov	r0, r2
+ 1612 08a4 1946     		mov	r1, r3
+ 1613 08a6 FFF7FEFF 		bl	__aeabi_fadd
+ 1614 08aa 0346     		mov	r3, r0
+ 1615 08ac 1A46     		mov	r2, r3
+ 1616 08ae 354B     		ldr	r3, .L76+56
+ 1617 08b0 1A60     		str	r2, [r3]	@ float
+ 442:main.c        ****                             ysum += gy;
+ 1618              		.loc 1 442 0
+ 1619 08b2 B7F84C30 		ldrh	r3, [r7, #76]
+ 1620 08b6 1BB2     		sxth	r3, r3
+ 1621 08b8 1846     		mov	r0, r3
+ 1622 08ba FFF7FEFF 		bl	__aeabi_i2f
+ 1623 08be 0246     		mov	r2, r0
+ 1624 08c0 314B     		ldr	r3, .L76+60
+ 1625 08c2 1B68     		ldr	r3, [r3]	@ float
+ 1626 08c4 1046     		mov	r0, r2
+ 1627 08c6 1946     		mov	r1, r3
+ 1628 08c8 FFF7FEFF 		bl	__aeabi_fadd
+ 1629 08cc 0346     		mov	r3, r0
+ 1630 08ce 1A46     		mov	r2, r3
+ 1631 08d0 2D4B     		ldr	r3, .L76+60
+ 1632 08d2 1A60     		str	r2, [r3]	@ float
+ 1633 08d4 7EE0     		b	.L60
+ 1634              	.L59:
+ 443:main.c        ****                         }
+ 444:main.c        ****                         else if(id == MA_WINDOW){
+ 1635              		.loc 1 444 0
+ 1636 08d6 244B     		ldr	r3, .L76+28
+ 1637 08d8 1B68     		ldr	r3, [r3]
+ 1638 08da 0F2B     		cmp	r3, #15
+ 1639 08dc 58D1     		bne	.L61
+ 445:main.c        ****                             xsum += gx;
+ 1640              		.loc 1 445 0
+ 1641 08de B7F84E30 		ldrh	r3, [r7, #78]
+ 1642 08e2 1BB2     		sxth	r3, r3
+ 1643 08e4 1846     		mov	r0, r3
+ 1644 08e6 FFF7FEFF 		bl	__aeabi_i2f
+ 1645 08ea 0246     		mov	r2, r0
+ 1646 08ec 254B     		ldr	r3, .L76+56
+ 1647 08ee 1B68     		ldr	r3, [r3]	@ float
+ 1648 08f0 1046     		mov	r0, r2
+ 1649 08f2 1946     		mov	r1, r3
+ 1650 08f4 FFF7FEFF 		bl	__aeabi_fadd
+ 1651 08f8 0346     		mov	r3, r0
+ 1652 08fa 1A46     		mov	r2, r3
+ 1653 08fc 214B     		ldr	r3, .L76+56
+ 1654 08fe 1A60     		str	r2, [r3]	@ float
+ 446:main.c        ****                             ysum += gy;
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 39
+
+
+ 1655              		.loc 1 446 0
+ 1656 0900 B7F84C30 		ldrh	r3, [r7, #76]
+ 1657 0904 1BB2     		sxth	r3, r3
+ 1658 0906 1846     		mov	r0, r3
+ 1659 0908 FFF7FEFF 		bl	__aeabi_i2f
+ 1660 090c 0246     		mov	r2, r0
+ 1661 090e 1E4B     		ldr	r3, .L76+60
+ 1662 0910 1B68     		ldr	r3, [r3]	@ float
+ 1663 0912 1046     		mov	r0, r2
+ 1664 0914 1946     		mov	r1, r3
+ 1665 0916 FFF7FEFF 		bl	__aeabi_fadd
+ 1666 091a 0346     		mov	r3, r0
+ 1667 091c 1A46     		mov	r2, r3
+ 1668 091e 1A4B     		ldr	r3, .L76+60
+ 1669 0920 1A60     		str	r2, [r3]	@ float
+ 447:main.c        ****                             xavg = xsum/MA_WINDOW;                            //compute baseline av
+ 1670              		.loc 1 447 0
+ 1671 0922 184B     		ldr	r3, .L76+56
+ 1672 0924 1B68     		ldr	r3, [r3]	@ float
+ 1673 0926 1846     		mov	r0, r3
+ 1674 0928 1849     		ldr	r1, .L76+64
+ 1675 092a FFF7FEFF 		bl	__aeabi_fdiv
+ 1676 092e 0346     		mov	r3, r0
+ 1677 0930 1A46     		mov	r2, r3
+ 1678 0932 074B     		ldr	r3, .L76+4
+ 1679 0934 1A60     		str	r2, [r3]	@ float
+ 448:main.c        ****                             yavg = ysum/MA_WINDOW;
+ 1680              		.loc 1 448 0
+ 1681 0936 144B     		ldr	r3, .L76+60
+ 1682 0938 1B68     		ldr	r3, [r3]	@ float
+ 1683 093a 1846     		mov	r0, r3
+ 1684 093c 1349     		ldr	r1, .L76+64
+ 1685 093e FFF7FEFF 		bl	__aeabi_fdiv
+ 1686 0942 0346     		mov	r3, r0
+ 1687 0944 1A46     		mov	r2, r3
+ 1688 0946 034B     		ldr	r3, .L76+8
+ 1689 0948 1A60     		str	r2, [r3]	@ float
+ 1690 094a 43E0     		b	.L60
+ 1691              	.L77:
+ 1692              		.align	2
+ 1693              	.L76:
+ 1694 094c 00000000 		.word	average
+ 1695 0950 00000000 		.word	xavg
+ 1696 0954 00000000 		.word	yavg
+ 1697 0958 00000000 		.word	STATE
+ 1698 095c 50000000 		.word	.LC11
+ 1699 0960 58000000 		.word	.LC12
+ 1700 0964 6C000000 		.word	.LC13
+ 1701 0968 00000000 		.word	id
+ 1702 096c 00000000 		.word	data_time
+ 1703 0970 00000000 		.word	sum
+ 1704 0974 00000000 		.word	countdown
+ 1705 0978 00000000 		.word	descent_time
+ 1706 097c 7C000000 		.word	.LC14
+ 1707 0980 00000000 		.word	collect_flag
+ 1708 0984 00000000 		.word	xsum
+ 1709 0988 00000000 		.word	ysum
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 40
+
+
+ 1710 098c 00007041 		.word	1097859072
+ 1711              	.L61:
+ 449:main.c        ****                         }
+ 450:main.c        ****                         else{
+ 451:main.c        ****                             xavg = ComputeMA(xavg, MA_WINDOW, gx);
+ 1712              		.loc 1 451 0
+ 1713 0990 774B     		ldr	r3, .L78
+ 1714 0992 1C68     		ldr	r4, [r3]	@ float
+ 1715 0994 B7F84E30 		ldrh	r3, [r7, #78]
+ 1716 0998 1BB2     		sxth	r3, r3
+ 1717 099a 1846     		mov	r0, r3
+ 1718 099c FFF7FEFF 		bl	__aeabi_i2f
+ 1719 09a0 0346     		mov	r3, r0
+ 1720 09a2 2046     		mov	r0, r4
+ 1721 09a4 0F21     		movs	r1, #15
+ 1722 09a6 1A46     		mov	r2, r3
+ 1723 09a8 FFF7FEFF 		bl	ComputeMA
+ 1724 09ac 0246     		mov	r2, r0
+ 1725 09ae 704B     		ldr	r3, .L78
+ 1726 09b0 1A60     		str	r2, [r3]	@ float
+ 452:main.c        ****                             yavg = ComputeMA(yavg, MA_WINDOW, gy);
+ 1727              		.loc 1 452 0
+ 1728 09b2 704B     		ldr	r3, .L78+4
+ 1729 09b4 1C68     		ldr	r4, [r3]	@ float
+ 1730 09b6 B7F84C30 		ldrh	r3, [r7, #76]
+ 1731 09ba 1BB2     		sxth	r3, r3
+ 1732 09bc 1846     		mov	r0, r3
+ 1733 09be FFF7FEFF 		bl	__aeabi_i2f
+ 1734 09c2 0346     		mov	r3, r0
+ 1735 09c4 2046     		mov	r0, r4
+ 1736 09c6 0F21     		movs	r1, #15
+ 1737 09c8 1A46     		mov	r2, r3
+ 1738 09ca FFF7FEFF 		bl	ComputeMA
+ 1739 09ce 0246     		mov	r2, r0
+ 1740 09d0 684B     		ldr	r3, .L78+4
+ 1741 09d2 1A60     		str	r2, [r3]	@ float
+ 1742              	.L60:
+ 453:main.c        ****                         }
+ 454:main.c        ****                         if (countdown > 7 && pulse == 0){       // Allow for device to settle
+ 1743              		.loc 1 454 0
+ 1744 09d4 684B     		ldr	r3, .L78+8
+ 1745 09d6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1746 09d8 072B     		cmp	r3, #7
+ 1747 09da 4BD9     		bls	.L62
+ 1748              		.loc 1 454 0 is_stmt 0 discriminator 1
+ 1749 09dc D7F82431 		ldr	r3, [r7, #292]
+ 1750 09e0 002B     		cmp	r3, #0
+ 1751 09e2 47D1     		bne	.L62
+ 455:main.c        ****                             if (abs((int)xavg) > DEGREES_20 || abs((int)yavg) > DEGREES_20){ // If 
+ 1752              		.loc 1 455 0 is_stmt 1
+ 1753 09e4 624B     		ldr	r3, .L78
+ 1754 09e6 1B68     		ldr	r3, [r3]	@ float
+ 1755 09e8 1846     		mov	r0, r3
+ 1756 09ea FFF7FEFF 		bl	__aeabi_f2iz
+ 1757 09ee 0346     		mov	r3, r0
+ 1758 09f0 002B     		cmp	r3, #0
+ 1759 09f2 B8BF     		it	lt
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 41
+
+
+ 1760 09f4 5B42     		rsblt	r3, r3, #0
+ 1761 09f6 40F63C22 		movw	r2, #2620
+ 1762 09fa 9342     		cmp	r3, r2
+ 1763 09fc 0CDC     		bgt	.L63
+ 1764              		.loc 1 455 0 is_stmt 0 discriminator 1
+ 1765 09fe 5D4B     		ldr	r3, .L78+4
+ 1766 0a00 1B68     		ldr	r3, [r3]	@ float
+ 1767 0a02 1846     		mov	r0, r3
+ 1768 0a04 FFF7FEFF 		bl	__aeabi_f2iz
+ 1769 0a08 0346     		mov	r3, r0
+ 1770 0a0a 002B     		cmp	r3, #0
+ 1771 0a0c B8BF     		it	lt
+ 1772 0a0e 5B42     		rsblt	r3, r3, #0
+ 1773 0a10 40F63C22 		movw	r2, #2620
+ 1774 0a14 9342     		cmp	r3, r2
+ 1775 0a16 2DDD     		ble	.L62
+ 1776              	.L63:
+ 456:main.c        ****                                 secs_for_tilt++;
+ 1777              		.loc 1 456 0 is_stmt 1
+ 1778 0a18 D7F82031 		ldr	r3, [r7, #288]
+ 1779 0a1c 0133     		adds	r3, r3, #1
+ 1780 0a1e C7F82031 		str	r3, [r7, #288]
+ 457:main.c        ****                                 if (secs_for_tilt > 750) {
+ 1781              		.loc 1 457 0
+ 1782 0a22 D7F82031 		ldr	r3, [r7, #288]
+ 1783 0a26 40F2EE22 		movw	r2, #750
+ 1784 0a2a 9342     		cmp	r3, r2
+ 1785 0a2c 22DD     		ble	.L62
+ 458:main.c        ****                                     STATE = RESURFACE;
+ 1786              		.loc 1 458 0
+ 1787 0a2e 534B     		ldr	r3, .L78+12
+ 1788 0a30 0422     		movs	r2, #4
+ 1789 0a32 1A70     		strb	r2, [r3]
+ 459:main.c        ****                                     setCursor(0,0);
+ 1790              		.loc 1 459 0
+ 1791 0a34 0020     		movs	r0, #0
+ 1792 0a36 0021     		movs	r1, #0
+ 1793 0a38 FFF7FEFF 		bl	setCursor
+ 460:main.c        ****                                     clear();
+ 1794              		.loc 1 460 0
+ 1795 0a3c FFF7FEFF 		bl	clear
+ 461:main.c        ****                                     LCD_print("Tilted");
+ 1796              		.loc 1 461 0
+ 1797 0a40 4F48     		ldr	r0, .L78+16
+ 1798 0a42 FFF7FEFF 		bl	LCD_print
+ 462:main.c        ****                                     CyDelay(1000u);
+ 1799              		.loc 1 462 0
+ 1800 0a46 4FF47A70 		mov	r0, #1000
+ 1801 0a4a FFF7FEFF 		bl	CyDelay
+ 463:main.c        ****                                     setCursor(0,0);
+ 1802              		.loc 1 463 0
+ 1803 0a4e 0020     		movs	r0, #0
+ 1804 0a50 0021     		movs	r1, #0
+ 1805 0a52 FFF7FEFF 		bl	setCursor
+ 464:main.c        ****                                     clear();
+ 1806              		.loc 1 464 0
+ 1807 0a56 FFF7FEFF 		bl	clear
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 42
+
+
+ 465:main.c        ****                                     LCD_print("STATE: RESURFACING");
+ 1808              		.loc 1 465 0
+ 1809 0a5a 4A48     		ldr	r0, .L78+20
+ 1810 0a5c FFF7FEFF 		bl	LCD_print
+ 466:main.c        ****                                     CyDelay(1000u);
+ 1811              		.loc 1 466 0
+ 1812 0a60 4FF47A70 		mov	r0, #1000
+ 1813 0a64 FFF7FEFF 		bl	CyDelay
+ 467:main.c        ****                                     countdown = 0;
+ 1814              		.loc 1 467 0
+ 1815 0a68 434B     		ldr	r3, .L78+8
+ 1816 0a6a 0022     		movs	r2, #0
+ 1817 0a6c 1A70     		strb	r2, [r3]
+ 468:main.c        ****                                     secs_for_tilt = 0;
+ 1818              		.loc 1 468 0
+ 1819 0a6e 0023     		movs	r3, #0
+ 1820 0a70 C7F82031 		str	r3, [r7, #288]
+ 1821              	.L62:
+ 469:main.c        ****                                 }
+ 470:main.c        ****                             }
+ 471:main.c        ****                         }
+ 472:main.c        ****                         collect_flag = 0;
+ 1822              		.loc 1 472 0
+ 1823 0a74 444B     		ldr	r3, .L78+24
+ 1824 0a76 0022     		movs	r2, #0
+ 1825 0a78 1A70     		strb	r2, [r3]
+ 473:main.c        ****                         id++;
+ 1826              		.loc 1 473 0
+ 1827 0a7a 444B     		ldr	r3, .L78+28
+ 1828 0a7c 1B68     		ldr	r3, [r3]
+ 1829 0a7e 0133     		adds	r3, r3, #1
+ 1830 0a80 424A     		ldr	r2, .L78+28
+ 1831 0a82 1360     		str	r3, [r2]
+ 1832              	.L58:
+ 474:main.c        ****                     }
+ 475:main.c        ****                     
+ 476:main.c        ****                     if (countdown == 5 && pulse){           // Second stage, turn off solenoid
+ 1833              		.loc 1 476 0
+ 1834 0a84 3C4B     		ldr	r3, .L78+8
+ 1835 0a86 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1836 0a88 052B     		cmp	r3, #5
+ 1837 0a8a 0ED1     		bne	.L64
+ 1838              		.loc 1 476 0 is_stmt 0 discriminator 1
+ 1839 0a8c D7F82431 		ldr	r3, [r7, #292]
+ 1840 0a90 002B     		cmp	r3, #0
+ 1841 0a92 0AD0     		beq	.L64
+ 477:main.c        ****                         pulse++;
+ 1842              		.loc 1 477 0 is_stmt 1
+ 1843 0a94 D7F82431 		ldr	r3, [r7, #292]
+ 1844 0a98 0133     		adds	r3, r3, #1
+ 1845 0a9a C7F82431 		str	r3, [r7, #292]
+ 478:main.c        ****                         Solenoid_1_Write(0);                // turn off soleniod 1
+ 1846              		.loc 1 478 0
+ 1847 0a9e 0020     		movs	r0, #0
+ 1848 0aa0 FFF7FEFF 		bl	Solenoid_1_Write
+ 479:main.c        ****                         countdown = 0;
+ 1849              		.loc 1 479 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 43
+
+
+ 1850 0aa4 344B     		ldr	r3, .L78+8
+ 1851 0aa6 0022     		movs	r2, #0
+ 1852 0aa8 1A70     		strb	r2, [r3]
+ 1853              	.L64:
+ 480:main.c        ****                     }
+ 481:main.c        ****                     if (countdown == 3 && pulse == 2){      // Delay for 3 seconds then resurface
+ 1854              		.loc 1 481 0
+ 1855 0aaa 334B     		ldr	r3, .L78+8
+ 1856 0aac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1857 0aae 032B     		cmp	r3, #3
+ 1858 0ab0 16D1     		bne	.L65
+ 1859              		.loc 1 481 0 is_stmt 0 discriminator 1
+ 1860 0ab2 D7F82431 		ldr	r3, [r7, #292]
+ 1861 0ab6 022B     		cmp	r3, #2
+ 1862 0ab8 12D1     		bne	.L65
+ 482:main.c        ****                         STATE = RESURFACE;
+ 1863              		.loc 1 482 0 is_stmt 1
+ 1864 0aba 304B     		ldr	r3, .L78+12
+ 1865 0abc 0422     		movs	r2, #4
+ 1866 0abe 1A70     		strb	r2, [r3]
+ 483:main.c        ****                         
+ 484:main.c        ****                         #ifdef LCD
+ 485:main.c        ****                             setCursor(0,0);
+ 1867              		.loc 1 485 0
+ 1868 0ac0 0020     		movs	r0, #0
+ 1869 0ac2 0021     		movs	r1, #0
+ 1870 0ac4 FFF7FEFF 		bl	setCursor
+ 486:main.c        ****                             clear();
+ 1871              		.loc 1 486 0
+ 1872 0ac8 FFF7FEFF 		bl	clear
+ 487:main.c        ****                             LCD_print("STATE: RESURFACING");  
+ 1873              		.loc 1 487 0
+ 1874 0acc 2D48     		ldr	r0, .L78+20
+ 1875 0ace FFF7FEFF 		bl	LCD_print
+ 488:main.c        ****                         #endif
+ 489:main.c        ****                         #ifdef SD
+ 490:main.c        ****                             FS_Write(fsfile, resurfbuf, RESURFACE_LEN);
+ 491:main.c        ****                         #endif
+ 492:main.c        ****                         pulse = 0;
+ 1876              		.loc 1 492 0
+ 1877 0ad2 0023     		movs	r3, #0
+ 1878 0ad4 C7F82431 		str	r3, [r7, #292]
+ 493:main.c        ****                         countdown = 0;
+ 1879              		.loc 1 493 0
+ 1880 0ad8 274B     		ldr	r3, .L78+8
+ 1881 0ada 0022     		movs	r2, #0
+ 1882 0adc 1A70     		strb	r2, [r3]
+ 494:main.c        ****                     }
+ 495:main.c        ****                 break;
+ 1883              		.loc 1 495 0
+ 1884 0ade 45E0     		b	.L49
+ 1885              	.L65:
+ 1886              		.loc 1 495 0 is_stmt 0 discriminator 3
+ 1887 0ae0 44E0     		b	.L49
+ 1888              	.L35:
+ 496:main.c        ****                 
+ 497:main.c        ****             case RESURFACE:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 44
+
+
+ 498:main.c        ****                 if (PANIC_flag)                 // Display that moisture sensor triggered
+ 1889              		.loc 1 498 0 is_stmt 1
+ 1890 0ae2 2B4B     		ldr	r3, .L78+32
+ 1891 0ae4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1892 0ae6 002B     		cmp	r3, #0
+ 1893 0ae8 02D0     		beq	.L66
+ 499:main.c        ****                     LCD_print("WATER DETECTED");
+ 1894              		.loc 1 499 0
+ 1895 0aea 2A48     		ldr	r0, .L78+36
+ 1896 0aec FFF7FEFF 		bl	LCD_print
+ 1897              	.L66:
+ 500:main.c        ****                     
+ 501:main.c        ****                 Solenoid_2_Write(1);            // turn on lift bag solenoid                
+ 1898              		.loc 1 501 0
+ 1899 0af0 0120     		movs	r0, #1
+ 1900 0af2 FFF7FEFF 		bl	Solenoid_2_Write
+ 502:main.c        ****                 
+ 503:main.c        ****                 //check pressure sensor to confirm we are at the surface
+ 504:main.c        ****                 if (countdown == 3){
+ 1901              		.loc 1 504 0
+ 1902 0af6 204B     		ldr	r3, .L78+8
+ 1903 0af8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1904 0afa 032B     		cmp	r3, #3
+ 1905 0afc 0ED1     		bne	.L67
+ 505:main.c        ****                     Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second
+ 1906              		.loc 1 505 0
+ 1907 0afe 0020     		movs	r0, #0
+ 1908 0b00 FFF7FEFF 		bl	Solenoid_2_Write
+ 506:main.c        ****                     CyDelay(1000u);
+ 1909              		.loc 1 506 0
+ 1910 0b04 4FF47A70 		mov	r0, #1000
+ 1911 0b08 FFF7FEFF 		bl	CyDelay
+ 507:main.c        ****                     pulse++;
+ 1912              		.loc 1 507 0
+ 1913 0b0c D7F82431 		ldr	r3, [r7, #292]
+ 1914 0b10 0133     		adds	r3, r3, #1
+ 1915 0b12 C7F82431 		str	r3, [r7, #292]
+ 508:main.c        ****                     countdown = 0;
+ 1916              		.loc 1 508 0
+ 1917 0b16 184B     		ldr	r3, .L78+8
+ 1918 0b18 0022     		movs	r2, #0
+ 1919 0b1a 1A70     		strb	r2, [r3]
+ 1920              	.L67:
+ 509:main.c        ****                 }
+ 510:main.c        ****                 if (pulse == 2){
+ 1921              		.loc 1 510 0
+ 1922 0b1c D7F82431 		ldr	r3, [r7, #292]
+ 1923 0b20 022B     		cmp	r3, #2
+ 1924 0b22 0FD1     		bne	.L68
+ 511:main.c        ****                     STATE = TRANSMIT;
+ 1925              		.loc 1 511 0
+ 1926 0b24 154B     		ldr	r3, .L78+12
+ 1927 0b26 0522     		movs	r2, #5
+ 1928 0b28 1A70     		strb	r2, [r3]
+ 512:main.c        ****                     #ifdef SD                                   //close old file, open new one
+ 513:main.c        ****                         FS_FClose(fsfile);
+ 514:main.c        ****                         sprintf(file, "test%d.txt", ++testnum);
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 45
+
+
+ 515:main.c        ****                         fsfile = FS_FOpen(file, "w");
+ 516:main.c        ****                     #endif 
+ 517:main.c        ****                     
+ 518:main.c        ****                     #ifdef LCD
+ 519:main.c        ****                         setCursor(0,0);
+ 1929              		.loc 1 519 0
+ 1930 0b2a 0020     		movs	r0, #0
+ 1931 0b2c 0021     		movs	r1, #0
+ 1932 0b2e FFF7FEFF 		bl	setCursor
+ 520:main.c        ****                         clear();
+ 1933              		.loc 1 520 0
+ 1934 0b32 FFF7FEFF 		bl	clear
+ 521:main.c        ****                         LCD_print("TRANSMIT");  
+ 1935              		.loc 1 521 0
+ 1936 0b36 1848     		ldr	r0, .L78+40
+ 1937 0b38 FFF7FEFF 		bl	LCD_print
+ 522:main.c        ****                     #endif
+ 523:main.c        ****                     #ifdef SD
+ 524:main.c        ****                         FS_Write(fsfile, transbuf, TRANSMIT_LEN);
+ 525:main.c        ****                     #endif
+ 526:main.c        ****                     countdown = 0;
+ 1938              		.loc 1 526 0
+ 1939 0b3c 0E4B     		ldr	r3, .L78+8
+ 1940 0b3e 0022     		movs	r2, #0
+ 1941 0b40 1A70     		strb	r2, [r3]
+ 527:main.c        ****                 }
+ 528:main.c        ****                 break;
+ 1942              		.loc 1 528 0
+ 1943 0b42 13E0     		b	.L49
+ 1944              	.L68:
+ 1945              		.loc 1 528 0 is_stmt 0 discriminator 4
+ 1946 0b44 12E0     		b	.L49
+ 1947              	.L36:
+ 529:main.c        ****                 
+ 530:main.c        ****             case TRANSMIT:
+ 531:main.c        ****                 if (transmit_flag){
+ 1948              		.loc 1 531 0 is_stmt 1
+ 1949 0b46 154B     		ldr	r3, .L78+44
+ 1950 0b48 1B68     		ldr	r3, [r3]
+ 1951 0b4a 002B     		cmp	r3, #0
+ 1952 0b4c 0CD0     		beq	.L69
+ 532:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters,
+ 1953              		.loc 1 532 0
+ 1954 0b4e 07F1BC02 		add	r2, r7, #188
+ 1955 0b52 07F14003 		add	r3, r7, #64
+ 1956 0b56 1046     		mov	r0, r2
+ 1957 0b58 0849     		ldr	r1, .L78+12
+ 1958 0b5a 0A22     		movs	r2, #10
+ 1959 0b5c FFF7FEFF 		bl	BT_Send
+ 533:main.c        ****                     transmit_flag = 0;
+ 1960              		.loc 1 533 0
+ 1961 0b60 0E4B     		ldr	r3, .L78+44
+ 1962 0b62 0022     		movs	r2, #0
+ 1963 0b64 1A60     		str	r2, [r3]
+ 534:main.c        ****                 }            
+ 535:main.c        ****                 break;
+ 1964              		.loc 1 535 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 46
+
+
+ 1965 0b66 01E0     		b	.L49
+ 1966              	.L69:
+ 1967              		.loc 1 535 0 is_stmt 0 discriminator 5
+ 1968 0b68 00E0     		b	.L49
+ 1969              	.L71:
+ 536:main.c        ****                 
+ 537:main.c        ****             default:
+ 538:main.c        ****                 break;
+ 1970              		.loc 1 538 0 is_stmt 1
+ 1971 0b6a 00BF     		nop
+ 1972              	.L49:
+ 1973              	.LBE2:
+ 539:main.c        ****         
+ 540:main.c        ****         }
+ 541:main.c        ****     }
+ 1974              		.loc 1 541 0 discriminator 1
+ 1975 0b6c FFF7FEBA 		b	.L70
+ 1976              	.L79:
+ 1977              		.align	2
+ 1978              	.L78:
+ 1979 0b70 00000000 		.word	xavg
+ 1980 0b74 00000000 		.word	yavg
+ 1981 0b78 00000000 		.word	countdown
+ 1982 0b7c 00000000 		.word	STATE
+ 1983 0b80 50000000 		.word	.LC11
+ 1984 0b84 58000000 		.word	.LC12
+ 1985 0b88 00000000 		.word	collect_flag
+ 1986 0b8c 00000000 		.word	id
+ 1987 0b90 00000000 		.word	PANIC_flag
+ 1988 0b94 90000000 		.word	.LC15
+ 1989 0b98 A0000000 		.word	.LC16
+ 1990 0b9c 00000000 		.word	transmit_flag
+ 1991              		.cfi_endproc
+ 1992              	.LFE67:
+ 1993              		.size	main, .-main
+ 1994              		.section	.rodata
+ 1995 0119 000000   		.align	2
+ 1996              	.LC17:
+ 1997 011c 53642076 		.ascii	"Sd vol succeed\000"
+ 1997      6F6C2073 
+ 1997      75636365 
+ 1997      656400
+ 1998 012b 00       		.align	2
+ 1999              	.LC18:
+ 2000 012c 53642076 		.ascii	"Sd vol failed\000"
+ 2000      6F6C2066 
+ 2000      61696C65 
+ 2000      6400
+ 2001 013a 0000     		.align	2
+ 2002              	.LC19:
+ 2003 013c 666F726D 		.ascii	"format Succeeded\000"
+ 2003      61742053 
+ 2003      75636365 
+ 2003      65646564 
+ 2003      00
+ 2004 014d 000000   		.align	2
+ 2005              	.LC20:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 47
+
+
+ 2006 0150 666F726D 		.ascii	"format Failed\000"
+ 2006      61742046 
+ 2006      61696C65 
+ 2006      6400
+ 2007 015e 0000     		.align	2
+ 2008              	.LC21:
+ 2009 0160 7700     		.ascii	"w\000"
+ 2010 0162 0000     		.align	2
+ 2011              	.LC22:
+ 2012 0164 46696C65 		.ascii	"File \000"
+ 2012      2000
+ 2013 016a 0000     		.align	2
+ 2014              	.LC23:
+ 2015 016c 77617320 		.ascii	"was opened\000"
+ 2015      6F70656E 
+ 2015      656400
+ 2016 0177 00       		.align	2
+ 2017              	.LC24:
+ 2018 0178 77726974 		.ascii	"written to file\000"
+ 2018      74656E20 
+ 2018      746F2066 
+ 2018      696C6500 
+ 2019              		.align	2
+ 2020              	.LC25:
+ 2021 0188 4661696C 		.ascii	"Failed to write\000"
+ 2021      65642074 
+ 2021      6F207772 
+ 2021      69746500 
+ 2022              		.align	2
+ 2023              	.LC26:
+ 2024 0198 66696C65 		.ascii	"file not created\000"
+ 2024      206E6F74 
+ 2024      20637265 
+ 2024      61746564 
+ 2024      00
+ 2025 01a9 000000   		.align	2
+ 2026              	.LC27:
+ 2027 01ac 0A2D2D2D 		.ascii	"\012------------\012\000"
+ 2027      2D2D2D2D 
+ 2027      2D2D2D2D 
+ 2027      2D0A00
+ 2028 01bb 00       		.section	.text.SD_SETUP,"ax",%progbits
+ 2029              		.align	2
+ 2030              		.global	SD_SETUP
+ 2031              		.thumb
+ 2032              		.thumb_func
+ 2033              		.type	SD_SETUP, %function
+ 2034              	SD_SETUP:
+ 2035              	.LFB68:
+ 542:main.c        **** }
+ 543:main.c        **** 
+ 544:main.c        **** int SD_SETUP(char* filename){
+ 2036              		.loc 1 544 0
+ 2037              		.cfi_startproc
+ 2038              		@ args = 0, pretend = 0, frame = 16
+ 2039              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2040 0000 90B5     		push	{r4, r7, lr}
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 48
+
+
+ 2041              		.cfi_def_cfa_offset 12
+ 2042              		.cfi_offset 4, -12
+ 2043              		.cfi_offset 7, -8
+ 2044              		.cfi_offset 14, -4
+ 2045 0002 85B0     		sub	sp, sp, #20
+ 2046              		.cfi_def_cfa_offset 32
+ 2047 0004 00AF     		add	r7, sp, #0
+ 2048              		.cfi_def_cfa_register 7
+ 2049 0006 7860     		str	r0, [r7, #4]
+ 545:main.c        **** int success = 1;
+ 2050              		.loc 1 545 0
+ 2051 0008 0123     		movs	r3, #1
+ 2052 000a FB60     		str	r3, [r7, #12]
+ 546:main.c        ****       FS_Init();
+ 2053              		.loc 1 546 0
+ 2054 000c FFF7FEFF 		bl	FS_Init
+ 547:main.c        ****             FS_Mount(volume);
+ 2055              		.loc 1 547 0
+ 2056 0010 3A48     		ldr	r0, .L90
+ 2057 0012 FFF7FEFF 		bl	FS_Mount
+ 548:main.c        ****             if(0 != FS_GetVolumeName(0u, volume, 9u))
+ 2058              		.loc 1 548 0
+ 2059 0016 0020     		movs	r0, #0
+ 2060 0018 3849     		ldr	r1, .L90
+ 2061 001a 0922     		movs	r2, #9
+ 2062 001c FFF7FEFF 		bl	FS_GetVolumeName
+ 2063 0020 0346     		mov	r3, r0
+ 2064 0022 002B     		cmp	r3, #0
+ 2065 0024 03D0     		beq	.L81
+ 549:main.c        ****                 /* Getting volume name succeeded so prompt it on the LCD */
+ 550:main.c        ****                 LCD_print("Sd vol succeed");
+ 2066              		.loc 1 550 0
+ 2067 0026 3648     		ldr	r0, .L90+4
+ 2068 0028 FFF7FEFF 		bl	LCD_print
+ 2069 002c 04E0     		b	.L82
+ 2070              	.L81:
+ 551:main.c        ****             else{
+ 552:main.c        ****                 LCD_print("Sd vol failed");
+ 2071              		.loc 1 552 0
+ 2072 002e 3548     		ldr	r0, .L90+8
+ 2073 0030 FFF7FEFF 		bl	LCD_print
+ 553:main.c        ****                 success = 0;
+ 2074              		.loc 1 553 0
+ 2075 0034 0023     		movs	r3, #0
+ 2076 0036 FB60     		str	r3, [r7, #12]
+ 2077              	.L82:
+ 554:main.c        ****             }
+ 555:main.c        ****             CyDelay(500u);
+ 2078              		.loc 1 555 0
+ 2079 0038 4FF4FA70 		mov	r0, #500
+ 2080 003c FFF7FEFF 		bl	CyDelay
+ 556:main.c        ****             clear();
+ 2081              		.loc 1 556 0
+ 2082 0040 FFF7FEFF 		bl	clear
+ 557:main.c        ****             if(0 == FS_FormatSD(volume))
+ 2083              		.loc 1 557 0
+ 2084 0044 2D48     		ldr	r0, .L90
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 49
+
+
+ 2085 0046 FFF7FEFF 		bl	FS_FormatSD
+ 2086 004a 0346     		mov	r3, r0
+ 2087 004c 002B     		cmp	r3, #0
+ 2088 004e 03D1     		bne	.L83
+ 558:main.c        ****                 LCD_print("format Succeeded");
+ 2089              		.loc 1 558 0
+ 2090 0050 2D48     		ldr	r0, .L90+12
+ 2091 0052 FFF7FEFF 		bl	LCD_print
+ 2092 0056 04E0     		b	.L84
+ 2093              	.L83:
+ 559:main.c        ****             else{
+ 560:main.c        ****                 LCD_print("format Failed");
+ 2094              		.loc 1 560 0
+ 2095 0058 2C48     		ldr	r0, .L90+16
+ 2096 005a FFF7FEFF 		bl	LCD_print
+ 561:main.c        ****                 success = 0;
+ 2097              		.loc 1 561 0
+ 2098 005e 0023     		movs	r3, #0
+ 2099 0060 FB60     		str	r3, [r7, #12]
+ 2100              	.L84:
+ 562:main.c        ****             }
+ 563:main.c        ****             
+ 564:main.c        ****             CyDelay(500u);
+ 2101              		.loc 1 564 0
+ 2102 0062 4FF4FA70 		mov	r0, #500
+ 2103 0066 FFF7FEFF 		bl	CyDelay
+ 565:main.c        ****             clear();
+ 2104              		.loc 1 565 0
+ 2105 006a FFF7FEFF 		bl	clear
+ 566:main.c        ****             
+ 567:main.c        ****             fsfile = FS_FOpen(filename, "w");
+ 2106              		.loc 1 567 0
+ 2107 006e 7868     		ldr	r0, [r7, #4]
+ 2108 0070 2749     		ldr	r1, .L90+20
+ 2109 0072 FFF7FEFF 		bl	FS_FOpen
+ 2110 0076 0246     		mov	r2, r0
+ 2111 0078 264B     		ldr	r3, .L90+24
+ 2112 007a 1A60     		str	r2, [r3]
+ 568:main.c        ****             if(fsfile)
+ 2113              		.loc 1 568 0
+ 2114 007c 254B     		ldr	r3, .L90+24
+ 2115 007e 1B68     		ldr	r3, [r3]
+ 2116 0080 002B     		cmp	r3, #0
+ 2117 0082 29D0     		beq	.L85
+ 569:main.c        ****             {
+ 570:main.c        ****                 /* Indicate successful file creation message */
+ 571:main.c        ****                 LCD_print("File ");
+ 2118              		.loc 1 571 0
+ 2119 0084 2448     		ldr	r0, .L90+28
+ 2120 0086 FFF7FEFF 		bl	LCD_print
+ 572:main.c        ****                 LCD_print("was opened");
+ 2121              		.loc 1 572 0
+ 2122 008a 2448     		ldr	r0, .L90+32
+ 2123 008c FFF7FEFF 		bl	LCD_print
+ 573:main.c        ****                 /* Need some delay to indicate output on the LCD */
+ 574:main.c        ****                 CyDelay(500u);
+ 2124              		.loc 1 574 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 50
+
+
+ 2125 0090 4FF4FA70 		mov	r0, #500
+ 2126 0094 FFF7FEFF 		bl	CyDelay
+ 575:main.c        ****                 clear();
+ 2127              		.loc 1 575 0
+ 2128 0098 FFF7FEFF 		bl	clear
+ 576:main.c        ****                 
+ 577:main.c        ****                 if(0 != FS_Write(fsfile, filename, strlen(filename))) 
+ 2129              		.loc 1 577 0
+ 2130 009c 1D4B     		ldr	r3, .L90+24
+ 2131 009e 1C68     		ldr	r4, [r3]
+ 2132 00a0 7868     		ldr	r0, [r7, #4]
+ 2133 00a2 FFF7FEFF 		bl	strlen
+ 2134 00a6 0346     		mov	r3, r0
+ 2135 00a8 2046     		mov	r0, r4
+ 2136 00aa 7968     		ldr	r1, [r7, #4]
+ 2137 00ac 1A46     		mov	r2, r3
+ 2138 00ae FFF7FEFF 		bl	FS_Write
+ 2139 00b2 0346     		mov	r3, r0
+ 2140 00b4 002B     		cmp	r3, #0
+ 2141 00b6 03D0     		beq	.L86
+ 578:main.c        ****                     /* Inditate that data was written to a file */
+ 579:main.c        ****                     LCD_print("written to file");
+ 2142              		.loc 1 579 0
+ 2143 00b8 1948     		ldr	r0, .L90+36
+ 2144 00ba FFF7FEFF 		bl	LCD_print
+ 2145 00be 06E0     		b	.L87
+ 2146              	.L86:
+ 580:main.c        ****                 else {
+ 581:main.c        ****                     LCD_print("Failed to write");
+ 2147              		.loc 1 581 0
+ 2148 00c0 1848     		ldr	r0, .L90+40
+ 2149 00c2 FFF7FEFF 		bl	LCD_print
+ 582:main.c        ****                     success = 0;
+ 2150              		.loc 1 582 0
+ 2151 00c6 0023     		movs	r3, #0
+ 2152 00c8 FB60     		str	r3, [r7, #12]
+ 583:main.c        ****                     clear();
+ 2153              		.loc 1 583 0
+ 2154 00ca FFF7FEFF 		bl	clear
+ 2155              	.L87:
+ 584:main.c        ****                 }
+ 585:main.c        ****                 CyDelay(500u);
+ 2156              		.loc 1 585 0
+ 2157 00ce 4FF4FA70 		mov	r0, #500
+ 2158 00d2 FFF7FEFF 		bl	CyDelay
+ 2159 00d6 04E0     		b	.L88
+ 2160              	.L85:
+ 586:main.c        ****             }
+ 587:main.c        ****             else{
+ 588:main.c        ****                 LCD_print("file not created");
+ 2161              		.loc 1 588 0
+ 2162 00d8 1348     		ldr	r0, .L90+44
+ 2163 00da FFF7FEFF 		bl	LCD_print
+ 589:main.c        ****                 success = 0;
+ 2164              		.loc 1 589 0
+ 2165 00de 0023     		movs	r3, #0
+ 2166 00e0 FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 51
+
+
+ 2167              	.L88:
+ 590:main.c        ****             }
+ 591:main.c        ****         FS_Write(fsfile, "\n------------\n", 14);
+ 2168              		.loc 1 591 0
+ 2169 00e2 0C4B     		ldr	r3, .L90+24
+ 2170 00e4 1B68     		ldr	r3, [r3]
+ 2171 00e6 1846     		mov	r0, r3
+ 2172 00e8 1049     		ldr	r1, .L90+48
+ 2173 00ea 0E22     		movs	r2, #14
+ 2174 00ec FFF7FEFF 		bl	FS_Write
+ 592:main.c        **** return success;
+ 2175              		.loc 1 592 0
+ 2176 00f0 FB68     		ldr	r3, [r7, #12]
+ 593:main.c        **** }
+ 2177              		.loc 1 593 0
+ 2178 00f2 1846     		mov	r0, r3
+ 2179 00f4 1437     		adds	r7, r7, #20
+ 2180              		.cfi_def_cfa_offset 12
+ 2181 00f6 BD46     		mov	sp, r7
+ 2182              		.cfi_def_cfa_register 13
+ 2183              		@ sp needed
+ 2184 00f8 90BD     		pop	{r4, r7, pc}
+ 2185              	.L91:
+ 2186 00fa 00BF     		.align	2
+ 2187              	.L90:
+ 2188 00fc 00000000 		.word	volume
+ 2189 0100 1C010000 		.word	.LC17
+ 2190 0104 2C010000 		.word	.LC18
+ 2191 0108 3C010000 		.word	.LC19
+ 2192 010c 50010000 		.word	.LC20
+ 2193 0110 60010000 		.word	.LC21
+ 2194 0114 00000000 		.word	fsfile
+ 2195 0118 64010000 		.word	.LC22
+ 2196 011c 6C010000 		.word	.LC23
+ 2197 0120 78010000 		.word	.LC24
+ 2198 0124 88010000 		.word	.LC25
+ 2199 0128 98010000 		.word	.LC26
+ 2200 012c AC010000 		.word	.LC27
+ 2201              		.cfi_endproc
+ 2202              	.LFE68:
+ 2203              		.size	SD_SETUP, .-SD_SETUP
+ 2204              		.text
+ 2205              	.Letext0:
+ 2206              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 2207              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.0\\psoc creator\\import\\gnu\\arm\\4.9.
+ 2208              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 2209              		.file 5 "..\\OVac.cydsn\\emFile_V322c\\Code\\Include\\PSoC5/FS_Types.h"
+ 2210              		.file 6 "functions.h"
+ 2211              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 2212              		.file 8 "./mpu6050.h"
+ 2213              		.section	.debug_info,"",%progbits
+ 2214              	.Ldebug_info0:
+ 2215 0000 73060000 		.4byte	0x673
+ 2216 0004 0400     		.2byte	0x4
+ 2217 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 2218 000a 04       		.byte	0x4
+ 2219 000b 01       		.uleb128 0x1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 52
+
+
+ 2220 000c 1E010000 		.4byte	.LASF88
+ 2221 0010 01       		.byte	0x1
+ 2222 0011 09030000 		.4byte	.LASF89
+ 2223 0015 52030000 		.4byte	.LASF90
+ 2224 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 2225 001d 00000000 		.4byte	0
+ 2226 0021 00000000 		.4byte	.Ldebug_line0
+ 2227 0025 02       		.uleb128 0x2
+ 2228 0026 01       		.byte	0x1
+ 2229 0027 06       		.byte	0x6
+ 2230 0028 2E020000 		.4byte	.LASF0
+ 2231 002c 03       		.uleb128 0x3
+ 2232 002d 35040000 		.4byte	.LASF2
+ 2233 0031 02       		.byte	0x2
+ 2234 0032 1D       		.byte	0x1d
+ 2235 0033 37000000 		.4byte	0x37
+ 2236 0037 02       		.uleb128 0x2
+ 2237 0038 01       		.byte	0x1
+ 2238 0039 08       		.byte	0x8
+ 2239 003a 0E020000 		.4byte	.LASF1
+ 2240 003e 03       		.uleb128 0x3
+ 2241 003f 9A030000 		.4byte	.LASF3
+ 2242 0043 02       		.byte	0x2
+ 2243 0044 29       		.byte	0x29
+ 2244 0045 49000000 		.4byte	0x49
+ 2245 0049 02       		.uleb128 0x2
+ 2246 004a 02       		.byte	0x2
+ 2247 004b 05       		.byte	0x5
+ 2248 004c BA000000 		.4byte	.LASF4
+ 2249 0050 02       		.uleb128 0x2
+ 2250 0051 02       		.byte	0x2
+ 2251 0052 07       		.byte	0x7
+ 2252 0053 76020000 		.4byte	.LASF5
+ 2253 0057 03       		.uleb128 0x3
+ 2254 0058 90030000 		.4byte	.LASF6
+ 2255 005c 02       		.byte	0x2
+ 2256 005d 3F       		.byte	0x3f
+ 2257 005e 62000000 		.4byte	0x62
+ 2258 0062 02       		.uleb128 0x2
+ 2259 0063 04       		.byte	0x4
+ 2260 0064 05       		.byte	0x5
+ 2261 0065 93020000 		.4byte	.LASF7
+ 2262 0069 03       		.uleb128 0x3
+ 2263 006a 3F030000 		.4byte	.LASF8
+ 2264 006e 02       		.byte	0x2
+ 2265 006f 41       		.byte	0x41
+ 2266 0070 74000000 		.4byte	0x74
+ 2267 0074 02       		.uleb128 0x2
+ 2268 0075 04       		.byte	0x4
+ 2269 0076 07       		.byte	0x7
+ 2270 0077 15030000 		.4byte	.LASF9
+ 2271 007b 02       		.uleb128 0x2
+ 2272 007c 08       		.byte	0x8
+ 2273 007d 05       		.byte	0x5
+ 2274 007e FF000000 		.4byte	.LASF10
+ 2275 0082 02       		.uleb128 0x2
+ 2276 0083 08       		.byte	0x8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 53
+
+
+ 2277 0084 07       		.byte	0x7
+ 2278 0085 3A020000 		.4byte	.LASF11
+ 2279 0089 04       		.uleb128 0x4
+ 2280 008a 04       		.byte	0x4
+ 2281 008b 05       		.byte	0x5
+ 2282 008c 696E7400 		.ascii	"int\000"
+ 2283 0090 02       		.uleb128 0x2
+ 2284 0091 04       		.byte	0x4
+ 2285 0092 07       		.byte	0x7
+ 2286 0093 64020000 		.4byte	.LASF12
+ 2287 0097 03       		.uleb128 0x3
+ 2288 0098 D4000000 		.4byte	.LASF13
+ 2289 009c 03       		.byte	0x3
+ 2290 009d 15       		.byte	0x15
+ 2291 009e 2C000000 		.4byte	0x2c
+ 2292 00a2 03       		.uleb128 0x3
+ 2293 00a3 A9020000 		.4byte	.LASF14
+ 2294 00a7 03       		.byte	0x3
+ 2295 00a8 20       		.byte	0x20
+ 2296 00a9 3E000000 		.4byte	0x3e
+ 2297 00ad 03       		.uleb128 0x3
+ 2298 00ae A1020000 		.4byte	.LASF15
+ 2299 00b2 03       		.byte	0x3
+ 2300 00b3 2C       		.byte	0x2c
+ 2301 00b4 57000000 		.4byte	0x57
+ 2302 00b8 03       		.uleb128 0x3
+ 2303 00b9 51020000 		.4byte	.LASF16
+ 2304 00bd 03       		.byte	0x3
+ 2305 00be 2D       		.byte	0x2d
+ 2306 00bf 69000000 		.4byte	0x69
+ 2307 00c3 05       		.uleb128 0x5
+ 2308 00c4 B1020000 		.4byte	.LASF17
+ 2309 00c8 04       		.byte	0x4
+ 2310 00c9 9201     		.2byte	0x192
+ 2311 00cb 37000000 		.4byte	0x37
+ 2312 00cf 02       		.uleb128 0x2
+ 2313 00d0 04       		.byte	0x4
+ 2314 00d1 04       		.byte	0x4
+ 2315 00d2 EB000000 		.4byte	.LASF18
+ 2316 00d6 02       		.uleb128 0x2
+ 2317 00d7 08       		.byte	0x8
+ 2318 00d8 04       		.byte	0x4
+ 2319 00d9 38030000 		.4byte	.LASF19
+ 2320 00dd 02       		.uleb128 0x2
+ 2321 00de 01       		.byte	0x1
+ 2322 00df 08       		.byte	0x8
+ 2323 00e0 8E020000 		.4byte	.LASF20
+ 2324 00e4 05       		.uleb128 0x5
+ 2325 00e5 10030000 		.4byte	.LASF21
+ 2326 00e9 04       		.byte	0x4
+ 2327 00ea 3C02     		.2byte	0x23c
+ 2328 00ec F0000000 		.4byte	0xf0
+ 2329 00f0 06       		.uleb128 0x6
+ 2330 00f1 C3000000 		.4byte	0xc3
+ 2331 00f5 02       		.uleb128 0x2
+ 2332 00f6 04       		.byte	0x4
+ 2333 00f7 07       		.byte	0x7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 54
+
+
+ 2334 00f8 AF030000 		.4byte	.LASF22
+ 2335 00fc 07       		.uleb128 0x7
+ 2336 00fd 04       		.byte	0x4
+ 2337 00fe DD000000 		.4byte	0xdd
+ 2338 0102 03       		.uleb128 0x3
+ 2339 0103 1C020000 		.4byte	.LASF23
+ 2340 0107 05       		.byte	0x5
+ 2341 0108 7E       		.byte	0x7e
+ 2342 0109 0D010000 		.4byte	0x10d
+ 2343 010d 08       		.uleb128 0x8
+ 2344 010e 1C020000 		.4byte	.LASF23
+ 2345 0112 07       		.uleb128 0x7
+ 2346 0113 04       		.byte	0x4
+ 2347 0114 02010000 		.4byte	0x102
+ 2348 0118 02       		.uleb128 0x2
+ 2349 0119 08       		.byte	0x8
+ 2350 011a 04       		.byte	0x4
+ 2351 011b F3010000 		.4byte	.LASF24
+ 2352 011f 09       		.uleb128 0x9
+ 2353 0120 43000000 		.4byte	.LASF32
+ 2354 0124 01       		.byte	0x1
+ 2355 0125 06       		.byte	0x6
+ 2356 0126 35       		.byte	0x35
+ 2357 0127 56010000 		.4byte	0x156
+ 2358 012b 0A       		.uleb128 0xa
+ 2359 012c 36000000 		.4byte	.LASF25
+ 2360 0130 00       		.sleb128 0
+ 2361 0131 0A       		.uleb128 0xa
+ 2362 0132 FF010000 		.4byte	.LASF26
+ 2363 0136 01       		.sleb128 1
+ 2364 0137 0A       		.uleb128 0xa
+ 2365 0138 27030000 		.4byte	.LASF27
+ 2366 013c 02       		.sleb128 2
+ 2367 013d 0A       		.uleb128 0xa
+ 2368 013e 70000000 		.4byte	.LASF28
+ 2369 0142 03       		.sleb128 3
+ 2370 0143 0A       		.uleb128 0xa
+ 2371 0144 0D000000 		.4byte	.LASF29
+ 2372 0148 04       		.sleb128 4
+ 2373 0149 0A       		.uleb128 0xa
+ 2374 014a 15010000 		.4byte	.LASF30
+ 2375 014e 05       		.sleb128 5
+ 2376 014f 0A       		.uleb128 0xa
+ 2377 0150 E0010000 		.4byte	.LASF31
+ 2378 0154 06       		.sleb128 6
+ 2379 0155 00       		.byte	0
+ 2380 0156 03       		.uleb128 0x3
+ 2381 0157 43000000 		.4byte	.LASF32
+ 2382 015b 06       		.byte	0x6
+ 2383 015c 3D       		.byte	0x3d
+ 2384 015d 1F010000 		.4byte	0x11f
+ 2385 0161 0B       		.uleb128 0xb
+ 2386 0162 89000000 		.4byte	.LASF33
+ 2387 0166 01       		.byte	0x1
+ 2388 0167 6B       		.byte	0x6b
+ 2389 0168 00000000 		.4byte	.LFB63
+ 2390 016c 20000000 		.4byte	.LFE63-.LFB63
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 55
+
+
+ 2391 0170 01       		.uleb128 0x1
+ 2392 0171 9C       		.byte	0x9c
+ 2393 0172 0C       		.uleb128 0xc
+ 2394 0173 07040000 		.4byte	.LASF34
+ 2395 0177 01       		.byte	0x1
+ 2396 0178 72       		.byte	0x72
+ 2397 0179 00000000 		.4byte	.LFB64
+ 2398 017d 40000000 		.4byte	.LFE64-.LFB64
+ 2399 0181 01       		.uleb128 0x1
+ 2400 0182 9C       		.byte	0x9c
+ 2401 0183 0C       		.uleb128 0xc
+ 2402 0184 F3020000 		.4byte	.LASF35
+ 2403 0188 01       		.byte	0x1
+ 2404 0189 7B       		.byte	0x7b
+ 2405 018a 00000000 		.4byte	.LFB65
+ 2406 018e 9C000000 		.4byte	.LFE65-.LFB65
+ 2407 0192 01       		.uleb128 0x1
+ 2408 0193 9C       		.byte	0x9c
+ 2409 0194 0B       		.uleb128 0xb
+ 2410 0195 D7030000 		.4byte	.LASF36
+ 2411 0199 01       		.byte	0x1
+ 2412 019a 8C       		.byte	0x8c
+ 2413 019b 00000000 		.4byte	.LFB66
+ 2414 019f 50000000 		.4byte	.LFE66-.LFB66
+ 2415 01a3 01       		.uleb128 0x1
+ 2416 01a4 9C       		.byte	0x9c
+ 2417 01a5 0D       		.uleb128 0xd
+ 2418 01a6 9C020000 		.4byte	.LASF91
+ 2419 01aa 01       		.byte	0x1
+ 2420 01ab 96       		.byte	0x96
+ 2421 01ac 89000000 		.4byte	0x89
+ 2422 01b0 00000000 		.4byte	.LFB67
+ 2423 01b4 A00B0000 		.4byte	.LFE67-.LFB67
+ 2424 01b8 01       		.uleb128 0x1
+ 2425 01b9 9C       		.byte	0x9c
+ 2426 01ba 65030000 		.4byte	0x365
+ 2427 01be 0E       		.uleb128 0xe
+ 2428 01bf 6E756D00 		.ascii	"num\000"
+ 2429 01c3 01       		.byte	0x1
+ 2430 01c4 98       		.byte	0x98
+ 2431 01c5 89000000 		.4byte	0x89
+ 2432 01c9 02       		.uleb128 0x2
+ 2433 01ca 91       		.byte	0x91
+ 2434 01cb 5C       		.sleb128 -36
+ 2435 01cc 0F       		.uleb128 0xf
+ 2436 01cd E2000000 		.4byte	.LASF37
+ 2437 01d1 01       		.byte	0x1
+ 2438 01d2 98       		.byte	0x98
+ 2439 01d3 89000000 		.4byte	0x89
+ 2440 01d7 02       		.uleb128 0x2
+ 2441 01d8 91       		.byte	0x91
+ 2442 01d9 58       		.sleb128 -40
+ 2443 01da 0F       		.uleb128 0xf
+ 2444 01db B1010000 		.4byte	.LASF38
+ 2445 01df 01       		.byte	0x1
+ 2446 01e0 99       		.byte	0x99
+ 2447 01e1 CF000000 		.4byte	0xcf
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 56
+
+
+ 2448 01e5 02       		.uleb128 0x2
+ 2449 01e6 91       		.byte	0x91
+ 2450 01e7 54       		.sleb128 -44
+ 2451 01e8 0F       		.uleb128 0xf
+ 2452 01e9 71020000 		.4byte	.LASF39
+ 2453 01ed 01       		.byte	0x1
+ 2454 01ee 99       		.byte	0x99
+ 2455 01ef CF000000 		.4byte	0xcf
+ 2456 01f3 02       		.uleb128 0x2
+ 2457 01f4 91       		.byte	0x91
+ 2458 01f5 50       		.sleb128 -48
+ 2459 01f6 0F       		.uleb128 0xf
+ 2460 01f7 BE030000 		.4byte	.LASF40
+ 2461 01fb 01       		.byte	0x1
+ 2462 01fc 99       		.byte	0x99
+ 2463 01fd CF000000 		.4byte	0xcf
+ 2464 0201 02       		.uleb128 0x2
+ 2465 0202 91       		.byte	0x91
+ 2466 0203 4C       		.sleb128 -52
+ 2467 0204 0F       		.uleb128 0xf
+ 2468 0205 AD000000 		.4byte	.LASF41
+ 2469 0209 01       		.byte	0x1
+ 2470 020a 99       		.byte	0x99
+ 2471 020b CF000000 		.4byte	0xcf
+ 2472 020f 02       		.uleb128 0x2
+ 2473 0210 91       		.byte	0x91
+ 2474 0211 6C       		.sleb128 -20
+ 2475 0212 0E       		.uleb128 0xe
+ 2476 0213 62756600 		.ascii	"buf\000"
+ 2477 0217 01       		.byte	0x1
+ 2478 0218 9A       		.byte	0x9a
+ 2479 0219 65030000 		.4byte	0x365
+ 2480 021d 03       		.uleb128 0x3
+ 2481 021e 91       		.byte	0x91
+ 2482 021f 907F     		.sleb128 -112
+ 2483 0221 0F       		.uleb128 0xf
+ 2484 0222 4A030000 		.4byte	.LASF42
+ 2485 0226 01       		.byte	0x1
+ 2486 0227 9A       		.byte	0x9a
+ 2487 0228 75030000 		.4byte	0x375
+ 2488 022c 03       		.uleb128 0x3
+ 2489 022d 91       		.byte	0x91
+ 2490 022e FC7E     		.sleb128 -132
+ 2491 0230 0F       		.uleb128 0xf
+ 2492 0231 C3020000 		.4byte	.LASF43
+ 2493 0235 01       		.byte	0x1
+ 2494 0236 9A       		.byte	0x9a
+ 2495 0237 85030000 		.4byte	0x385
+ 2496 023b 03       		.uleb128 0x3
+ 2497 023c 91       		.byte	0x91
+ 2498 023d EC7E     		.sleb128 -148
+ 2499 023f 0F       		.uleb128 0xf
+ 2500 0240 A4030000 		.4byte	.LASF44
+ 2501 0244 01       		.byte	0x1
+ 2502 0245 9B       		.byte	0x9b
+ 2503 0246 95030000 		.4byte	0x395
+ 2504 024a 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 57
+
+
+ 2505 024b 91       		.byte	0x91
+ 2506 024c D87E     		.sleb128 -168
+ 2507 024e 0F       		.uleb128 0xf
+ 2508 024f 21040000 		.4byte	.LASF45
+ 2509 0253 01       		.byte	0x1
+ 2510 0254 9C       		.byte	0x9c
+ 2511 0255 85030000 		.4byte	0x385
+ 2512 0259 03       		.uleb128 0x3
+ 2513 025a 91       		.byte	0x91
+ 2514 025b C87E     		.sleb128 -184
+ 2515 025d 0F       		.uleb128 0xf
+ 2516 025e 9E000000 		.4byte	.LASF46
+ 2517 0262 01       		.byte	0x1
+ 2518 0263 9D       		.byte	0x9d
+ 2519 0264 A5030000 		.4byte	0x3a5
+ 2520 0268 03       		.uleb128 0x3
+ 2521 0269 91       		.byte	0x91
+ 2522 026a B47E     		.sleb128 -204
+ 2523 026c 0F       		.uleb128 0xf
+ 2524 026d DB020000 		.4byte	.LASF47
+ 2525 0271 01       		.byte	0x1
+ 2526 0272 9E       		.byte	0x9e
+ 2527 0273 A5030000 		.4byte	0x3a5
+ 2528 0277 03       		.uleb128 0x3
+ 2529 0278 91       		.byte	0x91
+ 2530 0279 A07E     		.sleb128 -224
+ 2531 027b 0F       		.uleb128 0xf
+ 2532 027c D7010000 		.4byte	.LASF48
+ 2533 0280 01       		.byte	0x1
+ 2534 0281 9F       		.byte	0x9f
+ 2535 0282 B5030000 		.4byte	0x3b5
+ 2536 0286 03       		.uleb128 0x3
+ 2537 0287 91       		.byte	0x91
+ 2538 0288 907E     		.sleb128 -240
+ 2539 028a 0F       		.uleb128 0xf
+ 2540 028b F1000000 		.4byte	.LASF49
+ 2541 028f 01       		.byte	0x1
+ 2542 0290 A0       		.byte	0xa0
+ 2543 0291 89000000 		.4byte	0x89
+ 2544 0295 02       		.uleb128 0x2
+ 2545 0296 91       		.byte	0x91
+ 2546 0297 68       		.sleb128 -24
+ 2547 0298 0F       		.uleb128 0xf
+ 2548 0299 DC000000 		.4byte	.LASF50
+ 2549 029d 01       		.byte	0x1
+ 2550 029e A0       		.byte	0xa0
+ 2551 029f 89000000 		.4byte	0x89
+ 2552 02a3 02       		.uleb128 0x2
+ 2553 02a4 91       		.byte	0x91
+ 2554 02a5 64       		.sleb128 -28
+ 2555 02a6 0F       		.uleb128 0xf
+ 2556 02a7 C9010000 		.4byte	.LASF51
+ 2557 02ab 01       		.byte	0x1
+ 2558 02ac A0       		.byte	0xa0
+ 2559 02ad 89000000 		.4byte	0x89
+ 2560 02b1 02       		.uleb128 0x2
+ 2561 02b2 91       		.byte	0x91
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 58
+
+
+ 2562 02b3 60       		.sleb128 -32
+ 2563 02b4 10       		.uleb128 0x10
+ 2564 02b5 617800   		.ascii	"ax\000"
+ 2565 02b8 01       		.byte	0x1
+ 2566 02b9 A2       		.byte	0xa2
+ 2567 02ba A2000000 		.4byte	0xa2
+ 2568 02be 10       		.uleb128 0x10
+ 2569 02bf 617900   		.ascii	"ay\000"
+ 2570 02c2 01       		.byte	0x1
+ 2571 02c3 A2       		.byte	0xa2
+ 2572 02c4 A2000000 		.4byte	0xa2
+ 2573 02c8 0E       		.uleb128 0xe
+ 2574 02c9 617A00   		.ascii	"az\000"
+ 2575 02cc 01       		.byte	0x1
+ 2576 02cd A2       		.byte	0xa2
+ 2577 02ce A2000000 		.4byte	0xa2
+ 2578 02d2 02       		.uleb128 0x2
+ 2579 02d3 91       		.byte	0x91
+ 2580 02d4 42       		.sleb128 -62
+ 2581 02d5 10       		.uleb128 0x10
+ 2582 02d6 6900     		.ascii	"i\000"
+ 2583 02d8 01       		.byte	0x1
+ 2584 02d9 A2       		.byte	0xa2
+ 2585 02da A2000000 		.4byte	0xa2
+ 2586 02de 0E       		.uleb128 0xe
+ 2587 02df 677800   		.ascii	"gx\000"
+ 2588 02e2 01       		.byte	0x1
+ 2589 02e3 A3       		.byte	0xa3
+ 2590 02e4 A2000000 		.4byte	0xa2
+ 2591 02e8 03       		.uleb128 0x3
+ 2592 02e9 91       		.byte	0x91
+ 2593 02ea 8E7E     		.sleb128 -242
+ 2594 02ec 0E       		.uleb128 0xe
+ 2595 02ed 677900   		.ascii	"gy\000"
+ 2596 02f0 01       		.byte	0x1
+ 2597 02f1 A3       		.byte	0xa3
+ 2598 02f2 A2000000 		.4byte	0xa2
+ 2599 02f6 03       		.uleb128 0x3
+ 2600 02f7 91       		.byte	0x91
+ 2601 02f8 8C7E     		.sleb128 -244
+ 2602 02fa 0E       		.uleb128 0xe
+ 2603 02fb 677A00   		.ascii	"gz\000"
+ 2604 02fe 01       		.byte	0x1
+ 2605 02ff A3       		.byte	0xa3
+ 2606 0300 A2000000 		.4byte	0xa2
+ 2607 0304 03       		.uleb128 0x3
+ 2608 0305 91       		.byte	0x91
+ 2609 0306 8A7E     		.sleb128 -246
+ 2610 0308 0F       		.uleb128 0xf
+ 2611 0309 D2020000 		.4byte	.LASF52
+ 2612 030d 01       		.byte	0x1
+ 2613 030e A4       		.byte	0xa4
+ 2614 030f A2000000 		.4byte	0xa2
+ 2615 0313 02       		.uleb128 0x2
+ 2616 0314 91       		.byte	0x91
+ 2617 0315 4A       		.sleb128 -54
+ 2618 0316 0F       		.uleb128 0xf
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 59
+
+
+ 2619 0317 AC010000 		.4byte	.LASF53
+ 2620 031b 01       		.byte	0x1
+ 2621 031c A5       		.byte	0xa5
+ 2622 031d 89000000 		.4byte	0x89
+ 2623 0321 03       		.uleb128 0x3
+ 2624 0322 91       		.byte	0x91
+ 2625 0323 847E     		.sleb128 -252
+ 2626 0325 0F       		.uleb128 0xf
+ 2627 0326 6B000000 		.4byte	.LASF54
+ 2628 032a 01       		.byte	0x1
+ 2629 032b A5       		.byte	0xa5
+ 2630 032c 89000000 		.4byte	0x89
+ 2631 0330 02       		.uleb128 0x2
+ 2632 0331 91       		.byte	0x91
+ 2633 0332 44       		.sleb128 -60
+ 2634 0333 11       		.uleb128 0x11
+ 2635 0334 6C010000 		.4byte	.LBB2
+ 2636 0338 000A0000 		.4byte	.LBE2-.LBB2
+ 2637 033c 12       		.uleb128 0x12
+ 2638 033d 7400     		.ascii	"t\000"
+ 2639 033f 01       		.byte	0x1
+ 2640 0340 1B01     		.2byte	0x11b
+ 2641 0342 89000000 		.4byte	0x89
+ 2642 0346 03       		.uleb128 0x3
+ 2643 0347 91       		.byte	0x91
+ 2644 0348 807E     		.sleb128 -256
+ 2645 034a 11       		.uleb128 0x11
+ 2646 034b 12020000 		.4byte	.LBB3
+ 2647 034f 62000000 		.4byte	.LBE3-.LBB3
+ 2648 0353 0F       		.uleb128 0xf
+ 2649 0354 4A000000 		.4byte	.LASF55
+ 2650 0358 01       		.byte	0x1
+ 2651 0359 F7       		.byte	0xf7
+ 2652 035a C5030000 		.4byte	0x3c5
+ 2653 035e 03       		.uleb128 0x3
+ 2654 035f 91       		.byte	0x91
+ 2655 0360 C47D     		.sleb128 -316
+ 2656 0362 00       		.byte	0
+ 2657 0363 00       		.byte	0
+ 2658 0364 00       		.byte	0
+ 2659 0365 13       		.uleb128 0x13
+ 2660 0366 DD000000 		.4byte	0xdd
+ 2661 036a 75030000 		.4byte	0x375
+ 2662 036e 14       		.uleb128 0x14
+ 2663 036f F5000000 		.4byte	0xf5
+ 2664 0373 31       		.byte	0x31
+ 2665 0374 00       		.byte	0
+ 2666 0375 13       		.uleb128 0x13
+ 2667 0376 DD000000 		.4byte	0xdd
+ 2668 037a 85030000 		.4byte	0x385
+ 2669 037e 14       		.uleb128 0x14
+ 2670 037f F5000000 		.4byte	0xf5
+ 2671 0383 13       		.byte	0x13
+ 2672 0384 00       		.byte	0
+ 2673 0385 13       		.uleb128 0x13
+ 2674 0386 DD000000 		.4byte	0xdd
+ 2675 038a 95030000 		.4byte	0x395
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 60
+
+
+ 2676 038e 14       		.uleb128 0x14
+ 2677 038f F5000000 		.4byte	0xf5
+ 2678 0393 0D       		.byte	0xd
+ 2679 0394 00       		.byte	0
+ 2680 0395 13       		.uleb128 0x13
+ 2681 0396 DD000000 		.4byte	0xdd
+ 2682 039a A5030000 		.4byte	0x3a5
+ 2683 039e 14       		.uleb128 0x14
+ 2684 039f F5000000 		.4byte	0xf5
+ 2685 03a3 12       		.byte	0x12
+ 2686 03a4 00       		.byte	0
+ 2687 03a5 13       		.uleb128 0x13
+ 2688 03a6 DD000000 		.4byte	0xdd
+ 2689 03aa B5030000 		.4byte	0x3b5
+ 2690 03ae 14       		.uleb128 0x14
+ 2691 03af F5000000 		.4byte	0xf5
+ 2692 03b3 10       		.byte	0x10
+ 2693 03b4 00       		.byte	0
+ 2694 03b5 13       		.uleb128 0x13
+ 2695 03b6 DD000000 		.4byte	0xdd
+ 2696 03ba C5030000 		.4byte	0x3c5
+ 2697 03be 14       		.uleb128 0x14
+ 2698 03bf F5000000 		.4byte	0xf5
+ 2699 03c3 0F       		.byte	0xf
+ 2700 03c4 00       		.byte	0
+ 2701 03c5 13       		.uleb128 0x13
+ 2702 03c6 DD000000 		.4byte	0xdd
+ 2703 03ca D5030000 		.4byte	0x3d5
+ 2704 03ce 14       		.uleb128 0x14
+ 2705 03cf F5000000 		.4byte	0xf5
+ 2706 03d3 3B       		.byte	0x3b
+ 2707 03d4 00       		.byte	0
+ 2708 03d5 15       		.uleb128 0x15
+ 2709 03d6 F1030000 		.4byte	.LASF92
+ 2710 03da 01       		.byte	0x1
+ 2711 03db 2002     		.2byte	0x220
+ 2712 03dd 89000000 		.4byte	0x89
+ 2713 03e1 00000000 		.4byte	.LFB68
+ 2714 03e5 30010000 		.4byte	.LFE68-.LFB68
+ 2715 03e9 01       		.uleb128 0x1
+ 2716 03ea 9C       		.byte	0x9c
+ 2717 03eb 0E040000 		.4byte	0x40e
+ 2718 03ef 16       		.uleb128 0x16
+ 2719 03f0 80000000 		.4byte	.LASF93
+ 2720 03f4 01       		.byte	0x1
+ 2721 03f5 2002     		.2byte	0x220
+ 2722 03f7 FC000000 		.4byte	0xfc
+ 2723 03fb 02       		.uleb128 0x2
+ 2724 03fc 91       		.byte	0x91
+ 2725 03fd 64       		.sleb128 -28
+ 2726 03fe 17       		.uleb128 0x17
+ 2727 03ff FA030000 		.4byte	.LASF56
+ 2728 0403 01       		.byte	0x1
+ 2729 0404 2102     		.2byte	0x221
+ 2730 0406 89000000 		.4byte	0x89
+ 2731 040a 02       		.uleb128 0x2
+ 2732 040b 91       		.byte	0x91
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 61
+
+
+ 2733 040c 6C       		.sleb128 -20
+ 2734 040d 00       		.byte	0
+ 2735 040e 18       		.uleb128 0x18
+ 2736 040f E4030000 		.4byte	.LASF57
+ 2737 0413 07       		.byte	0x7
+ 2738 0414 9606     		.2byte	0x696
+ 2739 0416 1A040000 		.4byte	0x41a
+ 2740 041a 06       		.uleb128 0x6
+ 2741 041b AD000000 		.4byte	0xad
+ 2742 041f 19       		.uleb128 0x19
+ 2743 0420 55000000 		.4byte	.LASF58
+ 2744 0424 08       		.byte	0x8
+ 2745 0425 9101     		.2byte	0x191
+ 2746 0427 97000000 		.4byte	0x97
+ 2747 042b 05       		.uleb128 0x5
+ 2748 042c 03       		.byte	0x3
+ 2749 042d 00000000 		.4byte	devAddr
+ 2750 0431 13       		.uleb128 0x13
+ 2751 0432 97000000 		.4byte	0x97
+ 2752 0436 41040000 		.4byte	0x441
+ 2753 043a 14       		.uleb128 0x14
+ 2754 043b F5000000 		.4byte	0xf5
+ 2755 043f 15       		.byte	0x15
+ 2756 0440 00       		.byte	0
+ 2757 0441 19       		.uleb128 0x19
+ 2758 0442 EC020000 		.4byte	.LASF59
+ 2759 0446 08       		.byte	0x8
+ 2760 0447 9201     		.2byte	0x192
+ 2761 0449 31040000 		.4byte	0x431
+ 2762 044d 05       		.uleb128 0x5
+ 2763 044e 03       		.byte	0x3
+ 2764 044f 00000000 		.4byte	buffer
+ 2765 0453 1A       		.uleb128 0x1a
+ 2766 0454 50000000 		.4byte	.LASF60
+ 2767 0458 01       		.byte	0x1
+ 2768 0459 34       		.byte	0x34
+ 2769 045a B8000000 		.4byte	0xb8
+ 2770 045e 05       		.uleb128 0x5
+ 2771 045f 03       		.byte	0x3
+ 2772 0460 00000000 		.4byte	Addr
+ 2773 0464 1B       		.uleb128 0x1b
+ 2774 0465 696400   		.ascii	"id\000"
+ 2775 0468 01       		.byte	0x1
+ 2776 0469 35       		.byte	0x35
+ 2777 046a 62000000 		.4byte	0x62
+ 2778 046e 05       		.uleb128 0x5
+ 2779 046f 03       		.byte	0x3
+ 2780 0470 00000000 		.4byte	id
+ 2781 0474 1A       		.uleb128 0x1a
+ 2782 0475 C0010000 		.4byte	.LASF61
+ 2783 0479 01       		.byte	0x1
+ 2784 047a 35       		.byte	0x35
+ 2785 047b 62000000 		.4byte	0x62
+ 2786 047f 05       		.uleb128 0x5
+ 2787 0480 03       		.byte	0x3
+ 2788 0481 00000000 		.4byte	press_id
+ 2789 0485 1A       		.uleb128 0x1a
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 62
+
+
+ 2790 0486 5A020000 		.4byte	.LASF62
+ 2791 048a 01       		.byte	0x1
+ 2792 048b 36       		.byte	0x36
+ 2793 048c 62000000 		.4byte	0x62
+ 2794 0490 05       		.uleb128 0x5
+ 2795 0491 03       		.byte	0x3
+ 2796 0492 00000000 		.4byte	data_time
+ 2797 0496 1A       		.uleb128 0x1a
+ 2798 0497 00000000 		.4byte	.LASF63
+ 2799 049b 01       		.byte	0x1
+ 2800 049c 37       		.byte	0x37
+ 2801 049d 62000000 		.4byte	0x62
+ 2802 04a1 05       		.uleb128 0x5
+ 2803 04a2 03       		.byte	0x3
+ 2804 04a3 00000000 		.4byte	descent_time
+ 2805 04a7 1B       		.uleb128 0x1b
+ 2806 04a8 73756D00 		.ascii	"sum\000"
+ 2807 04ac 01       		.byte	0x1
+ 2808 04ad 39       		.byte	0x39
+ 2809 04ae 62000000 		.4byte	0x62
+ 2810 04b2 05       		.uleb128 0x5
+ 2811 04b3 03       		.byte	0x3
+ 2812 04b4 00000000 		.4byte	sum
+ 2813 04b8 1A       		.uleb128 0x1a
+ 2814 04b9 E6010000 		.4byte	.LASF64
+ 2815 04bd 01       		.byte	0x1
+ 2816 04be 3A       		.byte	0x3a
+ 2817 04bf CF000000 		.4byte	0xcf
+ 2818 04c3 05       		.uleb128 0x5
+ 2819 04c4 03       		.byte	0x3
+ 2820 04c5 00000000 		.4byte	pressure_sum
+ 2821 04c9 1A       		.uleb128 0x1a
+ 2822 04ca 0D010000 		.4byte	.LASF65
+ 2823 04ce 01       		.byte	0x1
+ 2824 04cf 3B       		.byte	0x3b
+ 2825 04d0 A2000000 		.4byte	0xa2
+ 2826 04d4 05       		.uleb128 0x5
+ 2827 04d5 03       		.byte	0x3
+ 2828 04d6 00000000 		.4byte	average
+ 2829 04da 1A       		.uleb128 0x1a
+ 2830 04db CA030000 		.4byte	.LASF66
+ 2831 04df 01       		.byte	0x1
+ 2832 04e0 3C       		.byte	0x3c
+ 2833 04e1 EB040000 		.4byte	0x4eb
+ 2834 04e5 05       		.uleb128 0x5
+ 2835 04e6 03       		.byte	0x3
+ 2836 04e7 00000000 		.4byte	collect_flag
+ 2837 04eb 02       		.uleb128 0x2
+ 2838 04ec 01       		.byte	0x1
+ 2839 04ed 02       		.byte	0x2
+ 2840 04ee B7020000 		.4byte	.LASF67
+ 2841 04f2 1A       		.uleb128 0x1a
+ 2842 04f3 2B040000 		.4byte	.LASF68
+ 2843 04f7 01       		.byte	0x1
+ 2844 04f8 3D       		.byte	0x3d
+ 2845 04f9 EB040000 		.4byte	0x4eb
+ 2846 04fd 05       		.uleb128 0x5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 63
+
+
+ 2847 04fe 03       		.byte	0x3
+ 2848 04ff 00000000 		.4byte	wait_flag
+ 2849 0503 1A       		.uleb128 0x1a
+ 2850 0504 C4000000 		.4byte	.LASF69
+ 2851 0508 01       		.byte	0x1
+ 2852 0509 3E       		.byte	0x3e
+ 2853 050a EB040000 		.4byte	0x4eb
+ 2854 050e 05       		.uleb128 0x5
+ 2855 050f 03       		.byte	0x3
+ 2856 0510 00000000 		.4byte	PANIC_flag
+ 2857 0514 1A       		.uleb128 0x1a
+ 2858 0515 B8030000 		.4byte	.LASF70
+ 2859 0519 01       		.byte	0x1
+ 2860 051a 40       		.byte	0x40
+ 2861 051b 56010000 		.4byte	0x156
+ 2862 051f 05       		.uleb128 0x5
+ 2863 0520 03       		.byte	0x3
+ 2864 0521 00000000 		.4byte	STATE
+ 2865 0525 1A       		.uleb128 0x1a
+ 2866 0526 24020000 		.4byte	.LASF71
+ 2867 052a 01       		.byte	0x1
+ 2868 052b 41       		.byte	0x41
+ 2869 052c 97000000 		.4byte	0x97
+ 2870 0530 05       		.uleb128 0x5
+ 2871 0531 03       		.byte	0x3
+ 2872 0532 00000000 		.4byte	countdown
+ 2873 0536 1A       		.uleb128 0x1a
+ 2874 0537 21000000 		.4byte	.LASF72
+ 2875 053b 01       		.byte	0x1
+ 2876 053c 41       		.byte	0x41
+ 2877 053d 97000000 		.4byte	0x97
+ 2878 0541 05       		.uleb128 0x5
+ 2879 0542 03       		.byte	0x3
+ 2880 0543 00000000 		.4byte	update_Data
+ 2881 0547 13       		.uleb128 0x13
+ 2882 0548 97000000 		.4byte	0x97
+ 2883 054c 57050000 		.4byte	0x557
+ 2884 0550 14       		.uleb128 0x14
+ 2885 0551 F5000000 		.4byte	0xf5
+ 2886 0555 3F       		.byte	0x3f
+ 2887 0556 00       		.byte	0
+ 2888 0557 1A       		.uleb128 0x1a
+ 2889 0558 2D000000 		.4byte	.LASF73
+ 2890 055c 01       		.byte	0x1
+ 2891 055d 42       		.byte	0x42
+ 2892 055e 47050000 		.4byte	0x547
+ 2893 0562 05       		.uleb128 0x5
+ 2894 0563 03       		.byte	0x3
+ 2895 0564 00000000 		.4byte	RxBuffer
+ 2896 0568 1A       		.uleb128 0x1a
+ 2897 0569 17000000 		.4byte	.LASF74
+ 2898 056d 01       		.byte	0x1
+ 2899 056e 43       		.byte	0x43
+ 2900 056f 89000000 		.4byte	0x89
+ 2901 0573 05       		.uleb128 0x5
+ 2902 0574 03       		.byte	0x3
+ 2903 0575 00000000 		.4byte	msg_count
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 64
+
+
+ 2904 0579 1A       		.uleb128 0x1a
+ 2905 057a E5020000 		.4byte	.LASF75
+ 2906 057e 01       		.byte	0x1
+ 2907 057f 43       		.byte	0x43
+ 2908 0580 89000000 		.4byte	0x89
+ 2909 0584 05       		.uleb128 0x5
+ 2910 0585 03       		.byte	0x3
+ 2911 0586 00000000 		.4byte	rxflag
+ 2912 058a 1A       		.uleb128 0x1a
+ 2913 058b 32030000 		.4byte	.LASF76
+ 2914 058f 01       		.byte	0x1
+ 2915 0590 43       		.byte	0x43
+ 2916 0591 89000000 		.4byte	0x89
+ 2917 0595 05       		.uleb128 0x5
+ 2918 0596 03       		.byte	0x3
+ 2919 0597 00000000 		.4byte	bytes
+ 2920 059b 1A       		.uleb128 0x1a
+ 2921 059c 77000000 		.4byte	.LASF77
+ 2922 05a0 01       		.byte	0x1
+ 2923 05a1 43       		.byte	0x43
+ 2924 05a2 89000000 		.4byte	0x89
+ 2925 05a6 05       		.uleb128 0x5
+ 2926 05a7 03       		.byte	0x3
+ 2927 05a8 00000000 		.4byte	dataflag
+ 2928 05ac 1A       		.uleb128 0x1a
+ 2929 05ad 5D000000 		.4byte	.LASF78
+ 2930 05b1 01       		.byte	0x1
+ 2931 05b2 43       		.byte	0x43
+ 2932 05b3 89000000 		.4byte	0x89
+ 2933 05b7 05       		.uleb128 0x5
+ 2934 05b8 03       		.byte	0x3
+ 2935 05b9 00000000 		.4byte	transmit_flag
+ 2936 05bd 1A       		.uleb128 0x1a
+ 2937 05be CC020000 		.4byte	.LASF79
+ 2938 05c2 01       		.byte	0x1
+ 2939 05c3 44       		.byte	0x44
+ 2940 05c4 89000000 		.4byte	0x89
+ 2941 05c8 05       		.uleb128 0x5
+ 2942 05c9 03       		.byte	0x3
+ 2943 05ca 00000000 		.4byte	depth
+ 2944 05ce 1A       		.uleb128 0x1a
+ 2945 05cf BD020000 		.4byte	.LASF80
+ 2946 05d3 01       		.byte	0x1
+ 2947 05d4 44       		.byte	0x44
+ 2948 05d5 89000000 		.4byte	0x89
+ 2949 05d9 05       		.uleb128 0x5
+ 2950 05da 03       		.byte	0x3
+ 2951 05db 00000000 		.4byte	reset
+ 2952 05df 1A       		.uleb128 0x1a
+ 2953 05e0 02040000 		.4byte	.LASF81
+ 2954 05e4 01       		.byte	0x1
+ 2955 05e5 45       		.byte	0x45
+ 2956 05e6 CF000000 		.4byte	0xcf
+ 2957 05ea 05       		.uleb128 0x5
+ 2958 05eb 03       		.byte	0x3
+ 2959 05ec 00000000 		.4byte	xavg
+ 2960 05f0 1A       		.uleb128 0x1a
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 65
+
+
+ 2961 05f1 CF000000 		.4byte	.LASF82
+ 2962 05f5 01       		.byte	0x1
+ 2963 05f6 45       		.byte	0x45
+ 2964 05f7 CF000000 		.4byte	0xcf
+ 2965 05fb 05       		.uleb128 0x5
+ 2966 05fc 03       		.byte	0x3
+ 2967 05fd 00000000 		.4byte	yavg
+ 2968 0601 1A       		.uleb128 0x1a
+ 2969 0602 89020000 		.4byte	.LASF83
+ 2970 0606 01       		.byte	0x1
+ 2971 0607 45       		.byte	0x45
+ 2972 0608 CF000000 		.4byte	0xcf
+ 2973 060c 05       		.uleb128 0x5
+ 2974 060d 03       		.byte	0x3
+ 2975 060e 00000000 		.4byte	xsum
+ 2976 0612 1A       		.uleb128 0x1a
+ 2977 0613 C5030000 		.4byte	.LASF84
+ 2978 0617 01       		.byte	0x1
+ 2979 0618 45       		.byte	0x45
+ 2980 0619 CF000000 		.4byte	0xcf
+ 2981 061d 05       		.uleb128 0x5
+ 2982 061e 03       		.byte	0x3
+ 2983 061f 00000000 		.4byte	ysum
+ 2984 0623 13       		.uleb128 0x13
+ 2985 0624 DD000000 		.4byte	0xdd
+ 2986 0628 33060000 		.4byte	0x633
+ 2987 062c 14       		.uleb128 0x14
+ 2988 062d F5000000 		.4byte	0xf5
+ 2989 0631 0A       		.byte	0xa
+ 2990 0632 00       		.byte	0
+ 2991 0633 1A       		.uleb128 0x1a
+ 2992 0634 A8000000 		.4byte	.LASF85
+ 2993 0638 01       		.byte	0x1
+ 2994 0639 46       		.byte	0x46
+ 2995 063a 23060000 		.4byte	0x623
+ 2996 063e 05       		.uleb128 0x5
+ 2997 063f 03       		.byte	0x3
+ 2998 0640 00000000 		.4byte	file
+ 2999 0644 13       		.uleb128 0x13
+ 3000 0645 DD000000 		.4byte	0xdd
+ 3001 0649 54060000 		.4byte	0x654
+ 3002 064d 14       		.uleb128 0x14
+ 3003 064e F5000000 		.4byte	0xf5
+ 3004 0652 09       		.byte	0x9
+ 3005 0653 00       		.byte	0
+ 3006 0654 1A       		.uleb128 0x1a
+ 3007 0655 B9010000 		.4byte	.LASF86
+ 3008 0659 01       		.byte	0x1
+ 3009 065a 47       		.byte	0x47
+ 3010 065b 44060000 		.4byte	0x644
+ 3011 065f 05       		.uleb128 0x5
+ 3012 0660 03       		.byte	0x3
+ 3013 0661 00000000 		.4byte	volume
+ 3014 0665 1A       		.uleb128 0x1a
+ 3015 0666 1A040000 		.4byte	.LASF87
+ 3016 066a 01       		.byte	0x1
+ 3017 066b 48       		.byte	0x48
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 66
+
+
+ 3018 066c 12010000 		.4byte	0x112
+ 3019 0670 05       		.uleb128 0x5
+ 3020 0671 03       		.byte	0x3
+ 3021 0672 00000000 		.4byte	fsfile
+ 3022 0676 00       		.byte	0
+ 3023              		.section	.debug_abbrev,"",%progbits
+ 3024              	.Ldebug_abbrev0:
+ 3025 0000 01       		.uleb128 0x1
+ 3026 0001 11       		.uleb128 0x11
+ 3027 0002 01       		.byte	0x1
+ 3028 0003 25       		.uleb128 0x25
+ 3029 0004 0E       		.uleb128 0xe
+ 3030 0005 13       		.uleb128 0x13
+ 3031 0006 0B       		.uleb128 0xb
+ 3032 0007 03       		.uleb128 0x3
+ 3033 0008 0E       		.uleb128 0xe
+ 3034 0009 1B       		.uleb128 0x1b
+ 3035 000a 0E       		.uleb128 0xe
+ 3036 000b 55       		.uleb128 0x55
+ 3037 000c 17       		.uleb128 0x17
+ 3038 000d 11       		.uleb128 0x11
+ 3039 000e 01       		.uleb128 0x1
+ 3040 000f 10       		.uleb128 0x10
+ 3041 0010 17       		.uleb128 0x17
+ 3042 0011 00       		.byte	0
+ 3043 0012 00       		.byte	0
+ 3044 0013 02       		.uleb128 0x2
+ 3045 0014 24       		.uleb128 0x24
+ 3046 0015 00       		.byte	0
+ 3047 0016 0B       		.uleb128 0xb
+ 3048 0017 0B       		.uleb128 0xb
+ 3049 0018 3E       		.uleb128 0x3e
+ 3050 0019 0B       		.uleb128 0xb
+ 3051 001a 03       		.uleb128 0x3
+ 3052 001b 0E       		.uleb128 0xe
+ 3053 001c 00       		.byte	0
+ 3054 001d 00       		.byte	0
+ 3055 001e 03       		.uleb128 0x3
+ 3056 001f 16       		.uleb128 0x16
+ 3057 0020 00       		.byte	0
+ 3058 0021 03       		.uleb128 0x3
+ 3059 0022 0E       		.uleb128 0xe
+ 3060 0023 3A       		.uleb128 0x3a
+ 3061 0024 0B       		.uleb128 0xb
+ 3062 0025 3B       		.uleb128 0x3b
+ 3063 0026 0B       		.uleb128 0xb
+ 3064 0027 49       		.uleb128 0x49
+ 3065 0028 13       		.uleb128 0x13
+ 3066 0029 00       		.byte	0
+ 3067 002a 00       		.byte	0
+ 3068 002b 04       		.uleb128 0x4
+ 3069 002c 24       		.uleb128 0x24
+ 3070 002d 00       		.byte	0
+ 3071 002e 0B       		.uleb128 0xb
+ 3072 002f 0B       		.uleb128 0xb
+ 3073 0030 3E       		.uleb128 0x3e
+ 3074 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 67
+
+
+ 3075 0032 03       		.uleb128 0x3
+ 3076 0033 08       		.uleb128 0x8
+ 3077 0034 00       		.byte	0
+ 3078 0035 00       		.byte	0
+ 3079 0036 05       		.uleb128 0x5
+ 3080 0037 16       		.uleb128 0x16
+ 3081 0038 00       		.byte	0
+ 3082 0039 03       		.uleb128 0x3
+ 3083 003a 0E       		.uleb128 0xe
+ 3084 003b 3A       		.uleb128 0x3a
+ 3085 003c 0B       		.uleb128 0xb
+ 3086 003d 3B       		.uleb128 0x3b
+ 3087 003e 05       		.uleb128 0x5
+ 3088 003f 49       		.uleb128 0x49
+ 3089 0040 13       		.uleb128 0x13
+ 3090 0041 00       		.byte	0
+ 3091 0042 00       		.byte	0
+ 3092 0043 06       		.uleb128 0x6
+ 3093 0044 35       		.uleb128 0x35
+ 3094 0045 00       		.byte	0
+ 3095 0046 49       		.uleb128 0x49
+ 3096 0047 13       		.uleb128 0x13
+ 3097 0048 00       		.byte	0
+ 3098 0049 00       		.byte	0
+ 3099 004a 07       		.uleb128 0x7
+ 3100 004b 0F       		.uleb128 0xf
+ 3101 004c 00       		.byte	0
+ 3102 004d 0B       		.uleb128 0xb
+ 3103 004e 0B       		.uleb128 0xb
+ 3104 004f 49       		.uleb128 0x49
+ 3105 0050 13       		.uleb128 0x13
+ 3106 0051 00       		.byte	0
+ 3107 0052 00       		.byte	0
+ 3108 0053 08       		.uleb128 0x8
+ 3109 0054 13       		.uleb128 0x13
+ 3110 0055 00       		.byte	0
+ 3111 0056 03       		.uleb128 0x3
+ 3112 0057 0E       		.uleb128 0xe
+ 3113 0058 3C       		.uleb128 0x3c
+ 3114 0059 19       		.uleb128 0x19
+ 3115 005a 00       		.byte	0
+ 3116 005b 00       		.byte	0
+ 3117 005c 09       		.uleb128 0x9
+ 3118 005d 04       		.uleb128 0x4
+ 3119 005e 01       		.byte	0x1
+ 3120 005f 03       		.uleb128 0x3
+ 3121 0060 0E       		.uleb128 0xe
+ 3122 0061 0B       		.uleb128 0xb
+ 3123 0062 0B       		.uleb128 0xb
+ 3124 0063 3A       		.uleb128 0x3a
+ 3125 0064 0B       		.uleb128 0xb
+ 3126 0065 3B       		.uleb128 0x3b
+ 3127 0066 0B       		.uleb128 0xb
+ 3128 0067 01       		.uleb128 0x1
+ 3129 0068 13       		.uleb128 0x13
+ 3130 0069 00       		.byte	0
+ 3131 006a 00       		.byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 68
+
+
+ 3132 006b 0A       		.uleb128 0xa
+ 3133 006c 28       		.uleb128 0x28
+ 3134 006d 00       		.byte	0
+ 3135 006e 03       		.uleb128 0x3
+ 3136 006f 0E       		.uleb128 0xe
+ 3137 0070 1C       		.uleb128 0x1c
+ 3138 0071 0D       		.uleb128 0xd
+ 3139 0072 00       		.byte	0
+ 3140 0073 00       		.byte	0
+ 3141 0074 0B       		.uleb128 0xb
+ 3142 0075 2E       		.uleb128 0x2e
+ 3143 0076 00       		.byte	0
+ 3144 0077 3F       		.uleb128 0x3f
+ 3145 0078 19       		.uleb128 0x19
+ 3146 0079 03       		.uleb128 0x3
+ 3147 007a 0E       		.uleb128 0xe
+ 3148 007b 3A       		.uleb128 0x3a
+ 3149 007c 0B       		.uleb128 0xb
+ 3150 007d 3B       		.uleb128 0x3b
+ 3151 007e 0B       		.uleb128 0xb
+ 3152 007f 27       		.uleb128 0x27
+ 3153 0080 19       		.uleb128 0x19
+ 3154 0081 11       		.uleb128 0x11
+ 3155 0082 01       		.uleb128 0x1
+ 3156 0083 12       		.uleb128 0x12
+ 3157 0084 06       		.uleb128 0x6
+ 3158 0085 40       		.uleb128 0x40
+ 3159 0086 18       		.uleb128 0x18
+ 3160 0087 9642     		.uleb128 0x2116
+ 3161 0089 19       		.uleb128 0x19
+ 3162 008a 00       		.byte	0
+ 3163 008b 00       		.byte	0
+ 3164 008c 0C       		.uleb128 0xc
+ 3165 008d 2E       		.uleb128 0x2e
+ 3166 008e 00       		.byte	0
+ 3167 008f 3F       		.uleb128 0x3f
+ 3168 0090 19       		.uleb128 0x19
+ 3169 0091 03       		.uleb128 0x3
+ 3170 0092 0E       		.uleb128 0xe
+ 3171 0093 3A       		.uleb128 0x3a
+ 3172 0094 0B       		.uleb128 0xb
+ 3173 0095 3B       		.uleb128 0x3b
+ 3174 0096 0B       		.uleb128 0xb
+ 3175 0097 27       		.uleb128 0x27
+ 3176 0098 19       		.uleb128 0x19
+ 3177 0099 11       		.uleb128 0x11
+ 3178 009a 01       		.uleb128 0x1
+ 3179 009b 12       		.uleb128 0x12
+ 3180 009c 06       		.uleb128 0x6
+ 3181 009d 40       		.uleb128 0x40
+ 3182 009e 18       		.uleb128 0x18
+ 3183 009f 9742     		.uleb128 0x2117
+ 3184 00a1 19       		.uleb128 0x19
+ 3185 00a2 00       		.byte	0
+ 3186 00a3 00       		.byte	0
+ 3187 00a4 0D       		.uleb128 0xd
+ 3188 00a5 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 69
+
+
+ 3189 00a6 01       		.byte	0x1
+ 3190 00a7 3F       		.uleb128 0x3f
+ 3191 00a8 19       		.uleb128 0x19
+ 3192 00a9 03       		.uleb128 0x3
+ 3193 00aa 0E       		.uleb128 0xe
+ 3194 00ab 3A       		.uleb128 0x3a
+ 3195 00ac 0B       		.uleb128 0xb
+ 3196 00ad 3B       		.uleb128 0x3b
+ 3197 00ae 0B       		.uleb128 0xb
+ 3198 00af 49       		.uleb128 0x49
+ 3199 00b0 13       		.uleb128 0x13
+ 3200 00b1 11       		.uleb128 0x11
+ 3201 00b2 01       		.uleb128 0x1
+ 3202 00b3 12       		.uleb128 0x12
+ 3203 00b4 06       		.uleb128 0x6
+ 3204 00b5 40       		.uleb128 0x40
+ 3205 00b6 18       		.uleb128 0x18
+ 3206 00b7 9642     		.uleb128 0x2116
+ 3207 00b9 19       		.uleb128 0x19
+ 3208 00ba 01       		.uleb128 0x1
+ 3209 00bb 13       		.uleb128 0x13
+ 3210 00bc 00       		.byte	0
+ 3211 00bd 00       		.byte	0
+ 3212 00be 0E       		.uleb128 0xe
+ 3213 00bf 34       		.uleb128 0x34
+ 3214 00c0 00       		.byte	0
+ 3215 00c1 03       		.uleb128 0x3
+ 3216 00c2 08       		.uleb128 0x8
+ 3217 00c3 3A       		.uleb128 0x3a
+ 3218 00c4 0B       		.uleb128 0xb
+ 3219 00c5 3B       		.uleb128 0x3b
+ 3220 00c6 0B       		.uleb128 0xb
+ 3221 00c7 49       		.uleb128 0x49
+ 3222 00c8 13       		.uleb128 0x13
+ 3223 00c9 02       		.uleb128 0x2
+ 3224 00ca 18       		.uleb128 0x18
+ 3225 00cb 00       		.byte	0
+ 3226 00cc 00       		.byte	0
+ 3227 00cd 0F       		.uleb128 0xf
+ 3228 00ce 34       		.uleb128 0x34
+ 3229 00cf 00       		.byte	0
+ 3230 00d0 03       		.uleb128 0x3
+ 3231 00d1 0E       		.uleb128 0xe
+ 3232 00d2 3A       		.uleb128 0x3a
+ 3233 00d3 0B       		.uleb128 0xb
+ 3234 00d4 3B       		.uleb128 0x3b
+ 3235 00d5 0B       		.uleb128 0xb
+ 3236 00d6 49       		.uleb128 0x49
+ 3237 00d7 13       		.uleb128 0x13
+ 3238 00d8 02       		.uleb128 0x2
+ 3239 00d9 18       		.uleb128 0x18
+ 3240 00da 00       		.byte	0
+ 3241 00db 00       		.byte	0
+ 3242 00dc 10       		.uleb128 0x10
+ 3243 00dd 34       		.uleb128 0x34
+ 3244 00de 00       		.byte	0
+ 3245 00df 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 70
+
+
+ 3246 00e0 08       		.uleb128 0x8
+ 3247 00e1 3A       		.uleb128 0x3a
+ 3248 00e2 0B       		.uleb128 0xb
+ 3249 00e3 3B       		.uleb128 0x3b
+ 3250 00e4 0B       		.uleb128 0xb
+ 3251 00e5 49       		.uleb128 0x49
+ 3252 00e6 13       		.uleb128 0x13
+ 3253 00e7 00       		.byte	0
+ 3254 00e8 00       		.byte	0
+ 3255 00e9 11       		.uleb128 0x11
+ 3256 00ea 0B       		.uleb128 0xb
+ 3257 00eb 01       		.byte	0x1
+ 3258 00ec 11       		.uleb128 0x11
+ 3259 00ed 01       		.uleb128 0x1
+ 3260 00ee 12       		.uleb128 0x12
+ 3261 00ef 06       		.uleb128 0x6
+ 3262 00f0 00       		.byte	0
+ 3263 00f1 00       		.byte	0
+ 3264 00f2 12       		.uleb128 0x12
+ 3265 00f3 34       		.uleb128 0x34
+ 3266 00f4 00       		.byte	0
+ 3267 00f5 03       		.uleb128 0x3
+ 3268 00f6 08       		.uleb128 0x8
+ 3269 00f7 3A       		.uleb128 0x3a
+ 3270 00f8 0B       		.uleb128 0xb
+ 3271 00f9 3B       		.uleb128 0x3b
+ 3272 00fa 05       		.uleb128 0x5
+ 3273 00fb 49       		.uleb128 0x49
+ 3274 00fc 13       		.uleb128 0x13
+ 3275 00fd 02       		.uleb128 0x2
+ 3276 00fe 18       		.uleb128 0x18
+ 3277 00ff 00       		.byte	0
+ 3278 0100 00       		.byte	0
+ 3279 0101 13       		.uleb128 0x13
+ 3280 0102 01       		.uleb128 0x1
+ 3281 0103 01       		.byte	0x1
+ 3282 0104 49       		.uleb128 0x49
+ 3283 0105 13       		.uleb128 0x13
+ 3284 0106 01       		.uleb128 0x1
+ 3285 0107 13       		.uleb128 0x13
+ 3286 0108 00       		.byte	0
+ 3287 0109 00       		.byte	0
+ 3288 010a 14       		.uleb128 0x14
+ 3289 010b 21       		.uleb128 0x21
+ 3290 010c 00       		.byte	0
+ 3291 010d 49       		.uleb128 0x49
+ 3292 010e 13       		.uleb128 0x13
+ 3293 010f 2F       		.uleb128 0x2f
+ 3294 0110 0B       		.uleb128 0xb
+ 3295 0111 00       		.byte	0
+ 3296 0112 00       		.byte	0
+ 3297 0113 15       		.uleb128 0x15
+ 3298 0114 2E       		.uleb128 0x2e
+ 3299 0115 01       		.byte	0x1
+ 3300 0116 3F       		.uleb128 0x3f
+ 3301 0117 19       		.uleb128 0x19
+ 3302 0118 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 71
+
+
+ 3303 0119 0E       		.uleb128 0xe
+ 3304 011a 3A       		.uleb128 0x3a
+ 3305 011b 0B       		.uleb128 0xb
+ 3306 011c 3B       		.uleb128 0x3b
+ 3307 011d 05       		.uleb128 0x5
+ 3308 011e 27       		.uleb128 0x27
+ 3309 011f 19       		.uleb128 0x19
+ 3310 0120 49       		.uleb128 0x49
+ 3311 0121 13       		.uleb128 0x13
+ 3312 0122 11       		.uleb128 0x11
+ 3313 0123 01       		.uleb128 0x1
+ 3314 0124 12       		.uleb128 0x12
+ 3315 0125 06       		.uleb128 0x6
+ 3316 0126 40       		.uleb128 0x40
+ 3317 0127 18       		.uleb128 0x18
+ 3318 0128 9642     		.uleb128 0x2116
+ 3319 012a 19       		.uleb128 0x19
+ 3320 012b 01       		.uleb128 0x1
+ 3321 012c 13       		.uleb128 0x13
+ 3322 012d 00       		.byte	0
+ 3323 012e 00       		.byte	0
+ 3324 012f 16       		.uleb128 0x16
+ 3325 0130 05       		.uleb128 0x5
+ 3326 0131 00       		.byte	0
+ 3327 0132 03       		.uleb128 0x3
+ 3328 0133 0E       		.uleb128 0xe
+ 3329 0134 3A       		.uleb128 0x3a
+ 3330 0135 0B       		.uleb128 0xb
+ 3331 0136 3B       		.uleb128 0x3b
+ 3332 0137 05       		.uleb128 0x5
+ 3333 0138 49       		.uleb128 0x49
+ 3334 0139 13       		.uleb128 0x13
+ 3335 013a 02       		.uleb128 0x2
+ 3336 013b 18       		.uleb128 0x18
+ 3337 013c 00       		.byte	0
+ 3338 013d 00       		.byte	0
+ 3339 013e 17       		.uleb128 0x17
+ 3340 013f 34       		.uleb128 0x34
+ 3341 0140 00       		.byte	0
+ 3342 0141 03       		.uleb128 0x3
+ 3343 0142 0E       		.uleb128 0xe
+ 3344 0143 3A       		.uleb128 0x3a
+ 3345 0144 0B       		.uleb128 0xb
+ 3346 0145 3B       		.uleb128 0x3b
+ 3347 0146 05       		.uleb128 0x5
+ 3348 0147 49       		.uleb128 0x49
+ 3349 0148 13       		.uleb128 0x13
+ 3350 0149 02       		.uleb128 0x2
+ 3351 014a 18       		.uleb128 0x18
+ 3352 014b 00       		.byte	0
+ 3353 014c 00       		.byte	0
+ 3354 014d 18       		.uleb128 0x18
+ 3355 014e 34       		.uleb128 0x34
+ 3356 014f 00       		.byte	0
+ 3357 0150 03       		.uleb128 0x3
+ 3358 0151 0E       		.uleb128 0xe
+ 3359 0152 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 72
+
+
+ 3360 0153 0B       		.uleb128 0xb
+ 3361 0154 3B       		.uleb128 0x3b
+ 3362 0155 05       		.uleb128 0x5
+ 3363 0156 49       		.uleb128 0x49
+ 3364 0157 13       		.uleb128 0x13
+ 3365 0158 3F       		.uleb128 0x3f
+ 3366 0159 19       		.uleb128 0x19
+ 3367 015a 3C       		.uleb128 0x3c
+ 3368 015b 19       		.uleb128 0x19
+ 3369 015c 00       		.byte	0
+ 3370 015d 00       		.byte	0
+ 3371 015e 19       		.uleb128 0x19
+ 3372 015f 34       		.uleb128 0x34
+ 3373 0160 00       		.byte	0
+ 3374 0161 03       		.uleb128 0x3
+ 3375 0162 0E       		.uleb128 0xe
+ 3376 0163 3A       		.uleb128 0x3a
+ 3377 0164 0B       		.uleb128 0xb
+ 3378 0165 3B       		.uleb128 0x3b
+ 3379 0166 05       		.uleb128 0x5
+ 3380 0167 49       		.uleb128 0x49
+ 3381 0168 13       		.uleb128 0x13
+ 3382 0169 3F       		.uleb128 0x3f
+ 3383 016a 19       		.uleb128 0x19
+ 3384 016b 02       		.uleb128 0x2
+ 3385 016c 18       		.uleb128 0x18
+ 3386 016d 00       		.byte	0
+ 3387 016e 00       		.byte	0
+ 3388 016f 1A       		.uleb128 0x1a
+ 3389 0170 34       		.uleb128 0x34
+ 3390 0171 00       		.byte	0
+ 3391 0172 03       		.uleb128 0x3
+ 3392 0173 0E       		.uleb128 0xe
+ 3393 0174 3A       		.uleb128 0x3a
+ 3394 0175 0B       		.uleb128 0xb
+ 3395 0176 3B       		.uleb128 0x3b
+ 3396 0177 0B       		.uleb128 0xb
+ 3397 0178 49       		.uleb128 0x49
+ 3398 0179 13       		.uleb128 0x13
+ 3399 017a 3F       		.uleb128 0x3f
+ 3400 017b 19       		.uleb128 0x19
+ 3401 017c 02       		.uleb128 0x2
+ 3402 017d 18       		.uleb128 0x18
+ 3403 017e 00       		.byte	0
+ 3404 017f 00       		.byte	0
+ 3405 0180 1B       		.uleb128 0x1b
+ 3406 0181 34       		.uleb128 0x34
+ 3407 0182 00       		.byte	0
+ 3408 0183 03       		.uleb128 0x3
+ 3409 0184 08       		.uleb128 0x8
+ 3410 0185 3A       		.uleb128 0x3a
+ 3411 0186 0B       		.uleb128 0xb
+ 3412 0187 3B       		.uleb128 0x3b
+ 3413 0188 0B       		.uleb128 0xb
+ 3414 0189 49       		.uleb128 0x49
+ 3415 018a 13       		.uleb128 0x13
+ 3416 018b 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 73
+
+
+ 3417 018c 19       		.uleb128 0x19
+ 3418 018d 02       		.uleb128 0x2
+ 3419 018e 18       		.uleb128 0x18
+ 3420 018f 00       		.byte	0
+ 3421 0190 00       		.byte	0
+ 3422 0191 00       		.byte	0
+ 3423              		.section	.debug_aranges,"",%progbits
+ 3424 0000 44000000 		.4byte	0x44
+ 3425 0004 0200     		.2byte	0x2
+ 3426 0006 00000000 		.4byte	.Ldebug_info0
+ 3427 000a 04       		.byte	0x4
+ 3428 000b 00       		.byte	0
+ 3429 000c 0000     		.2byte	0
+ 3430 000e 0000     		.2byte	0
+ 3431 0010 00000000 		.4byte	.LFB63
+ 3432 0014 20000000 		.4byte	.LFE63-.LFB63
+ 3433 0018 00000000 		.4byte	.LFB64
+ 3434 001c 40000000 		.4byte	.LFE64-.LFB64
+ 3435 0020 00000000 		.4byte	.LFB65
+ 3436 0024 9C000000 		.4byte	.LFE65-.LFB65
+ 3437 0028 00000000 		.4byte	.LFB66
+ 3438 002c 50000000 		.4byte	.LFE66-.LFB66
+ 3439 0030 00000000 		.4byte	.LFB67
+ 3440 0034 A00B0000 		.4byte	.LFE67-.LFB67
+ 3441 0038 00000000 		.4byte	.LFB68
+ 3442 003c 30010000 		.4byte	.LFE68-.LFB68
+ 3443 0040 00000000 		.4byte	0
+ 3444 0044 00000000 		.4byte	0
+ 3445              		.section	.debug_ranges,"",%progbits
+ 3446              	.Ldebug_ranges0:
+ 3447 0000 00000000 		.4byte	.LFB63
+ 3448 0004 20000000 		.4byte	.LFE63
+ 3449 0008 00000000 		.4byte	.LFB64
+ 3450 000c 40000000 		.4byte	.LFE64
+ 3451 0010 00000000 		.4byte	.LFB65
+ 3452 0014 9C000000 		.4byte	.LFE65
+ 3453 0018 00000000 		.4byte	.LFB66
+ 3454 001c 50000000 		.4byte	.LFE66
+ 3455 0020 00000000 		.4byte	.LFB67
+ 3456 0024 A00B0000 		.4byte	.LFE67
+ 3457 0028 00000000 		.4byte	.LFB68
+ 3458 002c 30010000 		.4byte	.LFE68
+ 3459 0030 00000000 		.4byte	0
+ 3460 0034 00000000 		.4byte	0
+ 3461              		.section	.debug_line,"",%progbits
+ 3462              	.Ldebug_line0:
+ 3463 0000 A8030000 		.section	.debug_str,"MS",%progbits,1
+ 3463      0200A101 
+ 3463      00000201 
+ 3463      FB0E0D00 
+ 3463      01010101 
+ 3464              	.LASF63:
+ 3465 0000 64657363 		.ascii	"descent_time\000"
+ 3465      656E745F 
+ 3465      74696D65 
+ 3465      00
+ 3466              	.LASF29:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 74
+
+
+ 3467 000d 52455355 		.ascii	"RESURFACE\000"
+ 3467      52464143 
+ 3467      4500
+ 3468              	.LASF74:
+ 3469 0017 6D73675F 		.ascii	"msg_count\000"
+ 3469      636F756E 
+ 3469      7400
+ 3470              	.LASF72:
+ 3471 0021 75706461 		.ascii	"update_Data\000"
+ 3471      74655F44 
+ 3471      61746100 
+ 3472              	.LASF73:
+ 3473 002d 52784275 		.ascii	"RxBuffer\000"
+ 3473      66666572 
+ 3473      00
+ 3474              	.LASF25:
+ 3475 0036 53595354 		.ascii	"SYSTEM_CHECK\000"
+ 3475      454D5F43 
+ 3475      4845434B 
+ 3475      00
+ 3476              	.LASF32:
+ 3477 0043 53544154 		.ascii	"STATES\000"
+ 3477      455300
+ 3478              	.LASF55:
+ 3479 004a 73646275 		.ascii	"sdbuf\000"
+ 3479      6600
+ 3480              	.LASF60:
+ 3481 0050 41646472 		.ascii	"Addr\000"
+ 3481      00
+ 3482              	.LASF58:
+ 3483 0055 64657641 		.ascii	"devAddr\000"
+ 3483      64647200 
+ 3484              	.LASF78:
+ 3485 005d 7472616E 		.ascii	"transmit_flag\000"
+ 3485      736D6974 
+ 3485      5F666C61 
+ 3485      6700
+ 3486              	.LASF54:
+ 3487 006b 6F6E6573 		.ascii	"ones\000"
+ 3487      00
+ 3488              	.LASF28:
+ 3489 0070 4C414E44 		.ascii	"LANDED\000"
+ 3489      454400
+ 3490              	.LASF77:
+ 3491 0077 64617461 		.ascii	"dataflag\000"
+ 3491      666C6167 
+ 3491      00
+ 3492              	.LASF93:
+ 3493 0080 66696C65 		.ascii	"filename\000"
+ 3493      6E616D65 
+ 3493      00
+ 3494              	.LASF33:
+ 3495 0089 4D6F6973 		.ascii	"Moisture_ISR_Handler\000"
+ 3495      74757265 
+ 3495      5F495352 
+ 3495      5F48616E 
+ 3495      646C6572 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 75
+
+
+ 3496              	.LASF46:
+ 3497 009e 76616375 		.ascii	"vacuumbuf\000"
+ 3497      756D6275 
+ 3497      6600
+ 3498              	.LASF85:
+ 3499 00a8 66696C65 		.ascii	"file\000"
+ 3499      00
+ 3500              	.LASF41:
+ 3501 00ad 70726573 		.ascii	"pressure_avg\000"
+ 3501      73757265 
+ 3501      5F617667 
+ 3501      00
+ 3502              	.LASF4:
+ 3503 00ba 73686F72 		.ascii	"short int\000"
+ 3503      7420696E 
+ 3503      7400
+ 3504              	.LASF69:
+ 3505 00c4 50414E49 		.ascii	"PANIC_flag\000"
+ 3505      435F666C 
+ 3505      616700
+ 3506              	.LASF82:
+ 3507 00cf 79617667 		.ascii	"yavg\000"
+ 3507      00
+ 3508              	.LASF13:
+ 3509 00d4 75696E74 		.ascii	"uint8_t\000"
+ 3509      385F7400 
+ 3510              	.LASF50:
+ 3511 00dc 70756C73 		.ascii	"pulse\000"
+ 3511      6500
+ 3512              	.LASF37:
+ 3513 00e2 64656369 		.ascii	"decimals\000"
+ 3513      6D616C73 
+ 3513      00
+ 3514              	.LASF18:
+ 3515 00eb 666C6F61 		.ascii	"float\000"
+ 3515      7400
+ 3516              	.LASF49:
+ 3517 00f1 73746174 		.ascii	"stateMsgCount\000"
+ 3517      654D7367 
+ 3517      436F756E 
+ 3517      7400
+ 3518              	.LASF10:
+ 3519 00ff 6C6F6E67 		.ascii	"long long int\000"
+ 3519      206C6F6E 
+ 3519      6720696E 
+ 3519      7400
+ 3520              	.LASF65:
+ 3521 010d 61766572 		.ascii	"average\000"
+ 3521      61676500 
+ 3522              	.LASF30:
+ 3523 0115 5452414E 		.ascii	"TRANSMIT\000"
+ 3523      534D4954 
+ 3523      00
+ 3524              	.LASF88:
+ 3525 011e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3525      4320342E 
+ 3525      392E3320 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 76
+
+
+ 3525      32303135 
+ 3525      30333033 
+ 3526 0151 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 3526      20726576 
+ 3526      6973696F 
+ 3526      6E203232 
+ 3526      31323230 
+ 3527 0184 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 3527      66756E63 
+ 3527      74696F6E 
+ 3527      2D736563 
+ 3527      74696F6E 
+ 3528              	.LASF53:
+ 3529 01ac 74656E73 		.ascii	"tens\000"
+ 3529      00
+ 3530              	.LASF38:
+ 3531 01b1 766F6C74 		.ascii	"voltage\000"
+ 3531      61676500 
+ 3532              	.LASF86:
+ 3533 01b9 766F6C75 		.ascii	"volume\000"
+ 3533      6D6500
+ 3534              	.LASF61:
+ 3535 01c0 70726573 		.ascii	"press_id\000"
+ 3535      735F6964 
+ 3535      00
+ 3536              	.LASF51:
+ 3537 01c9 73656373 		.ascii	"secs_for_tilt\000"
+ 3537      5F666F72 
+ 3537      5F74696C 
+ 3537      7400
+ 3538              	.LASF48:
+ 3539 01d7 7472616E 		.ascii	"transbuf\000"
+ 3539      73627566 
+ 3539      00
+ 3540              	.LASF31:
+ 3541 01e0 4552524F 		.ascii	"ERROR\000"
+ 3541      5200
+ 3542              	.LASF64:
+ 3543 01e6 70726573 		.ascii	"pressure_sum\000"
+ 3543      73757265 
+ 3543      5F73756D 
+ 3543      00
+ 3544              	.LASF24:
+ 3545 01f3 6C6F6E67 		.ascii	"long double\000"
+ 3545      20646F75 
+ 3545      626C6500 
+ 3546              	.LASF26:
+ 3547 01ff 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
+ 3547      5F544F5F 
+ 3547      4C41554E 
+ 3547      434800
+ 3548              	.LASF1:
+ 3549 020e 756E7369 		.ascii	"unsigned char\000"
+ 3549      676E6564 
+ 3549      20636861 
+ 3549      7200
+ 3550              	.LASF23:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 77
+
+
+ 3551 021c 46535F46 		.ascii	"FS_FILE\000"
+ 3551      494C4500 
+ 3552              	.LASF71:
+ 3553 0224 636F756E 		.ascii	"countdown\000"
+ 3553      74646F77 
+ 3553      6E00
+ 3554              	.LASF0:
+ 3555 022e 7369676E 		.ascii	"signed char\000"
+ 3555      65642063 
+ 3555      68617200 
+ 3556              	.LASF11:
+ 3557 023a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3557      206C6F6E 
+ 3557      6720756E 
+ 3557      7369676E 
+ 3557      65642069 
+ 3558              	.LASF16:
+ 3559 0251 75696E74 		.ascii	"uint32_t\000"
+ 3559      33325F74 
+ 3559      00
+ 3560              	.LASF62:
+ 3561 025a 64617461 		.ascii	"data_time\000"
+ 3561      5F74696D 
+ 3561      6500
+ 3562              	.LASF12:
+ 3563 0264 756E7369 		.ascii	"unsigned int\000"
+ 3563      676E6564 
+ 3563      20696E74 
+ 3563      00
+ 3564              	.LASF39:
+ 3565 0271 74656D70 		.ascii	"temp\000"
+ 3565      00
+ 3566              	.LASF5:
+ 3567 0276 73686F72 		.ascii	"short unsigned int\000"
+ 3567      7420756E 
+ 3567      7369676E 
+ 3567      65642069 
+ 3567      6E7400
+ 3568              	.LASF83:
+ 3569 0289 7873756D 		.ascii	"xsum\000"
+ 3569      00
+ 3570              	.LASF20:
+ 3571 028e 63686172 		.ascii	"char\000"
+ 3571      00
+ 3572              	.LASF7:
+ 3573 0293 6C6F6E67 		.ascii	"long int\000"
+ 3573      20696E74 
+ 3573      00
+ 3574              	.LASF91:
+ 3575 029c 6D61696E 		.ascii	"main\000"
+ 3575      00
+ 3576              	.LASF15:
+ 3577 02a1 696E7433 		.ascii	"int32_t\000"
+ 3577      325F7400 
+ 3578              	.LASF14:
+ 3579 02a9 696E7431 		.ascii	"int16_t\000"
+ 3579      365F7400 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 78
+
+
+ 3580              	.LASF17:
+ 3581 02b1 75696E74 		.ascii	"uint8\000"
+ 3581      3800
+ 3582              	.LASF67:
+ 3583 02b7 5F426F6F 		.ascii	"_Bool\000"
+ 3583      6C00
+ 3584              	.LASF80:
+ 3585 02bd 72657365 		.ascii	"reset\000"
+ 3585      7400
+ 3586              	.LASF43:
+ 3587 02c3 63757253 		.ascii	"curState\000"
+ 3587      74617465 
+ 3587      00
+ 3588              	.LASF79:
+ 3589 02cc 64657074 		.ascii	"depth\000"
+ 3589      6800
+ 3590              	.LASF52:
+ 3591 02d2 7A5F6F66 		.ascii	"z_offset\000"
+ 3591      66736574 
+ 3591      00
+ 3592              	.LASF47:
+ 3593 02db 72657375 		.ascii	"resurfbuf\000"
+ 3593      72666275 
+ 3593      6600
+ 3594              	.LASF75:
+ 3595 02e5 7278666C 		.ascii	"rxflag\000"
+ 3595      616700
+ 3596              	.LASF59:
+ 3597 02ec 62756666 		.ascii	"buffer\000"
+ 3597      657200
+ 3598              	.LASF35:
+ 3599 02f3 436F756E 		.ascii	"Countdown_ISR_Handler\000"
+ 3599      74646F77 
+ 3599      6E5F4953 
+ 3599      525F4861 
+ 3599      6E646C65 
+ 3600              	.LASF89:
+ 3601 0309 6D61696E 		.ascii	"main.c\000"
+ 3601      2E6300
+ 3602              	.LASF21:
+ 3603 0310 72656738 		.ascii	"reg8\000"
+ 3603      00
+ 3604              	.LASF9:
+ 3605 0315 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3605      20756E73 
+ 3605      69676E65 
+ 3605      6420696E 
+ 3605      7400
+ 3606              	.LASF27:
+ 3607 0327 44455343 		.ascii	"DESCENDING\000"
+ 3607      454E4449 
+ 3607      4E4700
+ 3608              	.LASF76:
+ 3609 0332 62797465 		.ascii	"bytes\000"
+ 3609      7300
+ 3610              	.LASF19:
+ 3611 0338 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 79
+
+
+ 3611      6C6500
+ 3612              	.LASF8:
+ 3613 033f 5F5F7569 		.ascii	"__uint32_t\000"
+ 3613      6E743332 
+ 3613      5F7400
+ 3614              	.LASF42:
+ 3615 034a 74656D70 		.ascii	"tempbuf\000"
+ 3615      62756600 
+ 3616              	.LASF90:
+ 3617 0352 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_w_"
+ 3617      73657273 
+ 3617      5C676469 
+ 3617      6E675C44 
+ 3617      6F63756D 
+ 3618 0380 6661696C 		.ascii	"failsafes.cydsn\000"
+ 3618      73616665 
+ 3618      732E6379 
+ 3618      64736E00 
+ 3619              	.LASF6:
+ 3620 0390 5F5F696E 		.ascii	"__int32_t\000"
+ 3620      7433325F 
+ 3620      7400
+ 3621              	.LASF3:
+ 3622 039a 5F5F696E 		.ascii	"__int16_t\000"
+ 3622      7431365F 
+ 3622      7400
+ 3623              	.LASF44:
+ 3624 03a4 64657363 		.ascii	"descendbuf\000"
+ 3624      656E6462 
+ 3624      756600
+ 3625              	.LASF22:
+ 3626 03af 73697A65 		.ascii	"sizetype\000"
+ 3626      74797065 
+ 3626      00
+ 3627              	.LASF70:
+ 3628 03b8 53544154 		.ascii	"STATE\000"
+ 3628      4500
+ 3629              	.LASF40:
+ 3630 03be 6F757470 		.ascii	"output\000"
+ 3630      757400
+ 3631              	.LASF84:
+ 3632 03c5 7973756D 		.ascii	"ysum\000"
+ 3632      00
+ 3633              	.LASF66:
+ 3634 03ca 636F6C6C 		.ascii	"collect_flag\000"
+ 3634      6563745F 
+ 3634      666C6167 
+ 3634      00
+ 3635              	.LASF36:
+ 3636 03d7 72785F69 		.ascii	"rx_interrupt\000"
+ 3636      6E746572 
+ 3636      72757074 
+ 3636      00
+ 3637              	.LASF57:
+ 3638 03e4 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3638      52784275 
+ 3638      66666572 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc6BJUWv.s 			page 80
+
+
+ 3638      00
+ 3639              	.LASF92:
+ 3640 03f1 53445F53 		.ascii	"SD_SETUP\000"
+ 3640      45545550 
+ 3640      00
+ 3641              	.LASF56:
+ 3642 03fa 73756363 		.ascii	"success\000"
+ 3642      65737300 
+ 3643              	.LASF81:
+ 3644 0402 78617667 		.ascii	"xavg\000"
+ 3644      00
+ 3645              	.LASF34:
+ 3646 0407 53616D70 		.ascii	"Sample_ISR_Handler\000"
+ 3646      6C655F49 
+ 3646      53525F48 
+ 3646      616E646C 
+ 3646      657200
+ 3647              	.LASF87:
+ 3648 041a 66736669 		.ascii	"fsfile\000"
+ 3648      6C6500
+ 3649              	.LASF45:
+ 3650 0421 6C616E64 		.ascii	"landedbuf\000"
+ 3650      65646275 
+ 3650      6600
+ 3651              	.LASF68:
+ 3652 042b 77616974 		.ascii	"wait_flag\000"
+ 3652      5F666C61 
+ 3652      6700
+ 3653              	.LASF2:
+ 3654 0435 5F5F7569 		.ascii	"__uint8_t\000"
+ 3654      6E74385F 
+ 3654      7400
+ 3655              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

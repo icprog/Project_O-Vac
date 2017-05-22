@@ -1,0 +1,2391 @@
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"adjust_timer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	adjust_timer_initVar
+  19              		.bss
+  20              		.type	adjust_timer_initVar, %object
+  21              		.size	adjust_timer_initVar, 1
+  22              	adjust_timer_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.adjust_timer_Init,"ax",%progbits
+  25              		.align	2
+  26              		.global	adjust_timer_Init
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	adjust_timer_Init, %function
+  30              	adjust_timer_Init:
+  31              	.LFB0:
+  32              		.file 1 "Generated_Source\\PSoC5\\adjust_timer.c"
+   1:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/adjust_timer.c **** * File Name: adjust_timer.c
+   3:Generated_Source\PSoC5/adjust_timer.c **** * Version 2.70
+   4:Generated_Source\PSoC5/adjust_timer.c **** *
+   5:Generated_Source\PSoC5/adjust_timer.c **** * Description:
+   6:Generated_Source\PSoC5/adjust_timer.c **** *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7:Generated_Source\PSoC5/adjust_timer.c **** *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8:Generated_Source\PSoC5/adjust_timer.c **** *  or be used as a capture timer as well.  The capture can be initiated
+   9:Generated_Source\PSoC5/adjust_timer.c **** *  by a positive or negative edge signal as well as via software.
+  10:Generated_Source\PSoC5/adjust_timer.c **** *  A trigger input can be programmed to enable the timer on rising edge
+  11:Generated_Source\PSoC5/adjust_timer.c **** *  falling edge, either edge or continous run.
+  12:Generated_Source\PSoC5/adjust_timer.c **** *  Interrupts may be generated due to a terminal count condition
+  13:Generated_Source\PSoC5/adjust_timer.c **** *  or a capture event.
+  14:Generated_Source\PSoC5/adjust_timer.c **** *
+  15:Generated_Source\PSoC5/adjust_timer.c **** * Note:
+  16:Generated_Source\PSoC5/adjust_timer.c **** *
+  17:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+  18:Generated_Source\PSoC5/adjust_timer.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC5/adjust_timer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC5/adjust_timer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC5/adjust_timer.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************/
+  23:Generated_Source\PSoC5/adjust_timer.c **** 
+  24:Generated_Source\PSoC5/adjust_timer.c **** #include "adjust_timer.h"
+  25:Generated_Source\PSoC5/adjust_timer.c **** 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 2
+
+
+  26:Generated_Source\PSoC5/adjust_timer.c **** uint8 adjust_timer_initVar = 0u;
+  27:Generated_Source\PSoC5/adjust_timer.c **** 
+  28:Generated_Source\PSoC5/adjust_timer.c **** 
+  29:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+  30:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_Init
+  31:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+  32:Generated_Source\PSoC5/adjust_timer.c **** *
+  33:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+  34:Generated_Source\PSoC5/adjust_timer.c **** *  Initialize to the schematic state
+  35:Generated_Source\PSoC5/adjust_timer.c **** *
+  36:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+  37:Generated_Source\PSoC5/adjust_timer.c **** *  void
+  38:Generated_Source\PSoC5/adjust_timer.c **** *
+  39:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+  40:Generated_Source\PSoC5/adjust_timer.c **** *  void
+  41:Generated_Source\PSoC5/adjust_timer.c **** *
+  42:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+  43:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_Init(void) 
+  44:Generated_Source\PSoC5/adjust_timer.c **** {
+  33              		.loc 1 44 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 8
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 82B0     		sub	sp, sp, #8
+  42              		.cfi_def_cfa_offset 16
+  43 0004 00AF     		add	r7, sp, #0
+  44              		.cfi_def_cfa_register 7
+  45:Generated_Source\PSoC5/adjust_timer.c ****     #if(!adjust_timer_UsingFixedFunction)
+  46:Generated_Source\PSoC5/adjust_timer.c ****             /* Interrupt State Backup for Critical Region*/
+  47:Generated_Source\PSoC5/adjust_timer.c ****             uint8 adjust_timer_interruptState;
+  48:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Interrupt state back up for Fixed Function only */
+  49:Generated_Source\PSoC5/adjust_timer.c **** 
+  50:Generated_Source\PSoC5/adjust_timer.c ****     #if (adjust_timer_UsingFixedFunction)
+  51:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+  52:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= adjust_timer_CTRL_ENABLE;
+  53:Generated_Source\PSoC5/adjust_timer.c **** 
+  54:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear the mode bits for continuous run mode */
+  55:Generated_Source\PSoC5/adjust_timer.c ****         #if (CY_PSOC5A)
+  56:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_CONTROL2 &= ((uint8)(~adjust_timer_CTRL_MODE_MASK));
+  57:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Clear bits in CONTROL2 only in PSOC5A */
+  58:Generated_Source\PSoC5/adjust_timer.c **** 
+  59:Generated_Source\PSoC5/adjust_timer.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  60:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_CONTROL3 &= ((uint8)(~adjust_timer_CTRL_MODE_MASK));
+  61:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+  62:Generated_Source\PSoC5/adjust_timer.c **** 
+  63:Generated_Source\PSoC5/adjust_timer.c ****         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  64:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_RunModeUsed != 0x0u)
+  65:Generated_Source\PSoC5/adjust_timer.c ****             /* Set 3rd bit of Control register to enable one shot mode */
+  66:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_CONTROL |= 0x04u;
+  67:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+  68:Generated_Source\PSoC5/adjust_timer.c **** 
+  69:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_RunModeUsed == 2)
+  70:Generated_Source\PSoC5/adjust_timer.c ****             #if (CY_PSOC5A)
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 3
+
+
+  71:Generated_Source\PSoC5/adjust_timer.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
+  72:Generated_Source\PSoC5/adjust_timer.c ****                 interrupt) is enabled*/
+  73:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL2 |= 0x03u;
+  74:Generated_Source\PSoC5/adjust_timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+  75:Generated_Source\PSoC5/adjust_timer.c **** 
+  76:Generated_Source\PSoC5/adjust_timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  77:Generated_Source\PSoC5/adjust_timer.c ****                 /* Set last 2 bits of control3 register if one shot(halt on
+  78:Generated_Source\PSoC5/adjust_timer.c ****                 interrupt) is enabled*/
+  79:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 |= 0x03u;
+  80:Generated_Source\PSoC5/adjust_timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+  81:Generated_Source\PSoC5/adjust_timer.c **** 
+  82:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+  83:Generated_Source\PSoC5/adjust_timer.c **** 
+  84:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_UsingHWEnable != 0)
+  85:Generated_Source\PSoC5/adjust_timer.c ****             #if (CY_PSOC5A)
+  86:Generated_Source\PSoC5/adjust_timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+  87:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL2 |= adjust_timer_CTRL_MODE_PULSEWIDTH;
+  88:Generated_Source\PSoC5/adjust_timer.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+  89:Generated_Source\PSoC5/adjust_timer.c **** 
+  90:Generated_Source\PSoC5/adjust_timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  91:Generated_Source\PSoC5/adjust_timer.c ****                 /* Clear and Set ROD and COD bits of CFG2 register */
+  92:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 &= ((uint8)(~adjust_timer_CTRL_RCOD_MASK));
+  93:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 |= adjust_timer_CTRL_RCOD;
+  94:Generated_Source\PSoC5/adjust_timer.c **** 
+  95:Generated_Source\PSoC5/adjust_timer.c ****                 /* Clear and Enable the HW enable bit in CFG2 register */
+  96:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 &= ((uint8)(~adjust_timer_CTRL_ENBL_MASK));
+  97:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 |= adjust_timer_CTRL_ENBL;
+  98:Generated_Source\PSoC5/adjust_timer.c **** 
+  99:Generated_Source\PSoC5/adjust_timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+ 100:Generated_Source\PSoC5/adjust_timer.c ****                 adjust_timer_CONTROL3 |= adjust_timer_CTRL_MODE_CONTINUOUS;
+ 101:Generated_Source\PSoC5/adjust_timer.c ****             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+ 102:Generated_Source\PSoC5/adjust_timer.c **** 
+ 103:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Configure Run Mode with hardware enable */
+ 104:Generated_Source\PSoC5/adjust_timer.c **** 
+ 105:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 106:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_RT1 &= ((uint8)(~adjust_timer_RT1_MASK));
+ 107:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_RT1 |= adjust_timer_SYNC;
+ 108:Generated_Source\PSoC5/adjust_timer.c **** 
+ 109:Generated_Source\PSoC5/adjust_timer.c ****         /*Enable DSI Sync all all inputs of the Timer*/
+ 110:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_RT1 &= ((uint8)(~adjust_timer_SYNCDSI_MASK));
+ 111:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_RT1 |= adjust_timer_SYNCDSI_EN;
+ 112:Generated_Source\PSoC5/adjust_timer.c **** 
+ 113:Generated_Source\PSoC5/adjust_timer.c ****         /* Set the IRQ to use the status register interrupts */
+ 114:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL2 |= adjust_timer_CTRL2_IRQ_SEL;
+ 115:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Configuring registers of fixed function implementation */
+ 116:Generated_Source\PSoC5/adjust_timer.c **** 
+ 117:Generated_Source\PSoC5/adjust_timer.c ****     /* Set Initial values from Configuration */
+ 118:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_WritePeriod(adjust_timer_INIT_PERIOD);
+  45              		.loc 1 118 0
+  46 0006 0F48     		ldr	r0, .L2
+  47 0008 FFF7FEFF 		bl	adjust_timer_WritePeriod
+ 119:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_WriteCounter(adjust_timer_INIT_PERIOD);
+  48              		.loc 1 119 0
+  49 000c 0D48     		ldr	r0, .L2
+  50 000e FFF7FEFF 		bl	adjust_timer_WriteCounter
+ 120:Generated_Source\PSoC5/adjust_timer.c **** 
+ 121:Generated_Source\PSoC5/adjust_timer.c ****     #if (adjust_timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 4
+
+
+ 122:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CAPTURE_COUNT_CTRL |= adjust_timer_CNTR_ENABLE;
+ 123:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_SetCaptureCount(adjust_timer_INIT_CAPTURE_COUNT);
+ 124:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Configure capture counter value */
+ 125:Generated_Source\PSoC5/adjust_timer.c **** 
+ 126:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UsingFixedFunction)
+ 127:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_SoftwareCaptureMode)
+ 128:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_SetCaptureMode(adjust_timer_INIT_CAPTURE_MODE);
+ 129:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130:Generated_Source\PSoC5/adjust_timer.c **** 
+ 131:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_SoftwareTriggerMode)
+ 132:Generated_Source\PSoC5/adjust_timer.c ****             #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)
+ 133:Generated_Source\PSoC5/adjust_timer.c ****                 if (0u == (adjust_timer_CONTROL & adjust_timer__B_TIMER__TM_SOFTWARE))
+ 134:Generated_Source\PSoC5/adjust_timer.c ****                 {
+ 135:Generated_Source\PSoC5/adjust_timer.c ****                     adjust_timer_SetTriggerMode(adjust_timer_INIT_TRIGGER_MODE);
+ 136:Generated_Source\PSoC5/adjust_timer.c ****                 }
+ 137:Generated_Source\PSoC5/adjust_timer.c ****             #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
+ 138:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139:Generated_Source\PSoC5/adjust_timer.c **** 
+ 140:Generated_Source\PSoC5/adjust_timer.c ****         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critica
+ 141:Generated_Source\PSoC5/adjust_timer.c ****         /* Enter Critical Region*/
+ 142:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_interruptState = CyEnterCriticalSection();
+  51              		.loc 1 142 0
+  52 0012 FFF7FEFF 		bl	CyEnterCriticalSection
+  53 0016 0346     		mov	r3, r0
+  54 0018 FB71     		strb	r3, [r7, #7]
+ 143:Generated_Source\PSoC5/adjust_timer.c **** 
+ 144:Generated_Source\PSoC5/adjust_timer.c ****         /* Use the interrupt output of the status register for IRQ output */
+ 145:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_STATUS_AUX_CTRL |= adjust_timer_STATUS_ACTL_INT_EN_MASK;
+  55              		.loc 1 145 0
+  56 001a 0B4A     		ldr	r2, .L2+4
+  57 001c 0A4B     		ldr	r3, .L2+4
+  58 001e 1B78     		ldrb	r3, [r3]
+  59 0020 DBB2     		uxtb	r3, r3
+  60 0022 43F01003 		orr	r3, r3, #16
+  61 0026 DBB2     		uxtb	r3, r3
+  62 0028 1370     		strb	r3, [r2]
+ 146:Generated_Source\PSoC5/adjust_timer.c **** 
+ 147:Generated_Source\PSoC5/adjust_timer.c ****         /* Exit Critical Region*/
+ 148:Generated_Source\PSoC5/adjust_timer.c ****         CyExitCriticalSection(adjust_timer_interruptState);
+  63              		.loc 1 148 0
+  64 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  65 002c 1846     		mov	r0, r3
+  66 002e FFF7FEFF 		bl	CyExitCriticalSection
+ 149:Generated_Source\PSoC5/adjust_timer.c **** 
+ 150:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_EnableTriggerMode)
+ 151:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_EnableTrigger();
+ 152:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153:Generated_Source\PSoC5/adjust_timer.c **** 		
+ 154:Generated_Source\PSoC5/adjust_timer.c **** 		
+ 155:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_InterruptOnCaptureCount && !adjust_timer_UDB_CONTROL_REG_REMOVED)
+ 156:Generated_Source\PSoC5/adjust_timer.c ****             adjust_timer_SetInterruptCount(adjust_timer_INIT_INT_CAPTURE_COUNT);
+ 157:Generated_Source\PSoC5/adjust_timer.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 158:Generated_Source\PSoC5/adjust_timer.c **** 
+ 159:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_ClearFIFO();
+  67              		.loc 1 159 0
+  68 0032 FFF7FEFF 		bl	adjust_timer_ClearFIFO
+ 160:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Configure additional features of UDB implementation */
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 5
+
+
+ 161:Generated_Source\PSoC5/adjust_timer.c **** 
+ 162:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_SetInterruptMode(adjust_timer_INIT_INTERRUPT_MODE);
+  69              		.loc 1 162 0
+  70 0036 0120     		movs	r0, #1
+  71 0038 FFF7FEFF 		bl	adjust_timer_SetInterruptMode
+ 163:Generated_Source\PSoC5/adjust_timer.c **** }
+  72              		.loc 1 163 0
+  73 003c 0837     		adds	r7, r7, #8
+  74              		.cfi_def_cfa_offset 8
+  75 003e BD46     		mov	sp, r7
+  76              		.cfi_def_cfa_register 13
+  77              		@ sp needed
+  78 0040 80BD     		pop	{r7, pc}
+  79              	.L3:
+  80 0042 00BF     		.align	2
+  81              	.L2:
+  82 0044 FFA50E00 		.word	959999
+  83 0048 97650040 		.word	1073767831
+  84              		.cfi_endproc
+  85              	.LFE0:
+  86              		.size	adjust_timer_Init, .-adjust_timer_Init
+  87              		.section	.text.adjust_timer_Enable,"ax",%progbits
+  88              		.align	2
+  89              		.global	adjust_timer_Enable
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	adjust_timer_Enable, %function
+  93              	adjust_timer_Enable:
+  94              	.LFB1:
+ 164:Generated_Source\PSoC5/adjust_timer.c **** 
+ 165:Generated_Source\PSoC5/adjust_timer.c **** 
+ 166:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 167:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_Enable
+ 168:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 169:Generated_Source\PSoC5/adjust_timer.c **** *
+ 170:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 171:Generated_Source\PSoC5/adjust_timer.c **** *  Enable the Timer
+ 172:Generated_Source\PSoC5/adjust_timer.c **** *
+ 173:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 174:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 175:Generated_Source\PSoC5/adjust_timer.c **** *
+ 176:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 177:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 178:Generated_Source\PSoC5/adjust_timer.c **** *
+ 179:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 180:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_Enable(void) 
+ 181:Generated_Source\PSoC5/adjust_timer.c **** {
+  95              		.loc 1 181 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 1, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
+ 100 0000 80B4     		push	{r7}
+ 101              		.cfi_def_cfa_offset 4
+ 102              		.cfi_offset 7, -4
+ 103 0002 00AF     		add	r7, sp, #0
+ 104              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 6
+
+
+ 182:Generated_Source\PSoC5/adjust_timer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 183:Generated_Source\PSoC5/adjust_timer.c ****     #if (adjust_timer_UsingFixedFunction)
+ 184:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_GLOBAL_ENABLE |= adjust_timer_BLOCK_EN_MASK;
+ 185:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_GLOBAL_STBY_ENABLE |= adjust_timer_BLOCK_STBY_EN_MASK;
+ 186:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187:Generated_Source\PSoC5/adjust_timer.c **** 
+ 188:Generated_Source\PSoC5/adjust_timer.c ****     /* Remove assignment if control register is removed */
+ 189:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED || adjust_timer_UsingFixedFunction)
+ 190:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= adjust_timer_CTRL_ENABLE;
+ 105              		.loc 1 190 0
+ 106 0004 054A     		ldr	r2, .L5
+ 107 0006 054B     		ldr	r3, .L5
+ 108 0008 1B78     		ldrb	r3, [r3]
+ 109 000a DBB2     		uxtb	r3, r3
+ 110 000c 63F07F03 		orn	r3, r3, #127
+ 111 0010 DBB2     		uxtb	r3, r3
+ 112 0012 1370     		strb	r3, [r2]
+ 191:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Remove assignment if control register is removed */
+ 192:Generated_Source\PSoC5/adjust_timer.c **** }
+ 113              		.loc 1 192 0
+ 114 0014 BD46     		mov	sp, r7
+ 115              		.cfi_def_cfa_register 13
+ 116              		@ sp needed
+ 117 0016 5DF8047B 		ldr	r7, [sp], #4
+ 118              		.cfi_restore 7
+ 119              		.cfi_def_cfa_offset 0
+ 120 001a 7047     		bx	lr
+ 121              	.L6:
+ 122              		.align	2
+ 123              	.L5:
+ 124 001c 75650040 		.word	1073767797
+ 125              		.cfi_endproc
+ 126              	.LFE1:
+ 127              		.size	adjust_timer_Enable, .-adjust_timer_Enable
+ 128              		.section	.text.adjust_timer_Start,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	adjust_timer_Start
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.type	adjust_timer_Start, %function
+ 134              	adjust_timer_Start:
+ 135              	.LFB2:
+ 193:Generated_Source\PSoC5/adjust_timer.c **** 
+ 194:Generated_Source\PSoC5/adjust_timer.c **** 
+ 195:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 196:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_Start
+ 197:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 198:Generated_Source\PSoC5/adjust_timer.c **** *
+ 199:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 200:Generated_Source\PSoC5/adjust_timer.c **** *  The start function initializes the timer with the default values, the
+ 201:Generated_Source\PSoC5/adjust_timer.c **** *  enables the timerto begin counting.  It does not enable interrupts,
+ 202:Generated_Source\PSoC5/adjust_timer.c **** *  the EnableInt command should be called if interrupt generation is required.
+ 203:Generated_Source\PSoC5/adjust_timer.c **** *
+ 204:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 205:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 206:Generated_Source\PSoC5/adjust_timer.c **** *
+ 207:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 7
+
+
+ 208:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 209:Generated_Source\PSoC5/adjust_timer.c **** *
+ 210:Generated_Source\PSoC5/adjust_timer.c **** * Global variables:
+ 211:Generated_Source\PSoC5/adjust_timer.c **** *  adjust_timer_initVar: Is modified when this function is called for the
+ 212:Generated_Source\PSoC5/adjust_timer.c **** *   first time. Is used to ensure that initialization happens only once.
+ 213:Generated_Source\PSoC5/adjust_timer.c **** *
+ 214:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 215:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_Start(void) 
+ 216:Generated_Source\PSoC5/adjust_timer.c **** {
+ 136              		.loc 1 216 0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 140 0000 80B5     		push	{r7, lr}
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 00AF     		add	r7, sp, #0
+ 145              		.cfi_def_cfa_register 7
+ 217:Generated_Source\PSoC5/adjust_timer.c ****     if(adjust_timer_initVar == 0u)
+ 146              		.loc 1 217 0
+ 147 0004 054B     		ldr	r3, .L9
+ 148 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 149 0008 002B     		cmp	r3, #0
+ 150 000a 04D1     		bne	.L8
+ 218:Generated_Source\PSoC5/adjust_timer.c ****     {
+ 219:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_Init();
+ 151              		.loc 1 219 0
+ 152 000c FFF7FEFF 		bl	adjust_timer_Init
+ 220:Generated_Source\PSoC5/adjust_timer.c **** 
+ 221:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_initVar = 1u;   /* Clear this bit for Initialization */
+ 153              		.loc 1 221 0
+ 154 0010 024B     		ldr	r3, .L9
+ 155 0012 0122     		movs	r2, #1
+ 156 0014 1A70     		strb	r2, [r3]
+ 157              	.L8:
+ 222:Generated_Source\PSoC5/adjust_timer.c ****     }
+ 223:Generated_Source\PSoC5/adjust_timer.c **** 
+ 224:Generated_Source\PSoC5/adjust_timer.c ****     /* Enable the Timer */
+ 225:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_Enable();
+ 158              		.loc 1 225 0
+ 159 0016 FFF7FEFF 		bl	adjust_timer_Enable
+ 226:Generated_Source\PSoC5/adjust_timer.c **** }
+ 160              		.loc 1 226 0
+ 161 001a 80BD     		pop	{r7, pc}
+ 162              	.L10:
+ 163              		.align	2
+ 164              	.L9:
+ 165 001c 00000000 		.word	adjust_timer_initVar
+ 166              		.cfi_endproc
+ 167              	.LFE2:
+ 168              		.size	adjust_timer_Start, .-adjust_timer_Start
+ 169              		.section	.text.adjust_timer_Stop,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	adjust_timer_Stop
+ 172              		.thumb
+ 173              		.thumb_func
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 8
+
+
+ 174              		.type	adjust_timer_Stop, %function
+ 175              	adjust_timer_Stop:
+ 176              	.LFB3:
+ 227:Generated_Source\PSoC5/adjust_timer.c **** 
+ 228:Generated_Source\PSoC5/adjust_timer.c **** 
+ 229:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 230:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_Stop
+ 231:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 232:Generated_Source\PSoC5/adjust_timer.c **** *
+ 233:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 234:Generated_Source\PSoC5/adjust_timer.c **** *  The stop function halts the timer, but does not change any modes or disable
+ 235:Generated_Source\PSoC5/adjust_timer.c **** *  interrupts.
+ 236:Generated_Source\PSoC5/adjust_timer.c **** *
+ 237:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 238:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 239:Generated_Source\PSoC5/adjust_timer.c **** *
+ 240:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 241:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 242:Generated_Source\PSoC5/adjust_timer.c **** *
+ 243:Generated_Source\PSoC5/adjust_timer.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244:Generated_Source\PSoC5/adjust_timer.c **** *               has no effect on the operation of the timer.
+ 245:Generated_Source\PSoC5/adjust_timer.c **** *
+ 246:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 247:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_Stop(void) 
+ 248:Generated_Source\PSoC5/adjust_timer.c **** {
+ 177              		.loc 1 248 0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 1, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182 0000 80B4     		push	{r7}
+ 183              		.cfi_def_cfa_offset 4
+ 184              		.cfi_offset 7, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              		.cfi_def_cfa_register 7
+ 249:Generated_Source\PSoC5/adjust_timer.c ****     /* Disable Timer */
+ 250:Generated_Source\PSoC5/adjust_timer.c ****     #if(!adjust_timer_UDB_CONTROL_REG_REMOVED || adjust_timer_UsingFixedFunction)
+ 251:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_ENABLE));
+ 187              		.loc 1 251 0
+ 188 0004 054A     		ldr	r2, .L12
+ 189 0006 054B     		ldr	r3, .L12
+ 190 0008 1B78     		ldrb	r3, [r3]
+ 191 000a DBB2     		uxtb	r3, r3
+ 192 000c 03F07F03 		and	r3, r3, #127
+ 193 0010 DBB2     		uxtb	r3, r3
+ 194 0012 1370     		strb	r3, [r2]
+ 252:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Remove assignment if control register is removed */
+ 253:Generated_Source\PSoC5/adjust_timer.c **** 
+ 254:Generated_Source\PSoC5/adjust_timer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 255:Generated_Source\PSoC5/adjust_timer.c ****     #if (adjust_timer_UsingFixedFunction)
+ 256:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_GLOBAL_ENABLE &= ((uint8)(~adjust_timer_BLOCK_EN_MASK));
+ 257:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_GLOBAL_STBY_ENABLE &= ((uint8)(~adjust_timer_BLOCK_STBY_EN_MASK));
+ 258:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259:Generated_Source\PSoC5/adjust_timer.c **** }
+ 195              		.loc 1 259 0
+ 196 0014 BD46     		mov	sp, r7
+ 197              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 9
+
+
+ 198              		@ sp needed
+ 199 0016 5DF8047B 		ldr	r7, [sp], #4
+ 200              		.cfi_restore 7
+ 201              		.cfi_def_cfa_offset 0
+ 202 001a 7047     		bx	lr
+ 203              	.L13:
+ 204              		.align	2
+ 205              	.L12:
+ 206 001c 75650040 		.word	1073767797
+ 207              		.cfi_endproc
+ 208              	.LFE3:
+ 209              		.size	adjust_timer_Stop, .-adjust_timer_Stop
+ 210              		.section	.text.adjust_timer_SetInterruptMode,"ax",%progbits
+ 211              		.align	2
+ 212              		.global	adjust_timer_SetInterruptMode
+ 213              		.thumb
+ 214              		.thumb_func
+ 215              		.type	adjust_timer_SetInterruptMode, %function
+ 216              	adjust_timer_SetInterruptMode:
+ 217              	.LFB4:
+ 260:Generated_Source\PSoC5/adjust_timer.c **** 
+ 261:Generated_Source\PSoC5/adjust_timer.c **** 
+ 262:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 263:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SetInterruptMode
+ 264:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 265:Generated_Source\PSoC5/adjust_timer.c **** *
+ 266:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 267:Generated_Source\PSoC5/adjust_timer.c **** *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268:Generated_Source\PSoC5/adjust_timer.c **** *  The twosources are caputure and terminal.  One, both or neither may
+ 269:Generated_Source\PSoC5/adjust_timer.c **** *  be selected.
+ 270:Generated_Source\PSoC5/adjust_timer.c **** *
+ 271:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 272:Generated_Source\PSoC5/adjust_timer.c **** *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273:Generated_Source\PSoC5/adjust_timer.c **** *                   terminal count or capture.
+ 274:Generated_Source\PSoC5/adjust_timer.c **** *
+ 275:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 276:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 277:Generated_Source\PSoC5/adjust_timer.c **** *
+ 278:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 279:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SetInterruptMode(uint8 interruptMode) 
+ 280:Generated_Source\PSoC5/adjust_timer.c **** {
+ 218              		.loc 1 280 0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 8
+ 221              		@ frame_needed = 1, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 80B4     		push	{r7}
+ 224              		.cfi_def_cfa_offset 4
+ 225              		.cfi_offset 7, -4
+ 226 0002 83B0     		sub	sp, sp, #12
+ 227              		.cfi_def_cfa_offset 16
+ 228 0004 00AF     		add	r7, sp, #0
+ 229              		.cfi_def_cfa_register 7
+ 230 0006 0346     		mov	r3, r0
+ 231 0008 FB71     		strb	r3, [r7, #7]
+ 281:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_STATUS_MASK = interruptMode;
+ 232              		.loc 1 281 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 10
+
+
+ 233 000a 044A     		ldr	r2, .L15
+ 234 000c FB79     		ldrb	r3, [r7, #7]
+ 235 000e 1370     		strb	r3, [r2]
+ 282:Generated_Source\PSoC5/adjust_timer.c **** }
+ 236              		.loc 1 282 0
+ 237 0010 0C37     		adds	r7, r7, #12
+ 238              		.cfi_def_cfa_offset 4
+ 239 0012 BD46     		mov	sp, r7
+ 240              		.cfi_def_cfa_register 13
+ 241              		@ sp needed
+ 242 0014 5DF8047B 		ldr	r7, [sp], #4
+ 243              		.cfi_restore 7
+ 244              		.cfi_def_cfa_offset 0
+ 245 0018 7047     		bx	lr
+ 246              	.L16:
+ 247 001a 00BF     		.align	2
+ 248              	.L15:
+ 249 001c 87650040 		.word	1073767815
+ 250              		.cfi_endproc
+ 251              	.LFE4:
+ 252              		.size	adjust_timer_SetInterruptMode, .-adjust_timer_SetInterruptMode
+ 253              		.section	.text.adjust_timer_SoftwareCapture,"ax",%progbits
+ 254              		.align	2
+ 255              		.global	adjust_timer_SoftwareCapture
+ 256              		.thumb
+ 257              		.thumb_func
+ 258              		.type	adjust_timer_SoftwareCapture, %function
+ 259              	adjust_timer_SoftwareCapture:
+ 260              	.LFB5:
+ 283:Generated_Source\PSoC5/adjust_timer.c **** 
+ 284:Generated_Source\PSoC5/adjust_timer.c **** 
+ 285:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 286:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SoftwareCapture
+ 287:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 288:Generated_Source\PSoC5/adjust_timer.c **** *
+ 289:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 290:Generated_Source\PSoC5/adjust_timer.c **** *  This function forces a capture independent of the capture signal.
+ 291:Generated_Source\PSoC5/adjust_timer.c **** *
+ 292:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 293:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 294:Generated_Source\PSoC5/adjust_timer.c **** *
+ 295:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 296:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 297:Generated_Source\PSoC5/adjust_timer.c **** *
+ 298:Generated_Source\PSoC5/adjust_timer.c **** * Side Effects:
+ 299:Generated_Source\PSoC5/adjust_timer.c **** *  An existing hardware capture could be overwritten.
+ 300:Generated_Source\PSoC5/adjust_timer.c **** *
+ 301:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 302:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SoftwareCapture(void) 
+ 303:Generated_Source\PSoC5/adjust_timer.c **** {
+ 261              		.loc 1 303 0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 1, uses_anonymous_args = 0
+ 265              		@ link register save eliminated.
+ 266 0000 80B4     		push	{r7}
+ 267              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 11
+
+
+ 268              		.cfi_offset 7, -4
+ 269 0002 00AF     		add	r7, sp, #0
+ 270              		.cfi_def_cfa_register 7
+ 304:Generated_Source\PSoC5/adjust_timer.c ****     /* Generate a software capture by reading the counter register */
+ 305:Generated_Source\PSoC5/adjust_timer.c ****     #if(adjust_timer_UsingFixedFunction)
+ 306:Generated_Source\PSoC5/adjust_timer.c ****         (void)CY_GET_REG16(adjust_timer_COUNTER_LSB_PTR);
+ 307:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 308:Generated_Source\PSoC5/adjust_timer.c ****         (void)CY_GET_REG8(adjust_timer_COUNTER_LSB_PTR_8BIT);
+ 271              		.loc 1 308 0
+ 272 0004 024B     		ldr	r3, .L18
+ 273 0006 1B78     		ldrb	r3, [r3]
+ 309:Generated_Source\PSoC5/adjust_timer.c ****     #endif/* (adjust_timer_UsingFixedFunction) */
+ 310:Generated_Source\PSoC5/adjust_timer.c ****     /* Capture Data is now in the FIFO */
+ 311:Generated_Source\PSoC5/adjust_timer.c **** }
+ 274              		.loc 1 311 0
+ 275 0008 BD46     		mov	sp, r7
+ 276              		.cfi_def_cfa_register 13
+ 277              		@ sp needed
+ 278 000a 5DF8047B 		ldr	r7, [sp], #4
+ 279              		.cfi_restore 7
+ 280              		.cfi_def_cfa_offset 0
+ 281 000e 7047     		bx	lr
+ 282              	.L19:
+ 283              		.align	2
+ 284              	.L18:
+ 285 0010 04650040 		.word	1073767684
+ 286              		.cfi_endproc
+ 287              	.LFE5:
+ 288              		.size	adjust_timer_SoftwareCapture, .-adjust_timer_SoftwareCapture
+ 289              		.section	.text.adjust_timer_ReadStatusRegister,"ax",%progbits
+ 290              		.align	2
+ 291              		.global	adjust_timer_ReadStatusRegister
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.type	adjust_timer_ReadStatusRegister, %function
+ 295              	adjust_timer_ReadStatusRegister:
+ 296              	.LFB6:
+ 312:Generated_Source\PSoC5/adjust_timer.c **** 
+ 313:Generated_Source\PSoC5/adjust_timer.c **** 
+ 314:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 315:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadStatusRegister
+ 316:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 317:Generated_Source\PSoC5/adjust_timer.c **** *
+ 318:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 319:Generated_Source\PSoC5/adjust_timer.c **** *  Reads the status register and returns it's state. This function should use
+ 320:Generated_Source\PSoC5/adjust_timer.c **** *  defined types for the bit-field information as the bits in this register may
+ 321:Generated_Source\PSoC5/adjust_timer.c **** *  be permuteable.
+ 322:Generated_Source\PSoC5/adjust_timer.c **** *
+ 323:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 324:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 325:Generated_Source\PSoC5/adjust_timer.c **** *
+ 326:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 327:Generated_Source\PSoC5/adjust_timer.c **** *  The contents of the status register
+ 328:Generated_Source\PSoC5/adjust_timer.c **** *
+ 329:Generated_Source\PSoC5/adjust_timer.c **** * Side Effects:
+ 330:Generated_Source\PSoC5/adjust_timer.c **** *  Status register bits may be clear on read.
+ 331:Generated_Source\PSoC5/adjust_timer.c **** *
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 12
+
+
+ 332:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 333:Generated_Source\PSoC5/adjust_timer.c **** uint8   adjust_timer_ReadStatusRegister(void) 
+ 334:Generated_Source\PSoC5/adjust_timer.c **** {
+ 297              		.loc 1 334 0
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 302 0000 80B4     		push	{r7}
+ 303              		.cfi_def_cfa_offset 4
+ 304              		.cfi_offset 7, -4
+ 305 0002 00AF     		add	r7, sp, #0
+ 306              		.cfi_def_cfa_register 7
+ 335:Generated_Source\PSoC5/adjust_timer.c ****     return (adjust_timer_STATUS);
+ 307              		.loc 1 335 0
+ 308 0004 034B     		ldr	r3, .L22
+ 309 0006 1B78     		ldrb	r3, [r3]
+ 310 0008 DBB2     		uxtb	r3, r3
+ 336:Generated_Source\PSoC5/adjust_timer.c **** }
+ 311              		.loc 1 336 0
+ 312 000a 1846     		mov	r0, r3
+ 313 000c BD46     		mov	sp, r7
+ 314              		.cfi_def_cfa_register 13
+ 315              		@ sp needed
+ 316 000e 5DF8047B 		ldr	r7, [sp], #4
+ 317              		.cfi_restore 7
+ 318              		.cfi_def_cfa_offset 0
+ 319 0012 7047     		bx	lr
+ 320              	.L23:
+ 321              		.align	2
+ 322              	.L22:
+ 323 0014 67650040 		.word	1073767783
+ 324              		.cfi_endproc
+ 325              	.LFE6:
+ 326              		.size	adjust_timer_ReadStatusRegister, .-adjust_timer_ReadStatusRegister
+ 327              		.section	.text.adjust_timer_ReadControlRegister,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	adjust_timer_ReadControlRegister
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	adjust_timer_ReadControlRegister, %function
+ 333              	adjust_timer_ReadControlRegister:
+ 334              	.LFB7:
+ 337:Generated_Source\PSoC5/adjust_timer.c **** 
+ 338:Generated_Source\PSoC5/adjust_timer.c **** 
+ 339:Generated_Source\PSoC5/adjust_timer.c **** #if (!adjust_timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+ 340:Generated_Source\PSoC5/adjust_timer.c **** 
+ 341:Generated_Source\PSoC5/adjust_timer.c **** 
+ 342:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 343:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadControlRegister
+ 344:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 345:Generated_Source\PSoC5/adjust_timer.c **** *
+ 346:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 347:Generated_Source\PSoC5/adjust_timer.c **** *  Reads the control register and returns it's value.
+ 348:Generated_Source\PSoC5/adjust_timer.c **** *
+ 349:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 350:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 13
+
+
+ 351:Generated_Source\PSoC5/adjust_timer.c **** *
+ 352:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 353:Generated_Source\PSoC5/adjust_timer.c **** *  The contents of the control register
+ 354:Generated_Source\PSoC5/adjust_timer.c **** *
+ 355:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 356:Generated_Source\PSoC5/adjust_timer.c **** uint8 adjust_timer_ReadControlRegister(void) 
+ 357:Generated_Source\PSoC5/adjust_timer.c **** {
+ 335              		.loc 1 357 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 1, uses_anonymous_args = 0
+ 339              		@ link register save eliminated.
+ 340 0000 80B4     		push	{r7}
+ 341              		.cfi_def_cfa_offset 4
+ 342              		.cfi_offset 7, -4
+ 343 0002 00AF     		add	r7, sp, #0
+ 344              		.cfi_def_cfa_register 7
+ 358:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED) 
+ 359:Generated_Source\PSoC5/adjust_timer.c ****         return ((uint8)adjust_timer_CONTROL);
+ 345              		.loc 1 359 0
+ 346 0004 034B     		ldr	r3, .L26
+ 347 0006 1B78     		ldrb	r3, [r3]
+ 348 0008 DBB2     		uxtb	r3, r3
+ 360:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 361:Generated_Source\PSoC5/adjust_timer.c ****         return (0);
+ 362:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
+ 363:Generated_Source\PSoC5/adjust_timer.c **** }
+ 349              		.loc 1 363 0
+ 350 000a 1846     		mov	r0, r3
+ 351 000c BD46     		mov	sp, r7
+ 352              		.cfi_def_cfa_register 13
+ 353              		@ sp needed
+ 354 000e 5DF8047B 		ldr	r7, [sp], #4
+ 355              		.cfi_restore 7
+ 356              		.cfi_def_cfa_offset 0
+ 357 0012 7047     		bx	lr
+ 358              	.L27:
+ 359              		.align	2
+ 360              	.L26:
+ 361 0014 75650040 		.word	1073767797
+ 362              		.cfi_endproc
+ 363              	.LFE7:
+ 364              		.size	adjust_timer_ReadControlRegister, .-adjust_timer_ReadControlRegister
+ 365              		.section	.text.adjust_timer_WriteControlRegister,"ax",%progbits
+ 366              		.align	2
+ 367              		.global	adjust_timer_WriteControlRegister
+ 368              		.thumb
+ 369              		.thumb_func
+ 370              		.type	adjust_timer_WriteControlRegister, %function
+ 371              	adjust_timer_WriteControlRegister:
+ 372              	.LFB8:
+ 364:Generated_Source\PSoC5/adjust_timer.c **** 
+ 365:Generated_Source\PSoC5/adjust_timer.c **** 
+ 366:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 367:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_WriteControlRegister
+ 368:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 369:Generated_Source\PSoC5/adjust_timer.c **** *
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 14
+
+
+ 370:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 371:Generated_Source\PSoC5/adjust_timer.c **** *  Sets the bit-field of the control register.
+ 372:Generated_Source\PSoC5/adjust_timer.c **** *
+ 373:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 374:Generated_Source\PSoC5/adjust_timer.c **** *  control: The contents of the control register
+ 375:Generated_Source\PSoC5/adjust_timer.c **** *
+ 376:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 377:Generated_Source\PSoC5/adjust_timer.c **** *
+ 378:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 379:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_WriteControlRegister(uint8 control) 
+ 380:Generated_Source\PSoC5/adjust_timer.c **** {
+ 373              		.loc 1 380 0
+ 374              		.cfi_startproc
+ 375              		@ args = 0, pretend = 0, frame = 8
+ 376              		@ frame_needed = 1, uses_anonymous_args = 0
+ 377              		@ link register save eliminated.
+ 378 0000 80B4     		push	{r7}
+ 379              		.cfi_def_cfa_offset 4
+ 380              		.cfi_offset 7, -4
+ 381 0002 83B0     		sub	sp, sp, #12
+ 382              		.cfi_def_cfa_offset 16
+ 383 0004 00AF     		add	r7, sp, #0
+ 384              		.cfi_def_cfa_register 7
+ 385 0006 0346     		mov	r3, r0
+ 386 0008 FB71     		strb	r3, [r7, #7]
+ 381:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED) 
+ 382:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL = control;
+ 387              		.loc 1 382 0
+ 388 000a 044A     		ldr	r2, .L29
+ 389 000c FB79     		ldrb	r3, [r7, #7]
+ 390 000e 1370     		strb	r3, [r2]
+ 383:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 384:Generated_Source\PSoC5/adjust_timer.c ****         control = 0u;
+ 385:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
+ 386:Generated_Source\PSoC5/adjust_timer.c **** }
+ 391              		.loc 1 386 0
+ 392 0010 0C37     		adds	r7, r7, #12
+ 393              		.cfi_def_cfa_offset 4
+ 394 0012 BD46     		mov	sp, r7
+ 395              		.cfi_def_cfa_register 13
+ 396              		@ sp needed
+ 397 0014 5DF8047B 		ldr	r7, [sp], #4
+ 398              		.cfi_restore 7
+ 399              		.cfi_def_cfa_offset 0
+ 400 0018 7047     		bx	lr
+ 401              	.L30:
+ 402 001a 00BF     		.align	2
+ 403              	.L29:
+ 404 001c 75650040 		.word	1073767797
+ 405              		.cfi_endproc
+ 406              	.LFE8:
+ 407              		.size	adjust_timer_WriteControlRegister, .-adjust_timer_WriteControlRegister
+ 408              		.section	.text.adjust_timer_ReadPeriod,"ax",%progbits
+ 409              		.align	2
+ 410              		.global	adjust_timer_ReadPeriod
+ 411              		.thumb
+ 412              		.thumb_func
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 15
+
+
+ 413              		.type	adjust_timer_ReadPeriod, %function
+ 414              	adjust_timer_ReadPeriod:
+ 415              	.LFB9:
+ 387:Generated_Source\PSoC5/adjust_timer.c **** 
+ 388:Generated_Source\PSoC5/adjust_timer.c **** #endif /* Remove API if control register is unused */
+ 389:Generated_Source\PSoC5/adjust_timer.c **** 
+ 390:Generated_Source\PSoC5/adjust_timer.c **** 
+ 391:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 392:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadPeriod
+ 393:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 394:Generated_Source\PSoC5/adjust_timer.c **** *
+ 395:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 396:Generated_Source\PSoC5/adjust_timer.c **** *  This function returns the current value of the Period.
+ 397:Generated_Source\PSoC5/adjust_timer.c **** *
+ 398:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 399:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 400:Generated_Source\PSoC5/adjust_timer.c **** *
+ 401:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 402:Generated_Source\PSoC5/adjust_timer.c **** *  The present value of the counter.
+ 403:Generated_Source\PSoC5/adjust_timer.c **** *
+ 404:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 405:Generated_Source\PSoC5/adjust_timer.c **** uint32 adjust_timer_ReadPeriod(void) 
+ 406:Generated_Source\PSoC5/adjust_timer.c **** {
+ 416              		.loc 1 406 0
+ 417              		.cfi_startproc
+ 418              		@ args = 0, pretend = 0, frame = 0
+ 419              		@ frame_needed = 1, uses_anonymous_args = 0
+ 420              		@ link register save eliminated.
+ 421 0000 80B4     		push	{r7}
+ 422              		.cfi_def_cfa_offset 4
+ 423              		.cfi_offset 7, -4
+ 424 0002 00AF     		add	r7, sp, #0
+ 425              		.cfi_def_cfa_register 7
+ 407:Generated_Source\PSoC5/adjust_timer.c ****    #if(adjust_timer_UsingFixedFunction)
+ 408:Generated_Source\PSoC5/adjust_timer.c ****        return ((uint32)CY_GET_REG16(adjust_timer_PERIOD_LSB_PTR));
+ 409:Generated_Source\PSoC5/adjust_timer.c ****    #else
+ 410:Generated_Source\PSoC5/adjust_timer.c ****        return (CY_GET_REG32(adjust_timer_PERIOD_LSB_PTR));
+ 426              		.loc 1 410 0
+ 427 0004 034B     		ldr	r3, .L33
+ 428 0006 1B68     		ldr	r3, [r3]
+ 411:Generated_Source\PSoC5/adjust_timer.c ****    #endif /* (adjust_timer_UsingFixedFunction) */
+ 412:Generated_Source\PSoC5/adjust_timer.c **** }
+ 429              		.loc 1 412 0
+ 430 0008 1846     		mov	r0, r3
+ 431 000a BD46     		mov	sp, r7
+ 432              		.cfi_def_cfa_register 13
+ 433              		@ sp needed
+ 434 000c 5DF8047B 		ldr	r7, [sp], #4
+ 435              		.cfi_restore 7
+ 436              		.cfi_def_cfa_offset 0
+ 437 0010 7047     		bx	lr
+ 438              	.L34:
+ 439 0012 00BF     		.align	2
+ 440              	.L33:
+ 441 0014 24650040 		.word	1073767716
+ 442              		.cfi_endproc
+ 443              	.LFE9:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 16
+
+
+ 444              		.size	adjust_timer_ReadPeriod, .-adjust_timer_ReadPeriod
+ 445              		.section	.text.adjust_timer_WritePeriod,"ax",%progbits
+ 446              		.align	2
+ 447              		.global	adjust_timer_WritePeriod
+ 448              		.thumb
+ 449              		.thumb_func
+ 450              		.type	adjust_timer_WritePeriod, %function
+ 451              	adjust_timer_WritePeriod:
+ 452              	.LFB10:
+ 413:Generated_Source\PSoC5/adjust_timer.c **** 
+ 414:Generated_Source\PSoC5/adjust_timer.c **** 
+ 415:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 416:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_WritePeriod
+ 417:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 418:Generated_Source\PSoC5/adjust_timer.c **** *
+ 419:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 420:Generated_Source\PSoC5/adjust_timer.c **** *  This function is used to change the period of the counter.  The new period
+ 421:Generated_Source\PSoC5/adjust_timer.c **** *  will be loaded the next time terminal count is detected.
+ 422:Generated_Source\PSoC5/adjust_timer.c **** *
+ 423:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 424:Generated_Source\PSoC5/adjust_timer.c **** *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+ 425:Generated_Source\PSoC5/adjust_timer.c **** *          result in the counter remaining at zero.
+ 426:Generated_Source\PSoC5/adjust_timer.c **** *
+ 427:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 428:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 429:Generated_Source\PSoC5/adjust_timer.c **** *
+ 430:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 431:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_WritePeriod(uint32 period) 
+ 432:Generated_Source\PSoC5/adjust_timer.c **** {
+ 453              		.loc 1 432 0
+ 454              		.cfi_startproc
+ 455              		@ args = 0, pretend = 0, frame = 8
+ 456              		@ frame_needed = 1, uses_anonymous_args = 0
+ 457              		@ link register save eliminated.
+ 458 0000 80B4     		push	{r7}
+ 459              		.cfi_def_cfa_offset 4
+ 460              		.cfi_offset 7, -4
+ 461 0002 83B0     		sub	sp, sp, #12
+ 462              		.cfi_def_cfa_offset 16
+ 463 0004 00AF     		add	r7, sp, #0
+ 464              		.cfi_def_cfa_register 7
+ 465 0006 7860     		str	r0, [r7, #4]
+ 433:Generated_Source\PSoC5/adjust_timer.c ****     #if(adjust_timer_UsingFixedFunction)
+ 434:Generated_Source\PSoC5/adjust_timer.c ****         uint16 period_temp = (uint16)period;
+ 435:Generated_Source\PSoC5/adjust_timer.c ****         CY_SET_REG16(adjust_timer_PERIOD_LSB_PTR, period_temp);
+ 436:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 437:Generated_Source\PSoC5/adjust_timer.c ****         CY_SET_REG32(adjust_timer_PERIOD_LSB_PTR, period);
+ 466              		.loc 1 437 0
+ 467 0008 034A     		ldr	r2, .L36
+ 468 000a 7B68     		ldr	r3, [r7, #4]
+ 469 000c 1360     		str	r3, [r2]
+ 438:Generated_Source\PSoC5/adjust_timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 439:Generated_Source\PSoC5/adjust_timer.c **** }
+ 470              		.loc 1 439 0
+ 471 000e 0C37     		adds	r7, r7, #12
+ 472              		.cfi_def_cfa_offset 4
+ 473 0010 BD46     		mov	sp, r7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 17
+
+
+ 474              		.cfi_def_cfa_register 13
+ 475              		@ sp needed
+ 476 0012 5DF8047B 		ldr	r7, [sp], #4
+ 477              		.cfi_restore 7
+ 478              		.cfi_def_cfa_offset 0
+ 479 0016 7047     		bx	lr
+ 480              	.L37:
+ 481              		.align	2
+ 482              	.L36:
+ 483 0018 24650040 		.word	1073767716
+ 484              		.cfi_endproc
+ 485              	.LFE10:
+ 486              		.size	adjust_timer_WritePeriod, .-adjust_timer_WritePeriod
+ 487              		.section	.text.adjust_timer_ReadCapture,"ax",%progbits
+ 488              		.align	2
+ 489              		.global	adjust_timer_ReadCapture
+ 490              		.thumb
+ 491              		.thumb_func
+ 492              		.type	adjust_timer_ReadCapture, %function
+ 493              	adjust_timer_ReadCapture:
+ 494              	.LFB11:
+ 440:Generated_Source\PSoC5/adjust_timer.c **** 
+ 441:Generated_Source\PSoC5/adjust_timer.c **** 
+ 442:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 443:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadCapture
+ 444:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 445:Generated_Source\PSoC5/adjust_timer.c **** *
+ 446:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 447:Generated_Source\PSoC5/adjust_timer.c **** *  This function returns the last value captured.
+ 448:Generated_Source\PSoC5/adjust_timer.c **** *
+ 449:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 450:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 451:Generated_Source\PSoC5/adjust_timer.c **** *
+ 452:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 453:Generated_Source\PSoC5/adjust_timer.c **** *  Present Capture value.
+ 454:Generated_Source\PSoC5/adjust_timer.c **** *
+ 455:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 456:Generated_Source\PSoC5/adjust_timer.c **** uint32 adjust_timer_ReadCapture(void) 
+ 457:Generated_Source\PSoC5/adjust_timer.c **** {
+ 495              		.loc 1 457 0
+ 496              		.cfi_startproc
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 1, uses_anonymous_args = 0
+ 499              		@ link register save eliminated.
+ 500 0000 80B4     		push	{r7}
+ 501              		.cfi_def_cfa_offset 4
+ 502              		.cfi_offset 7, -4
+ 503 0002 00AF     		add	r7, sp, #0
+ 504              		.cfi_def_cfa_register 7
+ 458:Generated_Source\PSoC5/adjust_timer.c ****    #if(adjust_timer_UsingFixedFunction)
+ 459:Generated_Source\PSoC5/adjust_timer.c ****        return ((uint32)CY_GET_REG16(adjust_timer_CAPTURE_LSB_PTR));
+ 460:Generated_Source\PSoC5/adjust_timer.c ****    #else
+ 461:Generated_Source\PSoC5/adjust_timer.c ****        return (CY_GET_REG32(adjust_timer_CAPTURE_LSB_PTR));
+ 505              		.loc 1 461 0
+ 506 0004 034B     		ldr	r3, .L40
+ 507 0006 1B68     		ldr	r3, [r3]
+ 462:Generated_Source\PSoC5/adjust_timer.c ****    #endif /* (adjust_timer_UsingFixedFunction) */
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 18
+
+
+ 463:Generated_Source\PSoC5/adjust_timer.c **** }
+ 508              		.loc 1 463 0
+ 509 0008 1846     		mov	r0, r3
+ 510 000a BD46     		mov	sp, r7
+ 511              		.cfi_def_cfa_register 13
+ 512              		@ sp needed
+ 513 000c 5DF8047B 		ldr	r7, [sp], #4
+ 514              		.cfi_restore 7
+ 515              		.cfi_def_cfa_offset 0
+ 516 0010 7047     		bx	lr
+ 517              	.L41:
+ 518 0012 00BF     		.align	2
+ 519              	.L40:
+ 520 0014 44650040 		.word	1073767748
+ 521              		.cfi_endproc
+ 522              	.LFE11:
+ 523              		.size	adjust_timer_ReadCapture, .-adjust_timer_ReadCapture
+ 524              		.section	.text.adjust_timer_WriteCounter,"ax",%progbits
+ 525              		.align	2
+ 526              		.global	adjust_timer_WriteCounter
+ 527              		.thumb
+ 528              		.thumb_func
+ 529              		.type	adjust_timer_WriteCounter, %function
+ 530              	adjust_timer_WriteCounter:
+ 531              	.LFB12:
+ 464:Generated_Source\PSoC5/adjust_timer.c **** 
+ 465:Generated_Source\PSoC5/adjust_timer.c **** 
+ 466:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_WriteCounter
+ 468:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 469:Generated_Source\PSoC5/adjust_timer.c **** *
+ 470:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 471:Generated_Source\PSoC5/adjust_timer.c **** *  This funtion is used to set the counter to a specific value
+ 472:Generated_Source\PSoC5/adjust_timer.c **** *
+ 473:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 474:Generated_Source\PSoC5/adjust_timer.c **** *  counter:  New counter value.
+ 475:Generated_Source\PSoC5/adjust_timer.c **** *
+ 476:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 477:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 478:Generated_Source\PSoC5/adjust_timer.c **** *
+ 479:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 480:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_WriteCounter(uint32 counter) 
+ 481:Generated_Source\PSoC5/adjust_timer.c **** {
+ 532              		.loc 1 481 0
+ 533              		.cfi_startproc
+ 534              		@ args = 0, pretend = 0, frame = 8
+ 535              		@ frame_needed = 1, uses_anonymous_args = 0
+ 536              		@ link register save eliminated.
+ 537 0000 80B4     		push	{r7}
+ 538              		.cfi_def_cfa_offset 4
+ 539              		.cfi_offset 7, -4
+ 540 0002 83B0     		sub	sp, sp, #12
+ 541              		.cfi_def_cfa_offset 16
+ 542 0004 00AF     		add	r7, sp, #0
+ 543              		.cfi_def_cfa_register 7
+ 544 0006 7860     		str	r0, [r7, #4]
+ 482:Generated_Source\PSoC5/adjust_timer.c ****    #if(adjust_timer_UsingFixedFunction)
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 19
+
+
+ 483:Generated_Source\PSoC5/adjust_timer.c ****         /* This functionality is removed until a FixedFunction HW update to
+ 484:Generated_Source\PSoC5/adjust_timer.c ****          * allow this register to be written
+ 485:Generated_Source\PSoC5/adjust_timer.c ****          */
+ 486:Generated_Source\PSoC5/adjust_timer.c ****         CY_SET_REG16(adjust_timer_COUNTER_LSB_PTR, (uint16)counter);
+ 487:Generated_Source\PSoC5/adjust_timer.c ****         
+ 488:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 489:Generated_Source\PSoC5/adjust_timer.c ****         CY_SET_REG32(adjust_timer_COUNTER_LSB_PTR, counter);
+ 545              		.loc 1 489 0
+ 546 0008 034A     		ldr	r2, .L43
+ 547 000a 7B68     		ldr	r3, [r7, #4]
+ 548 000c 1360     		str	r3, [r2]
+ 490:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 491:Generated_Source\PSoC5/adjust_timer.c **** }
+ 549              		.loc 1 491 0
+ 550 000e 0C37     		adds	r7, r7, #12
+ 551              		.cfi_def_cfa_offset 4
+ 552 0010 BD46     		mov	sp, r7
+ 553              		.cfi_def_cfa_register 13
+ 554              		@ sp needed
+ 555 0012 5DF8047B 		ldr	r7, [sp], #4
+ 556              		.cfi_restore 7
+ 557              		.cfi_def_cfa_offset 0
+ 558 0016 7047     		bx	lr
+ 559              	.L44:
+ 560              		.align	2
+ 561              	.L43:
+ 562 0018 04650040 		.word	1073767684
+ 563              		.cfi_endproc
+ 564              	.LFE12:
+ 565              		.size	adjust_timer_WriteCounter, .-adjust_timer_WriteCounter
+ 566              		.section	.text.adjust_timer_ReadCounter,"ax",%progbits
+ 567              		.align	2
+ 568              		.global	adjust_timer_ReadCounter
+ 569              		.thumb
+ 570              		.thumb_func
+ 571              		.type	adjust_timer_ReadCounter, %function
+ 572              	adjust_timer_ReadCounter:
+ 573              	.LFB13:
+ 492:Generated_Source\PSoC5/adjust_timer.c **** 
+ 493:Generated_Source\PSoC5/adjust_timer.c **** 
+ 494:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 495:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadCounter
+ 496:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 497:Generated_Source\PSoC5/adjust_timer.c **** *
+ 498:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 499:Generated_Source\PSoC5/adjust_timer.c **** *  This function returns the current counter value.
+ 500:Generated_Source\PSoC5/adjust_timer.c **** *
+ 501:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 502:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 503:Generated_Source\PSoC5/adjust_timer.c **** *
+ 504:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 505:Generated_Source\PSoC5/adjust_timer.c **** *  Present compare value.
+ 506:Generated_Source\PSoC5/adjust_timer.c **** *
+ 507:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 508:Generated_Source\PSoC5/adjust_timer.c **** uint32 adjust_timer_ReadCounter(void) 
+ 509:Generated_Source\PSoC5/adjust_timer.c **** {
+ 574              		.loc 1 509 0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 20
+
+
+ 575              		.cfi_startproc
+ 576              		@ args = 0, pretend = 0, frame = 0
+ 577              		@ frame_needed = 1, uses_anonymous_args = 0
+ 578              		@ link register save eliminated.
+ 579 0000 80B4     		push	{r7}
+ 580              		.cfi_def_cfa_offset 4
+ 581              		.cfi_offset 7, -4
+ 582 0002 00AF     		add	r7, sp, #0
+ 583              		.cfi_def_cfa_register 7
+ 510:Generated_Source\PSoC5/adjust_timer.c ****     /* Force capture by reading Accumulator */
+ 511:Generated_Source\PSoC5/adjust_timer.c ****     /* Must first do a software capture to be able to read the counter */
+ 512:Generated_Source\PSoC5/adjust_timer.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513:Generated_Source\PSoC5/adjust_timer.c ****     #if(adjust_timer_UsingFixedFunction)
+ 514:Generated_Source\PSoC5/adjust_timer.c ****         (void)CY_GET_REG16(adjust_timer_COUNTER_LSB_PTR);
+ 515:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 516:Generated_Source\PSoC5/adjust_timer.c ****         (void)CY_GET_REG8(adjust_timer_COUNTER_LSB_PTR_8BIT);
+ 584              		.loc 1 516 0
+ 585 0004 044B     		ldr	r3, .L47
+ 586 0006 1B78     		ldrb	r3, [r3]
+ 517:Generated_Source\PSoC5/adjust_timer.c ****     #endif/* (adjust_timer_UsingFixedFunction) */
+ 518:Generated_Source\PSoC5/adjust_timer.c **** 
+ 519:Generated_Source\PSoC5/adjust_timer.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520:Generated_Source\PSoC5/adjust_timer.c ****     #if(adjust_timer_UsingFixedFunction)
+ 521:Generated_Source\PSoC5/adjust_timer.c ****         return ((uint32)CY_GET_REG16(adjust_timer_CAPTURE_LSB_PTR));
+ 522:Generated_Source\PSoC5/adjust_timer.c ****     #else
+ 523:Generated_Source\PSoC5/adjust_timer.c ****         return (CY_GET_REG32(adjust_timer_CAPTURE_LSB_PTR));
+ 587              		.loc 1 523 0
+ 588 0008 044B     		ldr	r3, .L47+4
+ 589 000a 1B68     		ldr	r3, [r3]
+ 524:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (adjust_timer_UsingFixedFunction) */
+ 525:Generated_Source\PSoC5/adjust_timer.c **** }
+ 590              		.loc 1 525 0
+ 591 000c 1846     		mov	r0, r3
+ 592 000e BD46     		mov	sp, r7
+ 593              		.cfi_def_cfa_register 13
+ 594              		@ sp needed
+ 595 0010 5DF8047B 		ldr	r7, [sp], #4
+ 596              		.cfi_restore 7
+ 597              		.cfi_def_cfa_offset 0
+ 598 0014 7047     		bx	lr
+ 599              	.L48:
+ 600 0016 00BF     		.align	2
+ 601              	.L47:
+ 602 0018 04650040 		.word	1073767684
+ 603 001c 44650040 		.word	1073767748
+ 604              		.cfi_endproc
+ 605              	.LFE13:
+ 606              		.size	adjust_timer_ReadCounter, .-adjust_timer_ReadCounter
+ 607              		.section	.text.adjust_timer_ClearFIFO,"ax",%progbits
+ 608              		.align	2
+ 609              		.global	adjust_timer_ClearFIFO
+ 610              		.thumb
+ 611              		.thumb_func
+ 612              		.type	adjust_timer_ClearFIFO, %function
+ 613              	adjust_timer_ClearFIFO:
+ 614              	.LFB14:
+ 526:Generated_Source\PSoC5/adjust_timer.c **** 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 21
+
+
+ 527:Generated_Source\PSoC5/adjust_timer.c **** 
+ 528:Generated_Source\PSoC5/adjust_timer.c **** #if(!adjust_timer_UsingFixedFunction) /* UDB Specific Functions */
+ 529:Generated_Source\PSoC5/adjust_timer.c **** 
+ 530:Generated_Source\PSoC5/adjust_timer.c ****     
+ 531:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 532:Generated_Source\PSoC5/adjust_timer.c ****  * The functions below this point are only available using the UDB
+ 533:Generated_Source\PSoC5/adjust_timer.c ****  * implementation.  If a feature is selected, then the API is enabled.
+ 534:Generated_Source\PSoC5/adjust_timer.c ****  ******************************************************************************/
+ 535:Generated_Source\PSoC5/adjust_timer.c **** 
+ 536:Generated_Source\PSoC5/adjust_timer.c **** 
+ 537:Generated_Source\PSoC5/adjust_timer.c **** #if (adjust_timer_SoftwareCaptureMode)
+ 538:Generated_Source\PSoC5/adjust_timer.c **** 
+ 539:Generated_Source\PSoC5/adjust_timer.c **** 
+ 540:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 541:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SetCaptureMode
+ 542:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 543:Generated_Source\PSoC5/adjust_timer.c **** *
+ 544:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 545:Generated_Source\PSoC5/adjust_timer.c **** *  This function sets the capture mode to either rising or falling edge.
+ 546:Generated_Source\PSoC5/adjust_timer.c **** *
+ 547:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 548:Generated_Source\PSoC5/adjust_timer.c **** *  captureMode: This parameter sets the capture mode of the UDB capture feature
+ 549:Generated_Source\PSoC5/adjust_timer.c **** *  The parameter values are defined using the
+ 550:Generated_Source\PSoC5/adjust_timer.c **** *  #define adjust_timer__B_TIMER__CM_NONE 0
+ 551:Generated_Source\PSoC5/adjust_timer.c **** #define adjust_timer__B_TIMER__CM_RISINGEDGE 1
+ 552:Generated_Source\PSoC5/adjust_timer.c **** #define adjust_timer__B_TIMER__CM_FALLINGEDGE 2
+ 553:Generated_Source\PSoC5/adjust_timer.c **** #define adjust_timer__B_TIMER__CM_EITHEREDGE 3
+ 554:Generated_Source\PSoC5/adjust_timer.c **** #define adjust_timer__B_TIMER__CM_SOFTWARE 4
+ 555:Generated_Source\PSoC5/adjust_timer.c ****  identifiers
+ 556:Generated_Source\PSoC5/adjust_timer.c **** *  The following are the possible values of the parameter
+ 557:Generated_Source\PSoC5/adjust_timer.c **** *  adjust_timer__B_TIMER__CM_NONE        - Set Capture mode to None
+ 558:Generated_Source\PSoC5/adjust_timer.c **** *  adjust_timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+ 559:Generated_Source\PSoC5/adjust_timer.c **** *  adjust_timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+ 560:Generated_Source\PSoC5/adjust_timer.c **** *  adjust_timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+ 561:Generated_Source\PSoC5/adjust_timer.c **** *
+ 562:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 563:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 564:Generated_Source\PSoC5/adjust_timer.c **** *
+ 565:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 566:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SetCaptureMode(uint8 captureMode) 
+ 567:Generated_Source\PSoC5/adjust_timer.c **** {
+ 568:Generated_Source\PSoC5/adjust_timer.c ****     /* This must only set to two bits of the control register associated */
+ 569:Generated_Source\PSoC5/adjust_timer.c ****     captureMode = ((uint8)((uint8)captureMode << adjust_timer_CTRL_CAP_MODE_SHIFT));
+ 570:Generated_Source\PSoC5/adjust_timer.c ****     captureMode &= (adjust_timer_CTRL_CAP_MODE_MASK);
+ 571:Generated_Source\PSoC5/adjust_timer.c **** 
+ 572:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)
+ 573:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear the Current Setting */
+ 574:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_CAP_MODE_MASK));
+ 575:Generated_Source\PSoC5/adjust_timer.c **** 
+ 576:Generated_Source\PSoC5/adjust_timer.c ****         /* Write The New Setting */
+ 577:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= captureMode;
+ 578:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
+ 579:Generated_Source\PSoC5/adjust_timer.c **** }
+ 580:Generated_Source\PSoC5/adjust_timer.c **** #endif /* Remove API if Capture Mode is not Software Controlled */
+ 581:Generated_Source\PSoC5/adjust_timer.c **** 
+ 582:Generated_Source\PSoC5/adjust_timer.c **** 
+ 583:Generated_Source\PSoC5/adjust_timer.c **** #if (adjust_timer_SoftwareTriggerMode)
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 22
+
+
+ 584:Generated_Source\PSoC5/adjust_timer.c **** 
+ 585:Generated_Source\PSoC5/adjust_timer.c **** 
+ 586:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 587:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SetTriggerMode
+ 588:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 589:Generated_Source\PSoC5/adjust_timer.c **** *
+ 590:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 591:Generated_Source\PSoC5/adjust_timer.c **** *  This function sets the trigger input mode
+ 592:Generated_Source\PSoC5/adjust_timer.c **** *
+ 593:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 594:Generated_Source\PSoC5/adjust_timer.c **** *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+ 595:Generated_Source\PSoC5/adjust_timer.c ****     #define adjust_timer__B_TIMER__TM_NONE 0x00u
+ 596:Generated_Source\PSoC5/adjust_timer.c ****     #define adjust_timer__B_TIMER__TM_RISINGEDGE 0x04u
+ 597:Generated_Source\PSoC5/adjust_timer.c ****     #define adjust_timer__B_TIMER__TM_FALLINGEDGE 0x08u
+ 598:Generated_Source\PSoC5/adjust_timer.c ****     #define adjust_timer__B_TIMER__TM_EITHEREDGE 0x0Cu
+ 599:Generated_Source\PSoC5/adjust_timer.c ****     #define adjust_timer__B_TIMER__TM_SOFTWARE 0x10u
+ 600:Generated_Source\PSoC5/adjust_timer.c **** *
+ 601:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 602:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 603:Generated_Source\PSoC5/adjust_timer.c **** *
+ 604:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 605:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SetTriggerMode(uint8 triggerMode) 
+ 606:Generated_Source\PSoC5/adjust_timer.c **** {
+ 607:Generated_Source\PSoC5/adjust_timer.c ****     /* This must only set to two bits of the control register associated */
+ 608:Generated_Source\PSoC5/adjust_timer.c ****     triggerMode &= adjust_timer_CTRL_TRIG_MODE_MASK;
+ 609:Generated_Source\PSoC5/adjust_timer.c **** 
+ 610:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is remov
+ 611:Generated_Source\PSoC5/adjust_timer.c ****     
+ 612:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear the Current Setting */
+ 613:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_TRIG_MODE_MASK));
+ 614:Generated_Source\PSoC5/adjust_timer.c **** 
+ 615:Generated_Source\PSoC5/adjust_timer.c ****         /* Write The New Setting */
+ 616:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= (triggerMode | adjust_timer__B_TIMER__TM_SOFTWARE);
+ 617:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Remove code section if control register is not used */
+ 618:Generated_Source\PSoC5/adjust_timer.c **** }
+ 619:Generated_Source\PSoC5/adjust_timer.c **** #endif /* Remove API if Trigger Mode is not Software Controlled */
+ 620:Generated_Source\PSoC5/adjust_timer.c **** 
+ 621:Generated_Source\PSoC5/adjust_timer.c **** #if (adjust_timer_EnableTriggerMode)
+ 622:Generated_Source\PSoC5/adjust_timer.c **** 
+ 623:Generated_Source\PSoC5/adjust_timer.c **** 
+ 624:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 625:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_EnableTrigger
+ 626:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 627:Generated_Source\PSoC5/adjust_timer.c **** *
+ 628:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 629:Generated_Source\PSoC5/adjust_timer.c **** *  Sets the control bit enabling Hardware Trigger mode
+ 630:Generated_Source\PSoC5/adjust_timer.c **** *
+ 631:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 632:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 633:Generated_Source\PSoC5/adjust_timer.c **** *
+ 634:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 635:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 636:Generated_Source\PSoC5/adjust_timer.c **** *
+ 637:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 638:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_EnableTrigger(void) 
+ 639:Generated_Source\PSoC5/adjust_timer.c **** {
+ 640:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is remov
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 23
+
+
+ 641:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= adjust_timer_CTRL_TRIG_EN;
+ 642:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Remove code section if control register is not used */
+ 643:Generated_Source\PSoC5/adjust_timer.c **** }
+ 644:Generated_Source\PSoC5/adjust_timer.c **** 
+ 645:Generated_Source\PSoC5/adjust_timer.c **** 
+ 646:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 647:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_DisableTrigger
+ 648:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 649:Generated_Source\PSoC5/adjust_timer.c **** *
+ 650:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 651:Generated_Source\PSoC5/adjust_timer.c **** *  Clears the control bit enabling Hardware Trigger mode
+ 652:Generated_Source\PSoC5/adjust_timer.c **** *
+ 653:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 654:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 655:Generated_Source\PSoC5/adjust_timer.c **** *
+ 656:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 657:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 658:Generated_Source\PSoC5/adjust_timer.c **** *
+ 659:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 660:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_DisableTrigger(void) 
+ 661:Generated_Source\PSoC5/adjust_timer.c **** {
+ 662:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is remo
+ 663:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_TRIG_EN));
+ 664:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Remove code section if control register is not used */
+ 665:Generated_Source\PSoC5/adjust_timer.c **** }
+ 666:Generated_Source\PSoC5/adjust_timer.c **** #endif /* Remove API is Trigger Mode is set to None */
+ 667:Generated_Source\PSoC5/adjust_timer.c **** 
+ 668:Generated_Source\PSoC5/adjust_timer.c **** #if(adjust_timer_InterruptOnCaptureCount)
+ 669:Generated_Source\PSoC5/adjust_timer.c **** 
+ 670:Generated_Source\PSoC5/adjust_timer.c **** 
+ 671:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 672:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SetInterruptCount
+ 673:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 674:Generated_Source\PSoC5/adjust_timer.c **** *
+ 675:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 676:Generated_Source\PSoC5/adjust_timer.c **** *  This function sets the capture count before an interrupt is triggered.
+ 677:Generated_Source\PSoC5/adjust_timer.c **** *
+ 678:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 679:Generated_Source\PSoC5/adjust_timer.c **** *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+ 680:Generated_Source\PSoC5/adjust_timer.c **** *                   an interrupt will occur each time a capture occurs.
+ 681:Generated_Source\PSoC5/adjust_timer.c **** *                   A value of 1 to 3 will cause the interrupt
+ 682:Generated_Source\PSoC5/adjust_timer.c **** *                   to delay by the same number of captures.
+ 683:Generated_Source\PSoC5/adjust_timer.c **** *
+ 684:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 685:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 686:Generated_Source\PSoC5/adjust_timer.c **** *
+ 687:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 688:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SetInterruptCount(uint8 interruptCount) 
+ 689:Generated_Source\PSoC5/adjust_timer.c **** {
+ 690:Generated_Source\PSoC5/adjust_timer.c ****     /* This must only set to two bits of the control register associated */
+ 691:Generated_Source\PSoC5/adjust_timer.c ****     interruptCount &= adjust_timer_CTRL_INTCNT_MASK;
+ 692:Generated_Source\PSoC5/adjust_timer.c **** 
+ 693:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)
+ 694:Generated_Source\PSoC5/adjust_timer.c ****         /* Clear the Current Setting */
+ 695:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_INTCNT_MASK));
+ 696:Generated_Source\PSoC5/adjust_timer.c ****         /* Write The New Setting */
+ 697:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= interruptCount;
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 24
+
+
+ 698:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
+ 699:Generated_Source\PSoC5/adjust_timer.c **** }
+ 700:Generated_Source\PSoC5/adjust_timer.c **** #endif /* adjust_timer_InterruptOnCaptureCount */
+ 701:Generated_Source\PSoC5/adjust_timer.c **** 
+ 702:Generated_Source\PSoC5/adjust_timer.c **** 
+ 703:Generated_Source\PSoC5/adjust_timer.c **** #if (adjust_timer_UsingHWCaptureCounter)
+ 704:Generated_Source\PSoC5/adjust_timer.c **** 
+ 705:Generated_Source\PSoC5/adjust_timer.c **** 
+ 706:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 707:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_SetCaptureCount
+ 708:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 709:Generated_Source\PSoC5/adjust_timer.c **** *
+ 710:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 711:Generated_Source\PSoC5/adjust_timer.c **** *  This function sets the capture count
+ 712:Generated_Source\PSoC5/adjust_timer.c **** *
+ 713:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 714:Generated_Source\PSoC5/adjust_timer.c **** *  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+ 715:Generated_Source\PSoC5/adjust_timer.c **** *                to 127 will cause the interrupt to delay by the same number of
+ 716:Generated_Source\PSoC5/adjust_timer.c **** *                captures.
+ 717:Generated_Source\PSoC5/adjust_timer.c **** *
+ 718:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 719:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 720:Generated_Source\PSoC5/adjust_timer.c **** *
+ 721:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 722:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_SetCaptureCount(uint8 captureCount) 
+ 723:Generated_Source\PSoC5/adjust_timer.c **** {
+ 724:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_CAP_COUNT = captureCount;
+ 725:Generated_Source\PSoC5/adjust_timer.c **** }
+ 726:Generated_Source\PSoC5/adjust_timer.c **** 
+ 727:Generated_Source\PSoC5/adjust_timer.c **** 
+ 728:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 729:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ReadCaptureCount
+ 730:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 731:Generated_Source\PSoC5/adjust_timer.c **** *
+ 732:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 733:Generated_Source\PSoC5/adjust_timer.c **** *  This function reads the capture count setting
+ 734:Generated_Source\PSoC5/adjust_timer.c **** *
+ 735:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 736:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 737:Generated_Source\PSoC5/adjust_timer.c **** *
+ 738:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 739:Generated_Source\PSoC5/adjust_timer.c **** *  Returns the Capture Count Setting
+ 740:Generated_Source\PSoC5/adjust_timer.c **** *
+ 741:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 742:Generated_Source\PSoC5/adjust_timer.c **** uint8 adjust_timer_ReadCaptureCount(void) 
+ 743:Generated_Source\PSoC5/adjust_timer.c **** {
+ 744:Generated_Source\PSoC5/adjust_timer.c ****     return ((uint8)adjust_timer_CAP_COUNT);
+ 745:Generated_Source\PSoC5/adjust_timer.c **** }
+ 746:Generated_Source\PSoC5/adjust_timer.c **** #endif /* adjust_timer_UsingHWCaptureCounter */
+ 747:Generated_Source\PSoC5/adjust_timer.c **** 
+ 748:Generated_Source\PSoC5/adjust_timer.c **** 
+ 749:Generated_Source\PSoC5/adjust_timer.c **** /*******************************************************************************
+ 750:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_ClearFIFO
+ 751:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
+ 752:Generated_Source\PSoC5/adjust_timer.c **** *
+ 753:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
+ 754:Generated_Source\PSoC5/adjust_timer.c **** *  This function clears all capture data from the capture FIFO
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 25
+
+
+ 755:Generated_Source\PSoC5/adjust_timer.c **** *
+ 756:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
+ 757:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 758:Generated_Source\PSoC5/adjust_timer.c **** *
+ 759:Generated_Source\PSoC5/adjust_timer.c **** * Return:
+ 760:Generated_Source\PSoC5/adjust_timer.c **** *  void
+ 761:Generated_Source\PSoC5/adjust_timer.c **** *
+ 762:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
+ 763:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_ClearFIFO(void) 
+ 764:Generated_Source\PSoC5/adjust_timer.c **** {
+ 615              		.loc 1 764 0
+ 616              		.cfi_startproc
+ 617              		@ args = 0, pretend = 0, frame = 0
+ 618              		@ frame_needed = 1, uses_anonymous_args = 0
+ 619 0000 80B5     		push	{r7, lr}
+ 620              		.cfi_def_cfa_offset 8
+ 621              		.cfi_offset 7, -8
+ 622              		.cfi_offset 14, -4
+ 623 0002 00AF     		add	r7, sp, #0
+ 624              		.cfi_def_cfa_register 7
+ 765:Generated_Source\PSoC5/adjust_timer.c ****     while(0u != (adjust_timer_ReadStatusRegister() & adjust_timer_STATUS_FIFONEMP))
+ 625              		.loc 1 765 0
+ 626 0004 01E0     		b	.L50
+ 627              	.L51:
+ 766:Generated_Source\PSoC5/adjust_timer.c ****     {
+ 767:Generated_Source\PSoC5/adjust_timer.c ****         (void)adjust_timer_ReadCapture();
+ 628              		.loc 1 767 0
+ 629 0006 FFF7FEFF 		bl	adjust_timer_ReadCapture
+ 630              	.L50:
+ 765:Generated_Source\PSoC5/adjust_timer.c ****     while(0u != (adjust_timer_ReadStatusRegister() & adjust_timer_STATUS_FIFONEMP))
+ 631              		.loc 1 765 0
+ 632 000a FFF7FEFF 		bl	adjust_timer_ReadStatusRegister
+ 633 000e 0346     		mov	r3, r0
+ 634 0010 03F00803 		and	r3, r3, #8
+ 635 0014 002B     		cmp	r3, #0
+ 636 0016 F6D1     		bne	.L51
+ 768:Generated_Source\PSoC5/adjust_timer.c ****     }
+ 769:Generated_Source\PSoC5/adjust_timer.c **** }
+ 637              		.loc 1 769 0
+ 638 0018 80BD     		pop	{r7, pc}
+ 639              		.cfi_endproc
+ 640              	.LFE14:
+ 641              		.size	adjust_timer_ClearFIFO, .-adjust_timer_ClearFIFO
+ 642 001a 00BF     		.text
+ 643              	.Letext0:
+ 644              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 645              		.section	.debug_info,"",%progbits
+ 646              	.Ldebug_info0:
+ 647 0000 50020000 		.4byte	0x250
+ 648 0004 0400     		.2byte	0x4
+ 649 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 650 000a 04       		.byte	0x4
+ 651 000b 01       		.uleb128 0x1
+ 652 000c 20010000 		.4byte	.LASF36
+ 653 0010 01       		.byte	0x1
+ 654 0011 B5010000 		.4byte	.LASF37
+ 655 0015 78020000 		.4byte	.LASF38
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 26
+
+
+ 656 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 657 001d 00000000 		.4byte	0
+ 658 0021 00000000 		.4byte	.Ldebug_line0
+ 659 0025 02       		.uleb128 0x2
+ 660 0026 01       		.byte	0x1
+ 661 0027 06       		.byte	0x6
+ 662 0028 5E030000 		.4byte	.LASF0
+ 663 002c 02       		.uleb128 0x2
+ 664 002d 01       		.byte	0x1
+ 665 002e 08       		.byte	0x8
+ 666 002f ED000000 		.4byte	.LASF1
+ 667 0033 02       		.uleb128 0x2
+ 668 0034 02       		.byte	0x2
+ 669 0035 05       		.byte	0x5
+ 670 0036 25030000 		.4byte	.LASF2
+ 671 003a 02       		.uleb128 0x2
+ 672 003b 02       		.byte	0x2
+ 673 003c 07       		.byte	0x7
+ 674 003d 71000000 		.4byte	.LASF3
+ 675 0041 02       		.uleb128 0x2
+ 676 0042 04       		.byte	0x4
+ 677 0043 05       		.byte	0x5
+ 678 0044 2F030000 		.4byte	.LASF4
+ 679 0048 02       		.uleb128 0x2
+ 680 0049 04       		.byte	0x4
+ 681 004a 07       		.byte	0x7
+ 682 004b 00010000 		.4byte	.LASF5
+ 683 004f 02       		.uleb128 0x2
+ 684 0050 08       		.byte	0x8
+ 685 0051 05       		.byte	0x5
+ 686 0052 D4020000 		.4byte	.LASF6
+ 687 0056 02       		.uleb128 0x2
+ 688 0057 08       		.byte	0x8
+ 689 0058 07       		.byte	0x7
+ 690 0059 FB010000 		.4byte	.LASF7
+ 691 005d 03       		.uleb128 0x3
+ 692 005e 04       		.byte	0x4
+ 693 005f 05       		.byte	0x5
+ 694 0060 696E7400 		.ascii	"int\000"
+ 695 0064 02       		.uleb128 0x2
+ 696 0065 04       		.byte	0x4
+ 697 0066 07       		.byte	0x7
+ 698 0067 84000000 		.4byte	.LASF8
+ 699 006b 04       		.uleb128 0x4
+ 700 006c 12010000 		.4byte	.LASF9
+ 701 0070 02       		.byte	0x2
+ 702 0071 9201     		.2byte	0x192
+ 703 0073 2C000000 		.4byte	0x2c
+ 704 0077 04       		.uleb128 0x4
+ 705 0078 DB010000 		.4byte	.LASF10
+ 706 007c 02       		.byte	0x2
+ 707 007d 9401     		.2byte	0x194
+ 708 007f 48000000 		.4byte	0x48
+ 709 0083 02       		.uleb128 0x2
+ 710 0084 04       		.byte	0x4
+ 711 0085 04       		.byte	0x4
+ 712 0086 DF000000 		.4byte	.LASF11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 27
+
+
+ 713 008a 02       		.uleb128 0x2
+ 714 008b 08       		.byte	0x8
+ 715 008c 04       		.byte	0x4
+ 716 008d AE010000 		.4byte	.LASF12
+ 717 0091 02       		.uleb128 0x2
+ 718 0092 01       		.byte	0x1
+ 719 0093 08       		.byte	0x8
+ 720 0094 38030000 		.4byte	.LASF13
+ 721 0098 04       		.uleb128 0x4
+ 722 0099 FB000000 		.4byte	.LASF14
+ 723 009d 02       		.byte	0x2
+ 724 009e 3C02     		.2byte	0x23c
+ 725 00a0 A4000000 		.4byte	0xa4
+ 726 00a4 05       		.uleb128 0x5
+ 727 00a5 6B000000 		.4byte	0x6b
+ 728 00a9 04       		.uleb128 0x4
+ 729 00aa 00000000 		.4byte	.LASF15
+ 730 00ae 02       		.byte	0x2
+ 731 00af 3E02     		.2byte	0x23e
+ 732 00b1 B5000000 		.4byte	0xb5
+ 733 00b5 05       		.uleb128 0x5
+ 734 00b6 77000000 		.4byte	0x77
+ 735 00ba 02       		.uleb128 0x2
+ 736 00bb 04       		.byte	0x4
+ 737 00bc 07       		.byte	0x7
+ 738 00bd 6F020000 		.4byte	.LASF16
+ 739 00c1 06       		.uleb128 0x6
+ 740 00c2 91000000 		.4byte	.LASF20
+ 741 00c6 01       		.byte	0x1
+ 742 00c7 2B       		.byte	0x2b
+ 743 00c8 00000000 		.4byte	.LFB0
+ 744 00cc 4C000000 		.4byte	.LFE0-.LFB0
+ 745 00d0 01       		.uleb128 0x1
+ 746 00d1 9C       		.byte	0x9c
+ 747 00d2 E5000000 		.4byte	0xe5
+ 748 00d6 07       		.uleb128 0x7
+ 749 00d7 1F000000 		.4byte	.LASF39
+ 750 00db 01       		.byte	0x1
+ 751 00dc 2F       		.byte	0x2f
+ 752 00dd 6B000000 		.4byte	0x6b
+ 753 00e1 02       		.uleb128 0x2
+ 754 00e2 91       		.byte	0x91
+ 755 00e3 77       		.sleb128 -9
+ 756 00e4 00       		.byte	0
+ 757 00e5 08       		.uleb128 0x8
+ 758 00e6 42020000 		.4byte	.LASF17
+ 759 00ea 01       		.byte	0x1
+ 760 00eb B4       		.byte	0xb4
+ 761 00ec 00000000 		.4byte	.LFB1
+ 762 00f0 20000000 		.4byte	.LFE1-.LFB1
+ 763 00f4 01       		.uleb128 0x1
+ 764 00f5 9C       		.byte	0x9c
+ 765 00f6 09       		.uleb128 0x9
+ 766 00f7 6A030000 		.4byte	.LASF18
+ 767 00fb 01       		.byte	0x1
+ 768 00fc D7       		.byte	0xd7
+ 769 00fd 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 28
+
+
+ 770 0101 20000000 		.4byte	.LFE2-.LFB2
+ 771 0105 01       		.uleb128 0x1
+ 772 0106 9C       		.byte	0x9c
+ 773 0107 08       		.uleb128 0x8
+ 774 0108 30020000 		.4byte	.LASF19
+ 775 010c 01       		.byte	0x1
+ 776 010d F7       		.byte	0xf7
+ 777 010e 00000000 		.4byte	.LFB3
+ 778 0112 20000000 		.4byte	.LFE3-.LFB3
+ 779 0116 01       		.uleb128 0x1
+ 780 0117 9C       		.byte	0x9c
+ 781 0118 0A       		.uleb128 0xa
+ 782 0119 12020000 		.4byte	.LASF21
+ 783 011d 01       		.byte	0x1
+ 784 011e 1701     		.2byte	0x117
+ 785 0120 00000000 		.4byte	.LFB4
+ 786 0124 20000000 		.4byte	.LFE4-.LFB4
+ 787 0128 01       		.uleb128 0x1
+ 788 0129 9C       		.byte	0x9c
+ 789 012a 3E010000 		.4byte	0x13e
+ 790 012e 0B       		.uleb128 0xb
+ 791 012f E2020000 		.4byte	.LASF26
+ 792 0133 01       		.byte	0x1
+ 793 0134 1701     		.2byte	0x117
+ 794 0136 6B000000 		.4byte	0x6b
+ 795 013a 02       		.uleb128 0x2
+ 796 013b 91       		.byte	0x91
+ 797 013c 77       		.sleb128 -9
+ 798 013d 00       		.byte	0
+ 799 013e 0C       		.uleb128 0xc
+ 800 013f B7020000 		.4byte	.LASF22
+ 801 0143 01       		.byte	0x1
+ 802 0144 2E01     		.2byte	0x12e
+ 803 0146 00000000 		.4byte	.LFB5
+ 804 014a 14000000 		.4byte	.LFE5-.LFB5
+ 805 014e 01       		.uleb128 0x1
+ 806 014f 9C       		.byte	0x9c
+ 807 0150 0D       		.uleb128 0xd
+ 808 0151 F0020000 		.4byte	.LASF23
+ 809 0155 01       		.byte	0x1
+ 810 0156 4D01     		.2byte	0x14d
+ 811 0158 6B000000 		.4byte	0x6b
+ 812 015c 00000000 		.4byte	.LFB6
+ 813 0160 18000000 		.4byte	.LFE6-.LFB6
+ 814 0164 01       		.uleb128 0x1
+ 815 0165 9C       		.byte	0x9c
+ 816 0166 0D       		.uleb128 0xd
+ 817 0167 3D030000 		.4byte	.LASF24
+ 818 016b 01       		.byte	0x1
+ 819 016c 6401     		.2byte	0x164
+ 820 016e 6B000000 		.4byte	0x6b
+ 821 0172 00000000 		.4byte	.LFB7
+ 822 0176 18000000 		.4byte	.LFE7-.LFB7
+ 823 017a 01       		.uleb128 0x1
+ 824 017b 9C       		.byte	0x9c
+ 825 017c 0A       		.uleb128 0xa
+ 826 017d A3000000 		.4byte	.LASF25
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 29
+
+
+ 827 0181 01       		.byte	0x1
+ 828 0182 7B01     		.2byte	0x17b
+ 829 0184 00000000 		.4byte	.LFB8
+ 830 0188 20000000 		.4byte	.LFE8-.LFB8
+ 831 018c 01       		.uleb128 0x1
+ 832 018d 9C       		.byte	0x9c
+ 833 018e A2010000 		.4byte	0x1a2
+ 834 0192 0B       		.uleb128 0xb
+ 835 0193 18010000 		.4byte	.LASF27
+ 836 0197 01       		.byte	0x1
+ 837 0198 7B01     		.2byte	0x17b
+ 838 019a 6B000000 		.4byte	0x6b
+ 839 019e 02       		.uleb128 0x2
+ 840 019f 91       		.byte	0x91
+ 841 01a0 77       		.sleb128 -9
+ 842 01a1 00       		.byte	0
+ 843 01a2 0D       		.uleb128 0xd
+ 844 01a3 3B000000 		.4byte	.LASF28
+ 845 01a7 01       		.byte	0x1
+ 846 01a8 9501     		.2byte	0x195
+ 847 01aa 77000000 		.4byte	0x77
+ 848 01ae 00000000 		.4byte	.LFB9
+ 849 01b2 18000000 		.4byte	.LFE9-.LFB9
+ 850 01b6 01       		.uleb128 0x1
+ 851 01b7 9C       		.byte	0x9c
+ 852 01b8 0A       		.uleb128 0xa
+ 853 01b9 E2010000 		.4byte	.LASF29
+ 854 01bd 01       		.byte	0x1
+ 855 01be AF01     		.2byte	0x1af
+ 856 01c0 00000000 		.4byte	.LFB10
+ 857 01c4 1C000000 		.4byte	.LFE10-.LFB10
+ 858 01c8 01       		.uleb128 0x1
+ 859 01c9 9C       		.byte	0x9c
+ 860 01ca DE010000 		.4byte	0x1de
+ 861 01ce 0B       		.uleb128 0xb
+ 862 01cf 53000000 		.4byte	.LASF30
+ 863 01d3 01       		.byte	0x1
+ 864 01d4 AF01     		.2byte	0x1af
+ 865 01d6 77000000 		.4byte	0x77
+ 866 01da 02       		.uleb128 0x2
+ 867 01db 91       		.byte	0x91
+ 868 01dc 74       		.sleb128 -12
+ 869 01dd 00       		.byte	0
+ 870 01de 0D       		.uleb128 0xd
+ 871 01df 06000000 		.4byte	.LASF31
+ 872 01e3 01       		.byte	0x1
+ 873 01e4 C801     		.2byte	0x1c8
+ 874 01e6 77000000 		.4byte	0x77
+ 875 01ea 00000000 		.4byte	.LFB11
+ 876 01ee 18000000 		.4byte	.LFE11-.LFB11
+ 877 01f2 01       		.uleb128 0x1
+ 878 01f3 9C       		.byte	0x9c
+ 879 01f4 0A       		.uleb128 0xa
+ 880 01f5 C5000000 		.4byte	.LASF32
+ 881 01f9 01       		.byte	0x1
+ 882 01fa E001     		.2byte	0x1e0
+ 883 01fc 00000000 		.4byte	.LFB12
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 30
+
+
+ 884 0200 1C000000 		.4byte	.LFE12-.LFB12
+ 885 0204 01       		.uleb128 0x1
+ 886 0205 9C       		.byte	0x9c
+ 887 0206 1A020000 		.4byte	0x21a
+ 888 020a 0B       		.uleb128 0xb
+ 889 020b E5000000 		.4byte	.LASF33
+ 890 020f 01       		.byte	0x1
+ 891 0210 E001     		.2byte	0x1e0
+ 892 0212 77000000 		.4byte	0x77
+ 893 0216 02       		.uleb128 0x2
+ 894 0217 91       		.byte	0x91
+ 895 0218 74       		.sleb128 -12
+ 896 0219 00       		.byte	0
+ 897 021a 0D       		.uleb128 0xd
+ 898 021b 56020000 		.4byte	.LASF34
+ 899 021f 01       		.byte	0x1
+ 900 0220 FC01     		.2byte	0x1fc
+ 901 0222 77000000 		.4byte	0x77
+ 902 0226 00000000 		.4byte	.LFB13
+ 903 022a 20000000 		.4byte	.LFE13-.LFB13
+ 904 022e 01       		.uleb128 0x1
+ 905 022f 9C       		.byte	0x9c
+ 906 0230 0E       		.uleb128 0xe
+ 907 0231 5A000000 		.4byte	.LASF35
+ 908 0235 01       		.byte	0x1
+ 909 0236 FB02     		.2byte	0x2fb
+ 910 0238 00000000 		.4byte	.LFB14
+ 911 023c 1A000000 		.4byte	.LFE14-.LFB14
+ 912 0240 01       		.uleb128 0x1
+ 913 0241 9C       		.byte	0x9c
+ 914 0242 0F       		.uleb128 0xf
+ 915 0243 10030000 		.4byte	.LASF40
+ 916 0247 01       		.byte	0x1
+ 917 0248 1A       		.byte	0x1a
+ 918 0249 6B000000 		.4byte	0x6b
+ 919 024d 05       		.uleb128 0x5
+ 920 024e 03       		.byte	0x3
+ 921 024f 00000000 		.4byte	adjust_timer_initVar
+ 922 0253 00       		.byte	0
+ 923              		.section	.debug_abbrev,"",%progbits
+ 924              	.Ldebug_abbrev0:
+ 925 0000 01       		.uleb128 0x1
+ 926 0001 11       		.uleb128 0x11
+ 927 0002 01       		.byte	0x1
+ 928 0003 25       		.uleb128 0x25
+ 929 0004 0E       		.uleb128 0xe
+ 930 0005 13       		.uleb128 0x13
+ 931 0006 0B       		.uleb128 0xb
+ 932 0007 03       		.uleb128 0x3
+ 933 0008 0E       		.uleb128 0xe
+ 934 0009 1B       		.uleb128 0x1b
+ 935 000a 0E       		.uleb128 0xe
+ 936 000b 55       		.uleb128 0x55
+ 937 000c 17       		.uleb128 0x17
+ 938 000d 11       		.uleb128 0x11
+ 939 000e 01       		.uleb128 0x1
+ 940 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 31
+
+
+ 941 0010 17       		.uleb128 0x17
+ 942 0011 00       		.byte	0
+ 943 0012 00       		.byte	0
+ 944 0013 02       		.uleb128 0x2
+ 945 0014 24       		.uleb128 0x24
+ 946 0015 00       		.byte	0
+ 947 0016 0B       		.uleb128 0xb
+ 948 0017 0B       		.uleb128 0xb
+ 949 0018 3E       		.uleb128 0x3e
+ 950 0019 0B       		.uleb128 0xb
+ 951 001a 03       		.uleb128 0x3
+ 952 001b 0E       		.uleb128 0xe
+ 953 001c 00       		.byte	0
+ 954 001d 00       		.byte	0
+ 955 001e 03       		.uleb128 0x3
+ 956 001f 24       		.uleb128 0x24
+ 957 0020 00       		.byte	0
+ 958 0021 0B       		.uleb128 0xb
+ 959 0022 0B       		.uleb128 0xb
+ 960 0023 3E       		.uleb128 0x3e
+ 961 0024 0B       		.uleb128 0xb
+ 962 0025 03       		.uleb128 0x3
+ 963 0026 08       		.uleb128 0x8
+ 964 0027 00       		.byte	0
+ 965 0028 00       		.byte	0
+ 966 0029 04       		.uleb128 0x4
+ 967 002a 16       		.uleb128 0x16
+ 968 002b 00       		.byte	0
+ 969 002c 03       		.uleb128 0x3
+ 970 002d 0E       		.uleb128 0xe
+ 971 002e 3A       		.uleb128 0x3a
+ 972 002f 0B       		.uleb128 0xb
+ 973 0030 3B       		.uleb128 0x3b
+ 974 0031 05       		.uleb128 0x5
+ 975 0032 49       		.uleb128 0x49
+ 976 0033 13       		.uleb128 0x13
+ 977 0034 00       		.byte	0
+ 978 0035 00       		.byte	0
+ 979 0036 05       		.uleb128 0x5
+ 980 0037 35       		.uleb128 0x35
+ 981 0038 00       		.byte	0
+ 982 0039 49       		.uleb128 0x49
+ 983 003a 13       		.uleb128 0x13
+ 984 003b 00       		.byte	0
+ 985 003c 00       		.byte	0
+ 986 003d 06       		.uleb128 0x6
+ 987 003e 2E       		.uleb128 0x2e
+ 988 003f 01       		.byte	0x1
+ 989 0040 3F       		.uleb128 0x3f
+ 990 0041 19       		.uleb128 0x19
+ 991 0042 03       		.uleb128 0x3
+ 992 0043 0E       		.uleb128 0xe
+ 993 0044 3A       		.uleb128 0x3a
+ 994 0045 0B       		.uleb128 0xb
+ 995 0046 3B       		.uleb128 0x3b
+ 996 0047 0B       		.uleb128 0xb
+ 997 0048 27       		.uleb128 0x27
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 32
+
+
+ 998 0049 19       		.uleb128 0x19
+ 999 004a 11       		.uleb128 0x11
+ 1000 004b 01       		.uleb128 0x1
+ 1001 004c 12       		.uleb128 0x12
+ 1002 004d 06       		.uleb128 0x6
+ 1003 004e 40       		.uleb128 0x40
+ 1004 004f 18       		.uleb128 0x18
+ 1005 0050 9642     		.uleb128 0x2116
+ 1006 0052 19       		.uleb128 0x19
+ 1007 0053 01       		.uleb128 0x1
+ 1008 0054 13       		.uleb128 0x13
+ 1009 0055 00       		.byte	0
+ 1010 0056 00       		.byte	0
+ 1011 0057 07       		.uleb128 0x7
+ 1012 0058 34       		.uleb128 0x34
+ 1013 0059 00       		.byte	0
+ 1014 005a 03       		.uleb128 0x3
+ 1015 005b 0E       		.uleb128 0xe
+ 1016 005c 3A       		.uleb128 0x3a
+ 1017 005d 0B       		.uleb128 0xb
+ 1018 005e 3B       		.uleb128 0x3b
+ 1019 005f 0B       		.uleb128 0xb
+ 1020 0060 49       		.uleb128 0x49
+ 1021 0061 13       		.uleb128 0x13
+ 1022 0062 02       		.uleb128 0x2
+ 1023 0063 18       		.uleb128 0x18
+ 1024 0064 00       		.byte	0
+ 1025 0065 00       		.byte	0
+ 1026 0066 08       		.uleb128 0x8
+ 1027 0067 2E       		.uleb128 0x2e
+ 1028 0068 00       		.byte	0
+ 1029 0069 3F       		.uleb128 0x3f
+ 1030 006a 19       		.uleb128 0x19
+ 1031 006b 03       		.uleb128 0x3
+ 1032 006c 0E       		.uleb128 0xe
+ 1033 006d 3A       		.uleb128 0x3a
+ 1034 006e 0B       		.uleb128 0xb
+ 1035 006f 3B       		.uleb128 0x3b
+ 1036 0070 0B       		.uleb128 0xb
+ 1037 0071 27       		.uleb128 0x27
+ 1038 0072 19       		.uleb128 0x19
+ 1039 0073 11       		.uleb128 0x11
+ 1040 0074 01       		.uleb128 0x1
+ 1041 0075 12       		.uleb128 0x12
+ 1042 0076 06       		.uleb128 0x6
+ 1043 0077 40       		.uleb128 0x40
+ 1044 0078 18       		.uleb128 0x18
+ 1045 0079 9742     		.uleb128 0x2117
+ 1046 007b 19       		.uleb128 0x19
+ 1047 007c 00       		.byte	0
+ 1048 007d 00       		.byte	0
+ 1049 007e 09       		.uleb128 0x9
+ 1050 007f 2E       		.uleb128 0x2e
+ 1051 0080 00       		.byte	0
+ 1052 0081 3F       		.uleb128 0x3f
+ 1053 0082 19       		.uleb128 0x19
+ 1054 0083 03       		.uleb128 0x3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 33
+
+
+ 1055 0084 0E       		.uleb128 0xe
+ 1056 0085 3A       		.uleb128 0x3a
+ 1057 0086 0B       		.uleb128 0xb
+ 1058 0087 3B       		.uleb128 0x3b
+ 1059 0088 0B       		.uleb128 0xb
+ 1060 0089 27       		.uleb128 0x27
+ 1061 008a 19       		.uleb128 0x19
+ 1062 008b 11       		.uleb128 0x11
+ 1063 008c 01       		.uleb128 0x1
+ 1064 008d 12       		.uleb128 0x12
+ 1065 008e 06       		.uleb128 0x6
+ 1066 008f 40       		.uleb128 0x40
+ 1067 0090 18       		.uleb128 0x18
+ 1068 0091 9642     		.uleb128 0x2116
+ 1069 0093 19       		.uleb128 0x19
+ 1070 0094 00       		.byte	0
+ 1071 0095 00       		.byte	0
+ 1072 0096 0A       		.uleb128 0xa
+ 1073 0097 2E       		.uleb128 0x2e
+ 1074 0098 01       		.byte	0x1
+ 1075 0099 3F       		.uleb128 0x3f
+ 1076 009a 19       		.uleb128 0x19
+ 1077 009b 03       		.uleb128 0x3
+ 1078 009c 0E       		.uleb128 0xe
+ 1079 009d 3A       		.uleb128 0x3a
+ 1080 009e 0B       		.uleb128 0xb
+ 1081 009f 3B       		.uleb128 0x3b
+ 1082 00a0 05       		.uleb128 0x5
+ 1083 00a1 27       		.uleb128 0x27
+ 1084 00a2 19       		.uleb128 0x19
+ 1085 00a3 11       		.uleb128 0x11
+ 1086 00a4 01       		.uleb128 0x1
+ 1087 00a5 12       		.uleb128 0x12
+ 1088 00a6 06       		.uleb128 0x6
+ 1089 00a7 40       		.uleb128 0x40
+ 1090 00a8 18       		.uleb128 0x18
+ 1091 00a9 9742     		.uleb128 0x2117
+ 1092 00ab 19       		.uleb128 0x19
+ 1093 00ac 01       		.uleb128 0x1
+ 1094 00ad 13       		.uleb128 0x13
+ 1095 00ae 00       		.byte	0
+ 1096 00af 00       		.byte	0
+ 1097 00b0 0B       		.uleb128 0xb
+ 1098 00b1 05       		.uleb128 0x5
+ 1099 00b2 00       		.byte	0
+ 1100 00b3 03       		.uleb128 0x3
+ 1101 00b4 0E       		.uleb128 0xe
+ 1102 00b5 3A       		.uleb128 0x3a
+ 1103 00b6 0B       		.uleb128 0xb
+ 1104 00b7 3B       		.uleb128 0x3b
+ 1105 00b8 05       		.uleb128 0x5
+ 1106 00b9 49       		.uleb128 0x49
+ 1107 00ba 13       		.uleb128 0x13
+ 1108 00bb 02       		.uleb128 0x2
+ 1109 00bc 18       		.uleb128 0x18
+ 1110 00bd 00       		.byte	0
+ 1111 00be 00       		.byte	0
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 34
+
+
+ 1112 00bf 0C       		.uleb128 0xc
+ 1113 00c0 2E       		.uleb128 0x2e
+ 1114 00c1 00       		.byte	0
+ 1115 00c2 3F       		.uleb128 0x3f
+ 1116 00c3 19       		.uleb128 0x19
+ 1117 00c4 03       		.uleb128 0x3
+ 1118 00c5 0E       		.uleb128 0xe
+ 1119 00c6 3A       		.uleb128 0x3a
+ 1120 00c7 0B       		.uleb128 0xb
+ 1121 00c8 3B       		.uleb128 0x3b
+ 1122 00c9 05       		.uleb128 0x5
+ 1123 00ca 27       		.uleb128 0x27
+ 1124 00cb 19       		.uleb128 0x19
+ 1125 00cc 11       		.uleb128 0x11
+ 1126 00cd 01       		.uleb128 0x1
+ 1127 00ce 12       		.uleb128 0x12
+ 1128 00cf 06       		.uleb128 0x6
+ 1129 00d0 40       		.uleb128 0x40
+ 1130 00d1 18       		.uleb128 0x18
+ 1131 00d2 9742     		.uleb128 0x2117
+ 1132 00d4 19       		.uleb128 0x19
+ 1133 00d5 00       		.byte	0
+ 1134 00d6 00       		.byte	0
+ 1135 00d7 0D       		.uleb128 0xd
+ 1136 00d8 2E       		.uleb128 0x2e
+ 1137 00d9 00       		.byte	0
+ 1138 00da 3F       		.uleb128 0x3f
+ 1139 00db 19       		.uleb128 0x19
+ 1140 00dc 03       		.uleb128 0x3
+ 1141 00dd 0E       		.uleb128 0xe
+ 1142 00de 3A       		.uleb128 0x3a
+ 1143 00df 0B       		.uleb128 0xb
+ 1144 00e0 3B       		.uleb128 0x3b
+ 1145 00e1 05       		.uleb128 0x5
+ 1146 00e2 27       		.uleb128 0x27
+ 1147 00e3 19       		.uleb128 0x19
+ 1148 00e4 49       		.uleb128 0x49
+ 1149 00e5 13       		.uleb128 0x13
+ 1150 00e6 11       		.uleb128 0x11
+ 1151 00e7 01       		.uleb128 0x1
+ 1152 00e8 12       		.uleb128 0x12
+ 1153 00e9 06       		.uleb128 0x6
+ 1154 00ea 40       		.uleb128 0x40
+ 1155 00eb 18       		.uleb128 0x18
+ 1156 00ec 9742     		.uleb128 0x2117
+ 1157 00ee 19       		.uleb128 0x19
+ 1158 00ef 00       		.byte	0
+ 1159 00f0 00       		.byte	0
+ 1160 00f1 0E       		.uleb128 0xe
+ 1161 00f2 2E       		.uleb128 0x2e
+ 1162 00f3 00       		.byte	0
+ 1163 00f4 3F       		.uleb128 0x3f
+ 1164 00f5 19       		.uleb128 0x19
+ 1165 00f6 03       		.uleb128 0x3
+ 1166 00f7 0E       		.uleb128 0xe
+ 1167 00f8 3A       		.uleb128 0x3a
+ 1168 00f9 0B       		.uleb128 0xb
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 35
+
+
+ 1169 00fa 3B       		.uleb128 0x3b
+ 1170 00fb 05       		.uleb128 0x5
+ 1171 00fc 27       		.uleb128 0x27
+ 1172 00fd 19       		.uleb128 0x19
+ 1173 00fe 11       		.uleb128 0x11
+ 1174 00ff 01       		.uleb128 0x1
+ 1175 0100 12       		.uleb128 0x12
+ 1176 0101 06       		.uleb128 0x6
+ 1177 0102 40       		.uleb128 0x40
+ 1178 0103 18       		.uleb128 0x18
+ 1179 0104 9642     		.uleb128 0x2116
+ 1180 0106 19       		.uleb128 0x19
+ 1181 0107 00       		.byte	0
+ 1182 0108 00       		.byte	0
+ 1183 0109 0F       		.uleb128 0xf
+ 1184 010a 34       		.uleb128 0x34
+ 1185 010b 00       		.byte	0
+ 1186 010c 03       		.uleb128 0x3
+ 1187 010d 0E       		.uleb128 0xe
+ 1188 010e 3A       		.uleb128 0x3a
+ 1189 010f 0B       		.uleb128 0xb
+ 1190 0110 3B       		.uleb128 0x3b
+ 1191 0111 0B       		.uleb128 0xb
+ 1192 0112 49       		.uleb128 0x49
+ 1193 0113 13       		.uleb128 0x13
+ 1194 0114 3F       		.uleb128 0x3f
+ 1195 0115 19       		.uleb128 0x19
+ 1196 0116 02       		.uleb128 0x2
+ 1197 0117 18       		.uleb128 0x18
+ 1198 0118 00       		.byte	0
+ 1199 0119 00       		.byte	0
+ 1200 011a 00       		.byte	0
+ 1201              		.section	.debug_aranges,"",%progbits
+ 1202 0000 8C000000 		.4byte	0x8c
+ 1203 0004 0200     		.2byte	0x2
+ 1204 0006 00000000 		.4byte	.Ldebug_info0
+ 1205 000a 04       		.byte	0x4
+ 1206 000b 00       		.byte	0
+ 1207 000c 0000     		.2byte	0
+ 1208 000e 0000     		.2byte	0
+ 1209 0010 00000000 		.4byte	.LFB0
+ 1210 0014 4C000000 		.4byte	.LFE0-.LFB0
+ 1211 0018 00000000 		.4byte	.LFB1
+ 1212 001c 20000000 		.4byte	.LFE1-.LFB1
+ 1213 0020 00000000 		.4byte	.LFB2
+ 1214 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1215 0028 00000000 		.4byte	.LFB3
+ 1216 002c 20000000 		.4byte	.LFE3-.LFB3
+ 1217 0030 00000000 		.4byte	.LFB4
+ 1218 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1219 0038 00000000 		.4byte	.LFB5
+ 1220 003c 14000000 		.4byte	.LFE5-.LFB5
+ 1221 0040 00000000 		.4byte	.LFB6
+ 1222 0044 18000000 		.4byte	.LFE6-.LFB6
+ 1223 0048 00000000 		.4byte	.LFB7
+ 1224 004c 18000000 		.4byte	.LFE7-.LFB7
+ 1225 0050 00000000 		.4byte	.LFB8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 36
+
+
+ 1226 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1227 0058 00000000 		.4byte	.LFB9
+ 1228 005c 18000000 		.4byte	.LFE9-.LFB9
+ 1229 0060 00000000 		.4byte	.LFB10
+ 1230 0064 1C000000 		.4byte	.LFE10-.LFB10
+ 1231 0068 00000000 		.4byte	.LFB11
+ 1232 006c 18000000 		.4byte	.LFE11-.LFB11
+ 1233 0070 00000000 		.4byte	.LFB12
+ 1234 0074 1C000000 		.4byte	.LFE12-.LFB12
+ 1235 0078 00000000 		.4byte	.LFB13
+ 1236 007c 20000000 		.4byte	.LFE13-.LFB13
+ 1237 0080 00000000 		.4byte	.LFB14
+ 1238 0084 1A000000 		.4byte	.LFE14-.LFB14
+ 1239 0088 00000000 		.4byte	0
+ 1240 008c 00000000 		.4byte	0
+ 1241              		.section	.debug_ranges,"",%progbits
+ 1242              	.Ldebug_ranges0:
+ 1243 0000 00000000 		.4byte	.LFB0
+ 1244 0004 4C000000 		.4byte	.LFE0
+ 1245 0008 00000000 		.4byte	.LFB1
+ 1246 000c 20000000 		.4byte	.LFE1
+ 1247 0010 00000000 		.4byte	.LFB2
+ 1248 0014 20000000 		.4byte	.LFE2
+ 1249 0018 00000000 		.4byte	.LFB3
+ 1250 001c 20000000 		.4byte	.LFE3
+ 1251 0020 00000000 		.4byte	.LFB4
+ 1252 0024 20000000 		.4byte	.LFE4
+ 1253 0028 00000000 		.4byte	.LFB5
+ 1254 002c 14000000 		.4byte	.LFE5
+ 1255 0030 00000000 		.4byte	.LFB6
+ 1256 0034 18000000 		.4byte	.LFE6
+ 1257 0038 00000000 		.4byte	.LFB7
+ 1258 003c 18000000 		.4byte	.LFE7
+ 1259 0040 00000000 		.4byte	.LFB8
+ 1260 0044 20000000 		.4byte	.LFE8
+ 1261 0048 00000000 		.4byte	.LFB9
+ 1262 004c 18000000 		.4byte	.LFE9
+ 1263 0050 00000000 		.4byte	.LFB10
+ 1264 0054 1C000000 		.4byte	.LFE10
+ 1265 0058 00000000 		.4byte	.LFB11
+ 1266 005c 18000000 		.4byte	.LFE11
+ 1267 0060 00000000 		.4byte	.LFB12
+ 1268 0064 1C000000 		.4byte	.LFE12
+ 1269 0068 00000000 		.4byte	.LFB13
+ 1270 006c 20000000 		.4byte	.LFE13
+ 1271 0070 00000000 		.4byte	.LFB14
+ 1272 0074 1A000000 		.4byte	.LFE14
+ 1273 0078 00000000 		.4byte	0
+ 1274 007c 00000000 		.4byte	0
+ 1275              		.section	.debug_line,"",%progbits
+ 1276              	.Ldebug_line0:
+ 1277 0000 71010000 		.section	.debug_str,"MS",%progbits,1
+ 1277      02004900 
+ 1277      00000201 
+ 1277      FB0E0D00 
+ 1277      01010101 
+ 1278              	.LASF15:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 37
+
+
+ 1279 0000 72656733 		.ascii	"reg32\000"
+ 1279      3200
+ 1280              	.LASF31:
+ 1281 0006 61646A75 		.ascii	"adjust_timer_ReadCapture\000"
+ 1281      73745F74 
+ 1281      696D6572 
+ 1281      5F526561 
+ 1281      64436170 
+ 1282              	.LASF39:
+ 1283 001f 61646A75 		.ascii	"adjust_timer_interruptState\000"
+ 1283      73745F74 
+ 1283      696D6572 
+ 1283      5F696E74 
+ 1283      65727275 
+ 1284              	.LASF28:
+ 1285 003b 61646A75 		.ascii	"adjust_timer_ReadPeriod\000"
+ 1285      73745F74 
+ 1285      696D6572 
+ 1285      5F526561 
+ 1285      64506572 
+ 1286              	.LASF30:
+ 1287 0053 70657269 		.ascii	"period\000"
+ 1287      6F6400
+ 1288              	.LASF35:
+ 1289 005a 61646A75 		.ascii	"adjust_timer_ClearFIFO\000"
+ 1289      73745F74 
+ 1289      696D6572 
+ 1289      5F436C65 
+ 1289      61724649 
+ 1290              	.LASF3:
+ 1291 0071 73686F72 		.ascii	"short unsigned int\000"
+ 1291      7420756E 
+ 1291      7369676E 
+ 1291      65642069 
+ 1291      6E7400
+ 1292              	.LASF8:
+ 1293 0084 756E7369 		.ascii	"unsigned int\000"
+ 1293      676E6564 
+ 1293      20696E74 
+ 1293      00
+ 1294              	.LASF20:
+ 1295 0091 61646A75 		.ascii	"adjust_timer_Init\000"
+ 1295      73745F74 
+ 1295      696D6572 
+ 1295      5F496E69 
+ 1295      7400
+ 1296              	.LASF25:
+ 1297 00a3 61646A75 		.ascii	"adjust_timer_WriteControlRegister\000"
+ 1297      73745F74 
+ 1297      696D6572 
+ 1297      5F577269 
+ 1297      7465436F 
+ 1298              	.LASF32:
+ 1299 00c5 61646A75 		.ascii	"adjust_timer_WriteCounter\000"
+ 1299      73745F74 
+ 1299      696D6572 
+ 1299      5F577269 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 38
+
+
+ 1299      7465436F 
+ 1300              	.LASF11:
+ 1301 00df 666C6F61 		.ascii	"float\000"
+ 1301      7400
+ 1302              	.LASF33:
+ 1303 00e5 636F756E 		.ascii	"counter\000"
+ 1303      74657200 
+ 1304              	.LASF1:
+ 1305 00ed 756E7369 		.ascii	"unsigned char\000"
+ 1305      676E6564 
+ 1305      20636861 
+ 1305      7200
+ 1306              	.LASF14:
+ 1307 00fb 72656738 		.ascii	"reg8\000"
+ 1307      00
+ 1308              	.LASF5:
+ 1309 0100 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1309      20756E73 
+ 1309      69676E65 
+ 1309      6420696E 
+ 1309      7400
+ 1310              	.LASF9:
+ 1311 0112 75696E74 		.ascii	"uint8\000"
+ 1311      3800
+ 1312              	.LASF27:
+ 1313 0118 636F6E74 		.ascii	"control\000"
+ 1313      726F6C00 
+ 1314              	.LASF36:
+ 1315 0120 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1315      4320342E 
+ 1315      392E3320 
+ 1315      32303135 
+ 1315      30333033 
+ 1316 0153 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1316      20726576 
+ 1316      6973696F 
+ 1316      6E203232 
+ 1316      31323230 
+ 1317 0186 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1317      66756E63 
+ 1317      74696F6E 
+ 1317      2D736563 
+ 1317      74696F6E 
+ 1318              	.LASF12:
+ 1319 01ae 646F7562 		.ascii	"double\000"
+ 1319      6C6500
+ 1320              	.LASF37:
+ 1321 01b5 47656E65 		.ascii	"Generated_Source\\PSoC5\\adjust_timer.c\000"
+ 1321      72617465 
+ 1321      645F536F 
+ 1321      75726365 
+ 1321      5C50536F 
+ 1322              	.LASF10:
+ 1323 01db 75696E74 		.ascii	"uint32\000"
+ 1323      333200
+ 1324              	.LASF29:
+ 1325 01e2 61646A75 		.ascii	"adjust_timer_WritePeriod\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 39
+
+
+ 1325      73745F74 
+ 1325      696D6572 
+ 1325      5F577269 
+ 1325      74655065 
+ 1326              	.LASF7:
+ 1327 01fb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1327      206C6F6E 
+ 1327      6720756E 
+ 1327      7369676E 
+ 1327      65642069 
+ 1328              	.LASF21:
+ 1329 0212 61646A75 		.ascii	"adjust_timer_SetInterruptMode\000"
+ 1329      73745F74 
+ 1329      696D6572 
+ 1329      5F536574 
+ 1329      496E7465 
+ 1330              	.LASF19:
+ 1331 0230 61646A75 		.ascii	"adjust_timer_Stop\000"
+ 1331      73745F74 
+ 1331      696D6572 
+ 1331      5F53746F 
+ 1331      7000
+ 1332              	.LASF17:
+ 1333 0242 61646A75 		.ascii	"adjust_timer_Enable\000"
+ 1333      73745F74 
+ 1333      696D6572 
+ 1333      5F456E61 
+ 1333      626C6500 
+ 1334              	.LASF34:
+ 1335 0256 61646A75 		.ascii	"adjust_timer_ReadCounter\000"
+ 1335      73745F74 
+ 1335      696D6572 
+ 1335      5F526561 
+ 1335      64436F75 
+ 1336              	.LASF16:
+ 1337 026f 73697A65 		.ascii	"sizetype\000"
+ 1337      74797065 
+ 1337      00
+ 1338              	.LASF38:
+ 1339 0278 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_wo"
+ 1339      73657273 
+ 1339      5C676469 
+ 1339      6E675C44 
+ 1339      6F63756D 
+ 1340 02a6 5F666169 		.ascii	"_failsafes.cydsn\000"
+ 1340      6C736166 
+ 1340      65732E63 
+ 1340      7964736E 
+ 1340      00
+ 1341              	.LASF22:
+ 1342 02b7 61646A75 		.ascii	"adjust_timer_SoftwareCapture\000"
+ 1342      73745F74 
+ 1342      696D6572 
+ 1342      5F536F66 
+ 1342      74776172 
+ 1343              	.LASF6:
+ 1344 02d4 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 40
+
+
+ 1344      206C6F6E 
+ 1344      6720696E 
+ 1344      7400
+ 1345              	.LASF26:
+ 1346 02e2 696E7465 		.ascii	"interruptMode\000"
+ 1346      72727570 
+ 1346      744D6F64 
+ 1346      6500
+ 1347              	.LASF23:
+ 1348 02f0 61646A75 		.ascii	"adjust_timer_ReadStatusRegister\000"
+ 1348      73745F74 
+ 1348      696D6572 
+ 1348      5F526561 
+ 1348      64537461 
+ 1349              	.LASF40:
+ 1350 0310 61646A75 		.ascii	"adjust_timer_initVar\000"
+ 1350      73745F74 
+ 1350      696D6572 
+ 1350      5F696E69 
+ 1350      74566172 
+ 1351              	.LASF2:
+ 1352 0325 73686F72 		.ascii	"short int\000"
+ 1352      7420696E 
+ 1352      7400
+ 1353              	.LASF4:
+ 1354 032f 6C6F6E67 		.ascii	"long int\000"
+ 1354      20696E74 
+ 1354      00
+ 1355              	.LASF13:
+ 1356 0338 63686172 		.ascii	"char\000"
+ 1356      00
+ 1357              	.LASF24:
+ 1358 033d 61646A75 		.ascii	"adjust_timer_ReadControlRegister\000"
+ 1358      73745F74 
+ 1358      696D6572 
+ 1358      5F526561 
+ 1358      64436F6E 
+ 1359              	.LASF0:
+ 1360 035e 7369676E 		.ascii	"signed char\000"
+ 1360      65642063 
+ 1360      68617200 
+ 1361              	.LASF18:
+ 1362 036a 61646A75 		.ascii	"adjust_timer_Start\000"
+ 1362      73745F74 
+ 1362      696D6572 
+ 1362      5F537461 
+ 1362      727400
+ 1363              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
