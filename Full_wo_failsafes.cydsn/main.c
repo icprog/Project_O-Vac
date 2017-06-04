@@ -409,13 +409,13 @@ int main()
                 break;
                 
                 case LANDED:
-                    if (countdown == 7) {                   // Delay for 7 seconds at bottom
+                    if (countdown == 7 && !pulse) {                   // Delay for 7 seconds at bottom
                         countdown = 0; 
                         pulse = 1;                          // next stage of the state
                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
                     } 
                     
-                    if (countdown == 5 && pulse){           // Second stage, turn off solenoid
+                    if ((countdown == 15) && pulse){           // Second stage, turn off solenoid
                         pulse++;
                         Solenoid_1_Write(0);                // turn off soleniod 1
                         countdown = 0;

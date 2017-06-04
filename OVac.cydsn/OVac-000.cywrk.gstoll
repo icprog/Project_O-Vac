@@ -13,9 +13,10 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="OVac-000\Full_wo_failsafes">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="OVac-000\Full_wo_failsafes\Source Files\main.c">
 <ExpandedNodeIds>
 <v>OVac-000</v>
+<v>OVac-000\Full_wo_failsafes</v>
 <v>OVac-000\Full_wo_failsafes\TopDesign</v>
 <v>OVac-000\Full_wo_failsafes\Full_wo_failsafes.cydwr</v>
 <v>OVac-000\Full_wo_failsafes\Source Files</v>
@@ -225,22 +226,7 @@
 <v>OVac-000\Pressure_Only\TopDesign</v>
 <v>OVac-000\Pressure_Only\Source Files</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>OVac-000</v>
-<v>OVac-000\Full_wo_failsafes</v>
-<v>OVac-000\OVac</v>
-<v>OVac-000\Pressure_Only</v>
-<v>OVac-000\Pressure_Only\TopDesign</v>
-<v>OVac-000\Pressure_Only\Pressure_Only.cydwr</v>
-<v>OVac-000\Pressure_Only\Header Files</v>
-<v>OVac-000\Pressure_Only\Source Files</v>
-<v>OVac-000\Pressure_Only\Source Files\functions.c</v>
-<v>OVac-000\Pressure_Only\Source Files\i2cFunctions.c</v>
-<v>OVac-000\Pressure_Only\Source Files\LiquidCrystal_I2C.c</v>
-<v>OVac-000\Pressure_Only\Source Files\main.c</v>
-<v>OVac-000\Pressure_Only\Source Files\mpu6050.c</v>
-<v>OVac-000\Pressure_Only\Generated_Source</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -249,14 +235,7 @@
 <v>OVac-000\OVac\TopDesign</v>
 <v>OVac-000\OVac\TopDesign\TopDesign.cysch</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>OVac-000</v>
-<v>OVac-000\Full_wo_failsafes</v>
-<v>OVac-000\OVac</v>
-<v>OVac-000\OVac\TopDesign</v>
-<v>OVac-000\OVac\TopDesign\TopDesign.cysch</v>
-<v>OVac-000\Pressure_Only</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -469,56 +448,7 @@
 <v>OVac-000\Pressure_Only\CortexM3\ARM_GCC_493\Debug\Pressure_Only.map</v>
 <v>OVac-000\Pressure_Only\Pressure_Only.gpdsc</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>OVac-000</v>
-<v>OVac-000\Full_wo_failsafes</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_AMux.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Ext_CP_Clk.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_in.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_INT.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_IRQ.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_theACLK.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\adjust_timer.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\adjust_timer_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\countdown.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Countdown_timer.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\Countdown_timer_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_Clock_1.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_ConfigMMC_SPI.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_miso0.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_MMC_HW_SPI.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_mosi0.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_sclk0.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_SPI0.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_SPI0_CS.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_SPI0_INT.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\emFile_SPI0_PM.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\functions.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_Master.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_Master_BOOT.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_Master_INT.lst</v>
-<v>OVac-000\Full_wo_failsafes\CortexM3\ARM_GCC_493\Debug\Listing Files\I2C_Master_MASTER.lst</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
 <TreeKeysV2>
@@ -585,32 +515,7 @@
 <v>OVac-000\Pressure_Only\UART_v2_50.pdf</v>
 <v>OVac-000\Pressure_Only\ZeroTerminal.pdf</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>OVac-000</v>
-<v>OVac-000\Full_wo_failsafes</v>
-<v>OVac-000\OVac</v>
-<v>OVac-000\OVac\PSoC 5LP Architecture TRM</v>
-<v>OVac-000\OVac\CY8C58LP Family Datasheet</v>
-<v>OVac-000\OVac\System Reference Guides</v>
-<v>OVac-000\OVac\System Reference Guides\cy_boot_v5_50</v>
-<v>OVac-000\OVac\ADC_DelSig_v3_20.pdf</v>
-<v>OVac-000\OVac\Comp_v2_0.pdf</v>
-<v>OVac-000\OVac\cy_clock_v2_20</v>
-<v>OVac-000\OVac\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>OVac-000\OVac\cy_isr_v1_70</v>
-<v>OVac-000\OVac\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
-<v>OVac-000\OVac\cy_pins_v2_20</v>
-<v>OVac-000\OVac\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>OVac-000\OVac\cy_vref_v1_70.pdf</v>
-<v>OVac-000\OVac\emFile_v1_20.pdf</v>
-<v>OVac-000\OVac\I2C_v3_50.pdf</v>
-<v>OVac-000\OVac\Timer_v2_70</v>
-<v>OVac-000\OVac\Timer_v2_70\Timer_v2_70.pdf</v>
-<v>OVac-000\OVac\UART_v2_50.pdf</v>
-<v>OVac-000\OVac\ZeroTerminal</v>
-<v>OVac-000\OVac\ZeroTerminal\ZeroTerminal.pdf</v>
-<v>OVac-000\Pressure_Only</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
@@ -630,6 +535,8 @@
 <name v=".\Generated_Source\PSoC5\I2C_Master_MASTER.c" />
 <name v=".\Generated_Source\PSoC5\emFile_SPI0.c" />
 <name v=".\Generated_Source\PSoC5\emFile_MMC_HW_SPI.c" />
+<name v="..\Full_wo_failsafes.cydsn\main.c" />
+<name v=".\Pressure_Only.cydsn\main.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -637,7 +544,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1439, 685" SelectedTabbedMdiWindow="2ee0e018-e06c-413a-b93f-e18ec7ef7979"><DocumentWindow Key="6f3a0860-c41a-424a-99a2-badeb2637bac" Guid="2ee0e018-e06c-413a-b93f-e18ec7ef7979" /><DocumentWindow Key="48ccc0af-4927-4357-ac46-44697e53022b" Guid="dcd45720-8c76-4d9e-bd26-d7ef11fb1d1c" /><DocumentWindow Key="5f885d53-7623-4342-ad51-6eeaad776836" Guid="e9111ef3-0c50-4764-be3d-3a1a08b3093c" /><DocumentWindow Key="e4755338-c2bd-4e0d-90fd-f43110fa5a54" Guid="bec8af6e-51f2-4843-bacc-e92c3cfc49e7" /><DocumentWindow Key="eae9ee0f-0630-49b6-8c7d-be2e56947545" Guid="d0a40795-9e17-47d3-bcab-5c2f00e5e028" /><DocumentWindow Key="87adfe9e-a27b-453a-8813-cf3bcfcaab8d" Guid="a6a6d40d-9769-41d5-aedf-c4f0f58ca402" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fa158715-dac6-4eab-8c94-528f9dda02b6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1654, 685" SelectedTabbedMdiWindow="08cc4cbb-f2fc-492a-bdc2-4fffcb61a93a"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="fa158715-dac6-4eab-8c94-528f9dda02b6" /><DocumentWindow Key="252637b8-a562-4b39-9879-d010ae8344c4" Guid="c493717c-8c32-4e46-9a29-8495f4fafcd9" /><DocumentWindow Key="8e1f6be5-fd6c-4e47-9783-c0a7b6d364e1" Guid="437f8de2-2e40-454e-a421-69cbfe3345cc" /><DocumentWindow Key="b98dee2d-407b-49f4-a28f-a68a00df5608" Guid="0f6ec59b-9ba3-4eba-992d-548eeeb0ac75" /><DocumentWindow Key="2434c3cb-1744-4892-867c-e4384e5a97b8" Guid="8fac972c-93d7-4249-82de-ae08dfa4a6d2" /><DocumentWindow Key="75692d3e-1295-470b-a94c-955ef1fe17e3" Guid="6885b459-575a-4009-af5e-48034769a4f1" /><DocumentWindow Key="c2bfda1f-90e9-490e-a14a-236fb930f239" Guid="308ec43e-4d56-4856-bd53-78b92baf10fe" /><DocumentWindow Key="f76186ac-29c9-4ca0-9cb2-14b5c13a6594" Guid="f43d2152-8c61-42b1-8d15-73ed088dfe38" /><DocumentWindow Key="2470a893-0dc7-4911-9c32-47c7fdc2ea6e" Guid="08cc4cbb-f2fc-492a-bdc2-4fffcb61a93a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
