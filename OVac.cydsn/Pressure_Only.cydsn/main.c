@@ -52,6 +52,9 @@ int main(void)
     char tempbuf[70] = {};
     int tens = 0, ones = 0;                     // digit place variables for message len of bluetooth messages
     int16_t gyroX = 0, gyroY = 0;
+    int16_t az = 0;
+    long sum = 0;
+    int average = 0;
     
     I2C_Master_Start(); 
     ADC_Start();
@@ -74,8 +77,8 @@ int main(void)
                               "*\n"
                               "NEXT RUN START\n";
     
-    //MPU6050_init();
-    //MPU6050_initialize();
+    MPU6050_init();
+    MPU6050_initialize();
     clear();
     LCD_print("Ready");
     float xavg = 0, yavg = 0, zavg = 0, xsum = 0, ysum = 0, zsum = 0;
@@ -122,7 +125,7 @@ int main(void)
 //            press_id++;
 //            collect_flag = 0;
 //        }
-        
+        az = MPU6050_getAccelerationZ();
         if(ADC_IsEndConversion(ADC_RETURN_STATUS))
         {
             if(collect_flag == 1){
@@ -131,21 +134,24 @@ int main(void)
             voltage = output * (3.32 / 65536);
             
                 if (press_id < MA_WINDOW){
+                    sum += az;
                     pressure_sum += voltage;     
                 }
                 else if(press_id == MA_WINDOW){
                     pressure_sum += voltage;
+                    sum += az;
+                    average = sum/MA_WINDOW;
                     pressure_avg = pressure_sum/MA_WINDOW;                            // compute baseline average
                 }
                 else{
                     pressure_avg = ComputeMA(pressure_avg, MA_WINDOW, voltage);
+                    average = ComputeMA(average, MA_WINDOW, az);
                     num = pressure_avg;
                     temp = pressure_avg - num;
                     decimals = temp * 10000;
                     char sdbuf[60] = {};
 
-                        sprintf(sdbuf, "(%ld)pressure: %d.%04d, %d\n", press_id, \
-                                            num, decimals, (int16)output); // log pressure data
+                        sprintf(sdbuf, "%d.%04d, %d, %d\n",num, decimals, (int16)output, average); // log pressure data
                         FS_Write(fsfile, sdbuf, strlen(sdbuf)); 
                 }
                 collect_flag = 0;

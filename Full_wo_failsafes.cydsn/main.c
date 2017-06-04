@@ -245,7 +245,7 @@ int main()
                     decimals = temp * 10000;
                     char sdbuf[60] = {};
                     #ifdef SD
-                        sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); // log pressure data
+                        sprintf(sdbuf, "%d.%04d, %d, %d\n", num, decimals, (int16)output, average); // log pressure data
                         FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
                     #endif 
                 }
@@ -253,6 +253,9 @@ int main()
                 press_id++;
             }
         }
+        
+       
+        
         
     /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Once full message has
      * has arrived, process it. */
@@ -280,6 +283,22 @@ int main()
         az = MPU6050_getAccelerationZ();
 
         int t = 1;
+        
+        
+         if(collect_flag == 1){              // Check accelerometer and gyro data
+                    if (id < MA_WINDOW){    
+                        sum += az;  
+                    }
+                    else if(id == MA_WINDOW){
+                        sum += az;
+                        average = sum/MA_WINDOW;                          
+                    }
+                    else{
+                        average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
+                    }
+                    id++;
+                    
+        }
         /* State Machine */
         switch (STATE){
     
@@ -349,18 +368,9 @@ int main()
                 break;
                 
             case DESCENDING:
-                if(collect_flag == 1){              // Check accelerometer and gyro data
-                    if (id < MA_WINDOW){    
-                        sum += az;  
-                    }
-                    else if(id == MA_WINDOW){
-                        sum += az;
-                        sum = sum/MA_WINDOW;                          
-                    }
-                    else{
-                        average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
-                    }
-                    
+                
+
+         if(collect_flag == 1){              // Check accelerometer and gyro data
                     if(average > BOT_THRESHOLD){                        
                         STATE = LANDED;                                     //Switch to LANDED state 
                         #ifdef LCD
@@ -375,13 +385,10 @@ int main()
                             FS_Write(fsfile, vacuumbuf, VACUUM_LEN);
                         #endif
                         
-                        id=0;                                                   //reset sample counter
-                        data_time = 0;
-                        sum = 0;
-                        average = 0; 
+                        
                         countdown = 0;
                     }
-                    id++;
+                    
                     
                     /* if max time allowed for descent has been reached, resurface */
                     if(data_time >= descent_time ){                         // variable descent time
@@ -396,8 +403,8 @@ int main()
                         sum = 0;                                            //reset sum 
                         average = 0;
                     }
-                    
                     collect_flag = 0;
+                    
                 }
                 break;
                 

@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 29 2016 09:00:55
 
-#File Generated:     May 21 2017 19:23:52
+#File Generated:     Jun 3 2017 21:55:37
 
 #Purpose:            
 
@@ -14,7 +14,7 @@
 
 #***************************************************************************
 
-Executing : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\bin/sjplacer.exe --proj-name Pressure_Harbor_test --netlist-vh2 Pressure_Harbor_test_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/arch/p35_udb4x6.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/dsiconn.cydata --pins-file pins_68-QFN.xml --lib-file Pressure_Harbor_test_p.lib --sdc-file Pressure_Harbor_test.sdc --io-pcf Pressure_Harbor_test.pci --outdir .
+Executing : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\bin/sjplacer.exe --proj-name Pressure_Only --netlist-vh2 Pressure_Only_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/arch/p35_udb4x6.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/psoc5/psoc5lp/dsiconn.cydata --pins-file pins_68-QFN.xml --lib-file Pressure_Only_p.lib --sdc-file Pressure_Only.sdc --io-pcf Pressure_Only.pci --outdir .
 
 		Softjin Techologies Placer, Version 1.1
 
@@ -22,18 +22,18 @@ Build Date : Apr 29 2016	08:58:44
 
 D2004: Option and Settings Summary
 =============================================================
-Netlist vh2 file          - Pressure_Harbor_test_p.vh2
+Netlist vh2 file          - Pressure_Only_p.vh2
 Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/arch/p35_udb4x6.ark
 Package                   - 
 Defparam file             - 
-SDC file                  - Pressure_Harbor_test.sdc
+SDC file                  - Pressure_Only.sdc
 Output directory          - .
-Timing library            - Pressure_Harbor_test_p.lib
-IO Placement file         - Pressure_Harbor_test.pci
+Timing library            - Pressure_Only_p.lib
+IO Placement file         - Pressure_Only.pci
 
 D2050: Starting reading inputs for placer
 =============================================================
-D2065: Reading netlist file : "Pressure_Harbor_test_p.vh2"
+D2065: Reading netlist file : "Pressure_Only_p.vh2"
 D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\dev/arch/p35_udb4x6.ark"
 D2051: Reading of inputs for placer completed successfully
 
@@ -126,7 +126,7 @@ Clock: emFile_Clock_1       | Frequency:  52.5 MHz | Target:  24.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.6 (sec)
+D2088: Phase 7, elapsed time : 0.5 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	16
@@ -182,5 +182,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.4 sec.
+I2076: Total run-time: 1.2 sec.
 

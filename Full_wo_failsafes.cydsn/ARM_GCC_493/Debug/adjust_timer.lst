@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
   23:Generated_Source\PSoC5/adjust_timer.c **** 
   24:Generated_Source\PSoC5/adjust_timer.c **** #include "adjust_timer.h"
   25:Generated_Source\PSoC5/adjust_timer.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 2
 
 
   26:Generated_Source\PSoC5/adjust_timer.c **** uint8 adjust_timer_initVar = 0u;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
   68:Generated_Source\PSoC5/adjust_timer.c **** 
   69:Generated_Source\PSoC5/adjust_timer.c ****         #if (adjust_timer_RunModeUsed == 2)
   70:Generated_Source\PSoC5/adjust_timer.c ****             #if (CY_PSOC5A)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 3
 
 
   71:Generated_Source\PSoC5/adjust_timer.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
   50 000e FFF7FEFF 		bl	adjust_timer_WriteCounter
  120:Generated_Source\PSoC5/adjust_timer.c **** 
  121:Generated_Source\PSoC5/adjust_timer.c ****     #if (adjust_timer_UsingHWCaptureCounter)/* Capture counter is enabled */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 4
 
 
  122:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CAPTURE_COUNT_CTRL |= adjust_timer_CNTR_ENABLE;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
   67              		.loc 1 159 0
   68 0032 FFF7FEFF 		bl	adjust_timer_ClearFIFO
  160:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* Configure additional features of UDB implementation */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 5
 
 
  161:Generated_Source\PSoC5/adjust_timer.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  102              		.cfi_offset 7, -4
  103 0002 00AF     		add	r7, sp, #0
  104              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 6
 
 
  182:Generated_Source\PSoC5/adjust_timer.c ****     /* Globally Enable the Fixed Function Block chosen */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  205:Generated_Source\PSoC5/adjust_timer.c **** *  void
  206:Generated_Source\PSoC5/adjust_timer.c **** *
  207:Generated_Source\PSoC5/adjust_timer.c **** * Return:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 7
 
 
  208:Generated_Source\PSoC5/adjust_timer.c **** *  void
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  171              		.global	adjust_timer_Stop
  172              		.thumb
  173              		.thumb_func
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 8
 
 
  174              		.type	adjust_timer_Stop, %function
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  195              		.loc 1 259 0
  196 0014 BD46     		mov	sp, r7
  197              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 9
 
 
  198              		@ sp needed
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  231 0008 FB71     		strb	r3, [r7, #7]
  281:Generated_Source\PSoC5/adjust_timer.c ****     adjust_timer_STATUS_MASK = interruptMode;
  232              		.loc 1 281 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 10
 
 
  233 000a 044A     		ldr	r2, .L15
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  265              		@ link register save eliminated.
  266 0000 80B4     		push	{r7}
  267              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 11
 
 
  268              		.cfi_offset 7, -4
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  329:Generated_Source\PSoC5/adjust_timer.c **** * Side Effects:
  330:Generated_Source\PSoC5/adjust_timer.c **** *  Status register bits may be clear on read.
  331:Generated_Source\PSoC5/adjust_timer.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 12
 
 
  332:Generated_Source\PSoC5/adjust_timer.c **** *******************************************************************************/
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  348:Generated_Source\PSoC5/adjust_timer.c **** *
  349:Generated_Source\PSoC5/adjust_timer.c **** * Parameters:
  350:Generated_Source\PSoC5/adjust_timer.c **** *  void
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 13
 
 
  351:Generated_Source\PSoC5/adjust_timer.c **** *
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  367:Generated_Source\PSoC5/adjust_timer.c **** * Function Name: adjust_timer_WriteControlRegister
  368:Generated_Source\PSoC5/adjust_timer.c **** ********************************************************************************
  369:Generated_Source\PSoC5/adjust_timer.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 14
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 14
 
 
  370:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  410              		.global	adjust_timer_ReadPeriod
  411              		.thumb
  412              		.thumb_func
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 15
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 15
 
 
  413              		.type	adjust_timer_ReadPeriod, %function
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  441 0014 24650040 		.word	1073767716
  442              		.cfi_endproc
  443              	.LFE9:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 16
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 16
 
 
  444              		.size	adjust_timer_ReadPeriod, .-adjust_timer_ReadPeriod
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  471 000e 0C37     		adds	r7, r7, #12
  472              		.cfi_def_cfa_offset 4
  473 0010 BD46     		mov	sp, r7
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 17
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 17
 
 
  474              		.cfi_def_cfa_register 13
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  506 0004 034B     		ldr	r3, .L40
  507 0006 1B68     		ldr	r3, [r3]
  462:Generated_Source\PSoC5/adjust_timer.c ****    #endif /* (adjust_timer_UsingFixedFunction) */
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 18
 
 
  463:Generated_Source\PSoC5/adjust_timer.c **** }
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  543              		.cfi_def_cfa_register 7
  544 0006 7860     		str	r0, [r7, #4]
  482:Generated_Source\PSoC5/adjust_timer.c ****    #if(adjust_timer_UsingFixedFunction)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 19
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 19
 
 
  483:Generated_Source\PSoC5/adjust_timer.c ****         /* This functionality is removed until a FixedFunction HW update to
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  508:Generated_Source\PSoC5/adjust_timer.c **** uint32 adjust_timer_ReadCounter(void) 
  509:Generated_Source\PSoC5/adjust_timer.c **** {
  574              		.loc 1 509 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 20
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 20
 
 
  575              		.cfi_startproc
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  613              	adjust_timer_ClearFIFO:
  614              	.LFB14:
  526:Generated_Source\PSoC5/adjust_timer.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 21
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 21
 
 
  527:Generated_Source\PSoC5/adjust_timer.c **** 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  581:Generated_Source\PSoC5/adjust_timer.c **** 
  582:Generated_Source\PSoC5/adjust_timer.c **** 
  583:Generated_Source\PSoC5/adjust_timer.c **** #if (adjust_timer_SoftwareTriggerMode)
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 22
 
 
  584:Generated_Source\PSoC5/adjust_timer.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  638:Generated_Source\PSoC5/adjust_timer.c **** void adjust_timer_EnableTrigger(void) 
  639:Generated_Source\PSoC5/adjust_timer.c **** {
  640:Generated_Source\PSoC5/adjust_timer.c ****     #if (!adjust_timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is remov
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 23
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 23
 
 
  641:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= adjust_timer_CTRL_TRIG_EN;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  695:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL &= ((uint8)(~adjust_timer_CTRL_INTCNT_MASK));
  696:Generated_Source\PSoC5/adjust_timer.c ****         /* Write The New Setting */
  697:Generated_Source\PSoC5/adjust_timer.c ****         adjust_timer_CONTROL |= interruptCount;
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 24
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 24
 
 
  698:Generated_Source\PSoC5/adjust_timer.c ****     #endif /* (!adjust_timer_UDB_CONTROL_REG_REMOVED) */
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  752:Generated_Source\PSoC5/adjust_timer.c **** *
  753:Generated_Source\PSoC5/adjust_timer.c **** * Summary:
  754:Generated_Source\PSoC5/adjust_timer.c **** *  This function clears all capture data from the capture FIFO
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 25
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 25
 
 
  755:Generated_Source\PSoC5/adjust_timer.c **** *
@@ -1496,9 +1496,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  651 000b 01       		.uleb128 0x1
  652 000c 20010000 		.4byte	.LASF36
  653 0010 01       		.byte	0x1
- 654 0011 B5010000 		.4byte	.LASF37
- 655 0015 78020000 		.4byte	.LASF38
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 26
+ 654 0011 F3010000 		.4byte	.LASF37
+ 655 0015 B5010000 		.4byte	.LASF38
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 26
 
 
  656 0019 00000000 		.4byte	.Ldebug_ranges0+0
@@ -1507,7 +1507,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  659 0025 02       		.uleb128 0x2
  660 0026 01       		.byte	0x1
  661 0027 06       		.byte	0x6
- 662 0028 5E030000 		.4byte	.LASF0
+ 662 0028 5D030000 		.4byte	.LASF0
  663 002c 02       		.uleb128 0x2
  664 002d 01       		.byte	0x1
  665 002e 08       		.byte	0x8
@@ -1515,7 +1515,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  667 0033 02       		.uleb128 0x2
  668 0034 02       		.byte	0x2
  669 0035 05       		.byte	0x5
- 670 0036 25030000 		.4byte	.LASF2
+ 670 0036 24030000 		.4byte	.LASF2
  671 003a 02       		.uleb128 0x2
  672 003b 02       		.byte	0x2
  673 003c 07       		.byte	0x7
@@ -1523,7 +1523,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  675 0041 02       		.uleb128 0x2
  676 0042 04       		.byte	0x4
  677 0043 05       		.byte	0x5
- 678 0044 2F030000 		.4byte	.LASF4
+ 678 0044 2E030000 		.4byte	.LASF4
  679 0048 02       		.uleb128 0x2
  680 0049 04       		.byte	0x4
  681 004a 07       		.byte	0x7
@@ -1531,11 +1531,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  683 004f 02       		.uleb128 0x2
  684 0050 08       		.byte	0x8
  685 0051 05       		.byte	0x5
- 686 0052 D4020000 		.4byte	.LASF6
+ 686 0052 D3020000 		.4byte	.LASF6
  687 0056 02       		.uleb128 0x2
  688 0057 08       		.byte	0x8
  689 0058 07       		.byte	0x7
- 690 0059 FB010000 		.4byte	.LASF7
+ 690 0059 39020000 		.4byte	.LASF7
  691 005d 03       		.uleb128 0x3
  692 005e 04       		.byte	0x4
  693 005f 05       		.byte	0x5
@@ -1550,7 +1550,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  702 0071 9201     		.2byte	0x192
  703 0073 2C000000 		.4byte	0x2c
  704 0077 04       		.uleb128 0x4
- 705 0078 DB010000 		.4byte	.LASF10
+ 705 0078 19020000 		.4byte	.LASF10
  706 007c 02       		.byte	0x2
  707 007d 9401     		.2byte	0x194
  708 007f 48000000 		.4byte	0x48
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  710 0084 04       		.byte	0x4
  711 0085 04       		.byte	0x4
  712 0086 DF000000 		.4byte	.LASF11
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 27
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 27
 
 
  713 008a 02       		.uleb128 0x2
@@ -1568,7 +1568,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  717 0091 02       		.uleb128 0x2
  718 0092 01       		.byte	0x1
  719 0093 08       		.byte	0x8
- 720 0094 38030000 		.4byte	.LASF13
+ 720 0094 37030000 		.4byte	.LASF13
  721 0098 04       		.uleb128 0x4
  722 0099 FB000000 		.4byte	.LASF14
  723 009d 02       		.byte	0x2
@@ -1586,7 +1586,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  735 00ba 02       		.uleb128 0x2
  736 00bb 04       		.byte	0x4
  737 00bc 07       		.byte	0x7
- 738 00bd 6F020000 		.4byte	.LASF16
+ 738 00bd AD020000 		.4byte	.LASF16
  739 00c1 06       		.uleb128 0x6
  740 00c2 91000000 		.4byte	.LASF20
  741 00c6 01       		.byte	0x1
@@ -1606,7 +1606,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  755 00e3 77       		.sleb128 -9
  756 00e4 00       		.byte	0
  757 00e5 08       		.uleb128 0x8
- 758 00e6 42020000 		.4byte	.LASF17
+ 758 00e6 80020000 		.4byte	.LASF17
  759 00ea 01       		.byte	0x1
  760 00eb B4       		.byte	0xb4
  761 00ec 00000000 		.4byte	.LFB1
@@ -1614,18 +1614,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  763 00f4 01       		.uleb128 0x1
  764 00f5 9C       		.byte	0x9c
  765 00f6 09       		.uleb128 0x9
- 766 00f7 6A030000 		.4byte	.LASF18
+ 766 00f7 69030000 		.4byte	.LASF18
  767 00fb 01       		.byte	0x1
  768 00fc D7       		.byte	0xd7
  769 00fd 00000000 		.4byte	.LFB2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 28
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 28
 
 
  770 0101 20000000 		.4byte	.LFE2-.LFB2
  771 0105 01       		.uleb128 0x1
  772 0106 9C       		.byte	0x9c
  773 0107 08       		.uleb128 0x8
- 774 0108 30020000 		.4byte	.LASF19
+ 774 0108 6E020000 		.4byte	.LASF19
  775 010c 01       		.byte	0x1
  776 010d F7       		.byte	0xf7
  777 010e 00000000 		.4byte	.LFB3
@@ -1633,7 +1633,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  779 0116 01       		.uleb128 0x1
  780 0117 9C       		.byte	0x9c
  781 0118 0A       		.uleb128 0xa
- 782 0119 12020000 		.4byte	.LASF21
+ 782 0119 50020000 		.4byte	.LASF21
  783 011d 01       		.byte	0x1
  784 011e 1701     		.2byte	0x117
  785 0120 00000000 		.4byte	.LFB4
@@ -1642,7 +1642,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  788 0129 9C       		.byte	0x9c
  789 012a 3E010000 		.4byte	0x13e
  790 012e 0B       		.uleb128 0xb
- 791 012f E2020000 		.4byte	.LASF26
+ 791 012f E1020000 		.4byte	.LASF26
  792 0133 01       		.byte	0x1
  793 0134 1701     		.2byte	0x117
  794 0136 6B000000 		.4byte	0x6b
@@ -1651,7 +1651,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  797 013c 77       		.sleb128 -9
  798 013d 00       		.byte	0
  799 013e 0C       		.uleb128 0xc
- 800 013f B7020000 		.4byte	.LASF22
+ 800 013f B6020000 		.4byte	.LASF22
  801 0143 01       		.byte	0x1
  802 0144 2E01     		.2byte	0x12e
  803 0146 00000000 		.4byte	.LFB5
@@ -1659,7 +1659,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  805 014e 01       		.uleb128 0x1
  806 014f 9C       		.byte	0x9c
  807 0150 0D       		.uleb128 0xd
- 808 0151 F0020000 		.4byte	.LASF23
+ 808 0151 EF020000 		.4byte	.LASF23
  809 0155 01       		.byte	0x1
  810 0156 4D01     		.2byte	0x14d
  811 0158 6B000000 		.4byte	0x6b
@@ -1668,7 +1668,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  814 0164 01       		.uleb128 0x1
  815 0165 9C       		.byte	0x9c
  816 0166 0D       		.uleb128 0xd
- 817 0167 3D030000 		.4byte	.LASF24
+ 817 0167 3C030000 		.4byte	.LASF24
  818 016b 01       		.byte	0x1
  819 016c 6401     		.2byte	0x164
  820 016e 6B000000 		.4byte	0x6b
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  824 017b 9C       		.byte	0x9c
  825 017c 0A       		.uleb128 0xa
  826 017d A3000000 		.4byte	.LASF25
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 29
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 29
 
 
  827 0181 01       		.byte	0x1
@@ -1707,7 +1707,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  850 01b6 01       		.uleb128 0x1
  851 01b7 9C       		.byte	0x9c
  852 01b8 0A       		.uleb128 0xa
- 853 01b9 E2010000 		.4byte	.LASF29
+ 853 01b9 20020000 		.4byte	.LASF29
  854 01bd 01       		.byte	0x1
  855 01be AF01     		.2byte	0x1af
  856 01c0 00000000 		.4byte	.LFB10
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  881 01f9 01       		.byte	0x1
  882 01fa E001     		.2byte	0x1e0
  883 01fc 00000000 		.4byte	.LFB12
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 30
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 30
 
 
  884 0200 1C000000 		.4byte	.LFE12-.LFB12
@@ -1755,7 +1755,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  895 0218 74       		.sleb128 -12
  896 0219 00       		.byte	0
  897 021a 0D       		.uleb128 0xd
- 898 021b 56020000 		.4byte	.LASF34
+ 898 021b 94020000 		.4byte	.LASF34
  899 021f 01       		.byte	0x1
  900 0220 FC01     		.2byte	0x1fc
  901 0222 77000000 		.4byte	0x77
@@ -1772,7 +1772,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  912 0240 01       		.uleb128 0x1
  913 0241 9C       		.byte	0x9c
  914 0242 0F       		.uleb128 0xf
- 915 0243 10030000 		.4byte	.LASF40
+ 915 0243 0F030000 		.4byte	.LASF40
  916 0247 01       		.byte	0x1
  917 0248 1A       		.byte	0x1a
  918 0249 6B000000 		.4byte	0x6b
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  938 000d 11       		.uleb128 0x11
  939 000e 01       		.uleb128 0x1
  940 000f 10       		.uleb128 0x10
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 31
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 31
 
 
  941 0010 17       		.uleb128 0x17
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  995 0046 3B       		.uleb128 0x3b
  996 0047 0B       		.uleb128 0xb
  997 0048 27       		.uleb128 0x27
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 32
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 32
 
 
  998 0049 19       		.uleb128 0x19
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1052 0081 3F       		.uleb128 0x3f
  1053 0082 19       		.uleb128 0x19
  1054 0083 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 33
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 33
 
 
  1055 0084 0E       		.uleb128 0xe
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1109 00bc 18       		.uleb128 0x18
  1110 00bd 00       		.byte	0
  1111 00be 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 34
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 34
 
 
  1112 00bf 0C       		.uleb128 0xc
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1166 00f7 0E       		.uleb128 0xe
  1167 00f8 3A       		.uleb128 0x3a
  1168 00f9 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 35
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 35
 
 
  1169 00fa 3B       		.uleb128 0x3b
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1223 0048 00000000 		.4byte	.LFB7
  1224 004c 18000000 		.4byte	.LFE7-.LFB7
  1225 0050 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 36
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 36
 
 
  1226 0054 20000000 		.4byte	.LFE8-.LFB8
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1277      FB0E0D00 
  1277      01010101 
  1278              	.LASF15:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 37
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 37
 
 
  1279 0000 72656733 		.ascii	"reg32\000"
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1299      73745F74 
  1299      696D6572 
  1299      5F577269 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 38
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 38
 
 
  1299      7465436F 
@@ -2267,123 +2267,122 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 1
  1318              	.LASF12:
  1319 01ae 646F7562 		.ascii	"double\000"
  1319      6C6500
- 1320              	.LASF37:
- 1321 01b5 47656E65 		.ascii	"Generated_Source\\PSoC5\\adjust_timer.c\000"
- 1321      72617465 
- 1321      645F536F 
- 1321      75726365 
- 1321      5C50536F 
- 1322              	.LASF10:
- 1323 01db 75696E74 		.ascii	"uint32\000"
- 1323      333200
- 1324              	.LASF29:
- 1325 01e2 61646A75 		.ascii	"adjust_timer_WritePeriod\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 39
+ 1320              	.LASF38:
+ 1321 01b5 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\Full_wo_"
+ 1321      73657273 
+ 1321      5C677374 
+ 1321      6F6C6C5C 
+ 1321      4465736B 
+ 1322 01e3 6661696C 		.ascii	"failsafes.cydsn\000"
+ 1322      73616665 
+ 1322      732E6379 
+ 1322      64736E00 
+ 1323              	.LASF37:
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 39
 
 
- 1325      73745F74 
- 1325      696D6572 
- 1325      5F577269 
- 1325      74655065 
- 1326              	.LASF7:
- 1327 01fb 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1327      206C6F6E 
- 1327      6720756E 
- 1327      7369676E 
- 1327      65642069 
- 1328              	.LASF21:
- 1329 0212 61646A75 		.ascii	"adjust_timer_SetInterruptMode\000"
- 1329      73745F74 
- 1329      696D6572 
- 1329      5F536574 
- 1329      496E7465 
- 1330              	.LASF19:
- 1331 0230 61646A75 		.ascii	"adjust_timer_Stop\000"
- 1331      73745F74 
- 1331      696D6572 
- 1331      5F53746F 
- 1331      7000
- 1332              	.LASF17:
- 1333 0242 61646A75 		.ascii	"adjust_timer_Enable\000"
- 1333      73745F74 
- 1333      696D6572 
- 1333      5F456E61 
- 1333      626C6500 
- 1334              	.LASF34:
- 1335 0256 61646A75 		.ascii	"adjust_timer_ReadCounter\000"
- 1335      73745F74 
- 1335      696D6572 
- 1335      5F526561 
- 1335      64436F75 
- 1336              	.LASF16:
- 1337 026f 73697A65 		.ascii	"sizetype\000"
- 1337      74797065 
- 1337      00
- 1338              	.LASF38:
- 1339 0278 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_wo"
- 1339      73657273 
- 1339      5C676469 
- 1339      6E675C44 
- 1339      6F63756D 
- 1340 02a6 5F666169 		.ascii	"_failsafes.cydsn\000"
- 1340      6C736166 
- 1340      65732E63 
- 1340      7964736E 
+ 1324 01f3 47656E65 		.ascii	"Generated_Source\\PSoC5\\adjust_timer.c\000"
+ 1324      72617465 
+ 1324      645F536F 
+ 1324      75726365 
+ 1324      5C50536F 
+ 1325              	.LASF10:
+ 1326 0219 75696E74 		.ascii	"uint32\000"
+ 1326      333200
+ 1327              	.LASF29:
+ 1328 0220 61646A75 		.ascii	"adjust_timer_WritePeriod\000"
+ 1328      73745F74 
+ 1328      696D6572 
+ 1328      5F577269 
+ 1328      74655065 
+ 1329              	.LASF7:
+ 1330 0239 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1330      206C6F6E 
+ 1330      6720756E 
+ 1330      7369676E 
+ 1330      65642069 
+ 1331              	.LASF21:
+ 1332 0250 61646A75 		.ascii	"adjust_timer_SetInterruptMode\000"
+ 1332      73745F74 
+ 1332      696D6572 
+ 1332      5F536574 
+ 1332      496E7465 
+ 1333              	.LASF19:
+ 1334 026e 61646A75 		.ascii	"adjust_timer_Stop\000"
+ 1334      73745F74 
+ 1334      696D6572 
+ 1334      5F53746F 
+ 1334      7000
+ 1335              	.LASF17:
+ 1336 0280 61646A75 		.ascii	"adjust_timer_Enable\000"
+ 1336      73745F74 
+ 1336      696D6572 
+ 1336      5F456E61 
+ 1336      626C6500 
+ 1337              	.LASF34:
+ 1338 0294 61646A75 		.ascii	"adjust_timer_ReadCounter\000"
+ 1338      73745F74 
+ 1338      696D6572 
+ 1338      5F526561 
+ 1338      64436F75 
+ 1339              	.LASF16:
+ 1340 02ad 73697A65 		.ascii	"sizetype\000"
+ 1340      74797065 
  1340      00
  1341              	.LASF22:
- 1342 02b7 61646A75 		.ascii	"adjust_timer_SoftwareCapture\000"
+ 1342 02b6 61646A75 		.ascii	"adjust_timer_SoftwareCapture\000"
  1342      73745F74 
  1342      696D6572 
  1342      5F536F66 
  1342      74776172 
  1343              	.LASF6:
- 1344 02d4 6C6F6E67 		.ascii	"long long int\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccnAgIPE.s 			page 40
-
-
+ 1344 02d3 6C6F6E67 		.ascii	"long long int\000"
  1344      206C6F6E 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccQiHuKz.s 			page 40
+
+
  1344      6720696E 
  1344      7400
  1345              	.LASF26:
- 1346 02e2 696E7465 		.ascii	"interruptMode\000"
+ 1346 02e1 696E7465 		.ascii	"interruptMode\000"
  1346      72727570 
  1346      744D6F64 
  1346      6500
  1347              	.LASF23:
- 1348 02f0 61646A75 		.ascii	"adjust_timer_ReadStatusRegister\000"
+ 1348 02ef 61646A75 		.ascii	"adjust_timer_ReadStatusRegister\000"
  1348      73745F74 
  1348      696D6572 
  1348      5F526561 
  1348      64537461 
  1349              	.LASF40:
- 1350 0310 61646A75 		.ascii	"adjust_timer_initVar\000"
+ 1350 030f 61646A75 		.ascii	"adjust_timer_initVar\000"
  1350      73745F74 
  1350      696D6572 
  1350      5F696E69 
  1350      74566172 
  1351              	.LASF2:
- 1352 0325 73686F72 		.ascii	"short int\000"
+ 1352 0324 73686F72 		.ascii	"short int\000"
  1352      7420696E 
  1352      7400
  1353              	.LASF4:
- 1354 032f 6C6F6E67 		.ascii	"long int\000"
+ 1354 032e 6C6F6E67 		.ascii	"long int\000"
  1354      20696E74 
  1354      00
  1355              	.LASF13:
- 1356 0338 63686172 		.ascii	"char\000"
+ 1356 0337 63686172 		.ascii	"char\000"
  1356      00
  1357              	.LASF24:
- 1358 033d 61646A75 		.ascii	"adjust_timer_ReadControlRegister\000"
+ 1358 033c 61646A75 		.ascii	"adjust_timer_ReadControlRegister\000"
  1358      73745F74 
  1358      696D6572 
  1358      5F526561 
  1358      64436F6E 
  1359              	.LASF0:
- 1360 035e 7369676E 		.ascii	"signed char\000"
+ 1360 035d 7369676E 		.ascii	"signed char\000"
  1360      65642063 
  1360      68617200 
  1361              	.LASF18:
- 1362 036a 61646A75 		.ascii	"adjust_timer_Start\000"
+ 1362 0369 61646A75 		.ascii	"adjust_timer_Start\000"
  1362      73745F74 
  1362      696D6572 
  1362      5F537461 
