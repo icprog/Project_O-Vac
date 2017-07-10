@@ -1,14 +1,14 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2017-05-22T02:23:57Z")
- (DESIGN "Pressure_Harbor_test")
+ (DATE "2017-06-04T23:00:05Z")
+ (DESIGN "Pressure_Only")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
  (VERSION " 4.0 Update 1")
  (DIVIDER .)
  (TIMESCALE 1 ns)
  (CELL
-  (CELLTYPE "Pressure_Harbor_test")
+  (CELLTYPE "Pressure_Only")
   (INSTANCE *)
   (DELAY
    (ABSOLUTE

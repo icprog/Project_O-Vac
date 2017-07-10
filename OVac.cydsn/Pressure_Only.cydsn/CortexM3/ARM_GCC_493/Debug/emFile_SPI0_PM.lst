@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
   29:Generated_Source\PSoC5/emFile_SPI0_PM.c **** 
   30:Generated_Source\PSoC5/emFile_SPI0_PM.c **** 
   31:Generated_Source\PSoC5/emFile_SPI0_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 2
 
 
   32:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Function Name: emFile_SPI0_SaveConfig
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
   69:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Parameters:
   70:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  None.
   71:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 3
 
 
   72:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Return:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  109:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  emFile_SPI0_backup - modified when non-retention registers are saved.
  110:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *
  111:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Reentrant:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 4
 
 
  112:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  No.
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  131:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *
  132:Generated_Source\PSoC5/emFile_SPI0_PM.c **** * Parameters:
  133:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *  None.
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 5
 
 
  134:Generated_Source\PSoC5/emFile_SPI0_PM.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  110 000a 0BB1     		cbz	r3, .L7
  174:Generated_Source\PSoC5/emFile_SPI0_PM.c ****     {
  175:Generated_Source\PSoC5/emFile_SPI0_PM.c ****         emFile_SPI0_Enable();
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 6
 
 
  111              		.loc 1 175 0
@@ -332,40 +332,40 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  139 0006 00000000 		.4byte	.Ldebug_abbrev0
  140 000a 04       		.byte	0x4
  141 000b 01       		.uleb128 0x1
- 142 000c C9000000 		.4byte	.LASF25
+ 142 000c 21010000 		.4byte	.LASF25
  143 0010 01       		.byte	0x1
  144 0011 0E000000 		.4byte	.LASF26
- 145 0015 E0010000 		.4byte	.LASF27
+ 145 0015 69000000 		.4byte	.LASF27
  146 0019 00000000 		.4byte	.Ldebug_ranges0+0
  147 001d 00000000 		.4byte	0
  148 0021 00000000 		.4byte	.Ldebug_line0
  149 0025 02       		.uleb128 0x2
  150 0026 01       		.byte	0x1
  151 0027 06       		.byte	0x6
- 152 0028 D4010000 		.4byte	.LASF0
+ 152 0028 2C020000 		.4byte	.LASF0
  153 002c 02       		.uleb128 0x2
  154 002d 01       		.byte	0x1
  155 002e 08       		.byte	0x8
- 156 002f 6A010000 		.4byte	.LASF1
+ 156 002f C2010000 		.4byte	.LASF1
  157 0033 02       		.uleb128 0x2
  158 0034 02       		.byte	0x2
  159 0035 05       		.byte	0x5
- 160 0036 56020000 		.4byte	.LASF2
+ 160 0036 61020000 		.4byte	.LASF2
  161 003a 02       		.uleb128 0x2
  162 003b 02       		.byte	0x2
  163 003c 07       		.byte	0x7
- 164 003d C1010000 		.4byte	.LASF3
+ 164 003d 19020000 		.4byte	.LASF3
  165 0041 02       		.uleb128 0x2
  166 0042 04       		.byte	0x4
  167 0043 05       		.byte	0x5
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 7
 
 
- 168 0044 90010000 		.4byte	.LASF4
+ 168 0044 E8010000 		.4byte	.LASF4
  169 0048 02       		.uleb128 0x2
  170 0049 04       		.byte	0x4
  171 004a 07       		.byte	0x7
- 172 004b 86000000 		.4byte	.LASF5
+ 172 004b DE000000 		.4byte	.LASF5
  173 004f 02       		.uleb128 0x2
  174 0050 08       		.byte	0x8
  175 0051 05       		.byte	0x5
@@ -373,7 +373,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  177 0056 02       		.uleb128 0x2
  178 0057 08       		.byte	0x8
  179 0058 07       		.byte	0x7
- 180 0059 98000000 		.4byte	.LASF7
+ 180 0059 F0000000 		.4byte	.LASF7
  181 005d 03       		.uleb128 0x3
  182 005e 04       		.byte	0x4
  183 005f 05       		.byte	0x5
@@ -383,24 +383,24 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  187 0066 07       		.byte	0x7
  188 0067 42000000 		.4byte	.LASF8
  189 006b 04       		.uleb128 0x4
- 190 006c 80000000 		.4byte	.LASF12
+ 190 006c D8000000 		.4byte	.LASF12
  191 0070 02       		.byte	0x2
  192 0071 9201     		.2byte	0x192
  193 0073 2C000000 		.4byte	0x2c
  194 0077 02       		.uleb128 0x2
  195 0078 04       		.byte	0x4
  196 0079 04       		.byte	0x4
- 197 007a 3F020000 		.4byte	.LASF9
+ 197 007a 4A020000 		.4byte	.LASF9
  198 007e 02       		.uleb128 0x2
  199 007f 08       		.byte	0x8
  200 0080 04       		.byte	0x4
- 201 0081 AF010000 		.4byte	.LASF10
+ 201 0081 07020000 		.4byte	.LASF10
  202 0085 02       		.uleb128 0x2
  203 0086 01       		.byte	0x1
  204 0087 08       		.byte	0x8
- 205 0088 8B010000 		.4byte	.LASF11
+ 205 0088 E3010000 		.4byte	.LASF11
  206 008c 04       		.uleb128 0x4
- 207 008d 60020000 		.4byte	.LASF13
+ 207 008d 6B020000 		.4byte	.LASF13
  208 0091 02       		.byte	0x2
  209 0092 3C02     		.2byte	0x23c
  210 0094 98000000 		.4byte	0x98
@@ -409,7 +409,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  213 009d 02       		.uleb128 0x2
  214 009e 04       		.byte	0x4
  215 009f 07       		.byte	0x7
- 216 00a0 65020000 		.4byte	.LASF14
+ 216 00a0 70020000 		.4byte	.LASF14
  217 00a4 06       		.uleb128 0x6
  218 00a5 02       		.byte	0x2
  219 00a6 03       		.byte	0x3
@@ -418,14 +418,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  222 00ac 07       		.uleb128 0x7
  223 00ad 36000000 		.4byte	.LASF15
  224 00b1 03       		.byte	0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 8
 
 
  225 00b2 48       		.byte	0x48
  226 00b3 6B000000 		.4byte	0x6b
  227 00b7 00       		.byte	0
  228 00b8 07       		.uleb128 0x7
- 229 00b9 B6010000 		.4byte	.LASF16
+ 229 00b9 0E020000 		.4byte	.LASF16
  230 00bd 03       		.byte	0x3
  231 00be 49       		.byte	0x49
  232 00bf 6B000000 		.4byte	0x6b
@@ -437,7 +437,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  238 00cb 4F       		.byte	0x4f
  239 00cc A4000000 		.4byte	0xa4
  240 00d0 09       		.uleb128 0x9
- 241 00d1 69000000 		.4byte	.LASF18
+ 241 00d1 C1000000 		.4byte	.LASF18
  242 00d5 01       		.byte	0x1
  243 00d6 33       		.byte	0x33
  244 00d7 00000000 		.4byte	.LFB0
@@ -445,7 +445,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  246 00df 01       		.uleb128 0x1
  247 00e0 9C       		.byte	0x9c
  248 00e1 09       		.uleb128 0x9
- 249 00e2 AF000000 		.4byte	.LASF19
+ 249 00e2 07010000 		.4byte	.LASF19
  250 00e6 01       		.byte	0x1
  251 00e7 54       		.byte	0x54
  252 00e8 00000000 		.4byte	.LFB1
@@ -453,7 +453,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  254 00f0 01       		.uleb128 0x1
  255 00f1 9C       		.byte	0x9c
  256 00f2 0A       		.uleb128 0xa
- 257 00f3 2D020000 		.4byte	.LASF20
+ 257 00f3 38020000 		.4byte	.LASF20
  258 00f7 01       		.byte	0x1
  259 00f8 73       		.byte	0x73
  260 00f9 00000000 		.4byte	.LFB2
@@ -466,7 +466,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  267 010c 4A010000 		.4byte	0x14a
  268 0110 00       		.byte	0
  269 0111 0A       		.uleb128 0xa
- 270 0112 6E020000 		.4byte	.LASF21
+ 270 0112 79020000 		.4byte	.LASF21
  271 0116 01       		.byte	0x1
  272 0117 99       		.byte	0x99
  273 0118 00000000 		.4byte	.LFB3
@@ -478,14 +478,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  279 0127 06000000 		.4byte	.LVL1
  280 012b 51010000 		.4byte	0x151
  281 012f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 9
 
 
  282 0130 10000000 		.4byte	.LVL2
  283 0134 58010000 		.4byte	0x158
  284 0138 00       		.byte	0
  285 0139 0C       		.uleb128 0xc
- 286 013a 57010000 		.4byte	.LASF28
+ 286 013a AF010000 		.4byte	.LASF28
  287 013e 01       		.byte	0x1
  288 013f 14       		.byte	0x14
  289 0140 C5000000 		.4byte	0xc5
@@ -493,15 +493,15 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  291 0145 03       		.byte	0x3
  292 0146 00000000 		.4byte	emFile_SPI0_backup
  293 014a 0D       		.uleb128 0xd
- 294 014b 45020000 		.4byte	.LASF22
+ 294 014b 50020000 		.4byte	.LASF22
  295 014f 03       		.byte	0x3
  296 0150 59       		.byte	0x59
  297 0151 0D       		.uleb128 0xd
- 298 0152 99010000 		.4byte	.LASF23
+ 298 0152 F1010000 		.4byte	.LASF23
  299 0156 03       		.byte	0x3
  300 0157 71       		.byte	0x71
  301 0158 0D       		.uleb128 0xd
- 302 0159 78010000 		.4byte	.LASF24
+ 302 0159 D0010000 		.4byte	.LASF24
  303 015d 03       		.byte	0x3
  304 015e 57       		.byte	0x57
  305 015f 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  336 001c 00       		.byte	0
  337 001d 00       		.byte	0
  338 001e 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 10
 
 
  339 001f 24       		.uleb128 0x24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  393 0055 38       		.uleb128 0x38
  394 0056 0B       		.uleb128 0xb
  395 0057 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 11
 
 
  396 0058 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  450 008f 40       		.uleb128 0x40
  451 0090 18       		.uleb128 0x18
  452 0091 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 12
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 12
 
 
  453 0093 19       		.uleb128 0x19
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  507 000e 0000     		.2byte	0
  508 0010 00000000 		.4byte	.LFB0
  509 0014 02000000 		.4byte	.LFE0-.LFB0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 13
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 13
 
 
  510 0018 00000000 		.4byte	.LFB1
@@ -774,144 +774,144 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 1
  542      5049305F 
  542      4241434B 
  542      55505F53 
- 543              	.LASF18:
- 544 0069 656D4669 		.ascii	"emFile_SPI0_SaveConfig\000"
- 544      6C655F53 
- 544      5049305F 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 14
+ 543              	.LASF27:
+ 544 0069 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\temp_project_ovac\\Pro"
+ 544      73657273 
+ 544      5C676469 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 14
 
 
- 544      53617665 
- 544      436F6E66 
- 545              	.LASF12:
- 546 0080 75696E74 		.ascii	"uint8\000"
- 546      3800
- 547              	.LASF5:
- 548 0086 6C6F6E67 		.ascii	"long unsigned int\000"
- 548      20756E73 
- 548      69676E65 
- 548      6420696E 
- 548      7400
- 549              	.LASF7:
- 550 0098 6C6F6E67 		.ascii	"long long unsigned int\000"
- 550      206C6F6E 
- 550      6720756E 
- 550      7369676E 
- 550      65642069 
- 551              	.LASF19:
- 552 00af 656D4669 		.ascii	"emFile_SPI0_RestoreConfig\000"
- 552      6C655F53 
- 552      5049305F 
- 552      52657374 
- 552      6F726543 
- 553              	.LASF25:
- 554 00c9 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 554      4320342E 
- 554      392E3320 
- 554      32303135 
- 554      30333033 
- 555 00fc 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 555      20726576 
- 555      6973696F 
- 555      6E203232 
- 555      31323230 
- 556 012f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 556      66756E63 
- 556      74696F6E 
- 556      2D736563 
- 556      74696F6E 
- 557              	.LASF28:
- 558 0157 656D4669 		.ascii	"emFile_SPI0_backup\000"
- 558      6C655F53 
- 558      5049305F 
- 558      6261636B 
- 558      757000
- 559              	.LASF1:
- 560 016a 756E7369 		.ascii	"unsigned char\000"
- 560      676E6564 
- 560      20636861 
- 560      7200
- 561              	.LASF24:
- 562 0178 656D4669 		.ascii	"emFile_SPI0_Enable\000"
- 562      6C655F53 
- 562      5049305F 
- 562      456E6162 
- 562      6C6500
- 563              	.LASF11:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 15
+ 544      6E675C44 
+ 544      6F63756D 
+ 545 0097 6A656374 		.ascii	"ject_O-Vac\\OVac.cydsn\\Pressure_Only.cydsn\000"
+ 545      5F4F2D56 
+ 545      61635C4F 
+ 545      5661632E 
+ 545      63796473 
+ 546              	.LASF18:
+ 547 00c1 656D4669 		.ascii	"emFile_SPI0_SaveConfig\000"
+ 547      6C655F53 
+ 547      5049305F 
+ 547      53617665 
+ 547      436F6E66 
+ 548              	.LASF12:
+ 549 00d8 75696E74 		.ascii	"uint8\000"
+ 549      3800
+ 550              	.LASF5:
+ 551 00de 6C6F6E67 		.ascii	"long unsigned int\000"
+ 551      20756E73 
+ 551      69676E65 
+ 551      6420696E 
+ 551      7400
+ 552              	.LASF7:
+ 553 00f0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 553      206C6F6E 
+ 553      6720756E 
+ 553      7369676E 
+ 553      65642069 
+ 554              	.LASF19:
+ 555 0107 656D4669 		.ascii	"emFile_SPI0_RestoreConfig\000"
+ 555      6C655F53 
+ 555      5049305F 
+ 555      52657374 
+ 555      6F726543 
+ 556              	.LASF25:
+ 557 0121 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 557      4320342E 
+ 557      392E3320 
+ 557      32303135 
+ 557      30333033 
+ 558 0154 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 558      20726576 
+ 558      6973696F 
+ 558      6E203232 
+ 558      31323230 
+ 559 0187 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 559      66756E63 
+ 559      74696F6E 
+ 559      2D736563 
+ 559      74696F6E 
+ 560              	.LASF28:
+ 561 01af 656D4669 		.ascii	"emFile_SPI0_backup\000"
+ 561      6C655F53 
+ 561      5049305F 
+ 561      6261636B 
+ 561      757000
+ 562              	.LASF1:
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 15
 
 
- 564 018b 63686172 		.ascii	"char\000"
- 564      00
- 565              	.LASF4:
- 566 0190 6C6F6E67 		.ascii	"long int\000"
- 566      20696E74 
- 566      00
- 567              	.LASF23:
- 568 0199 656D4669 		.ascii	"emFile_SPI0_ClearFIFO\000"
- 568      6C655F53 
- 568      5049305F 
- 568      436C6561 
- 568      72464946 
- 569              	.LASF10:
- 570 01af 646F7562 		.ascii	"double\000"
- 570      6C6500
- 571              	.LASF16:
- 572 01b6 636E7472 		.ascii	"cntrPeriod\000"
- 572      50657269 
- 572      6F6400
- 573              	.LASF3:
- 574 01c1 73686F72 		.ascii	"short unsigned int\000"
- 574      7420756E 
- 574      7369676E 
- 574      65642069 
- 574      6E7400
- 575              	.LASF0:
- 576 01d4 7369676E 		.ascii	"signed char\000"
- 576      65642063 
- 576      68617200 
- 577              	.LASF27:
- 578 01e0 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 578      73657273 
- 578      5C676469 
- 578      6E675C44 
- 578      6F63756D 
- 579 020e 64736E5C 		.ascii	"dsn\\Pressure_Harbor_test.cydsn\000"
- 579      50726573 
- 579      73757265 
- 579      5F486172 
- 579      626F725F 
+ 563 01c2 756E7369 		.ascii	"unsigned char\000"
+ 563      676E6564 
+ 563      20636861 
+ 563      7200
+ 564              	.LASF24:
+ 565 01d0 656D4669 		.ascii	"emFile_SPI0_Enable\000"
+ 565      6C655F53 
+ 565      5049305F 
+ 565      456E6162 
+ 565      6C6500
+ 566              	.LASF11:
+ 567 01e3 63686172 		.ascii	"char\000"
+ 567      00
+ 568              	.LASF4:
+ 569 01e8 6C6F6E67 		.ascii	"long int\000"
+ 569      20696E74 
+ 569      00
+ 570              	.LASF23:
+ 571 01f1 656D4669 		.ascii	"emFile_SPI0_ClearFIFO\000"
+ 571      6C655F53 
+ 571      5049305F 
+ 571      436C6561 
+ 571      72464946 
+ 572              	.LASF10:
+ 573 0207 646F7562 		.ascii	"double\000"
+ 573      6C6500
+ 574              	.LASF16:
+ 575 020e 636E7472 		.ascii	"cntrPeriod\000"
+ 575      50657269 
+ 575      6F6400
+ 576              	.LASF3:
+ 577 0219 73686F72 		.ascii	"short unsigned int\000"
+ 577      7420756E 
+ 577      7369676E 
+ 577      65642069 
+ 577      6E7400
+ 578              	.LASF0:
+ 579 022c 7369676E 		.ascii	"signed char\000"
+ 579      65642063 
+ 579      68617200 
  580              	.LASF20:
- 581 022d 656D4669 		.ascii	"emFile_SPI0_Sleep\000"
+ 581 0238 656D4669 		.ascii	"emFile_SPI0_Sleep\000"
  581      6C655F53 
  581      5049305F 
  581      536C6565 
  581      7000
  582              	.LASF9:
- 583 023f 666C6F61 		.ascii	"float\000"
+ 583 024a 666C6F61 		.ascii	"float\000"
  583      7400
  584              	.LASF22:
- 585 0245 656D4669 		.ascii	"emFile_SPI0_Stop\000"
+ 585 0250 656D4669 		.ascii	"emFile_SPI0_Stop\000"
  585      6C655F53 
  585      5049305F 
  585      53746F70 
  585      00
  586              	.LASF2:
- 587 0256 73686F72 		.ascii	"short int\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccwXB9Fo.s 			page 16
+ 587 0261 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cc5abkKe.s 			page 16
 
 
  587      7420696E 
  587      7400
  588              	.LASF13:
- 589 0260 72656738 		.ascii	"reg8\000"
+ 589 026b 72656738 		.ascii	"reg8\000"
  589      00
  590              	.LASF14:
- 591 0265 73697A65 		.ascii	"sizetype\000"
+ 591 0270 73697A65 		.ascii	"sizetype\000"
  591      74797065 
  591      00
  592              	.LASF21:
- 593 026e 656D4669 		.ascii	"emFile_SPI0_Wakeup\000"
+ 593 0279 656D4669 		.ascii	"emFile_SPI0_Wakeup\000"
  593      6C655F53 
  593      5049305F 
  593      57616B65 

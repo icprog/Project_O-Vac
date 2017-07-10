@@ -1,8 +1,8 @@
--- Project:   Pressure_Harbor_test
--- Generated: 05/21/2017 19:23:52
+-- Project:   Pressure_Only
+-- Generated: 06/04/2017 15:59:59
 -- PSoC Creator  4.0 Update 1
 
-ENTITY Pressure_Harbor_test IS
+ENTITY Pressure_Only IS
     PORT(
         \emFile:mosi0(0)_PAD\ : OUT std_ulogic;
         \emFile:miso0(0)_PAD\ : IN std_ulogic;
@@ -20,9 +20,9 @@ ENTITY Pressure_Harbor_test IS
     ATTRIBUTE voltage_VDDIO1 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO2 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDIO3 OF __DEFAULT__ : ENTITY IS 5e0;
-END Pressure_Harbor_test;
+END Pressure_Only;
 
-ARCHITECTURE __DEFAULT__ OF Pressure_Harbor_test IS
+ARCHITECTURE __DEFAULT__ OF Pressure_Only IS
     SIGNAL ADC_in(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
     SIGNAL ClockBlock_1k : bit;

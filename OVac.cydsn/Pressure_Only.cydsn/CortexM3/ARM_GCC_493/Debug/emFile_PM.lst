@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
   29:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
   30:Generated_Source\PSoC5/emFile_PM.c **** *  None
   31:Generated_Source\PSoC5/emFile_PM.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 2
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 2
 
 
   32:Generated_Source\PSoC5/emFile_PM.c **** * Return:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
   63:Generated_Source\PSoC5/emFile_PM.c **** * Summary:
   64:Generated_Source\PSoC5/emFile_PM.c **** *  Restores SPI Masters configuration.
   65:Generated_Source\PSoC5/emFile_PM.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 3
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 3
 
 
   66:Generated_Source\PSoC5/emFile_PM.c **** * Parameters:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
   97:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
   98:Generated_Source\PSoC5/emFile_PM.c **** * Function Name: emFile_Sleep
   99:Generated_Source\PSoC5/emFile_PM.c **** ********************************************************************************
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 4
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 4
 
 
  100:Generated_Source\PSoC5/emFile_PM.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  131:Generated_Source\PSoC5/emFile_PM.c **** }
  132:Generated_Source\PSoC5/emFile_PM.c **** 
  133:Generated_Source\PSoC5/emFile_PM.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 5
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 5
 
 
  134:Generated_Source\PSoC5/emFile_PM.c **** /*******************************************************************************
@@ -298,49 +298,49 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  117              		.section	.debug_info,"",%progbits
  118              	.Ldebug_info0:
  119 0000 3C010000 		.4byte	0x13c
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 6
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 6
 
 
  120 0004 0400     		.2byte	0x4
  121 0006 00000000 		.4byte	.Ldebug_abbrev0
  122 000a 04       		.byte	0x4
  123 000b 01       		.uleb128 0x1
- 124 000c A3000000 		.4byte	.LASF22
+ 124 000c FB000000 		.4byte	.LASF22
  125 0010 01       		.byte	0x1
- 126 0011 6E000000 		.4byte	.LASF23
- 127 0015 97010000 		.4byte	.LASF24
+ 126 0011 C6000000 		.4byte	.LASF23
+ 127 0015 2E000000 		.4byte	.LASF24
  128 0019 00000000 		.4byte	.Ldebug_ranges0+0
  129 001d 00000000 		.4byte	0
  130 0021 00000000 		.4byte	.Ldebug_line0
  131 0025 02       		.uleb128 0x2
  132 0026 01       		.byte	0x1
  133 0027 06       		.byte	0x6
- 134 0028 81010000 		.4byte	.LASF0
+ 134 0028 D9010000 		.4byte	.LASF0
  135 002c 02       		.uleb128 0x2
  136 002d 01       		.byte	0x1
  137 002e 08       		.byte	0x8
- 138 002f 31010000 		.4byte	.LASF1
+ 138 002f 89010000 		.4byte	.LASF1
  139 0033 02       		.uleb128 0x2
  140 0034 02       		.byte	0x2
  141 0035 05       		.byte	0x5
- 142 0036 FC010000 		.4byte	.LASF2
+ 142 0036 07020000 		.4byte	.LASF2
  143 003a 02       		.uleb128 0x2
  144 003b 02       		.byte	0x2
  145 003c 07       		.byte	0x7
  146 003d 0E000000 		.4byte	.LASF3
  147 0041 03       		.uleb128 0x3
- 148 0042 8D010000 		.4byte	.LASF9
+ 148 0042 E5010000 		.4byte	.LASF9
  149 0046 02       		.byte	0x2
  150 0047 3F       		.byte	0x3f
  151 0048 4C000000 		.4byte	0x4c
  152 004c 02       		.uleb128 0x2
  153 004d 04       		.byte	0x4
  154 004e 05       		.byte	0x5
- 155 004f 57010000 		.4byte	.LASF4
+ 155 004f AF010000 		.4byte	.LASF4
  156 0053 02       		.uleb128 0x2
  157 0054 04       		.byte	0x4
  158 0055 07       		.byte	0x7
- 159 0056 45000000 		.4byte	.LASF5
+ 159 0056 9D000000 		.4byte	.LASF5
  160 005a 02       		.uleb128 0x2
  161 005b 08       		.byte	0x8
  162 005c 05       		.byte	0x5
@@ -348,7 +348,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  164 0061 02       		.uleb128 0x2
  165 0062 08       		.byte	0x8
  166 0063 07       		.byte	0x7
- 167 0064 57000000 		.4byte	.LASF7
+ 167 0064 AF000000 		.4byte	.LASF7
  168 0068 04       		.uleb128 0x4
  169 0069 04       		.byte	0x4
  170 006a 05       		.byte	0x5
@@ -358,31 +358,31 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  174 0071 07       		.byte	0x7
  175 0072 21000000 		.4byte	.LASF8
  176 0076 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 7
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 7
 
 
- 177 0077 1B020000 		.4byte	.LASF10
+ 177 0077 26020000 		.4byte	.LASF10
  178 007b 03       		.byte	0x3
  179 007c 2C       		.byte	0x2c
  180 007d 41000000 		.4byte	0x41
  181 0081 02       		.uleb128 0x2
  182 0082 04       		.byte	0x4
  183 0083 04       		.byte	0x4
- 184 0084 F6010000 		.4byte	.LASF11
+ 184 0084 01020000 		.4byte	.LASF11
  185 0088 02       		.uleb128 0x2
  186 0089 08       		.byte	0x8
  187 008a 04       		.byte	0x4
- 188 008b 60010000 		.4byte	.LASF12
+ 188 008b B8010000 		.4byte	.LASF12
  189 008f 02       		.uleb128 0x2
  190 0090 01       		.byte	0x1
  191 0091 08       		.byte	0x8
- 192 0092 52010000 		.4byte	.LASF13
+ 192 0092 AA010000 		.4byte	.LASF13
  193 0096 02       		.uleb128 0x2
  194 0097 04       		.byte	0x4
  195 0098 07       		.byte	0x7
- 196 0099 31020000 		.4byte	.LASF14
+ 196 0099 3C020000 		.4byte	.LASF14
  197 009d 05       		.uleb128 0x5
- 198 009e 91000000 		.4byte	.LASF15
+ 198 009e E9000000 		.4byte	.LASF15
  199 00a2 01       		.byte	0x1
  200 00a3 27       		.byte	0x27
  201 00a4 00000000 		.4byte	.LFB63
@@ -395,7 +395,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  208 00b7 2A010000 		.4byte	0x12a
  209 00bb 00       		.byte	0
  210 00bc 05       		.uleb128 0x5
- 211 00bd 06020000 		.4byte	.LASF16
+ 211 00bd 11020000 		.4byte	.LASF16
  212 00c1 01       		.byte	0x1
  213 00c2 4D       		.byte	0x4d
  214 00c3 00000000 		.4byte	.LFB64
@@ -408,7 +408,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  221 00d6 2A010000 		.4byte	0x12a
  222 00da 00       		.byte	0
  223 00db 05       		.uleb128 0x5
- 224 00dc 67010000 		.4byte	.LASF17
+ 224 00dc BF010000 		.4byte	.LASF17
  225 00e0 01       		.byte	0x1
  226 00e1 72       		.byte	0x72
  227 00e2 00000000 		.4byte	.LFB65
@@ -418,13 +418,13 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  231 00ec FA000000 		.4byte	0xfa
  232 00f0 06       		.uleb128 0x6
  233 00f1 06000000 		.4byte	.LVL2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 8
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 8
 
 
  234 00f5 31010000 		.4byte	0x131
  235 00f9 00       		.byte	0
  236 00fa 05       		.uleb128 0x5
- 237 00fb 23020000 		.4byte	.LASF18
+ 237 00fb 2E020000 		.4byte	.LASF18
  238 00ff 01       		.byte	0x1
  239 0100 97       		.byte	0x97
  240 0101 00000000 		.4byte	.LFB66
@@ -437,22 +437,22 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  247 0114 38010000 		.4byte	0x138
  248 0118 00       		.byte	0
  249 0119 07       		.uleb128 0x7
- 250 011a 74010000 		.4byte	.LASF25
+ 250 011a CC010000 		.4byte	.LASF25
  251 011e 05       		.byte	0x5
  252 011f 9606     		.2byte	0x696
  253 0121 25010000 		.4byte	0x125
  254 0125 08       		.uleb128 0x8
  255 0126 76000000 		.4byte	0x76
  256 012a 09       		.uleb128 0x9
- 257 012b 2E000000 		.4byte	.LASF19
+ 257 012b 86000000 		.4byte	.LASF19
  258 012f 04       		.byte	0x4
  259 0130 62       		.byte	0x62
  260 0131 09       		.uleb128 0x9
- 261 0132 E4010000 		.4byte	.LASF20
+ 261 0132 EF010000 		.4byte	.LASF20
  262 0136 04       		.byte	0x4
  263 0137 60       		.byte	0x60
  264 0138 09       		.uleb128 0x9
- 265 0139 3F010000 		.4byte	.LASF21
+ 265 0139 97010000 		.4byte	.LASF21
  266 013d 04       		.byte	0x4
  267 013e 61       		.byte	0x61
  268 013f 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  288 0011 00       		.byte	0
  289 0012 00       		.byte	0
  290 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 9
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 9
 
 
  291 0014 24       		.uleb128 0x24
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  345 004b 19       		.uleb128 0x19
  346 004c 01       		.uleb128 0x1
  347 004d 13       		.uleb128 0x13
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 10
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 10
 
 
  348 004e 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  402 0000 34000000 		.4byte	0x34
  403 0004 0200     		.2byte	0x2
  404 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 11
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 11
 
 
  405 000a 04       		.byte	0x4
@@ -650,140 +650,140 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 1
  439      676E6564 
  439      20696E74 
  439      00
- 440              	.LASF19:
- 441 002e 656D4669 		.ascii	"emFile_SPI0_SaveConfig\000"
- 441      6C655F53 
- 441      5049305F 
- 441      53617665 
- 441      436F6E66 
- 442              	.LASF5:
- 443 0045 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 12
+ 440              	.LASF24:
+ 441 002e 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\temp_project_ovac\\Pro"
+ 441      73657273 
+ 441      5C676469 
+ 441      6E675C44 
+ 441      6F63756D 
+ 442 005c 6A656374 		.ascii	"ject_O-Vac\\OVac.cydsn\\Pressure_Only.cydsn\000"
+ 442      5F4F2D56 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 12
 
 
- 443      20756E73 
- 443      69676E65 
- 443      6420696E 
- 443      7400
- 444              	.LASF7:
- 445 0057 6C6F6E67 		.ascii	"long long unsigned int\000"
- 445      206C6F6E 
- 445      6720756E 
- 445      7369676E 
- 445      65642069 
- 446              	.LASF23:
- 447 006e 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_PM.c\000"
- 447      72617465 
- 447      645F536F 
- 447      75726365 
- 447      5C50536F 
- 448              	.LASF15:
- 449 0091 656D4669 		.ascii	"emFile_SaveConfig\000"
- 449      6C655F53 
- 449      61766543 
- 449      6F6E6669 
- 449      6700
- 450              	.LASF22:
- 451 00a3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 451      4320342E 
- 451      392E3320 
- 451      32303135 
- 451      30333033 
- 452 00d6 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 452      20726576 
- 452      6973696F 
- 452      6E203232 
- 452      31323230 
- 453 0109 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 453      66756E63 
- 453      74696F6E 
- 453      2D736563 
- 453      74696F6E 
- 454              	.LASF1:
- 455 0131 756E7369 		.ascii	"unsigned char\000"
- 455      676E6564 
- 455      20636861 
- 455      7200
- 456              	.LASF21:
- 457 013f 656D4669 		.ascii	"emFile_SPI0_Wakeup\000"
- 457      6C655F53 
- 457      5049305F 
- 457      57616B65 
- 457      757000
- 458              	.LASF13:
- 459 0152 63686172 		.ascii	"char\000"
- 459      00
- 460              	.LASF4:
- 461 0157 6C6F6E67 		.ascii	"long int\000"
- 461      20696E74 
- 461      00
- 462              	.LASF12:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 13
+ 442      61635C4F 
+ 442      5661632E 
+ 442      63796473 
+ 443              	.LASF19:
+ 444 0086 656D4669 		.ascii	"emFile_SPI0_SaveConfig\000"
+ 444      6C655F53 
+ 444      5049305F 
+ 444      53617665 
+ 444      436F6E66 
+ 445              	.LASF5:
+ 446 009d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 446      20756E73 
+ 446      69676E65 
+ 446      6420696E 
+ 446      7400
+ 447              	.LASF7:
+ 448 00af 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 448      206C6F6E 
+ 448      6720756E 
+ 448      7369676E 
+ 448      65642069 
+ 449              	.LASF23:
+ 450 00c6 47656E65 		.ascii	"Generated_Source\\PSoC5\\emFile_PM.c\000"
+ 450      72617465 
+ 450      645F536F 
+ 450      75726365 
+ 450      5C50536F 
+ 451              	.LASF15:
+ 452 00e9 656D4669 		.ascii	"emFile_SaveConfig\000"
+ 452      6C655F53 
+ 452      61766543 
+ 452      6F6E6669 
+ 452      6700
+ 453              	.LASF22:
+ 454 00fb 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 454      4320342E 
+ 454      392E3320 
+ 454      32303135 
+ 454      30333033 
+ 455 012e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 455      20726576 
+ 455      6973696F 
+ 455      6E203232 
+ 455      31323230 
+ 456 0161 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 456      66756E63 
+ 456      74696F6E 
+ 456      2D736563 
+ 456      74696F6E 
+ 457              	.LASF1:
+ 458 0189 756E7369 		.ascii	"unsigned char\000"
+ 458      676E6564 
+ 458      20636861 
+ 458      7200
+ 459              	.LASF21:
+ 460 0197 656D4669 		.ascii	"emFile_SPI0_Wakeup\000"
+ 460      6C655F53 
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 13
 
 
- 463 0160 646F7562 		.ascii	"double\000"
- 463      6C6500
- 464              	.LASF17:
- 465 0167 656D4669 		.ascii	"emFile_Sleep\000"
- 465      6C655F53 
- 465      6C656570 
- 465      00
- 466              	.LASF25:
- 467 0174 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 467      52784275 
- 467      66666572 
- 467      00
- 468              	.LASF0:
- 469 0181 7369676E 		.ascii	"signed char\000"
- 469      65642063 
- 469      68617200 
- 470              	.LASF9:
- 471 018d 5F5F696E 		.ascii	"__int32_t\000"
- 471      7433325F 
- 471      7400
- 472              	.LASF24:
- 473 0197 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 473      73657273 
- 473      5C676469 
- 473      6E675C44 
- 473      6F63756D 
- 474 01c5 64736E5C 		.ascii	"dsn\\Pressure_Harbor_test.cydsn\000"
- 474      50726573 
- 474      73757265 
- 474      5F486172 
- 474      626F725F 
+ 460      5049305F 
+ 460      57616B65 
+ 460      757000
+ 461              	.LASF13:
+ 462 01aa 63686172 		.ascii	"char\000"
+ 462      00
+ 463              	.LASF4:
+ 464 01af 6C6F6E67 		.ascii	"long int\000"
+ 464      20696E74 
+ 464      00
+ 465              	.LASF12:
+ 466 01b8 646F7562 		.ascii	"double\000"
+ 466      6C6500
+ 467              	.LASF17:
+ 468 01bf 656D4669 		.ascii	"emFile_Sleep\000"
+ 468      6C655F53 
+ 468      6C656570 
+ 468      00
+ 469              	.LASF25:
+ 470 01cc 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 470      52784275 
+ 470      66666572 
+ 470      00
+ 471              	.LASF0:
+ 472 01d9 7369676E 		.ascii	"signed char\000"
+ 472      65642063 
+ 472      68617200 
+ 473              	.LASF9:
+ 474 01e5 5F5F696E 		.ascii	"__int32_t\000"
+ 474      7433325F 
+ 474      7400
  475              	.LASF20:
- 476 01e4 656D4669 		.ascii	"emFile_SPI0_Sleep\000"
+ 476 01ef 656D4669 		.ascii	"emFile_SPI0_Sleep\000"
  476      6C655F53 
  476      5049305F 
  476      536C6565 
  476      7000
  477              	.LASF11:
- 478 01f6 666C6F61 		.ascii	"float\000"
+ 478 0201 666C6F61 		.ascii	"float\000"
  478      7400
  479              	.LASF2:
- 480 01fc 73686F72 		.ascii	"short int\000"
+ 480 0207 73686F72 		.ascii	"short int\000"
  480      7420696E 
  480      7400
  481              	.LASF16:
- 482 0206 656D4669 		.ascii	"emFile_RestoreConfig\000"
+ 482 0211 656D4669 		.ascii	"emFile_RestoreConfig\000"
  482      6C655F52 
  482      6573746F 
  482      7265436F 
  482      6E666967 
  483              	.LASF10:
- 484 021b 696E7433 		.ascii	"int32_t\000"
+ 484 0226 696E7433 		.ascii	"int32_t\000"
  484      325F7400 
  485              	.LASF18:
- 486 0223 656D4669 		.ascii	"emFile_Wakeup\000"
+ 486 022e 656D4669 		.ascii	"emFile_Wakeup\000"
  486      6C655F57 
  486      616B6575 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccGtrEjN.s 			page 14
+ARM GAS  C:\Users\gding\AppData\Local\Temp\cce9qP1u.s 			page 14
 
 
  486      7000
  487              	.LASF14:
- 488 0231 73697A65 		.ascii	"sizetype\000"
+ 488 023c 73697A65 		.ascii	"sizetype\000"
  488      74797065 
  488      00
  489              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

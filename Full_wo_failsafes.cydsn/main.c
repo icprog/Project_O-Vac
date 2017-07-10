@@ -1,32 +1,3 @@
-/*******************************************************************************
-* File Name: main.c
-*
-* Version: 2.20
-*
-* Description:
-*   This is a source code for example project of ADC single ended mode.
-*
-*   Variable resistor(pot) is connected to +ve input of ADC using the I/O pin.
-*   P0.0. When voltage to positive terminal of ADC is 0, the output displayed
-*   on the LCD pannel is 0x0000. As voltage on positive terminal goes on
-*   increasing, the  converted value goes on increasing from 0x0000 and reaches
-*   0xFFFF when voltage becomes 1.024V. Futher increase in voltage value,
-*   doesn't cause any changes to values displayed in the LCD.
-*
-* Hardware Connections: 
-*  Connect analog input from Variable resistor to port P0[0] of DVK1 board.
-*
-********************************************************************************
-* Copyright 2012-2015, Cypress Semiconductor Corporation. All rights reserved.
-* This software is owned by Cypress Semiconductor Corporation and is protected
-* by and subject to worldwide patent and copyright laws and treaties.
-* Therefore, you may use this software only as provided in the license agreement
-* accompanying the software package from which you obtained this software.
-* CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-* WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-*******************************************************************************/
-
 #include <project.h>
 #include <mpu6050.h>
 #include <stdio.h>
@@ -324,8 +295,8 @@ int main()
                     #endif
                     /* at 10 seconds, change into descending */
                     if(countdown == 10){
-                        descent_time = (((depth / 13) + 3) * 2 * 500);
-                        /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m of leeway, x500 for
+                        descent_time = ((((double)depth / 13) + 3) * 2 * 500);
+                        /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m for margin of error, x500 for
                          * number of ISR calls to get 1 second */ 
                         STATE = DESCENDING;
                         #ifdef LCD
@@ -355,7 +326,7 @@ int main()
                     }
                     else if(id == MA_WINDOW){
                         sum += az;
-                        sum = sum/MA_WINDOW;                          
+                        average = sum/MA_WINDOW;                          
                     }
                     else{
                         average = ComputeMA(average, MA_WINDOW, az);                // Compute averages for gyro
@@ -402,17 +373,18 @@ int main()
                 break;
                 
                 case LANDED:
-                    if (countdown == 7) {                   // Delay for 7 seconds at bottom
+                    if ((countdown == 7) && !pulse) {                   // Delay for 7 seconds at bottom
                         countdown = 0; 
                         pulse = 1;                          // next stage of the state
                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
                     } 
                     
-                    if (countdown == 5 && pulse){           // Second stage, turn off solenoid
+                    if ((countdown == 15) && pulse){           // Second stage, turn off solenoid
                         pulse++;
                         Solenoid_1_Write(0);                // turn off soleniod 1
                         countdown = 0;
                     }
+                    
                     if (countdown == 3 && pulse == 2){      // Delay for 3 seconds then resurface
                         STATE = RESURFACE;
                         

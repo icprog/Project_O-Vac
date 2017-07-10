@@ -74,17 +74,20 @@ int main(void)
                               "*\n"
                               "NEXT RUN START\n";
     
-    //MPU6050_init();
-    //MPU6050_initialize();
+    MPU6050_init();
+    MPU6050_initialize();
     clear();
     LCD_print("Ready");
     float xavg = 0, yavg = 0, zavg = 0, xsum = 0, ysum = 0, zsum = 0;
     float xfavg = 0, yfavg = 0, zfavg = 0;
     int xones = 0, xdecimals = 0, yones = 0, ydecimals = 0, zones = 0, zdecimals = 0;
+    int16_t az = 0;
+    int average = 0, sum =0;
     for(;;)
     {
         clear();
         //MPU6050_getRotation(&gyroX, &gyroY, &gyroZ);
+        az = MPU6050_getAccelerationZ();
         if (reset){
             FS_Write(fsfile, run_separation, strlen(run_separation));
             reset = 0;
@@ -131,21 +134,25 @@ int main(void)
             voltage = output * (3.32 / 65536);
             
                 if (press_id < MA_WINDOW){
+                    sum += az;
                     pressure_sum += voltage;     
                 }
                 else if(press_id == MA_WINDOW){
                     pressure_sum += voltage;
+                    sum += az;
                     pressure_avg = pressure_sum/MA_WINDOW;                            // compute baseline average
+                    average = sum/MA_WINDOW;
                 }
                 else{
                     pressure_avg = ComputeMA(pressure_avg, MA_WINDOW, voltage);
+                    average = ComputeMA(average, MA_WINDOW, az);
                     num = pressure_avg;
                     temp = pressure_avg - num;
                     decimals = temp * 10000;
                     char sdbuf[60] = {};
 
-                        sprintf(sdbuf, "(%ld)pressure: %d.%04d, %d\n", press_id, \
-                                            num, decimals, (int16)output); // log pressure data
+                        sprintf(sdbuf, "%d.%04d, %d, %d\n", \
+                                            num, decimals, (int16)output, average); // log pressure data
                         FS_Write(fsfile, sdbuf, strlen(sdbuf)); 
                 }
                 collect_flag = 0;

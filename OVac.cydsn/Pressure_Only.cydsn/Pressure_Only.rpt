@@ -1,12 +1,15 @@
-Loading plugins phase: Elapsed time ==> 0s.318ms
+Loading plugins phase: Elapsed time ==> 0s.316ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -d CY8C5868LTI-LP039 -s C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -d CY8C5868LTI-LP039 -s C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
+ADD: pft.M0074: information: A (re)build is required to use the analog device editor. Unable to load the necessary information from the cyfit file. Partial/wrong data will be displayed until this has been resolved.
+ * C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cydwr ()
+
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.926ms
+Elaboration phase: Elapsed time ==> 2s.319ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.096ms
+HDL generation phase: Elapsed time ==> 0s.161ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -22,35 +25,35 @@ HDL generation phase: Elapsed time ==> 0s.096ms
      | | | | | | |
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 Pressure_Harbor_test.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 Pressure_Only.v -verilog
 ======================================================================
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 Pressure_Harbor_test.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 Pressure_Only.v -verilog
 ======================================================================
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 -verilog Pressure_Harbor_test.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 -verilog Pressure_Only.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun May 21 19:23:50 2017
+Sun Jun 04 15:59:55 2017
 
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   vpp
-Options  :    -yv2 -q10 Pressure_Harbor_test.v
+Options  :    -yv2 -q10 Pressure_Only.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun May 21 19:23:50 2017
+Sun Jun 04 15:59:55 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
@@ -80,7 +83,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Using control file 'Pressure_Harbor_test.ctl'.
+Using control file 'Pressure_Only.ctl'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v (line 1113, col 55):  Note: Substituting module 'add_vv_vv' for '+'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v (line 1122, col 48):  Note: Substituting module 'cmp_vv_vv' for '<'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v (line 1122, col 77):  Note: Substituting module 'cmp_vv_vv' for '<'.
@@ -96,13 +99,13 @@ vlogfe:  No errors.
 
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 -verilog Pressure_Harbor_test.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 -verilog Pressure_Only.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun May 21 19:23:51 2017
+Sun Jun 04 15:59:56 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -113,9 +116,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\codegentemp\Pressure_Harbor_test.ctl'.
+Linking 'C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\codegentemp\Pressure_Only.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\codegentemp\Pressure_Harbor_test.v'.
+Linking 'C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\codegentemp\Pressure_Only.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'.
@@ -135,13 +138,13 @@ tovif:  No errors.
 
 
 ======================================================================
-Compiling:  Pressure_Harbor_test.v
+Compiling:  Pressure_Only.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 -verilog Pressure_Harbor_test.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 -verilog Pressure_Only.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun May 21 19:23:51 2017
+Sun Jun 04 15:59:57 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -152,9 +155,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\codegentemp\Pressure_Harbor_test.ctl'.
+Linking 'C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\codegentemp\Pressure_Only.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\codegentemp\Pressure_Harbor_test.v'.
+Linking 'C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\codegentemp\Pressure_Only.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.v'.
@@ -645,16 +648,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -dcpsoc3 Pressure_Harbor_test.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -dcpsoc3 Pressure_Only.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.011ms
+Warp synthesis phase: Elapsed time ==> 3s.075ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Sunday, 21 May 2017 19:23:51
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\Project_O-Vac\OVac.cydsn\Pressure_Harbor_test.cydsn\Pressure_Harbor_test.cyprj -d CY8C5868LTI-LP039 Pressure_Harbor_test.v -verilog
+cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Sunday, 04 June 2017 15:59:58
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cyprj -d CY8C5868LTI-LP039 Pressure_Only.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.024ms
+Design parsing phase: Elapsed time ==> 0s.046ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -2222,8 +2225,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.067ms
-Tech Mapping phase: Elapsed time ==> 0s.161ms
+Technology Mapping: Elapsed time ==> 0s.071ms
+Tech Mapping phase: Elapsed time ==> 0s.165ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_35\" is connected to one terminal only. (App=cydsfit)
@@ -2252,10 +2255,10 @@ IO_6@[IOP=(1)][IoId=(6)] : \emFile:sclk0(0)\ (fixed)
 DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 
-Analog Placement phase: Elapsed time ==> 0s.040ms
+Analog Placement phase: Elapsed time ==> 0s.048ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.004ms
+Analog Routing phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -2337,11 +2340,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.300ms
+Analog Code Generation phase: Elapsed time ==> 0s.350ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.4 sec.
+I2076: Total run-time: 2.1 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -2372,7 +2375,7 @@ PLD Packing: Elapsed time ==> 0s.004ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.142ms
+Partitioning: Elapsed time ==> 0s.072ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -4175,32 +4178,35 @@ Port | Pin | Fixed |      Type |       Drive Mode |                Name | Connec
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.008ms
-Digital Placement phase: Elapsed time ==> 2s.000ms
+Digital component placer commit/Report: Elapsed time ==> 0s.005ms
+Digital Placement phase: Elapsed time ==> 2s.633ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 2s.772ms
+Digital Routing phase: Elapsed time ==> 2s.757ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.300ms
+Bitstream Generation phase: Elapsed time ==> 0s.304ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.048ms
+Bitstream Verification phase: Elapsed time ==> 0s.056ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
-Timing report is in Pressure_Harbor_test_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.539ms
+Timing report is in Pressure_Only_timing.html.
+Static timing analysis phase: Elapsed time ==> 0s.552ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.241ms
+Design database save phase: Elapsed time ==> 0s.236ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 6s.476ms
+cydsfit: Elapsed time ==> 7s.216ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 6s.477ms
-API generation phase: Elapsed time ==> 1s.894ms
-Dependency generation phase: Elapsed time ==> 0s.024ms
-Cleanup phase: Elapsed time ==> 0s.003ms
+Fitter phase: Elapsed time ==> 7s.220ms
+DEL: pft.M0074: information: A (re)build is required to use the analog device editor. Unable to load the necessary information from the cyfit file. Partial/wrong data will be displayed until this has been resolved.
+ * C:\Users\gding\Documents\temp_project_ovac\Project_O-Vac\OVac.cydsn\Pressure_Only.cydsn\Pressure_Only.cydwr ()
+
+API generation phase: Elapsed time ==> 3s.649ms
+Dependency generation phase: Elapsed time ==> 0s.040ms
+Cleanup phase: Elapsed time ==> 0s.000ms
