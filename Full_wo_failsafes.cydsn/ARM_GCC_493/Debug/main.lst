@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
   55              		.size	sum, 4
   56              	sum:
   57 0008 00000000 		.space	4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 2
 
 
   58              		.global	pressure_sum
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  108              		.global	msg_count
  109              		.align	2
  110              		.type	msg_count, %object
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 3
 
 
  111              		.size	msg_count, 4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  165              		.align	2
  166              		.type	yavg, %object
  167              		.size	yavg, 4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 4
 
 
  168              	yavg:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
   12:main.c        **** *   increasing, the  converted value goes on increasing from 0x0000 and reaches
   13:main.c        **** *   0xFFFF when voltage becomes 1.024V. Futher increase in voltage value,
   14:main.c        **** *   doesn't cause any changes to values displayed in the LCD.
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 5
 
 
   15:main.c        **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
   69:main.c        **** float xavg = 0, yavg = 0, xsum = 0, ysum = 0;                                 // gyro avg/sum value
   70:main.c        **** char file[11] = "test1.txt";
   71:main.c        **** char volume[10] = {};
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 6
 
 
   72:main.c        **** FS_FILE *fsfile;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  223 000c 0422     		movs	r2, #4
  224 000e 1A70     		strb	r2, [r3]
  110:main.c        ****     Comp_Stop();                                // Stop comparator for interrupt
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 7
 
 
  225              		.loc 1 110 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  272 001c 0133     		adds	r3, r3, #1
  273 001e 064A     		ldr	r2, .L7+8
  274 0020 1360     		str	r3, [r2]
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 8
 
 
  275              	.L6:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  321 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  322 000c 012B     		cmp	r3, #1
  323 000e 03D1     		bne	.L10
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 9
 
 
  324              		.loc 1 125 0 is_stmt 0 discriminator 1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  372 0056 0133     		adds	r3, r3, #1
  373 0058 DAB2     		uxtb	r2, r3
  374 005a 0E4B     		ldr	r3, .L15+24
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 10
 
 
  375 005c 1A70     		strb	r2, [r3]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  420              		.loc 1 140 0
  421              		.cfi_startproc
  422              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 11
 
 
  423              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  468              		.align	2
  469              	.L20:
  470 0040 00000000 		.word	msg_count
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 12
 
 
  471 0044 00000000 		.word	RxBuffer
@@ -695,106 +695,106 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  495              		.global	__aeabi_fmul
  496              		.align	2
  497              	.LC9:
- 498 0028 70726573 		.ascii	"pressure: %d.%04d, %d\012\000"
- 498      73757265 
- 498      3A202564 
- 498      2E253034 
- 498      642C2025 
- 499 003f 00       		.align	2
+ 498 0028 25642E25 		.ascii	"%d.%04d, %d, %d\012\000"
+ 498      3034642C 
+ 498      2025642C 
+ 498      2025640A 
+ 498      00
+ 499 0039 000000   		.align	2
  500              	.LC10:
- 501 0040 0A256420 		.ascii	"\012%d seconds remaining\000"
+ 501 003c 0A256420 		.ascii	"\012%d seconds remaining\000"
  501      7365636F 
  501      6E647320 
  501      72656D61 
  501      696E696E 
- 502 0056 0000     		.align	2
+ 502 0052 0000     		.align	2
  503              	.LC11:
- 504 0058 53544154 		.ascii	"STATE: DESCENT\000"
+ 504 0054 53544154 		.ascii	"STATE: DESCENT\000"
  504      453A2044 
  504      45534345 
  504      4E5400
- 505 0067 00       		.align	2
+ 505 0063 00       		.align	2
  506              	.LC12:
- 507 0068 53544154 		.ascii	"STATE: LANDED\000"
+ 507 0064 53544154 		.ascii	"STATE: LANDED\000"
  507      453A204C 
  507      414E4445 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 13
 
 
  507      4400
- 508 0076 0000     		.align	2
+ 508 0072 0000     		.align	2
  509              	.LC13:
- 510 0078 53544154 		.ascii	"STATE: RESURFACE\000"
+ 510 0074 53544154 		.ascii	"STATE: RESURFACE\000"
  510      453A2052 
  510      45535552 
  510      46414345 
  510      00
- 511 0089 000000   		.align	2
+ 511 0085 000000   		.align	2
  512              	.LC14:
- 513 008c 53544154 		.ascii	"STATE: RESURFACING\000"
+ 513 0088 53544154 		.ascii	"STATE: RESURFACING\000"
  513      453A2052 
  513      45535552 
  513      46414349 
  513      4E4700
- 514 009f 00       		.align	2
+ 514 009b 00       		.align	2
  515              	.LC15:
- 516 00a0 57415445 		.ascii	"WATER DETECTED\000"
+ 516 009c 57415445 		.ascii	"WATER DETECTED\000"
  516      52204445 
  516      54454354 
  516      454400
- 517 00af 00       		.align	2
+ 517 00ab 00       		.align	2
  518              	.LC16:
- 519 00b0 74657374 		.ascii	"test%d.txt\000"
+ 519 00ac 74657374 		.ascii	"test%d.txt\000"
  519      25642E74 
  519      787400
- 520 00bb 00       		.align	2
+ 520 00b7 00       		.align	2
  521              	.LC17:
- 522 00bc 7700     		.ascii	"w\000"
- 523 00be 0000     		.align	2
+ 522 00b8 7700     		.ascii	"w\000"
+ 523 00ba 0000     		.align	2
  524              	.LC18:
- 525 00c0 5452414E 		.ascii	"TRANSMIT\000"
+ 525 00bc 5452414E 		.ascii	"TRANSMIT\000"
  525      534D4954 
  525      00
- 526 00c9 000000   		.align	2
+ 526 00c5 000000   		.align	2
  527              	.LC0:
- 528 00cc 53595354 		.ascii	"SYSTEM_CHECK\000"
+ 528 00c8 53595354 		.ascii	"SYSTEM_CHECK\000"
  528      454D5F43 
  528      4845434B 
  528      00
- 529 00d9 00       		.space	1
- 530 00da 0000     		.align	2
+ 529 00d5 00       		.space	1
+ 530 00d6 0000     		.align	2
  531              	.LC1:
- 532 00dc 0A535441 		.ascii	"\012STATE: DESCENDING\012\000"
+ 532 00d8 0A535441 		.ascii	"\012STATE: DESCENDING\012\000"
  532      54453A20 
  532      44455343 
  532      454E4449 
  532      4E470A00 
  533              		.align	2
  534              	.LC2:
- 535 00f0 53544154 		.ascii	"STATE: LANDED\012\000"
+ 535 00ec 53544154 		.ascii	"STATE: LANDED\012\000"
  535      453A204C 
  535      414E4445 
  535      440A00
- 536 00ff 00       		.align	2
+ 536 00fb 00       		.align	2
  537              	.LC3:
- 538 0100 53544154 		.ascii	"STATE: VACUUMING\012\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 14
+ 538 00fc 53544154 		.ascii	"STATE: VACUUMING\012\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 14
 
 
  538      453A2056 
  538      41435555 
  538      4D494E47 
  538      0A00
- 539 0112 0000     		.align	2
+ 539 010e 0000     		.align	2
  540              	.LC4:
- 541 0114 53544154 		.ascii	"STATE: RESURFACE\012\000"
+ 541 0110 53544154 		.ascii	"STATE: RESURFACE\012\000"
  541      453A2052 
  541      45535552 
  541      46414345 
  541      0A00
- 542 0126 0000     		.align	2
+ 542 0122 0000     		.align	2
  543              	.LC5:
- 544 0128 53544154 		.ascii	"STATE: TRANSMIT\012\000"
+ 544 0124 53544154 		.ascii	"STATE: TRANSMIT\012\000"
  544      453A2054 
  544      52414E53 
  544      4D49540A 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  576 001e C7F80C31 		str	r3, [r7, #268]	@ float
  577 0022 4FF00003 		mov	r3, #0
  578 0026 C7F80831 		str	r3, [r7, #264]	@ float
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 15
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 15
 
 
  579 002a 4FF00003 		mov	r3, #0
@@ -861,7 +861,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  595 004e 0022     		movs	r2, #0
  596 0050 1A60     		str	r2, [r3]
  597 0052 0433     		adds	r3, r3, #4
- 598 0054 744B     		ldr	r3, .L65+8
+ 598 0054 744B     		ldr	r3, .L66+8
  599 0056 07F1A004 		add	r4, r7, #160
  600 005a 0FCB     		ldmia	r3, {r0, r1, r2, r3}
  601 005c 07C4     		stmia	r4!, {r0, r1, r2}
@@ -870,7 +870,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  604 0062 87F8AD30 		strb	r3, [r7, #173]
  155:main.c        ****     char descendbuf[DESCENDING_LEN] = STATE_DESCENDING;             // buffers for transmitting sta
  605              		.loc 1 155 0
- 606 0066 714B     		ldr	r3, .L65+12
+ 606 0066 714B     		ldr	r3, .L66+12
  607 0068 07F18C04 		add	r4, r7, #140
  608 006c 1D46     		mov	r5, r3
  609 006e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
@@ -881,16 +881,16 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  614 0078 0234     		adds	r4, r4, #2
  615 007a 1B0C     		lsrs	r3, r3, #16
  616 007c 2370     		strb	r3, [r4]
- 156:main.c        ****     char landedbuf[LANDED_LEN] = STATE_LANDED;              
+ 156:main.c        ****     char landedbuf[LANDED_LEN] = STATE_LANDED;
  617              		.loc 1 156 0
- 618 007e 6C4B     		ldr	r3, .L65+16
+ 618 007e 6C4B     		ldr	r3, .L66+16
  619 0080 07F17C04 		add	r4, r7, #124
  620 0084 0FCB     		ldmia	r3, {r0, r1, r2, r3}
  621 0086 07C4     		stmia	r4!, {r0, r1, r2}
  622 0088 2380     		strh	r3, [r4]	@ movhi
  157:main.c        ****     char vacuumbuf[VACUUM_LEN] = STATE_VACUUM;
  623              		.loc 1 157 0
- 624 008a 6A4B     		ldr	r3, .L65+20
+ 624 008a 6A4B     		ldr	r3, .L66+20
  625 008c 07F16804 		add	r4, r7, #104
  626 0090 1D46     		mov	r5, r3
  627 0092 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
@@ -898,11 +898,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  629 0096 2B68     		ldr	r3, [r5]
  630 0098 2370     		strb	r3, [r4]
  158:main.c        ****     char resurfbuf[RESURFACE_LEN] = STATE_RESURFACE;
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 16
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 16
 
 
  631              		.loc 1 158 0
- 632 009a 674B     		ldr	r3, .L65+24
+ 632 009a 674B     		ldr	r3, .L66+24
  633 009c 07F15404 		add	r4, r7, #84
  634 00a0 1D46     		mov	r5, r3
  635 00a2 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
@@ -911,7 +911,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  638 00a8 2370     		strb	r3, [r4]
  159:main.c        ****     char transbuf[TRANSMIT_LEN] = STATE_TRANSMIT;
  639              		.loc 1 159 0
- 640 00aa 644B     		ldr	r3, .L65+28
+ 640 00aa 644B     		ldr	r3, .L66+28
  641 00ac 07F14404 		add	r4, r7, #68
  642 00b0 0FCB     		ldmia	r3, {r0, r1, r2, r3}
  643 00b2 84E80F00 		stmia	r4, {r0, r1, r2, r3}
@@ -955,14 +955,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  669 00e2 FFF7FEFF 		bl	Sample_Timer_Start
  172:main.c        ****     Sample_ISR_StartEx(Sample_ISR_Handler);     // reference ISR function
  670              		.loc 1 172 0
- 671 00e6 5648     		ldr	r0, .L65+32
+ 671 00e6 5648     		ldr	r0, .L66+32
  672 00e8 FFF7FEFF 		bl	Sample_ISR_StartEx
  173:main.c        ****     rx_interrupt_StartEx(rx_interrupt);
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 17
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 17
 
 
  673              		.loc 1 173 0
- 674 00ec 5548     		ldr	r0, .L65+36
+ 674 00ec 5548     		ldr	r0, .L66+36
  675 00ee FFF7FEFF 		bl	rx_interrupt_StartEx
  174:main.c        ****     //moisture_isr_StartEx(Moisture_ISR_Handler); // moisture isr start
  175:main.c        ****     //Comp_Start();                               // comparator for moisture start
@@ -974,7 +974,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  179:main.c        ****     #ifdef LCD
  180:main.c        ****         LiquidCrystal_I2C_init(Addr,16,2,0);        // initialize I2C communication with LCD
  678              		.loc 1 180 0
- 679 00f6 544B     		ldr	r3, .L65+40
+ 679 00f6 544B     		ldr	r3, .L66+40
  680 00f8 1B68     		ldr	r3, [r3]
  681 00fa DBB2     		uxtb	r3, r3
  682 00fc 1846     		mov	r0, r3
@@ -1002,7 +1002,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  192:main.c        ****         /* Startup Display */
  193:main.c        ****         LCD_print("PSoC 5LP: O-Vac");
  693              		.loc 1 193 0
- 694 0114 4D48     		ldr	r0, .L65+44
+ 694 0114 4D48     		ldr	r0, .L66+44
  695 0116 FFF7FEFF 		bl	LCD_print
  194:main.c        ****         setCursor(0,1);
  696              		.loc 1 194 0
@@ -1011,14 +1011,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  699 011e FFF7FEFF 		bl	setCursor
  195:main.c        ****         LCD_print("I2C Working");
  700              		.loc 1 195 0
- 701 0122 4B48     		ldr	r0, .L65+48
+ 701 0122 4B48     		ldr	r0, .L66+48
  702 0124 FFF7FEFF 		bl	LCD_print
  196:main.c        ****         
  197:main.c        ****         CyDelay(1000u);   
  703              		.loc 1 197 0
  704 0128 4FF47A70 		mov	r0, #1000
  705 012c FFF7FEFF 		bl	CyDelay
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 18
 
 
  198:main.c        ****         clear();
@@ -1035,7 +1035,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  205:main.c        ****     #ifdef SD
  206:main.c        ****         int SD_Result = SD_SETUP(file); 
  710              		.loc 1 206 0
- 711 0138 4648     		ldr	r0, .L65+52
+ 711 0138 4648     		ldr	r0, .L66+52
  712 013a FFF7FEFF 		bl	SD_SETUP
  713 013e C7F8F800 		str	r0, [r7, #248]
  207:main.c        ****         
@@ -1056,7 +1056,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  214:main.c        ****     #endif
  215:main.c        ****     STATE = WAIT_TO_LAUNCH;
  722              		.loc 1 215 0
- 723 0154 404B     		ldr	r3, .L65+56
+ 723 0154 404B     		ldr	r3, .L66+56
  724 0156 0122     		movs	r2, #1
  725 0158 1A70     		strb	r2, [r3]
  216:main.c        ****     #ifdef LCD
@@ -1070,7 +1070,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  731 0162 FFF7FEFF 		bl	clear
  219:main.c        ****         LCD_print("STATE: WAIT");  
  732              		.loc 1 219 0
- 733 0166 3D48     		ldr	r0, .L65+60
+ 733 0166 3D48     		ldr	r0, .L66+60
  734 0168 FFF7FEFF 		bl	LCD_print
  220:main.c        ****     #endif
  221:main.c        ****     
@@ -1078,13 +1078,13 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  735              		.loc 1 222 0
  736 016c FFF7FEFF 		bl	Countdown_timer_Start
  223:main.c        ****     countdown_StartEx(Countdown_ISR_Handler);
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 19
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 19
 
 
  737              		.loc 1 223 0
- 738 0170 3B48     		ldr	r0, .L65+64
+ 738 0170 3B48     		ldr	r0, .L66+64
  739 0172 FFF7FEFF 		bl	countdown_StartEx
- 740              	.L63:
+ 740              	.L64:
  741              	.LBB2:
  224:main.c        ****    
  225:main.c        ****     
@@ -1097,7 +1097,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  744 0178 FFF7FEFF 		bl	ADC_IsEndConversion
  745 017c 0346     		mov	r3, r0
  746 017e 002B     		cmp	r3, #0
- 747 0180 00F0D280 		beq	.L23
+ 747 0180 00F0D680 		beq	.L23
  230:main.c        ****         {
  231:main.c        ****             output = ADC_GetResult32();
  748              		.loc 1 231 0
@@ -1115,7 +1115,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  759 01a0 0B46     		mov	r3, r1
  760 01a2 1046     		mov	r0, r2
  761 01a4 1946     		mov	r1, r3
- 762 01a6 1EA3     		adr	r3, .L65
+ 762 01a6 1EA3     		adr	r3, .L66
  763 01a8 D3E90023 		ldrd	r2, [r3]
  764 01ac FFF7FEFF 		bl	__aeabi_dmul
  765 01b0 0246     		mov	r2, r0
@@ -1127,78 +1127,78 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  771 01be C7F81031 		str	r3, [r7, #272]	@ float
  233:main.c        ****             if(collect_flag == 1){
  772              		.loc 1 233 0
- 773 01c2 284B     		ldr	r3, .L65+68
+ 773 01c2 284B     		ldr	r3, .L66+68
  774 01c4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  775 01c6 002B     		cmp	r3, #0
- 776 01c8 00F0AE80 		beq	.L23
+ 776 01c8 00F0B280 		beq	.L23
  234:main.c        ****                 if (press_id < MA_WINDOW){
  777              		.loc 1 234 0
- 778 01cc 264B     		ldr	r3, .L65+72
+ 778 01cc 264B     		ldr	r3, .L66+72
  779 01ce 1B68     		ldr	r3, [r3]
  780 01d0 0E2B     		cmp	r3, #14
  781 01d2 0BDC     		bgt	.L24
  235:main.c        ****                     pressure_sum += voltage;     
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 20
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 20
 
 
  782              		.loc 1 235 0
- 783 01d4 254B     		ldr	r3, .L65+76
+ 783 01d4 254B     		ldr	r3, .L66+76
  784 01d6 1B68     		ldr	r3, [r3]	@ float
  785 01d8 1846     		mov	r0, r3
  786 01da D7F81011 		ldr	r1, [r7, #272]	@ float
  787 01de FFF7FEFF 		bl	__aeabi_fadd
  788 01e2 0346     		mov	r3, r0
  789 01e4 1A46     		mov	r2, r3
- 790 01e6 214B     		ldr	r3, .L65+76
+ 790 01e6 214B     		ldr	r3, .L66+76
  791 01e8 1A60     		str	r2, [r3]	@ float
- 792 01ea 91E0     		b	.L25
+ 792 01ea 95E0     		b	.L25
  793              	.L24:
  236:main.c        ****                 }
  237:main.c        ****                 else if(press_id == MA_WINDOW){
  794              		.loc 1 237 0
- 795 01ec 1E4B     		ldr	r3, .L65+72
+ 795 01ec 1E4B     		ldr	r3, .L66+72
  796 01ee 1B68     		ldr	r3, [r3]
  797 01f0 0F2B     		cmp	r3, #15
  798 01f2 3FD1     		bne	.L26
  238:main.c        ****                     pressure_sum += voltage;
  799              		.loc 1 238 0
- 800 01f4 1D4B     		ldr	r3, .L65+76
+ 800 01f4 1D4B     		ldr	r3, .L66+76
  801 01f6 1B68     		ldr	r3, [r3]	@ float
  802 01f8 1846     		mov	r0, r3
  803 01fa D7F81011 		ldr	r1, [r7, #272]	@ float
  804 01fe FFF7FEFF 		bl	__aeabi_fadd
  805 0202 0346     		mov	r3, r0
  806 0204 1A46     		mov	r2, r3
- 807 0206 194B     		ldr	r3, .L65+76
+ 807 0206 194B     		ldr	r3, .L66+76
  808 0208 1A60     		str	r2, [r3]	@ float
  239:main.c        ****                     pressure_avg = pressure_sum/MA_WINDOW;                            // compute ba
  809              		.loc 1 239 0
- 810 020a 184B     		ldr	r3, .L65+76
+ 810 020a 184B     		ldr	r3, .L66+76
  811 020c 1B68     		ldr	r3, [r3]	@ float
  812 020e 1846     		mov	r0, r3
- 813 0210 1749     		ldr	r1, .L65+80
+ 813 0210 1749     		ldr	r1, .L66+80
  814 0212 FFF7FEFF 		bl	__aeabi_fdiv
  815 0216 0346     		mov	r3, r0
  816 0218 C7F82431 		str	r3, [r7, #292]	@ float
- 817 021c 78E0     		b	.L25
- 818              	.L66:
+ 817 021c 7CE0     		b	.L25
+ 818              	.L67:
  819 021e 00BF     		.align	3
- 820              	.L65:
+ 820              	.L66:
  821 0220 8FC2F528 		.word	687194767
  822 0224 5C8F4A3F 		.word	1061850972
- 823 0228 CC000000 		.word	.LC0
- 824 022c DC000000 		.word	.LC1
- 825 0230 F0000000 		.word	.LC2
- 826 0234 00010000 		.word	.LC3
- 827 0238 14010000 		.word	.LC4
- 828 023c 28010000 		.word	.LC5
+ 823 0228 C8000000 		.word	.LC0
+ 824 022c D8000000 		.word	.LC1
+ 825 0230 EC000000 		.word	.LC2
+ 826 0234 FC000000 		.word	.LC3
+ 827 0238 10010000 		.word	.LC4
+ 828 023c 24010000 		.word	.LC5
  829 0240 00000000 		.word	Sample_ISR_Handler
  830 0244 00000000 		.word	rx_interrupt
  831 0248 00000000 		.word	Addr
  832 024c 00000000 		.word	.LC6
  833 0250 10000000 		.word	.LC7
  834 0254 00000000 		.word	file
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 21
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 21
 
 
  835 0258 00000000 		.word	STATE
@@ -1238,7 +1238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  245:main.c        ****                     decimals = temp * 10000;
  864              		.loc 1 245 0
  865 02ae D7F80C01 		ldr	r0, [r7, #268]	@ float
- 866 02b2 BB49     		ldr	r1, .L67
+ 866 02b2 AF49     		ldr	r1, .L68
  867 02b4 FFF7FEFF 		bl	__aeabi_fmul
  868 02b8 0346     		mov	r3, r0
  869 02ba 1846     		mov	r0, r3
@@ -1255,1157 +1255,1164 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  879 02d0 1A46     		mov	r2, r3
  880 02d2 FFF7FEFF 		bl	memset
  247:main.c        ****                     #ifdef SD
- 248:main.c        ****                         sprintf(sdbuf, "pressure: %d.%04d, %d\n", num, decimals, (int16)output); //
+ 248:main.c        ****                         sprintf(sdbuf, "%d.%04d, %d, %d\n", num, decimals, (int16)output, average);
  881              		.loc 1 248 0
  882 02d6 D7F80801 		ldr	r0, [r7, #264]	@ float
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 22
 
 
  883 02da FFF7FEFF 		bl	__aeabi_f2iz
  884 02de 0346     		mov	r3, r0
  885 02e0 9BB2     		uxth	r3, r3
- 886 02e2 1BB2     		sxth	r3, r3
- 887 02e4 3A46     		mov	r2, r7
- 888 02e6 0093     		str	r3, [sp]
- 889 02e8 1046     		mov	r0, r2
- 890 02ea AE49     		ldr	r1, .L67+4
- 891 02ec D7F81821 		ldr	r2, [r7, #280]
- 892 02f0 D7F81431 		ldr	r3, [r7, #276]
- 893 02f4 FFF7FEFF 		bl	sprintf
+ 886 02e2 1AB2     		sxth	r2, r3
+ 887 02e4 A34B     		ldr	r3, .L68+4
+ 888 02e6 1B88     		ldrh	r3, [r3]
+ 889 02e8 1BB2     		sxth	r3, r3
+ 890 02ea 3946     		mov	r1, r7
+ 891 02ec 0092     		str	r2, [sp]
+ 892 02ee 0193     		str	r3, [sp, #4]
+ 893 02f0 0846     		mov	r0, r1
+ 894 02f2 A149     		ldr	r1, .L68+8
+ 895 02f4 D7F81821 		ldr	r2, [r7, #280]
+ 896 02f8 D7F81431 		ldr	r3, [r7, #276]
+ 897 02fc FFF7FEFF 		bl	sprintf
  249:main.c        ****                         FS_Write(fsfile, sdbuf, strlen(sdbuf));                           
- 894              		.loc 1 249 0
- 895 02f8 AB4B     		ldr	r3, .L67+8
- 896 02fa 1C68     		ldr	r4, [r3]
- 897 02fc 3B46     		mov	r3, r7
- 898 02fe 1846     		mov	r0, r3
- 899 0300 FFF7FEFF 		bl	strlen
- 900 0304 0246     		mov	r2, r0
- 901 0306 3B46     		mov	r3, r7
- 902 0308 2046     		mov	r0, r4
- 903 030a 1946     		mov	r1, r3
- 904 030c FFF7FEFF 		bl	FS_Write
- 905              	.L25:
- 906              	.LBE3:
+ 898              		.loc 1 249 0
+ 899 0300 9E4B     		ldr	r3, .L68+12
+ 900 0302 1C68     		ldr	r4, [r3]
+ 901 0304 3B46     		mov	r3, r7
+ 902 0306 1846     		mov	r0, r3
+ 903 0308 FFF7FEFF 		bl	strlen
+ 904 030c 0246     		mov	r2, r0
+ 905 030e 3B46     		mov	r3, r7
+ 906 0310 2046     		mov	r0, r4
+ 907 0312 1946     		mov	r1, r3
+ 908 0314 FFF7FEFF 		bl	FS_Write
+ 909              	.L25:
+ 910              	.LBE3:
  250:main.c        ****                     #endif 
  251:main.c        ****                 }
  252:main.c        ****                 if (STATE != DESCENDING) collect_flag = 0;
- 907              		.loc 1 252 0
- 908 0310 A64B     		ldr	r3, .L67+12
- 909 0312 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 910 0314 022B     		cmp	r3, #2
- 911 0316 02D0     		beq	.L27
- 912              		.loc 1 252 0 is_stmt 0 discriminator 1
- 913 0318 A54B     		ldr	r3, .L67+16
- 914 031a 0022     		movs	r2, #0
- 915 031c 1A70     		strb	r2, [r3]
- 916              	.L27:
+ 911              		.loc 1 252 0
+ 912 0318 994B     		ldr	r3, .L68+16
+ 913 031a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 914 031c 022B     		cmp	r3, #2
+ 915 031e 02D0     		beq	.L27
+ 916              		.loc 1 252 0 is_stmt 0 discriminator 1
+ 917 0320 984B     		ldr	r3, .L68+20
+ 918 0322 0022     		movs	r2, #0
+ 919 0324 1A70     		strb	r2, [r3]
+ 920              	.L27:
  253:main.c        ****                 press_id++;
- 917              		.loc 1 253 0 is_stmt 1
- 918 031e A54B     		ldr	r3, .L67+20
- 919 0320 1B68     		ldr	r3, [r3]
- 920 0322 0133     		adds	r3, r3, #1
- 921 0324 A34A     		ldr	r2, .L67+20
- 922 0326 1360     		str	r3, [r2]
- 923              	.L23:
+ 921              		.loc 1 253 0 is_stmt 1
+ 922 0326 984B     		ldr	r3, .L68+24
+ 923 0328 1B68     		ldr	r3, [r3]
+ 924 032a 0133     		adds	r3, r3, #1
+ 925 032c 964A     		ldr	r2, .L68+24
+ 926 032e 1360     		str	r3, [r2]
+ 927              	.L23:
  254:main.c        ****             }
  255:main.c        ****         }
  256:main.c        ****         
- 257:main.c        ****     /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Onc
- 258:main.c        ****      * has arrived, process it. */
- 259:main.c        ****     #ifdef BT
- 260:main.c        ****         if (msg_count >= 2){
- 924              		.loc 1 260 0
- 925 0328 A34B     		ldr	r3, .L67+24
- 926 032a 1B68     		ldr	r3, [r3]
- 927 032c 012B     		cmp	r3, #1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 23
+ 257:main.c        ****        
+ 258:main.c        ****         
+ 259:main.c        ****         
+ 260:main.c        ****     /* Bluetooth message response, after 2 bytes received, retrieve message from those 2 bytes. Onc
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 23
 
 
- 928 032e 13DD     		ble	.L28
- 261:main.c        ****             tens = RxBuffer[0] - 48;
- 929              		.loc 1 261 0
- 930 0330 A24B     		ldr	r3, .L67+28
- 931 0332 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 932 0334 303B     		subs	r3, r3, #48
- 933 0336 3B64     		str	r3, [r7, #64]
- 262:main.c        ****             ones = RxBuffer[1] - 48;
- 934              		.loc 1 262 0
- 935 0338 A04B     		ldr	r3, .L67+28
- 936 033a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 937 033c 303B     		subs	r3, r3, #48
- 938 033e C7F8FC30 		str	r3, [r7, #252]
- 263:main.c        ****             bytes = (tens * 10) + ones;
- 939              		.loc 1 263 0
- 940 0342 3A6C     		ldr	r2, [r7, #64]
- 941 0344 1346     		mov	r3, r2
- 942 0346 9B00     		lsls	r3, r3, #2
- 943 0348 1344     		add	r3, r3, r2
- 944 034a 5B00     		lsls	r3, r3, #1
- 945 034c 1A46     		mov	r2, r3
- 946 034e D7F8FC30 		ldr	r3, [r7, #252]
- 947 0352 1344     		add	r3, r3, r2
- 948 0354 9A4A     		ldr	r2, .L67+32
- 949 0356 1360     		str	r3, [r2]
- 950              	.L28:
- 264:main.c        ****         } 
- 265:main.c        ****         
- 266:main.c        ****         if(rxflag) {
- 951              		.loc 1 266 0
- 952 0358 9A4B     		ldr	r3, .L67+36
- 953 035a 1B68     		ldr	r3, [r3]
- 954 035c 002B     		cmp	r3, #0
- 955 035e 2DD0     		beq	.L29
- 267:main.c        ****             uint8_to_char(RxBuffer, &tempbuf[0], 20);
- 956              		.loc 1 267 0
- 957 0360 07F1B003 		add	r3, r7, #176
- 958 0364 9548     		ldr	r0, .L67+28
- 959 0366 1946     		mov	r1, r3
- 960 0368 1422     		movs	r2, #20
- 961 036a FFF7FEFF 		bl	uint8_to_char
- 268:main.c        ****             depth = BT_Process(&tempbuf[3], &STATE, bytes, &dataflag, &reset);
- 962              		.loc 1 268 0
- 963 036e 944B     		ldr	r3, .L67+32
- 964 0370 1A68     		ldr	r2, [r3]
- 965 0372 07F1B003 		add	r3, r7, #176
- 966 0376 D91C     		adds	r1, r3, #3
- 967 0378 934B     		ldr	r3, .L67+40
- 968 037a 0093     		str	r3, [sp]
- 969 037c 0846     		mov	r0, r1
- 970 037e 8B49     		ldr	r1, .L67+12
- 971 0380 924B     		ldr	r3, .L67+44
- 972 0382 FFF7FEFF 		bl	BT_Process
- 973 0386 0246     		mov	r2, r0
- 974 0388 914B     		ldr	r3, .L67+48
- 975 038a 1A60     		str	r2, [r3]
- 269:main.c        ****             
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 24
+ 261:main.c        ****      * has arrived, process it. */
+ 262:main.c        ****     #ifdef BT
+ 263:main.c        ****         if (msg_count >= 2){
+ 928              		.loc 1 263 0
+ 929 0330 964B     		ldr	r3, .L68+28
+ 930 0332 1B68     		ldr	r3, [r3]
+ 931 0334 012B     		cmp	r3, #1
+ 932 0336 13DD     		ble	.L28
+ 264:main.c        ****             tens = RxBuffer[0] - 48;
+ 933              		.loc 1 264 0
+ 934 0338 954B     		ldr	r3, .L68+32
+ 935 033a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 936 033c 303B     		subs	r3, r3, #48
+ 937 033e 3B64     		str	r3, [r7, #64]
+ 265:main.c        ****             ones = RxBuffer[1] - 48;
+ 938              		.loc 1 265 0
+ 939 0340 934B     		ldr	r3, .L68+32
+ 940 0342 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 941 0344 303B     		subs	r3, r3, #48
+ 942 0346 C7F8FC30 		str	r3, [r7, #252]
+ 266:main.c        ****             bytes = (tens * 10) + ones;
+ 943              		.loc 1 266 0
+ 944 034a 3A6C     		ldr	r2, [r7, #64]
+ 945 034c 1346     		mov	r3, r2
+ 946 034e 9B00     		lsls	r3, r3, #2
+ 947 0350 1344     		add	r3, r3, r2
+ 948 0352 5B00     		lsls	r3, r3, #1
+ 949 0354 1A46     		mov	r2, r3
+ 950 0356 D7F8FC30 		ldr	r3, [r7, #252]
+ 951 035a 1344     		add	r3, r3, r2
+ 952 035c 8D4A     		ldr	r2, .L68+36
+ 953 035e 1360     		str	r3, [r2]
+ 954              	.L28:
+ 267:main.c        ****         } 
+ 268:main.c        ****         
+ 269:main.c        ****         if(rxflag) {
+ 955              		.loc 1 269 0
+ 956 0360 8D4B     		ldr	r3, .L68+40
+ 957 0362 1B68     		ldr	r3, [r3]
+ 958 0364 002B     		cmp	r3, #0
+ 959 0366 2DD0     		beq	.L29
+ 270:main.c        ****             uint8_to_char(RxBuffer, &tempbuf[0], 20);
+ 960              		.loc 1 270 0
+ 961 0368 07F1B003 		add	r3, r7, #176
+ 962 036c 8848     		ldr	r0, .L68+32
+ 963 036e 1946     		mov	r1, r3
+ 964 0370 1422     		movs	r2, #20
+ 965 0372 FFF7FEFF 		bl	uint8_to_char
+ 271:main.c        ****             depth = BT_Process(&tempbuf[3], &STATE, bytes, &dataflag, &reset);
+ 966              		.loc 1 271 0
+ 967 0376 874B     		ldr	r3, .L68+36
+ 968 0378 1A68     		ldr	r2, [r3]
+ 969 037a 07F1B003 		add	r3, r7, #176
+ 970 037e D91C     		adds	r1, r3, #3
+ 971 0380 864B     		ldr	r3, .L68+44
+ 972 0382 0093     		str	r3, [sp]
+ 973 0384 0846     		mov	r0, r1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 24
 
 
- 270:main.c        ****             msg_count = 0; bytes = 0;
- 976              		.loc 1 270 0
- 977 038c 8A4B     		ldr	r3, .L67+24
- 978 038e 0022     		movs	r2, #0
- 979 0390 1A60     		str	r2, [r3]
- 980 0392 8B4B     		ldr	r3, .L67+32
- 981 0394 0022     		movs	r2, #0
- 982 0396 1A60     		str	r2, [r3]
- 271:main.c        ****             memset(RxBuffer, 0, BUFFER_LEN);
- 983              		.loc 1 271 0
- 984 0398 8848     		ldr	r0, .L67+28
- 985 039a 0021     		movs	r1, #0
- 986 039c 4022     		movs	r2, #64
- 987 039e FFF7FEFF 		bl	memset
- 272:main.c        ****             memset(tempbuf, 0, 20);
- 988              		.loc 1 272 0
- 989 03a2 07F1B003 		add	r3, r7, #176
- 990 03a6 1846     		mov	r0, r3
- 991 03a8 0021     		movs	r1, #0
- 992 03aa 1422     		movs	r2, #20
- 993 03ac FFF7FEFF 		bl	memset
- 273:main.c        ****             countdown = 0;
- 994              		.loc 1 273 0
- 995 03b0 884B     		ldr	r3, .L67+52
- 996 03b2 0022     		movs	r2, #0
- 997 03b4 1A70     		strb	r2, [r3]
- 274:main.c        ****             rxflag = 0;
- 998              		.loc 1 274 0
- 999 03b6 834B     		ldr	r3, .L67+36
- 1000 03b8 0022     		movs	r2, #0
- 1001 03ba 1A60     		str	r2, [r3]
- 1002              	.L29:
- 275:main.c        ****         }
- 276:main.c        ****     #endif
- 277:main.c        ****     
- 278:main.c        ****         /* Get Z-Acceleration */
- 279:main.c        **** 
- 280:main.c        ****         az = MPU6050_getAccelerationZ();
- 1003              		.loc 1 280 0
- 1004 03bc FFF7FEFF 		bl	MPU6050_getAccelerationZ
- 1005 03c0 0346     		mov	r3, r0
- 1006 03c2 A7F8F630 		strh	r3, [r7, #246]	@ movhi
- 281:main.c        **** 
- 282:main.c        ****         int t = 1;
- 1007              		.loc 1 282 0
- 1008 03c6 0123     		movs	r3, #1
- 1009 03c8 FB63     		str	r3, [r7, #60]
- 283:main.c        ****         /* State Machine */
- 284:main.c        ****         switch (STATE){
- 1010              		.loc 1 284 0
- 1011 03ca 784B     		ldr	r3, .L67+12
- 1012 03cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1013 03ce 013B     		subs	r3, r3, #1
- 1014 03d0 042B     		cmp	r3, #4
- 1015 03d2 00F25482 		bhi	.L64
- 1016 03d6 01A2     		adr	r2, .L32
- 1017 03d8 52F823F0 		ldr	pc, [r2, r3, lsl #2]
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 25
+ 974 0386 7E49     		ldr	r1, .L68+16
+ 975 0388 854B     		ldr	r3, .L68+48
+ 976 038a FFF7FEFF 		bl	BT_Process
+ 977 038e 0246     		mov	r2, r0
+ 978 0390 844B     		ldr	r3, .L68+52
+ 979 0392 1A60     		str	r2, [r3]
+ 272:main.c        ****             
+ 273:main.c        ****             msg_count = 0; bytes = 0;
+ 980              		.loc 1 273 0
+ 981 0394 7D4B     		ldr	r3, .L68+28
+ 982 0396 0022     		movs	r2, #0
+ 983 0398 1A60     		str	r2, [r3]
+ 984 039a 7E4B     		ldr	r3, .L68+36
+ 985 039c 0022     		movs	r2, #0
+ 986 039e 1A60     		str	r2, [r3]
+ 274:main.c        ****             memset(RxBuffer, 0, BUFFER_LEN);
+ 987              		.loc 1 274 0
+ 988 03a0 7B48     		ldr	r0, .L68+32
+ 989 03a2 0021     		movs	r1, #0
+ 990 03a4 4022     		movs	r2, #64
+ 991 03a6 FFF7FEFF 		bl	memset
+ 275:main.c        ****             memset(tempbuf, 0, 20);
+ 992              		.loc 1 275 0
+ 993 03aa 07F1B003 		add	r3, r7, #176
+ 994 03ae 1846     		mov	r0, r3
+ 995 03b0 0021     		movs	r1, #0
+ 996 03b2 1422     		movs	r2, #20
+ 997 03b4 FFF7FEFF 		bl	memset
+ 276:main.c        ****             countdown = 0;
+ 998              		.loc 1 276 0
+ 999 03b8 7B4B     		ldr	r3, .L68+56
+ 1000 03ba 0022     		movs	r2, #0
+ 1001 03bc 1A70     		strb	r2, [r3]
+ 277:main.c        ****             rxflag = 0;
+ 1002              		.loc 1 277 0
+ 1003 03be 764B     		ldr	r3, .L68+40
+ 1004 03c0 0022     		movs	r2, #0
+ 1005 03c2 1A60     		str	r2, [r3]
+ 1006              	.L29:
+ 278:main.c        ****         }
+ 279:main.c        ****     #endif
+ 280:main.c        ****     
+ 281:main.c        ****         /* Get Z-Acceleration */
+ 282:main.c        **** 
+ 283:main.c        ****         az = MPU6050_getAccelerationZ();
+ 1007              		.loc 1 283 0
+ 1008 03c4 FFF7FEFF 		bl	MPU6050_getAccelerationZ
+ 1009 03c8 0346     		mov	r3, r0
+ 1010 03ca A7F8F630 		strh	r3, [r7, #246]	@ movhi
+ 284:main.c        **** 
+ 285:main.c        ****         int t = 1;
+ 1011              		.loc 1 285 0
+ 1012 03ce 0123     		movs	r3, #1
+ 1013 03d0 FB63     		str	r3, [r7, #60]
+ 286:main.c        ****         
+ 287:main.c        ****         
+ 288:main.c        ****          if(collect_flag == 1){              // Check accelerometer and gyro data
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 25
 
 
- 1018              		.p2align 2
- 1019              	.L32:
- 1020 03dc F1030000 		.word	.L31+1
- 1021 03e0 7D050000 		.word	.L33+1
- 1022 03e4 2B070000 		.word	.L34+1
- 1023 03e8 B5070000 		.word	.L35+1
- 1024 03ec 5B080000 		.word	.L36+1
- 1025              		.p2align 1
- 1026              	.L31:
- 285:main.c        ****     
- 286:main.c        ****             /* Waiting for start command and depth*/
- 287:main.c        ****             case WAIT_TO_LAUNCH:  
- 288:main.c        ****                 if (reset){                         // If reset command was received, reset:
- 1027              		.loc 1 288 0
- 1028 03f0 754B     		ldr	r3, .L67+40
- 1029 03f2 1B68     		ldr	r3, [r3]
- 1030 03f4 002B     		cmp	r3, #0
- 1031 03f6 37D0     		beq	.L37
- 289:main.c        ****                     id = 1;                                // Interrupt count.
- 1032              		.loc 1 289 0
- 1033 03f8 774B     		ldr	r3, .L67+56
- 1034 03fa 0122     		movs	r2, #1
- 1035 03fc 1A60     		str	r2, [r3]
- 290:main.c        ****                     data_time = 0;                         // data point num
- 1036              		.loc 1 290 0
- 1037 03fe 774B     		ldr	r3, .L67+60
- 1038 0400 0022     		movs	r2, #0
- 1039 0402 1A60     		str	r2, [r3]
- 291:main.c        ****                     sum = 0;                               // Sum of accelerometer values. 
- 1040              		.loc 1 291 0
- 1041 0404 764B     		ldr	r3, .L67+64
- 1042 0406 0022     		movs	r2, #0
- 1043 0408 1A60     		str	r2, [r3]
- 292:main.c        ****                     average = 0;                           // Moving average variable.
- 1044              		.loc 1 292 0
- 1045 040a 764B     		ldr	r3, .L67+68
- 1046 040c 0022     		movs	r2, #0
- 1047 040e 1A80     		strh	r2, [r3]	@ movhi
- 293:main.c        ****                     xavg = 0; yavg = 0;                    // Gyro average variables
- 1048              		.loc 1 293 0
- 1049 0410 754B     		ldr	r3, .L67+72
- 1050 0412 4FF00002 		mov	r2, #0
- 1051 0416 1A60     		str	r2, [r3]	@ float
- 1052 0418 744B     		ldr	r3, .L67+76
- 1053 041a 4FF00002 		mov	r2, #0
- 1054 041e 1A60     		str	r2, [r3]	@ float
- 294:main.c        ****                     collect_flag = 0;                      // flag indicating when to record accele
- 1055              		.loc 1 294 0
- 1056 0420 634B     		ldr	r3, .L67+16
- 1057 0422 0022     		movs	r2, #0
- 1058 0424 1A70     		strb	r2, [r3]
- 295:main.c        ****                     wait_flag = 0;                         // flag indicating when to increment int
- 1059              		.loc 1 295 0
- 1060 0426 724B     		ldr	r3, .L67+80
- 1061 0428 0022     		movs	r2, #0
- 1062 042a 1A70     		strb	r2, [r3]
- 296:main.c        ****                     PANIC_flag = 0;                        // flag indicating water is present in h
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 26
+ 1014              		.loc 1 288 0
+ 1015 03d2 6C4B     		ldr	r3, .L68+20
+ 1016 03d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1017 03d6 002B     		cmp	r3, #0
+ 1018 03d8 42D0     		beq	.L30
+ 289:main.c        ****                     if (id < MA_WINDOW){    
+ 1019              		.loc 1 289 0
+ 1020 03da 744B     		ldr	r3, .L68+60
+ 1021 03dc 1B68     		ldr	r3, [r3]
+ 1022 03de 0E2B     		cmp	r3, #14
+ 1023 03e0 07DC     		bgt	.L31
+ 290:main.c        ****                         sum += az;  
+ 1024              		.loc 1 290 0
+ 1025 03e2 B7F9F620 		ldrsh	r2, [r7, #246]
+ 1026 03e6 724B     		ldr	r3, .L68+64
+ 1027 03e8 1B68     		ldr	r3, [r3]
+ 1028 03ea 1344     		add	r3, r3, r2
+ 1029 03ec 704A     		ldr	r2, .L68+64
+ 1030 03ee 1360     		str	r3, [r2]
+ 1031 03f0 31E0     		b	.L32
+ 1032              	.L31:
+ 291:main.c        ****                     }
+ 292:main.c        ****                     else if(id == MA_WINDOW){
+ 1033              		.loc 1 292 0
+ 1034 03f2 6E4B     		ldr	r3, .L68+60
+ 1035 03f4 1B68     		ldr	r3, [r3]
+ 1036 03f6 0F2B     		cmp	r3, #15
+ 1037 03f8 13D1     		bne	.L33
+ 293:main.c        ****                         sum += az;
+ 1038              		.loc 1 293 0
+ 1039 03fa B7F9F620 		ldrsh	r2, [r7, #246]
+ 1040 03fe 6C4B     		ldr	r3, .L68+64
+ 1041 0400 1B68     		ldr	r3, [r3]
+ 1042 0402 1344     		add	r3, r3, r2
+ 1043 0404 6A4A     		ldr	r2, .L68+64
+ 1044 0406 1360     		str	r3, [r2]
+ 294:main.c        ****                         average = sum/MA_WINDOW;                          
+ 1045              		.loc 1 294 0
+ 1046 0408 694B     		ldr	r3, .L68+64
+ 1047 040a 1B68     		ldr	r3, [r3]
+ 1048 040c 694A     		ldr	r2, .L68+68
+ 1049 040e 82FB0312 		smull	r1, r2, r2, r3
+ 1050 0412 1A44     		add	r2, r2, r3
+ 1051 0414 D210     		asrs	r2, r2, #3
+ 1052 0416 DB17     		asrs	r3, r3, #31
+ 1053 0418 D31A     		subs	r3, r2, r3
+ 1054 041a 9AB2     		uxth	r2, r3
+ 1055 041c 554B     		ldr	r3, .L68+4
+ 1056 041e 1A80     		strh	r2, [r3]	@ movhi
+ 1057 0420 19E0     		b	.L32
+ 1058              	.L33:
+ 295:main.c        ****                     }
+ 296:main.c        ****                     else{
+ 297:main.c        ****                         average = ComputeMA(average, MA_WINDOW, az);                // Compute aver
+ 1059              		.loc 1 297 0
+ 1060 0422 544B     		ldr	r3, .L68+4
+ 1061 0424 1B88     		ldrh	r3, [r3]
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 26
 
 
- 1063              		.loc 1 296 0
- 1064 042c 714B     		ldr	r3, .L67+84
- 1065 042e 0022     		movs	r2, #0
- 1066 0430 1A70     		strb	r2, [r3]
- 297:main.c        ****                     //bool first_test = 1;                 // flag indicating first test(longer cou
- 298:main.c        ****                     depth = 0; countdown = 0;              // Current desired depth, variable for c
- 1067              		.loc 1 298 0
- 1068 0432 674B     		ldr	r3, .L67+48
- 1069 0434 0022     		movs	r2, #0
- 1070 0436 1A60     		str	r2, [r3]
- 1071 0438 664B     		ldr	r3, .L67+52
- 1072 043a 0022     		movs	r2, #0
- 1073 043c 1A70     		strb	r2, [r3]
- 299:main.c        ****                     msg_count = 0; dataflag = 0;           // BT message len variable, data flag 
- 1074              		.loc 1 299 0
- 1075 043e 5E4B     		ldr	r3, .L67+24
- 1076 0440 0022     		movs	r2, #0
- 1077 0442 1A60     		str	r2, [r3]
- 1078 0444 614B     		ldr	r3, .L67+44
- 1079 0446 0022     		movs	r2, #0
- 1080 0448 1A60     		str	r2, [r3]
- 300:main.c        ****                     reset = 0;                             // indicates whether to reset variables 
- 1081              		.loc 1 300 0
- 1082 044a 5F4B     		ldr	r3, .L67+40
- 1083 044c 0022     		movs	r2, #0
- 1084 044e 1A60     		str	r2, [r3]
- 301:main.c        ****                     pulse = 0;
- 1085              		.loc 1 301 0
- 1086 0450 0023     		movs	r3, #0
- 1087 0452 C7F81C31 		str	r3, [r7, #284]
- 302:main.c        ****                     #ifdef LCD
- 303:main.c        ****                         setCursor(0,0);
- 1088              		.loc 1 303 0
- 1089 0456 0020     		movs	r0, #0
- 1090 0458 0021     		movs	r1, #0
- 1091 045a FFF7FEFF 		bl	setCursor
- 304:main.c        ****                         clear();
- 1092              		.loc 1 304 0
- 1093 045e FFF7FEFF 		bl	clear
- 305:main.c        ****                         LCD_print("STATE: WAIT");  
- 1094              		.loc 1 305 0
- 1095 0462 6548     		ldr	r0, .L67+88
- 1096 0464 FFF7FEFF 		bl	LCD_print
- 1097              	.L37:
- 306:main.c        ****                     #endif 
- 307:main.c        ****                 }
- 308:main.c        ****             
- 309:main.c        ****                 if (transmit_flag){
- 1098              		.loc 1 309 0
- 1099 0468 644B     		ldr	r3, .L67+92
- 1100 046a 1B68     		ldr	r3, [r3]
- 1101 046c 002B     		cmp	r3, #0
- 1102 046e 0BD0     		beq	.L38
- 310:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matte
- 1103              		.loc 1 310 0
- 1104 0470 07F1B002 		add	r2, r7, #176
- 1105 0474 07F14003 		add	r3, r7, #64
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 27
+ 1062 0426 1BB2     		sxth	r3, r3
+ 1063 0428 1846     		mov	r0, r3
+ 1064 042a FFF7FEFF 		bl	__aeabi_i2f
+ 1065 042e 0446     		mov	r4, r0
+ 1066 0430 B7F9F630 		ldrsh	r3, [r7, #246]
+ 1067 0434 1846     		mov	r0, r3
+ 1068 0436 FFF7FEFF 		bl	__aeabi_i2f
+ 1069 043a 0346     		mov	r3, r0
+ 1070 043c 2046     		mov	r0, r4
+ 1071 043e 0F21     		movs	r1, #15
+ 1072 0440 1A46     		mov	r2, r3
+ 1073 0442 FFF7FEFF 		bl	ComputeMA
+ 1074 0446 0346     		mov	r3, r0
+ 1075 0448 1846     		mov	r0, r3
+ 1076 044a FFF7FEFF 		bl	__aeabi_f2iz
+ 1077 044e 0346     		mov	r3, r0
+ 1078 0450 9AB2     		uxth	r2, r3
+ 1079 0452 484B     		ldr	r3, .L68+4
+ 1080 0454 1A80     		strh	r2, [r3]	@ movhi
+ 1081              	.L32:
+ 298:main.c        ****                     }
+ 299:main.c        ****                     id++;
+ 1082              		.loc 1 299 0
+ 1083 0456 554B     		ldr	r3, .L68+60
+ 1084 0458 1B68     		ldr	r3, [r3]
+ 1085 045a 0133     		adds	r3, r3, #1
+ 1086 045c 534A     		ldr	r2, .L68+60
+ 1087 045e 1360     		str	r3, [r2]
+ 1088              	.L30:
+ 300:main.c        ****                     
+ 301:main.c        ****         }
+ 302:main.c        ****         /* State Machine */
+ 303:main.c        ****         switch (STATE){
+ 1089              		.loc 1 303 0
+ 1090 0460 474B     		ldr	r3, .L68+16
+ 1091 0462 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1092 0464 013B     		subs	r3, r3, #1
+ 1093 0466 042B     		cmp	r3, #4
+ 1094 0468 00F20782 		bhi	.L65
+ 1095 046c 01A2     		adr	r2, .L36
+ 1096 046e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 1097 0472 00BF     		.p2align 2
+ 1098              	.L36:
+ 1099 0474 89040000 		.word	.L35+1
+ 1100 0478 81060000 		.word	.L37+1
+ 1101 047c 1F070000 		.word	.L38+1
+ 1102 0480 B1070000 		.word	.L39+1
+ 1103 0484 57080000 		.word	.L40+1
+ 1104              		.p2align 1
+ 1105              	.L35:
+ 304:main.c        ****     
+ 305:main.c        ****             /* Waiting for start command and depth*/
+ 306:main.c        ****             case WAIT_TO_LAUNCH:  
+ 307:main.c        ****                 if (reset){                         // If reset command was received, reset:
+ 1106              		.loc 1 307 0
+ 1107 0488 444B     		ldr	r3, .L68+44
+ 1108 048a 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 27
 
 
- 1106 0478 1046     		mov	r0, r2
- 1107 047a 4C49     		ldr	r1, .L67+12
- 1108 047c 0A22     		movs	r2, #10
- 1109 047e FFF7FEFF 		bl	BT_Send
- 311:main.c        ****                     transmit_flag = 0;
- 1110              		.loc 1 311 0
- 1111 0482 5E4B     		ldr	r3, .L67+92
- 1112 0484 0022     		movs	r2, #0
- 1113 0486 1A60     		str	r2, [r3]
- 1114              	.L38:
- 312:main.c        ****                 }
- 313:main.c        ****                 // Once depth has been entered, can begin countdown into descending
- 314:main.c        ****                 if(wait_flag == 1){
- 1115              		.loc 1 314 0
- 1116 0488 594B     		ldr	r3, .L67+80
- 1117 048a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1118 048c 002B     		cmp	r3, #0
- 1119 048e 74D0     		beq	.L39
- 315:main.c        ****                     #ifdef BT
- 316:main.c        ****                         stateMsgCount = 0;
- 1120              		.loc 1 316 0
- 1121 0490 0023     		movs	r3, #0
- 1122 0492 C7F82031 		str	r3, [r7, #288]
- 317:main.c        ****                         sprintf(buf, "\n%d seconds remaining", (10 - countdown));
- 1123              		.loc 1 317 0
- 1124 0496 4F4B     		ldr	r3, .L67+52
- 1125 0498 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1126 049a C3F10A03 		rsb	r3, r3, #10
- 1127 049e 07F1C402 		add	r2, r7, #196
- 1128 04a2 1046     		mov	r0, r2
- 1129 04a4 5649     		ldr	r1, .L67+96
- 1130 04a6 1A46     		mov	r2, r3
- 1131 04a8 FFF7FEFF 		bl	sprintf
- 318:main.c        ****                         while (stateMsgCount < 21){
- 1132              		.loc 1 318 0
- 1133 04ac 19E0     		b	.L40
- 1134              	.L43:
- 319:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1135              		.loc 1 319 0
- 1136 04ae 11E0     		b	.L41
- 1137              	.L42:
- 320:main.c        ****                                 UART_PutChar(buf[stateMsgCount++]);
- 1138              		.loc 1 320 0
- 1139 04b0 D7F82031 		ldr	r3, [r7, #288]
- 1140 04b4 5A1C     		adds	r2, r3, #1
- 1141 04b6 C7F82021 		str	r2, [r7, #288]
- 1142 04ba 07F59472 		add	r2, r7, #296
- 1143 04be 1344     		add	r3, r3, r2
- 1144 04c0 13F8643C 		ldrb	r3, [r3, #-100]	@ zero_extendqisi2
- 1145 04c4 1846     		mov	r0, r3
- 1146 04c6 FFF7FEFF 		bl	UART_PutChar
- 321:main.c        ****                                 if (stateMsgCount >= 21) break;
- 1147              		.loc 1 321 0
- 1148 04ca D7F82031 		ldr	r3, [r7, #288]
- 1149 04ce 142B     		cmp	r3, #20
- 1150 04d0 00DD     		ble	.L41
- 1151 04d2 06E0     		b	.L40
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 28
+ 1109 048c 002B     		cmp	r3, #0
+ 1110 048e 37D0     		beq	.L41
+ 308:main.c        ****                     id = 1;                                // Interrupt count.
+ 1111              		.loc 1 308 0
+ 1112 0490 464B     		ldr	r3, .L68+60
+ 1113 0492 0122     		movs	r2, #1
+ 1114 0494 1A60     		str	r2, [r3]
+ 309:main.c        ****                     data_time = 0;                         // data point num
+ 1115              		.loc 1 309 0
+ 1116 0496 484B     		ldr	r3, .L68+72
+ 1117 0498 0022     		movs	r2, #0
+ 1118 049a 1A60     		str	r2, [r3]
+ 310:main.c        ****                     sum = 0;                               // Sum of accelerometer values. 
+ 1119              		.loc 1 310 0
+ 1120 049c 444B     		ldr	r3, .L68+64
+ 1121 049e 0022     		movs	r2, #0
+ 1122 04a0 1A60     		str	r2, [r3]
+ 311:main.c        ****                     average = 0;                           // Moving average variable.
+ 1123              		.loc 1 311 0
+ 1124 04a2 344B     		ldr	r3, .L68+4
+ 1125 04a4 0022     		movs	r2, #0
+ 1126 04a6 1A80     		strh	r2, [r3]	@ movhi
+ 312:main.c        ****                     xavg = 0; yavg = 0;                    // Gyro average variables
+ 1127              		.loc 1 312 0
+ 1128 04a8 444B     		ldr	r3, .L68+76
+ 1129 04aa 4FF00002 		mov	r2, #0
+ 1130 04ae 1A60     		str	r2, [r3]	@ float
+ 1131 04b0 434B     		ldr	r3, .L68+80
+ 1132 04b2 4FF00002 		mov	r2, #0
+ 1133 04b6 1A60     		str	r2, [r3]	@ float
+ 313:main.c        ****                     collect_flag = 0;                      // flag indicating when to record accele
+ 1134              		.loc 1 313 0
+ 1135 04b8 324B     		ldr	r3, .L68+20
+ 1136 04ba 0022     		movs	r2, #0
+ 1137 04bc 1A70     		strb	r2, [r3]
+ 314:main.c        ****                     wait_flag = 0;                         // flag indicating when to increment int
+ 1138              		.loc 1 314 0
+ 1139 04be 414B     		ldr	r3, .L68+84
+ 1140 04c0 0022     		movs	r2, #0
+ 1141 04c2 1A70     		strb	r2, [r3]
+ 315:main.c        ****                     PANIC_flag = 0;                        // flag indicating water is present in h
+ 1142              		.loc 1 315 0
+ 1143 04c4 404B     		ldr	r3, .L68+88
+ 1144 04c6 0022     		movs	r2, #0
+ 1145 04c8 1A70     		strb	r2, [r3]
+ 316:main.c        ****                     //bool first_test = 1;                 // flag indicating first test(longer cou
+ 317:main.c        ****                     depth = 0; countdown = 0;              // Current desired depth, variable for c
+ 1146              		.loc 1 317 0
+ 1147 04ca 364B     		ldr	r3, .L68+52
+ 1148 04cc 0022     		movs	r2, #0
+ 1149 04ce 1A60     		str	r2, [r3]
+ 1150 04d0 354B     		ldr	r3, .L68+56
+ 1151 04d2 0022     		movs	r2, #0
+ 1152 04d4 1A70     		strb	r2, [r3]
+ 318:main.c        ****                     msg_count = 0; dataflag = 0;           // BT message len variable, data flag 
+ 1153              		.loc 1 318 0
+ 1154 04d6 2D4B     		ldr	r3, .L68+28
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 28
 
 
- 1152              	.L41:
- 319:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1153              		.loc 1 319 0
- 1154 04d4 FFF7FEFF 		bl	UART_ReadTxStatus
- 1155 04d8 0346     		mov	r3, r0
- 1156 04da 03F00803 		and	r3, r3, #8
- 1157 04de 002B     		cmp	r3, #0
- 1158 04e0 E6D1     		bne	.L42
- 1159              	.L40:
- 318:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1160              		.loc 1 318 0
- 1161 04e2 D7F82031 		ldr	r3, [r7, #288]
- 1162 04e6 142B     		cmp	r3, #20
- 1163 04e8 E1DD     		ble	.L43
- 322:main.c        ****                             }
- 323:main.c        ****                         }
- 324:main.c        ****                     #endif
- 325:main.c        ****                     /* at 10 seconds, change into descending */
- 326:main.c        ****                     if(countdown == 10){
- 1164              		.loc 1 326 0
- 1165 04ea 3A4B     		ldr	r3, .L67+52
- 1166 04ec 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1167 04ee 0A2B     		cmp	r3, #10
- 1168 04f0 3FD1     		bne	.L44
- 327:main.c        ****                         descent_time = (((depth / 13) + 3) * 2 * 500);
- 1169              		.loc 1 327 0
- 1170 04f2 374B     		ldr	r3, .L67+48
- 1171 04f4 1B68     		ldr	r3, [r3]
- 1172 04f6 434A     		ldr	r2, .L67+100
- 1173 04f8 82FB0312 		smull	r1, r2, r2, r3
- 1174 04fc 9210     		asrs	r2, r2, #2
- 1175 04fe DB17     		asrs	r3, r3, #31
- 1176 0500 D31A     		subs	r3, r2, r3
- 1177 0502 0333     		adds	r3, r3, #3
- 1178 0504 4FF47A72 		mov	r2, #1000
- 1179 0508 02FB03F3 		mul	r3, r2, r3
- 1180 050c 3E4A     		ldr	r2, .L67+104
- 1181 050e 1360     		str	r3, [r2]
- 328:main.c        ****                         /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m 
- 329:main.c        ****                          * number of ISR calls to get 1 second */ 
- 330:main.c        ****                         STATE = DESCENDING;
- 1182              		.loc 1 330 0
- 1183 0510 264B     		ldr	r3, .L67+12
- 1184 0512 0222     		movs	r2, #2
- 1185 0514 1A70     		strb	r2, [r3]
- 331:main.c        ****                         #ifdef LCD
- 332:main.c        ****                             setCursor(0,0);
- 1186              		.loc 1 332 0
- 1187 0516 0020     		movs	r0, #0
- 1188 0518 0021     		movs	r1, #0
- 1189 051a FFF7FEFF 		bl	setCursor
- 333:main.c        ****                             clear();
- 1190              		.loc 1 333 0
- 1191 051e FFF7FEFF 		bl	clear
- 334:main.c        ****                             LCD_print("STATE: DESCENT");
- 1192              		.loc 1 334 0
- 1193 0522 3A48     		ldr	r0, .L67+108
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 29
+ 1155 04d8 0022     		movs	r2, #0
+ 1156 04da 1A60     		str	r2, [r3]
+ 1157 04dc 304B     		ldr	r3, .L68+48
+ 1158 04de 0022     		movs	r2, #0
+ 1159 04e0 1A60     		str	r2, [r3]
+ 319:main.c        ****                     reset = 0;                             // indicates whether to reset variables 
+ 1160              		.loc 1 319 0
+ 1161 04e2 2E4B     		ldr	r3, .L68+44
+ 1162 04e4 0022     		movs	r2, #0
+ 1163 04e6 1A60     		str	r2, [r3]
+ 320:main.c        ****                     pulse = 0;
+ 1164              		.loc 1 320 0
+ 1165 04e8 0023     		movs	r3, #0
+ 1166 04ea C7F81C31 		str	r3, [r7, #284]
+ 321:main.c        ****                     #ifdef LCD
+ 322:main.c        ****                         setCursor(0,0);
+ 1167              		.loc 1 322 0
+ 1168 04ee 0020     		movs	r0, #0
+ 1169 04f0 0021     		movs	r1, #0
+ 1170 04f2 FFF7FEFF 		bl	setCursor
+ 323:main.c        ****                         clear();
+ 1171              		.loc 1 323 0
+ 1172 04f6 FFF7FEFF 		bl	clear
+ 324:main.c        ****                         LCD_print("STATE: WAIT");  
+ 1173              		.loc 1 324 0
+ 1174 04fa 3448     		ldr	r0, .L68+92
+ 1175 04fc FFF7FEFF 		bl	LCD_print
+ 1176              	.L41:
+ 325:main.c        ****                     #endif 
+ 326:main.c        ****                 }
+ 327:main.c        ****             
+ 328:main.c        ****                 if (transmit_flag){
+ 1177              		.loc 1 328 0
+ 1178 0500 334B     		ldr	r3, .L68+96
+ 1179 0502 1B68     		ldr	r3, [r3]
+ 1180 0504 002B     		cmp	r3, #0
+ 1181 0506 0BD0     		beq	.L42
+ 329:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &tens); // Here, the STATE variable only matte
+ 1182              		.loc 1 329 0
+ 1183 0508 07F1B002 		add	r2, r7, #176
+ 1184 050c 07F14003 		add	r3, r7, #64
+ 1185 0510 1046     		mov	r0, r2
+ 1186 0512 1B49     		ldr	r1, .L68+16
+ 1187 0514 0A22     		movs	r2, #10
+ 1188 0516 FFF7FEFF 		bl	BT_Send
+ 330:main.c        ****                     transmit_flag = 0;
+ 1189              		.loc 1 330 0
+ 1190 051a 2D4B     		ldr	r3, .L68+96
+ 1191 051c 0022     		movs	r2, #0
+ 1192 051e 1A60     		str	r2, [r3]
+ 1193              	.L42:
+ 331:main.c        ****                 }
+ 332:main.c        ****                 // Once depth has been entered, can begin countdown into descending
+ 333:main.c        ****                 if(wait_flag == 1){
+ 1194              		.loc 1 333 0
+ 1195 0520 284B     		ldr	r3, .L68+84
+ 1196 0522 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 29
 
 
- 1194 0524 FFF7FEFF 		bl	LCD_print
- 335:main.c        ****                         #endif
- 336:main.c        ****                         #ifdef BT
- 337:main.c        ****                             stateMsgCount = 0;
- 1195              		.loc 1 337 0
- 1196 0528 0023     		movs	r3, #0
- 1197 052a C7F82031 		str	r3, [r7, #288]
- 338:main.c        ****                             while (stateMsgCount < DESCENDING_LEN){
- 1198              		.loc 1 338 0
- 1199 052e 19E0     		b	.L45
- 1200              	.L48:
- 339:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1201              		.loc 1 339 0
- 1202 0530 11E0     		b	.L46
- 1203              	.L47:
- 340:main.c        ****                                     UART_PutChar(descendbuf[stateMsgCount++]);
- 1204              		.loc 1 340 0
- 1205 0532 D7F82031 		ldr	r3, [r7, #288]
- 1206 0536 5A1C     		adds	r2, r3, #1
- 1207 0538 C7F82021 		str	r2, [r7, #288]
- 1208 053c 07F59472 		add	r2, r7, #296
- 1209 0540 1344     		add	r3, r3, r2
- 1210 0542 13F89C3C 		ldrb	r3, [r3, #-156]	@ zero_extendqisi2
- 1211 0546 1846     		mov	r0, r3
- 1212 0548 FFF7FEFF 		bl	UART_PutChar
- 341:main.c        ****                                     if (stateMsgCount >= DESCENDING_LEN) break;
- 1213              		.loc 1 341 0
- 1214 054c D7F82031 		ldr	r3, [r7, #288]
- 1215 0550 122B     		cmp	r3, #18
- 1216 0552 00DD     		ble	.L46
- 1217 0554 06E0     		b	.L45
- 1218              	.L46:
- 339:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1219              		.loc 1 339 0
- 1220 0556 FFF7FEFF 		bl	UART_ReadTxStatus
- 1221 055a 0346     		mov	r3, r0
- 1222 055c 03F00803 		and	r3, r3, #8
- 1223 0560 002B     		cmp	r3, #0
- 1224 0562 E6D1     		bne	.L47
- 1225              	.L45:
- 338:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
- 1226              		.loc 1 338 0
+ 1197 0524 002B     		cmp	r3, #0
+ 1198 0526 00F0AA80 		beq	.L43
+ 334:main.c        ****                     #ifdef BT
+ 335:main.c        ****                         stateMsgCount = 0;
+ 1199              		.loc 1 335 0
+ 1200 052a 0023     		movs	r3, #0
+ 1201 052c C7F82031 		str	r3, [r7, #288]
+ 336:main.c        ****                         sprintf(buf, "\n%d seconds remaining", (10 - countdown));
+ 1202              		.loc 1 336 0
+ 1203 0530 1D4B     		ldr	r3, .L68+56
+ 1204 0532 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1205 0534 C3F10A03 		rsb	r3, r3, #10
+ 1206 0538 07F1C402 		add	r2, r7, #196
+ 1207 053c 1046     		mov	r0, r2
+ 1208 053e 2549     		ldr	r1, .L68+100
+ 1209 0540 1A46     		mov	r2, r3
+ 1210 0542 FFF7FEFF 		bl	sprintf
+ 337:main.c        ****                         while (stateMsgCount < 21){
+ 1211              		.loc 1 337 0
+ 1212 0546 4EE0     		b	.L44
+ 1213              	.L47:
+ 338:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1214              		.loc 1 338 0
+ 1215 0548 46E0     		b	.L45
+ 1216              	.L46:
+ 339:main.c        ****                                 UART_PutChar(buf[stateMsgCount++]);
+ 1217              		.loc 1 339 0
+ 1218 054a D7F82031 		ldr	r3, [r7, #288]
+ 1219 054e 5A1C     		adds	r2, r3, #1
+ 1220 0550 C7F82021 		str	r2, [r7, #288]
+ 1221 0554 07F59472 		add	r2, r7, #296
+ 1222 0558 1344     		add	r3, r3, r2
+ 1223 055a 13F8643C 		ldrb	r3, [r3, #-100]	@ zero_extendqisi2
+ 1224 055e 1846     		mov	r0, r3
+ 1225 0560 FFF7FEFF 		bl	UART_PutChar
+ 340:main.c        ****                                 if (stateMsgCount >= 21) break;
+ 1226              		.loc 1 340 0
  1227 0564 D7F82031 		ldr	r3, [r7, #288]
- 1228 0568 122B     		cmp	r3, #18
- 1229 056a E1DD     		ble	.L48
- 342:main.c        ****                                 }
- 343:main.c        ****                             }
- 344:main.c        ****                         #endif
- 345:main.c        ****                         countdown = 0; 
- 1230              		.loc 1 345 0
- 1231 056c 194B     		ldr	r3, .L67+52
- 1232 056e 0022     		movs	r2, #0
- 1233 0570 1A70     		strb	r2, [r3]
- 1234              	.L44:
- 346:main.c        ****                     }
- 347:main.c        ****                     wait_flag = 0; 
- 1235              		.loc 1 347 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 30
+ 1228 0568 142B     		cmp	r3, #20
+ 1229 056a 35DD     		ble	.L45
+ 1230 056c 3BE0     		b	.L44
+ 1231              	.L69:
+ 1232 056e 00BF     		.align	2
+ 1233              	.L68:
+ 1234 0570 00401C46 		.word	1176256512
+ 1235 0574 00000000 		.word	average
+ 1236 0578 28000000 		.word	.LC9
+ 1237 057c 00000000 		.word	fsfile
+ 1238 0580 00000000 		.word	STATE
+ 1239 0584 00000000 		.word	collect_flag
+ 1240 0588 00000000 		.word	press_id
+ 1241 058c 00000000 		.word	msg_count
+ 1242 0590 00000000 		.word	RxBuffer
+ 1243 0594 00000000 		.word	bytes
+ 1244 0598 00000000 		.word	rxflag
+ 1245 059c 00000000 		.word	reset
+ 1246 05a0 00000000 		.word	dataflag
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 30
 
 
- 1236 0572 1F4B     		ldr	r3, .L67+80
- 1237 0574 0022     		movs	r2, #0
- 1238 0576 1A70     		strb	r2, [r3]
- 348:main.c        ****                 }
- 349:main.c        ****                 break;
- 1239              		.loc 1 349 0
- 1240 0578 82E1     		b	.L49
- 1241              	.L39:
- 1242 057a 81E1     		b	.L49
- 1243              	.L33:
- 350:main.c        ****                 
- 351:main.c        ****             case DESCENDING:
- 352:main.c        ****                 if(collect_flag == 1){              // Check accelerometer and gyro data
- 1244              		.loc 1 352 0
- 1245 057c 0C4B     		ldr	r3, .L67+16
- 1246 057e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1247 0580 002B     		cmp	r3, #0
- 1248 0582 00F0D180 		beq	.L50
- 353:main.c        ****                     if (id < MA_WINDOW){    
- 1249              		.loc 1 353 0
- 1250 0586 144B     		ldr	r3, .L67+56
- 1251 0588 1B68     		ldr	r3, [r3]
- 1252 058a 0E2B     		cmp	r3, #14
- 1253 058c 40DC     		bgt	.L51
- 354:main.c        ****                         sum += az;  
- 1254              		.loc 1 354 0
- 1255 058e B7F9F620 		ldrsh	r2, [r7, #246]
- 1256 0592 134B     		ldr	r3, .L67+64
- 1257 0594 1B68     		ldr	r3, [r3]
- 1258 0596 1344     		add	r3, r3, r2
- 1259 0598 114A     		ldr	r2, .L67+64
- 1260 059a 1360     		str	r3, [r2]
- 1261 059c 69E0     		b	.L52
- 1262              	.L68:
- 1263 059e 00BF     		.align	2
- 1264              	.L67:
- 1265 05a0 00401C46 		.word	1176256512
- 1266 05a4 28000000 		.word	.LC9
- 1267 05a8 00000000 		.word	fsfile
- 1268 05ac 00000000 		.word	STATE
- 1269 05b0 00000000 		.word	collect_flag
- 1270 05b4 00000000 		.word	press_id
- 1271 05b8 00000000 		.word	msg_count
- 1272 05bc 00000000 		.word	RxBuffer
- 1273 05c0 00000000 		.word	bytes
- 1274 05c4 00000000 		.word	rxflag
- 1275 05c8 00000000 		.word	reset
- 1276 05cc 00000000 		.word	dataflag
- 1277 05d0 00000000 		.word	depth
- 1278 05d4 00000000 		.word	countdown
- 1279 05d8 00000000 		.word	id
- 1280 05dc 00000000 		.word	data_time
- 1281 05e0 00000000 		.word	sum
- 1282 05e4 00000000 		.word	average
- 1283 05e8 00000000 		.word	xavg
- 1284 05ec 00000000 		.word	yavg
- 1285 05f0 00000000 		.word	wait_flag
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 31
+ 1247 05a4 00000000 		.word	depth
+ 1248 05a8 00000000 		.word	countdown
+ 1249 05ac 00000000 		.word	id
+ 1250 05b0 00000000 		.word	sum
+ 1251 05b4 89888888 		.word	-2004318071
+ 1252 05b8 00000000 		.word	data_time
+ 1253 05bc 00000000 		.word	xavg
+ 1254 05c0 00000000 		.word	yavg
+ 1255 05c4 00000000 		.word	wait_flag
+ 1256 05c8 00000000 		.word	PANIC_flag
+ 1257 05cc 1C000000 		.word	.LC8
+ 1258 05d0 00000000 		.word	transmit_flag
+ 1259 05d4 3C000000 		.word	.LC10
+ 1260              	.L45:
+ 338:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1261              		.loc 1 338 0
+ 1262 05d8 FFF7FEFF 		bl	UART_ReadTxStatus
+ 1263 05dc 0346     		mov	r3, r0
+ 1264 05de 03F00803 		and	r3, r3, #8
+ 1265 05e2 002B     		cmp	r3, #0
+ 1266 05e4 B1D1     		bne	.L46
+ 1267              	.L44:
+ 337:main.c        ****                             while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1268              		.loc 1 337 0
+ 1269 05e6 D7F82031 		ldr	r3, [r7, #288]
+ 1270 05ea 142B     		cmp	r3, #20
+ 1271 05ec ACDD     		ble	.L47
+ 341:main.c        ****                             }
+ 342:main.c        ****                         }
+ 343:main.c        ****                     #endif
+ 344:main.c        ****                     /* at 10 seconds, change into descending */
+ 345:main.c        ****                     if(countdown == 10){
+ 1272              		.loc 1 345 0
+ 1273 05ee A44B     		ldr	r3, .L70
+ 1274 05f0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1275 05f2 0A2B     		cmp	r3, #10
+ 1276 05f4 3FD1     		bne	.L48
+ 346:main.c        ****                         descent_time = (((depth / 13) + 3) * 2 * 500);
+ 1277              		.loc 1 346 0
+ 1278 05f6 A34B     		ldr	r3, .L70+4
+ 1279 05f8 1B68     		ldr	r3, [r3]
+ 1280 05fa A34A     		ldr	r2, .L70+8
+ 1281 05fc 82FB0312 		smull	r1, r2, r2, r3
+ 1282 0600 9210     		asrs	r2, r2, #2
+ 1283 0602 DB17     		asrs	r3, r3, #31
+ 1284 0604 D31A     		subs	r3, r2, r3
+ 1285 0606 0333     		adds	r3, r3, #3
+ 1286 0608 4FF47A72 		mov	r2, #1000
+ 1287 060c 02FB03F3 		mul	r3, r2, r3
+ 1288 0610 9E4A     		ldr	r2, .L70+12
+ 1289 0612 1360     		str	r3, [r2]
+ 347:main.c        ****                         /* descent time takes about 2~3 seconds to go 13 feet, add 3 for extra 10m 
+ 348:main.c        ****                          * number of ISR calls to get 1 second */ 
+ 349:main.c        ****                         STATE = DESCENDING;
+ 1290              		.loc 1 349 0
+ 1291 0614 9E4B     		ldr	r3, .L70+16
+ 1292 0616 0222     		movs	r2, #2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 31
 
 
- 1286 05f4 00000000 		.word	PANIC_flag
- 1287 05f8 1C000000 		.word	.LC8
- 1288 05fc 00000000 		.word	transmit_flag
- 1289 0600 40000000 		.word	.LC10
- 1290 0604 4FECC44E 		.word	1321528399
- 1291 0608 00000000 		.word	descent_time
- 1292 060c 58000000 		.word	.LC11
- 1293              	.L51:
- 355:main.c        ****                     }
- 356:main.c        ****                     else if(id == MA_WINDOW){
- 1294              		.loc 1 356 0
- 1295 0610 9C4B     		ldr	r3, .L69
- 1296 0612 1B68     		ldr	r3, [r3]
- 1297 0614 0F2B     		cmp	r3, #15
- 1298 0616 12D1     		bne	.L53
- 357:main.c        ****                         sum += az;
- 1299              		.loc 1 357 0
- 1300 0618 B7F9F620 		ldrsh	r2, [r7, #246]
- 1301 061c 9A4B     		ldr	r3, .L69+4
- 1302 061e 1B68     		ldr	r3, [r3]
- 1303 0620 1344     		add	r3, r3, r2
- 1304 0622 994A     		ldr	r2, .L69+4
- 1305 0624 1360     		str	r3, [r2]
- 358:main.c        ****                         sum = sum/MA_WINDOW;                          
- 1306              		.loc 1 358 0
- 1307 0626 984B     		ldr	r3, .L69+4
- 1308 0628 1B68     		ldr	r3, [r3]
- 1309 062a 984A     		ldr	r2, .L69+8
- 1310 062c 82FB0312 		smull	r1, r2, r2, r3
- 1311 0630 1A44     		add	r2, r2, r3
- 1312 0632 D210     		asrs	r2, r2, #3
- 1313 0634 DB17     		asrs	r3, r3, #31
- 1314 0636 D31A     		subs	r3, r2, r3
- 1315 0638 934A     		ldr	r2, .L69+4
- 1316 063a 1360     		str	r3, [r2]
- 1317 063c 19E0     		b	.L52
- 1318              	.L53:
- 359:main.c        ****                     }
- 360:main.c        ****                     else{
- 361:main.c        ****                         average = ComputeMA(average, MA_WINDOW, az);                // Compute aver
- 1319              		.loc 1 361 0
- 1320 063e 944B     		ldr	r3, .L69+12
- 1321 0640 1B88     		ldrh	r3, [r3]
- 1322 0642 1BB2     		sxth	r3, r3
- 1323 0644 1846     		mov	r0, r3
- 1324 0646 FFF7FEFF 		bl	__aeabi_i2f
- 1325 064a 0446     		mov	r4, r0
- 1326 064c B7F9F630 		ldrsh	r3, [r7, #246]
- 1327 0650 1846     		mov	r0, r3
- 1328 0652 FFF7FEFF 		bl	__aeabi_i2f
- 1329 0656 0346     		mov	r3, r0
- 1330 0658 2046     		mov	r0, r4
- 1331 065a 0F21     		movs	r1, #15
- 1332 065c 1A46     		mov	r2, r3
- 1333 065e FFF7FEFF 		bl	ComputeMA
- 1334 0662 0346     		mov	r3, r0
- 1335 0664 1846     		mov	r0, r3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 32
+ 1293 0618 1A70     		strb	r2, [r3]
+ 350:main.c        ****                         #ifdef LCD
+ 351:main.c        ****                             setCursor(0,0);
+ 1294              		.loc 1 351 0
+ 1295 061a 0020     		movs	r0, #0
+ 1296 061c 0021     		movs	r1, #0
+ 1297 061e FFF7FEFF 		bl	setCursor
+ 352:main.c        ****                             clear();
+ 1298              		.loc 1 352 0
+ 1299 0622 FFF7FEFF 		bl	clear
+ 353:main.c        ****                             LCD_print("STATE: DESCENT");
+ 1300              		.loc 1 353 0
+ 1301 0626 9B48     		ldr	r0, .L70+20
+ 1302 0628 FFF7FEFF 		bl	LCD_print
+ 354:main.c        ****                         #endif
+ 355:main.c        ****                         #ifdef BT
+ 356:main.c        ****                             stateMsgCount = 0;
+ 1303              		.loc 1 356 0
+ 1304 062c 0023     		movs	r3, #0
+ 1305 062e C7F82031 		str	r3, [r7, #288]
+ 357:main.c        ****                             while (stateMsgCount < DESCENDING_LEN){
+ 1306              		.loc 1 357 0
+ 1307 0632 19E0     		b	.L49
+ 1308              	.L52:
+ 358:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1309              		.loc 1 358 0
+ 1310 0634 11E0     		b	.L50
+ 1311              	.L51:
+ 359:main.c        ****                                     UART_PutChar(descendbuf[stateMsgCount++]);
+ 1312              		.loc 1 359 0
+ 1313 0636 D7F82031 		ldr	r3, [r7, #288]
+ 1314 063a 5A1C     		adds	r2, r3, #1
+ 1315 063c C7F82021 		str	r2, [r7, #288]
+ 1316 0640 07F59472 		add	r2, r7, #296
+ 1317 0644 1344     		add	r3, r3, r2
+ 1318 0646 13F89C3C 		ldrb	r3, [r3, #-156]	@ zero_extendqisi2
+ 1319 064a 1846     		mov	r0, r3
+ 1320 064c FFF7FEFF 		bl	UART_PutChar
+ 360:main.c        ****                                     if (stateMsgCount >= DESCENDING_LEN) break;
+ 1321              		.loc 1 360 0
+ 1322 0650 D7F82031 		ldr	r3, [r7, #288]
+ 1323 0654 122B     		cmp	r3, #18
+ 1324 0656 00DD     		ble	.L50
+ 1325 0658 06E0     		b	.L49
+ 1326              	.L50:
+ 358:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1327              		.loc 1 358 0
+ 1328 065a FFF7FEFF 		bl	UART_ReadTxStatus
+ 1329 065e 0346     		mov	r3, r0
+ 1330 0660 03F00803 		and	r3, r3, #8
+ 1331 0664 002B     		cmp	r3, #0
+ 1332 0666 E6D1     		bne	.L51
+ 1333              	.L49:
+ 357:main.c        ****                                 while (UART_ReadTxStatus() & UART_TX_STS_FIFO_NOT_FULL){
+ 1334              		.loc 1 357 0
+ 1335 0668 D7F82031 		ldr	r3, [r7, #288]
+ 1336 066c 122B     		cmp	r3, #18
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 32
 
 
- 1336 0666 FFF7FEFF 		bl	__aeabi_f2iz
- 1337 066a 0346     		mov	r3, r0
- 1338 066c 9AB2     		uxth	r2, r3
- 1339 066e 884B     		ldr	r3, .L69+12
- 1340 0670 1A80     		strh	r2, [r3]	@ movhi
- 1341              	.L52:
- 362:main.c        ****                     }
- 363:main.c        ****                     
- 364:main.c        ****                     if(average > BOT_THRESHOLD){                        
- 1342              		.loc 1 364 0
- 1343 0672 874B     		ldr	r3, .L69+12
- 1344 0674 1B88     		ldrh	r3, [r3]
- 1345 0676 1BB2     		sxth	r3, r3
- 1346 0678 44F62062 		movw	r2, #20000
- 1347 067c 9342     		cmp	r3, r2
- 1348 067e 2CDD     		ble	.L54
- 365:main.c        ****                         STATE = LANDED;                                     //Switch to LANDED stat
- 1349              		.loc 1 365 0
- 1350 0680 844B     		ldr	r3, .L69+16
- 1351 0682 0322     		movs	r2, #3
- 1352 0684 1A70     		strb	r2, [r3]
- 366:main.c        ****                         #ifdef LCD
- 367:main.c        ****                             setCursor(0,0);
- 1353              		.loc 1 367 0
- 1354 0686 0020     		movs	r0, #0
- 1355 0688 0021     		movs	r1, #0
- 1356 068a FFF7FEFF 		bl	setCursor
- 368:main.c        ****                             clear();
- 1357              		.loc 1 368 0
- 1358 068e FFF7FEFF 		bl	clear
- 369:main.c        ****                             LCD_print("STATE: LANDED");  
- 1359              		.loc 1 369 0
- 1360 0692 8148     		ldr	r0, .L69+20
- 1361 0694 FFF7FEFF 		bl	LCD_print
- 370:main.c        ****                         #endif
- 371:main.c        ****                         #ifdef SD
- 372:main.c        ****                             FS_Write(fsfile, landedbuf, LANDED_LEN);
- 1362              		.loc 1 372 0
- 1363 0698 804B     		ldr	r3, .L69+24
- 1364 069a 1A68     		ldr	r2, [r3]
- 1365 069c 07F17C03 		add	r3, r7, #124
- 1366 06a0 1046     		mov	r0, r2
- 1367 06a2 1946     		mov	r1, r3
- 1368 06a4 0E22     		movs	r2, #14
- 1369 06a6 FFF7FEFF 		bl	FS_Write
- 373:main.c        ****                         #endif
- 374:main.c        ****                         #ifdef SD
- 375:main.c        ****                             FS_Write(fsfile, vacuumbuf, VACUUM_LEN);
- 1370              		.loc 1 375 0
- 1371 06aa 7C4B     		ldr	r3, .L69+24
- 1372 06ac 1A68     		ldr	r2, [r3]
- 1373 06ae 07F16803 		add	r3, r7, #104
- 1374 06b2 1046     		mov	r0, r2
- 1375 06b4 1946     		mov	r1, r3
- 1376 06b6 1122     		movs	r2, #17
- 1377 06b8 FFF7FEFF 		bl	FS_Write
- 376:main.c        ****                         #endif
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 33
+ 1337 066e E1DD     		ble	.L52
+ 361:main.c        ****                                 }
+ 362:main.c        ****                             }
+ 363:main.c        ****                         #endif
+ 364:main.c        ****                         countdown = 0; 
+ 1338              		.loc 1 364 0
+ 1339 0670 834B     		ldr	r3, .L70
+ 1340 0672 0022     		movs	r2, #0
+ 1341 0674 1A70     		strb	r2, [r3]
+ 1342              	.L48:
+ 365:main.c        ****                     }
+ 366:main.c        ****                     wait_flag = 0; 
+ 1343              		.loc 1 366 0
+ 1344 0676 884B     		ldr	r3, .L70+24
+ 1345 0678 0022     		movs	r2, #0
+ 1346 067a 1A70     		strb	r2, [r3]
+ 367:main.c        ****                 }
+ 368:main.c        ****                 break;
+ 1347              		.loc 1 368 0
+ 1348 067c FEE0     		b	.L53
+ 1349              	.L43:
+ 1350 067e FDE0     		b	.L53
+ 1351              	.L37:
+ 369:main.c        ****                 
+ 370:main.c        ****             case DESCENDING:
+ 371:main.c        ****                 
+ 372:main.c        **** 
+ 373:main.c        ****          if(collect_flag == 1){              // Check accelerometer and gyro data
+ 1352              		.loc 1 373 0
+ 1353 0680 864B     		ldr	r3, .L70+28
+ 1354 0682 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1355 0684 002B     		cmp	r3, #0
+ 1356 0686 49D0     		beq	.L54
+ 374:main.c        ****                     if(average > BOT_THRESHOLD){                        
+ 1357              		.loc 1 374 0
+ 1358 0688 854B     		ldr	r3, .L70+32
+ 1359 068a 1B88     		ldrh	r3, [r3]
+ 1360 068c 1BB2     		sxth	r3, r3
+ 1361 068e 44F62062 		movw	r2, #20000
+ 1362 0692 9342     		cmp	r3, r2
+ 1363 0694 20DD     		ble	.L55
+ 375:main.c        ****                         STATE = LANDED;                                     //Switch to LANDED stat
+ 1364              		.loc 1 375 0
+ 1365 0696 7E4B     		ldr	r3, .L70+16
+ 1366 0698 0322     		movs	r2, #3
+ 1367 069a 1A70     		strb	r2, [r3]
+ 376:main.c        ****                         #ifdef LCD
+ 377:main.c        ****                             setCursor(0,0);
+ 1368              		.loc 1 377 0
+ 1369 069c 0020     		movs	r0, #0
+ 1370 069e 0021     		movs	r1, #0
+ 1371 06a0 FFF7FEFF 		bl	setCursor
+ 378:main.c        ****                             clear();
+ 1372              		.loc 1 378 0
+ 1373 06a4 FFF7FEFF 		bl	clear
+ 379:main.c        ****                             LCD_print("STATE: LANDED");  
+ 1374              		.loc 1 379 0
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 33
 
 
- 377:main.c        ****                         
- 378:main.c        ****                         id=0;                                                   //reset sample coun
- 1378              		.loc 1 378 0
- 1379 06bc 714B     		ldr	r3, .L69
- 1380 06be 0022     		movs	r2, #0
- 1381 06c0 1A60     		str	r2, [r3]
- 379:main.c        ****                         data_time = 0;
- 1382              		.loc 1 379 0
- 1383 06c2 774B     		ldr	r3, .L69+28
- 1384 06c4 0022     		movs	r2, #0
- 1385 06c6 1A60     		str	r2, [r3]
- 380:main.c        ****                         sum = 0;
- 1386              		.loc 1 380 0
- 1387 06c8 6F4B     		ldr	r3, .L69+4
- 1388 06ca 0022     		movs	r2, #0
- 1389 06cc 1A60     		str	r2, [r3]
- 381:main.c        ****                         average = 0; 
- 1390              		.loc 1 381 0
- 1391 06ce 704B     		ldr	r3, .L69+12
- 1392 06d0 0022     		movs	r2, #0
- 1393 06d2 1A80     		strh	r2, [r3]	@ movhi
- 382:main.c        ****                         countdown = 0;
- 1394              		.loc 1 382 0
- 1395 06d4 734B     		ldr	r3, .L69+32
- 1396 06d6 0022     		movs	r2, #0
- 1397 06d8 1A70     		strb	r2, [r3]
- 1398              	.L54:
- 383:main.c        ****                     }
- 384:main.c        ****                     id++;
- 1399              		.loc 1 384 0
- 1400 06da 6A4B     		ldr	r3, .L69
- 1401 06dc 1B68     		ldr	r3, [r3]
- 1402 06de 0133     		adds	r3, r3, #1
- 1403 06e0 684A     		ldr	r2, .L69
- 1404 06e2 1360     		str	r3, [r2]
- 385:main.c        ****                     
- 386:main.c        ****                     /* if max time allowed for descent has been reached, resurface */
- 387:main.c        ****                     if(data_time >= descent_time ){                         // variable descent tim
- 1405              		.loc 1 387 0
- 1406 06e4 6E4B     		ldr	r3, .L69+28
- 1407 06e6 1A68     		ldr	r2, [r3]
- 1408 06e8 6F4B     		ldr	r3, .L69+36
- 1409 06ea 1B68     		ldr	r3, [r3]
- 1410 06ec 9A42     		cmp	r2, r3
- 1411 06ee 17DB     		blt	.L55
- 388:main.c        ****                         STATE = RESURFACE;                                      
- 1412              		.loc 1 388 0
- 1413 06f0 684B     		ldr	r3, .L69+16
- 1414 06f2 0422     		movs	r2, #4
- 1415 06f4 1A70     		strb	r2, [r3]
- 389:main.c        ****                         #ifdef LCD
- 390:main.c        ****                             setCursor(0,0);
- 1416              		.loc 1 390 0
- 1417 06f6 0020     		movs	r0, #0
- 1418 06f8 0021     		movs	r1, #0
- 1419 06fa FFF7FEFF 		bl	setCursor
- 391:main.c        ****                             clear();
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 34
+ 1375 06a8 7E48     		ldr	r0, .L70+36
+ 1376 06aa FFF7FEFF 		bl	LCD_print
+ 380:main.c        ****                         #endif
+ 381:main.c        ****                         #ifdef SD
+ 382:main.c        ****                             FS_Write(fsfile, landedbuf, LANDED_LEN);
+ 1377              		.loc 1 382 0
+ 1378 06ae 7E4B     		ldr	r3, .L70+40
+ 1379 06b0 1A68     		ldr	r2, [r3]
+ 1380 06b2 07F17C03 		add	r3, r7, #124
+ 1381 06b6 1046     		mov	r0, r2
+ 1382 06b8 1946     		mov	r1, r3
+ 1383 06ba 0E22     		movs	r2, #14
+ 1384 06bc FFF7FEFF 		bl	FS_Write
+ 383:main.c        ****                         #endif
+ 384:main.c        ****                         #ifdef SD
+ 385:main.c        ****                             FS_Write(fsfile, vacuumbuf, VACUUM_LEN);
+ 1385              		.loc 1 385 0
+ 1386 06c0 794B     		ldr	r3, .L70+40
+ 1387 06c2 1A68     		ldr	r2, [r3]
+ 1388 06c4 07F16803 		add	r3, r7, #104
+ 1389 06c8 1046     		mov	r0, r2
+ 1390 06ca 1946     		mov	r1, r3
+ 1391 06cc 1122     		movs	r2, #17
+ 1392 06ce FFF7FEFF 		bl	FS_Write
+ 386:main.c        ****                         #endif
+ 387:main.c        ****                         
+ 388:main.c        ****                         
+ 389:main.c        ****                         countdown = 0;
+ 1393              		.loc 1 389 0
+ 1394 06d2 6B4B     		ldr	r3, .L70
+ 1395 06d4 0022     		movs	r2, #0
+ 1396 06d6 1A70     		strb	r2, [r3]
+ 1397              	.L55:
+ 390:main.c        ****                     }
+ 391:main.c        ****                     
+ 392:main.c        ****                     
+ 393:main.c        ****                     /* if max time allowed for descent has been reached, resurface */
+ 394:main.c        ****                     if(data_time >= descent_time ){                         // variable descent tim
+ 1398              		.loc 1 394 0
+ 1399 06d8 744B     		ldr	r3, .L70+44
+ 1400 06da 1A68     		ldr	r2, [r3]
+ 1401 06dc 6B4B     		ldr	r3, .L70+12
+ 1402 06de 1B68     		ldr	r3, [r3]
+ 1403 06e0 9A42     		cmp	r2, r3
+ 1404 06e2 17DB     		blt	.L56
+ 395:main.c        ****                         STATE = RESURFACE;                                      
+ 1405              		.loc 1 395 0
+ 1406 06e4 6A4B     		ldr	r3, .L70+16
+ 1407 06e6 0422     		movs	r2, #4
+ 1408 06e8 1A70     		strb	r2, [r3]
+ 396:main.c        ****                         #ifdef LCD
+ 397:main.c        ****                             setCursor(0,0);
+ 1409              		.loc 1 397 0
+ 1410 06ea 0020     		movs	r0, #0
+ 1411 06ec 0021     		movs	r1, #0
+ 1412 06ee FFF7FEFF 		bl	setCursor
+ 398:main.c        ****                             clear();
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 34
 
 
- 1420              		.loc 1 391 0
- 1421 06fe FFF7FEFF 		bl	clear
- 392:main.c        ****                             LCD_print("STATE: RESURFACE");  
- 1422              		.loc 1 392 0
- 1423 0702 6A48     		ldr	r0, .L69+40
- 1424 0704 FFF7FEFF 		bl	LCD_print
- 393:main.c        ****                         #endif
- 394:main.c        ****                         id=0;                                               //reset sample counter
- 1425              		.loc 1 394 0
- 1426 0708 5E4B     		ldr	r3, .L69
- 1427 070a 0022     		movs	r2, #0
- 1428 070c 1A60     		str	r2, [r3]
- 395:main.c        ****                         data_time = 0;
- 1429              		.loc 1 395 0
- 1430 070e 644B     		ldr	r3, .L69+28
- 1431 0710 0022     		movs	r2, #0
- 1432 0712 1A60     		str	r2, [r3]
- 396:main.c        ****                         sum = 0;                                            //reset sum 
- 1433              		.loc 1 396 0
- 1434 0714 5C4B     		ldr	r3, .L69+4
- 1435 0716 0022     		movs	r2, #0
- 1436 0718 1A60     		str	r2, [r3]
- 397:main.c        ****                         average = 0;
- 1437              		.loc 1 397 0
- 1438 071a 5D4B     		ldr	r3, .L69+12
- 1439 071c 0022     		movs	r2, #0
- 1440 071e 1A80     		strh	r2, [r3]	@ movhi
- 1441              	.L55:
- 398:main.c        ****                     }
- 399:main.c        ****                     
- 400:main.c        ****                     collect_flag = 0;
- 1442              		.loc 1 400 0
- 1443 0720 634B     		ldr	r3, .L69+44
- 1444 0722 0022     		movs	r2, #0
- 1445 0724 1A70     		strb	r2, [r3]
- 401:main.c        ****                 }
- 402:main.c        ****                 break;
- 1446              		.loc 1 402 0
- 1447 0726 ABE0     		b	.L49
- 1448              	.L50:
- 1449              		.loc 1 402 0 is_stmt 0 discriminator 2
- 1450 0728 AAE0     		b	.L49
- 1451              	.L34:
- 403:main.c        ****                 
- 404:main.c        ****                 case LANDED:
- 405:main.c        ****                     if (countdown == 7) {                   // Delay for 7 seconds at bottom
- 1452              		.loc 1 405 0 is_stmt 1
- 1453 072a 5E4B     		ldr	r3, .L69+32
- 1454 072c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1455 072e 072B     		cmp	r3, #7
- 1456 0730 08D1     		bne	.L56
- 406:main.c        ****                         countdown = 0; 
- 1457              		.loc 1 406 0
- 1458 0732 5C4B     		ldr	r3, .L69+32
- 1459 0734 0022     		movs	r2, #0
- 1460 0736 1A70     		strb	r2, [r3]
- 407:main.c        ****                         pulse = 1;                          // next stage of the state
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 35
+ 1413              		.loc 1 398 0
+ 1414 06f2 FFF7FEFF 		bl	clear
+ 399:main.c        ****                             LCD_print("STATE: RESURFACE");  
+ 1415              		.loc 1 399 0
+ 1416 06f6 6E48     		ldr	r0, .L70+48
+ 1417 06f8 FFF7FEFF 		bl	LCD_print
+ 400:main.c        ****                         #endif
+ 401:main.c        ****                         id=0;                                               //reset sample counter
+ 1418              		.loc 1 401 0
+ 1419 06fc 6D4B     		ldr	r3, .L70+52
+ 1420 06fe 0022     		movs	r2, #0
+ 1421 0700 1A60     		str	r2, [r3]
+ 402:main.c        ****                         data_time = 0;
+ 1422              		.loc 1 402 0
+ 1423 0702 6A4B     		ldr	r3, .L70+44
+ 1424 0704 0022     		movs	r2, #0
+ 1425 0706 1A60     		str	r2, [r3]
+ 403:main.c        ****                         sum = 0;                                            //reset sum 
+ 1426              		.loc 1 403 0
+ 1427 0708 6B4B     		ldr	r3, .L70+56
+ 1428 070a 0022     		movs	r2, #0
+ 1429 070c 1A60     		str	r2, [r3]
+ 404:main.c        ****                         average = 0;
+ 1430              		.loc 1 404 0
+ 1431 070e 644B     		ldr	r3, .L70+32
+ 1432 0710 0022     		movs	r2, #0
+ 1433 0712 1A80     		strh	r2, [r3]	@ movhi
+ 1434              	.L56:
+ 405:main.c        ****                     }
+ 406:main.c        ****                     collect_flag = 0;
+ 1435              		.loc 1 406 0
+ 1436 0714 614B     		ldr	r3, .L70+28
+ 1437 0716 0022     		movs	r2, #0
+ 1438 0718 1A70     		strb	r2, [r3]
+ 407:main.c        ****                     
+ 408:main.c        ****                 }
+ 409:main.c        ****                 break;
+ 1439              		.loc 1 409 0
+ 1440 071a AFE0     		b	.L53
+ 1441              	.L54:
+ 1442              		.loc 1 409 0 is_stmt 0 discriminator 2
+ 1443 071c AEE0     		b	.L53
+ 1444              	.L38:
+ 410:main.c        ****                 
+ 411:main.c        ****                 case LANDED:
+ 412:main.c        ****                     if (countdown == 7 && !pulse) {                   // Delay for 7 seconds at bot
+ 1445              		.loc 1 412 0 is_stmt 1
+ 1446 071e 584B     		ldr	r3, .L70
+ 1447 0720 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1448 0722 072B     		cmp	r3, #7
+ 1449 0724 0CD1     		bne	.L57
+ 1450              		.loc 1 412 0 is_stmt 0 discriminator 1
+ 1451 0726 D7F81C31 		ldr	r3, [r7, #284]
+ 1452 072a 002B     		cmp	r3, #0
+ 1453 072c 08D1     		bne	.L57
+ 413:main.c        ****                         countdown = 0; 
+ 1454              		.loc 1 413 0 is_stmt 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 35
 
 
- 1461              		.loc 1 407 0
- 1462 0738 0123     		movs	r3, #1
- 1463 073a C7F81C31 		str	r3, [r7, #284]
- 408:main.c        ****                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
- 1464              		.loc 1 408 0
- 1465 073e 0120     		movs	r0, #1
- 1466 0740 FFF7FEFF 		bl	Solenoid_1_Write
- 1467              	.L56:
- 409:main.c        ****                     } 
- 410:main.c        ****                     
- 411:main.c        ****                     if (countdown == 5 && pulse){           // Second stage, turn off solenoid
- 1468              		.loc 1 411 0
- 1469 0744 574B     		ldr	r3, .L69+32
- 1470 0746 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1471 0748 052B     		cmp	r3, #5
- 1472 074a 0ED1     		bne	.L57
- 1473              		.loc 1 411 0 is_stmt 0 discriminator 1
- 1474 074c D7F81C31 		ldr	r3, [r7, #284]
- 1475 0750 002B     		cmp	r3, #0
- 1476 0752 0AD0     		beq	.L57
- 412:main.c        ****                         pulse++;
- 1477              		.loc 1 412 0 is_stmt 1
- 1478 0754 D7F81C31 		ldr	r3, [r7, #284]
- 1479 0758 0133     		adds	r3, r3, #1
- 1480 075a C7F81C31 		str	r3, [r7, #284]
- 413:main.c        ****                         Solenoid_1_Write(0);                // turn off soleniod 1
- 1481              		.loc 1 413 0
- 1482 075e 0020     		movs	r0, #0
- 1483 0760 FFF7FEFF 		bl	Solenoid_1_Write
- 414:main.c        ****                         countdown = 0;
- 1484              		.loc 1 414 0
- 1485 0764 4F4B     		ldr	r3, .L69+32
- 1486 0766 0022     		movs	r2, #0
- 1487 0768 1A70     		strb	r2, [r3]
- 1488              	.L57:
- 415:main.c        ****                     }
- 416:main.c        ****                     if (countdown == 3 && pulse == 2){      // Delay for 3 seconds then resurface
- 1489              		.loc 1 416 0
- 1490 076a 4E4B     		ldr	r3, .L69+32
- 1491 076c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1492 076e 032B     		cmp	r3, #3
- 1493 0770 1FD1     		bne	.L58
- 1494              		.loc 1 416 0 is_stmt 0 discriminator 1
- 1495 0772 D7F81C31 		ldr	r3, [r7, #284]
- 1496 0776 022B     		cmp	r3, #2
- 1497 0778 1BD1     		bne	.L58
- 417:main.c        ****                         STATE = RESURFACE;
- 1498              		.loc 1 417 0 is_stmt 1
- 1499 077a 464B     		ldr	r3, .L69+16
- 1500 077c 0422     		movs	r2, #4
- 1501 077e 1A70     		strb	r2, [r3]
- 418:main.c        ****                         
- 419:main.c        ****                         #ifdef LCD
- 420:main.c        ****                             setCursor(0,0);
- 1502              		.loc 1 420 0
- 1503 0780 0020     		movs	r0, #0
- 1504 0782 0021     		movs	r1, #0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 36
+ 1455 072e 544B     		ldr	r3, .L70
+ 1456 0730 0022     		movs	r2, #0
+ 1457 0732 1A70     		strb	r2, [r3]
+ 414:main.c        ****                         pulse = 1;                          // next stage of the state
+ 1458              		.loc 1 414 0
+ 1459 0734 0123     		movs	r3, #1
+ 1460 0736 C7F81C31 		str	r3, [r7, #284]
+ 415:main.c        ****                         Solenoid_1_Write(1);                // turn on solenoid 1 for 5 seconds
+ 1461              		.loc 1 415 0
+ 1462 073a 0120     		movs	r0, #1
+ 1463 073c FFF7FEFF 		bl	Solenoid_1_Write
+ 1464              	.L57:
+ 416:main.c        ****                     } 
+ 417:main.c        ****                     
+ 418:main.c        ****                     if ((countdown == 15) && pulse){           // Second stage, turn off solenoid
+ 1465              		.loc 1 418 0
+ 1466 0740 4F4B     		ldr	r3, .L70
+ 1467 0742 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1468 0744 0F2B     		cmp	r3, #15
+ 1469 0746 0ED1     		bne	.L58
+ 1470              		.loc 1 418 0 is_stmt 0 discriminator 1
+ 1471 0748 D7F81C31 		ldr	r3, [r7, #284]
+ 1472 074c 002B     		cmp	r3, #0
+ 1473 074e 0AD0     		beq	.L58
+ 419:main.c        ****                         pulse++;
+ 1474              		.loc 1 419 0 is_stmt 1
+ 1475 0750 D7F81C31 		ldr	r3, [r7, #284]
+ 1476 0754 0133     		adds	r3, r3, #1
+ 1477 0756 C7F81C31 		str	r3, [r7, #284]
+ 420:main.c        ****                         Solenoid_1_Write(0);                // turn off soleniod 1
+ 1478              		.loc 1 420 0
+ 1479 075a 0020     		movs	r0, #0
+ 1480 075c FFF7FEFF 		bl	Solenoid_1_Write
+ 421:main.c        ****                         countdown = 0;
+ 1481              		.loc 1 421 0
+ 1482 0760 474B     		ldr	r3, .L70
+ 1483 0762 0022     		movs	r2, #0
+ 1484 0764 1A70     		strb	r2, [r3]
+ 1485              	.L58:
+ 422:main.c        ****                     }
+ 423:main.c        ****                     if (countdown == 3 && pulse == 2){      // Delay for 3 seconds then resurface
+ 1486              		.loc 1 423 0
+ 1487 0766 464B     		ldr	r3, .L70
+ 1488 0768 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1489 076a 032B     		cmp	r3, #3
+ 1490 076c 1FD1     		bne	.L59
+ 1491              		.loc 1 423 0 is_stmt 0 discriminator 1
+ 1492 076e D7F81C31 		ldr	r3, [r7, #284]
+ 1493 0772 022B     		cmp	r3, #2
+ 1494 0774 1BD1     		bne	.L59
+ 424:main.c        ****                         STATE = RESURFACE;
+ 1495              		.loc 1 424 0 is_stmt 1
+ 1496 0776 464B     		ldr	r3, .L70+16
+ 1497 0778 0422     		movs	r2, #4
+ 1498 077a 1A70     		strb	r2, [r3]
+ 425:main.c        ****                         
+ 426:main.c        ****                         #ifdef LCD
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 36
 
 
- 1505 0784 FFF7FEFF 		bl	setCursor
- 421:main.c        ****                             clear();
- 1506              		.loc 1 421 0
- 1507 0788 FFF7FEFF 		bl	clear
- 422:main.c        ****                             LCD_print("STATE: RESURFACING");  
- 1508              		.loc 1 422 0
- 1509 078c 4948     		ldr	r0, .L69+48
- 1510 078e FFF7FEFF 		bl	LCD_print
- 423:main.c        ****                         #endif
- 424:main.c        ****                         #ifdef SD
- 425:main.c        ****                             FS_Write(fsfile, resurfbuf, RESURFACE_LEN);
- 1511              		.loc 1 425 0
- 1512 0792 424B     		ldr	r3, .L69+24
- 1513 0794 1A68     		ldr	r2, [r3]
- 1514 0796 07F15403 		add	r3, r7, #84
- 1515 079a 1046     		mov	r0, r2
- 1516 079c 1946     		mov	r1, r3
- 1517 079e 1122     		movs	r2, #17
- 1518 07a0 FFF7FEFF 		bl	FS_Write
- 426:main.c        ****                         #endif
- 427:main.c        ****                         pulse = 0;
- 1519              		.loc 1 427 0
- 1520 07a4 0023     		movs	r3, #0
- 1521 07a6 C7F81C31 		str	r3, [r7, #284]
- 428:main.c        ****                         countdown = 0;
- 1522              		.loc 1 428 0
- 1523 07aa 3E4B     		ldr	r3, .L69+32
- 1524 07ac 0022     		movs	r2, #0
- 1525 07ae 1A70     		strb	r2, [r3]
- 429:main.c        ****                     }
- 430:main.c        ****                 break;
- 1526              		.loc 1 430 0
- 1527 07b0 66E0     		b	.L49
- 1528              	.L58:
- 1529              		.loc 1 430 0 is_stmt 0 discriminator 3
- 1530 07b2 65E0     		b	.L49
- 1531              	.L35:
- 431:main.c        ****                 
- 432:main.c        ****             case RESURFACE:
- 433:main.c        ****                 if (PANIC_flag)                 // Display that moisture sensor triggered
- 1532              		.loc 1 433 0 is_stmt 1
- 1533 07b4 404B     		ldr	r3, .L69+52
- 1534 07b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1535 07b8 002B     		cmp	r3, #0
- 1536 07ba 02D0     		beq	.L59
- 434:main.c        ****                     LCD_print("WATER DETECTED");
- 1537              		.loc 1 434 0
- 1538 07bc 3F48     		ldr	r0, .L69+56
- 1539 07be FFF7FEFF 		bl	LCD_print
- 1540              	.L59:
- 435:main.c        ****                     
- 436:main.c        ****                 Solenoid_2_Write(1);            // turn on lift bag solenoid                
- 1541              		.loc 1 436 0
- 1542 07c2 0120     		movs	r0, #1
- 1543 07c4 FFF7FEFF 		bl	Solenoid_2_Write
- 437:main.c        ****                 
- 438:main.c        ****                 //check pressure sensor to confirm we are at the surface
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 37
+ 427:main.c        ****                             setCursor(0,0);
+ 1499              		.loc 1 427 0
+ 1500 077c 0020     		movs	r0, #0
+ 1501 077e 0021     		movs	r1, #0
+ 1502 0780 FFF7FEFF 		bl	setCursor
+ 428:main.c        ****                             clear();
+ 1503              		.loc 1 428 0
+ 1504 0784 FFF7FEFF 		bl	clear
+ 429:main.c        ****                             LCD_print("STATE: RESURFACING");  
+ 1505              		.loc 1 429 0
+ 1506 0788 4C48     		ldr	r0, .L70+60
+ 1507 078a FFF7FEFF 		bl	LCD_print
+ 430:main.c        ****                         #endif
+ 431:main.c        ****                         #ifdef SD
+ 432:main.c        ****                             FS_Write(fsfile, resurfbuf, RESURFACE_LEN);
+ 1508              		.loc 1 432 0
+ 1509 078e 464B     		ldr	r3, .L70+40
+ 1510 0790 1A68     		ldr	r2, [r3]
+ 1511 0792 07F15403 		add	r3, r7, #84
+ 1512 0796 1046     		mov	r0, r2
+ 1513 0798 1946     		mov	r1, r3
+ 1514 079a 1122     		movs	r2, #17
+ 1515 079c FFF7FEFF 		bl	FS_Write
+ 433:main.c        ****                         #endif
+ 434:main.c        ****                         pulse = 0;
+ 1516              		.loc 1 434 0
+ 1517 07a0 0023     		movs	r3, #0
+ 1518 07a2 C7F81C31 		str	r3, [r7, #284]
+ 435:main.c        ****                         countdown = 0;
+ 1519              		.loc 1 435 0
+ 1520 07a6 364B     		ldr	r3, .L70
+ 1521 07a8 0022     		movs	r2, #0
+ 1522 07aa 1A70     		strb	r2, [r3]
+ 436:main.c        ****                     }
+ 437:main.c        ****                 break;
+ 1523              		.loc 1 437 0
+ 1524 07ac 66E0     		b	.L53
+ 1525              	.L59:
+ 1526              		.loc 1 437 0 is_stmt 0 discriminator 3
+ 1527 07ae 65E0     		b	.L53
+ 1528              	.L39:
+ 438:main.c        ****                 
+ 439:main.c        ****             case RESURFACE:
+ 440:main.c        ****                 if (PANIC_flag)                 // Display that moisture sensor triggered
+ 1529              		.loc 1 440 0 is_stmt 1
+ 1530 07b0 434B     		ldr	r3, .L70+64
+ 1531 07b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1532 07b4 002B     		cmp	r3, #0
+ 1533 07b6 02D0     		beq	.L60
+ 441:main.c        ****                     LCD_print("WATER DETECTED");
+ 1534              		.loc 1 441 0
+ 1535 07b8 4248     		ldr	r0, .L70+68
+ 1536 07ba FFF7FEFF 		bl	LCD_print
+ 1537              	.L60:
+ 442:main.c        ****                     
+ 443:main.c        ****                 Solenoid_2_Write(1);            // turn on lift bag solenoid                
+ 1538              		.loc 1 443 0
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 37
 
 
- 439:main.c        ****                 if (countdown == 3){
- 1544              		.loc 1 439 0
- 1545 07c8 364B     		ldr	r3, .L69+32
- 1546 07ca 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1547 07cc 032B     		cmp	r3, #3
- 1548 07ce 0ED1     		bne	.L60
- 440:main.c        ****                     Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second
- 1549              		.loc 1 440 0
- 1550 07d0 0020     		movs	r0, #0
- 1551 07d2 FFF7FEFF 		bl	Solenoid_2_Write
- 441:main.c        ****                     CyDelay(1000u);
- 1552              		.loc 1 441 0
- 1553 07d6 4FF47A70 		mov	r0, #1000
- 1554 07da FFF7FEFF 		bl	CyDelay
- 442:main.c        ****                     pulse++;
- 1555              		.loc 1 442 0
- 1556 07de D7F81C31 		ldr	r3, [r7, #284]
- 1557 07e2 0133     		adds	r3, r3, #1
- 1558 07e4 C7F81C31 		str	r3, [r7, #284]
- 443:main.c        ****                     countdown = 0;
- 1559              		.loc 1 443 0
- 1560 07e8 2E4B     		ldr	r3, .L69+32
- 1561 07ea 0022     		movs	r2, #0
- 1562 07ec 1A70     		strb	r2, [r3]
- 1563              	.L60:
- 444:main.c        ****                 }
- 445:main.c        ****                 if (pulse == 4){
- 1564              		.loc 1 445 0
- 1565 07ee D7F81C31 		ldr	r3, [r7, #284]
- 1566 07f2 042B     		cmp	r3, #4
- 1567 07f4 30D1     		bne	.L61
- 446:main.c        ****                     STATE = TRANSMIT;
- 1568              		.loc 1 446 0
- 1569 07f6 274B     		ldr	r3, .L69+16
- 1570 07f8 0522     		movs	r2, #5
- 1571 07fa 1A70     		strb	r2, [r3]
- 447:main.c        ****                     #ifdef SD                                   //close old file, open new one
- 448:main.c        ****                         FS_FClose(fsfile);
- 1572              		.loc 1 448 0
- 1573 07fc 274B     		ldr	r3, .L69+24
- 1574 07fe 1B68     		ldr	r3, [r3]
- 1575 0800 1846     		mov	r0, r3
- 1576 0802 FFF7FEFF 		bl	FS_FClose
- 449:main.c        ****                         sprintf(file, "test%d.txt", ++testnum);
- 1577              		.loc 1 449 0
- 1578 0806 2E4B     		ldr	r3, .L69+60
- 1579 0808 1B68     		ldr	r3, [r3]
- 1580 080a 0133     		adds	r3, r3, #1
- 1581 080c 2C4A     		ldr	r2, .L69+60
- 1582 080e 1360     		str	r3, [r2]
- 1583 0810 2B4B     		ldr	r3, .L69+60
- 1584 0812 1B68     		ldr	r3, [r3]
- 1585 0814 2B48     		ldr	r0, .L69+64
- 1586 0816 2C49     		ldr	r1, .L69+68
- 1587 0818 1A46     		mov	r2, r3
- 1588 081a FFF7FEFF 		bl	sprintf
- 450:main.c        ****                         fsfile = FS_FOpen(file, "w");
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 38
+ 1539 07be 0120     		movs	r0, #1
+ 1540 07c0 FFF7FEFF 		bl	Solenoid_2_Write
+ 444:main.c        ****                 
+ 445:main.c        ****                 //check pressure sensor to confirm we are at the surface
+ 446:main.c        ****                 if (countdown == 3){
+ 1541              		.loc 1 446 0
+ 1542 07c4 2E4B     		ldr	r3, .L70
+ 1543 07c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1544 07c8 032B     		cmp	r3, #3
+ 1545 07ca 0ED1     		bne	.L61
+ 447:main.c        ****                     Solenoid_2_Write(0);        // Turn off solenoid 2 for 1 second
+ 1546              		.loc 1 447 0
+ 1547 07cc 0020     		movs	r0, #0
+ 1548 07ce FFF7FEFF 		bl	Solenoid_2_Write
+ 448:main.c        ****                     CyDelay(1000u);
+ 1549              		.loc 1 448 0
+ 1550 07d2 4FF47A70 		mov	r0, #1000
+ 1551 07d6 FFF7FEFF 		bl	CyDelay
+ 449:main.c        ****                     pulse++;
+ 1552              		.loc 1 449 0
+ 1553 07da D7F81C31 		ldr	r3, [r7, #284]
+ 1554 07de 0133     		adds	r3, r3, #1
+ 1555 07e0 C7F81C31 		str	r3, [r7, #284]
+ 450:main.c        ****                     countdown = 0;
+ 1556              		.loc 1 450 0
+ 1557 07e4 264B     		ldr	r3, .L70
+ 1558 07e6 0022     		movs	r2, #0
+ 1559 07e8 1A70     		strb	r2, [r3]
+ 1560              	.L61:
+ 451:main.c        ****                 }
+ 452:main.c        ****                 if (pulse == 4){
+ 1561              		.loc 1 452 0
+ 1562 07ea D7F81C31 		ldr	r3, [r7, #284]
+ 1563 07ee 042B     		cmp	r3, #4
+ 1564 07f0 30D1     		bne	.L62
+ 453:main.c        ****                     STATE = TRANSMIT;
+ 1565              		.loc 1 453 0
+ 1566 07f2 274B     		ldr	r3, .L70+16
+ 1567 07f4 0522     		movs	r2, #5
+ 1568 07f6 1A70     		strb	r2, [r3]
+ 454:main.c        ****                     #ifdef SD                                   //close old file, open new one
+ 455:main.c        ****                         FS_FClose(fsfile);
+ 1569              		.loc 1 455 0
+ 1570 07f8 2B4B     		ldr	r3, .L70+40
+ 1571 07fa 1B68     		ldr	r3, [r3]
+ 1572 07fc 1846     		mov	r0, r3
+ 1573 07fe FFF7FEFF 		bl	FS_FClose
+ 456:main.c        ****                         sprintf(file, "test%d.txt", ++testnum);
+ 1574              		.loc 1 456 0
+ 1575 0802 314B     		ldr	r3, .L70+72
+ 1576 0804 1B68     		ldr	r3, [r3]
+ 1577 0806 0133     		adds	r3, r3, #1
+ 1578 0808 2F4A     		ldr	r2, .L70+72
+ 1579 080a 1360     		str	r3, [r2]
+ 1580 080c 2E4B     		ldr	r3, .L70+72
+ 1581 080e 1B68     		ldr	r3, [r3]
+ 1582 0810 2E48     		ldr	r0, .L70+76
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 38
 
 
- 1589              		.loc 1 450 0
- 1590 081e 2948     		ldr	r0, .L69+64
- 1591 0820 2A49     		ldr	r1, .L69+72
- 1592 0822 FFF7FEFF 		bl	FS_FOpen
- 1593 0826 0246     		mov	r2, r0
- 1594 0828 1C4B     		ldr	r3, .L69+24
- 1595 082a 1A60     		str	r2, [r3]
- 451:main.c        ****                     #endif 
- 452:main.c        ****                     
- 453:main.c        ****                     #ifdef LCD
- 454:main.c        ****                         setCursor(0,0);
- 1596              		.loc 1 454 0
- 1597 082c 0020     		movs	r0, #0
- 1598 082e 0021     		movs	r1, #0
- 1599 0830 FFF7FEFF 		bl	setCursor
- 455:main.c        ****                         clear();
- 1600              		.loc 1 455 0
- 1601 0834 FFF7FEFF 		bl	clear
- 456:main.c        ****                         LCD_print("TRANSMIT");  
- 1602              		.loc 1 456 0
- 1603 0838 2548     		ldr	r0, .L69+76
- 1604 083a FFF7FEFF 		bl	LCD_print
- 457:main.c        ****                     #endif
- 458:main.c        ****                     #ifdef SD
- 459:main.c        ****                         FS_Write(fsfile, transbuf, TRANSMIT_LEN);
- 1605              		.loc 1 459 0
- 1606 083e 174B     		ldr	r3, .L69+24
- 1607 0840 1A68     		ldr	r2, [r3]
- 1608 0842 07F14403 		add	r3, r7, #68
- 1609 0846 1046     		mov	r0, r2
- 1610 0848 1946     		mov	r1, r3
- 1611 084a 1022     		movs	r2, #16
- 1612 084c FFF7FEFF 		bl	FS_Write
- 460:main.c        ****                     #endif
- 461:main.c        ****                     countdown = 0;
- 1613              		.loc 1 461 0
- 1614 0850 144B     		ldr	r3, .L69+32
- 1615 0852 0022     		movs	r2, #0
- 1616 0854 1A70     		strb	r2, [r3]
- 462:main.c        ****                 }
- 463:main.c        ****                 break;
- 1617              		.loc 1 463 0
- 1618 0856 13E0     		b	.L49
- 1619              	.L61:
- 1620              		.loc 1 463 0 is_stmt 0 discriminator 4
- 1621 0858 12E0     		b	.L49
- 1622              	.L36:
- 464:main.c        ****                 
- 465:main.c        ****             case TRANSMIT:
- 466:main.c        ****                 if (transmit_flag){
- 1623              		.loc 1 466 0 is_stmt 1
- 1624 085a 1E4B     		ldr	r3, .L69+80
- 1625 085c 1B68     		ldr	r3, [r3]
- 1626 085e 002B     		cmp	r3, #0
- 1627 0860 0CD0     		beq	.L62
- 467:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters,
- 1628              		.loc 1 467 0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 39
-
-
- 1629 0862 07F1B002 		add	r2, r7, #176
- 1630 0866 07F13C03 		add	r3, r7, #60
- 1631 086a 1046     		mov	r0, r2
- 1632 086c 0949     		ldr	r1, .L69+16
- 1633 086e 0A22     		movs	r2, #10
- 1634 0870 FFF7FEFF 		bl	BT_Send
- 468:main.c        ****                     transmit_flag = 0;
- 1635              		.loc 1 468 0
- 1636 0874 174B     		ldr	r3, .L69+80
- 1637 0876 0022     		movs	r2, #0
- 1638 0878 1A60     		str	r2, [r3]
- 469:main.c        ****                 }            
+ 1583 0812 2F49     		ldr	r1, .L70+80
+ 1584 0814 1A46     		mov	r2, r3
+ 1585 0816 FFF7FEFF 		bl	sprintf
+ 457:main.c        ****                         fsfile = FS_FOpen(file, "w");
+ 1586              		.loc 1 457 0
+ 1587 081a 2C48     		ldr	r0, .L70+76
+ 1588 081c 2D49     		ldr	r1, .L70+84
+ 1589 081e FFF7FEFF 		bl	FS_FOpen
+ 1590 0822 0246     		mov	r2, r0
+ 1591 0824 204B     		ldr	r3, .L70+40
+ 1592 0826 1A60     		str	r2, [r3]
+ 458:main.c        ****                     #endif 
+ 459:main.c        ****                     
+ 460:main.c        ****                     #ifdef LCD
+ 461:main.c        ****                         setCursor(0,0);
+ 1593              		.loc 1 461 0
+ 1594 0828 0020     		movs	r0, #0
+ 1595 082a 0021     		movs	r1, #0
+ 1596 082c FFF7FEFF 		bl	setCursor
+ 462:main.c        ****                         clear();
+ 1597              		.loc 1 462 0
+ 1598 0830 FFF7FEFF 		bl	clear
+ 463:main.c        ****                         LCD_print("TRANSMIT");  
+ 1599              		.loc 1 463 0
+ 1600 0834 2848     		ldr	r0, .L70+88
+ 1601 0836 FFF7FEFF 		bl	LCD_print
+ 464:main.c        ****                     #endif
+ 465:main.c        ****                     #ifdef SD
+ 466:main.c        ****                         FS_Write(fsfile, transbuf, TRANSMIT_LEN);
+ 1602              		.loc 1 466 0
+ 1603 083a 1B4B     		ldr	r3, .L70+40
+ 1604 083c 1A68     		ldr	r2, [r3]
+ 1605 083e 07F14403 		add	r3, r7, #68
+ 1606 0842 1046     		mov	r0, r2
+ 1607 0844 1946     		mov	r1, r3
+ 1608 0846 1022     		movs	r2, #16
+ 1609 0848 FFF7FEFF 		bl	FS_Write
+ 467:main.c        ****                     #endif
+ 468:main.c        ****                     countdown = 0;
+ 1610              		.loc 1 468 0
+ 1611 084c 0C4B     		ldr	r3, .L70
+ 1612 084e 0022     		movs	r2, #0
+ 1613 0850 1A70     		strb	r2, [r3]
+ 469:main.c        ****                 }
  470:main.c        ****                 break;
- 1639              		.loc 1 470 0
- 1640 087a 01E0     		b	.L49
- 1641              	.L62:
- 1642              		.loc 1 470 0 is_stmt 0 discriminator 5
- 1643 087c 00E0     		b	.L49
- 1644              	.L64:
+ 1614              		.loc 1 470 0
+ 1615 0852 13E0     		b	.L53
+ 1616              	.L62:
+ 1617              		.loc 1 470 0 is_stmt 0 discriminator 4
+ 1618 0854 12E0     		b	.L53
+ 1619              	.L40:
  471:main.c        ****                 
- 472:main.c        ****             default:
- 473:main.c        ****                 break;
- 1645              		.loc 1 473 0 is_stmt 1
- 1646 087e 00BF     		nop
- 1647              	.L49:
- 1648              	.LBE2:
- 474:main.c        ****         
- 475:main.c        ****         }
- 476:main.c        ****     }
- 1649              		.loc 1 476 0 discriminator 1
- 1650 0880 79E4     		b	.L63
- 1651              	.L70:
- 1652 0882 00BF     		.align	2
- 1653              	.L69:
- 1654 0884 00000000 		.word	id
- 1655 0888 00000000 		.word	sum
- 1656 088c 89888888 		.word	-2004318071
- 1657 0890 00000000 		.word	average
- 1658 0894 00000000 		.word	STATE
- 1659 0898 68000000 		.word	.LC12
- 1660 089c 00000000 		.word	fsfile
- 1661 08a0 00000000 		.word	data_time
- 1662 08a4 00000000 		.word	countdown
- 1663 08a8 00000000 		.word	descent_time
- 1664 08ac 78000000 		.word	.LC13
- 1665 08b0 00000000 		.word	collect_flag
- 1666 08b4 8C000000 		.word	.LC14
- 1667 08b8 00000000 		.word	PANIC_flag
- 1668 08bc A0000000 		.word	.LC15
- 1669 08c0 00000000 		.word	testnum
- 1670 08c4 00000000 		.word	file
- 1671 08c8 B0000000 		.word	.LC16
- 1672 08cc BC000000 		.word	.LC17
- 1673 08d0 C0000000 		.word	.LC18
- 1674 08d4 00000000 		.word	transmit_flag
+ 472:main.c        ****             case TRANSMIT:
+ 473:main.c        ****                 if (transmit_flag){
+ 1620              		.loc 1 473 0 is_stmt 1
+ 1621 0856 214B     		ldr	r3, .L70+92
+ 1622 0858 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 39
+
+
+ 1623 085a 002B     		cmp	r3, #0
+ 1624 085c 0CD0     		beq	.L63
+ 474:main.c        ****                     BT_Send(&tempbuf[0], &STATE, 10, &t); // Here, the STATE variable only matters,
+ 1625              		.loc 1 474 0
+ 1626 085e 07F1B002 		add	r2, r7, #176
+ 1627 0862 07F13C03 		add	r3, r7, #60
+ 1628 0866 1046     		mov	r0, r2
+ 1629 0868 0949     		ldr	r1, .L70+16
+ 1630 086a 0A22     		movs	r2, #10
+ 1631 086c FFF7FEFF 		bl	BT_Send
+ 475:main.c        ****                     transmit_flag = 0;
+ 1632              		.loc 1 475 0
+ 1633 0870 1A4B     		ldr	r3, .L70+92
+ 1634 0872 0022     		movs	r2, #0
+ 1635 0874 1A60     		str	r2, [r3]
+ 476:main.c        ****                 }            
+ 477:main.c        ****                 break;
+ 1636              		.loc 1 477 0
+ 1637 0876 01E0     		b	.L53
+ 1638              	.L63:
+ 1639              		.loc 1 477 0 is_stmt 0 discriminator 5
+ 1640 0878 00E0     		b	.L53
+ 1641              	.L65:
+ 478:main.c        ****                 
+ 479:main.c        ****             default:
+ 480:main.c        ****                 break;
+ 1642              		.loc 1 480 0 is_stmt 1
+ 1643 087a 00BF     		nop
+ 1644              	.L53:
+ 1645              	.LBE2:
+ 481:main.c        ****         
+ 482:main.c        ****         }
+ 483:main.c        ****     }
+ 1646              		.loc 1 483 0 discriminator 1
+ 1647 087c 7BE4     		b	.L64
+ 1648              	.L71:
+ 1649 087e 00BF     		.align	2
+ 1650              	.L70:
+ 1651 0880 00000000 		.word	countdown
+ 1652 0884 00000000 		.word	depth
+ 1653 0888 4FECC44E 		.word	1321528399
+ 1654 088c 00000000 		.word	descent_time
+ 1655 0890 00000000 		.word	STATE
+ 1656 0894 54000000 		.word	.LC11
+ 1657 0898 00000000 		.word	wait_flag
+ 1658 089c 00000000 		.word	collect_flag
+ 1659 08a0 00000000 		.word	average
+ 1660 08a4 64000000 		.word	.LC12
+ 1661 08a8 00000000 		.word	fsfile
+ 1662 08ac 00000000 		.word	data_time
+ 1663 08b0 74000000 		.word	.LC13
+ 1664 08b4 00000000 		.word	id
+ 1665 08b8 00000000 		.word	sum
+ 1666 08bc 88000000 		.word	.LC14
+ 1667 08c0 00000000 		.word	PANIC_flag
+ 1668 08c4 9C000000 		.word	.LC15
+ 1669 08c8 00000000 		.word	testnum
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 40
+
+
+ 1670 08cc 00000000 		.word	file
+ 1671 08d0 AC000000 		.word	.LC16
+ 1672 08d4 B8000000 		.word	.LC17
+ 1673 08d8 BC000000 		.word	.LC18
+ 1674 08dc 00000000 		.word	transmit_flag
  1675              		.cfi_endproc
  1676              	.LFE67:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 40
-
-
  1677              		.size	main, .-main
  1678              		.section	.rodata
- 1679 0139 000000   		.align	2
+ 1679 0135 000000   		.align	2
  1680              	.LC19:
- 1681 013c 53642076 		.ascii	"Sd vol succeed\000"
+ 1681 0138 53642076 		.ascii	"Sd vol succeed\000"
  1681      6F6C2073 
  1681      75636365 
  1681      656400
- 1682 014b 00       		.align	2
+ 1682 0147 00       		.align	2
  1683              	.LC20:
- 1684 014c 53642076 		.ascii	"Sd vol failed\000"
+ 1684 0148 53642076 		.ascii	"Sd vol failed\000"
  1684      6F6C2066 
  1684      61696C65 
  1684      6400
- 1685 015a 0000     		.align	2
+ 1685 0156 0000     		.align	2
  1686              	.LC21:
- 1687 015c 666F726D 		.ascii	"format Succeeded\000"
+ 1687 0158 666F726D 		.ascii	"format Succeeded\000"
  1687      61742053 
  1687      75636365 
  1687      65646564 
  1687      00
- 1688 016d 000000   		.align	2
+ 1688 0169 000000   		.align	2
  1689              	.LC22:
- 1690 0170 666F726D 		.ascii	"format Failed\000"
+ 1690 016c 666F726D 		.ascii	"format Failed\000"
  1690      61742046 
  1690      61696C65 
  1690      6400
- 1691 017e 0000     		.align	2
+ 1691 017a 0000     		.align	2
  1692              	.LC23:
- 1693 0180 46696C65 		.ascii	"File \000"
+ 1693 017c 46696C65 		.ascii	"File \000"
  1693      2000
- 1694 0186 0000     		.align	2
+ 1694 0182 0000     		.align	2
  1695              	.LC24:
- 1696 0188 77617320 		.ascii	"was opened\000"
+ 1696 0184 77617320 		.ascii	"was opened\000"
  1696      6F70656E 
  1696      656400
- 1697 0193 00       		.align	2
+ 1697 018f 00       		.align	2
  1698              	.LC25:
- 1699 0194 77726974 		.ascii	"written to file\000"
+ 1699 0190 77726974 		.ascii	"written to file\000"
  1699      74656E20 
  1699      746F2066 
  1699      696C6500 
  1700              		.align	2
  1701              	.LC26:
- 1702 01a4 4661696C 		.ascii	"Failed to write\000"
+ 1702 01a0 4661696C 		.ascii	"Failed to write\000"
  1702      65642074 
  1702      6F207772 
  1702      69746500 
  1703              		.align	2
  1704              	.LC27:
- 1705 01b4 66696C65 		.ascii	"file not created\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 41
+
+
+ 1705 01b0 66696C65 		.ascii	"file not created\000"
  1705      206E6F74 
  1705      20637265 
  1705      61746564 
  1705      00
- 1706 01c5 000000   		.align	2
+ 1706 01c1 000000   		.align	2
  1707              	.LC28:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 41
-
-
- 1708 01c8 0A2D2D2D 		.ascii	"\012------------\012\000"
+ 1708 01c4 0A2D2D2D 		.ascii	"\012------------\012\000"
  1708      2D2D2D2D 
  1708      2D2D2D2D 
  1708      2D0A00
- 1709 01d7 00       		.section	.text.SD_SETUP,"ax",%progbits
+ 1709 01d3 00       		.section	.text.SD_SETUP,"ax",%progbits
  1710              		.align	2
  1711              		.global	SD_SETUP
  1712              		.thumb
@@ -2413,10 +2420,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1714              		.type	SD_SETUP, %function
  1715              	SD_SETUP:
  1716              	.LFB68:
- 477:main.c        **** }
- 478:main.c        **** 
- 479:main.c        **** int SD_SETUP(char* filename){
- 1717              		.loc 1 479 0
+ 484:main.c        **** }
+ 485:main.c        **** 
+ 486:main.c        **** int SD_SETUP(char* filename){
+ 1717              		.loc 1 486 0
  1718              		.cfi_startproc
  1719              		@ args = 0, pretend = 0, frame = 16
  1720              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -2430,126 +2437,126 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1728 0004 00AF     		add	r7, sp, #0
  1729              		.cfi_def_cfa_register 7
  1730 0006 7860     		str	r0, [r7, #4]
- 480:main.c        **** int success = 1;
- 1731              		.loc 1 480 0
+ 487:main.c        **** int success = 1;
+ 1731              		.loc 1 487 0
  1732 0008 0123     		movs	r3, #1
  1733 000a FB60     		str	r3, [r7, #12]
- 481:main.c        ****       FS_Init();
- 1734              		.loc 1 481 0
+ 488:main.c        ****       FS_Init();
+ 1734              		.loc 1 488 0
  1735 000c FFF7FEFF 		bl	FS_Init
- 482:main.c        ****             FS_Mount(volume);
- 1736              		.loc 1 482 0
- 1737 0010 3A48     		ldr	r0, .L81
+ 489:main.c        ****             FS_Mount(volume);
+ 1736              		.loc 1 489 0
+ 1737 0010 3A48     		ldr	r0, .L82
  1738 0012 FFF7FEFF 		bl	FS_Mount
- 483:main.c        ****             if(0 != FS_GetVolumeName(0u, volume, 9u))
- 1739              		.loc 1 483 0
+ 490:main.c        ****             if(0 != FS_GetVolumeName(0u, volume, 9u))
+ 1739              		.loc 1 490 0
  1740 0016 0020     		movs	r0, #0
- 1741 0018 3849     		ldr	r1, .L81
+ 1741 0018 3849     		ldr	r1, .L82
  1742 001a 0922     		movs	r2, #9
  1743 001c FFF7FEFF 		bl	FS_GetVolumeName
  1744 0020 0346     		mov	r3, r0
  1745 0022 002B     		cmp	r3, #0
- 1746 0024 03D0     		beq	.L72
- 484:main.c        ****                 /* Getting volume name succeeded so prompt it on the LCD */
- 485:main.c        ****                 LCD_print("Sd vol succeed");
- 1747              		.loc 1 485 0
- 1748 0026 3648     		ldr	r0, .L81+4
+ 1746 0024 03D0     		beq	.L73
+ 491:main.c        ****                 /* Getting volume name succeeded so prompt it on the LCD */
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 42
+
+
+ 492:main.c        ****                 LCD_print("Sd vol succeed");
+ 1747              		.loc 1 492 0
+ 1748 0026 3648     		ldr	r0, .L82+4
  1749 0028 FFF7FEFF 		bl	LCD_print
- 1750 002c 04E0     		b	.L73
- 1751              	.L72:
- 486:main.c        ****             else{
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 42
-
-
- 487:main.c        ****                 LCD_print("Sd vol failed");
- 1752              		.loc 1 487 0
- 1753 002e 3548     		ldr	r0, .L81+8
+ 1750 002c 04E0     		b	.L74
+ 1751              	.L73:
+ 493:main.c        ****             else{
+ 494:main.c        ****                 LCD_print("Sd vol failed");
+ 1752              		.loc 1 494 0
+ 1753 002e 3548     		ldr	r0, .L82+8
  1754 0030 FFF7FEFF 		bl	LCD_print
- 488:main.c        ****                 success = 0;
- 1755              		.loc 1 488 0
+ 495:main.c        ****                 success = 0;
+ 1755              		.loc 1 495 0
  1756 0034 0023     		movs	r3, #0
  1757 0036 FB60     		str	r3, [r7, #12]
- 1758              	.L73:
- 489:main.c        ****             }
- 490:main.c        ****             CyDelay(500u);
- 1759              		.loc 1 490 0
+ 1758              	.L74:
+ 496:main.c        ****             }
+ 497:main.c        ****             CyDelay(500u);
+ 1759              		.loc 1 497 0
  1760 0038 4FF4FA70 		mov	r0, #500
  1761 003c FFF7FEFF 		bl	CyDelay
- 491:main.c        ****             clear();
- 1762              		.loc 1 491 0
+ 498:main.c        ****             clear();
+ 1762              		.loc 1 498 0
  1763 0040 FFF7FEFF 		bl	clear
- 492:main.c        ****             if(0 == FS_FormatSD(volume))
- 1764              		.loc 1 492 0
- 1765 0044 2D48     		ldr	r0, .L81
+ 499:main.c        ****             if(0 == FS_FormatSD(volume))
+ 1764              		.loc 1 499 0
+ 1765 0044 2D48     		ldr	r0, .L82
  1766 0046 FFF7FEFF 		bl	FS_FormatSD
  1767 004a 0346     		mov	r3, r0
  1768 004c 002B     		cmp	r3, #0
- 1769 004e 03D1     		bne	.L74
- 493:main.c        ****                 LCD_print("format Succeeded");
- 1770              		.loc 1 493 0
- 1771 0050 2D48     		ldr	r0, .L81+12
+ 1769 004e 03D1     		bne	.L75
+ 500:main.c        ****                 LCD_print("format Succeeded");
+ 1770              		.loc 1 500 0
+ 1771 0050 2D48     		ldr	r0, .L82+12
  1772 0052 FFF7FEFF 		bl	LCD_print
- 1773 0056 04E0     		b	.L75
- 1774              	.L74:
- 494:main.c        ****             else{
- 495:main.c        ****                 LCD_print("format Failed");
- 1775              		.loc 1 495 0
- 1776 0058 2C48     		ldr	r0, .L81+16
+ 1773 0056 04E0     		b	.L76
+ 1774              	.L75:
+ 501:main.c        ****             else{
+ 502:main.c        ****                 LCD_print("format Failed");
+ 1775              		.loc 1 502 0
+ 1776 0058 2C48     		ldr	r0, .L82+16
  1777 005a FFF7FEFF 		bl	LCD_print
- 496:main.c        ****                 success = 0;
- 1778              		.loc 1 496 0
+ 503:main.c        ****                 success = 0;
+ 1778              		.loc 1 503 0
  1779 005e 0023     		movs	r3, #0
  1780 0060 FB60     		str	r3, [r7, #12]
- 1781              	.L75:
- 497:main.c        ****             }
- 498:main.c        ****             
- 499:main.c        ****             CyDelay(500u);
- 1782              		.loc 1 499 0
+ 1781              	.L76:
+ 504:main.c        ****             }
+ 505:main.c        ****             
+ 506:main.c        ****             CyDelay(500u);
+ 1782              		.loc 1 506 0
  1783 0062 4FF4FA70 		mov	r0, #500
  1784 0066 FFF7FEFF 		bl	CyDelay
- 500:main.c        ****             clear();
- 1785              		.loc 1 500 0
+ 507:main.c        ****             clear();
+ 1785              		.loc 1 507 0
  1786 006a FFF7FEFF 		bl	clear
- 501:main.c        ****             
- 502:main.c        ****             fsfile = FS_FOpen(filename, "w");
- 1787              		.loc 1 502 0
+ 508:main.c        ****             
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 43
+
+
+ 509:main.c        ****             fsfile = FS_FOpen(filename, "w");
+ 1787              		.loc 1 509 0
  1788 006e 7868     		ldr	r0, [r7, #4]
- 1789 0070 2749     		ldr	r1, .L81+20
+ 1789 0070 2749     		ldr	r1, .L82+20
  1790 0072 FFF7FEFF 		bl	FS_FOpen
  1791 0076 0246     		mov	r2, r0
- 1792 0078 264B     		ldr	r3, .L81+24
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 43
-
-
+ 1792 0078 264B     		ldr	r3, .L82+24
  1793 007a 1A60     		str	r2, [r3]
- 503:main.c        ****             if(fsfile)
- 1794              		.loc 1 503 0
- 1795 007c 254B     		ldr	r3, .L81+24
+ 510:main.c        ****             if(fsfile)
+ 1794              		.loc 1 510 0
+ 1795 007c 254B     		ldr	r3, .L82+24
  1796 007e 1B68     		ldr	r3, [r3]
  1797 0080 002B     		cmp	r3, #0
- 1798 0082 29D0     		beq	.L76
- 504:main.c        ****             {
- 505:main.c        ****                 /* Indicate successful file creation message */
- 506:main.c        ****                 LCD_print("File ");
- 1799              		.loc 1 506 0
- 1800 0084 2448     		ldr	r0, .L81+28
+ 1798 0082 29D0     		beq	.L77
+ 511:main.c        ****             {
+ 512:main.c        ****                 /* Indicate successful file creation message */
+ 513:main.c        ****                 LCD_print("File ");
+ 1799              		.loc 1 513 0
+ 1800 0084 2448     		ldr	r0, .L82+28
  1801 0086 FFF7FEFF 		bl	LCD_print
- 507:main.c        ****                 LCD_print("was opened");
- 1802              		.loc 1 507 0
- 1803 008a 2448     		ldr	r0, .L81+32
+ 514:main.c        ****                 LCD_print("was opened");
+ 1802              		.loc 1 514 0
+ 1803 008a 2448     		ldr	r0, .L82+32
  1804 008c FFF7FEFF 		bl	LCD_print
- 508:main.c        ****                 /* Need some delay to indicate output on the LCD */
- 509:main.c        ****                 CyDelay(500u);
- 1805              		.loc 1 509 0
+ 515:main.c        ****                 /* Need some delay to indicate output on the LCD */
+ 516:main.c        ****                 CyDelay(500u);
+ 1805              		.loc 1 516 0
  1806 0090 4FF4FA70 		mov	r0, #500
  1807 0094 FFF7FEFF 		bl	CyDelay
- 510:main.c        ****                 clear();
- 1808              		.loc 1 510 0
+ 517:main.c        ****                 clear();
+ 1808              		.loc 1 517 0
  1809 0098 FFF7FEFF 		bl	clear
- 511:main.c        ****                 
- 512:main.c        ****                 if(0 != FS_Write(fsfile, filename, strlen(filename))) 
- 1810              		.loc 1 512 0
- 1811 009c 1D4B     		ldr	r3, .L81+24
+ 518:main.c        ****                 
+ 519:main.c        ****                 if(0 != FS_Write(fsfile, filename, strlen(filename))) 
+ 1810              		.loc 1 519 0
+ 1811 009c 1D4B     		ldr	r3, .L82+24
  1812 009e 1C68     		ldr	r4, [r3]
  1813 00a0 7868     		ldr	r0, [r7, #4]
  1814 00a2 FFF7FEFF 		bl	strlen
@@ -2560,62 +2567,62 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1819 00ae FFF7FEFF 		bl	FS_Write
  1820 00b2 0346     		mov	r3, r0
  1821 00b4 002B     		cmp	r3, #0
- 1822 00b6 03D0     		beq	.L77
- 513:main.c        ****                     /* Inditate that data was written to a file */
- 514:main.c        ****                     LCD_print("written to file");
- 1823              		.loc 1 514 0
- 1824 00b8 1948     		ldr	r0, .L81+36
+ 1822 00b6 03D0     		beq	.L78
+ 520:main.c        ****                     /* Inditate that data was written to a file */
+ 521:main.c        ****                     LCD_print("written to file");
+ 1823              		.loc 1 521 0
+ 1824 00b8 1948     		ldr	r0, .L82+36
  1825 00ba FFF7FEFF 		bl	LCD_print
- 1826 00be 06E0     		b	.L78
- 1827              	.L77:
- 515:main.c        ****                 else {
- 516:main.c        ****                     LCD_print("Failed to write");
- 1828              		.loc 1 516 0
- 1829 00c0 1848     		ldr	r0, .L81+40
+ 1826 00be 06E0     		b	.L79
+ 1827              	.L78:
+ 522:main.c        ****                 else {
+ 523:main.c        ****                     LCD_print("Failed to write");
+ 1828              		.loc 1 523 0
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 44
+
+
+ 1829 00c0 1848     		ldr	r0, .L82+40
  1830 00c2 FFF7FEFF 		bl	LCD_print
- 517:main.c        ****                     success = 0;
- 1831              		.loc 1 517 0
+ 524:main.c        ****                     success = 0;
+ 1831              		.loc 1 524 0
  1832 00c6 0023     		movs	r3, #0
  1833 00c8 FB60     		str	r3, [r7, #12]
- 518:main.c        ****                     clear();
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 44
-
-
- 1834              		.loc 1 518 0
+ 525:main.c        ****                     clear();
+ 1834              		.loc 1 525 0
  1835 00ca FFF7FEFF 		bl	clear
- 1836              	.L78:
- 519:main.c        ****                 }
- 520:main.c        ****                 CyDelay(500u);
- 1837              		.loc 1 520 0
+ 1836              	.L79:
+ 526:main.c        ****                 }
+ 527:main.c        ****                 CyDelay(500u);
+ 1837              		.loc 1 527 0
  1838 00ce 4FF4FA70 		mov	r0, #500
  1839 00d2 FFF7FEFF 		bl	CyDelay
- 1840 00d6 04E0     		b	.L79
- 1841              	.L76:
- 521:main.c        ****             }
- 522:main.c        ****             else{
- 523:main.c        ****                 LCD_print("file not created");
- 1842              		.loc 1 523 0
- 1843 00d8 1348     		ldr	r0, .L81+44
+ 1840 00d6 04E0     		b	.L80
+ 1841              	.L77:
+ 528:main.c        ****             }
+ 529:main.c        ****             else{
+ 530:main.c        ****                 LCD_print("file not created");
+ 1842              		.loc 1 530 0
+ 1843 00d8 1348     		ldr	r0, .L82+44
  1844 00da FFF7FEFF 		bl	LCD_print
- 524:main.c        ****                 success = 0;
- 1845              		.loc 1 524 0
+ 531:main.c        ****                 success = 0;
+ 1845              		.loc 1 531 0
  1846 00de 0023     		movs	r3, #0
  1847 00e0 FB60     		str	r3, [r7, #12]
- 1848              	.L79:
- 525:main.c        ****             }
- 526:main.c        ****         FS_Write(fsfile, "\n------------\n", 14);
- 1849              		.loc 1 526 0
- 1850 00e2 0C4B     		ldr	r3, .L81+24
+ 1848              	.L80:
+ 532:main.c        ****             }
+ 533:main.c        ****         FS_Write(fsfile, "\n------------\n", 14);
+ 1849              		.loc 1 533 0
+ 1850 00e2 0C4B     		ldr	r3, .L82+24
  1851 00e4 1B68     		ldr	r3, [r3]
  1852 00e6 1846     		mov	r0, r3
- 1853 00e8 1049     		ldr	r1, .L81+48
+ 1853 00e8 1049     		ldr	r1, .L82+48
  1854 00ea 0E22     		movs	r2, #14
  1855 00ec FFF7FEFF 		bl	FS_Write
- 527:main.c        **** return success;
- 1856              		.loc 1 527 0
+ 534:main.c        **** return success;
+ 1856              		.loc 1 534 0
  1857 00f0 FB68     		ldr	r3, [r7, #12]
- 528:main.c        **** }
- 1858              		.loc 1 528 0
+ 535:main.c        **** }
+ 1858              		.loc 1 535 0
  1859 00f2 1846     		mov	r0, r3
  1860 00f4 1437     		adds	r7, r7, #20
  1861              		.cfi_def_cfa_offset 12
@@ -2623,25 +2630,25 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1863              		.cfi_def_cfa_register 13
  1864              		@ sp needed
  1865 00f8 90BD     		pop	{r4, r7, pc}
- 1866              	.L82:
+ 1866              	.L83:
  1867 00fa 00BF     		.align	2
- 1868              	.L81:
+ 1868              	.L82:
  1869 00fc 00000000 		.word	volume
- 1870 0100 3C010000 		.word	.LC19
- 1871 0104 4C010000 		.word	.LC20
- 1872 0108 5C010000 		.word	.LC21
- 1873 010c 70010000 		.word	.LC22
- 1874 0110 BC000000 		.word	.LC17
+ 1870 0100 38010000 		.word	.LC19
+ 1871 0104 48010000 		.word	.LC20
+ 1872 0108 58010000 		.word	.LC21
+ 1873 010c 6C010000 		.word	.LC22
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 45
+
+
+ 1874 0110 B8000000 		.word	.LC17
  1875 0114 00000000 		.word	fsfile
- 1876 0118 80010000 		.word	.LC23
- 1877 011c 88010000 		.word	.LC24
- 1878 0120 94010000 		.word	.LC25
- 1879 0124 A4010000 		.word	.LC26
- 1880 0128 B4010000 		.word	.LC27
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 45
-
-
- 1881 012c C8010000 		.word	.LC28
+ 1876 0118 7C010000 		.word	.LC23
+ 1877 011c 84010000 		.word	.LC24
+ 1878 0120 90010000 		.word	.LC25
+ 1879 0124 A0010000 		.word	.LC26
+ 1880 0128 B0010000 		.word	.LC27
+ 1881 012c C4010000 		.word	.LC28
  1882              		.cfi_endproc
  1883              	.LFE68:
  1884              		.size	SD_SETUP, .-SD_SETUP
@@ -2661,68 +2668,68 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1898 0006 00000000 		.4byte	.Ldebug_abbrev0
  1899 000a 04       		.byte	0x4
  1900 000b 01       		.uleb128 0x1
- 1901 000c 63010000 		.4byte	.LASF91
+ 1901 000c 24010000 		.4byte	.LASF91
  1902 0010 01       		.byte	0x1
- 1903 0011 56030000 		.4byte	.LASF92
- 1904 0015 55000000 		.4byte	.LASF93
+ 1903 0011 55030000 		.4byte	.LASF92
+ 1904 0015 F9010000 		.4byte	.LASF93
  1905 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1906 001d 00000000 		.4byte	0
  1907 0021 00000000 		.4byte	.Ldebug_line0
  1908 0025 02       		.uleb128 0x2
  1909 0026 01       		.byte	0x1
  1910 0027 06       		.byte	0x6
- 1911 0028 73020000 		.4byte	.LASF0
+ 1911 0028 72020000 		.4byte	.LASF0
  1912 002c 03       		.uleb128 0x3
- 1913 002d 4E040000 		.4byte	.LASF2
+ 1913 002d 4D040000 		.4byte	.LASF2
  1914 0031 02       		.byte	0x2
  1915 0032 1D       		.byte	0x1d
  1916 0033 37000000 		.4byte	0x37
  1917 0037 02       		.uleb128 0x2
  1918 0038 01       		.byte	0x1
  1919 0039 08       		.byte	0x8
- 1920 003a 53020000 		.4byte	.LASF1
+ 1920 003a 52020000 		.4byte	.LASF1
  1921 003e 03       		.uleb128 0x3
- 1922 003f A9030000 		.4byte	.LASF3
+ 1922 003f A8030000 		.4byte	.LASF3
  1923 0043 02       		.byte	0x2
  1924 0044 29       		.byte	0x29
  1925 0045 49000000 		.4byte	0x49
  1926 0049 02       		.uleb128 0x2
  1927 004a 02       		.byte	0x2
  1928 004b 05       		.byte	0x5
- 1929 004c F9000000 		.4byte	.LASF4
+ 1929 004c BA000000 		.4byte	.LASF4
  1930 0050 02       		.uleb128 0x2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 46
+
+
  1931 0051 02       		.byte	0x2
  1932 0052 07       		.byte	0x7
- 1933 0053 C3020000 		.4byte	.LASF5
+ 1933 0053 C2020000 		.4byte	.LASF5
  1934 0057 03       		.uleb128 0x3
- 1935 0058 9F030000 		.4byte	.LASF6
+ 1935 0058 9E030000 		.4byte	.LASF6
  1936 005c 02       		.byte	0x2
  1937 005d 3F       		.byte	0x3f
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 46
-
-
  1938 005e 62000000 		.4byte	0x62
  1939 0062 02       		.uleb128 0x2
  1940 0063 04       		.byte	0x4
  1941 0064 05       		.byte	0x5
- 1942 0065 E0020000 		.4byte	.LASF7
+ 1942 0065 DF020000 		.4byte	.LASF7
  1943 0069 03       		.uleb128 0x3
- 1944 006a 8C030000 		.4byte	.LASF8
+ 1944 006a 8B030000 		.4byte	.LASF8
  1945 006e 02       		.byte	0x2
  1946 006f 41       		.byte	0x41
  1947 0070 74000000 		.4byte	0x74
  1948 0074 02       		.uleb128 0x2
  1949 0075 04       		.byte	0x4
  1950 0076 07       		.byte	0x7
- 1951 0077 62030000 		.4byte	.LASF9
+ 1951 0077 61030000 		.4byte	.LASF9
  1952 007b 02       		.uleb128 0x2
  1953 007c 08       		.byte	0x8
  1954 007d 05       		.byte	0x5
- 1955 007e 44010000 		.4byte	.LASF10
+ 1955 007e 05010000 		.4byte	.LASF10
  1956 0082 02       		.uleb128 0x2
  1957 0083 08       		.byte	0x8
  1958 0084 07       		.byte	0x7
- 1959 0085 7F020000 		.4byte	.LASF11
+ 1959 0085 7E020000 		.4byte	.LASF11
  1960 0089 04       		.uleb128 0x4
  1961 008a 04       		.byte	0x4
  1962 008b 05       		.byte	0x5
@@ -2730,54 +2737,54 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  1964 0090 02       		.uleb128 0x2
  1965 0091 04       		.byte	0x4
  1966 0092 07       		.byte	0x7
- 1967 0093 A9020000 		.4byte	.LASF12
+ 1967 0093 A8020000 		.4byte	.LASF12
  1968 0097 03       		.uleb128 0x3
- 1969 0098 13010000 		.4byte	.LASF13
+ 1969 0098 D4000000 		.4byte	.LASF13
  1970 009c 03       		.byte	0x3
  1971 009d 15       		.byte	0x15
  1972 009e 2C000000 		.4byte	0x2c
  1973 00a2 03       		.uleb128 0x3
- 1974 00a3 F6020000 		.4byte	.LASF14
+ 1974 00a3 F5020000 		.4byte	.LASF14
  1975 00a7 03       		.byte	0x3
  1976 00a8 20       		.byte	0x20
  1977 00a9 3E000000 		.4byte	0x3e
  1978 00ad 03       		.uleb128 0x3
- 1979 00ae EE020000 		.4byte	.LASF15
+ 1979 00ae ED020000 		.4byte	.LASF15
  1980 00b2 03       		.byte	0x3
  1981 00b3 2C       		.byte	0x2c
  1982 00b4 57000000 		.4byte	0x57
  1983 00b8 03       		.uleb128 0x3
- 1984 00b9 96020000 		.4byte	.LASF16
+ 1984 00b9 95020000 		.4byte	.LASF16
  1985 00bd 03       		.byte	0x3
  1986 00be 2D       		.byte	0x2d
  1987 00bf 69000000 		.4byte	0x69
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 47
+
+
  1988 00c3 05       		.uleb128 0x5
- 1989 00c4 FE020000 		.4byte	.LASF17
+ 1989 00c4 FD020000 		.4byte	.LASF17
  1990 00c8 04       		.byte	0x4
  1991 00c9 9201     		.2byte	0x192
  1992 00cb 37000000 		.4byte	0x37
  1993 00cf 05       		.uleb128 0x5
- 1994 00d0 21010000 		.4byte	.LASF18
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 47
-
-
+ 1994 00d0 E2000000 		.4byte	.LASF18
  1995 00d4 04       		.byte	0x4
  1996 00d5 9601     		.2byte	0x196
  1997 00d7 49000000 		.4byte	0x49
  1998 00db 02       		.uleb128 0x2
  1999 00dc 04       		.byte	0x4
  2000 00dd 04       		.byte	0x4
- 2001 00de 30010000 		.4byte	.LASF19
+ 2001 00de F1000000 		.4byte	.LASF19
  2002 00e2 02       		.uleb128 0x2
  2003 00e3 08       		.byte	0x8
  2004 00e4 04       		.byte	0x4
- 2005 00e5 85030000 		.4byte	.LASF20
+ 2005 00e5 84030000 		.4byte	.LASF20
  2006 00e9 02       		.uleb128 0x2
  2007 00ea 01       		.byte	0x1
  2008 00eb 08       		.byte	0x8
- 2009 00ec DB020000 		.4byte	.LASF21
+ 2009 00ec DA020000 		.4byte	.LASF21
  2010 00f0 05       		.uleb128 0x5
- 2011 00f1 5D030000 		.4byte	.LASF22
+ 2011 00f1 5C030000 		.4byte	.LASF22
  2012 00f5 04       		.byte	0x4
  2013 00f6 3C02     		.2byte	0x23c
  2014 00f8 FC000000 		.4byte	0xfc
@@ -2786,24 +2793,24 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2017 0101 02       		.uleb128 0x2
  2018 0102 04       		.byte	0x4
  2019 0103 07       		.byte	0x7
- 2020 0104 BE030000 		.4byte	.LASF23
+ 2020 0104 BD030000 		.4byte	.LASF23
  2021 0108 07       		.uleb128 0x7
  2022 0109 04       		.byte	0x4
  2023 010a E9000000 		.4byte	0xe9
  2024 010e 03       		.uleb128 0x3
- 2025 010f 61020000 		.4byte	.LASF24
+ 2025 010f 60020000 		.4byte	.LASF24
  2026 0113 05       		.byte	0x5
  2027 0114 7E       		.byte	0x7e
  2028 0115 19010000 		.4byte	0x119
  2029 0119 08       		.uleb128 0x8
- 2030 011a 61020000 		.4byte	.LASF24
+ 2030 011a 60020000 		.4byte	.LASF24
  2031 011e 07       		.uleb128 0x7
  2032 011f 04       		.byte	0x4
  2033 0120 0E010000 		.4byte	0x10e
  2034 0124 02       		.uleb128 0x2
  2035 0125 08       		.byte	0x8
  2036 0126 04       		.byte	0x4
- 2037 0127 38020000 		.4byte	.LASF25
+ 2037 0127 37020000 		.4byte	.LASF25
  2038 012b 09       		.uleb128 0x9
  2039 012c 43000000 		.4byte	.LASF33
  2040 0130 01       		.byte	0x1
@@ -2811,28 +2818,28 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2042 0132 35       		.byte	0x35
  2043 0133 62010000 		.4byte	0x162
  2044 0137 0A       		.uleb128 0xa
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 48
+
+
  2045 0138 36000000 		.4byte	.LASF26
  2046 013c 00       		.sleb128 0
  2047 013d 0A       		.uleb128 0xa
- 2048 013e 44020000 		.4byte	.LASF27
+ 2048 013e 43020000 		.4byte	.LASF27
  2049 0142 01       		.sleb128 1
  2050 0143 0A       		.uleb128 0xa
- 2051 0144 74030000 		.4byte	.LASF28
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 48
-
-
+ 2051 0144 73030000 		.4byte	.LASF28
  2052 0148 02       		.sleb128 2
  2053 0149 0A       		.uleb128 0xa
- 2054 014a AF000000 		.4byte	.LASF29
+ 2054 014a 70000000 		.4byte	.LASF29
  2055 014e 03       		.sleb128 3
  2056 014f 0A       		.uleb128 0xa
  2057 0150 0D000000 		.4byte	.LASF30
  2058 0154 04       		.sleb128 4
  2059 0155 0A       		.uleb128 0xa
- 2060 0156 5A010000 		.4byte	.LASF31
+ 2060 0156 1B010000 		.4byte	.LASF31
  2061 015a 05       		.sleb128 5
  2062 015b 0A       		.uleb128 0xa
- 2063 015c 25020000 		.4byte	.LASF32
+ 2063 015c E6010000 		.4byte	.LASF32
  2064 0160 06       		.sleb128 6
  2065 0161 00       		.byte	0
  2066 0162 03       		.uleb128 0x3
@@ -2841,7 +2848,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2069 0168 3D       		.byte	0x3d
  2070 0169 2B010000 		.4byte	0x12b
  2071 016d 0B       		.uleb128 0xb
- 2072 016e C8000000 		.4byte	.LASF34
+ 2072 016e 89000000 		.4byte	.LASF34
  2073 0172 01       		.byte	0x1
  2074 0173 6B       		.byte	0x6b
  2075 0174 00000000 		.4byte	.LFB63
@@ -2849,7 +2856,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2077 017c 01       		.uleb128 0x1
  2078 017d 9C       		.byte	0x9c
  2079 017e 0C       		.uleb128 0xc
- 2080 017f 20040000 		.4byte	.LASF35
+ 2080 017f 1F040000 		.4byte	.LASF35
  2081 0183 01       		.byte	0x1
  2082 0184 72       		.byte	0x72
  2083 0185 00000000 		.4byte	.LFB64
@@ -2857,7 +2864,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2085 018d 01       		.uleb128 0x1
  2086 018e 9C       		.byte	0x9c
  2087 018f 0C       		.uleb128 0xc
- 2088 0190 40030000 		.4byte	.LASF36
+ 2088 0190 3F030000 		.4byte	.LASF36
  2089 0194 01       		.byte	0x1
  2090 0195 7B       		.byte	0x7b
  2091 0196 00000000 		.4byte	.LFB65
@@ -2865,23 +2872,23 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2093 019e 01       		.uleb128 0x1
  2094 019f 9C       		.byte	0x9c
  2095 01a0 0B       		.uleb128 0xb
- 2096 01a1 F0030000 		.4byte	.LASF37
+ 2096 01a1 EF030000 		.4byte	.LASF37
  2097 01a5 01       		.byte	0x1
  2098 01a6 8C       		.byte	0x8c
  2099 01a7 00000000 		.4byte	.LFB66
  2100 01ab 50000000 		.4byte	.LFE66-.LFB66
  2101 01af 01       		.uleb128 0x1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 49
+
+
  2102 01b0 9C       		.byte	0x9c
  2103 01b1 0D       		.uleb128 0xd
- 2104 01b2 E9020000 		.4byte	.LASF94
+ 2104 01b2 E8020000 		.4byte	.LASF94
  2105 01b6 01       		.byte	0x1
  2106 01b7 96       		.byte	0x96
  2107 01b8 89000000 		.4byte	0x89
  2108 01bc 00000000 		.4byte	.LFB67
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 49
-
-
- 2109 01c0 D8080000 		.4byte	.LFE67-.LFB67
+ 2109 01c0 E0080000 		.4byte	.LFE67-.LFB67
  2110 01c4 01       		.uleb128 0x1
  2111 01c5 9C       		.byte	0x9c
  2112 01c6 74030000 		.4byte	0x374
@@ -2894,7 +2901,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2119 01d6 91       		.byte	0x91
  2120 01d7 60       		.sleb128 -32
  2121 01d8 0F       		.uleb128 0xf
- 2122 01d9 27010000 		.4byte	.LASF38
+ 2122 01d9 E8000000 		.4byte	.LASF38
  2123 01dd 01       		.byte	0x1
  2124 01de 98       		.byte	0x98
  2125 01df 89000000 		.4byte	0x89
@@ -2902,7 +2909,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2127 01e4 91       		.byte	0x91
  2128 01e5 5C       		.sleb128 -36
  2129 01e6 0F       		.uleb128 0xf
- 2130 01e7 F6010000 		.4byte	.LASF39
+ 2130 01e7 B7010000 		.4byte	.LASF39
  2131 01eb 01       		.byte	0x1
  2132 01ec 99       		.byte	0x99
  2133 01ed DB000000 		.4byte	0xdb
@@ -2910,7 +2917,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2135 01f2 91       		.byte	0x91
  2136 01f3 58       		.sleb128 -40
  2137 01f4 0F       		.uleb128 0xf
- 2138 01f5 B6020000 		.4byte	.LASF40
+ 2138 01f5 B5020000 		.4byte	.LASF40
  2139 01f9 01       		.byte	0x1
  2140 01fa 99       		.byte	0x99
  2141 01fb DB000000 		.4byte	0xdb
@@ -2918,7 +2925,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2143 0200 91       		.byte	0x91
  2144 0201 54       		.sleb128 -44
  2145 0202 0F       		.uleb128 0xf
- 2146 0203 D7030000 		.4byte	.LASF41
+ 2146 0203 D6030000 		.4byte	.LASF41
  2147 0207 01       		.byte	0x1
  2148 0208 99       		.byte	0x99
  2149 0209 DB000000 		.4byte	0xdb
@@ -2926,11 +2933,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2151 020e 91       		.byte	0x91
  2152 020f 50       		.sleb128 -48
  2153 0210 0F       		.uleb128 0xf
- 2154 0211 EC000000 		.4byte	.LASF42
+ 2154 0211 AD000000 		.4byte	.LASF42
  2155 0215 01       		.byte	0x1
  2156 0216 99       		.byte	0x99
  2157 0217 DB000000 		.4byte	0xdb
  2158 021b 02       		.uleb128 0x2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 50
+
+
  2159 021c 91       		.byte	0x91
  2160 021d 6C       		.sleb128 -20
  2161 021e 0E       		.uleb128 0xe
@@ -2938,14 +2948,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2163 0223 01       		.byte	0x1
  2164 0224 9A       		.byte	0x9a
  2165 0225 74030000 		.4byte	0x374
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 50
-
-
  2166 0229 03       		.uleb128 0x3
  2167 022a 91       		.byte	0x91
  2168 022b 8C7F     		.sleb128 -116
  2169 022d 0F       		.uleb128 0xf
- 2170 022e 97030000 		.4byte	.LASF43
+ 2170 022e 96030000 		.4byte	.LASF43
  2171 0232 01       		.byte	0x1
  2172 0233 9A       		.byte	0x9a
  2173 0234 84030000 		.4byte	0x384
@@ -2953,7 +2960,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2175 0239 91       		.byte	0x91
  2176 023a F87E     		.sleb128 -136
  2177 023c 0F       		.uleb128 0xf
- 2178 023d 10030000 		.4byte	.LASF44
+ 2178 023d 0F030000 		.4byte	.LASF44
  2179 0241 01       		.byte	0x1
  2180 0242 9A       		.byte	0x9a
  2181 0243 94030000 		.4byte	0x394
@@ -2961,7 +2968,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2183 0248 91       		.byte	0x91
  2184 0249 E87E     		.sleb128 -152
  2185 024b 0F       		.uleb128 0xf
- 2186 024c B3030000 		.4byte	.LASF45
+ 2186 024c B2030000 		.4byte	.LASF45
  2187 0250 01       		.byte	0x1
  2188 0251 9B       		.byte	0x9b
  2189 0252 A4030000 		.4byte	0x3a4
@@ -2969,7 +2976,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2191 0257 91       		.byte	0x91
  2192 0258 D47E     		.sleb128 -172
  2193 025a 0F       		.uleb128 0xf
- 2194 025b 3A040000 		.4byte	.LASF46
+ 2194 025b 39040000 		.4byte	.LASF46
  2195 025f 01       		.byte	0x1
  2196 0260 9C       		.byte	0x9c
  2197 0261 94030000 		.4byte	0x394
@@ -2977,7 +2984,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2199 0266 91       		.byte	0x91
  2200 0267 C47E     		.sleb128 -188
  2201 0269 0F       		.uleb128 0xf
- 2202 026a DD000000 		.4byte	.LASF47
+ 2202 026a 9E000000 		.4byte	.LASF47
  2203 026e 01       		.byte	0x1
  2204 026f 9D       		.byte	0x9d
  2205 0270 B4030000 		.4byte	0x3b4
@@ -2985,26 +2992,26 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2207 0275 91       		.byte	0x91
  2208 0276 B07E     		.sleb128 -208
  2209 0278 0F       		.uleb128 0xf
- 2210 0279 28030000 		.4byte	.LASF48
+ 2210 0279 27030000 		.4byte	.LASF48
  2211 027d 01       		.byte	0x1
  2212 027e 9E       		.byte	0x9e
  2213 027f B4030000 		.4byte	0x3b4
  2214 0283 03       		.uleb128 0x3
  2215 0284 91       		.byte	0x91
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 51
+
+
  2216 0285 9C7E     		.sleb128 -228
  2217 0287 0F       		.uleb128 0xf
- 2218 0288 1C020000 		.4byte	.LASF49
+ 2218 0288 DD010000 		.4byte	.LASF49
  2219 028c 01       		.byte	0x1
  2220 028d 9F       		.byte	0x9f
  2221 028e C4030000 		.4byte	0x3c4
  2222 0292 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 51
-
-
  2223 0293 91       		.byte	0x91
  2224 0294 8C7E     		.sleb128 -244
  2225 0296 0F       		.uleb128 0xf
- 2226 0297 36010000 		.4byte	.LASF50
+ 2226 0297 F7000000 		.4byte	.LASF50
  2227 029b 01       		.byte	0x1
  2228 029c A0       		.byte	0xa0
  2229 029d 89000000 		.4byte	0x89
@@ -3012,7 +3019,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2231 02a2 91       		.byte	0x91
  2232 02a3 68       		.sleb128 -24
  2233 02a4 0F       		.uleb128 0xf
- 2234 02a5 1B010000 		.4byte	.LASF51
+ 2234 02a5 DC000000 		.4byte	.LASF51
  2235 02a9 01       		.byte	0x1
  2236 02aa A0       		.byte	0xa0
  2237 02ab 89000000 		.4byte	0x89
@@ -3020,7 +3027,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2239 02b0 91       		.byte	0x91
  2240 02b1 64       		.sleb128 -28
  2241 02b2 0F       		.uleb128 0xf
- 2242 02b3 0E020000 		.4byte	.LASF52
+ 2242 02b3 CF010000 		.4byte	.LASF52
  2243 02b7 01       		.byte	0x1
  2244 02b8 A0       		.byte	0xa0
  2245 02b9 89000000 		.4byte	0x89
@@ -3051,6 +3058,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2270 02e6 A2       		.byte	0xa2
  2271 02e7 A2000000 		.4byte	0xa2
  2272 02eb 10       		.uleb128 0x10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 52
+
+
  2273 02ec 677800   		.ascii	"gx\000"
  2274 02ef 01       		.byte	0x1
  2275 02f0 A3       		.byte	0xa3
@@ -3058,9 +3068,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2277 02f5 10       		.uleb128 0x10
  2278 02f6 677900   		.ascii	"gy\000"
  2279 02f9 01       		.byte	0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 52
-
-
  2280 02fa A3       		.byte	0xa3
  2281 02fb A2000000 		.4byte	0xa2
  2282 02ff 10       		.uleb128 0x10
@@ -3069,7 +3076,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2285 0304 A3       		.byte	0xa3
  2286 0305 A2000000 		.4byte	0xa2
  2287 0309 0F       		.uleb128 0xf
- 2288 030a 1F030000 		.4byte	.LASF53
+ 2288 030a 1E030000 		.4byte	.LASF53
  2289 030e 01       		.byte	0x1
  2290 030f A4       		.byte	0xa4
  2291 0310 A2000000 		.4byte	0xa2
@@ -3077,7 +3084,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2293 0315 91       		.byte	0x91
  2294 0316 4A       		.sleb128 -54
  2295 0317 0F       		.uleb128 0xf
- 2296 0318 F1010000 		.4byte	.LASF54
+ 2296 0318 B2010000 		.4byte	.LASF54
  2297 031c 01       		.byte	0x1
  2298 031d A5       		.byte	0xa5
  2299 031e 89000000 		.4byte	0x89
@@ -3085,7 +3092,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2301 0323 91       		.byte	0x91
  2302 0324 887E     		.sleb128 -248
  2303 0326 0F       		.uleb128 0xf
- 2304 0327 AA000000 		.4byte	.LASF55
+ 2304 0327 6B000000 		.4byte	.LASF55
  2305 032b 01       		.byte	0x1
  2306 032c A5       		.byte	0xa5
  2307 032d 89000000 		.4byte	0x89
@@ -3093,7 +3100,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2309 0332 91       		.byte	0x91
  2310 0333 44       		.sleb128 -60
  2311 0334 0F       		.uleb128 0xf
- 2312 0335 C7030000 		.4byte	.LASF56
+ 2312 0335 C6030000 		.4byte	.LASF56
  2313 0339 01       		.byte	0x1
  2314 033a CE       		.byte	0xce
  2315 033b 89000000 		.4byte	0x89
@@ -3102,25 +3109,25 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2318 0341 40       		.sleb128 -64
  2319 0342 11       		.uleb128 0x11
  2320 0343 76010000 		.4byte	.LBB2
- 2321 0347 0A070000 		.4byte	.LBE2-.LBB2
+ 2321 0347 06070000 		.4byte	.LBE2-.LBB2
  2322 034b 12       		.uleb128 0x12
  2323 034c 7400     		.ascii	"t\000"
  2324 034e 01       		.byte	0x1
- 2325 034f 1A01     		.2byte	0x11a
+ 2325 034f 1D01     		.2byte	0x11d
  2326 0351 89000000 		.4byte	0x89
  2327 0355 03       		.uleb128 0x3
  2328 0356 91       		.byte	0x91
  2329 0357 847E     		.sleb128 -252
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 53
+
+
  2330 0359 11       		.uleb128 0x11
  2331 035a 74020000 		.4byte	.LBB3
- 2332 035e 9C000000 		.4byte	.LBE3-.LBB3
+ 2332 035e A4000000 		.4byte	.LBE3-.LBB3
  2333 0362 0F       		.uleb128 0xf
  2334 0363 4A000000 		.4byte	.LASF57
  2335 0367 01       		.byte	0x1
  2336 0368 F6       		.byte	0xf6
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 53
-
-
  2337 0369 D4030000 		.4byte	0x3d4
  2338 036d 03       		.uleb128 0x3
  2339 036e 91       		.byte	0x91
@@ -3171,6 +3178,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2384 03d2 0F       		.byte	0xf
  2385 03d3 00       		.byte	0
  2386 03d4 13       		.uleb128 0x13
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 54
+
+
  2387 03d5 E9000000 		.4byte	0xe9
  2388 03d9 E4030000 		.4byte	0x3e4
  2389 03dd 14       		.uleb128 0x14
@@ -3178,12 +3188,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2391 03e2 3B       		.byte	0x3b
  2392 03e3 00       		.byte	0
  2393 03e4 15       		.uleb128 0x15
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 54
-
-
- 2394 03e5 0A040000 		.4byte	.LASF95
+ 2394 03e5 09040000 		.4byte	.LASF95
  2395 03e9 01       		.byte	0x1
- 2396 03ea DF01     		.2byte	0x1df
+ 2396 03ea E601     		.2byte	0x1e6
  2397 03ec 89000000 		.4byte	0x89
  2398 03f0 00000000 		.4byte	.LFB68
  2399 03f4 30010000 		.4byte	.LFE68-.LFB68
@@ -3191,31 +3198,31 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2401 03f9 9C       		.byte	0x9c
  2402 03fa 1D040000 		.4byte	0x41d
  2403 03fe 16       		.uleb128 0x16
- 2404 03ff BF000000 		.4byte	.LASF96
+ 2404 03ff 80000000 		.4byte	.LASF96
  2405 0403 01       		.byte	0x1
- 2406 0404 DF01     		.2byte	0x1df
+ 2406 0404 E601     		.2byte	0x1e6
  2407 0406 08010000 		.4byte	0x108
  2408 040a 02       		.uleb128 0x2
  2409 040b 91       		.byte	0x91
  2410 040c 64       		.sleb128 -28
  2411 040d 17       		.uleb128 0x17
- 2412 040e 13040000 		.4byte	.LASF58
+ 2412 040e 12040000 		.4byte	.LASF58
  2413 0412 01       		.byte	0x1
- 2414 0413 E001     		.2byte	0x1e0
+ 2414 0413 E701     		.2byte	0x1e7
  2415 0415 89000000 		.4byte	0x89
  2416 0419 02       		.uleb128 0x2
  2417 041a 91       		.byte	0x91
  2418 041b 6C       		.sleb128 -20
  2419 041c 00       		.byte	0
  2420 041d 18       		.uleb128 0x18
- 2421 041e FD030000 		.4byte	.LASF59
+ 2421 041e FC030000 		.4byte	.LASF59
  2422 0422 07       		.byte	0x7
  2423 0423 9606     		.2byte	0x696
  2424 0425 29040000 		.4byte	0x429
  2425 0429 06       		.uleb128 0x6
  2426 042a AD000000 		.4byte	0xad
  2427 042e 19       		.uleb128 0x19
- 2428 042f 94000000 		.4byte	.LASF60
+ 2428 042f 55000000 		.4byte	.LASF60
  2429 0433 08       		.byte	0x8
  2430 0434 9101     		.2byte	0x191
  2431 0436 97000000 		.4byte	0x97
@@ -3230,7 +3237,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2440 044e 15       		.byte	0x15
  2441 044f 00       		.byte	0
  2442 0450 19       		.uleb128 0x19
- 2443 0451 39030000 		.4byte	.LASF61
+ 2443 0451 38030000 		.4byte	.LASF61
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 55
+
+
  2444 0455 08       		.byte	0x8
  2445 0456 9201     		.2byte	0x192
  2446 0458 40040000 		.4byte	0x440
@@ -3238,9 +3248,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2448 045d 03       		.byte	0x3
  2449 045e 00000000 		.4byte	buffer
  2450 0462 1A       		.uleb128 0x1a
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 55
-
-
  2451 0463 50000000 		.4byte	.LASF62
  2452 0467 01       		.byte	0x1
  2453 0468 34       		.byte	0x34
@@ -3257,7 +3264,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2464 047e 03       		.byte	0x3
  2465 047f 00000000 		.4byte	id
  2466 0483 1A       		.uleb128 0x1a
- 2467 0484 05020000 		.4byte	.LASF63
+ 2467 0484 C6010000 		.4byte	.LASF63
  2468 0488 01       		.byte	0x1
  2469 0489 35       		.byte	0x35
  2470 048a 62000000 		.4byte	0x62
@@ -3265,7 +3272,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2472 048f 03       		.byte	0x3
  2473 0490 00000000 		.4byte	press_id
  2474 0494 1A       		.uleb128 0x1a
- 2475 0495 9F020000 		.4byte	.LASF64
+ 2475 0495 9E020000 		.4byte	.LASF64
  2476 0499 01       		.byte	0x1
  2477 049a 36       		.byte	0x36
  2478 049b 62000000 		.4byte	0x62
@@ -3289,18 +3296,18 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2496 04c2 03       		.byte	0x3
  2497 04c3 00000000 		.4byte	sum
  2498 04c7 1A       		.uleb128 0x1a
- 2499 04c8 2B020000 		.4byte	.LASF66
+ 2499 04c8 EC010000 		.4byte	.LASF66
  2500 04cc 01       		.byte	0x1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 56
+
+
  2501 04cd 3A       		.byte	0x3a
  2502 04ce DB000000 		.4byte	0xdb
  2503 04d2 05       		.uleb128 0x5
  2504 04d3 03       		.byte	0x3
  2505 04d4 00000000 		.4byte	pressure_sum
  2506 04d8 1A       		.uleb128 0x1a
- 2507 04d9 52010000 		.4byte	.LASF67
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 56
-
-
+ 2507 04d9 13010000 		.4byte	.LASF67
  2508 04dd 01       		.byte	0x1
  2509 04de 3B       		.byte	0x3b
  2510 04df A2000000 		.4byte	0xa2
@@ -3308,7 +3315,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2512 04e4 03       		.byte	0x3
  2513 04e5 00000000 		.4byte	average
  2514 04e9 1A       		.uleb128 0x1a
- 2515 04ea E3030000 		.4byte	.LASF68
+ 2515 04ea E2030000 		.4byte	.LASF68
  2516 04ee 01       		.byte	0x1
  2517 04ef 3C       		.byte	0x3c
  2518 04f0 FA040000 		.4byte	0x4fa
@@ -3318,9 +3325,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2522 04fa 02       		.uleb128 0x2
  2523 04fb 01       		.byte	0x1
  2524 04fc 02       		.byte	0x2
- 2525 04fd 04030000 		.4byte	.LASF69
+ 2525 04fd 03030000 		.4byte	.LASF69
  2526 0501 1A       		.uleb128 0x1a
- 2527 0502 44040000 		.4byte	.LASF70
+ 2527 0502 43040000 		.4byte	.LASF70
  2528 0506 01       		.byte	0x1
  2529 0507 3D       		.byte	0x3d
  2530 0508 FA040000 		.4byte	0x4fa
@@ -3328,7 +3335,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2532 050d 03       		.byte	0x3
  2533 050e 00000000 		.4byte	wait_flag
  2534 0512 1A       		.uleb128 0x1a
- 2535 0513 03010000 		.4byte	.LASF71
+ 2535 0513 C4000000 		.4byte	.LASF71
  2536 0517 01       		.byte	0x1
  2537 0518 3E       		.byte	0x3e
  2538 0519 FA040000 		.4byte	0x4fa
@@ -3336,7 +3343,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2540 051e 03       		.byte	0x3
  2541 051f 00000000 		.4byte	PANIC_flag
  2542 0523 1A       		.uleb128 0x1a
- 2543 0524 D1030000 		.4byte	.LASF72
+ 2543 0524 D0030000 		.4byte	.LASF72
  2544 0528 01       		.byte	0x1
  2545 0529 40       		.byte	0x40
  2546 052a 62010000 		.4byte	0x162
@@ -3344,13 +3351,16 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2548 052f 03       		.byte	0x3
  2549 0530 00000000 		.4byte	STATE
  2550 0534 1A       		.uleb128 0x1a
- 2551 0535 69020000 		.4byte	.LASF73
+ 2551 0535 68020000 		.4byte	.LASF73
  2552 0539 01       		.byte	0x1
  2553 053a 41       		.byte	0x41
  2554 053b 97000000 		.4byte	0x97
  2555 053f 05       		.uleb128 0x5
  2556 0540 03       		.byte	0x3
  2557 0541 00000000 		.4byte	countdown
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 57
+
+
  2558 0545 1A       		.uleb128 0x1a
  2559 0546 21000000 		.4byte	.LASF74
  2560 054a 01       		.byte	0x1
@@ -3358,9 +3368,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2562 054c 97000000 		.4byte	0x97
  2563 0550 05       		.uleb128 0x5
  2564 0551 03       		.byte	0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 57
-
-
  2565 0552 00000000 		.4byte	update_Data
  2566 0556 13       		.uleb128 0x13
  2567 0557 97000000 		.4byte	0x97
@@ -3386,7 +3393,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2587 0583 03       		.byte	0x3
  2588 0584 00000000 		.4byte	msg_count
  2589 0588 1A       		.uleb128 0x1a
- 2590 0589 32030000 		.4byte	.LASF77
+ 2590 0589 31030000 		.4byte	.LASF77
  2591 058d 01       		.byte	0x1
  2592 058e 43       		.byte	0x43
  2593 058f 89000000 		.4byte	0x89
@@ -3394,7 +3401,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2595 0594 03       		.byte	0x3
  2596 0595 00000000 		.4byte	rxflag
  2597 0599 1A       		.uleb128 0x1a
- 2598 059a 7F030000 		.4byte	.LASF78
+ 2598 059a 7E030000 		.4byte	.LASF78
  2599 059e 01       		.byte	0x1
  2600 059f 43       		.byte	0x43
  2601 05a0 89000000 		.4byte	0x89
@@ -3402,7 +3409,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2603 05a5 03       		.byte	0x3
  2604 05a6 00000000 		.4byte	bytes
  2605 05aa 1A       		.uleb128 0x1a
- 2606 05ab B6000000 		.4byte	.LASF79
+ 2606 05ab 77000000 		.4byte	.LASF79
  2607 05af 01       		.byte	0x1
  2608 05b0 43       		.byte	0x43
  2609 05b1 89000000 		.4byte	0x89
@@ -3410,7 +3417,10 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2611 05b6 03       		.byte	0x3
  2612 05b7 00000000 		.4byte	dataflag
  2613 05bb 1A       		.uleb128 0x1a
- 2614 05bc 9C000000 		.4byte	.LASF80
+ 2614 05bc 5D000000 		.4byte	.LASF80
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 58
+
+
  2615 05c0 01       		.byte	0x1
  2616 05c1 43       		.byte	0x43
  2617 05c2 89000000 		.4byte	0x89
@@ -3418,10 +3428,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2619 05c7 03       		.byte	0x3
  2620 05c8 00000000 		.4byte	transmit_flag
  2621 05cc 1A       		.uleb128 0x1a
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 58
-
-
- 2622 05cd 19030000 		.4byte	.LASF81
+ 2622 05cd 18030000 		.4byte	.LASF81
  2623 05d1 01       		.byte	0x1
  2624 05d2 44       		.byte	0x44
  2625 05d3 89000000 		.4byte	0x89
@@ -3429,7 +3436,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2627 05d8 03       		.byte	0x3
  2628 05d9 00000000 		.4byte	depth
  2629 05dd 1A       		.uleb128 0x1a
- 2630 05de 0A030000 		.4byte	.LASF82
+ 2630 05de 09030000 		.4byte	.LASF82
  2631 05e2 01       		.byte	0x1
  2632 05e3 44       		.byte	0x44
  2633 05e4 89000000 		.4byte	0x89
@@ -3437,7 +3444,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2635 05e9 03       		.byte	0x3
  2636 05ea 00000000 		.4byte	reset
  2637 05ee 1A       		.uleb128 0x1a
- 2638 05ef BB020000 		.4byte	.LASF83
+ 2638 05ef BA020000 		.4byte	.LASF83
  2639 05f3 01       		.byte	0x1
  2640 05f4 44       		.byte	0x44
  2641 05f5 89000000 		.4byte	0x89
@@ -3445,7 +3452,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2643 05fa 03       		.byte	0x3
  2644 05fb 00000000 		.4byte	testnum
  2645 05ff 1A       		.uleb128 0x1a
- 2646 0600 1B040000 		.4byte	.LASF84
+ 2646 0600 1A040000 		.4byte	.LASF84
  2647 0604 01       		.byte	0x1
  2648 0605 45       		.byte	0x45
  2649 0606 DB000000 		.4byte	0xdb
@@ -3453,7 +3460,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2651 060b 03       		.byte	0x3
  2652 060c 00000000 		.4byte	xavg
  2653 0610 1A       		.uleb128 0x1a
- 2654 0611 0E010000 		.4byte	.LASF85
+ 2654 0611 CF000000 		.4byte	.LASF85
  2655 0615 01       		.byte	0x1
  2656 0616 45       		.byte	0x45
  2657 0617 DB000000 		.4byte	0xdb
@@ -3461,7 +3468,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2659 061c 03       		.byte	0x3
  2660 061d 00000000 		.4byte	yavg
  2661 0621 1A       		.uleb128 0x1a
- 2662 0622 D6020000 		.4byte	.LASF86
+ 2662 0622 D5020000 		.4byte	.LASF86
  2663 0626 01       		.byte	0x1
  2664 0627 45       		.byte	0x45
  2665 0628 DB000000 		.4byte	0xdb
@@ -3469,8 +3476,11 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2667 062d 03       		.byte	0x3
  2668 062e 00000000 		.4byte	xsum
  2669 0632 1A       		.uleb128 0x1a
- 2670 0633 DE030000 		.4byte	.LASF87
+ 2670 0633 DD030000 		.4byte	.LASF87
  2671 0637 01       		.byte	0x1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 59
+
+
  2672 0638 45       		.byte	0x45
  2673 0639 DB000000 		.4byte	0xdb
  2674 063d 05       		.uleb128 0x5
@@ -3478,16 +3488,13 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2676 063f 00000000 		.4byte	ysum
  2677 0643 13       		.uleb128 0x13
  2678 0644 E9000000 		.4byte	0xe9
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 59
-
-
  2679 0648 53060000 		.4byte	0x653
  2680 064c 14       		.uleb128 0x14
  2681 064d 01010000 		.4byte	0x101
  2682 0651 0A       		.byte	0xa
  2683 0652 00       		.byte	0
  2684 0653 1A       		.uleb128 0x1a
- 2685 0654 E7000000 		.4byte	.LASF88
+ 2685 0654 A8000000 		.4byte	.LASF88
  2686 0658 01       		.byte	0x1
  2687 0659 46       		.byte	0x46
  2688 065a 43060000 		.4byte	0x643
@@ -3502,7 +3509,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2697 0672 09       		.byte	0x9
  2698 0673 00       		.byte	0
  2699 0674 1A       		.uleb128 0x1a
- 2700 0675 FE010000 		.4byte	.LASF89
+ 2700 0675 BF010000 		.4byte	.LASF89
  2701 0679 01       		.byte	0x1
  2702 067a 47       		.byte	0x47
  2703 067b 64060000 		.4byte	0x664
@@ -3510,7 +3517,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2705 0680 03       		.byte	0x3
  2706 0681 00000000 		.4byte	volume
  2707 0685 1A       		.uleb128 0x1a
- 2708 0686 33040000 		.4byte	.LASF90
+ 2708 0686 32040000 		.4byte	.LASF90
  2709 068a 01       		.byte	0x1
  2710 068b 48       		.byte	0x48
  2711 068c 1E010000 		.4byte	0x11e
@@ -3531,6 +3538,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2726 0008 0E       		.uleb128 0xe
  2727 0009 1B       		.uleb128 0x1b
  2728 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 60
+
+
  2729 000b 55       		.uleb128 0x55
  2730 000c 17       		.uleb128 0x17
  2731 000d 11       		.uleb128 0x11
@@ -3538,9 +3548,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2733 000f 10       		.uleb128 0x10
  2734 0010 17       		.uleb128 0x17
  2735 0011 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 60
-
-
  2736 0012 00       		.byte	0
  2737 0013 02       		.uleb128 0x2
  2738 0014 24       		.uleb128 0x24
@@ -3591,6 +3598,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2783 0041 00       		.byte	0
  2784 0042 00       		.byte	0
  2785 0043 06       		.uleb128 0x6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 61
+
+
  2786 0044 35       		.uleb128 0x35
  2787 0045 00       		.byte	0
  2788 0046 49       		.uleb128 0x49
@@ -3598,9 +3608,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2790 0048 00       		.byte	0
  2791 0049 00       		.byte	0
  2792 004a 07       		.uleb128 0x7
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 61
-
-
  2793 004b 0F       		.uleb128 0xf
  2794 004c 00       		.byte	0
  2795 004d 0B       		.uleb128 0xb
@@ -3651,6 +3658,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2840 007a 0E       		.uleb128 0xe
  2841 007b 3A       		.uleb128 0x3a
  2842 007c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 62
+
+
  2843 007d 3B       		.uleb128 0x3b
  2844 007e 0B       		.uleb128 0xb
  2845 007f 27       		.uleb128 0x27
@@ -3658,9 +3668,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2847 0081 11       		.uleb128 0x11
  2848 0082 01       		.uleb128 0x1
  2849 0083 12       		.uleb128 0x12
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 62
-
-
  2850 0084 06       		.uleb128 0x6
  2851 0085 40       		.uleb128 0x40
  2852 0086 18       		.uleb128 0x18
@@ -3711,6 +3718,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2897 00b5 40       		.uleb128 0x40
  2898 00b6 18       		.uleb128 0x18
  2899 00b7 9642     		.uleb128 0x2116
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 63
+
+
  2900 00b9 19       		.uleb128 0x19
  2901 00ba 01       		.uleb128 0x1
  2902 00bb 13       		.uleb128 0x13
@@ -3718,9 +3728,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2904 00bd 00       		.byte	0
  2905 00be 0E       		.uleb128 0xe
  2906 00bf 34       		.uleb128 0x34
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 63
-
-
  2907 00c0 00       		.byte	0
  2908 00c1 03       		.uleb128 0x3
  2909 00c2 08       		.uleb128 0x8
@@ -3771,6 +3778,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2954 00ef 06       		.uleb128 0x6
  2955 00f0 00       		.byte	0
  2956 00f1 00       		.byte	0
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 64
+
+
  2957 00f2 12       		.uleb128 0x12
  2958 00f3 34       		.uleb128 0x34
  2959 00f4 00       		.byte	0
@@ -3778,9 +3788,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  2961 00f6 08       		.uleb128 0x8
  2962 00f7 3A       		.uleb128 0x3a
  2963 00f8 0B       		.uleb128 0xb
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 64
-
-
  2964 00f9 3B       		.uleb128 0x3b
  2965 00fa 05       		.uleb128 0x5
  2966 00fb 49       		.uleb128 0x49
@@ -3831,6 +3838,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3011 0128 9642     		.uleb128 0x2116
  3012 012a 19       		.uleb128 0x19
  3013 012b 01       		.uleb128 0x1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 65
+
+
  3014 012c 13       		.uleb128 0x13
  3015 012d 00       		.byte	0
  3016 012e 00       		.byte	0
@@ -3838,9 +3848,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3018 0130 05       		.uleb128 0x5
  3019 0131 00       		.byte	0
  3020 0132 03       		.uleb128 0x3
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 65
-
-
  3021 0133 0E       		.uleb128 0xe
  3022 0134 3A       		.uleb128 0x3a
  3023 0135 0B       		.uleb128 0xb
@@ -3891,6 +3898,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3068 0162 0E       		.uleb128 0xe
  3069 0163 3A       		.uleb128 0x3a
  3070 0164 0B       		.uleb128 0xb
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 66
+
+
  3071 0165 3B       		.uleb128 0x3b
  3072 0166 05       		.uleb128 0x5
  3073 0167 49       		.uleb128 0x49
@@ -3898,9 +3908,6 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3075 0169 3F       		.uleb128 0x3f
  3076 016a 19       		.uleb128 0x19
  3077 016b 02       		.uleb128 0x2
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 66
-
-
  3078 016c 18       		.uleb128 0x18
  3079 016d 00       		.byte	0
  3080 016e 00       		.byte	0
@@ -3951,16 +3958,16 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3125 0014 20000000 		.4byte	.LFE63-.LFB63
  3126 0018 00000000 		.4byte	.LFB64
  3127 001c 40000000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 67
+
+
  3128 0020 00000000 		.4byte	.LFB65
  3129 0024 9C000000 		.4byte	.LFE65-.LFB65
  3130 0028 00000000 		.4byte	.LFB66
  3131 002c 50000000 		.4byte	.LFE66-.LFB66
  3132 0030 00000000 		.4byte	.LFB67
- 3133 0034 D8080000 		.4byte	.LFE67-.LFB67
+ 3133 0034 E0080000 		.4byte	.LFE67-.LFB67
  3134 0038 00000000 		.4byte	.LFB68
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 67
-
-
  3135 003c 30010000 		.4byte	.LFE68-.LFB68
  3136 0040 00000000 		.4byte	0
  3137 0044 00000000 		.4byte	0
@@ -3975,14 +3982,14 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3146 0018 00000000 		.4byte	.LFB66
  3147 001c 50000000 		.4byte	.LFE66
  3148 0020 00000000 		.4byte	.LFB67
- 3149 0024 D8080000 		.4byte	.LFE67
+ 3149 0024 E0080000 		.4byte	.LFE67
  3150 0028 00000000 		.4byte	.LFB68
  3151 002c 30010000 		.4byte	.LFE68
  3152 0030 00000000 		.4byte	0
  3153 0034 00000000 		.4byte	0
  3154              		.section	.debug_line,"",%progbits
  3155              	.Ldebug_line0:
- 3156 0000 5D030000 		.section	.debug_str,"MS",%progbits,1
+ 3156 0000 63030000 		.section	.debug_str,"MS",%progbits,1
  3156      0200A101 
  3156      00000201 
  3156      FB0E0D00 
@@ -4011,6 +4018,9 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3167              	.LASF26:
  3168 0036 53595354 		.ascii	"SYSTEM_CHECK\000"
  3168      454D5F43 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 68
+
+
  3168      4845434B 
  3168      00
  3169              	.LASF33:
@@ -4018,385 +4028,381 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 1
  3170      455300
  3171              	.LASF57:
  3172 004a 73646275 		.ascii	"sdbuf\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 68
-
-
  3172      6600
  3173              	.LASF62:
  3174 0050 41646472 		.ascii	"Addr\000"
  3174      00
- 3175              	.LASF93:
- 3176 0055 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\Full_wo"
- 3176      73657273 
- 3176      5C676469 
- 3176      6E675C44 
- 3176      6F63756D 
- 3177 0083 5F666169 		.ascii	"_failsafes.cydsn\000"
- 3177      6C736166 
- 3177      65732E63 
- 3177      7964736E 
- 3177      00
- 3178              	.LASF60:
- 3179 0094 64657641 		.ascii	"devAddr\000"
- 3179      64647200 
- 3180              	.LASF80:
- 3181 009c 7472616E 		.ascii	"transmit_flag\000"
- 3181      736D6974 
- 3181      5F666C61 
- 3181      6700
- 3182              	.LASF55:
- 3183 00aa 6F6E6573 		.ascii	"ones\000"
- 3183      00
- 3184              	.LASF29:
- 3185 00af 4C414E44 		.ascii	"LANDED\000"
- 3185      454400
- 3186              	.LASF79:
- 3187 00b6 64617461 		.ascii	"dataflag\000"
- 3187      666C6167 
- 3187      00
- 3188              	.LASF96:
- 3189 00bf 66696C65 		.ascii	"filename\000"
- 3189      6E616D65 
- 3189      00
- 3190              	.LASF34:
- 3191 00c8 4D6F6973 		.ascii	"Moisture_ISR_Handler\000"
- 3191      74757265 
- 3191      5F495352 
- 3191      5F48616E 
- 3191      646C6572 
- 3192              	.LASF47:
- 3193 00dd 76616375 		.ascii	"vacuumbuf\000"
- 3193      756D6275 
- 3193      6600
- 3194              	.LASF88:
- 3195 00e7 66696C65 		.ascii	"file\000"
- 3195      00
- 3196              	.LASF42:
- 3197 00ec 70726573 		.ascii	"pressure_avg\000"
- 3197      73757265 
- 3197      5F617667 
- 3197      00
- 3198              	.LASF4:
- 3199 00f9 73686F72 		.ascii	"short int\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 69
+ 3175              	.LASF60:
+ 3176 0055 64657641 		.ascii	"devAddr\000"
+ 3176      64647200 
+ 3177              	.LASF80:
+ 3178 005d 7472616E 		.ascii	"transmit_flag\000"
+ 3178      736D6974 
+ 3178      5F666C61 
+ 3178      6700
+ 3179              	.LASF55:
+ 3180 006b 6F6E6573 		.ascii	"ones\000"
+ 3180      00
+ 3181              	.LASF29:
+ 3182 0070 4C414E44 		.ascii	"LANDED\000"
+ 3182      454400
+ 3183              	.LASF79:
+ 3184 0077 64617461 		.ascii	"dataflag\000"
+ 3184      666C6167 
+ 3184      00
+ 3185              	.LASF96:
+ 3186 0080 66696C65 		.ascii	"filename\000"
+ 3186      6E616D65 
+ 3186      00
+ 3187              	.LASF34:
+ 3188 0089 4D6F6973 		.ascii	"Moisture_ISR_Handler\000"
+ 3188      74757265 
+ 3188      5F495352 
+ 3188      5F48616E 
+ 3188      646C6572 
+ 3189              	.LASF47:
+ 3190 009e 76616375 		.ascii	"vacuumbuf\000"
+ 3190      756D6275 
+ 3190      6600
+ 3191              	.LASF88:
+ 3192 00a8 66696C65 		.ascii	"file\000"
+ 3192      00
+ 3193              	.LASF42:
+ 3194 00ad 70726573 		.ascii	"pressure_avg\000"
+ 3194      73757265 
+ 3194      5F617667 
+ 3194      00
+ 3195              	.LASF4:
+ 3196 00ba 73686F72 		.ascii	"short int\000"
+ 3196      7420696E 
+ 3196      7400
+ 3197              	.LASF71:
+ 3198 00c4 50414E49 		.ascii	"PANIC_flag\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 69
 
 
- 3199      7420696E 
- 3199      7400
- 3200              	.LASF71:
- 3201 0103 50414E49 		.ascii	"PANIC_flag\000"
- 3201      435F666C 
- 3201      616700
- 3202              	.LASF85:
- 3203 010e 79617667 		.ascii	"yavg\000"
- 3203      00
- 3204              	.LASF13:
- 3205 0113 75696E74 		.ascii	"uint8_t\000"
- 3205      385F7400 
- 3206              	.LASF51:
- 3207 011b 70756C73 		.ascii	"pulse\000"
- 3207      6500
- 3208              	.LASF18:
- 3209 0121 696E7431 		.ascii	"int16\000"
- 3209      3600
- 3210              	.LASF38:
- 3211 0127 64656369 		.ascii	"decimals\000"
- 3211      6D616C73 
- 3211      00
- 3212              	.LASF19:
- 3213 0130 666C6F61 		.ascii	"float\000"
- 3213      7400
- 3214              	.LASF50:
- 3215 0136 73746174 		.ascii	"stateMsgCount\000"
- 3215      654D7367 
- 3215      436F756E 
- 3215      7400
- 3216              	.LASF10:
- 3217 0144 6C6F6E67 		.ascii	"long long int\000"
- 3217      206C6F6E 
- 3217      6720696E 
- 3217      7400
- 3218              	.LASF67:
- 3219 0152 61766572 		.ascii	"average\000"
- 3219      61676500 
- 3220              	.LASF31:
- 3221 015a 5452414E 		.ascii	"TRANSMIT\000"
- 3221      534D4954 
- 3221      00
- 3222              	.LASF91:
- 3223 0163 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 3223      4320342E 
- 3223      392E3320 
- 3223      32303135 
- 3223      30333033 
- 3224 0196 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 3224      20726576 
- 3224      6973696F 
- 3224      6E203232 
- 3224      31323230 
- 3225 01c9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 3225      66756E63 
- 3225      74696F6E 
- 3225      2D736563 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 70
+ 3198      435F666C 
+ 3198      616700
+ 3199              	.LASF85:
+ 3200 00cf 79617667 		.ascii	"yavg\000"
+ 3200      00
+ 3201              	.LASF13:
+ 3202 00d4 75696E74 		.ascii	"uint8_t\000"
+ 3202      385F7400 
+ 3203              	.LASF51:
+ 3204 00dc 70756C73 		.ascii	"pulse\000"
+ 3204      6500
+ 3205              	.LASF18:
+ 3206 00e2 696E7431 		.ascii	"int16\000"
+ 3206      3600
+ 3207              	.LASF38:
+ 3208 00e8 64656369 		.ascii	"decimals\000"
+ 3208      6D616C73 
+ 3208      00
+ 3209              	.LASF19:
+ 3210 00f1 666C6F61 		.ascii	"float\000"
+ 3210      7400
+ 3211              	.LASF50:
+ 3212 00f7 73746174 		.ascii	"stateMsgCount\000"
+ 3212      654D7367 
+ 3212      436F756E 
+ 3212      7400
+ 3213              	.LASF10:
+ 3214 0105 6C6F6E67 		.ascii	"long long int\000"
+ 3214      206C6F6E 
+ 3214      6720696E 
+ 3214      7400
+ 3215              	.LASF67:
+ 3216 0113 61766572 		.ascii	"average\000"
+ 3216      61676500 
+ 3217              	.LASF31:
+ 3218 011b 5452414E 		.ascii	"TRANSMIT\000"
+ 3218      534D4954 
+ 3218      00
+ 3219              	.LASF91:
+ 3220 0124 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3220      4320342E 
+ 3220      392E3320 
+ 3220      32303135 
+ 3220      30333033 
+ 3221 0157 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 3221      20726576 
+ 3221      6973696F 
+ 3221      6E203232 
+ 3221      31323230 
+ 3222 018a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 3222      66756E63 
+ 3222      74696F6E 
+ 3222      2D736563 
+ 3222      74696F6E 
+ 3223              	.LASF54:
+ 3224 01b2 74656E73 		.ascii	"tens\000"
+ 3224      00
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 70
 
 
- 3225      74696F6E 
- 3226              	.LASF54:
- 3227 01f1 74656E73 		.ascii	"tens\000"
- 3227      00
- 3228              	.LASF39:
- 3229 01f6 766F6C74 		.ascii	"voltage\000"
- 3229      61676500 
- 3230              	.LASF89:
- 3231 01fe 766F6C75 		.ascii	"volume\000"
- 3231      6D6500
- 3232              	.LASF63:
- 3233 0205 70726573 		.ascii	"press_id\000"
- 3233      735F6964 
- 3233      00
- 3234              	.LASF52:
- 3235 020e 73656373 		.ascii	"secs_for_tilt\000"
- 3235      5F666F72 
- 3235      5F74696C 
- 3235      7400
- 3236              	.LASF49:
- 3237 021c 7472616E 		.ascii	"transbuf\000"
- 3237      73627566 
- 3237      00
- 3238              	.LASF32:
- 3239 0225 4552524F 		.ascii	"ERROR\000"
- 3239      5200
- 3240              	.LASF66:
- 3241 022b 70726573 		.ascii	"pressure_sum\000"
- 3241      73757265 
- 3241      5F73756D 
- 3241      00
+ 3225              	.LASF39:
+ 3226 01b7 766F6C74 		.ascii	"voltage\000"
+ 3226      61676500 
+ 3227              	.LASF89:
+ 3228 01bf 766F6C75 		.ascii	"volume\000"
+ 3228      6D6500
+ 3229              	.LASF63:
+ 3230 01c6 70726573 		.ascii	"press_id\000"
+ 3230      735F6964 
+ 3230      00
+ 3231              	.LASF52:
+ 3232 01cf 73656373 		.ascii	"secs_for_tilt\000"
+ 3232      5F666F72 
+ 3232      5F74696C 
+ 3232      7400
+ 3233              	.LASF49:
+ 3234 01dd 7472616E 		.ascii	"transbuf\000"
+ 3234      73627566 
+ 3234      00
+ 3235              	.LASF32:
+ 3236 01e6 4552524F 		.ascii	"ERROR\000"
+ 3236      5200
+ 3237              	.LASF66:
+ 3238 01ec 70726573 		.ascii	"pressure_sum\000"
+ 3238      73757265 
+ 3238      5F73756D 
+ 3238      00
+ 3239              	.LASF93:
+ 3240 01f9 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\Full_wo_"
+ 3240      73657273 
+ 3240      5C677374 
+ 3240      6F6C6C5C 
+ 3240      4465736B 
+ 3241 0227 6661696C 		.ascii	"failsafes.cydsn\000"
+ 3241      73616665 
+ 3241      732E6379 
+ 3241      64736E00 
  3242              	.LASF25:
- 3243 0238 6C6F6E67 		.ascii	"long double\000"
+ 3243 0237 6C6F6E67 		.ascii	"long double\000"
  3243      20646F75 
  3243      626C6500 
  3244              	.LASF27:
- 3245 0244 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
+ 3245 0243 57414954 		.ascii	"WAIT_TO_LAUNCH\000"
  3245      5F544F5F 
  3245      4C41554E 
  3245      434800
  3246              	.LASF1:
- 3247 0253 756E7369 		.ascii	"unsigned char\000"
+ 3247 0252 756E7369 		.ascii	"unsigned char\000"
  3247      676E6564 
  3247      20636861 
  3247      7200
  3248              	.LASF24:
- 3249 0261 46535F46 		.ascii	"FS_FILE\000"
+ 3249 0260 46535F46 		.ascii	"FS_FILE\000"
  3249      494C4500 
  3250              	.LASF73:
- 3251 0269 636F756E 		.ascii	"countdown\000"
+ 3251 0268 636F756E 		.ascii	"countdown\000"
  3251      74646F77 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 71
+
+
  3251      6E00
  3252              	.LASF0:
- 3253 0273 7369676E 		.ascii	"signed char\000"
+ 3253 0272 7369676E 		.ascii	"signed char\000"
  3253      65642063 
  3253      68617200 
  3254              	.LASF11:
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 71
-
-
- 3255 027f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3255 027e 6C6F6E67 		.ascii	"long long unsigned int\000"
  3255      206C6F6E 
  3255      6720756E 
  3255      7369676E 
  3255      65642069 
  3256              	.LASF16:
- 3257 0296 75696E74 		.ascii	"uint32_t\000"
+ 3257 0295 75696E74 		.ascii	"uint32_t\000"
  3257      33325F74 
  3257      00
  3258              	.LASF64:
- 3259 029f 64617461 		.ascii	"data_time\000"
+ 3259 029e 64617461 		.ascii	"data_time\000"
  3259      5F74696D 
  3259      6500
  3260              	.LASF12:
- 3261 02a9 756E7369 		.ascii	"unsigned int\000"
+ 3261 02a8 756E7369 		.ascii	"unsigned int\000"
  3261      676E6564 
  3261      20696E74 
  3261      00
  3262              	.LASF40:
- 3263 02b6 74656D70 		.ascii	"temp\000"
+ 3263 02b5 74656D70 		.ascii	"temp\000"
  3263      00
  3264              	.LASF83:
- 3265 02bb 74657374 		.ascii	"testnum\000"
+ 3265 02ba 74657374 		.ascii	"testnum\000"
  3265      6E756D00 
  3266              	.LASF5:
- 3267 02c3 73686F72 		.ascii	"short unsigned int\000"
+ 3267 02c2 73686F72 		.ascii	"short unsigned int\000"
  3267      7420756E 
  3267      7369676E 
  3267      65642069 
  3267      6E7400
  3268              	.LASF86:
- 3269 02d6 7873756D 		.ascii	"xsum\000"
+ 3269 02d5 7873756D 		.ascii	"xsum\000"
  3269      00
  3270              	.LASF21:
- 3271 02db 63686172 		.ascii	"char\000"
+ 3271 02da 63686172 		.ascii	"char\000"
  3271      00
  3272              	.LASF7:
- 3273 02e0 6C6F6E67 		.ascii	"long int\000"
+ 3273 02df 6C6F6E67 		.ascii	"long int\000"
  3273      20696E74 
  3273      00
  3274              	.LASF94:
- 3275 02e9 6D61696E 		.ascii	"main\000"
+ 3275 02e8 6D61696E 		.ascii	"main\000"
  3275      00
  3276              	.LASF15:
- 3277 02ee 696E7433 		.ascii	"int32_t\000"
+ 3277 02ed 696E7433 		.ascii	"int32_t\000"
  3277      325F7400 
  3278              	.LASF14:
- 3279 02f6 696E7431 		.ascii	"int16_t\000"
+ 3279 02f5 696E7431 		.ascii	"int16_t\000"
  3279      365F7400 
  3280              	.LASF17:
- 3281 02fe 75696E74 		.ascii	"uint8\000"
+ 3281 02fd 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 72
+
+
  3281      3800
  3282              	.LASF69:
- 3283 0304 5F426F6F 		.ascii	"_Bool\000"
+ 3283 0303 5F426F6F 		.ascii	"_Bool\000"
  3283      6C00
  3284              	.LASF82:
- 3285 030a 72657365 		.ascii	"reset\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 72
-
-
+ 3285 0309 72657365 		.ascii	"reset\000"
  3285      7400
  3286              	.LASF44:
- 3287 0310 63757253 		.ascii	"curState\000"
+ 3287 030f 63757253 		.ascii	"curState\000"
  3287      74617465 
  3287      00
  3288              	.LASF81:
- 3289 0319 64657074 		.ascii	"depth\000"
+ 3289 0318 64657074 		.ascii	"depth\000"
  3289      6800
  3290              	.LASF53:
- 3291 031f 7A5F6F66 		.ascii	"z_offset\000"
+ 3291 031e 7A5F6F66 		.ascii	"z_offset\000"
  3291      66736574 
  3291      00
  3292              	.LASF48:
- 3293 0328 72657375 		.ascii	"resurfbuf\000"
+ 3293 0327 72657375 		.ascii	"resurfbuf\000"
  3293      72666275 
  3293      6600
  3294              	.LASF77:
- 3295 0332 7278666C 		.ascii	"rxflag\000"
+ 3295 0331 7278666C 		.ascii	"rxflag\000"
  3295      616700
  3296              	.LASF61:
- 3297 0339 62756666 		.ascii	"buffer\000"
+ 3297 0338 62756666 		.ascii	"buffer\000"
  3297      657200
  3298              	.LASF36:
- 3299 0340 436F756E 		.ascii	"Countdown_ISR_Handler\000"
+ 3299 033f 436F756E 		.ascii	"Countdown_ISR_Handler\000"
  3299      74646F77 
  3299      6E5F4953 
  3299      525F4861 
  3299      6E646C65 
  3300              	.LASF92:
- 3301 0356 6D61696E 		.ascii	"main.c\000"
+ 3301 0355 6D61696E 		.ascii	"main.c\000"
  3301      2E6300
  3302              	.LASF22:
- 3303 035d 72656738 		.ascii	"reg8\000"
+ 3303 035c 72656738 		.ascii	"reg8\000"
  3303      00
  3304              	.LASF9:
- 3305 0362 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3305 0361 6C6F6E67 		.ascii	"long unsigned int\000"
  3305      20756E73 
  3305      69676E65 
  3305      6420696E 
  3305      7400
  3306              	.LASF28:
- 3307 0374 44455343 		.ascii	"DESCENDING\000"
+ 3307 0373 44455343 		.ascii	"DESCENDING\000"
  3307      454E4449 
  3307      4E4700
  3308              	.LASF78:
- 3309 037f 62797465 		.ascii	"bytes\000"
+ 3309 037e 62797465 		.ascii	"bytes\000"
  3309      7300
  3310              	.LASF20:
- 3311 0385 646F7562 		.ascii	"double\000"
+ 3311 0384 646F7562 		.ascii	"double\000"
  3311      6C6500
  3312              	.LASF8:
- 3313 038c 5F5F7569 		.ascii	"__uint32_t\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 73
+
+
+ 3313 038b 5F5F7569 		.ascii	"__uint32_t\000"
  3313      6E743332 
  3313      5F7400
  3314              	.LASF43:
- 3315 0397 74656D70 		.ascii	"tempbuf\000"
+ 3315 0396 74656D70 		.ascii	"tempbuf\000"
  3315      62756600 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 73
-
-
  3316              	.LASF6:
- 3317 039f 5F5F696E 		.ascii	"__int32_t\000"
+ 3317 039e 5F5F696E 		.ascii	"__int32_t\000"
  3317      7433325F 
  3317      7400
  3318              	.LASF3:
- 3319 03a9 5F5F696E 		.ascii	"__int16_t\000"
+ 3319 03a8 5F5F696E 		.ascii	"__int16_t\000"
  3319      7431365F 
  3319      7400
  3320              	.LASF45:
- 3321 03b3 64657363 		.ascii	"descendbuf\000"
+ 3321 03b2 64657363 		.ascii	"descendbuf\000"
  3321      656E6462 
  3321      756600
  3322              	.LASF23:
- 3323 03be 73697A65 		.ascii	"sizetype\000"
+ 3323 03bd 73697A65 		.ascii	"sizetype\000"
  3323      74797065 
  3323      00
  3324              	.LASF56:
- 3325 03c7 53445F52 		.ascii	"SD_Result\000"
+ 3325 03c6 53445F52 		.ascii	"SD_Result\000"
  3325      6573756C 
  3325      7400
  3326              	.LASF72:
- 3327 03d1 53544154 		.ascii	"STATE\000"
+ 3327 03d0 53544154 		.ascii	"STATE\000"
  3327      4500
  3328              	.LASF41:
- 3329 03d7 6F757470 		.ascii	"output\000"
+ 3329 03d6 6F757470 		.ascii	"output\000"
  3329      757400
  3330              	.LASF87:
- 3331 03de 7973756D 		.ascii	"ysum\000"
+ 3331 03dd 7973756D 		.ascii	"ysum\000"
  3331      00
  3332              	.LASF68:
- 3333 03e3 636F6C6C 		.ascii	"collect_flag\000"
+ 3333 03e2 636F6C6C 		.ascii	"collect_flag\000"
  3333      6563745F 
  3333      666C6167 
  3333      00
  3334              	.LASF37:
- 3335 03f0 72785F69 		.ascii	"rx_interrupt\000"
+ 3335 03ef 72785F69 		.ascii	"rx_interrupt\000"
  3335      6E746572 
  3335      72757074 
  3335      00
  3336              	.LASF59:
- 3337 03fd 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3337 03fc 49544D5F 		.ascii	"ITM_RxBuffer\000"
  3337      52784275 
  3337      66666572 
  3337      00
  3338              	.LASF95:
- 3339 040a 53445F53 		.ascii	"SD_SETUP\000"
+ 3339 0409 53445F53 		.ascii	"SD_SETUP\000"
  3339      45545550 
  3339      00
  3340              	.LASF58:
- 3341 0413 73756363 		.ascii	"success\000"
+ 3341 0412 73756363 		.ascii	"success\000"
  3341      65737300 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\cctvdFwd.s 			page 74
+
+
  3342              	.LASF84:
- 3343 041b 78617667 		.ascii	"xavg\000"
+ 3343 041a 78617667 		.ascii	"xavg\000"
  3343      00
  3344              	.LASF35:
- 3345 0420 53616D70 		.ascii	"Sample_ISR_Handler\000"
+ 3345 041f 53616D70 		.ascii	"Sample_ISR_Handler\000"
  3345      6C655F49 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccQyQpE5.s 			page 74
-
-
  3345      53525F48 
  3345      616E646C 
  3345      657200
  3346              	.LASF90:
- 3347 0433 66736669 		.ascii	"fsfile\000"
+ 3347 0432 66736669 		.ascii	"fsfile\000"
  3347      6C6500
  3348              	.LASF46:
- 3349 043a 6C616E64 		.ascii	"landedbuf\000"
+ 3349 0439 6C616E64 		.ascii	"landedbuf\000"
  3349      65646275 
  3349      6600
  3350              	.LASF70:
- 3351 0444 77616974 		.ascii	"wait_flag\000"
+ 3351 0443 77616974 		.ascii	"wait_flag\000"
  3351      5F666C61 
  3351      6700
  3352              	.LASF2:
- 3353 044e 5F5F7569 		.ascii	"__uint8_t\000"
+ 3353 044d 5F5F7569 		.ascii	"__uint8_t\000"
  3353      6E74385F 
  3353      7400
  3354              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

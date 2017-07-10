@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
   25:Generated_Source\PSoC5/Comp_PM.c **** * Function Name: Comp_SaveConfig
   26:Generated_Source\PSoC5/Comp_PM.c **** ********************************************************************************
   27:Generated_Source\PSoC5/Comp_PM.c **** *
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 2
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 2
 
 
   28:Generated_Source\PSoC5/Comp_PM.c **** * Summary:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
   53:Generated_Source\PSoC5/Comp_PM.c **** *
   54:Generated_Source\PSoC5/Comp_PM.c **** * Return:
   55:Generated_Source\PSoC5/Comp_PM.c **** *  void
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 3
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 3
 
 
   56:Generated_Source\PSoC5/Comp_PM.c **** *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
   81:Generated_Source\PSoC5/Comp_PM.c **** *******************************************************************************/
   82:Generated_Source\PSoC5/Comp_PM.c **** void Comp_Sleep(void) 
   83:Generated_Source\PSoC5/Comp_PM.c **** {
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 4
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 4
 
 
   89              		.loc 1 83 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  128              		.cfi_endproc
  129              	.LFE2:
  130              		.size	Comp_Sleep, .-Comp_Sleep
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 5
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 5
 
 
  131              		.section	.text.Comp_Wakeup,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  157 0010 FFF7FEFF 		bl	Comp_Enable
  158              	.L8:
  127:Generated_Source\PSoC5/Comp_PM.c **** 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 6
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 6
 
 
  128:Generated_Source\PSoC5/Comp_PM.c ****     } /* Do nothing if Comp was disabled before */ 
@@ -323,48 +323,48 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  176 0006 00000000 		.4byte	.Ldebug_abbrev0
  177 000a 04       		.byte	0x4
  178 000b 01       		.uleb128 0x1
- 179 000c D1000000 		.4byte	.LASF20
+ 179 000c 9F000000 		.4byte	.LASF20
  180 0010 01       		.byte	0x1
  181 0011 0E000000 		.4byte	.LASF21
- 182 0015 48000000 		.4byte	.LASF22
+ 182 0015 3D010000 		.4byte	.LASF22
  183 0019 00000000 		.4byte	.Ldebug_ranges0+0
  184 001d 00000000 		.4byte	0
  185 0021 00000000 		.4byte	.Ldebug_line0
  186 0025 02       		.uleb128 0x2
  187 0026 01       		.byte	0x1
  188 0027 06       		.byte	0x6
- 189 0028 95010000 		.4byte	.LASF0
+ 189 0028 94010000 		.4byte	.LASF0
  190 002c 02       		.uleb128 0x2
  191 002d 01       		.byte	0x1
  192 002e 08       		.byte	0x8
- 193 002f AE000000 		.4byte	.LASF1
+ 193 002f 7C000000 		.4byte	.LASF1
  194 0033 02       		.uleb128 0x2
  195 0034 02       		.byte	0x2
  196 0035 05       		.byte	0x5
- 197 0036 B2010000 		.4byte	.LASF2
+ 197 0036 B1010000 		.4byte	.LASF2
  198 003a 02       		.uleb128 0x2
  199 003b 02       		.byte	0x2
  200 003c 07       		.byte	0x7
- 201 003d 82010000 		.4byte	.LASF3
+ 201 003d 81010000 		.4byte	.LASF3
  202 0041 02       		.uleb128 0x2
  203 0042 04       		.byte	0x4
  204 0043 05       		.byte	0x5
- 205 0044 C8000000 		.4byte	.LASF4
+ 205 0044 96000000 		.4byte	.LASF4
  206 0048 02       		.uleb128 0x2
  207 0049 04       		.byte	0x4
  208 004a 07       		.byte	0x7
- 209 004b 80000000 		.4byte	.LASF5
+ 209 004b 4E000000 		.4byte	.LASF5
  210 004f 02       		.uleb128 0x2
  211 0050 08       		.byte	0x8
  212 0051 05       		.byte	0x5
  213 0052 00000000 		.4byte	.LASF6
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 7
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 7
 
 
  214 0056 02       		.uleb128 0x2
  215 0057 08       		.byte	0x8
  216 0058 07       		.byte	0x7
- 217 0059 92000000 		.4byte	.LASF7
+ 217 0059 60000000 		.4byte	.LASF7
  218 005d 03       		.uleb128 0x3
  219 005e 04       		.byte	0x4
  220 005f 05       		.byte	0x5
@@ -374,24 +374,24 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  224 0066 07       		.byte	0x7
  225 0067 2F000000 		.4byte	.LASF8
  226 006b 04       		.uleb128 0x4
- 227 006c 7A000000 		.4byte	.LASF12
+ 227 006c 48000000 		.4byte	.LASF12
  228 0070 02       		.byte	0x2
  229 0071 9201     		.2byte	0x192
  230 0073 2C000000 		.4byte	0x2c
  231 0077 02       		.uleb128 0x2
  232 0078 04       		.byte	0x4
  233 0079 04       		.byte	0x4
- 234 007a A1010000 		.4byte	.LASF9
+ 234 007a A0010000 		.4byte	.LASF9
  235 007e 02       		.uleb128 0x2
  236 007f 08       		.byte	0x8
  237 0080 04       		.byte	0x4
- 238 0081 7B010000 		.4byte	.LASF10
+ 238 0081 7A010000 		.4byte	.LASF10
  239 0085 02       		.uleb128 0x2
  240 0086 01       		.byte	0x1
  241 0087 08       		.byte	0x8
- 242 0088 A9000000 		.4byte	.LASF11
+ 242 0088 77000000 		.4byte	.LASF11
  243 008c 04       		.uleb128 0x4
- 244 008d BC010000 		.4byte	.LASF13
+ 244 008d BB010000 		.4byte	.LASF13
  245 0091 02       		.byte	0x2
  246 0092 3C02     		.2byte	0x23c
  247 0094 98000000 		.4byte	0x98
@@ -400,29 +400,29 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  250 009d 02       		.uleb128 0x2
  251 009e 04       		.byte	0x4
  252 009f 07       		.byte	0x7
- 253 00a0 E6010000 		.4byte	.LASF14
+ 253 00a0 E5010000 		.4byte	.LASF14
  254 00a4 06       		.uleb128 0x6
  255 00a5 01       		.byte	0x1
  256 00a6 03       		.byte	0x3
  257 00a7 29       		.byte	0x29
  258 00a8 B9000000 		.4byte	0xb9
  259 00ac 07       		.uleb128 0x7
- 260 00ad 6F010000 		.4byte	.LASF23
+ 260 00ad 6E010000 		.4byte	.LASF23
  261 00b1 03       		.byte	0x3
  262 00b2 2B       		.byte	0x2b
  263 00b3 6B000000 		.4byte	0x6b
  264 00b7 00       		.byte	0
  265 00b8 00       		.byte	0
  266 00b9 08       		.uleb128 0x8
- 267 00ba D4010000 		.4byte	.LASF15
+ 267 00ba D3010000 		.4byte	.LASF15
  268 00be 03       		.byte	0x3
  269 00bf 2D       		.byte	0x2d
  270 00c0 A4000000 		.4byte	0xa4
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 8
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 8
 
 
  271 00c4 09       		.uleb128 0x9
- 272 00c5 5F010000 		.4byte	.LASF16
+ 272 00c5 2D010000 		.4byte	.LASF16
  273 00c9 01       		.byte	0x1
  274 00ca 26       		.byte	0x26
  275 00cb 00000000 		.4byte	.LFB0
@@ -430,7 +430,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  277 00d3 01       		.uleb128 0x1
  278 00d4 9C       		.byte	0x9c
  279 00d5 09       		.uleb128 0x9
- 280 00d6 C1010000 		.4byte	.LASF17
+ 280 00d6 C0010000 		.4byte	.LASF17
  281 00da 01       		.byte	0x1
  282 00db 3A       		.byte	0x3a
  283 00dc 00000000 		.4byte	.LFB1
@@ -438,7 +438,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  285 00e4 01       		.uleb128 0x1
  286 00e5 9C       		.byte	0x9c
  287 00e6 0A       		.uleb128 0xa
- 288 00e7 A7010000 		.4byte	.LASF18
+ 288 00e7 A6010000 		.4byte	.LASF18
  289 00eb 01       		.byte	0x1
  290 00ec 52       		.byte	0x52
  291 00ed 00000000 		.4byte	.LFB2
@@ -446,7 +446,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  293 00f5 01       		.uleb128 0x1
  294 00f6 9C       		.byte	0x9c
  295 00f7 0A       		.uleb128 0xa
- 296 00f8 BC000000 		.4byte	.LASF19
+ 296 00f8 8A000000 		.4byte	.LASF19
  297 00fc 01       		.byte	0x1
  298 00fd 77       		.byte	0x77
  299 00fe 00000000 		.4byte	.LFB3
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  325 000b 55       		.uleb128 0x55
  326 000c 17       		.uleb128 0x17
  327 000d 11       		.uleb128 0x11
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 9
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 9
 
 
  328 000e 01       		.uleb128 0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  382 0044 3B       		.uleb128 0x3b
  383 0045 0B       		.uleb128 0xb
  384 0046 01       		.uleb128 0x1
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 10
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 10
 
 
  385 0047 13       		.uleb128 0x13
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  439 007e 0A       		.uleb128 0xa
  440 007f 2E       		.uleb128 0x2e
  441 0080 00       		.byte	0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 11
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 11
 
 
  442 0081 3F       		.uleb128 0x3f
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  496              		.section	.debug_ranges,"",%progbits
  497              	.Ldebug_ranges0:
  498 0000 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 12
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 12
 
 
  499 0004 0C000000 		.4byte	.LFE0
@@ -697,116 +697,116 @@ ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 1
  518 003c 436F6D70 		.ascii	"Comp_backup\000"
  518      5F626163 
  518      6B757000 
- 519              	.LASF22:
- 520 0048 433A5C55 		.ascii	"C:\\Users\\gding\\Documents\\Project_O-Vac\\OVac.cy"
- 520      73657273 
- 520      5C676469 
- 520      6E675C44 
- 520      6F63756D 
- 521 0076 64736E00 		.ascii	"dsn\000"
- 522              	.LASF12:
- 523 007a 75696E74 		.ascii	"uint8\000"
- 523      3800
- 524              	.LASF5:
- 525 0080 6C6F6E67 		.ascii	"long unsigned int\000"
- 525      20756E73 
- 525      69676E65 
- 525      6420696E 
- 525      7400
- 526              	.LASF7:
- 527 0092 6C6F6E67 		.ascii	"long long unsigned int\000"
- 527      206C6F6E 
- 527      6720756E 
- 527      7369676E 
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 13
+ 519              	.LASF12:
+ 520 0048 75696E74 		.ascii	"uint8\000"
+ 520      3800
+ 521              	.LASF5:
+ 522 004e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 522      20756E73 
+ 522      69676E65 
+ 522      6420696E 
+ 522      7400
+ 523              	.LASF7:
+ 524 0060 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 524      206C6F6E 
+ 524      6720756E 
+ 524      7369676E 
+ 524      65642069 
+ 525              	.LASF11:
+ 526 0077 63686172 		.ascii	"char\000"
+ 526      00
+ 527              	.LASF1:
+ 528 007c 756E7369 		.ascii	"unsigned char\000"
+ 528      676E6564 
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 13
 
 
- 527      65642069 
- 528              	.LASF11:
- 529 00a9 63686172 		.ascii	"char\000"
- 529      00
- 530              	.LASF1:
- 531 00ae 756E7369 		.ascii	"unsigned char\000"
- 531      676E6564 
- 531      20636861 
- 531      7200
- 532              	.LASF19:
- 533 00bc 436F6D70 		.ascii	"Comp_Wakeup\000"
- 533      5F57616B 
- 533      65757000 
- 534              	.LASF4:
- 535 00c8 6C6F6E67 		.ascii	"long int\000"
- 535      20696E74 
- 535      00
- 536              	.LASF20:
- 537 00d1 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 537      4320342E 
- 537      392E3320 
- 537      32303135 
- 537      30333033 
- 538 0104 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 538      20726576 
- 538      6973696F 
- 538      6E203232 
- 538      31323230 
- 539 0137 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 539      66756E63 
- 539      74696F6E 
- 539      2D736563 
- 539      74696F6E 
- 540              	.LASF16:
- 541 015f 436F6D70 		.ascii	"Comp_SaveConfig\000"
- 541      5F536176 
- 541      65436F6E 
- 541      66696700 
+ 528      20636861 
+ 528      7200
+ 529              	.LASF19:
+ 530 008a 436F6D70 		.ascii	"Comp_Wakeup\000"
+ 530      5F57616B 
+ 530      65757000 
+ 531              	.LASF4:
+ 532 0096 6C6F6E67 		.ascii	"long int\000"
+ 532      20696E74 
+ 532      00
+ 533              	.LASF20:
+ 534 009f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 534      4320342E 
+ 534      392E3320 
+ 534      32303135 
+ 534      30333033 
+ 535 00d2 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 535      20726576 
+ 535      6973696F 
+ 535      6E203232 
+ 535      31323230 
+ 536 0105 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 536      66756E63 
+ 536      74696F6E 
+ 536      2D736563 
+ 536      74696F6E 
+ 537              	.LASF16:
+ 538 012d 436F6D70 		.ascii	"Comp_SaveConfig\000"
+ 538      5F536176 
+ 538      65436F6E 
+ 538      66696700 
+ 539              	.LASF22:
+ 540 013d 433A5C55 		.ascii	"C:\\Users\\gstoll\\Desktop\\Project_O-Vac\\OVac.cyd"
+ 540      73657273 
+ 540      5C677374 
+ 540      6F6C6C5C 
+ 540      4465736B 
+ 541 016b 736E00   		.ascii	"sn\000"
  542              	.LASF23:
- 543 016f 656E6162 		.ascii	"enableState\000"
+ 543 016e 656E6162 		.ascii	"enableState\000"
  543      6C655374 
  543      61746500 
  544              	.LASF10:
- 545 017b 646F7562 		.ascii	"double\000"
+ 545 017a 646F7562 		.ascii	"double\000"
  545      6C6500
  546              	.LASF3:
- 547 0182 73686F72 		.ascii	"short unsigned int\000"
+ 547 0181 73686F72 		.ascii	"short unsigned int\000"
  547      7420756E 
  547      7369676E 
  547      65642069 
  547      6E7400
  548              	.LASF0:
- 549 0195 7369676E 		.ascii	"signed char\000"
+ 549 0194 7369676E 		.ascii	"signed char\000"
  549      65642063 
  549      68617200 
  550              	.LASF9:
- 551 01a1 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\gding\AppData\Local\Temp\ccII89sr.s 			page 14
+ 551 01a0 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\gstoll\AppData\Local\Temp\ccBABs8C.s 			page 14
 
 
  551      7400
  552              	.LASF18:
- 553 01a7 436F6D70 		.ascii	"Comp_Sleep\000"
+ 553 01a6 436F6D70 		.ascii	"Comp_Sleep\000"
  553      5F536C65 
  553      657000
  554              	.LASF2:
- 555 01b2 73686F72 		.ascii	"short int\000"
+ 555 01b1 73686F72 		.ascii	"short int\000"
  555      7420696E 
  555      7400
  556              	.LASF13:
- 557 01bc 72656738 		.ascii	"reg8\000"
+ 557 01bb 72656738 		.ascii	"reg8\000"
  557      00
  558              	.LASF17:
- 559 01c1 436F6D70 		.ascii	"Comp_RestoreConfig\000"
+ 559 01c0 436F6D70 		.ascii	"Comp_RestoreConfig\000"
  559      5F526573 
  559      746F7265 
  559      436F6E66 
  559      696700
  560              	.LASF15:
- 561 01d4 436F6D70 		.ascii	"Comp_backupStruct\000"
+ 561 01d3 436F6D70 		.ascii	"Comp_backupStruct\000"
  561      5F626163 
  561      6B757053 
  561      74727563 
  561      7400
  562              	.LASF14:
- 563 01e6 73697A65 		.ascii	"sizetype\000"
+ 563 01e5 73697A65 		.ascii	"sizetype\000"
  563      74797065 
  563      00
  564              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
